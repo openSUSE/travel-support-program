@@ -3,7 +3,7 @@
 = render 'profile_menu'
 = simple_form_for @profile, :url => user_profile_path, :as => :user do |f|
   = f.input :full_name
-  = f.input :country_code, :as => :string
+  = f.input :country_code, :as => :country
   = f.input :phone_number, :as => :string
   .form-actions
     = f.button :submit, :class => 'btn btn-primary'
