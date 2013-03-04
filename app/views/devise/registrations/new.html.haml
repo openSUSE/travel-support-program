@@ -1,0 +1,14 @@
+.page-header
+  %h1=t(:sign_up)
+
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+  = f.error_notification
+  = f.input :nickname, :required => true, :autofocus => true
+  = f.input :email, :required => true
+  = f.input :password, :required => true
+  = f.input :password_confirmation, :required => true
+  = f.input :locale, :as => :hidden, :input_html => { :value => I18n.locale }
+  .form-actions
+    = f.button :submit, t(:sign_up), :class => 'btn btn-primary'
+.links
+  = render :partial => "devise/shared/links"

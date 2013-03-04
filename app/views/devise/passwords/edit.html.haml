@@ -1,0 +1,9 @@
+.page-header
+  %h1=t(:change_your_password)
+= simple_form_for(@user, :as => 'user', :url => user_password_path, :html => { :method => :put }) do |f|
+  = f.hidden_field :reset_password_token
+  = f.error_notification
+  = f.input :password
+  = f.input :password_confirmation
+  .form-actions
+    = f.button :submit, t(:change_password), :class => 'btn btn-primary'
