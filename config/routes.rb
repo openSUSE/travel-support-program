@@ -1,7 +1,14 @@
 TravelSupportProgram::Application.routes.draw do
   devise_for :users
 
-  resources :requests
+  resources :requests do
+    resources :submissions, :controller => :request_submissions
+    #resources :approvals, :controller => :request_approvals
+    #resources :acceptances, :controller => :request_acceptances
+    #resources :rejections, :controller => :request_rejections
+    #resources :cancelations, :controller => :request_cancelations
+  end
+
   resource :user_profile do
     get :password, :on => :member
     put :update_password, :on => :member

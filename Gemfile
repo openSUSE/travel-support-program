@@ -36,6 +36,7 @@ gem 'simple_form'
 gem 'show_for'
 gem 'inherited_resources'
 gem 'localized_country_select'
+gem "state_machine"
 
 group :production do
   gem 'exception_notification'

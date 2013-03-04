@@ -12,3 +12,13 @@ en:
       save: "Save"
       new: "New"
       delete: "Delete"
+
+  activerecord:
+    errors:
+      messages:
+        invalid: "is unknown"
+        invalid_event: "cannot run the transition when %{state}"
+        invalid_transition: "cannot run the transition via %{event}"
+    state_machines:
+      events:
+        submit: "Submit"
