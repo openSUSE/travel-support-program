@@ -1,9 +1,9 @@
 .page-header
   %h1= current_user.nickname
 = render 'profile_menu'
-= simple_form_for @profile, :url => user_profile_path, :as => :user do |f|
+= simple_form_for @profile, :url => user_profile_path, :as => :user, :html => { :class => 'form-horizontal'} do |f|
   = f.input :full_name
   = f.input :country_code, :as => :country
   = f.input :phone_number, :as => :string
   .form-actions
-    = f.button :submit, :class => 'btn btn-primary'
+    = f.button :submit, :class => 'btn-primary'
