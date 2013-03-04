@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20130304121510) do
   create_table "requests", :force => true do |t|
     t.string   "state"
     t.integer  "user_id"
-    t.integer  "event_id"
+    t.integer  "event_id",   :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -3,7 +3,7 @@ class CreateRequests < ActiveRecord::Migration
     create_table :requests do |t|
       t.string :state
       t.references :user
-      t.references :event
+      t.references :event, :null => false
 
       t.timestamps
     end
