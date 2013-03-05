@@ -3,10 +3,10 @@ TravelSupportProgram::Application.routes.draw do
 
   resources :requests do
     resources :submissions, :controller => :request_submissions
-    #resources :approvals, :controller => :request_approvals
-    #resources :acceptances, :controller => :request_acceptances
-    #resources :rejections, :controller => :request_rejections
-    #resources :cancelations, :controller => :request_cancelations
+    resources :approvals, :controller => :request_approvals
+    resources :acceptances, :controller => :request_acceptances
+    resources :rejections, :controller => :request_rejections
+    resources :cancelations, :controller => :request_cancelations
   end
 
   resource :user_profile do

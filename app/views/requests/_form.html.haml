@@ -1,5 +1,6 @@
 = simple_form_for @request, :html => { :class => 'form-horizontal' } do |f|
   = f.association :event
+  = f.input :requester_notes
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), requests_path, :class => 'btn'

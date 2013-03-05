@@ -2,21 +2,26 @@
 .page-header
   %h1=t '.title', :default => model_class.model_name.human
 
-%p
-  %strong= model_class.human_attribute_name(:state) + ':'
-  %br
-  = @request.state
-%p
-  %strong= model_class.human_attribute_name(:user_id) + ':'
-  %br
-  = @request.user_id
-%p
-  %strong= model_class.human_attribute_name(:event_id) + ':'
-  %br
-  = @request.event_id
+= show_for @request do |r|
+  = r.association :user
+  = r.association :event
+  = r.attribute :state
+  = r.attribute :requester_notes
+  = r.attribute :tsp_notes
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), requests_path, :class => 'btn'
-  = link_to t('.edit', :default => t("helpers.links.edit")), edit_request_path(@request), :class => 'btn'
-  = link_to t('.destroy', :default => t("helpers.links.destroy")), request_path(@request), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-danger'
-  = link_to t("activerecord.state_machines.events.submit"), request_submissions_path(@request), :method => :post, :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn'
+  - if can? :edit, @request
+    = link_to t('.edit', :default => t("helpers.links.edit")), edit_request_path(@request), :class => 'btn'
+  - if can? :submit, @request
+    = link_to t("activerecord.state_machines.events.submit"), request_submissions_path(@request), :method => :post, :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-success'
+  - if can? :approve, @request
+    = link_to t("activerecord.state_machines.events.approve"), new_request_approval_path(@request), :class => 'btn btn-success'
+  - if can? :reject, @request
+    = link_to t("activerecord.state_machines.events.reject"), new_request_rejection_path(@request), :class => 'btn btn-warning'
+  - if can? :accept, @request
+    = link_to t("activerecord.state_machines.events.accept"), request_acceptances_path(@request), :method => :post, :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-success'
+  - if can? :cancel, @request
+    = link_to t('activerecord.state_machines.events.cancel'), request_cancelations_path(@request), :method => :post, :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-danger'
+  - if can? :destroy, @request
+    = link_to t('.destroy', :default => t("helpers.links.destroy")), request_path(@request), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-danger'

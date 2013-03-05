@@ -22,3 +22,7 @@ en:
     state_machines:
       events:
         submit: "Submit"
+        approve: "Approve"
+        reject: "Reject"
+        accept: "Accept"
+        cancel: "Cancel"
