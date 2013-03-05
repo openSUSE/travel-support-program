@@ -27,4 +27,15 @@ class Request < ActiveRecord::Base
       transition [:incomplete, :submitted, :approved] => :canceled
     end
   end
+
+  scope :editable_by_requester, :state => "incomplete"
+  scope :editable_by_tsp, :state => "submitted"
+
+  def editable_by_requester?
+    state == 'incomplete'
+  end
+
+  def editable_by_tsp?
+    state == 'submitted'
+  end
 end
