@@ -1,7 +1,11 @@
 class Request < ActiveRecord::Base
   belongs_to :user
   belongs_to :event
-  attr_accessible :event_id, :requester_notes, :tsp_notes
+  has_many :expenses, :class_name => "RequestExpense", :inverse_of => :request
+
+  accepts_nested_attributes_for :expenses, :reject_if => :all_blank, :allow_destroy => true
+
+  attr_accessible :event_id, :requester_notes, :tsp_notes, :expenses_attributes
 
   validates :event, :presence => true
 

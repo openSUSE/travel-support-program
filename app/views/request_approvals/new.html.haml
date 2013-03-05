@@ -1,8 +1,30 @@
 .page-header
   %h1=t "activerecord.state_machines.events.approve"
 
-= simple_form_for @request, :url => request_approvals_path(@request), :html => { :method => :post, :class => 'form-horizontal' } do |f|
-  = f.input :tsp_notes
+= simple_form_for @request, :url => request_approvals_path(@request), :html => { :method => :post } do |f|
+  .form-inputs.form-horizontal
+    = f.input :tsp_notes
+  .form-inputs.form-inline
+    %label= Request.human_attribute_name(:expenses)
+    - if !@request.errors[:expenses].empty?
+      .error= @request.expenses.map {|e| e.errors.full_messages}.uniq.join("; ")
+    %table.table.table-condensed
+      %thead
+        %tr
+          %th= RequestExpense.human_attribute_name(:subject)
+          %th= RequestExpense.human_attribute_name(:description)
+          %th= RequestExpense.human_attribute_name(:total_amount)
+          %th= t(:approved_amount_header)
+      %tbody
+        = f.simple_fields_for :expenses do |expense|
+          %tr
+            %td= expense.object.subject
+            %td= expense.object.description
+            %td= number_to_currency(expense.object.total_amount, :unit => expense.object.total_currency)
+            %td
+              = expense.text_field :approved_amount, :class => 'input-mini'
+              = expense.text_field :approved_currency, :class => 'input-mini'
+
   .form-actions
     = f.button :submit, t("activerecord.state_machines.events.approve"), :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), request_path(@request), :class => 'btn'

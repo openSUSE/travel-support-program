@@ -26,3 +26,7 @@ en:
         reject: "Reject"
         accept: "Accept"
         cancel: "Cancel"
+  cocoon_remove: "Remove"
+  add_expense: "Add expense"
+  total_amount_header: "Total cost (amount/currency)"
+  approved_amount_header: "Approved (amount/currency)"

@@ -1,6 +1,25 @@
-= simple_form_for @request, :html => { :class => 'form-horizontal' } do |f|
-  = f.association :event
-  = f.input :requester_notes
+= simple_form_for @request do |f|
+  .form-inputs.form-horizontal
+    = f.association :event
+    = f.input :requester_notes, :input_html => {:rows => 3}
+  .form-inputs.form-inline
+    %label= Request.human_attribute_name(:expenses)
+    - if !resource.errors[:expenses].empty?
+      .error= resource.expenses.map {|e| e.errors.full_messages}.uniq.join("; ")
+    %table.table.table-condensed
+      %thead
+        %tr
+          %th= RequestExpense.human_attribute_name(:subject)
+          %th= RequestExpense.human_attribute_name(:description)
+          %th= t(:total_amount_header)
+          %th= RequestExpense.human_attribute_name(:approved_amount)
+          %th
+      %tbody#expenses
+        = f.simple_fields_for :expenses do |expense|
+          = render 'expense_fields', :f => expense
+        %tr#expenses_links
+          %td= link_to_add_association t(:add_expense), f, :expenses, "data-association-insertion-node" => "#expenses_links"
+
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), requests_path, :class => 'btn'
