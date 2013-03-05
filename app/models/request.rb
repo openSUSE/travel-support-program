@@ -1,7 +1,7 @@
 class Request < ActiveRecord::Base
   belongs_to :user
   belongs_to :event
-  attr_accessible :event_id
+  attr_accessible :event_id, :requester_notes, :tsp_notes
 
   validates :event, :presence => true
 
