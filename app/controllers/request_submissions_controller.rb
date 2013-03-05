@@ -1,5 +1,5 @@
 class RequestSubmissionsController < ApplicationController
-  skip_authorize_resource
+  skip_load_and_authorize_resource
 
   def create
     @request = Request.find(params[:request_id])

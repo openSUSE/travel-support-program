@@ -32,7 +32,7 @@ class Ability
     if user.role_name == "requester"
       can :read, Request, :user_id => user.id
       can [:update, :destroy], Request do |r|
-        r.editable_by_requester?
+        r.user == user && r.editable_by_requester?
       end
       # Requester can accept, submit or cancel his own requests, but only when
       # state_machines allows to do it
