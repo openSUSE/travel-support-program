@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
 
   validates :role_id, :presence => true
 
+  def title; nickname; end
+
   def find_profile
     profile || create_profile
   end
