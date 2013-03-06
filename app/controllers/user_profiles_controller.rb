@@ -18,7 +18,7 @@ class UserProfilesController < ApplicationController
     if @user.update_attributes(params[:user])
       # Sign in the user by passing validation in case his password changed
       sign_in @user, :bypass => true
-      flash[:notice] = I18n.t(:password_updated_for)
+      flash[:notice] = I18n.t(:password_updated)
     end
     render "password"
   end

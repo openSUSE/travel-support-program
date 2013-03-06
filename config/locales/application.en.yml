@@ -13,20 +13,27 @@ en:
       new: "New"
       delete: "Delete"
 
-  activerecord:
-    errors:
-      messages:
-        invalid: "is unknown"
-        invalid_event: "cannot run the transition when %{state}"
-        invalid_transition: "cannot run the transition via %{event}"
-    state_machines:
-      events:
-        submit: "Submit"
-        approve: "Approve"
-        reject: "Reject"
-        accept: "Accept"
-        cancel: "Cancel"
-  cocoon_remove: "Remove"
-  add_expense: "Add expense"
-  total_amount_header: "Total cost (amount/currency)"
-  approved_amount_header: "Approved (amount/currency)"
+  sidebar: "Options"
+  new_request: "New request"
+  requests: "Requests"
+
+  cocoon_remove: "remove"
+  add_expense: "add expense"
+  total_amount_header: "total cost (amount/currency)"
+  approved_amount_header: "approved (amount/currency)"
+
+  password_updated: "Password updated"
+  profile_update_failed: "Errors updating profile information"
+  profile_updated: "Profile information updated"
+
+  request_acceptance_failed: "Errors ocurred while accepting the request"
+  request_accepted: "Request accepted"
+  request_approval_failed: "Errors ocurred while approving the request"
+  request_approved: "Request approved"
+  request_cancelation_failed: "Errors ocurred while canceling the request"
+  request_canceled: "Request canceled"
+  request_rejected: "Request rejected"
+  request_rejection_failed: "Errors ocurred while rejecting the request"
+  request_submission_failed: "Errors ocurred while submitting the request"
+  request_submitted: "Request submitted"
+  

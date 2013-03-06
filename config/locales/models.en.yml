@@ -1,0 +1,76 @@
+en:
+  activehash:
+    user_role:
+      requester: "Requester"
+      tsp: "Travel Support Program"
+      supervisor: "Supervisor"
+      administrative: "Administrative"
+
+  activerecord:
+    errors:
+      messages:
+        invalid: "is unknown"
+        invalid_event: "cannot run the transition when %{state}"
+        invalid_transition: "cannot run the transition via %{event}"
+
+    models:
+      event: "event"
+      request: "request"
+      request_expense: "expense"
+      user: "user"
+      user_profile: "profile"
+
+    attributes:
+      event:
+        name: "name"
+        start_date: "start date"
+        end_date: "end date"
+      request:
+        event: "event"
+        event_id: "event"
+        state: "state"
+        requester_notes: "requester notes"
+        tsp_notes: "Travel Support Program notes"
+        user: "user"
+        user_id: "user"
+      request_expense:
+        approved_amount: "aproved amount"
+        approved_currency: "approved currency"
+        description: "description"
+        request: "request"
+        request_id: "request"
+        subject: "subject"
+        total_amount: "total amount"
+        total_currency: "total currency"
+      user:
+        created_at: "created at"
+        current_sign_in_at: "current sign in at"
+        current_sign_in_ip: "current sign in ip"
+        email: "email"
+        encrypted_password: "encrypted password"
+        last_sign_in_at: "last sign in at"
+        last_sign_in_ip: "last sign in ip"
+        locale: "locale"
+        nickname: "nickname"
+        remember_created_at: "remember created at"
+        reset_password_sent_at: "reset password sent at"
+        reset_password_token: "reset password token"
+        role: "role"
+        role_id: "role"
+        sign_in_count: "sign in count"
+        updated_at: "updated at"
+      user_profile:
+        country_code: "country"
+        full_name: "full name"
+        phone_number: "phone number"
+        user: "user"
+        user_id: "user"
+
+    state_machines:
+      events:
+        submit: "Submit"
+        approve: "Approve"
+        reject: "Reject"
+        accept: "Accept"
+        cancel: "Cancel"
+
