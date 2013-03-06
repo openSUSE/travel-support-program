@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(:version => 20130305121851) do
     t.string   "locale",                 :default => "en", :null => false
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
-    t.integer  "user_role_id"
     t.integer  "role_id"
   end
 
