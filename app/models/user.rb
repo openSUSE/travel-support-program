@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   after_create :create_profile
   after_initialize :set_default_attrs, :if => :new_record?
 
-  validates :role_id, :presence => true
+  validates :nickname, :role_id, :presence => true
 
   def title; nickname; end
 
