@@ -2,10 +2,10 @@ class UserRole < ActiveHash::Base
   include ActiveHash::Enum
 
   self.data = [
-    { :name => 'requester' },
-    { :name => 'tsp' },
-    { :name => 'supervisor' },
-    { :name => 'administrative'} 
+    { :id => 1, :name => 'requester' },
+    { :id => 2, :name => 'tsp' },
+    { :id => 3, :name => 'supervisor' },
+    { :id => 4, :name => 'administrative'} 
   ]
 
   enum_accessor :name
