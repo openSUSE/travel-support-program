@@ -54,8 +54,10 @@ group :test do
   gem "rspec-rails"
   gem "capybara"
   gem "capybara-email"
+  gem "capybara-webkit"
   gem "shoulda-matchers"
-  gem "delorean"
+  gem "database_cleaner"
+#  gem "delorean"
 end
 
 # To use ActiveModel has_secure_password

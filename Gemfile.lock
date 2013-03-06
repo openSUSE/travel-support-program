@@ -46,9 +46,11 @@ GEM
     capybara-email (2.0.2)
       capybara (~> 2.0.0)
       mail
+    capybara-webkit (0.14.2)
+      capybara (~> 2.0, >= 2.0.2)
+      json
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
-    chronic (0.9.1)
     cocoon (1.1.2)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -58,8 +60,7 @@ GEM
       execjs
     coffee-script-source (1.5.0)
     commonjs (0.2.6)
-    delorean (2.1.0)
-      chronic
+    database_cleaner (0.9.1)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -214,9 +215,10 @@ DEPENDENCIES
   cancan
   capybara
   capybara-email
+  capybara-webkit
   cocoon
   coffee-rails (~> 3.2.1)
-  delorean
+  database_cleaner
   devise
   exception_notification
   haml-rails
