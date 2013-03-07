@@ -1,7 +1,8 @@
 luke_profile:
   user: luke
   full_name: "Luke Skywalker"
+  role_id: 1
 anakin_profile:
   user: anakin
   full_name: "Anakin Skywalker"
-
+  role_id: 1

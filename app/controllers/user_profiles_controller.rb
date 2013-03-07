@@ -2,6 +2,7 @@ class UserProfilesController < ApplicationController
   force_ssl_if_available
   before_filter :authenticate_user!
   before_filter :set_profile
+  before_filter :remove_role_from_params, :only => [:update, :update_password]
 
   def update
     if @profile.update_attributes(params[:user])
@@ -27,6 +28,13 @@ class UserProfilesController < ApplicationController
   
   def set_profile
     @profile = current_user.find_profile
+  end
+
+  # To prevent users changing their own role
+  def remove_role_from_params
+    params[:user].delete("role")
+    params[:user].delete("role_id")
+    params[:user].delete("role_name")
   end
 
 end

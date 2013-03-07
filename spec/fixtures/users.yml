@@ -2,9 +2,7 @@ luke:
   email: "luke.skywalker@rebel-alliance.org"
   nickname: "tatooine69"
   encrypted_password: "$2a$10$9avVKOmjbCWh0m5p/frG7uX3S0LbF8ZtRS/QocBkmXiiDbh9.bKsq"
-  role_id: 1
 anakin:
   email: "anakin.skywalker@the-republic.gob"
   nickname: "jedi-master"
   encrypted_password: "$2a$10$9avVKOmjbCWh0m5p/frG7uX3S0LbF8ZtRS/QocBkmXiiDbh9.bKsq"
-  role_id: 1

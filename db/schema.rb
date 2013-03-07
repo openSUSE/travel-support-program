@@ -14,11 +14,12 @@
 ActiveRecord::Schema.define(:version => 20130305121851) do
 
   create_table "events", :force => true do |t|
-    t.string   "name"
+    t.string   "name",        :null => false
+    t.text     "description"
     t.date     "start_date"
     t.date     "end_date"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "request_expenses", :force => true do |t|
@@ -35,12 +36,13 @@ ActiveRecord::Schema.define(:version => 20130305121851) do
 
   create_table "requests", :force => true do |t|
     t.string   "state"
-    t.integer  "user_id"
+    t.integer  "user_id",         :null => false
     t.integer  "event_id",        :null => false
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.text     "description"
     t.text     "requester_notes"
     t.text     "tsp_notes"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   add_index "requests", ["event_id"], :name => "index_requests_on_event_id"
@@ -48,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20130305121851) do
 
   create_table "user_profiles", :force => true do |t|
     t.integer  "user_id",      :null => false
+    t.integer  "role_id",      :null => false
     t.string   "full_name"
     t.string   "phone_number"
     t.string   "country_code"
@@ -70,7 +73,6 @@ ActiveRecord::Schema.define(:version => 20130305121851) do
     t.string   "locale",                 :default => "en", :null => false
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
-    t.integer  "role_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -28,8 +28,9 @@ class Ability
     can :manage, User, :id => user.id
     can :manage, UserProfile, :user_id => user.id
     can :create, Request
+    role = user.find_profile.role_name
 
-    if user.role_name == "requester"
+    if role == "requester"
       can :read, Request, :user_id => user.id
       can [:update, :destroy], Request do |r|
         r.user == user && r.editable_by_requester?
@@ -42,7 +43,7 @@ class Ability
         end
       end
       can :manage, User, :id => user.id
-    elsif user.role_name == "tsp"
+    elsif role == "tsp"
       can :read, Request
       can :update, Request do |r|
         r.editable_by_tsp?
