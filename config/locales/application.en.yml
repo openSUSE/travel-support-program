@@ -37,3 +37,4 @@ en:
   request_submission_failed: "Errors ocurred while submitting the request"
   request_submitted: "Request submitted"
   
+  since: "(since %{date})"
