@@ -41,7 +41,8 @@
           .well.sidebar-nav
             %ul.nav.nav-list
               %li.nav-header= t(:sidebar)
-              %li= link_to t(:new_request), new_request_path
+              - if can? :create, Request
+                %li= link_to t(:new_request), new_request_path
               %li= link_to t(:requests), requests_path
         .span9
           = bootstrap_flash

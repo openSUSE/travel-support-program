@@ -1,11 +1,19 @@
 .page-header
   %h1=t "activerecord.state_machines.events.approve"
 
+= show_for @request do |r|
+  = r.association :user
+  = r.association :event
+  = r.attribute :description
+  = r.attribute :requester_notes
+  = r.attribute :state do
+    = timestamped_state(@request)
+
 = simple_form_for @request, :url => request_approvals_path(@request), :html => { :method => :post } do |f|
   .form-inputs.form-horizontal
-    = f.input :tsp_notes
+    = f.input :tsp_notes, :input_html => {:rows => 3}
   .form-inputs.form-inline
-    %label= Request.human_attribute_name(:expenses)
+    %p.label= Request.human_attribute_name(:expenses)
     - if !@request.errors[:expenses].empty?
       .error= @request.expenses.map {|e| e.errors.full_messages}.uniq.join("; ")
     %table.table.table-condensed

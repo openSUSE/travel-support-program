@@ -1,7 +1,8 @@
 = simple_form_for @request do |f|
   .form-inputs.form-horizontal
     = f.association :event
-    = f.input :requester_notes, :input_html => {:rows => 3}
+    = f.input :description, :input_html => {:rows => 3}
+    = f.input(:requester_notes, :input_html => {:rows => 3}) if @request.already_submitted?
   .form-inputs.form-inline
     %label= Request.human_attribute_name(:expenses)
     - if !resource.errors[:expenses].empty?
