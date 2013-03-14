@@ -39,6 +39,8 @@ gem 'localized_country_select'
 gem "state_machine"
 gem "active_hash"
 gem 'cocoon'
+gem 'ransack'
+gem 'kaminari'
 
 group :production do
   gem 'exception_notification'

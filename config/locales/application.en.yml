@@ -36,5 +36,7 @@ en:
   request_rejection_failed: "Errors ocurred while rejecting the request"
   request_submission_failed: "Errors ocurred while submitting the request"
   request_submitted: "Request submitted"
-  
+
+  reset_search: "all"
   since: "(since %{date})"
+  search: "search"

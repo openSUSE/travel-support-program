@@ -1,6 +1,16 @@
 - model_class = Request
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize
+
+.navbar
+  .navbar-inner
+    = link_to t('.new', :default => t("helpers.links.new")), new_request_path, :class => 'btn btn-primary'
+
+    = search_form_for @q, :class => "navbar-form pull-right" do |f|
+      = f.select :state_eq, request_states_collection, :include_blank => true
+      = f.submit t(:search), :class => "btn"
+      = link_to t(:reset_search), collection_path, :class => "btn"
+
 %table.table.table-striped
   %thead
     %tr
@@ -16,4 +26,4 @@
         %td= request.event.try(:name)
         %td= timestamped_state(request)
 
-= link_to t('.new', :default => t("helpers.links.new")), new_request_path, :class => 'btn btn-primary'
+= paginate collection
