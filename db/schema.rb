@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305121851) do
+ActiveRecord::Schema.define(:version => 20130312082813) do
 
   create_table "events", :force => true do |t|
     t.string   "name",        :null => false
@@ -36,13 +36,18 @@ ActiveRecord::Schema.define(:version => 20130305121851) do
 
   create_table "requests", :force => true do |t|
     t.string   "state"
-    t.integer  "user_id",         :null => false
-    t.integer  "event_id",        :null => false
+    t.integer  "user_id",          :null => false
+    t.integer  "event_id",         :null => false
     t.text     "description"
     t.text     "requester_notes"
     t.text     "tsp_notes"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.datetime "incomplete_since"
+    t.datetime "submitted_since"
+    t.datetime "approved_since"
+    t.datetime "accepted_since"
+    t.datetime "canceled_since"
   end
 
   add_index "requests", ["event_id"], :name => "index_requests_on_event_id"

@@ -10,6 +10,9 @@ class Request < ActiveRecord::Base
   validates :event, :presence => true
 
   state_machine :state, :initial => :incomplete do
+    before_transition do |request, transition|
+      request.set_transition_datetime(transition)
+    end
 
     event :submit do
       transition :incomplete => :submitted
@@ -41,5 +44,13 @@ class Request < ActiveRecord::Base
 
   def editable_by_tsp?
     state == 'submitted'
+  end
+
+  def can_be_destroyed?
+    submitted_since.nil?
+  end
+
+  def set_transition_datetime(transition)
+    write_attribute("#{transition.to}_since".to_sym, DateTime.now)
   end
 end
