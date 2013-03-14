@@ -27,10 +27,10 @@ class Ability
 
     can :manage, User, :id => user.id
     can :manage, UserProfile, :user_id => user.id
-    can :create, Request
     role = user.find_profile.role_name
 
     if role == "requester"
+      can :create, Request
       can :read, Request, :user_id => user.id
       can :update, Request do |r|
         r.user == user && r.editable_by_requester?
@@ -40,10 +40,13 @@ class Ability
       end
       # Requester can accept, submit or cancel his own requests, but only when
       # state_machines allows to do it
-      [:submit, :accept, :cancel].each do |action|
+      [:accept, :reject, :cancel].each do |action|
         can action, Request do |r|
           r.user == user && r.send("can_#{action}?")
         end
+      end
+      can :submit, Request do |r|
+          r.user == user && r.can_submit? && !r.expenses.empty?
       end
       can :manage, User, :id => user.id
     elsif role == "tsp"
@@ -55,7 +58,7 @@ class Ability
       # state_machines allows to do it
       [:approve, :reject, :cancel].each do |action|
         can action, Request do |r|
-          r.send("can_#{action}?")
+          r.editable_by_tsp? && r.send("can_#{action}?")
         end
       end
     end

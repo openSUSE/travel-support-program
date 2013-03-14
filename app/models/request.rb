@@ -5,7 +5,7 @@ class Request < ActiveRecord::Base
 
   accepts_nested_attributes_for :expenses, :reject_if => :all_blank, :allow_destroy => true
 
-  attr_accessible :event_id, :requester_notes, :tsp_notes, :expenses_attributes
+  attr_accessible :event_id, :description, :requester_notes, :tsp_notes, :expenses_attributes
 
   validates :event, :presence => true
 
@@ -46,8 +46,12 @@ class Request < ActiveRecord::Base
     state == 'submitted'
   end
 
+  def already_submitted?
+    not submitted_since.blank?
+  end
+
   def can_be_destroyed?
-    submitted_since.nil?
+    not already_submitted?
   end
 
   def set_transition_datetime(transition)
