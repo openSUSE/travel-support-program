@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+tsp_user = User.create!(nickname: 'tspmember', email: 'tspmember@example.com',
+                       password: 'tspmember1', password_confirmation: 'tspmember1')
+tsp_user.profile.role_name = 'tsp'
+tsp_user.profile.save!
