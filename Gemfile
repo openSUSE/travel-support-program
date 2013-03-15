@@ -5,7 +5,10 @@ gem 'rails', '3.2.12'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+# Choose your weapon
 gem 'sqlite3'
+#gem 'pg'
+#gem 'mysql'
 
 
 # Gems used only for assets and not required
@@ -24,12 +27,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
 gem 'haml-rails'
-gem 'pg'
-gem 'mysql'
 gem 'rein'
-
 gem 'devise'
 gem 'cancan'
 gem 'simple_form'
