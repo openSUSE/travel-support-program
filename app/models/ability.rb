@@ -27,9 +27,16 @@ class Ability
 
     can :manage, User, :id => user.id
     can :manage, UserProfile, :user_id => user.id
+    can [:read, :create], Event
     role = user.find_profile.role_name
 
     if role == "requester"
+      can :update, Event do |e|
+        e.editable_by_requesters?
+      end
+      can :destroy, Event do |e|
+        e.editable_by_requesters? && e.can_be_destroyed?
+      end
       can :create, Request
       can :read, Request, :user_id => user.id
       can :update, Request do |r|
@@ -50,6 +57,10 @@ class Ability
       end
       can :manage, User, :id => user.id
     elsif role == "tsp"
+      can [:update, :validate], Event
+      can :destroy, Event do |e|
+        e.can_be_destroyed?
+      end
       can :read, Request
       can :update, Request do |r|
         r.editable_by_tsp?

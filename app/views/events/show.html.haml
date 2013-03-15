@@ -1,0 +1,25 @@
+- model_class = Request
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human
+
+= show_for resource do |r|
+  .row-fluid
+    .span6
+      = r.attribute :name
+      = r.attribute :country do
+        = country_label(resource.country_code)
+      = r.attribute :start_date
+      = r.attribute :end_date
+      = r.attribute :description
+      = r.attribute :url do
+        = link_to resource.url
+      - if user_signed_in? && can?(:validate, resource)
+        = r.attribute :validated
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), collection_path, :class => 'btn'
+  - if user_signed_in? && can?(:update, resource)
+    = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path(resource), :class => 'btn'
+  - if user_signed_in? && can?(:destroy, resource)
+    = link_to t('.destroy', :default => t("helpers.links.destroy")), resource_path(resource), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-danger'
+  = link_to t(:apply), new_request_path(:event_id => resource), :class => 'btn'

@@ -8,10 +8,8 @@ en:
       destroy: "Delete"
       new: "New"
     titles:
-      edit: "Edit"
-      save: "Save"
-      new: "New"
-      delete: "Delete"
+      edit: "Edit %{model}"
+      new: "New %{model}"
 
   sidebar: "Options"
   new_request: "New request"
@@ -40,3 +38,5 @@ en:
   reset_search: "all"
   since: "(since %{date})"
   search: "search"
+  event_title_line: "%{name} (since %{start} at %{country})"
+  general_info: "general information"

@@ -23,6 +23,10 @@ en:
     attributes:
       event:
         name: "name"
+        description: "description"
+        country: "country"
+        country_code: "country"
+        url: "url"
         start_date: "start date"
         end_date: "end date"
       request:

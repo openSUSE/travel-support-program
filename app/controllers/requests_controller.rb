@@ -4,9 +4,15 @@ class RequestsController < InheritedResources::Base
   helper_method :request_states_collection
 
   def create
-    @request = Request.new(params[:request])
+    @request ||= Request.new(params[:request])
     @request.user = current_user
     create!
+  end
+
+  def new
+    @request ||= Request.new(params[:request])
+    @request.event = Event.find(params[:event_id])
+    new!
   end
 
   protected

@@ -4,7 +4,7 @@
 
 .navbar
   .navbar-inner
-    = link_to t('.new', :default => t("helpers.links.new")), new_request_path, :class => 'btn btn-primary'
+    = link_to t('.new', :default => t("helpers.links.new")), new_resource_path, :class => 'btn btn-primary'
 
     = search_form_for @q, :class => "navbar-form pull-right" do |f|
       = f.select :state_eq, request_states_collection, :include_blank => true
@@ -19,7 +19,7 @@
       %th= model_class.human_attribute_name(:event)
       %th= model_class.human_attribute_name(:state)
   %tbody
-    - @requests.each do |request|
+    - collection.each do |request|
       %tr
         %td= link_to request.id, request_path(request)
         %td= request.user.try(:title)

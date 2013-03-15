@@ -1,10 +1,16 @@
-= simple_form_for @request do |f|
+%strong.label= Request.human_attribute_name(:event)
+%br
+= render resource.event
+
+%strong.label= t(:general_info)
+%br
+= simple_form_for resource do |f|
   .form-inputs.form-horizontal
-    = f.association :event
+    = f.hidden_field :event_id
     = f.input :description, :input_html => {:rows => 3}
     = f.input(:requester_notes, :input_html => {:rows => 3}) if @request.already_submitted?
   .form-inputs.form-inline
-    %label= Request.human_attribute_name(:expenses)
+    %strong.label= Request.human_attribute_name(:expenses)
     - if !resource.errors[:expenses].empty?
       .error= resource.expenses.map {|e| e.errors.full_messages}.uniq.join("; ")
     %table.table.table-condensed

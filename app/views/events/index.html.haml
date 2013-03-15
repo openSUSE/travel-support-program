@@ -1,0 +1,29 @@
+- model_class = Event
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize
+
+.navbar
+  .navbar-inner
+    = link_to t('.new', :default => t("helpers.links.new")), new_resource_path, :class => 'btn btn-primary'
+
+    = search_form_for @q, :class => "navbar-form pull-right" do |f|
+      = f.text_field :name_or_description_cont
+      = f.submit t(:search), :class => "btn"
+      = link_to t(:reset_search), collection_path, :class => "btn"
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:name)
+      %th= model_class.human_attribute_name(:country)
+      %th= model_class.human_attribute_name(:start_date)
+      %th= model_class.human_attribute_name(:end_date)
+  %tbody
+    - collection.each do |r|
+      %tr
+        %td= link_to r.name, resource_path(r)
+        %td= country_label(r.country_code)
+        %td= l(r.start_date)
+        %td= l(r.end_date)
+
+= paginate collection
