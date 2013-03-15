@@ -14,12 +14,15 @@
 ActiveRecord::Schema.define(:version => 20130312082813) do
 
   create_table "events", :force => true do |t|
-    t.string   "name",        :null => false
+    t.string   "name",         :null => false
     t.text     "description"
+    t.string   "country_code"
+    t.string   "url"
     t.date     "start_date"
     t.date     "end_date"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.boolean  "validated"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "request_expenses", :force => true do |t|
