@@ -9,3 +9,6 @@ tsp_user = User.create!(nickname: 'tspmember', email: 'tspmember@example.com',
                        password: 'tspmember1', password_confirmation: 'tspmember1')
 tsp_user.profile.role_name = 'tsp'
 tsp_user.profile.save!
+
+tsp_user = User.create!(nickname: 'requester', email: 'requester@example.com',
+                       password: 'requester1', password_confirmation: 'requester1')
