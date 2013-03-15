@@ -24,7 +24,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="#") Travel Support Program
+          =link_to t(:application_title), root_path, :class => "brand"
           .container.nav-collapse
             %ul.nav
               - if user_signed_in?

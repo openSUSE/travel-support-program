@@ -35,6 +35,7 @@ en:
   request_submission_failed: "Errors ocurred while submitting the request"
   request_submitted: "Request submitted"
 
+  application_title: "Travel Support Program"
   reset_search: "all"
   since: "(since %{date})"
   search: "search"
