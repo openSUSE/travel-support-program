@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: ApplicationHelper
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (A)</a> &raquo;
+    
+    
+    <span class="title">ApplicationHelper</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: ApplicationHelper
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">app/helpers/application_helper.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#country_label-instance_method" title="#country_label (instance method)">- (Object) <strong>country_label</strong>(country_code) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#nav_tab-instance_method" title="#nav_tab (instance method)">- (Object) <strong>nav_tab</strong>(label, path) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="country_label-instance_method">
+  
+    - (<tt>Object</tt>) <strong>country_label</strong>(country_code) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/application_helper.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_country_label'>country_label</span><span class='lparen'>(</span><span class='id identifier rubyid_country_code'>country_code</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_country_code'>country_code</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> - </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>countries.</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_country_code'>country_code</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="nav_tab-instance_method">
+  
+    - (<tt>Object</tt>) <strong>nav_tab</strong>(label, path) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+2
+3
+4
+5</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/application_helper.rb', line 2</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_nav_tab'>nav_tab</span><span class='lparen'>(</span><span class='id identifier rubyid_label'>label</span><span class='comma'>,</span> <span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_css'>css</span> <span class='op'>=</span> <span class='id identifier rubyid_current_page?'>current_page?</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>active</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='kw'>nil</span>
+  <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:li</span><span class='comma'>,</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='id identifier rubyid_label'>label</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_css'>css</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sun Mar 17 12:28:55 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>
