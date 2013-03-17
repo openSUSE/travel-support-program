@@ -4,7 +4,7 @@
 
 .navbar
   .navbar-inner
-    = link_to t('.new', :default => t("helpers.links.new")), new_resource_path, :class => 'btn btn-primary'
+    = link_to t('.new', :default => t("helpers.links.new")), new_resource_path, :class => 'btn btn-primary', :data => { :confirm => t(:new_event_warning) }
 
     = search_form_for @q, :class => "navbar-form pull-right" do |f|
       = f.text_field :name_or_description_cont
