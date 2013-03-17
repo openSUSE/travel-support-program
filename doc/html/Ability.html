@@ -1,0 +1,345 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Ability
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (A)</a> &raquo;
+    
+    
+    <span class="title">Ability</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Ability
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Ability</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2">CanCan::Ability</dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">app/models/ability.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Ability) <strong>initialize</strong>(user) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>A new instance of Ability.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Ability (class)">Ability</a></span></tt>) <strong>initialize</strong>(user) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>A new instance of Ability</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/ability.rb', line 4</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
+  <span class='comment'># Define abilities for the passed in user here. For example:
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#   user ||= User.new # guest user (not logged in)
+</span>  <span class='comment'>#   if user.admin?
+</span>  <span class='comment'>#     can :manage, :all
+</span>  <span class='comment'>#   else
+</span>  <span class='comment'>#     can :read, :all
+</span>  <span class='comment'>#   end
+</span>  <span class='comment'>#
+</span>  <span class='comment'># The first argument to `can` is the action you are giving the user permission to do.
+</span>  <span class='comment'># If you pass :manage it will apply to every action. Other common actions here are
+</span>  <span class='comment'># :read, :create, :update and :destroy.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># The second argument is the resource the user can perform the action on. If you pass
+</span>  <span class='comment'># :all it will apply to every resource. Otherwise pass a Ruby class of the resource.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># The third argument is an optional hash of conditions to further filter the objects.
+</span>  <span class='comment'># For example, here the user can only update published articles.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#   can :update, Article, :published =&gt; true
+</span>  <span class='comment'>#
+</span>  <span class='comment'># See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
+</span>
+  <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:manage</span><span class='comma'>,</span> <span class='const'>User</span><span class='comma'>,</span> <span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+  <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:manage</span><span class='comma'>,</span> <span class='const'>UserProfile</span><span class='comma'>,</span> <span class='symbol'>:user_id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+  <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:read</span><span class='comma'>,</span> <span class='symbol'>:create</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>Event</span>
+  <span class='id identifier rubyid_role'>role</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_find_profile'>find_profile</span><span class='period'>.</span><span class='id identifier rubyid_role_name'>role_name</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_role'>role</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>requester</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:update</span><span class='comma'>,</span> <span class='const'>Event</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>
+      <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_editable_by_requesters?'>editable_by_requesters?</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:destroy</span><span class='comma'>,</span> <span class='const'>Event</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>
+      <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_editable_by_requesters?'>editable_by_requesters?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_can_be_destroyed?'>can_be_destroyed?</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:create</span><span class='comma'>,</span> <span class='const'>Request</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Request</span><span class='comma'>,</span> <span class='symbol'>:user_id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:update</span><span class='comma'>,</span> <span class='const'>Request</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
+      <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_editable_by_requester?'>editable_by_requester?</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:destroy</span><span class='comma'>,</span> <span class='const'>Request</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
+      <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_can_be_destroyed?'>can_be_destroyed?</span>
+    <span class='kw'>end</span>
+    <span class='comment'># Requester can accept, submit or cancel his own requests, but only when
+</span>    <span class='comment'># state_machines allows to do it
+</span>    <span class='lbracket'>[</span><span class='symbol'>:accept</span><span class='comma'>,</span> <span class='symbol'>:reject</span><span class='comma'>,</span> <span class='symbol'>:cancel</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_action'>action</span><span class='op'>|</span>
+      <span class='id identifier rubyid_can'>can</span> <span class='id identifier rubyid_action'>action</span><span class='comma'>,</span> <span class='const'>Request</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
+        <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>can_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='rbrace'>}</span><span class='tstring_content'>?</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:submit</span><span class='comma'>,</span> <span class='const'>Request</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
+        <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_can_submit?'>can_submit?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_expenses'>expenses</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:manage</span><span class='comma'>,</span> <span class='const'>User</span><span class='comma'>,</span> <span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_role'>role</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tsp</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:update</span><span class='comma'>,</span> <span class='symbol'>:validate</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>Event</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:destroy</span><span class='comma'>,</span> <span class='const'>Event</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>
+      <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_can_be_destroyed?'>can_be_destroyed?</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Request</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:update</span><span class='comma'>,</span> <span class='const'>Request</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
+      <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_editable_by_tsp?'>editable_by_tsp?</span>
+    <span class='kw'>end</span>
+    <span class='comment'># TSP members can approve, reject or cancel any request, but only when
+</span>    <span class='comment'># state_machines allows to do it
+</span>    <span class='lbracket'>[</span><span class='symbol'>:approve</span><span class='comma'>,</span> <span class='symbol'>:reject</span><span class='comma'>,</span> <span class='symbol'>:cancel</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_action'>action</span><span class='op'>|</span>
+      <span class='id identifier rubyid_can'>can</span> <span class='id identifier rubyid_action'>action</span><span class='comma'>,</span> <span class='const'>Request</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
+        <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_editable_by_tsp?'>editable_by_tsp?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>can_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='rbrace'>}</span><span class='tstring_content'>?</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+</div>
+
+    <div id="footer">
+  Generated on Sun Mar 17 12:23:59 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

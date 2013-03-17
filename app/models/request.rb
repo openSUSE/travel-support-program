@@ -1,6 +1,13 @@
+#
+# Request from a user to get help from the TSP for a given event
+#
 class Request < ActiveRecord::Base
+  # Requester, that is, the user asking for help.
   belongs_to :user
+  # The event the requester wants to attend.
   belongs_to :event
+  # Estimated expenses, including (for every expense) both the total amount and
+  # the amount of the help that TSP approves.
   has_many :expenses, :class_name => "RequestExpense", :inverse_of => :request
 
   accepts_nested_attributes_for :expenses, :reject_if => :all_blank, :allow_destroy => true
@@ -27,34 +34,72 @@ class Request < ActiveRecord::Base
     end
 
     event :reject do
-      transition  [:submitted, :approved] => :incomplete
+      # Separated transitions because grouping them using arrays confuses the
+      # Graphviz task for automatic documentation
+      transition :submitted => :incomplete
+      transition :approved => :incomplete
     end
 
     event :cancel do
-      transition [:incomplete, :submitted, :approved] => :canceled
+      # Separated transitions because grouping them using arrays confuses the
+      # Graphviz task for automatic documentation
+      transition :incomplete => :canceled
+      transition :submitted => :canceled
+      transition :approved => :canceled
     end
   end
 
-  scope :editable_by_requester, :state => "incomplete"
-  scope :editable_by_tsp, :state => "submitted"
+  # Only for state_machine internal usage, should not be called
+  def set_transition_datetime(transition)
+    write_attribute("#{transition.to}_since".to_sym, DateTime.now)
+  end
 
+  # Checks whether the requester should be allowed to do changes.
+  #
+  # @return [Boolean] true if allowed
   def editable_by_requester?
     state == 'incomplete'
   end
 
+  # Checks whether a tsp user should be allowed to do changes.
+  #
+  # @return [Boolean] true if allowed
   def editable_by_tsp?
     state == 'submitted'
   end
 
+  # Checks whether the request have been submitted at least once in the past, no
+  # matters which the current state is.
+  #
+  # @return [Boolean] true if it have been submitted
   def already_submitted?
     not submitted_since.blank?
   end
 
+  # Checks whether a user should be allowed to completely delete the request.
+  #
+  # @return [Boolean] true if allowed
   def can_be_destroyed?
     not already_submitted?
   end
 
-  def set_transition_datetime(transition)
-    write_attribute("#{transition.to}_since".to_sym, DateTime.now)
+  # Summarizes one of the xxx_amount attributes from the request's expenses grouping
+  # it by currency.
+  #
+  # A value of nil for the amount is ignored (the currency will not be present
+  # in the result if all related amounts are nil), but zeros are counted (so the
+  # currency will be present even if all the corresponding amounts are 0.0).
+  #
+  # All the calculations are done in pure ruby (no SQL involved), so be sure to
+  # use includes(:expenses) when using it through an ActiveRecord::Relation
+  #
+  # @param [Symbol] attr Attribute to summarize, can be :total or :approved
+  # @return [ActiveSupport::OrderedHash] with currencies as keys and sums as value,
+  #     ordered by currencies' alphabetic order
+  def expenses_sum(attr = :total)
+    grouped = expenses.group_by(&:"#{attr}_currency")
+    nonils = grouped.each {|k,v| v.delete_if {|i| i.send(:"#{attr}_amount").nil?}}.delete_if {|k,v| v.empty?}
+    unordered = nonils.map {|k,v| [k, v.sum(&:"#{attr}_amount")] }
+    ActiveSupport::OrderedHash[ unordered.sort_by(&:first) ]
   end
 end

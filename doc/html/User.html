@@ -1,0 +1,1391 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: User
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (U)</a> &raquo;
+    
+    
+    <span class="title">User</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: User
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ActiveRecord::Base</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActiveRecord::Base</li>
+          
+            <li class="next">User</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+      <dt class="r2">Extended by:</dt>
+      <dd class="r2">ActiveHash::Associations::ActiveRecordExtensions</dd>
+      
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">app/models/user.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#created_at-instance_method" title="#created_at (instance method)">- (DateTime) <strong>created_at</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#current_sign_in_at-instance_method" title="#current_sign_in_at (instance method)">- (DateTime) <strong>current_sign_in_at</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#current_sign_in_ip-instance_method" title="#current_sign_in_ip (instance method)">- (String) <strong>current_sign_in_ip</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#email-instance_method" title="#email (instance method)">- (String) <strong>email</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#encrypted_password-instance_method" title="#encrypted_password (instance method)">- (String) <strong>encrypted_password</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#last_sign_in_at-instance_method" title="#last_sign_in_at (instance method)">- (DateTime) <strong>last_sign_in_at</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#last_sign_in_ip-instance_method" title="#last_sign_in_ip (instance method)">- (String) <strong>last_sign_in_ip</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#locale-instance_method" title="#locale (instance method)">- (String) <strong>locale</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#nickname-instance_method" title="#nickname (instance method)">- (String) <strong>nickname</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remember_created_at-instance_method" title="#remember_created_at (instance method)">- (DateTime) <strong>remember_created_at</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reset_password_sent_at-instance_method" title="#reset_password_sent_at (instance method)">- (DateTime) <strong>reset_password_sent_at</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reset_password_token-instance_method" title="#reset_password_token (instance method)">- (String) <strong>reset_password_token</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sign_in_count-instance_method" title="#sign_in_count (instance method)">- (Integer) <strong>sign_in_count</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#updated_at-instance_method" title="#updated_at (instance method)">- (DateTime) <strong>updated_at</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Has one
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#profile-instance_method" title="#profile (instance method)">- (UserProfile) <strong>profile</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#find_profile-instance_method" title="#find_profile (instance method)">- (Object) <strong>find_profile</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#title-instance_method" title="#title (instance method)">- (Object) <strong>title</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="created_at=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="created_at-instance_method">
+  
+    - (<tt>DateTime</tt>) <strong>created_at</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>DateTime</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+82</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 82</span>
+
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                               <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="current_sign_in_at=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="current_sign_in_at-instance_method">
+  
+    - (<tt>DateTime</tt>) <strong>current_sign_in_at</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>DateTime</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 76</span>
+
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>current_sign_in_at</span><span class='tstring_end'>&quot;</span></span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="current_sign_in_ip=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="current_sign_in_ip-instance_method">
+  
+    - (<tt>String</tt>) <strong>current_sign_in_ip</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+78</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 78</span>
+
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>current_sign_in_ip</span><span class='tstring_end'>&quot;</span></span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="email=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="email-instance_method">
+  
+    - (<tt>String</tt>) <strong>email</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+70</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 70</span>
+
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>email</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                  <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>   <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="encrypted_password=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="encrypted_password-instance_method">
+  
+    - (<tt>String</tt>) <strong>encrypted_password</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 71</span>
+
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>encrypted_password</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>     <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>   <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="last_sign_in_at=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="last_sign_in_at-instance_method">
+  
+    - (<tt>DateTime</tt>) <strong>last_sign_in_at</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>DateTime</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+77</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 77</span>
+
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>last_sign_in_at</span><span class='tstring_end'>&quot;</span></span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="last_sign_in_ip=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="last_sign_in_ip-instance_method">
+  
+    - (<tt>String</tt>) <strong>last_sign_in_ip</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+79</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 79</span>
+
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>last_sign_in_ip</span><span class='tstring_end'>&quot;</span></span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="locale=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="locale-instance_method">
+  
+    - (<tt>String</tt>) <strong>locale</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+81</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 81</span>
+
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>locale</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                 <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>en</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="nickname=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="nickname-instance_method">
+  
+    - (<tt>String</tt>) <strong>nickname</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+80</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 80</span>
+
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>nickname</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                                 <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="remember_created_at=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="remember_created_at-instance_method">
+  
+    - (<tt>DateTime</tt>) <strong>remember_created_at</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>DateTime</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 74</span>
+
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>remember_created_at</span><span class='tstring_end'>&quot;</span></span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="reset_password_sent_at=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="reset_password_sent_at-instance_method">
+  
+    - (<tt>DateTime</tt>) <strong>reset_password_sent_at</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>DateTime</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+73</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 73</span>
+
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>reset_password_sent_at</span><span class='tstring_end'>&quot;</span></span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="reset_password_token=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="reset_password_token-instance_method">
+  
+    - (<tt>String</tt>) <strong>reset_password_token</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+72</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 72</span>
+
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>reset_password_token</span><span class='tstring_end'>&quot;</span></span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="sign_in_count=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="sign_in_count-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>sign_in_count</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+75</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 75</span>
+
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_integer'>integer</span>  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sign_in_count</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>          <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='int'>0</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="updated_at=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="updated_at-instance_method">
+  
+    - (<tt>DateTime</tt>) <strong>updated_at</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>DateTime</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 83</span>
+
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>updated_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                               <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="find_profile-instance_method">
+  
+    - (<tt>Object</tt>) <strong>find_profile</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20
+21
+22</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 20</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_find_profile'>find_profile</span>
+  <span class='id identifier rubyid_profile'>profile</span> <span class='op'>||</span> <span class='id identifier rubyid_create_profile'>create_profile</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="profile-instance_method">
+  
+    - (<tt><span class='object_link'><a href="UserProfile.html" title="UserProfile (class)">UserProfile</a></span></tt>) <strong>profile</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="UserProfile.html" title="UserProfile (class)">UserProfile</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li>http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html</li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 12</span>
+
+<span class='id identifier rubyid_has_one'>has_one</span> <span class='symbol'>:profile</span><span class='comma'>,</span> <span class='symbol'>:class_name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>UserProfile</span><span class='tstring_end'>&quot;</span></span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="title-instance_method">
+  
+    - (<tt>Object</tt>) <strong>title</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 18</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_title'>title</span><span class='semicolon'>;</span> <span class='id identifier rubyid_nickname'>nickname</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sun Mar 17 12:23:58 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

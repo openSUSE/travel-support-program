@@ -6,8 +6,8 @@ gem 'rails', '3.2.12'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # Choose your weapon
-gem 'sqlite3'
-#gem 'pg'
+#gem 'sqlite3'
+gem 'pg'
 #gem 'mysql'
 
 
@@ -35,11 +35,12 @@ gem 'simple_form'
 gem 'show_for'
 gem 'inherited_resources'
 gem 'localized_country_select'
-gem "state_machine"
 gem "active_hash"
 gem 'cocoon'
 gem 'ransack'
 gem 'kaminari'
+# As gem is not updated since Jan-2012, git version in order to use not-so-new features as YARD integration.
+gem "state_machine", :git => "https://github.com/pluginaweek/state_machine"
 
 group :production do
   gem 'exception_notification'
@@ -48,6 +49,8 @@ end
 group :development do
   gem "rspec-rails"
   gem "yard"
+  gem "yard-activerecord"
+  gem 'ruby-graphviz'
   gem "redcarpet", :require => false
 end
 
