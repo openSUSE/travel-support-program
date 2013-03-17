@@ -30,6 +30,10 @@ class Ability
     can [:read, :create], Event
     role = user.find_profile.role_name
 
+    #
+    # Requesters (regular users) permissions
+    # --------------------------------------
+    #
     if role == "requester"
       can :update, Event do |e|
         e.editable_by_requesters?
@@ -56,7 +60,13 @@ class Ability
           r.user == user && r.can_submit? && !r.expenses.empty?
       end
       can :manage, User, :id => user.id
+    #
+    # TSP members permissions
+    # -----------------------
+    #
     elsif role == "tsp"
+      can :read, UserProfile
+
       can [:update, :validate], Event
       can :destroy, Event do |e|
         e.can_be_destroyed?

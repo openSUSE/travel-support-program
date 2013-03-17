@@ -71,9 +71,10 @@ en:
         sign_in_count: "sign in count"
         updated_at: "updated at"
       user_profile:
-        country_code: "Country"
-        full_name: "Full name"
-        phone_number: "Phone number"
+        country: "country"
+        country_code: "country"
+        full_name: "full name"
+        phone_number: "phone number"
         user: "user"
         user_id: "user"
 

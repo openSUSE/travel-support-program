@@ -1,0 +1,12 @@
+- if user_signed_in? && can?(:read, user.profile)
+  = link_to user.nickname, "\#user_details", :data => {:toggle => :collapse}
+  %blockquote#user_details.collapse
+    = show_for user do |u|
+      = u.attribute :email
+    = show_for user.profile do |p|
+      = p.attribute :full_name
+      = p.attribute :phone_number
+      = p.attribute :country do
+        = country_label(user.profile.country_code)
+- else
+  = user.nickname

@@ -4,7 +4,8 @@
 = show_for @request do |r|
   = r.association :event do
     = render @request.event
-  = r.association :user
+  = r.association :user do
+    = render @request.user
   = r.attribute :description
   = r.attribute :requester_notes
   = r.attribute :state do
