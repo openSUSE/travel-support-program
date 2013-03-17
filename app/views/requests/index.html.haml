@@ -17,6 +17,8 @@
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:user)
       %th= model_class.human_attribute_name(:event)
+      %th= model_class.human_attribute_name(:total_sum)
+      %th= model_class.human_attribute_name(:approved_sum)
       %th= model_class.human_attribute_name(:state)
   %tbody
     - collection.each do |request|
@@ -24,6 +26,8 @@
         %td= link_to request.id, request_path(request)
         %td= request.user.try(:title)
         %td= request.event.try(:name)
+        %td= request_sum(request, :total)
+        %td= request_sum(request, :approved)
         %td= timestamped_state(request)
 
 = paginate collection

@@ -30,10 +30,12 @@ en:
         start_date: "start date"
         end_date: "end date"
       request:
+        approved_sum: "approved"
         event: "event"
         event_id: "event"
         state: "state"
         requester_notes: "requester notes"
+        total_sum: "total"
         tsp_notes: "Travel Support Program notes"
         user: "user"
         user_id: "user"
