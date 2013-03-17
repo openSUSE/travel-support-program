@@ -121,7 +121,6 @@ GEM
     multi_json (1.6.1)
     nokogiri (1.5.6)
     orm_adapter (0.4.0)
-    pg (0.14.1)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -197,6 +196,7 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sqlite3 (1.3.6)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
@@ -242,7 +242,6 @@ DEPENDENCIES
   kaminari
   less-rails
   localized_country_select
-  pg
   rails (= 3.2.12)
   ransack
   redcarpet
@@ -253,6 +252,7 @@ DEPENDENCIES
   shoulda-matchers
   show_for
   simple_form
+  sqlite3
   state_machine!
   therubyracer
   twitter-bootstrap-rails
