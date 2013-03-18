@@ -37,6 +37,7 @@ en:
 
   application_title: "Travel Support Program"
   event_title_line: "%{name} (since %{start} at %{country})"
+  events_search: "between %{start} and %{end} containing %{text}"
   general_info: "general information"
   new_event_warning: "Make sure that the event is not currently included in the list. Event duplication can cause the request rejection"
   reset_search: "all"

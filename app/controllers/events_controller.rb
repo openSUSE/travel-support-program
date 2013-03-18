@@ -8,7 +8,11 @@ class EventsController < InheritedResources::Base
 
   def collection
     @q ||= end_of_association_chain.search(params[:q])
-    @q.sorts = "start_date desc" if @q.sorts.empty?
+    # Default, only current and future events are displayed
+    if params[:q].nil? || params[:q][:end_date_gteq].nil?
+      @q.end_date_gteq = Date.today
+    end
+    @q.sorts = "start_date asc" if @q.sorts.empty?
     @requests ||= @q.result(:distinct => true).page(params[:page]).per(20)
   end
 

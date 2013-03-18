@@ -1,8 +1,8 @@
 = simple_form_for resource do |f|
   .form-inputs.form-horizontal
     = f.input :name
-    = f.input :start_date
-    = f.input :end_date
+    = f.input :start_date, :as => :dpicker
+    = f.input :end_date, :as => :dpicker
     = f.input :country_code, :as => :country
     = f.input :description, :input_html => {:rows => 3}
     = f.input :url

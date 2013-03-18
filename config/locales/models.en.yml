@@ -27,8 +27,8 @@ en:
         country: "country"
         country_code: "country"
         url: "url"
-        start_date: "start date"
-        end_date: "end date"
+        start_date: "starts at"
+        end_date: "ends at"
       request:
         approved_sum: "approved"
         event: "event"
