@@ -4,22 +4,20 @@
 
 .navbar
   .navbar-inner
-    = link_to t('.new', :default => t("helpers.links.new")), new_resource_path, :class => 'btn btn-primary'
-
     = search_form_for @q, :class => "navbar-form pull-right" do |f|
-      = f.select :state_eq, request_states_collection, :include_blank => true
+      = f.select :state_eq, request_states_collection, {:include_blank => true}, :class => "input-medium"
       = f.submit t(:search), :class => "btn"
       = link_to t(:reset_search), collection_path, :class => "btn"
 
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:id)
+      %th= sort_link(@q, :id)
       %th= model_class.human_attribute_name(:user)
       %th= model_class.human_attribute_name(:event)
       %th= model_class.human_attribute_name(:total_sum)
       %th= model_class.human_attribute_name(:approved_sum)
-      %th= model_class.human_attribute_name(:state)
+      %th= sort_link(@q, :state)
   %tbody
     - collection.each do |request|
       %tr
