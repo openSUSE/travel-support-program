@@ -6,9 +6,12 @@ class Request < ActiveRecord::Base
   belongs_to :user
   # The event the requester wants to attend.
   belongs_to :event
-  # Estimated expenses, including (for every expense) both the total amount and
-  # the amount of the help that TSP approves.
+  # Estimated expenses, including (for every expense) the estimated amount,
+  # the amount of the help that TSP approves, the amount finally expended and
+  # the amount that is going to be reimbursed
   has_many :expenses, :class_name => "RequestExpense", :inverse_of => :request
+  # Every accepted request is followed by a reimbursement process
+  has_one :reimbursement, :inverse_of => :request
 
   accepts_nested_attributes_for :expenses, :reject_if => :all_blank, :allow_destroy => true
 
@@ -83,6 +86,21 @@ class Request < ActiveRecord::Base
     not already_submitted?
   end
 
+  # Checks whether the request is ready for reimbursement
+  #
+  # @return [Boolean] true if all conditions are met
+  def can_have_reimbursement?
+    accepted?
+  end
+
+  # Checks whether a request is ready for reimbursement but the process have not
+  # yet started
+  #
+  # @return [Boolean] if there is no associated reimbursement
+  def lacks_reimbursement?
+    can_have_reimbursement? and (reimbursement.nil? || reimbursement.new_record?)
+  end
+
   # Summarizes one of the xxx_amount attributes from the request's expenses grouping
   # it by currency.
   #
@@ -93,7 +111,8 @@ class Request < ActiveRecord::Base
   # All the calculations are done in pure ruby (no SQL involved), so be sure to
   # use includes(:expenses) when using it through an ActiveRecord::Relation
   #
-  # @param [Symbol] attr Attribute to summarize, can be :total or :approved
+  # @param [Symbol] attr Attribute to summarize, can be :estimated, :approved,
+  #   :total or :authorized
   # @return [ActiveSupport::OrderedHash] with currencies as keys and sums as value,
   #     ordered by currencies' alphabetic order
   def expenses_sum(attr = :total)

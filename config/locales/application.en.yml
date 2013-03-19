@@ -6,6 +6,7 @@ en:
       cancel: "Cancel"
       confirm: "Are you sure?"
       destroy: "Delete"
+      edit: "Edit"
       new: "New"
     titles:
       edit: "Edit %{model}"
@@ -17,7 +18,7 @@ en:
 
   cocoon_remove: "remove"
   add_expense: "add expense"
-  total_amount_header: "total cost (amount/currency)"
+  estimated_amount_header: "estimated cost (amount/currency)"
   approved_amount_header: "approved (amount/currency)"
 
   password_updated: "Password updated"
@@ -35,12 +36,25 @@ en:
   request_submission_failed: "Errors ocurred while submitting the request"
   request_submitted: "Request submitted"
 
+  reimbursement_approval_failed: "Errors ocurred while approving the reimbursement"
+  reimbursement_approved: "Reimbursement approved"
+  reimbursement_cancelation_failed: "Errors ocurred while canceling the reimbursement"
+  reimbursement_canceled: "Reimbursement canceled"
+  reimbursement_rejected: "Reimbursement rejected"
+  reimbursement_rejection_failed: "Errors ocurred while rejecting the reimbursement"
+  reimbursement_submission_failed: "Errors ocurred while submitting the reimbursement"
+  reimbursement_submitted: "Reimbursement submitted"
+
   application_title: "Travel Support Program"
+  create_reimbursement: "Ask for reimbursement"
   event_title_line: "%{name} (since %{start} at %{country})"
   events_search: "between %{start} and %{end} containing %{text}"
   general_info: "general information"
+  goto: "go to"
   new_event_warning: "Make sure that the event is not currently included in the list. Event duplication can cause the request rejection"
+  no_reimbursement_yet: "The reimbursement process has not started"
   reset_search: "all"
   search: "search"
+  show_history: "view history"
   signed_in_as: "Signed in as %{nickname}"
   since: "(since %{date})"

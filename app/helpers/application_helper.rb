@@ -22,4 +22,16 @@ module ApplicationHelper
       country_code + " - " + t("countries.#{country_code}")
     end
   end
+
+  # Outputs the state of a model instance with the appropiate
+  # css class and the associated date
+  #
+  # @params [#state] the request, reimbursement or any other object with state
+  # @return [String] HTML output
+  def timestamped_state(r)
+    date = r.send("#{r.state}_since")
+    msg = content_tag(:span, r.human_state_name, :class => r.state)
+    msg += " " +  t(:since, :date => l(date, :format => :short)) unless date.blank?
+    raw(msg)
+  end 
 end

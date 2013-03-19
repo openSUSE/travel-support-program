@@ -4,8 +4,8 @@
   %td
     = f.input :description, :label => false
   %td
-    = f.text_field :total_amount, :class => 'input-mini'
-    = f.text_field :total_currency, :class => 'input-mini'
+    = f.text_field :estimated_amount, :class => 'input-mini'
+    = f.text_field :estimated_currency, :class => 'input-mini'
   %td
     = number_to_currency(f.object.approved_amount, :unit => f.object.approved_currency)
   %td

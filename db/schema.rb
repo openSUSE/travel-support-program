@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130312082813) do
+ActiveRecord::Schema.define(:version => 20130318221145) do
 
   create_table "events", :force => true do |t|
     t.string   "name",         :null => false
@@ -25,16 +25,37 @@ ActiveRecord::Schema.define(:version => 20130312082813) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "reimbursements", :force => true do |t|
+    t.string   "state"
+    t.integer  "user_id",               :null => false
+    t.integer  "request_id",            :null => false
+    t.text     "description"
+    t.text     "requester_notes"
+    t.text     "tsp_notes"
+    t.text     "administrative_notes"
+    t.datetime "incomplete_since"
+    t.datetime "tsp_pending_since"
+    t.datetime "tsp_approved_since"
+    t.datetime "payment_pending_since"
+    t.datetime "payed_since"
+    t.datetime "completed_since"
+    t.datetime "canceled_since"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
   create_table "request_expenses", :force => true do |t|
-    t.integer  "request_id",        :null => false
+    t.integer  "request_id",         :null => false
     t.string   "subject"
     t.string   "description"
-    t.decimal  "total_amount"
-    t.string   "total_currency"
+    t.decimal  "estimated_amount"
+    t.string   "estimated_currency"
     t.decimal  "approved_amount"
     t.string   "approved_currency"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.decimal  "total_amount"
+    t.decimal  "authorized_amount"
   end
 
   create_table "requests", :force => true do |t|

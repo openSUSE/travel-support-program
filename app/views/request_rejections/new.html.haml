@@ -23,14 +23,14 @@
         %tr
           %th= RequestExpense.human_attribute_name(:subject)
           %th= RequestExpense.human_attribute_name(:description)
-          %th= RequestExpense.human_attribute_name(:total_amount)
+          %th= RequestExpense.human_attribute_name(:estimated_amount)
           %th= t(:approved_amount_header)
       %tbody
         = f.simple_fields_for :expenses do |expense|
           %tr
             %td= expense.object.subject
             %td= expense.object.description
-            %td= number_to_currency(expense.object.total_amount, :unit => expense.object.total_currency)
+            %td= number_to_currency(expense.object.estimated_amount, :unit => expense.object.estimated_currency)
             %td
               = expense.text_field :approved_amount, :class => 'input-mini'
               = expense.text_field :approved_currency, :class => 'input-mini'

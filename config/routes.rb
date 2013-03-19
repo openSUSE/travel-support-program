@@ -9,7 +9,13 @@ TravelSupportProgram::Application.routes.draw do
     resources :acceptances, :controller => :request_acceptances
     resources :rejections, :controller => :request_rejections
     resources :cancelations, :controller => :request_cancelations
+    resource :reimbursement do
+      resource :submission, :controller => :reimbursement_submissions
+      resource :approval, :controller => :reimbursement_approvals
+    end
   end
+
+  #resources :reimbursements, :only => [:index]
 
   resource :user_profile do
     get :password, :on => :member

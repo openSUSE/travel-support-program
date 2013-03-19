@@ -7,14 +7,22 @@
     = render @request.event
   = r.association :user do
     = render @request.user
+  = r.attribute :state do
+    = timestamped_state(@request)
+  - if @request.can_have_reimbursement?
+    = r.association :reimbursement do
+      - if @request.reimbursement
+        = timestamped_state(@request.reimbursement) + " " + link_to(t(:goto), request_reimbursement_path(@request))
+      - else
+        = t(:no_reimbursement_yet)
+        - if can? :create, @request.build_reimbursement
+          = link_to t(:create_reimbursement), request_reimbursement_path(@request), :method => :post
   .row-fluid
     .span6
       = r.attribute :description
       = r.attribute :requester_notes
       = r.attribute :tsp_notes
     .span6
-      = r.attribute :state do
-        = timestamped_state(@request)
       .well.well-small
         = r.attribute :incomplete_since
         = r.attribute :submitted_since
@@ -27,33 +35,44 @@
       %tr
         %th= RequestExpense.human_attribute_name(:subject)
         %th= RequestExpense.human_attribute_name(:description)
-        %th= RequestExpense.human_attribute_name(:total_amount)
+        %th= RequestExpense.human_attribute_name(:estimated_amount)
         %th= RequestExpense.human_attribute_name(:approved_amount)
     %tbody#expenses
       - @request.expenses.each do |expense|
         %tr
           %td= expense.subject
           %td= expense.description
-          %td= number_to_currency(expense.total_amount, :unit => expense.total_currency)
+          %td= number_to_currency(expense.estimated_amount, :unit => expense.estimated_currency)
           %td= number_to_currency(expense.approved_amount, :unit => expense.approved_currency)
 
 .form-actions
+
   = link_to t('.back', :default => t("helpers.links.back")), requests_path, :class => 'btn'
+
   - if can? :edit, @request
     = link_to t('.edit', :default => t("helpers.links.edit")), edit_request_path(@request), :class => 'btn'
+
   - if can? :submit, @request
     = link_to t("activerecord.state_machines.events.submit"), request_submissions_path(@request), :method => :post, :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-success'
+
   - if can? :approve, @request
     = link_to t("activerecord.state_machines.events.approve"), new_request_approval_path(@request), :class => 'btn btn-success'
+
   - if current_user == @request.user
     - if can? :reject, @request
       = link_to t("activerecord.state_machines.events.reject"), request_rejections_path(@request), :method => :post, :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-warning'
   - else
     - if can? :reject, @request
       = link_to t("activerecord.state_machines.events.reject"), new_request_rejection_path(@request), :class => 'btn btn-warning'
+
   - if can? :accept, @request
     = link_to t("activerecord.state_machines.events.accept"), request_acceptances_path(@request), :method => :post, :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-success'
+
   - if can? :cancel, @request
     = link_to t('activerecord.state_machines.events.cancel'), request_cancelations_path(@request), :method => :post, :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-danger'
+
+  - if @request.lacks_reimbursement? && can?(:create, @request.build_reimbursement)
+    = link_to t(:create_reimbursement), request_reimbursement_path(@request), :method => :post, :class => 'btn'
+
   - if can? :destroy, @request
     = link_to t('.destroy', :default => t("helpers.links.destroy")), request_path(@request), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-danger'
