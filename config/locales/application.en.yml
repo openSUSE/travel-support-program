@@ -42,4 +42,5 @@ en:
   new_event_warning: "Make sure that the event is not currently included in the list. Event duplication can cause the request rejection"
   reset_search: "all"
   search: "search"
+  signed_in_as: "Signed in as %{nickname}"
   since: "(since %{date})"
