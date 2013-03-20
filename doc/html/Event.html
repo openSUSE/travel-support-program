@@ -101,7 +101,22 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Event is, in some way, the root of the model&#39;s hierarchy since any
+Request and any Reimbursement are always associated with an event</p>
 
+<p>Most attributes are self-explanatory except, maybe, the one boolean called
+&#39;validated&#39;. This attribute is used to control which users can create, update
+and destroy the event.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -380,7 +395,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#validation_attributes-class_method" title="validation_attributes (class method)">+ (Object) <strong>validation_attributes</strong> </a>
+      <a href="#validation_attributes-class_method" title="validation_attributes (class method)">+ (Array) <strong>validation_attributes</strong> </a>
     
 
     
@@ -394,7 +409,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>List of attributed that can only by accessed by users who have validation
+permissions on the event.</p>
+</div></span>
   
 </li>
 
@@ -425,7 +442,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Checks whether a user should be allowed to completely delete the event.</p>
+</div></span>
   
 </li>
 
@@ -447,7 +465,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Checks whether the event can be freely updated or destroyed by all users.</p>
+</div></span>
   
 </li>
 
@@ -920,24 +939,52 @@
       <div class="method_details first">
   <h3 class="signature first" id="validation_attributes-class_method">
   
-    + (<tt>Object</tt>) <strong>validation_attributes</strong> 
+    + (<tt>Array</tt>) <strong>validation_attributes</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>List of attributed that can only by accessed by users who have validation
+permissions on the event.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>a list of the restricted attribute names as symbols</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-13
-14
-15</pre>
+32
+33
+34</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_validation_attributes'>validation_attributes</span>
   <span class='lbracket'>[</span><span class='symbol'>:validated</span><span class='rbracket'>]</span>
@@ -964,7 +1011,8 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p>Checks whether a user should be allowed to completely delete the event.</p>
+
 
   </div>
 </div>
@@ -980,6 +1028,10 @@
       
       
       
+        &mdash;
+        <div class='inline'><p>true if allowed</p>
+</div>
+      
     </li>
   
 </ul>
@@ -990,12 +1042,12 @@
       <pre class="lines">
 
 
-9
-10
-11</pre>
+24
+25
+26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_can_be_destroyed?'>can_be_destroyed?</span>
   <span class='id identifier rubyid_requests'>requests</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -1016,7 +1068,8 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p>Checks whether the event can be freely updated or destroyed by all users.</p>
+
 
   </div>
 </div>
@@ -1032,6 +1085,11 @@
       
       
       
+        &mdash;
+        <div class='inline'><p>true if any user can modify the object, false if only
+authorized users can do it</p>
+</div>
+      
     </li>
   
 </ul>
@@ -1042,12 +1100,12 @@
       <pre class="lines">
 
 
-5
-6
-7</pre>
+17
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_editable_by_requesters?'>editable_by_requesters?</span>
   <span class='kw'>not</span> <span class='id identifier rubyid_validated'>validated</span>
@@ -1101,10 +1159,10 @@
       <pre class="lines">
 
 
-3</pre>
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 3</span>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 11</span>
 
 <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:requests</span><span class='comma'>,</span> <span class='symbol'>:inverse_of</span> <span class='op'>=&gt;</span> <span class='symbol'>:event</span></pre>
     </td>
@@ -1117,7 +1175,7 @@
 </div>
 
     <div id="footer">
-  Generated on Sun Mar 17 12:28:56 2013 by
+  Generated on Wed Mar 20 11:40:59 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>

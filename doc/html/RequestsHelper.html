@@ -116,32 +116,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Helper for printing the sum of the expenses of a request, as a list of comma
+    <span class="summary_desc"><div class='inline'><p>Outputs the sum of the expenses of a request, as a list of comma
 separated number_to_currency (one for every used currency).</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#timestamped_state-instance_method" title="#timestamped_state (instance method)">- (String) <strong>timestamped_state</strong>(request) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Helper for printing the state of the request with the appropiate css class
-and the associated date.</p>
 </div></span>
   
 </li>
@@ -167,7 +143,7 @@ and the associated date.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Helper for printing the sum of the expenses of a request, as a list of comma
+    <p>Outputs the sum of the expenses of a request, as a list of comma
 separated number_to_currency (one for every used currency)</p>
 
 
@@ -218,79 +194,15 @@ separated number_to_currency (one for every used currency)</p>
       <pre class="lines">
 
 
-18
-19
-20</pre>
+7
+8
+9</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/requests_helper.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/requests_helper.rb', line 7</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_request_sum'>request_sum</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_attr'>attr</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_expenses_sum'>expenses_sum</span><span class='lparen'>(</span><span class='id identifier rubyid_attr'>attr</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='id identifier rubyid_number_to_currency'>number_to_currency</span><span class='lparen'>(</span><span class='id identifier rubyid_v'>v</span><span class='comma'>,</span> <span class='symbol'>:unit</span> <span class='op'>=&gt;</span> <span class='lparen'>(</span><span class='id identifier rubyid_k'>k</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>?</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="timestamped_state-instance_method">
-  
-    - (<tt>String</tt>) <strong>timestamped_state</strong>(request) 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>Helper for printing the state of the request with the appropiate css class
-and the associated date</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>HTML output</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-6
-7
-8
-9
-10
-11</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/requests_helper.rb', line 6</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_timestamped_state'>timestamped_state</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_date'>date</span> <span class='op'>=</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_state'>state</span><span class='rbrace'>}</span><span class='tstring_content'>_since</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_msg'>msg</span> <span class='op'>=</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:span</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_human_state_name'>human_state_name</span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_state'>state</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_msg'>msg</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>  <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='symbol'>:since</span><span class='comma'>,</span> <span class='symbol'>:date</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_l'>l</span><span class='lparen'>(</span><span class='id identifier rubyid_date'>date</span><span class='comma'>,</span> <span class='symbol'>:format</span> <span class='op'>=&gt;</span> <span class='symbol'>:short</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_date'>date</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
-  <span class='id identifier rubyid_raw'>raw</span><span class='lparen'>(</span><span class='id identifier rubyid_msg'>msg</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -302,7 +214,7 @@ and the associated date</p>
 </div>
 
     <div id="footer">
-  Generated on Sun Mar 17 12:28:55 2013 by
+  Generated on Wed Mar 20 11:40:58 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>

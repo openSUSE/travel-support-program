@@ -1,4 +1,15 @@
-# encoding: utf-8
+#
+# Custom simple_form input type for integration with bootstrap-datepicker
+#
+# To use it, simply add :as => :dpicker to your input and it will automatically
+# deal with all the I18n issues, making automatic conversion from Rails I18n
+# formats to the one expected by bootstrap-datepicker.
+#
+# Of course, it only fixes the view issues, you still have to take care of
+# date parsing on the controller.
+#
+# See http://www.eyecon.ro/bootstrap-datepicker/ for acceptable date formats
+#
 class DpickerInput < SimpleForm::Inputs::StringInput
 
   def input
