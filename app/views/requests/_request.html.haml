@@ -1,4 +1,6 @@
-= link_to timestamped_state(request), "\#request_details", :data => {:toggle => :collapse}
+= collapse_link "request_details"
+= timestamped_state(request)
+= icon_to "share-alt", request, :title => t(:goto)
 %blockquote#request_details.collapse
   = show_for request do |r|
     = r.attribute :description

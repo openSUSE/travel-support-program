@@ -1,10 +1,15 @@
-= link_to event_title_line(event), "\#event_details", :data => {:toggle => :collapse}
+= collapse_link "event_details"
+= event_title_line(event)
+= icon_to "share-alt", event, :title => t(:goto)
 %blockquote#event_details.collapse
   = show_for event do |e|
-    = e.attribute :start_date
-    = e.attribute :end_date
-    = e.attribute :country do
-      = country_label(event.country_code)
+    .row-fluid
+      .span6
+        = e.attribute :start_date
+        = e.attribute :country do
+          = country_label(event.country_code)
+      .span6
+        = e.attribute :end_date
+        = e.attribute :url do
+          = link_to event.url
     = e.attribute :description
-    = e.attribute :url do
-      = link_to event.url

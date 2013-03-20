@@ -8,27 +8,32 @@
   = r.association :user do
     = render @request.user
   = r.attribute :state do
+    = collapse_link "history"
     = timestamped_state(@request)
+    %blockquote#history.collapse
+      .row-fluid
+        .span6
+          = r.attribute :incomplete_since, :format => :short
+          = r.attribute :canceled_since, :format => :short
+        .span6
+          = r.attribute :submitted_since, :format => :short
+          = r.attribute :approved_since, :format => :short
+          = r.attribute :accepted_since, :format => :short
+
   - if @request.can_have_reimbursement?
     = r.association :reimbursement do
       - if @request.reimbursement
-        = timestamped_state(@request.reimbursement) + " " + link_to(t(:goto), request_reimbursement_path(@request))
+        = timestamped_state(@request.reimbursement)
+        = icon_to "share-alt", request_reimbursement_path(@request), :title => t(:goto)
       - else
         = t(:no_reimbursement_yet)
         - if can? :create, @request.build_reimbursement
           = link_to t(:create_reimbursement), request_reimbursement_path(@request), :method => :post
-  .row-fluid
-    .span6
-      = r.attribute :description
-      = r.attribute :requester_notes
-      = r.attribute :tsp_notes
-    .span6
-      .well.well-small
-        = r.attribute :incomplete_since
-        = r.attribute :submitted_since
-        = r.attribute :approved_since
-        = r.attribute :accepted_since
-        = r.attribute :canceled_since
+
+  = r.attribute :description
+  = r.attribute :requester_notes
+  = r.attribute :tsp_notes
+
   %strong.label= Request.human_attribute_name(:expenses)
   %table.table.table-condensed
     %thead

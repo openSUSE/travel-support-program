@@ -13,7 +13,7 @@ module ApplicationHelper
   # Outputs country code in a human readable and localized way, using the locale
   # file for localized_country_select
   #
-  # param [String] country_code The ISO
+  # param [String] country_code  as specified in locale file
   # return [String] HTML output
   def country_label(country_code)
     if country_code.nil?
@@ -26,7 +26,7 @@ module ApplicationHelper
   # Outputs the state of a model instance with the appropiate
   # css class and the associated date
   #
-  # @params [#state] the request, reimbursement or any other object with state
+  # @param [#state] r  the request, reimbursement or any other object with state
   # @return [String] HTML output
   def timestamped_state(r)
     date = r.send("#{r.state}_since")
@@ -34,4 +34,22 @@ module ApplicationHelper
     msg += " " +  t(:since, :date => l(date, :format => :short)) unless date.blank?
     raw(msg)
   end 
+
+  # Outputs a link with an icon inside (and visible no text)
+  #
+  # @param [String] name   a icon name from http://twitter.github.com/bootstrap/base-css.html#icons
+  # @param [String] path   url for the link
+  # @param [Hash] options  options for #url_for. A :title option is highly recommended
+  # @return [String] HTML output
+  def icon_to(name, path, options = {})
+    link_to(content_tag(:i, "", :class => "icon-#{name}"), path, options)
+  end
+
+  # Outputs a trigger for (un)collapsing a target element
+  #
+  # @param [String] target  id of the HTML element to (un)collapse
+  # @return [String] HTML output
+  def collapse_link(target)
+    icon_to "resize-vertical", "\##{target}", :title => t(:collapse), :data => {:toggle => :collapse}
+  end
 end

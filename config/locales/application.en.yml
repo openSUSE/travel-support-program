@@ -46,6 +46,7 @@ en:
   reimbursement_submitted: "Reimbursement submitted"
 
   application_title: "Travel Support Program"
+  collapse: "roll/unroll"
   create_reimbursement: "Ask for reimbursement"
   event_title_line: "%{name} (since %{start} at %{country})"
   events_search: "between %{start} and %{end} containing %{text}"

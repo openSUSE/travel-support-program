@@ -10,19 +10,19 @@
   = r.attribute :request do
     = render parent
   = r.attribute :state do
+    = collapse_link "history"
     = timestamped_state(resource)
-    = link_to t(:show_history), "\#history", :data => {:toggle => :collapse}
     %blockquote#history.collapse
       .row-fluid
         .span6
-          = r.attribute :incomplete_since
-          = r.attribute :tsp_pending_since
-          = r.attribute :tsp_approved_since
-          = r.attribute :payment_pending_since
+          = r.attribute :incomplete_since, :format => :short
+          = r.attribute :canceled_since, :format => :short
+          = r.attribute :payed_since, :format => :short
         .span6
-          = r.attribute :payed_since
-          = r.attribute :completed_since
-          = r.attribute :canceled_since
+          = r.attribute :tsp_pending_since, :format => :short
+          = r.attribute :tsp_approved_since, :format => :short
+          = r.attribute :payment_pending_since, :format => :short
+          = r.attribute :completed_since, :format => :short
 
   = r.attribute :description
   = r.attribute :requester_notes
