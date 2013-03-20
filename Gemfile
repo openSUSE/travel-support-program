@@ -40,6 +40,7 @@ gem "active_hash"
 gem 'cocoon'
 gem 'ransack'
 gem 'kaminari'
+gem 'carrierwave'
 # As gem is not updated since Jan-2012, git version in order to use not-so-new features as YARD integration.
 gem "state_machine", :git => "https://github.com/pluginaweek/state_machine"
 
