@@ -66,6 +66,12 @@ class Reimbursement < ActiveRecord::Base
     write_attribute("#{transition.to}_since".to_sym, DateTime.now)
   end
 
+  # FIXME this is temporary while the whole state machines stuff is
+  # refactorized. This method is going to dissapear, evaporate... DIE
+  def self.editable_in?(state_event)
+    [:reject, :approve].include? state_event
+  end
+
   # Checks whether the requester should be allowed to do changes.
   #
   # @return [Boolean] true if allowed

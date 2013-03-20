@@ -1,5 +1,5 @@
 .page-header
-  %h1=t "activerecord.state_machines.events.approve"
+  %h1=t "activerecord.state_machines.events.reject"
 
 = show_for @reimbursement do |r|
   = r.association :event do
@@ -12,10 +12,17 @@
     = timestamped_state(@reimbursement)
   = r.attribute :description
   = r.attribute :requester_notes
+  - if current_role? :administrative
+    = r.attribute :tsp_notes
+  - if current_role? :tsp
+    = r.attribute :administrative_notes
 
-= simple_form_for @reimbursement, :url => request_reimbursement_approval_path(@request), :html => { :method => :post } do |f|
+= simple_form_for @reimbursement, :url => request_reimbursement_transitions_path(@request, :transition => {:action => "reject"}), :html => { :method => :post } do |f|
   .form-inputs.form-horizontal
-    = f.input :tsp_notes, :input_html => {:rows => 3}
+    - if current_role? :tsp
+      = f.input :tsp_notes, :input_html => {:rows => 3}
+    - if current_role? :administrative
+      = f.input :administrative_notes, :input_html => {:rows => 3}
   .form-inputs.form-inline
     %p.label= Reimbursement.human_attribute_name(:expenses)
     - if !@reimbursement.errors[:"request.expenses"].empty?
@@ -42,5 +49,5 @@
               %td= number_to_currency(e.text_field(:authorized_amount, :class => 'input-mini'), :unit => expense.authorized_currency)
 
   .form-actions
-    = f.button :submit, t("activerecord.state_machines.events.approve"), :class => 'btn-primary'
+    = f.button :submit, t("activerecord.state_machines.events.reject"), :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), request_reimbursement_path(@request), :class => 'btn'

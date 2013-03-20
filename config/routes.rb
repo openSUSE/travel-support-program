@@ -10,8 +10,7 @@ TravelSupportProgram::Application.routes.draw do
     resources :rejections, :controller => :request_rejections
     resources :cancelations, :controller => :request_cancelations
     resource :reimbursement do
-      resource :submission, :controller => :reimbursement_submissions
-      resource :approval, :controller => :reimbursement_approvals
+      resources :transitions, :only => [:new, :create], :controller => :reimbursement_transitions
     end
   end
 

@@ -52,4 +52,23 @@ module ApplicationHelper
   def collapse_link(target)
     icon_to "resize-vertical", "\##{target}", :title => t(:collapse), :data => {:toggle => :collapse}
   end
+
+  def transition_links_for_reimbursement(reimbursement)
+    reimbursement.state_events.map do |event|
+      next unless can? event, reimbursement
+      # FIXME
+      # If the object can be manipulated, we need a form. This check is
+      # TEMPORARY and it needs to be rewritten as part of the state machines
+      # refactorization
+      if Reimbursement.editable_in?(event)
+        link_to t("activerecord.state_machines.events.#{event}"), new_request_reimbursement_transition_path(reimbursement.request, :transition => {:action => event.to_s}), :class => 'btn'
+      else
+        link_to t("activerecord.state_machines.events.#{event}"), request_reimbursement_transitions_path(reimbursement.request, :transition => {:action => event.to_s}), :method => :post, :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn'
+      end
+    end.join(" ").html_safe
+  end
+
+  def current_role?(role)
+    current_user.find_profile.role_name == role.to_s
+  end
 end

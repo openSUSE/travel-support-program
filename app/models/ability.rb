@@ -116,6 +116,9 @@ class Ability
       # User profiles
       can :read, UserProfile
 
+      # Requests
+      can :read, Request
+
       # Reimbursements
       can :read, Reimbursement
       can :update, Reimbursement do |r|
