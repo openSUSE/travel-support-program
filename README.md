@@ -19,6 +19,11 @@ widely used and flexible components as [Bootstrap](http://github.com/twitter/boo
 for the frontend layout or [Devise](https://github.com/plataformatec/devise)
 for user authentication.
 
+For a more detailed explanation you can refer to the {file:ABOUT.md} file, in
+which 'the 6 Ws' are developed. That is: who, what, when, where, why and how (yes,
+we already know that 'how' does not start with 'W', but we didn't invented the
+name).
+
 ## Requirements
 
 * Ruby 1.9

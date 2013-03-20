@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<title>
+  File: ABOUT
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: ABOUT</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><h1>About this application</h1>
+
+<h2>Who</h2>
+
+<p>There are two possible questions regarding the &#39;who&#39;. The first one is: who is
+developing it? The answer is that this application is another open project from
+the openSUSE team at SUSE Linux, what means that development is open to
+everybody who wants to contribute or fork.</p>
+
+<p>The second question is who is intended to use it. There are four different user
+profiles or roles commonly involved in travel support programs:</p>
+
+<ul>
+<li>Requesters, that is, every open source contributor applying for support in
+order to assist to an event.</li>
+<li>Travel Support Program Committe members. In most free software organizations
+there is a group of people that must evaluate every request to decide how much
+money, if any, should the requester have reimbursed.</li>
+<li>Administrative or accounting responsible. After the Committe have approved a
+a reimbursement it usually goes through some kind of financial circuit before
+the requester gets the money, so somebody have to be in charge of managing such
+process.</li>
+<li>Supervisors for the whole process, like the organization boards or enterprise
+sponsors.</li>
+</ul>
+
+<h2>What</h2>
+
+<p>Basically, at the moment of writing the application manages two main use cases:
+the request of a new sponsorship for a given event and the reimbursement
+proccess which takes place just after the event ends.</p>
+
+<p>The workflow of the first case is presented in the following diagram. The
+requester asks for support detailing the total estimated cost of every involved
+expense and the TSP Committee can approve a given amount for every expense.
+Finally, the explicit requester&#39;s acceptance is required.
+<img src="Request_state.png" alt="Request workflow diagram"></p>
+
+<p>Once the requester have attended to the event, he/she must provide some reports
+in order to get access to the reimbursement, including digitalized copies of
+invoices for every expense. Once again, this reports are validated and approved
+by the Committee. After this validation, the reimbursement must be verified by
+the accounting responsible before the payment order can be issued. Both whether
+the requester confirms the payment once receiveid or not, somebody from the TSP
+Committee or from the administrative department must verify that everything was
+ok and mark the reimbursement process as completed.
+<img src="Reimbursement_state.png" alt="Reimbursement workflow diagram"></p>
+
+<h2>When</h2>
+
+<p>For obvious reasons, requests should be accepted before the event starts.
+Usually there is a maximum period of time for reimbursements after the event
+have finished. Requests and reimbursements exceding those time limits would be
+cancelled.</p>
+
+<h2>Where</h2>
+
+<p>Well, the goal of travel support programs is, precisely, to reduce the impact
+of phisycal and economic barriers. So the answer to the &#39;where&#39; question should
+be: all over the world through Internet!</p>
+
+<h2>Why</h2>
+
+<h2>How</h2>
+
+<p>The goal of this application is to fullfil all the requirements while providing
+the following features:</p>
+
+<ul>
+<li>Full functionality available through web interface and through a REST json
+API.</li>
+<li>Themeable and responsive web interface based on
+<a href="http://github.com/twitter/bootstrap">Bootstrap</a>.</li>
+<li>Flexible user system with pluggable backends (so the application can be
+integrated in previously existing users infrastructures) based on
+<a href="https://github.com/plataformatec/devise">Devise</a>.</li>
+<li>Robust control over information access and full log of information
+modifications.</li>
+<li>Fully documented with information automatically generated from the source code
+(diagrams, API documentation, etc.)</li>
+<li>Good tests coverage.</li>
+</ul>
+</div></div>
+
+    <div id="footer">
+  Generated on Wed Mar 20 23:28:47 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

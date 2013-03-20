@@ -1,7 +1,7 @@
 module EventsHelper
   # Outputs a one-line summary of the event information
   #
-  # @param [Event] the event to be displayed
+  # @param [Event] event the event to be displayed
   # @return [String] HTML output
   def event_title_line(event)
     t(:event_title_line, :name => event.name, :start => l(event.start_date),
