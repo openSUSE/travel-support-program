@@ -68,7 +68,22 @@ module ApplicationHelper
     end.join(" ").html_safe
   end
 
+  # Outputs the sum of the expenses of a request or a reimbursement,
+  # as a list of comma separated number_to_currency (one for
+  # every used currency)
+  #
+  # @param [#expenses_sum] r a request or a reimbursement
+  # @param [Symbol] attr can be :estimated, :approved, :total or :authorized
+  # @return [String] HTML output
+  def expenses_sum(r, attr)
+    r.expenses_sum(attr).map {|k,v| number_to_currency(v, :unit => (k || "?"))}.join(", ")
+  end
+
+  def current_role
+    current_user.find_profile.role_name
+  end
+
   def current_role?(role)
-    current_user.find_profile.role_name == role.to_s
+    current_role == role.to_s
   end
 end

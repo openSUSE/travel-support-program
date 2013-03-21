@@ -76,6 +76,10 @@ class Reimbursement < ActiveRecord::Base
     [:reject, :approve].include? state_event
   end
 
+  def expenses_sum(*args)
+    request.expenses_sum(*args)
+  end
+
   # Checks whether the requester should be allowed to do changes.
   #
   # @return [Boolean] true if allowed

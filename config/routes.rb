@@ -14,7 +14,9 @@ TravelSupportProgram::Application.routes.draw do
     end
   end
 
-  #resources :reimbursements, :only => [:index]
+  # A separate controller is needed because inherited_resources cannot manage
+  # belongs_to resources associations that are both singleton and optional
+  resources :reimbursements, :only => [:index], :controller => :reimbursements_lists
 
   resource :user_profile do
     get :password, :on => :member

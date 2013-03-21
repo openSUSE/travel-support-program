@@ -24,8 +24,8 @@
         %td= link_to request.id, request_path(request)
         %td= request.user.try(:title)
         %td= request.event.try(:name)
-        %td= request_sum(request, :estimated)
-        %td= request_sum(request, :approved)
+        %td= expenses_sum(request, :estimated)
+        %td= expenses_sum(request, :approved)
         %td= timestamped_state(request)
 
 = paginate collection
