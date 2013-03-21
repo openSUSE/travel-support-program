@@ -12,6 +12,8 @@
     = timestamped_state(@reimbursement)
   = r.attribute :description
   = r.attribute :requester_notes
+  = r.association :attachments do
+    = reimbursement_attachments(@reimbursement)
 
 = simple_form_for @reimbursement, :url => request_reimbursement_transitions_path(@request, :transition => {:action => "approve"}), :html => { :method => :post } do |f|
   .form-inputs.form-horizontal

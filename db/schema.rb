@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130318221145) do
+ActiveRecord::Schema.define(:version => 20130320224852) do
 
   create_table "events", :force => true do |t|
     t.string   "name",         :null => false
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(:version => 20130318221145) do
     t.boolean  "validated"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "reimbursement_attachments", :force => true do |t|
+    t.integer  "reimbursement_id"
+    t.string   "title",            :null => false
+    t.string   "file",             :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "reimbursements", :force => true do |t|

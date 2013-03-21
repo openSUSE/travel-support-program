@@ -15,6 +15,23 @@
   .form-inputs.form-horizontal
     = f.input :description, :input_html => {:rows => 3}
     = f.input :requester_notes, :input_html => {:rows => 3}
+
+  .form-inputs.form-inline
+    %strong.label= Request.human_attribute_name(:attachments)
+    - if !resource.errors[:attachments].empty?
+      .error= resource.attachments.map {|e| e.errors.full_messages}.uniq.join("; ")
+    %table.table.table-condensed
+      %thead
+        %tr
+          %th= ReimbursementAttachment.human_attribute_name(:title)
+          %th= ReimbursementAttachment.human_attribute_name(:file)
+          %th
+      %tbody#attachments
+        = f.simple_fields_for :attachments do |attachment|
+          = render 'attachment_fields', :f => attachment
+        %tr#attachments_links
+          %td= link_to_add_association t(:add_attachment), f, :attachments, "data-association-insertion-node" => "#attachments_links"
+
   .form-inputs.form-inline
     %strong.label= Reimbursement.human_attribute_name(:expenses)
     - if !resource.errors[:"request.expenses"].empty?

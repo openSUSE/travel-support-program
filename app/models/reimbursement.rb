@@ -9,13 +9,17 @@ class Reimbursement < ActiveRecord::Base
   # The expenses of the associated request, total_amount and authorized_amount
   # will be updated during reimbursement process
   has_many :expenses, :through => :request
+  has_many :attachments, :class_name => "ReimbursementAttachment", :inverse_of => :reimbursement
 
   delegate :event, :to => :request, :prefix => false
 
   accepts_nested_attributes_for :request, :update_only => true,
     :allow_destroy => false, :reject_if => :reject_request
 
-  attr_accessible :description, :requester_notes, :tsp_notes, :administrative_notes, :request_attributes
+  accepts_nested_attributes_for :attachments, :allow_destroy => true
+
+  attr_accessible :description, :requester_notes, :tsp_notes, :administrative_notes,
+    :request_attributes, :attachments_attributes
 
   validates :request, :user, :presence => true
 

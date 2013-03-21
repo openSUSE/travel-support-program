@@ -30,6 +30,9 @@
   - if current_role? :tsp or current_role? :administrative
     = r.attribute :administrative_notes
 
+  = r.association :attachments do
+    = reimbursement_attachments(resource)
+
   %strong.label= Request.human_attribute_name(:expenses)
   %table.table.table-condensed
     %thead

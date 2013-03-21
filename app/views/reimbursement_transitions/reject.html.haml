@@ -16,6 +16,8 @@
     = r.attribute :tsp_notes
   - if current_role? :tsp
     = r.attribute :administrative_notes
+  = r.association :attachments do
+    = reimbursement_attachments(@reimbursement)
 
 = simple_form_for @reimbursement, :url => request_reimbursement_transitions_path(@request, :transition => {:action => "reject"}), :html => { :method => :post } do |f|
   .form-inputs.form-horizontal
