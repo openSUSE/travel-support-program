@@ -577,6 +577,28 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#attachments-instance_method" title="#attachments (instance method)">- (Array&lt;ReimbursementAttachment&gt;) <strong>attachments</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#expenses-instance_method" title="#expenses (instance method)">- (Object) <strong>expenses</strong> </a>
     
 
@@ -1342,6 +1364,28 @@ refactorized.</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#expenses_sum-instance_method" title="#expenses_sum (instance method)">- (Object) <strong>expenses_sum</strong>(*args) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#fire_state_event-instance_method" title="#fire_state_event (instance method)">- (Boolean) <strong>fire_state_event</strong>(event, *args) </a>
     
 
@@ -1823,10 +1867,10 @@ refactorized.</p>
       <pre class="lines">
 
 
-35</pre>
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 43</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>administrative_notes</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1873,10 +1917,10 @@ refactorized.</p>
       <pre class="lines">
 
 
-42</pre>
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 50</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>canceled_since</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1923,10 +1967,10 @@ refactorized.</p>
       <pre class="lines">
 
 
-41</pre>
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 49</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>completed_since</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1973,10 +2017,10 @@ refactorized.</p>
       <pre class="lines">
 
 
-43</pre>
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 51</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>            <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -2023,10 +2067,10 @@ refactorized.</p>
       <pre class="lines">
 
 
-32</pre>
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 40</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>description</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -2073,10 +2117,10 @@ refactorized.</p>
       <pre class="lines">
 
 
-36</pre>
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 44</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>incomplete_since</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -2123,10 +2167,10 @@ refactorized.</p>
       <pre class="lines">
 
 
-40</pre>
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 48</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>payed_since</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -2173,10 +2217,10 @@ refactorized.</p>
       <pre class="lines">
 
 
-39</pre>
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 47</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>payment_pending_since</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -2223,10 +2267,10 @@ refactorized.</p>
       <pre class="lines">
 
 
-33</pre>
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 41</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>requester_notes</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -2273,10 +2317,10 @@ refactorized.</p>
       <pre class="lines">
 
 
-29</pre>
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 37</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>state</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -2328,10 +2372,6 @@ refactorized.</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -2365,10 +2405,14 @@ refactorized.</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -2452,10 +2496,10 @@ refactorized.</p>
       <pre class="lines">
 
 
-38</pre>
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 46</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tsp_approved_since</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -2502,10 +2546,10 @@ refactorized.</p>
       <pre class="lines">
 
 
-34</pre>
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 42</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tsp_notes</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -2552,10 +2596,10 @@ refactorized.</p>
       <pre class="lines">
 
 
-37</pre>
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 45</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tsp_pending_since</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -2602,10 +2646,10 @@ refactorized.</p>
       <pre class="lines">
 
 
-44</pre>
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 52</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>updated_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>            <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -2659,12 +2703,12 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-71
-72
-73</pre>
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_editable_in?'>editable_in?</span><span class='lparen'>(</span><span class='id identifier rubyid_state_event'>state_event</span><span class='rparen'>)</span>
   <span class='lbracket'>[</span><span class='symbol'>:reject</span><span class='comma'>,</span> <span class='symbol'>:approve</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_state_event'>state_event</span>
@@ -2735,10 +2779,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -2772,10 +2812,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -2881,10 +2925,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -2918,10 +2958,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -3033,10 +3077,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -3070,10 +3110,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -3196,10 +3240,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -3233,10 +3273,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -3392,10 +3436,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -3429,10 +3469,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -3472,6 +3516,61 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:tsp_pending</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="attachments-instance_method">
+  
+    - (<tt>Array&lt;<span class='object_link'><a href="ReimbursementAttachment.html" title="ReimbursementAttachment (class)">ReimbursementAttachment</a></span>&gt;</tt>) <strong>attachments</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="ReimbursementAttachment.html" title="ReimbursementAttachment (class)">ReimbursementAttachment</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li>http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html</li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 12</span>
+
+<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:attachments</span><span class='comma'>,</span> <span class='symbol'>:class_name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ReimbursementAttachment</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:inverse_of</span> <span class='op'>=&gt;</span> <span class='symbol'>:reimbursement</span></pre>
     </td>
   </tr>
 </table>
@@ -3538,10 +3637,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -3575,10 +3670,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -3701,10 +3800,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -3738,10 +3833,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -3897,10 +3996,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -3934,10 +4029,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -4093,10 +4192,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -4130,10 +4225,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -4289,10 +4388,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -4326,10 +4421,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -4485,10 +4584,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -4522,10 +4617,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -4681,10 +4780,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -4718,10 +4813,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -4877,10 +4976,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -4914,10 +5009,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -5073,10 +5172,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -5110,10 +5205,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -5269,10 +5368,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -5306,10 +5401,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -5415,10 +5514,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -5452,10 +5547,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -5578,10 +5677,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -5615,10 +5710,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -5774,10 +5873,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -5811,10 +5906,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -5901,10 +6000,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -5938,10 +6033,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -6047,10 +6146,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -6084,10 +6179,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -6210,10 +6309,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -6247,10 +6342,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -6406,10 +6505,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -6443,10 +6538,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -6533,10 +6632,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -6570,10 +6665,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -6679,10 +6778,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -6716,10 +6811,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -6842,10 +6941,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -6879,10 +6974,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -7038,10 +7137,6 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -7075,10 +7170,14 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -7165,12 +7264,12 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-92
-93
-94</pre>
+100
+101
+102</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 92</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_editable_by_administrative?'>editable_by_administrative?</span>
   <span class='id identifier rubyid_state'>state</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>tsp_approved</span><span class='tstring_end'>'</span></span>
@@ -7222,12 +7321,12 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-78
-79
-80</pre>
+86
+87
+88</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 78</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 86</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_editable_by_requester?'>editable_by_requester?</span>
   <span class='id identifier rubyid_state'>state</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>incomplete</span><span class='tstring_end'>'</span></span>
@@ -7279,12 +7378,12 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-85
-86
-87</pre>
+93
+94
+95</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 85</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 93</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_editable_by_tsp?'>editable_by_tsp?</span>
   <span class='id identifier rubyid_state'>state</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>tsp_pending</span><span class='tstring_end'>'</span></span>
@@ -7343,10 +7442,10 @@ refactorized. This method is going to dissapear, evaporate... DIE</p>
       <pre class="lines">
 
 
-13</pre>
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 14</span>
 
 <span class='id identifier rubyid_delegate'>delegate</span> <span class='symbol'>:event</span><span class='comma'>,</span> <span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='symbol'>:request</span><span class='comma'>,</span> <span class='symbol'>:prefix</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -7386,6 +7485,36 @@ will be updated during reimbursement process</p>
       <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 11</span>
 
 <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:expenses</span><span class='comma'>,</span> <span class='symbol'>:through</span> <span class='op'>=&gt;</span> <span class='symbol'>:request</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="expenses_sum-instance_method">
+  
+    - (<tt>Object</tt>) <strong>expenses_sum</strong>(*args) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+79
+80
+81</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 79</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_expenses_sum'>expenses_sum</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_expenses_sum'>expenses_sum</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -7467,10 +7596,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -7504,10 +7629,14 @@ will be updated during reimbursement process</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -7594,10 +7723,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -7631,10 +7756,14 @@ will be updated during reimbursement process</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -7721,10 +7850,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -7758,10 +7883,14 @@ will be updated during reimbursement process</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -7848,10 +7977,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -7885,10 +8010,14 @@ will be updated during reimbursement process</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -7975,10 +8104,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -8012,10 +8137,14 @@ will be updated during reimbursement process</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -8121,10 +8250,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -8158,10 +8283,14 @@ will be updated during reimbursement process</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -8284,10 +8413,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -8321,10 +8446,14 @@ will be updated during reimbursement process</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -8480,10 +8609,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -8517,10 +8642,14 @@ will be updated during reimbursement process</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -8626,12 +8755,12 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-65
-66
-67</pre>
+69
+70
+71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_write_attribute'>write_attribute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_transition'>transition</span><span class='period'>.</span><span class='id identifier rubyid_to'>to</span><span class='rbrace'>}</span><span class='tstring_content'>_since</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='comma'>,</span> <span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='rparen'>)</span>
@@ -8719,10 +8848,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -8756,10 +8881,14 @@ will be updated during reimbursement process</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -8927,10 +9056,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -8964,10 +9089,14 @@ will be updated during reimbursement process</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -9054,10 +9183,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -9091,10 +9216,14 @@ will be updated during reimbursement process</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -9262,10 +9391,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -9299,10 +9424,14 @@ will be updated during reimbursement process</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -9470,10 +9599,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -9507,10 +9632,14 @@ will be updated during reimbursement process</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -9616,10 +9745,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -9653,10 +9778,14 @@ will be updated during reimbursement process</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -9779,10 +9908,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -9816,10 +9941,14 @@ will be updated during reimbursement process</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -9975,10 +10104,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -10012,10 +10137,14 @@ will be updated during reimbursement process</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -10102,10 +10231,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -10139,10 +10264,14 @@ will be updated during reimbursement process</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -10229,10 +10358,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-25
-26
-27
-28
 29
 30
 31
@@ -10266,10 +10391,14 @@ will be updated during reimbursement process</p>
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 29</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
@@ -10355,7 +10484,7 @@ will be updated during reimbursement process</p>
 </div>
 
     <div id="footer">
-  Generated on Wed Mar 20 23:28:49 2013 by
+  Generated on Thu Mar 21 11:22:11 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>
