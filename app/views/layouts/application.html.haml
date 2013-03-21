@@ -41,8 +41,10 @@
           .well.sidebar-nav
             %ul.nav.nav-list
               %li.nav-header= t(:sidebar)
-              %li= link_to t(:events), events_path
-              %li= link_to t(:requests), requests_path
+              - if user_signed_in?
+                = render "layouts/sidebar_#{current_role}"
+              - else
+                %li= link_to t(:events), events_path
         .span9
           = bootstrap_flash
           = yield
