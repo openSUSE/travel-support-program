@@ -14,7 +14,6 @@
 = simple_form_for resource, :url => request_reimbursement_path(parent), :method => :put do |f|
   .form-inputs.form-horizontal
     = f.input :description, :input_html => {:rows => 3}
-    = f.input :requester_notes, :input_html => {:rows => 3}
 
   .form-inputs.form-inline
     %strong.label= Request.human_attribute_name(:attachments)
@@ -44,7 +43,7 @@
           %th= Reimbursement.human_attribute_name(:estimated_amount)
           %th= Reimbursement.human_attribute_name(:approved_amount)
           %th= Reimbursement.human_attribute_name(:total_amount)
-          %th
+          %th= RequestExpense.human_attribute_name(:authorized_amount)
       %tbody#expenses
         = f.simple_fields_for :request do |request|
           = request.simple_fields_for :expenses do |e|
@@ -54,9 +53,16 @@
               %td= expense.description
               %td= number_to_currency(expense.estimated_amount, :unit => expense.estimated_currency)
               %td= number_to_currency(expense.approved_amount, :unit => expense.approved_currency)
-              %td= number_to_currency(e.text_field(:total_amount, :class => 'input-mini'), :unit => expense.approved_currency)
-              %td
+              - if can? :submit, resource
+                %td= number_to_currency(e.text_field(:total_amount, :class => 'input-mini'), :unit => expense.approved_currency)
+                %td= number_to_currency(expense.authorized_amount, :unit => expense.authorized_currency)
+              - elsif can? :approve, resource
+                %td= number_to_currency(expense.total_amount, :unit => expense.total_currency)
+                %td= number_to_currency(e.text_field(:authorized_amount, :class => 'input-mini'), :unit => expense.authorized_currency)
+              - else
+                %td= number_to_currency(expense.total_amount, :unit => expense.total_currency)
+                %td= number_to_currency(expense.authorized_amount, :unit => expense.authorized_currency)
 
   .form-actions
     = f.button :submit, :class => 'btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), parent_path, :class => 'btn'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), reimbursements_path, :class => 'btn'

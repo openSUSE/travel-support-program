@@ -11,14 +11,8 @@
     = collapse_link "history"
     = timestamped_state(@request)
     %blockquote#history.collapse
-      .row-fluid
-        .span6
-          = r.attribute :incomplete_since, :format => :short
-          = r.attribute :canceled_since, :format => :short
-        .span6
-          = r.attribute :submitted_since, :format => :short
-          = r.attribute :approved_since, :format => :short
-          = r.attribute :accepted_since, :format => :short
+      %ul
+        = render @request.state_transitions
 
   - if @request.can_have_reimbursement?
     = r.association :reimbursement do
@@ -31,8 +25,6 @@
           = link_to t(:create_reimbursement), request_reimbursement_path(@request), :method => :post
 
   = r.attribute :description
-  = r.attribute :requester_notes
-  = r.attribute :tsp_notes
 
   %strong.label= Request.human_attribute_name(:expenses)
   %table.table.table-condensed
@@ -57,24 +49,7 @@
   - if can? :edit, @request
     = link_to t('.edit', :default => t("helpers.links.edit")), edit_request_path(@request), :class => 'btn'
 
-  - if can? :submit, @request
-    = link_to t("activerecord.state_machines.events.submit"), request_submissions_path(@request), :method => :post, :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-success'
-
-  - if can? :approve, @request
-    = link_to t("activerecord.state_machines.events.approve"), new_request_approval_path(@request), :class => 'btn btn-success'
-
-  - if current_user == @request.user
-    - if can? :reject, @request
-      = link_to t("activerecord.state_machines.events.reject"), request_rejections_path(@request), :method => :post, :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-warning'
-  - else
-    - if can? :reject, @request
-      = link_to t("activerecord.state_machines.events.reject"), new_request_rejection_path(@request), :class => 'btn btn-warning'
-
-  - if can? :accept, @request
-    = link_to t("activerecord.state_machines.events.accept"), request_acceptances_path(@request), :method => :post, :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-success'
-
-  - if can? :cancel, @request
-    = link_to t('activerecord.state_machines.events.cancel'), request_cancelations_path(@request), :method => :post, :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-danger'
+  = transition_links(@request)
 
   - if @request.lacks_reimbursement? && can?(:create, @request.build_reimbursement)
     = link_to t(:create_reimbursement), request_reimbursement_path(@request), :method => :post, :class => 'btn'

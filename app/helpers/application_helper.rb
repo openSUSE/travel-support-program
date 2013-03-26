@@ -29,9 +29,8 @@ module ApplicationHelper
   # @param [#state] r  the request, reimbursement or any other object with state
   # @return [String] HTML output
   def timestamped_state(r)
-    date = r.send("#{r.state}_since")
     msg = content_tag(:span, r.human_state_name, :class => r.state)
-    msg += " " +  t(:since, :date => l(date, :format => :short)) unless date.blank?
+    msg += " " +  t(:since, :date => l(r.state_updated_at, :format => :short)) unless r.state_updated_at.blank?
     raw(msg)
   end 
 
@@ -53,21 +52,6 @@ module ApplicationHelper
     icon_to "resize-vertical", "\##{target}", :title => t(:collapse), :data => {:toggle => :collapse}
   end
 
-  def transition_links_for_reimbursement(reimbursement)
-    reimbursement.state_events.map do |event|
-      next unless can? event, reimbursement
-      # FIXME
-      # If the object can be manipulated, we need a form. This check is
-      # TEMPORARY and it needs to be rewritten as part of the state machines
-      # refactorization
-      if Reimbursement.editable_in?(event)
-        link_to t("activerecord.state_machines.events.#{event}"), new_request_reimbursement_transition_path(reimbursement.request, :transition => {:action => event.to_s}), :class => 'btn'
-      else
-        link_to t("activerecord.state_machines.events.#{event}"), request_reimbursement_transitions_path(reimbursement.request, :transition => {:action => event.to_s}), :method => :post, :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn'
-      end
-    end.join(" ").html_safe
-  end
-
   # Outputs the sum of the expenses of a request or a reimbursement,
   # as a list of comma separated number_to_currency (one for
   # every used currency)
@@ -79,11 +63,26 @@ module ApplicationHelper
     r.expenses_sum(attr).map {|k,v| number_to_currency(v, :unit => (k || "?"))}.join(", ")
   end
 
+  # Outputs the role of the current user. Useful, for example, for deciding which partial
+  # view should be used.
   def current_role
     current_user.find_profile.role_name
   end
 
+  # Checks if the current user belongs to a given role
+  #
+  # @param [#to_s] role
+  # @return [Boolean] true if the current users has the given role
   def current_role?(role)
     current_role == role.to_s
   end
+
+  def transition_links(machine)
+    trans_path = resource_path + "/state_transitions/new.js?state_transition[state_event]="
+    machine.state_events.map do |event|
+      next unless can? event, machine
+      link_to t("activerecord.state_machines.events.#{event}"), trans_path + event.to_s, :remote => true, :class => 'btn'
+    end.join(" ").html_safe
+  end
+
 end

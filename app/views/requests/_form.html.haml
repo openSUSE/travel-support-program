@@ -8,7 +8,6 @@
   .form-inputs.form-horizontal
     = f.hidden_field :event_id
     = f.input :description, :input_html => {:rows => 3}
-    = f.input(:requester_notes, :input_html => {:rows => 3}) if @request.already_submitted?
   .form-inputs.form-inline
     %strong.label= Request.human_attribute_name(:expenses)
     - if !resource.errors[:expenses].empty?
@@ -18,14 +17,23 @@
         %tr
           %th= RequestExpense.human_attribute_name(:subject)
           %th= RequestExpense.human_attribute_name(:description)
-          %th= t(:estimated_amount_header)
-          %th= RequestExpense.human_attribute_name(:approved_amount)
-          %th
+          - if can? :submit, resource
+            %th= t(:estimated_amount_header)
+            %th= RequestExpense.human_attribute_name(:approved_amount)
+            %th
+          - elsif can? :approve, resource
+            %th= RequestExpense.human_attribute_name(:estimated_amount)
+            %th= t(:approved_amount_header)
+          - else
+            %th= RequestExpense.human_attribute_name(:estimated_amount)
+            %th= RequestExpense.human_attribute_name(:approved_amount)
+
       %tbody#expenses
         = f.simple_fields_for :expenses do |expense|
           = render 'expense_fields', :f => expense
-        %tr#expenses_links
-          %td= link_to_add_association t(:add_expense), f, :expenses, "data-association-insertion-node" => "#expenses_links"
+        - if can? :submit, resource
+          %tr#expenses_links
+            %td= link_to_add_association t(:add_expense), f, :expenses, "data-association-insertion-node" => "#expenses_links"
 
   .form-actions
     = f.button :submit, :class => 'btn-primary'

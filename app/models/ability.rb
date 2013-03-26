@@ -54,7 +54,7 @@ class Ability
       end
       # Requester can accept, submit or cancel his own requests, but only when
       # state_machines allows to do it
-      [:accept, :reject, :cancel].each do |action|
+      [:accept, :roll_back, :cancel].each do |action|
         can action, Request do |r|
           r.user == user && r.send("can_#{action}?")
         end
@@ -69,7 +69,7 @@ class Ability
       can :update, Reimbursement do |r|
         r.user == user && r.editable_by_requester?
       end
-      [:submit, :confirm, :cancel].each do |action|
+      [:submit, :cancel].each do |action|
         can action, Reimbursement do |r|
           r.user == user && r.send("can_#{action}?")
         end
@@ -90,23 +90,26 @@ class Ability
 
       # Requests
       can :read, Request
-      # TSP members can approve, reject or cancel any request, but only when
+      can :update, Request do |r|
+        r.editable_by_tsp?
+      end
+      # TSP members can approve, roll back or cancel any request, but only when
       # state_machines allows to do it
-      [:approve, :reject, :cancel].each do |action|
+      [:approve, :roll_back, :cancel].each do |action|
         can action, Request do |r|
-          r.editable_by_tsp? && r.send("can_#{action}?")
+          r.send("can_#{action}?")
         end
       end
 
       # Reimbursements
       can :read, Reimbursement
-      [:approve, :reject, :cancel].each do |action|
-        can action, Reimbursement do |r|
-          r.editable_by_tsp? && r.send("can_#{action}?")
-        end
+      can :update, Reimbursement do |r|
+        r.editable_by_tsp?
       end
-      can :complete, Reimbursement do |r|
-        r.can_complete?
+      [:approve, :roll_back, :cancel].each do |action|
+        can action, Reimbursement do |r|
+          r.send("can_#{action}?")
+        end
       end
     #
     # Administratives permissions
@@ -121,19 +124,10 @@ class Ability
 
       # Reimbursements
       can :read, Reimbursement
-      can :update, Reimbursement do |r|
-        r.editable_by_administrative?
-      end
-      can :authorize, Reimbursement do |r|
-        r.editable_by_administrative? && r.can_authorize?
-      end
-      [:authorize, :reject].each do |action|
+      [:authorize, :roll_back].each do |action|
         can action, Reimbursement do |r|
-          r.editable_by_administrative? && r.send("can_#{action}?")
+          r.send("can_#{action}?")
         end
-      end
-      can :complete, Reimbursement do |r|
-        r.can_complete?
       end
     end
   end

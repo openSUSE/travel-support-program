@@ -13,16 +13,17 @@ class Request < ActiveRecord::Base
   # Every accepted request is followed by a reimbursement process
   has_one :reimbursement, :inverse_of => :request
 
+  has_many :state_transitions, :as => :machine
+
   accepts_nested_attributes_for :expenses, :reject_if => :all_blank, :allow_destroy => true
 
   attr_accessible :event_id, :description, :requester_notes, :tsp_notes, :expenses_attributes
 
   validates :event, :presence => true
+  validates_associated :expenses
 
   state_machine :state, :initial => :incomplete do
-    before_transition do |request, transition|
-      request.set_transition_datetime(transition)
-    end
+    before_transition :set_state_updated_at
 
     event :submit do
       transition :incomplete => :submitted
@@ -36,7 +37,7 @@ class Request < ActiveRecord::Base
       transition :approved => :accepted
     end
 
-    event :reject do
+    event :roll_back do
       # Separated transitions because grouping them using arrays confuses the
       # Graphviz task for automatic documentation
       transition :submitted => :incomplete
@@ -52,10 +53,6 @@ class Request < ActiveRecord::Base
     end
   end
 
-  # Only for state_machine internal usage, should not be called
-  def set_transition_datetime(transition)
-    write_attribute("#{transition.to}_since".to_sym, DateTime.now)
-  end
 
   # Checks whether the requester should be allowed to do changes.
   #
@@ -76,7 +73,7 @@ class Request < ActiveRecord::Base
   #
   # @return [Boolean] true if it have been submitted
   def already_submitted?
-    not submitted_since.blank?
+    not state_transitions.empty?
   end
 
   # Checks whether a user should be allowed to completely delete the request.
@@ -120,5 +117,12 @@ class Request < ActiveRecord::Base
     nonils = grouped.each {|k,v| v.delete_if {|i| i.send(:"#{attr}_amount").nil?}}.delete_if {|k,v| v.empty?}
     unordered = nonils.map {|k,v| [k, v.sum(&:"#{attr}_amount")] }
     ActiveSupport::OrderedHash[ unordered.sort_by(&:first) ]
+  end
+
+  protected
+
+  # User internally to set the state_updated_at attribute
+  def set_state_updated_at
+    self.state_updated_at = DateTime.now
   end
 end

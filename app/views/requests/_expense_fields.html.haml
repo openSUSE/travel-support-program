@@ -3,10 +3,18 @@
     = f.input :subject, :label => false
   %td
     = f.input :description, :label => false
-  %td
-    = f.text_field :estimated_amount, :class => 'input-mini'
-    = f.text_field :estimated_currency, :class => 'input-mini'
-  %td
-    = number_to_currency(f.object.approved_amount, :unit => f.object.approved_currency)
-  %td
-    = link_to_remove_association t(:cocoon_remove), f
+  - if can? :submit, f.object.request
+    %td
+      = f.text_field :estimated_amount, :class => 'input-mini'
+      = f.text_field :estimated_currency, :class => 'input-mini'
+    %td= number_to_currency(f.object.approved_amount, :unit => f.object.approved_currency)
+    %td
+      = link_to_remove_association t(:cocoon_remove), f
+  - elsif can? :approve, f.object.request
+    %td= number_to_currency(f.object.estimated_amount, :unit => f.object.estimated_currency)
+    %td
+      = f.text_field :approved_amount, :class => 'input-mini'
+      = f.text_field :approved_currency, :class => 'input-mini'
+  - else
+    %td= number_to_currency(f.object.estimated_amount, :unit => f.object.estimated_currency)
+    %td= number_to_currency(f.object.approved_amount, :unit => f.object.approved_currency)

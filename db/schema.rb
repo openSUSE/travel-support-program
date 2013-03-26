@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130320224852) do
+ActiveRecord::Schema.define(:version => 20130326085342) do
 
   create_table "events", :force => true do |t|
     t.string   "name",         :null => false
@@ -35,21 +35,12 @@ ActiveRecord::Schema.define(:version => 20130320224852) do
 
   create_table "reimbursements", :force => true do |t|
     t.string   "state"
-    t.integer  "user_id",               :null => false
-    t.integer  "request_id",            :null => false
+    t.integer  "user_id",          :null => false
+    t.integer  "request_id",       :null => false
     t.text     "description"
-    t.text     "requester_notes"
-    t.text     "tsp_notes"
-    t.text     "administrative_notes"
-    t.datetime "incomplete_since"
-    t.datetime "tsp_pending_since"
-    t.datetime "tsp_approved_since"
-    t.datetime "payment_pending_since"
-    t.datetime "payed_since"
-    t.datetime "completed_since"
-    t.datetime "canceled_since"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.datetime "state_updated_at"
   end
 
   create_table "request_expenses", :force => true do |t|
@@ -71,19 +62,25 @@ ActiveRecord::Schema.define(:version => 20130320224852) do
     t.integer  "user_id",          :null => false
     t.integer  "event_id",         :null => false
     t.text     "description"
-    t.text     "requester_notes"
-    t.text     "tsp_notes"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
-    t.datetime "incomplete_since"
-    t.datetime "submitted_since"
-    t.datetime "approved_since"
-    t.datetime "accepted_since"
-    t.datetime "canceled_since"
+    t.datetime "state_updated_at"
   end
 
   add_index "requests", ["event_id"], :name => "index_requests_on_event_id"
   add_index "requests", ["user_id"], :name => "index_requests_on_user_id"
+
+  create_table "state_transitions", :force => true do |t|
+    t.integer  "machine_id",   :null => false
+    t.string   "machine_type", :null => false
+    t.string   "state_event",  :null => false
+    t.string   "from",         :null => false
+    t.string   "to",           :null => false
+    t.integer  "user_id"
+    t.string   "notes"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "user_profiles", :force => true do |t|
     t.integer  "user_id",      :null => false

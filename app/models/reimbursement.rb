@@ -3,13 +3,15 @@
 #
 class Reimbursement < ActiveRecord::Base
   # The associated request
-  belongs_to :request
+  belongs_to :request, :inverse_of => :reimbursement
   # The same of the associated request.
   belongs_to :user
   # The expenses of the associated request, total_amount and authorized_amount
   # will be updated during reimbursement process
   has_many :expenses, :through => :request
   has_many :attachments, :class_name => "ReimbursementAttachment", :inverse_of => :reimbursement
+
+  has_many :state_transitions, :as => :machine
 
   delegate :event, :to => :request, :prefix => false
 
@@ -22,14 +24,13 @@ class Reimbursement < ActiveRecord::Base
     :request_attributes, :attachments_attributes
 
   validates :request, :user, :presence => true
+  validates_associated :expenses
 
   # Synchronizes user_id and request_id
   before_validation :set_user_id
 
   state_machine :state, :initial => :incomplete do
-    before_transition do |reimbursement, transition|
-      reimbursement.set_transition_datetime(transition)
-    end
+    before_transition :set_state_updated_at
 
     event :submit do
       transition :incomplete => :tsp_pending
@@ -40,21 +41,10 @@ class Reimbursement < ActiveRecord::Base
     end
 
     event :authorize do
-      transition :tsp_approved => :payment_pending
+      transition :tsp_approved => :finished
     end
 
-    event :confirm do
-      transition :payment_pending => :payed
-    end
-
-    event :complete do
-      # Separated transitions because grouping them using arrays confuses the
-      # Graphviz task for automatic documentation
-      transition :payment_pending => :completed
-      transition :payed => :completed
-    end
-
-    event :reject do
+    event :roll_back do
       transition :tsp_pending => :incomplete
       transition :tsp_approved => :tsp_pending
     end
@@ -63,17 +53,6 @@ class Reimbursement < ActiveRecord::Base
       transition :incomplete => :canceled
       transition :tsp_pending => :canceled
     end
-  end
-
-  # Only for state_machine internal usage, should not be called
-  def set_transition_datetime(transition)
-    write_attribute("#{transition.to}_since".to_sym, DateTime.now)
-  end
-
-  # FIXME this is temporary while the whole state machines stuff is
-  # refactorized. This method is going to dissapear, evaporate... DIE
-  def self.editable_in?(state_event)
-    [:reject, :approve].include? state_event
   end
 
   def expenses_sum(*args)
@@ -94,18 +73,16 @@ class Reimbursement < ActiveRecord::Base
     state == 'tsp_pending'
   end
 
-  # Checks whether a administrative user should be allowed to do changes.
-  #
-  # @return [Boolean] true if allowed
-  def editable_by_administrative?
-    state == 'tsp_approved'
-  end
-
   protected
 
   # Used internally to synchronize request_id and user_id
   def set_user_id
     self.user_id = request.user_id
+  end
+
+  # User internally to set the state_updated_at attribute
+  def set_state_updated_at
+    self.state_updated_at = DateTime.now
   end
 
   # Used internally by accepts_nested_attributes to ensure that only

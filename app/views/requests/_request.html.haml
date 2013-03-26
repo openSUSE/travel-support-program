@@ -4,5 +4,7 @@
 %blockquote#request_details.collapse
   = show_for request do |r|
     = r.attribute :description
-    = r.attribute :requester_notes
-    = r.attribute :tsp_notes
+    = r.attribute :history do
+      %ul
+        = render @request.state_transitions
+

@@ -13,22 +13,10 @@
     = collapse_link "history"
     = timestamped_state(resource)
     %blockquote#history.collapse
-      .row-fluid
-        .span6
-          = r.attribute :incomplete_since, :format => :short
-          = r.attribute :canceled_since, :format => :short
-          = r.attribute :payed_since, :format => :short
-        .span6
-          = r.attribute :tsp_pending_since, :format => :short
-          = r.attribute :tsp_approved_since, :format => :short
-          = r.attribute :payment_pending_since, :format => :short
-          = r.attribute :completed_since, :format => :short
+      %ul
+        = render resource.state_transitions
 
   = r.attribute :description
-  = r.attribute :requester_notes
-  = r.attribute :tsp_notes
-  - if current_role? :tsp or current_role? :administrative
-    = r.attribute :administrative_notes
 
   = r.association :attachments do
     = reimbursement_attachments(resource)
@@ -58,4 +46,4 @@
   - if can? :edit, resource
     = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path, :class => 'btn'
 
-  = transition_links_for_reimbursement(resource) 
+  = transition_links(resource) 

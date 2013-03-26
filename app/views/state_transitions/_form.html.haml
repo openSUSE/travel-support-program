@@ -1,0 +1,12 @@
+-label = t("activerecord.state_machines.events.#{@state_transition[:state_event]}")
+.modal-header
+  %button.close{:type => "button", :data => {:dismiss => "modal"}} &times;
+  %h3= label
+= simple_form_for @state_transition, :url => @back + "/state_transitions" do |f|
+  .form-inputs.form-horizontal.modal-body
+    = f.hidden_field :state_event
+    = f.input :notes, :as => :text, :input_html => {:rows => 3, :class => "input-xlarge"}
+
+  .modal-footer
+    = link_to t("helpers.links.back"), "#", :data => {:dismiss => "modal"}, :class => 'btn'
+    = f.button :submit, :value => label, :class => 'btn-primary'
