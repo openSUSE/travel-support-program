@@ -133,81 +133,6 @@ This class contains 1 state machine(s).
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#accepted_since-instance_method" title="#accepted_since (instance method)">- (DateTime) <strong>accepted_since</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#approved_since-instance_method" title="#approved_since (instance method)">- (DateTime) <strong>approved_since</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#canceled_since-instance_method" title="#canceled_since (instance method)">- (DateTime) <strong>canceled_since</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#created_at-instance_method" title="#created_at (instance method)">- (DateTime) <strong>created_at</strong> </a>
     
 
@@ -234,56 +159,6 @@ This class contains 1 state machine(s).
   <span class="summary_signature">
     
       <a href="#description-instance_method" title="#description (instance method)">- (Text) <strong>description</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#incomplete_since-instance_method" title="#incomplete_since (instance method)">- (DateTime) <strong>incomplete_since</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#requester_notes-instance_method" title="#requester_notes (instance method)">- (Text) <strong>requester_notes</strong> </a>
     
 
     
@@ -359,32 +234,7 @@ This class contains 1 state machine(s).
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#submitted_since-instance_method" title="#submitted_since (instance method)">- (DateTime) <strong>submitted_since</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#tsp_notes-instance_method" title="#tsp_notes (instance method)">- (Text) <strong>tsp_notes</strong> </a>
+      <a href="#state_updated_at-instance_method" title="#state_updated_at (instance method)">- (DateTime) <strong>state_updated_at</strong> </a>
     
 
     
@@ -519,6 +369,29 @@ This class contains 1 state machine(s).
     <span class="summary_desc"><div class='inline'><p>Estimated expenses, including (for every expense) the estimated amount,
 the amount of the help that TSP approves, the amount finally expended and
 the amount that is going to be reimbursed.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#state_transitions-instance_method" title="#state_transitions (instance method)">- (Array&lt;StateMachine::Transition&gt;) <strong>state_transitions</strong>(requirements = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets the list of transitions that can be made for the current state.</p>
 </div></span>
   
 </li>
@@ -946,7 +819,7 @@ matters which the current state is.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#can_reject%3F-instance_method" title="#can_reject? (instance method)">- (Boolean) <strong>can_reject?</strong>(requirements = {}) </a>
+      <a href="#can_roll_back%3F-instance_method" title="#can_roll_back? (instance method)">- (Boolean) <strong>can_roll_back?</strong>(requirements = {}) </a>
     
 
     
@@ -960,7 +833,7 @@ matters which the current state is.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Checks whether :reject can be fired.</p>
+    <span class="summary_desc"><div class='inline'><p>Checks whether :roll_back can be fired.</p>
 </div></span>
   
 </li>
@@ -1247,7 +1120,7 @@ yet started.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#reject-instance_method" title="#reject (instance method)">- (Boolean) <strong>reject</strong>(*args) </a>
+      <a href="#roll_back-instance_method" title="#roll_back (instance method)">- (Boolean) <strong>roll_back</strong>(*args) </a>
     
 
     
@@ -1261,7 +1134,7 @@ yet started.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Fires the :reject event.</p>
+    <span class="summary_desc"><div class='inline'><p>Fires the :roll_back event.</p>
 </div></span>
   
 </li>
@@ -1270,7 +1143,7 @@ yet started.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#reject%21-instance_method" title="#reject! (instance method)">- (Boolean) <strong>reject!</strong>(*args) </a>
+      <a href="#roll_back%21-instance_method" title="#roll_back! (instance method)">- (Boolean) <strong>roll_back!</strong>(*args) </a>
     
 
     
@@ -1284,7 +1157,7 @@ yet started.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Fires the :reject event, raising an exception if it fails.</p>
+    <span class="summary_desc"><div class='inline'><p>Fires the :roll_back event, raising an exception if it fails.</p>
 </div></span>
   
 </li>
@@ -1293,7 +1166,7 @@ yet started.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#reject_transition-instance_method" title="#reject_transition (instance method)">- (StateMachine::Transition) <strong>reject_transition</strong>(requirements = {}) </a>
+      <a href="#roll_back_transition-instance_method" title="#roll_back_transition (instance method)">- (StateMachine::Transition) <strong>roll_back_transition</strong>(requirements = {}) </a>
     
 
     
@@ -1307,30 +1180,7 @@ yet started.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Gets the next transition that would be performed if :reject were to be fired.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#set_transition_datetime-instance_method" title="#set_transition_datetime (instance method)">- (Object) <strong>set_transition_datetime</strong>(transition) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Only for state_machine internal usage, should not be called.</p>
+    <span class="summary_desc"><div class='inline'><p>Gets the next transition that would be performed if :roll_back were to be fired.</p>
 </div></span>
   
 </li>
@@ -1423,29 +1273,6 @@ yet started.</p>
 
   
     <span class="summary_desc"><div class='inline'><p>Gets the list of sequences of transitions that can be run for the current state.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#state_transitions-instance_method" title="#state_transitions (instance method)">- (Array&lt;StateMachine::Transition&gt;) <strong>state_transitions</strong>(requirements = {}) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Gets the list of transitions that can be made for the current state.</p>
 </div></span>
   
 </li>
@@ -1552,159 +1379,9 @@ yet started.</p>
     <h2>Instance Attribute Details</h2>
     
       
-      <span id="accepted_since=-instance_method"></span>
-      <div class="method_details first">
-  <h3 class="signature first" id="accepted_since-instance_method">
-  
-    - (<tt>DateTime</tt>) <strong>accepted_since</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>DateTime</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-81</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 81</span>
-
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>accepted_since</span><span class='tstring_end'>&quot;</span></span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id="approved_since=-instance_method"></span>
-      <div class="method_details ">
-  <h3 class="signature " id="approved_since-instance_method">
-  
-    - (<tt>DateTime</tt>) <strong>approved_since</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>DateTime</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-80</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 80</span>
-
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>approved_since</span><span class='tstring_end'>&quot;</span></span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id="canceled_since=-instance_method"></span>
-      <div class="method_details ">
-  <h3 class="signature " id="canceled_since-instance_method">
-  
-    - (<tt>DateTime</tt>) <strong>canceled_since</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>DateTime</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-82</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 82</span>
-
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>canceled_since</span><span class='tstring_end'>&quot;</span></span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
       <span id="created_at=-instance_method"></span>
-      <div class="method_details ">
-  <h3 class="signature " id="created_at-instance_method">
+      <div class="method_details first">
+  <h3 class="signature first" id="created_at-instance_method">
   
     - (<tt>DateTime</tt>) <strong>created_at</strong> 
   
@@ -1740,10 +1417,10 @@ yet started.</p>
       <pre class="lines">
 
 
-76</pre>
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 65</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>       <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -1790,112 +1467,12 @@ yet started.</p>
       <pre class="lines">
 
 
-73</pre>
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 64</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>description</span><span class='tstring_end'>&quot;</span></span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id="incomplete_since=-instance_method"></span>
-      <div class="method_details ">
-  <h3 class="signature " id="incomplete_since-instance_method">
-  
-    - (<tt>DateTime</tt>) <strong>incomplete_since</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>DateTime</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-78</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 78</span>
-
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>incomplete_since</span><span class='tstring_end'>&quot;</span></span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id="requester_notes=-instance_method"></span>
-      <div class="method_details ">
-  <h3 class="signature " id="requester_notes-instance_method">
-  
-    - (<tt>Text</tt>) <strong>requester_notes</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Text</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-74</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 74</span>
-
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>requester_notes</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
   </tr>
 </table>
@@ -1940,10 +1517,10 @@ yet started.</p>
       <pre class="lines">
 
 
-70</pre>
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 61</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>state</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1995,9 +1572,6 @@ yet started.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -2026,15 +1600,14 @@ yet started.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -2048,7 +1621,7 @@ yet started.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -2069,11 +1642,11 @@ yet started.</p>
 </div>
     
       
-      <span id="submitted_since=-instance_method"></span>
+      <span id="state_updated_at=-instance_method"></span>
       <div class="method_details ">
-  <h3 class="signature " id="submitted_since-instance_method">
+  <h3 class="signature " id="state_updated_at-instance_method">
   
-    - (<tt>DateTime</tt>) <strong>submitted_since</strong> 
+    - (<tt>DateTime</tt>) <strong>state_updated_at</strong> 
   
 
   
@@ -2107,62 +1680,12 @@ yet started.</p>
       <pre class="lines">
 
 
-79</pre>
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 67</span>
 
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>submitted_since</span><span class='tstring_end'>&quot;</span></span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id="tsp_notes=-instance_method"></span>
-      <div class="method_details ">
-  <h3 class="signature " id="tsp_notes-instance_method">
-  
-    - (<tt>Text</tt>) <strong>tsp_notes</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Text</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-75</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 75</span>
-
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tsp_notes</span><span class='tstring_end'>&quot;</span></span></pre>
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>state_updated_at</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
   </tr>
 </table>
@@ -2207,10 +1730,10 @@ yet started.</p>
       <pre class="lines">
 
 
-77</pre>
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 77</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 66</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>updated_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>       <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -2286,9 +1809,6 @@ yet started.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -2317,15 +1837,14 @@ yet started.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -2339,7 +1858,7 @@ yet started.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -2420,9 +1939,6 @@ yet started.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -2451,15 +1967,14 @@ yet started.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -2473,7 +1988,7 @@ yet started.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -2560,9 +2075,6 @@ yet started.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -2591,15 +2103,14 @@ yet started.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -2613,7 +2124,7 @@ yet started.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -2711,9 +2222,6 @@ yet started.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -2742,15 +2250,14 @@ yet started.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -2764,7 +2271,7 @@ yet started.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -2895,9 +2402,6 @@ yet started.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -2926,15 +2430,14 @@ yet started.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -2948,7 +2451,7 @@ yet started.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -3010,9 +2513,6 @@ yet started.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -3041,15 +2541,14 @@ yet started.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -3063,7 +2562,7 @@ yet started.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -3126,15 +2625,15 @@ matters which the current state is.</p>
       <pre class="lines">
 
 
-78
-79
-80</pre>
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 78</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_already_submitted?'>already_submitted?</span>
-  <span class='kw'>not</span> <span class='id identifier rubyid_submitted_since'>submitted_since</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+  <span class='kw'>not</span> <span class='id identifier rubyid_state_transitions'>state_transitions</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3202,9 +2701,6 @@ matters which the current state is.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -3233,15 +2729,14 @@ matters which the current state is.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -3255,7 +2750,7 @@ matters which the current state is.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -3353,9 +2848,6 @@ matters which the current state is.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -3384,15 +2876,14 @@ matters which the current state is.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -3406,7 +2897,7 @@ matters which the current state is.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -3537,9 +3028,6 @@ matters which the current state is.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -3568,15 +3056,14 @@ matters which the current state is.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -3590,7 +3077,7 @@ matters which the current state is.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -3652,9 +3139,6 @@ matters which the current state is.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -3683,15 +3167,14 @@ matters which the current state is.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -3705,7 +3188,7 @@ matters which the current state is.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -3836,9 +3319,6 @@ matters which the current state is.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -3867,15 +3347,14 @@ matters which the current state is.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -3889,7 +3368,7 @@ matters which the current state is.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -4020,9 +3499,6 @@ matters which the current state is.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -4051,15 +3527,14 @@ matters which the current state is.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -4073,7 +3548,7 @@ matters which the current state is.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -4135,12 +3610,12 @@ matters which the current state is.</p>
       <pre class="lines">
 
 
-85
-86
-87</pre>
+82
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 85</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 82</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_can_be_destroyed?'>can_be_destroyed?</span>
   <span class='kw'>not</span> <span class='id identifier rubyid_already_submitted?'>already_submitted?</span>
@@ -4261,9 +3736,6 @@ matters which the current state is.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -4292,15 +3764,14 @@ matters which the current state is.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -4314,7 +3785,7 @@ matters which the current state is.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -4376,12 +3847,12 @@ matters which the current state is.</p>
       <pre class="lines">
 
 
-92
-93
-94</pre>
+89
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 92</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 89</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_can_have_reimbursement?'>can_have_reimbursement?</span>
   <span class='id identifier rubyid_accepted?'>accepted?</span>
@@ -4392,9 +3863,9 @@ matters which the current state is.</p>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="can_reject?-instance_method">
+  <h3 class="signature " id="can_roll_back?-instance_method">
   
-    - (<tt>Boolean</tt>) <strong>can_reject?</strong>(requirements = {}) 
+    - (<tt>Boolean</tt>) <strong>can_roll_back?</strong>(requirements = {}) 
   
 
   
@@ -4402,7 +3873,7 @@ matters which the current state is.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Checks whether :reject can be fired.</p>
+    <p>Checks whether :roll_back can be fired.</p>
 
 
   </div>
@@ -4489,7 +3960,7 @@ matters which the current state is.</p>
       
       
         &mdash;
-        <div class='inline'><p>+true+ if :reject can be fired, otherwise +false+</p>
+        <div class='inline'><p>+true+ if :roll_back can be fired, otherwise +false+</p>
 </div>
       
     </li>
@@ -4502,9 +3973,6 @@ matters which the current state is.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -4533,15 +4001,14 @@ matters which the current state is.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -4555,7 +4022,7 @@ matters which the current state is.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -4686,9 +4153,6 @@ matters which the current state is.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -4717,15 +4181,14 @@ matters which the current state is.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -4739,7 +4202,7 @@ matters which the current state is.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -4820,9 +4283,6 @@ matters which the current state is.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -4851,15 +4311,14 @@ matters which the current state is.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -4873,7 +4332,7 @@ matters which the current state is.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -4971,9 +4430,6 @@ matters which the current state is.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -5002,15 +4458,14 @@ matters which the current state is.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -5024,7 +4479,7 @@ matters which the current state is.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -5155,9 +4610,6 @@ matters which the current state is.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -5186,15 +4638,14 @@ matters which the current state is.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -5208,7 +4659,7 @@ matters which the current state is.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -5270,9 +4721,6 @@ matters which the current state is.</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -5301,15 +4749,14 @@ matters which the current state is.</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -5323,7 +4770,7 @@ matters which the current state is.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -5385,12 +4832,12 @@ matters which the current state is.</p>
       <pre class="lines">
 
 
-63
-64
-65</pre>
+60
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_editable_by_requester?'>editable_by_requester?</span>
   <span class='id identifier rubyid_state'>state</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>incomplete</span><span class='tstring_end'>'</span></span>
@@ -5442,12 +4889,12 @@ matters which the current state is.</p>
       <pre class="lines">
 
 
-70
-71
-72</pre>
+67
+68
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 67</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_editable_by_tsp?'>editable_by_tsp?</span>
   <span class='id identifier rubyid_state'>state</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>submitted</span><span class='tstring_end'>'</span></span>
@@ -5604,15 +5051,15 @@ ordered by currencies&#39; alphabetic order</p>
       <pre class="lines">
 
 
+115
+116
+117
 118
 119
-120
-121
-122
-123</pre>
+120</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 118</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 115</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_expenses_sum'>expenses_sum</span><span class='lparen'>(</span><span class='id identifier rubyid_attr'>attr</span> <span class='op'>=</span> <span class='symbol'>:total</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_grouped'>grouped</span> <span class='op'>=</span> <span class='id identifier rubyid_expenses'>expenses</span><span class='period'>.</span><span class='id identifier rubyid_group_by'>group_by</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:#{</span><span class='id identifier rubyid_attr'>attr</span><span class='rbrace'>}</span><span class='tstring_content'>_currency</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -5701,9 +5148,6 @@ ordered by currencies&#39; alphabetic order</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -5732,15 +5176,14 @@ ordered by currencies&#39; alphabetic order</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -5754,7 +5197,7 @@ ordered by currencies&#39; alphabetic order</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -5816,9 +5259,6 @@ ordered by currencies&#39; alphabetic order</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -5847,15 +5287,14 @@ ordered by currencies&#39; alphabetic order</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -5869,7 +5308,7 @@ ordered by currencies&#39; alphabetic order</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -5931,9 +5370,6 @@ ordered by currencies&#39; alphabetic order</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -5962,15 +5398,14 @@ ordered by currencies&#39; alphabetic order</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -5984,7 +5419,7 @@ ordered by currencies&#39; alphabetic order</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -6047,12 +5482,12 @@ yet started</p>
       <pre class="lines">
 
 
-100
-101
-102</pre>
+97
+98
+99</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 100</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 97</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_lacks_reimbursement?'>lacks_reimbursement?</span>
   <span class='id identifier rubyid_can_have_reimbursement?'>can_have_reimbursement?</span> <span class='kw'>and</span> <span class='lparen'>(</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_new_record?'>new_record?</span><span class='rparen'>)</span>
@@ -6099,9 +5534,9 @@ yet started</p>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="reject-instance_method">
+  <h3 class="signature " id="roll_back-instance_method">
   
-    - (<tt>Boolean</tt>) <strong>reject</strong>(*args) 
+    - (<tt>Boolean</tt>) <strong>roll_back</strong>(*args) 
   
 
   
@@ -6109,7 +5544,7 @@ yet started</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Fires the :reject event.</p>
+    <p>Fires the :roll_back event.</p>
 
 
   </div>
@@ -6159,9 +5594,6 @@ yet started</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -6190,15 +5622,14 @@ yet started</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -6212,7 +5643,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -6233,9 +5664,9 @@ yet started</p>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="reject!-instance_method">
+  <h3 class="signature " id="roll_back!-instance_method">
   
-    - (<tt>Boolean</tt>) <strong>reject!</strong>(*args) 
+    - (<tt>Boolean</tt>) <strong>roll_back!</strong>(*args) 
   
 
   
@@ -6243,7 +5674,7 @@ yet started</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Fires the :reject event, raising an exception if it fails.</p>
+    <p>Fires the :roll_back event, raising an exception if it fails.</p>
 
 
   </div>
@@ -6310,9 +5741,6 @@ yet started</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -6341,15 +5769,14 @@ yet started</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -6363,7 +5790,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -6384,9 +5811,9 @@ yet started</p>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="reject_transition-instance_method">
+  <h3 class="signature " id="roll_back_transition-instance_method">
   
-    - (<tt>StateMachine::Transition</tt>) <strong>reject_transition</strong>(requirements = {}) 
+    - (<tt>StateMachine::Transition</tt>) <strong>roll_back_transition</strong>(requirements = {}) 
   
 
   
@@ -6394,7 +5821,7 @@ yet started</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Gets the next transition that would be performed if :reject were to be fired.</p>
+    <p>Gets the next transition that would be performed if :roll_back were to be fired.</p>
 
 
   </div>
@@ -6494,9 +5921,6 @@ yet started</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -6525,15 +5949,14 @@ yet started</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -6547,7 +5970,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -6561,46 +5984,6 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
   <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="set_transition_datetime-instance_method">
-  
-    - (<tt>Object</tt>) <strong>set_transition_datetime</strong>(transition) 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>Only for state_machine internal usage, should not be called</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-56
-57
-58</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 56</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_write_attribute'>write_attribute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_transition'>transition</span><span class='period'>.</span><span class='id identifier rubyid_to'>to</span><span class='rbrace'>}</span><span class='tstring_content'>_since</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='comma'>,</span> <span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -6685,9 +6068,6 @@ yet started</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -6716,15 +6096,14 @@ yet started</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -6738,7 +6117,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -6881,9 +6260,6 @@ yet started</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -6912,15 +6288,14 @@ yet started</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -6934,7 +6309,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -6996,9 +6371,6 @@ yet started</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -7027,15 +6399,14 @@ yet started</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -7049,7 +6420,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -7192,9 +6563,6 @@ yet started</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -7223,15 +6591,14 @@ yet started</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -7245,7 +6612,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -7388,74 +6755,12 @@ yet started</p>
       <pre class="lines">
 
 
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53</pre>
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 16</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:approve</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:approved</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:accept</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
+<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:state_transitions</span><span class='comma'>,</span> <span class='symbol'>:as</span> <span class='op'>=&gt;</span> <span class='symbol'>:machine</span></pre>
     </td>
   </tr>
 </table>
@@ -7522,9 +6827,6 @@ yet started</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -7553,15 +6855,14 @@ yet started</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -7575,7 +6876,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -7673,9 +6974,6 @@ yet started</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -7704,15 +7002,14 @@ yet started</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -7726,7 +7023,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -7857,9 +7154,6 @@ yet started</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -7888,15 +7182,14 @@ yet started</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -7910,7 +7203,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -7972,9 +7265,6 @@ yet started</p>
       <pre class="lines">
 
 
-22
-23
-24
 25
 26
 27
@@ -8003,15 +7293,14 @@ yet started</p>
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 25</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='id identifier rubyid_transition'>transition</span><span class='op'>|</span>
-    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_transition_datetime'>set_transition_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_transition'>transition</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -8025,7 +7314,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:reject</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
     <span class='comment'># Separated transitions because grouping them using arrays confuses the
 </span>    <span class='comment'># Graphviz task for automatic documentation
 </span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
@@ -8086,7 +7375,7 @@ yet started</p>
 </div>
 
     <div id="footer">
-  Generated on Thu Mar 21 11:22:12 2013 by
+  Generated on Tue Mar 26 13:48:46 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>
