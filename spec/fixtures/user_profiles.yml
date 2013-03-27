@@ -1,8 +1,20 @@
-luke_profile:
-  user: luke
-  full_name: "Luke Skywalker"
-  role_id: 1
 anakin_profile:
   user: anakin
   full_name: "Anakin Skywalker"
   role_id: 1
+luke_profile:
+  user: luke
+  full_name: "Luke Skywalker"
+  role_id: 1
+wedge_profile:
+  user: wedge
+  role_id: 1
+tspmember_profile:
+  user: tspmember
+  role_id: 2
+supervisor_profile:
+  user: supervisor
+  role_id: 3
+administrative_profile:
+  user: administrative
+  role_id: 4

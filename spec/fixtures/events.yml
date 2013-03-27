@@ -1,0 +1,6 @@
+javin_hackaton:
+  name: "Battle of Javin"
+  country_code: "US"
+  start_date: <%= 2.days.ago %>
+  end_date: <%= 2.days.ago %>
+  validated: true

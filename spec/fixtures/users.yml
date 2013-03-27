@@ -1,8 +1,24 @@
+anakin:
+  email: "anakin.skywalker@the-republic.gob"
+  nickname: "imbetterthanyou"
+  encrypted_password: "$2a$10$9avVKOmjbCWh0m5p/frG7uX3S0LbF8ZtRS/QocBkmXiiDbh9.bKsq"
 luke:
   email: "luke.skywalker@rebel-alliance.org"
   nickname: "tatooine69"
   encrypted_password: "$2a$10$9avVKOmjbCWh0m5p/frG7uX3S0LbF8ZtRS/QocBkmXiiDbh9.bKsq"
-anakin:
-  email: "anakin.skywalker@the-republic.gob"
-  nickname: "jedi-master"
+wedge:
+  email: "wedge.antilles@rebel-alliance.org"
+  nickname: "red_two"
+  encrypted_password: "$2a$10$9avVKOmjbCWh0m5p/frG7uX3S0LbF8ZtRS/QocBkmXiiDbh9.bKsq"
+tspmember:
+  email: "evram.lajaie@rebel-alliance.org"
+  nickname: "commanderlajaier"
+  encrypted_password: "$2a$10$9avVKOmjbCWh0m5p/frG7uX3S0LbF8ZtRS/QocBkmXiiDbh9.bKsq"
+supervisor:
+  email: "jan.dodonna@rebel-alliance.org"
+  nickname: "the_man"
+  encrypted_password: "$2a$10$9avVKOmjbCWh0m5p/frG7uX3S0LbF8ZtRS/QocBkmXiiDbh9.bKsq"
+administrative:
+  email: "c3po@droids.com"
+  nickname: "C3PO"
   encrypted_password: "$2a$10$9avVKOmjbCWh0m5p/frG7uX3S0LbF8ZtRS/QocBkmXiiDbh9.bKsq"

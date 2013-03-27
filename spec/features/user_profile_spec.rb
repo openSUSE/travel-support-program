@@ -7,12 +7,12 @@ feature "Edit my account", "" do
   background do
     I18n.locale = :en
     sign_in_as_user(users(:anakin))
-    click_link "My account"
+    click_link "imbetterthanyou"
   end
 
   scenario "Edit profile data" do
     click_link "Profile"
-    fill_in "Phone number", :with => "+99 555 343 3433"
+    fill_in "phone number", :with => "+99 555 343 3433"
     click_button "Update profile"
     page.should have_content "Profile information updated"
   end

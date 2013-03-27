@@ -1,0 +1,8 @@
+wedge_for_yavin:
+  state: "incomplete"
+  user: wedge
+  event: yavin_hackaton
+luke_for_yavin:
+  state: "incomplete"
+  user: luke
+  event: yavin_hackaton
