@@ -38,10 +38,7 @@ Once the requester have attended to the event, he/she must provide some reports
 in order to get access to the reimbursement, including digitized copies of
 invoices for every expense. Once again, this reports are validated and approved
 by the Committee. After this validation, the reimbursement must be verified by
-the accounting responsible before the payment order can be issued. Both whether
-the requester confirms the payment once receiveid or not, somebody from the TSP
-Committee or from the administrative department must verify that everything was
-ok and mark the reimbursement process as completed.
+the accounting responsible before the payment order can be issued.
 ![Reimbursement workflow diagram](Reimbursement_state.png)
 
 ## When

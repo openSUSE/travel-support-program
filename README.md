@@ -34,8 +34,8 @@ name).
 As most regular Ruby on Rails applications:
 
 ```
-$ git clone https://github.com/openSUSE/travel_support_program
-$ cd travel_support_program
+$ git clone https://github.com/openSUSE/travel-support-program
+$ cd travel-support-program
 $ vi Gemfile # edit Gemfile to uncomment your favorite database driver
 $ bundle
 $ cp config/database.sample.yml config/database.yml
@@ -44,10 +44,11 @@ $ rails s
 ```
 
 You can access the application pointing your browser to <http://localhost:3000/>
-Two initial users should be available with the following emails and passwords:
+Three initial users should be available with the following emails and passwords:
 
 * tspmember@example.com / tspmember1
 * requester@example.com / requester1
+* administrative@example.com / administrative1
 
 ## Contact
 
