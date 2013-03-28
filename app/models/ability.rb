@@ -64,7 +64,9 @@ class Ability
       end
 
       # Reimbursements
-      can :create, Reimbursement, :request => {:user_id => user.id}
+      can :create, Reimbursement do |r|
+        r.request.user == user && r.request.can_have_reimbursement?
+      end
       can :read, Reimbursement, :user_id => user.id
       can :update, Reimbursement do |r|
         r.user == user && r.editable_by_requester?
