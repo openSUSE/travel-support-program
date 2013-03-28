@@ -8,7 +8,7 @@ class Reimbursement < ActiveRecord::Base
   belongs_to :user
   # The expenses of the associated request, total_amount and authorized_amount
   # will be updated during reimbursement process
-  has_many :expenses, :through => :request
+  has_many :expenses, :through => :request, :autosave => false
   has_many :attachments, :class_name => "ReimbursementAttachment", :inverse_of => :reimbursement
 
   has_many :state_transitions, :as => :machine

@@ -18,8 +18,8 @@ class RequestExpense < ActiveRecord::Base
   validates :request, :presence => true
   validates :estimated_amount, :estimated_currency, :presence => true, :if => "request.submitted?"
   validates :approved_amount, :approved_currency, :presence => true, :if => "request.approved?"
-  validates :total_amount, :presence => true, :if => "request.reimbursement.tsp_pending?"
-  validates :authorized_amount, :presence => true, :if => "request.reimbursement.tsp_approved?"
+  validates :total_amount, :presence => true, :if => "request.reimbursement && request.reimbursement.tsp_pending?"
+  validates :authorized_amount, :presence => true, :if => "request.reimbursement && request.reimbursement.tsp_approved?"
   
   # Convenience method that simply aliases approved_currency since currency
   # cannot be changed after approval
