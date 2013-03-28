@@ -4,3 +4,10 @@ javin_hackaton:
   start_date: <%= 2.days.ago %>
   end_date: <%= 2.days.ago %>
   validated: true
+
+party:
+  name: "Death Star's destruction celebration"
+  country_code: "US"
+  start_date: <%= 2.days.since %>
+  end_date: <%= 3.days.since %>
+  validated: false

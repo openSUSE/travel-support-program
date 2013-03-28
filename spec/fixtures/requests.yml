@@ -1,8 +1,19 @@
-wedge_for_yavin:
+wedge_for_javin:
+  state: "canceled"
+  user: wedge
+  event: javin_hackaton
+
+luke_for_javin:
+  state: "accepted"
+  user: luke
+  event: javin_hackaton
+
+wedge_for_party:
   state: "incomplete"
   user: wedge
-  event: yavin_hackaton
-luke_for_yavin:
+  event: party
+
+luke_for_party:
   state: "incomplete"
   user: luke
-  event: yavin_hackaton
+  event: party
