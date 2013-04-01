@@ -1,12 +1,12 @@
-wedge_for_javin:
+wedge_for_yavin:
   state: "canceled"
   user: wedge
-  event: javin_hackaton
+  event: yavin_hackaton
 
-luke_for_javin:
+luke_for_yavin:
   state: "accepted"
   user: luke
-  event: javin_hackaton
+  event: yavin_hackaton
 
 wedge_for_party:
   state: "submitted"

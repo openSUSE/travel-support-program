@@ -1,37 +1,37 @@
-luke_for_javin_submission:
-  machine: luke_for_javin (Request)
+luke_for_yavin_submission:
+  machine: luke_for_yavin (Request)
   state_event: "submit"
   from: "incomplete"
   to: "submitted"
   user: luke
   created_at: <%= 30.days.ago + 1.hour %>
 
-luke_for_javin_approval:
-  machine: luke_for_javin (Request)
+luke_for_yavin_approval:
+  machine: luke_for_yavin (Request)
   state_event: "approve"
   from: "submitted"
   to: "approved"
   user: tspmember
   created_at: <%= 30.days.ago + 3.hours %>
 
-luke_for_javin_approval:
-  machine: luke_for_javin (Request)
+luke_for_yavin_approval:
+  machine: luke_for_yavin (Request)
   state_event: "accept"
   from: "approved"
   to: "accepted"
   user: luke
   created_at: <%= 30.days.ago + 5.hours %>
 
-wedge_for_javin_submission:
-  machine: wedge_for_javin (Request)
+wedge_for_yavin_submission:
+  machine: wedge_for_yavin (Request)
   state_event: "submit"
   from: "incomplete"
   to: "submitted"
   user: wedge
   created_at: <%= 30.days.ago + 6.hour %>
 
-wedge_for_javin_cancelation:
-  machine: wedge_for_javin (Request)
+wedge_for_yavin_cancelation:
+  machine: wedge_for_yavin (Request)
   state_event: "cancel"
   from: "submitted"
   to: "canceled"
