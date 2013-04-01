@@ -11,3 +11,10 @@ party:
   start_date: <%= 32.days.since %>
   end_date: <%= 33.days.since %>
   validated: false
+
+dagobah_camp:
+  name: "Dagobah Camp"
+  country_code: "ES"
+  start_date: <%= 50.days.since %>
+  end_date: <%= 60.days.since %>
+  validated: false
