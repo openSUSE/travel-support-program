@@ -37,3 +37,11 @@ wedge_for_javin_cancelation:
   to: "canceled"
   user: tspmember
   created_at: <%= 30.days.ago + 12.hours %>
+
+wedge_for_party_submission:
+  machine: wedge_for_party (Request)
+  state_event: "submit"
+  from: "incomplete"
+  to: "submitted"
+  user: wedge
+  created_at: <%= 2.days.ago %>

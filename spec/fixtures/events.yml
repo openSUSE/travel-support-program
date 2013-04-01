@@ -8,6 +8,6 @@ javin_hackaton:
 party:
   name: "Death Star's destruction celebration"
   country_code: "US"
-  start_date: <%= 2.days.since %>
-  end_date: <%= 3.days.since %>
+  start_date: <%= 32.days.since %>
+  end_date: <%= 33.days.since %>
   validated: false

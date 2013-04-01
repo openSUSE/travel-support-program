@@ -9,7 +9,7 @@ luke_for_javin:
   event: javin_hackaton
 
 wedge_for_party:
-  state: "incomplete"
+  state: "submitted"
   user: wedge
   event: party
 
