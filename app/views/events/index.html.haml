@@ -14,7 +14,7 @@
       = f.submit t(:search), :class => "btn"
       = link_to t(:reset_search), collection_path(:q => {:end_date_gteq => ''}), :class => "btn"
 
-%table.table.table-striped
+%table.table.table-striped.events
   %thead
     %tr
       %th= sort_link(@q, :name)
