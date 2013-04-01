@@ -12,6 +12,8 @@ class RequestsController < InheritedResources::Base
   def new
     @request ||= Request.new(params[:request])
     @request.event = Event.find(params[:event_id])
+    @request.user = current_user
+    @request.expenses.build
     new!
   end
 
