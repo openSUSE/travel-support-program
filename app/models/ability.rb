@@ -45,6 +45,9 @@ class Ability
 
       # Requests
       can :create, Request
+      can :create, RequestExpense do |e|
+        e.request && e.request.editable_by_requester? && e.request.user == user
+      end
       can :read, Request, :user_id => user.id
       can :update, Request do |r|
         r.user == user && r.editable_by_requester?
@@ -52,15 +55,12 @@ class Ability
       can :destroy, Request do |r|
         r.user == user && r.can_be_destroyed?
       end
-      # Requester can accept, submit or cancel his own requests, but only when
-      # state_machines allows to do it
-      [:accept, :roll_back, :cancel].each do |action|
+      # Requester can manage his own requests, but only in the way that
+      # state_machine allows to do it
+      [:accept, :submit, :roll_back, :cancel].each do |action|
         can action, Request do |r|
           r.user == user && r.send("can_#{action}?")
         end
-      end
-      can :submit, Request do |r|
-          r.user == user && r.can_submit? && !r.expenses.empty?
       end
 
       # Reimbursements

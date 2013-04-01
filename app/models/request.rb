@@ -26,7 +26,7 @@ class Request < ActiveRecord::Base
     before_transition :set_state_updated_at
 
     event :submit do
-      transition :incomplete => :submitted
+      transition :incomplete => :submitted, :unless => "expenses.empty?"
     end
 
     event :approve do
