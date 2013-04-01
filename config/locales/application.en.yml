@@ -26,6 +26,7 @@ en:
   profile_updated: "Profile information updated"
 
   application_title: "Travel Support Program"
+  apply: "Apply"
   collapse: "roll/unroll"
   create_reimbursement: "Ask for reimbursement"
   event_title_line: "%{name} (since %{start} at %{country})"
