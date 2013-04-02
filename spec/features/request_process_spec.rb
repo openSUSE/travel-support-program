@@ -25,10 +25,11 @@ feature "Requests", "" do
     end
     click_button "Create request"
     page.should have_content "request was successfully created"
+    @request = Request.order(:created_at).last
 
     # Failed submission
     click_link "submit"
-    fill_in "notes", :with => "Believe me, this is important"
+    fill_in "notes", :with => "I've not fulfilled the droid amount"
     click_button "submit"
     page.should have_content "Something went wrong. Unable to submit."
 
@@ -42,22 +43,83 @@ feature "Requests", "" do
 
     # Submit again
     click_link "submit"
-    fill_in "notes", :with => "Believe me, this is important"
+    fill_in "notes", :with => "Ok, now all the information is there."
     click_button "submit"
     page.should have_content "Successfully submitted."
 
     # Log in as tspmember
     click_link "Log out"
-    sign_in_as_user(users(:tspmember))
-    visit requests_path
-    find(:xpath, "//table[contains(@class,'requests')]//tbody/tr[last()]/td[1]//a").click
-    page.should have_content "request"
-    page.should have_content "R2D2"
+    find_request_as(users(:tspmember), @request)
 
     # Failed approval
     click_link "approve"
-    fill_in "notes", :with => "Ok. It's approved"
+    fill_in "notes", :with => "Trying to approve with no amount"
     click_button "approve"
     page.should have_content "Something went wrong. Not approved."
+
+    # Fulfill approval information
+    click_link "Edit"
+    page.should have_content "Edit request"
+    fill_in "request_expenses_attributes_0_approved_amount", :with => "60"
+    fill_in "request_expenses_attributes_0_approved_currency", :with => "EUR"
+    fill_in "request_expenses_attributes_1_approved_amount", :with => "0"
+    fill_in "request_expenses_attributes_1_approved_currency", :with => "EUR"
+    click_button "Update request"
+    page.should have_content "request was successfully updated"
+
+    # Approve again
+    click_link "approve"
+    fill_in "notes", :with => "The Alliance do not pay droids"
+    click_button "approve"
+    page.should have_content "Successfully approved"
+
+    # Log in as requester
+    click_link "Log out"
+    find_request_as(users(:luke), @request)
+
+    # Try to update
+    page.should_not have_content "Edit"
+    visit edit_request_path(@request)
+    page.status_code.should == 403
+
+    # Not possible, so roll back
+    visit request_path(@request)
+    click_link "roll back"
+    fill_in "notes", :with => "No way."
+    click_button "roll back"
+    page.should have_content "Successfully rolled back."
+
+    # And now edit
+    click_link "Edit"
+    page.should have_content "Edit request"
+    fill_in "request_expenses_attributes_1_estimated_amount", :with => "35"
+    click_button "Update request"
+    page.should have_content "request was successfully updated"
+
+    # And submit again
+    click_link "submit"
+    fill_in "notes", :with => "I have negotiated a lower fare for R2D2 rental"
+    click_button "submit"
+    page.should have_content "Successfully submitted."
+
+    # Log in as tspmember
+    click_link "Log out"
+    find_request_as(users(:tspmember), @request)
+
+    # Approval
+    click_link "approve"
+    fill_in "notes", :with => "We do not pay droids anyway, not a matter of price."
+    click_button "approve"
+    page.should have_content "Successfully approved"
+
+    # Log in as requester
+    click_link "Log out"
+    find_request_as(users(:luke), @request)
+
+    # And finally accept
+    click_link "accept"
+    fill_in "notes", :with => "Ok, just give the gas, then. But don't expect me to clean the droid properly... and we are going to a swamp."
+    click_button "accept"
+    page.should have_content "Acceptance processed"
   end
 end
