@@ -1,0 +1,24 @@
+luke_for_yavin_gas:
+  request: luke_for_yavin
+  subject: "Gas"
+  estimated_amount: 100
+  estimated_currency: "EUR"
+  approved_amount: 60
+  approved_currency: "EUR"
+
+luke_for_yavin_droid:
+  request: luke_for_yavin
+  subject: "Droid rental"
+  description: "R2-D2"
+  estimated_amount: 80
+  estimated_currency: "EUR"
+  approved_amount: 0
+  approved_currency: "EUR"
+
+luke_for_yavin_hotel:
+  request: luke_for_yavin
+  subject: "Hotel"
+  estimated_amount: 80
+  estimated_currency: "EUR"
+  approved_amount: 50
+  approved_currency: "EUR"

@@ -73,6 +73,14 @@ class Reimbursement < ActiveRecord::Base
     state == 'tsp_pending'
   end
 
+  # Checks whether the reimbursement have been submitted at least once in the past, no
+  # matters which the current state is.
+  #
+  # @return [Boolean] true if it have been submitted
+  def already_submitted?
+    not state_transitions.empty?
+  end
+
   protected
 
   # Used internally to synchronize request_id and user_id

@@ -44,4 +44,17 @@ module CommonHelpers
     end
   end
 
+  #
+  # Creates a StateTransition for a request or a reimbursement
+  #
+  # @param [#state]  machine      Request or Reimbursement
+  # @param [Symbol]  state_event  Event to trigger on the event machine
+  # @param [User]    user         Obvious
+  def transition(machine, state_event, user)
+      submission = StateTransition.new(:state_event => state_event.to_s)
+      submission.machine = machine
+      submission.user = user
+      submission.save!
+  end
+
 end

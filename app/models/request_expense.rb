@@ -20,10 +20,34 @@ class RequestExpense < ActiveRecord::Base
   validates :approved_amount, :approved_currency, :presence => true, :if => "request.approved?"
   validates :total_amount, :presence => true, :if => "request.reimbursement && request.reimbursement.tsp_pending?"
   validates :authorized_amount, :presence => true, :if => "request.reimbursement && request.reimbursement.tsp_approved?"
+
+  before_validation :set_authorized_amount
   
   # Convenience method that simply aliases approved_currency since currency
   # cannot be changed after approval
   def total_currency; approved_currency; end
   # (see #total_currency)
   def authorized_currency; approved_currency; end
+
+  protected
+
+  # Set the authorized amount if possible and not already set/reviewed by a TSP
+  # member
+  #
+  # This callback sets the authorized amount as the minimum among approved and
+  # total, but only if the reimbursement process has started and if the
+  # reimbursement has neven been submited. After first submission the authorized
+  # amount is never changed automatically, to avoid confussion.
+  #
+  # @callback
+  def set_authorized_amount
+    if !total_amount.blank? && !approved_amount.blank? && reimbursement && !reimbursement.already_submitted?
+      if total_currency != approved_currency
+        self.authorized_amount = approved_amount
+      else
+        self.authorized_amount = [approved_amount, total_amount].min
+      end
+    end
+  end
+
 end
