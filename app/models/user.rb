@@ -21,4 +21,8 @@ class User < ActiveRecord::Base
     profile || create_profile
   end
 
+  def self.with_role(name)
+    UserProfile.with_role(name).map(&:user)
+  end
+
 end

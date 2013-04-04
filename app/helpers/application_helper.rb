@@ -85,4 +85,11 @@ module ApplicationHelper
     end.join(" ").html_safe
   end
 
+  def machine_url(machine)
+    if machine.kind_of?(Request)
+      request_url(machine)
+    else
+      request_reimbursement_url(machine.request)
+    end
+  end
 end

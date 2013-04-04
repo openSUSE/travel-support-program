@@ -1,0 +1,4 @@
+en:
+  mailer_subject_state: "%{type} in %{state} state"
+  machine_in_state: "%{machine} is in %{state} state since %{date}"
+  visit_machine: "To access the related information, just follow the link below:"

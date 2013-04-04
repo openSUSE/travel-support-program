@@ -2,16 +2,13 @@
 # Reimbursement for a given request
 #
 class Reimbursement < ActiveRecord::Base
+  include TravelSupportProgram::HasState
   # The associated request
   belongs_to :request, :inverse_of => :reimbursement
-  # The same of the associated request.
-  belongs_to :user
   # The expenses of the associated request, total_amount and authorized_amount
   # will be updated during reimbursement process
   has_many :expenses, :through => :request, :autosave => false
   has_many :attachments, :class_name => "ReimbursementAttachment", :inverse_of => :reimbursement
-
-  has_many :state_transitions, :as => :machine
 
   delegate :event, :to => :request, :prefix => false
 
@@ -23,14 +20,14 @@ class Reimbursement < ActiveRecord::Base
   attr_accessible :description, :requester_notes, :tsp_notes, :administrative_notes,
     :request_attributes, :attachments_attributes
 
-  validates :request, :user, :presence => true
+  validates :request, :presence => true
   validates_associated :expenses
 
   # Synchronizes user_id and request_id
   before_validation :set_user_id
 
-  state_machine :state, :initial => :incomplete do
-    before_transition :set_state_updated_at
+  state_machine :state do |machine|
+    machine.initial_state = :incomplete
 
     event :submit do
       transition :incomplete => :tsp_pending
@@ -55,6 +52,10 @@ class Reimbursement < ActiveRecord::Base
     end
   end
 
+  assign_state :tsp_pending, :to => :tsp
+  assign_state :tsp_approved, :to => :administrative
+
+  # @see Request#expenses_sum
   def expenses_sum(*args)
     request.expenses_sum(*args)
   end
@@ -73,24 +74,11 @@ class Reimbursement < ActiveRecord::Base
     state == 'tsp_pending'
   end
 
-  # Checks whether the reimbursement have been submitted at least once in the past, no
-  # matters which the current state is.
-  #
-  # @return [Boolean] true if it have been submitted
-  def already_submitted?
-    not state_transitions.empty?
-  end
-
   protected
 
   # Used internally to synchronize request_id and user_id
   def set_user_id
     self.user_id = request.user_id
-  end
-
-  # User internally to set the state_updated_at attribute
-  def set_state_updated_at
-    self.state_updated_at = DateTime.now
   end
 
   # Used internally by accepts_nested_attributes to ensure that only

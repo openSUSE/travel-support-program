@@ -2,8 +2,7 @@
 # Request from a user to get help from the TSP for a given event
 #
 class Request < ActiveRecord::Base
-  # Requester, that is, the user asking for help.
-  belongs_to :user
+  include TravelSupportProgram::HasState
   # The event the requester wants to attend.
   belongs_to :event
   # Estimated expenses, including (for every expense) the estimated amount,
@@ -13,8 +12,6 @@ class Request < ActiveRecord::Base
   # Every accepted request is followed by a reimbursement process
   has_one :reimbursement, :inverse_of => :request
 
-  has_many :state_transitions, :as => :machine
-
   accepts_nested_attributes_for :expenses, :reject_if => :all_blank, :allow_destroy => true
 
   attr_accessible :event_id, :description, :requester_notes, :tsp_notes, :expenses_attributes
@@ -22,8 +19,8 @@ class Request < ActiveRecord::Base
   validates :event, :presence => true
   validates_associated :expenses
 
-  state_machine :state, :initial => :incomplete do
-    before_transition :set_state_updated_at
+  state_machine :state do |machine|
+    machine.initial_state = :incomplete
 
     event :submit do
       transition :incomplete => :submitted, :unless => "expenses.empty?"
@@ -53,6 +50,7 @@ class Request < ActiveRecord::Base
     end
   end
 
+  assign_state :submitted, :to => :tsp
 
   # Checks whether the requester should be allowed to do changes.
   #
@@ -68,19 +66,11 @@ class Request < ActiveRecord::Base
     state == 'submitted'
   end
 
-  # Checks whether the request have been submitted at least once in the past, no
-  # matters which the current state is.
-  #
-  # @return [Boolean] true if it have been submitted
-  def already_submitted?
-    not state_transitions.empty?
-  end
-
   # Checks whether a user should be allowed to completely delete the request.
   #
   # @return [Boolean] true if allowed
   def can_be_destroyed?
-    not already_submitted?
+    not with_transitions?
   end
 
   # Checks whether the request is ready for reimbursement
@@ -117,12 +107,5 @@ class Request < ActiveRecord::Base
     nonils = grouped.each {|k,v| v.delete_if {|i| i.send(:"#{attr}_amount").nil?}}.delete_if {|k,v| v.empty?}
     unordered = nonils.map {|k,v| [k, v.sum(&:"#{attr}_amount")] }
     ActiveSupport::OrderedHash[ unordered.sort_by(&:first) ]
-  end
-
-  protected
-
-  # User internally to set the state_updated_at attribute
-  def set_state_updated_at
-    self.state_updated_at = DateTime.now
   end
 end

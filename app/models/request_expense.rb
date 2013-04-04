@@ -41,7 +41,7 @@ class RequestExpense < ActiveRecord::Base
   #
   # @callback
   def set_authorized_amount
-    if !total_amount.blank? && !approved_amount.blank? && reimbursement && !reimbursement.already_submitted?
+    if !total_amount.blank? && !approved_amount.blank? && reimbursement && !reimbursement.with_transitions?
       if total_currency != approved_currency
         self.authorized_amount = approved_amount
       else

@@ -1,0 +1,11 @@
+<%= t(:machine_in_state,
+            :machine => "#{@machine.class.model_name} ##{@machine.id}",
+            :state => @state_name,
+            :date => (l(@updated_at) rescue "...")) %>
+
+<%= t(:visit_machine) %>
+
+<%= machine_url(@machine) %>
+
+--
+<%= TravelSupportProgram::Config.setting :email_footer %>

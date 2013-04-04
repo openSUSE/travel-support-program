@@ -12,6 +12,8 @@ class UserProfile < ActiveRecord::Base
 
   validates :role_id, :presence => true
 
+  scope :with_role, lambda { |name| where(:role_id => UserRole.find_by_name(name.to_s).id) }
+
   def set_default_attrs
     self.role_name ||= "requester"
   end

@@ -24,7 +24,7 @@ class StateTransitionsController < ApplicationController
       parent = @request
       @back = request_path(@request)
     end
-    @state_transition = parent.state_transitions.build(params[:state_transition])
+    @state_transition = parent.transitions.build(params[:state_transition])
     authorize! @state_transition.state_event.to_sym, parent
   end
 end

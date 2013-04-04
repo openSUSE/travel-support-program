@@ -12,7 +12,7 @@
     = timestamped_state(@request)
     %blockquote#history.collapse
       %ul
-        = render @request.state_transitions
+        = render @request.transitions
 
   - if @request.can_have_reimbursement?
     = r.association :reimbursement do
