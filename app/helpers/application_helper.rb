@@ -77,6 +77,12 @@ module ApplicationHelper
     current_role == role.to_s
   end
 
+  # Outputs a list of links to create every possible and
+  # authorized state transition for a given state machine
+  #
+  # @param [#state_events]  machine  a request or a reimbursement (or any other
+  #                                  object including the HasState mixin)
+  # @return [String] a list of space separated links
   def transition_links(machine)
     trans_path = resource_path + "/state_transitions/new.js?state_transition[state_event]="
     machine.state_events.map do |event|
@@ -85,6 +91,10 @@ module ApplicationHelper
     end.join(" ").html_safe
   end
 
+  # URL for accesing to a given request or reimbursement
+  #
+  # This helper deals with the singleton issues in the reimbursement routes
+  # definition.
   def machine_url(machine)
     if machine.kind_of?(Request)
       request_url(machine)
@@ -93,6 +103,11 @@ module ApplicationHelper
     end
   end
 
+  # Path to the list of requests or reimbursements with the ransack filters
+  # already configured based on the assign_state definitions of the
+  # corresponding class.
+  #
+  # @see HasState.assign_state
   def menu_path_to(machine_class)
     helper = machine_class.model_name.tableize + "_path"
     states = machine_class.states_assigned_to(current_role)

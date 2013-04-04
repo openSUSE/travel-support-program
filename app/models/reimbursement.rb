@@ -26,7 +26,13 @@ class Reimbursement < ActiveRecord::Base
   # Synchronizes user_id and request_id
   before_validation :set_user_id
 
-  state_machine :state do |machine|
+  # The :initial => :incomplete param is only provided because the
+  # Graphviz automatic generator needs it, it's not processed because the state
+  # machine is already created by HasState. The real definition is below
+  # (machine.initial_state = :incomplete)
+
+  #
+  state_machine :state, :initial => :incomplete do |machine|
     machine.initial_state = :incomplete
 
     event :submit do
@@ -52,6 +58,7 @@ class Reimbursement < ActiveRecord::Base
     end
   end
 
+  # @see HasState.assign_state
   assign_state :tsp_pending, :to => :tsp
   assign_state :tsp_approved, :to => :administrative
 

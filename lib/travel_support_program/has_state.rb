@@ -28,6 +28,10 @@ module TravelSupportProgram
       not transitions.empty?
     end
 
+    # Notify the current state to all involved users
+    #
+    # Involved users means: requester + users with the tsp role + users with
+    # the roles designed using the macro method assign_state_to
     def notify_state
       roles = ([:tsp] + self.class.roles_assigned_to(state)).uniq
       HasStateMailer::notify_state(self, roles)
@@ -45,6 +49,15 @@ module TravelSupportProgram
     #
     module ClassMethods
 
+      # Macro-style method to define the role which is responsible of the next
+      # action for a given state. This definition is used for sending
+      # notifications and also as a default filter on lists.
+      #
+      # @param [#to_sym]  state_name  name of the state
+      # @param [Hash]     opts  :to is the only expected (and mandatory) key
+      #
+      # @example
+      #   assign_state :tsp_pending, :to => :tsp
       def assign_state(state_name, opts = {})
         to = opts[:to]
         if to.blank?
@@ -58,6 +71,11 @@ module TravelSupportProgram
         end
       end
 
+      # Queries the state - role assignation performed via assign_state
+      # @see #assign_state
+      #
+      # @param [Role,#to_sym]  role  role to query
+      # @return [Array]  array of states assigned to the given role
       def states_assigned_to(role)
         if role.kind_of?(UserRole)
           name = role.name
@@ -67,6 +85,11 @@ module TravelSupportProgram
         @assigned_states[name] || []
       end
 
+      # Queries the state - role assignation performed via assign_state
+      # @see #assign_state
+      #
+      # @param [#to_sym]  state  state to query
+      # @return [Array]  array of roles assigned to the given state
       def roles_assigned_to(state)
         @assigned_roles[state.to_sym] || []
       end

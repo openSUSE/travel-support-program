@@ -19,11 +19,18 @@ class Request < ActiveRecord::Base
   validates :event, :presence => true
   validates_associated :expenses
 
-  state_machine :state do |machine|
+  # The :initial => :incomplete param is only provided because the
+  # Graphviz automatic generator needs it, it's not processed because the state
+  # machine is already created by HasState. The real definition is below
+  # (machine.initial_state = :incomplete)
+
+  # Automatic yardoc+graphviz generator is confused by the :unless parameter, so
+  # please simply ignore the unless -> has_no_expenses states in the resulting drawing
+  state_machine :state, :initial => :incomplete do |machine|
     machine.initial_state = :incomplete
 
     event :submit do
-      transition :incomplete => :submitted, :unless => "expenses.empty?"
+      transition :incomplete => :submitted, :unless => :has_no_expenses?
     end
 
     event :approve do
@@ -50,7 +57,17 @@ class Request < ActiveRecord::Base
     end
   end
 
+  # @see HasState.assign_state
   assign_state :submitted, :to => :tsp
+
+  # Checks is expenses.empty?
+  #
+  # This one line method is required in order to the Graphviz automatic
+  # documentation to work, because it doesn't work if a string is used in the
+  # :unless parameter of a event definition
+  def has_no_expenses?
+    expenses.empty?
+  end
 
   # Checks whether the requester should be allowed to do changes.
   #

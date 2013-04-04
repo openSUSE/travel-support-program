@@ -243,6 +243,54 @@ every used currency).</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#machine_url-instance_method" title="#machine_url (instance method)">- (Object) <strong>machine_url</strong>(machine) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>URL for accesing to a given request or reimbursement.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#menu_path_to-instance_method" title="#menu_path_to (instance method)">- (Object) <strong>menu_path_to</strong>(machine_class) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Path to the list of requests or reimbursements with the ransack filters
+already configured based on the assign_state definitions of the
+corresponding class.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#nav_tab-instance_method" title="#nav_tab (instance method)">- (Object) <strong>nav_tab</strong>(label, path) </a>
     
 
@@ -291,7 +339,7 @@ css class and the associated date.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#transition_links-instance_method" title="#transition_links (instance method)">- (Object) <strong>transition_links</strong>(machine) </a>
+      <a href="#transition_links-instance_method" title="#transition_links (instance method)">- (String) <strong>transition_links</strong>(machine) </a>
     
 
     
@@ -305,7 +353,9 @@ css class and the associated date.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Outputs a list of links to create every possible and
+authorized state transition for a given state machine.</p>
+</div></span>
   
 </li>
 
@@ -762,6 +812,118 @@ every used currency)</p>
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="machine_url-instance_method">
+  
+    - (<tt>Object</tt>) <strong>machine_url</strong>(machine) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>URL for accesing to a given request or reimbursement</p>
+
+<p>This helper deals with the singleton issues in the reimbursement routes
+definition.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+98
+99
+100
+101
+102
+103
+104</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/application_helper.rb', line 98</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_machine_url'>machine_url</span><span class='lparen'>(</span><span class='id identifier rubyid_machine'>machine</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Request</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_request_url'>request_url</span><span class='lparen'>(</span><span class='id identifier rubyid_machine'>machine</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_request_reimbursement_url'>request_reimbursement_url</span><span class='lparen'>(</span><span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="menu_path_to-instance_method">
+  
+    - (<tt>Object</tt>) <strong>menu_path_to</strong>(machine_class) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Path to the list of requests or reimbursements with the ransack filters
+already configured based on the assign_state definitions of the
+corresponding class.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li>HasState.assign_state</li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+111
+112
+113
+114
+115
+116
+117
+118
+119</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/application_helper.rb', line 111</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_menu_path_to'>menu_path_to</span><span class='lparen'>(</span><span class='id identifier rubyid_machine_class'>machine_class</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_helper'>helper</span> <span class='op'>=</span> <span class='id identifier rubyid_machine_class'>machine_class</span><span class='period'>.</span><span class='id identifier rubyid_model_name'>model_name</span><span class='period'>.</span><span class='id identifier rubyid_tableize'>tableize</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>_path</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_states'>states</span> <span class='op'>=</span> <span class='id identifier rubyid_machine_class'>machine_class</span><span class='period'>.</span><span class='id identifier rubyid_states_assigned_to'>states_assigned_to</span><span class='lparen'>(</span><span class='id identifier rubyid_current_role'>current_role</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_states'>states</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_helper'>helper</span><span class='comma'>,</span> <span class='symbol'>:q</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:state_eq</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_states'>states</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_send'>send</span> <span class='id identifier rubyid_helper'>helper</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="nav_tab-instance_method">
   
     - (<tt>Object</tt>) <strong>nav_tab</strong>(label, path) 
@@ -892,28 +1054,76 @@ css class and the associated date</p>
       <div class="method_details ">
   <h3 class="signature " id="transition_links-instance_method">
   
-    - (<tt>Object</tt>) <strong>transition_links</strong>(machine) 
+    - (<tt>String</tt>) <strong>transition_links</strong>(machine) 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Outputs a list of links to create every possible and
+authorized state transition for a given state machine</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>machine</span>
+      
+      
+        <span class='type'>(<tt>#state_events</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>a request or a reimbursement (or any other
+object including the HasState mixin)</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>a list of space separated links</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-80
-81
-82
-83
-84
-85
-86</pre>
+86
+87
+88
+89
+90
+91
+92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/application_helper.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/application_helper.rb', line 86</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_transition_links'>transition_links</span><span class='lparen'>(</span><span class='id identifier rubyid_machine'>machine</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_trans_path'>trans_path</span> <span class='op'>=</span> <span class='id identifier rubyid_resource_path'>resource_path</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/state_transitions/new.js?state_transition[state_event]=</span><span class='tstring_end'>&quot;</span></span>
@@ -932,7 +1142,7 @@ css class and the associated date</p>
 </div>
 
     <div id="footer">
-  Generated on Wed Mar 27 15:10:41 2013 by
+  Generated on Thu Apr  4 16:45:08 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>

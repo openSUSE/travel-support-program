@@ -92,11 +92,15 @@
     
   
     
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="TravelSupportProgram/HasState.html" title="TravelSupportProgram::HasState (module)">TravelSupportProgram::HasState</a></span></dd>
+      
+    
   
   
   
-    <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">app/models/reimbursement.rb</dd>
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">app/models/reimbursement.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -317,29 +321,6 @@ This class contains 1 state machine(s).
 </li>
 
       
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#user-instance_method" title="#user (instance method)">- (Object) <strong>user</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>The same of the associated request.</p>
-</div></span>
-  
-</li>
-
-      
     </ul>
   
     <h2>
@@ -390,29 +371,6 @@ This class contains 1 state machine(s).
   
     <span class="summary_desc"><div class='inline'><p>The expenses of the associated request, total_amount and authorized_amount
 will be updated during reimbursement process.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#state_transitions-instance_method" title="#state_transitions (instance method)">- (Array&lt;StateMachine::Transition&gt;) <strong>state_transitions</strong>(requirements = {}) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Gets the list of transitions that can be made for the current state.</p>
 </div></span>
   
 </li>
@@ -1183,6 +1141,29 @@ will be updated during reimbursement process.</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#state_transitions-instance_method" title="#state_transitions (instance method)">- (Array&lt;StateMachine::Transition&gt;) <strong>state_transitions</strong>(requirements = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets the list of transitions that can be made for the current state.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#submit-instance_method" title="#submit (instance method)">- (Boolean) <strong>submit</strong>(*args) </a>
     
 
@@ -1300,6 +1281,17 @@ will be updated during reimbursement process.</p>
 
 
   
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="TravelSupportProgram/HasState.html" title="TravelSupportProgram::HasState (module)">TravelSupportProgram::HasState</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="TravelSupportProgram/HasState.html#included-class_method" title="TravelSupportProgram::HasState.included (method)">included</a></span>, <span class='object_link'><a href="TravelSupportProgram/HasState.html#notify_state-instance_method" title="TravelSupportProgram::HasState#notify_state (method)">#notify_state</a></span>, <span class='object_link'><a href="TravelSupportProgram/HasState.html#with_transitions%3F-instance_method" title="TravelSupportProgram::HasState#with_transitions? (method)">#with_transitions?</a></span></p>
+
+  
   <div id="instance_attr_details" class="attr_details">
     <h2>Instance Attribute Details</h2>
     
@@ -1342,10 +1334,10 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-41</pre>
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 57</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>       <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -1392,10 +1384,10 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-40</pre>
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 56</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>description</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1442,10 +1434,10 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-37</pre>
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 53</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>state</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1497,9 +1489,6 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -1521,13 +1510,16 @@ will be updated during reimbursement process.</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -1595,10 +1587,10 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-43</pre>
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 59</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>state_updated_at</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1645,10 +1637,10 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-42</pre>
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 58</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>updated_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>       <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -1724,9 +1716,6 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -1748,13 +1737,16 @@ will be updated during reimbursement process.</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -1844,9 +1836,6 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -1868,13 +1857,16 @@ will be updated during reimbursement process.</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -1970,9 +1962,6 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -1994,13 +1983,16 @@ will be updated during reimbursement process.</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -2107,9 +2099,6 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -2131,13 +2120,16 @@ will be updated during reimbursement process.</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -2277,9 +2269,6 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -2301,13 +2290,16 @@ will be updated during reimbursement process.</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -2380,10 +2372,10 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-12</pre>
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 11</span>
 
 <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:attachments</span><span class='comma'>,</span> <span class='symbol'>:class_name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ReimbursementAttachment</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:inverse_of</span> <span class='op'>=&gt;</span> <span class='symbol'>:reimbursement</span></pre>
     </td>
@@ -2452,9 +2444,6 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -2476,13 +2465,16 @@ will be updated during reimbursement process.</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -2589,9 +2581,6 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -2613,13 +2602,16 @@ will be updated during reimbursement process.</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -2759,9 +2751,6 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -2783,13 +2772,16 @@ will be updated during reimbursement process.</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -2929,9 +2921,6 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -2953,13 +2942,16 @@ will be updated during reimbursement process.</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -3099,9 +3091,6 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -3123,13 +3112,16 @@ will be updated during reimbursement process.</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -3269,9 +3261,6 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -3293,13 +3282,16 @@ will be updated during reimbursement process.</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -3439,9 +3431,6 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -3463,13 +3452,16 @@ will be updated during reimbursement process.</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -3609,9 +3601,6 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -3633,13 +3622,16 @@ will be updated during reimbursement process.</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -3729,9 +3721,6 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -3753,13 +3742,16 @@ will be updated during reimbursement process.</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -3866,9 +3858,6 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -3890,13 +3879,16 @@ will be updated during reimbursement process.</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -4036,9 +4028,6 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -4060,13 +4049,16 @@ will be updated during reimbursement process.</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -4137,9 +4129,6 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -4161,13 +4150,16 @@ will be updated during reimbursement process.</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -4238,12 +4230,12 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-65
-66
-67</pre>
+73
+74
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_editable_by_requester?'>editable_by_requester?</span>
   <span class='id identifier rubyid_state'>state</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>incomplete</span><span class='tstring_end'>'</span></span>
@@ -4295,12 +4287,12 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-72
-73
-74</pre>
+80
+81
+82</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 72</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 80</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_editable_by_tsp?'>editable_by_tsp?</span>
   <span class='id identifier rubyid_state'>state</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>tsp_pending</span><span class='tstring_end'>'</span></span>
@@ -4359,10 +4351,10 @@ will be updated during reimbursement process.</p>
       <pre class="lines">
 
 
-16</pre>
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 13</span>
 
 <span class='id identifier rubyid_delegate'>delegate</span> <span class='symbol'>:event</span><span class='comma'>,</span> <span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='symbol'>:request</span><span class='comma'>,</span> <span class='symbol'>:prefix</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -4396,12 +4388,12 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-11</pre>
+10</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 10</span>
 
-<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:expenses</span><span class='comma'>,</span> <span class='symbol'>:through</span> <span class='op'>=&gt;</span> <span class='symbol'>:request</span></pre>
+<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:expenses</span><span class='comma'>,</span> <span class='symbol'>:through</span> <span class='op'>=&gt;</span> <span class='symbol'>:request</span><span class='comma'>,</span> <span class='symbol'>:autosave</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
   </tr>
 </table>
@@ -4416,18 +4408,34 @@ will be updated during reimbursement process</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Request.html#expenses_sum-instance_method" title="Request#expenses_sum (method)">Request#expenses_sum</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-58
-59
-60</pre>
+66
+67
+68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_expenses_sum'>expenses_sum</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_expenses_sum'>expenses_sum</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
@@ -4479,9 +4487,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -4503,13 +4508,16 @@ will be updated during reimbursement process</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -4614,9 +4622,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -4638,13 +4643,16 @@ will be updated during reimbursement process</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -4715,9 +4723,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -4739,13 +4744,16 @@ will be updated during reimbursement process</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -4816,9 +4824,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -4840,13 +4845,16 @@ will be updated during reimbursement process</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -4900,10 +4908,10 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-6</pre>
+7</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 7</span>
 
 <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:request</span><span class='comma'>,</span> <span class='symbol'>:inverse_of</span> <span class='op'>=&gt;</span> <span class='symbol'>:reimbursement</span></pre>
     </td>
@@ -4972,9 +4980,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -4996,13 +5001,16 @@ will be updated during reimbursement process</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -5109,9 +5117,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -5133,13 +5138,16 @@ will be updated during reimbursement process</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -5279,9 +5287,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -5303,13 +5308,16 @@ will be updated during reimbursement process</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -5416,9 +5424,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -5440,13 +5445,16 @@ will be updated during reimbursement process</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -5598,9 +5606,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -5622,13 +5627,16 @@ will be updated during reimbursement process</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -5699,9 +5707,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -5723,13 +5728,16 @@ will be updated during reimbursement process</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -5881,9 +5889,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -5905,13 +5910,16 @@ will be updated during reimbursement process</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -6063,12 +6071,60 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-14</pre>
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:state_transitions</span><span class='comma'>,</span> <span class='symbol'>:as</span> <span class='op'>=&gt;</span> <span class='symbol'>:machine</span></pre>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
+
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:approve</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:tsp_pending</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_approved</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:authorize</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:tsp_approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:finished</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:tsp_pending</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
+    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:tsp_approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
+    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:tsp_pending</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -6135,9 +6191,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -6159,13 +6212,16 @@ will be updated during reimbursement process</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -6272,9 +6328,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -6296,13 +6349,16 @@ will be updated during reimbursement process</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -6442,9 +6498,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -6466,13 +6519,16 @@ will be updated during reimbursement process</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -6543,9 +6599,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -6567,13 +6620,16 @@ will be updated during reimbursement process</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -6644,9 +6700,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
@@ -6668,13 +6721,16 @@ will be updated during reimbursement process</p>
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 35</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
+<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+  <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_initial_state'>initial_state</span> <span class='op'>=</span> <span class='symbol'>:incomplete</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp_pending</span>
@@ -6703,48 +6759,12 @@ will be updated during reimbursement process</p>
 </table>
 </div>
     
-      <div class="method_details ">
-  <h3 class="signature " id="user-instance_method">
-  
-    - (<tt>Object</tt>) <strong>user</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>The same of the associated request.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-8</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 8</span>
-
-<span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:user</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
   </div>
 
 </div>
 
     <div id="footer">
-  Generated on Wed Mar 27 15:10:42 2013 by
+  Generated on Thu Apr  4 16:45:09 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>
