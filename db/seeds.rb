@@ -12,3 +12,9 @@ administrative = User.create!(nickname: 'administrative', email: 'administrative
                        password: 'administrative1', password_confirmation: 'administrative1')
 administrative.profile.role_name = 'administrative'
 administrative.profile.save!
+
+RequestExpenseSubject.create(name: "Plane")
+RequestExpenseSubject.create(name: "Train")
+RequestExpenseSubject.create(name: "Bus")
+RequestExpenseSubject.create(name: "Lodging")
+RequestExpenseSubject.create(name: "Other")
