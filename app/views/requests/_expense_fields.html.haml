@@ -1,6 +1,6 @@
 %tr.nested-fields
   %td
-    = f.input :subject, :label => false
+    = f.input :subject, :label => false, :collection => @subjects, :include_blank => false
   %td
     = f.input :description, :label => false
   - if can? :submit, f.object.request

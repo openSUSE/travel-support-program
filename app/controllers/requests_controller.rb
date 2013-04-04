@@ -2,6 +2,7 @@ class RequestsController < InheritedResources::Base
   respond_to :html, :js, :json
   skip_load_resource :only => [:index]
   helper_method :request_states_collection
+  before_filter :load_subjects
 
   def create
     @request ||= Request.new(params[:request])
@@ -27,5 +28,9 @@ class RequestsController < InheritedResources::Base
 
   def request_states_collection
     Request.state_machines[:state].states.map {|s| [ s.human_name, s.value] }
+  end
+
+  def load_subjects 
+    @subjects = RequestExpenseSubject.all.map(&:name)
   end
 end

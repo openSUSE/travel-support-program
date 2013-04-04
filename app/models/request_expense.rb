@@ -15,7 +15,7 @@ class RequestExpense < ActiveRecord::Base
 
   delegate :reimbursement, :to => :request, :prefix => false
 
-  validates :request, :presence => true
+  validates :request, :subject, :presence => true
   validates :estimated_amount, :estimated_currency, :presence => true, :if => "request.submitted?"
   validates :approved_amount, :approved_currency, :presence => true, :if => "request.approved?"
   validates :total_amount, :presence => true, :if => "request.reimbursement && request.reimbursement.tsp_pending?"

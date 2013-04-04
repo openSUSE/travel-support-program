@@ -2,7 +2,7 @@ require 'spec_helper'
 #require 'ruby-debug'
 
 feature "Requests", "" do
-  fixtures :events, :users, :user_profiles
+  fixtures :events, :users, :user_profiles, :request_expense_subjects
 
   scenario "Full request process" do
     sign_in_as_user(users(:luke))
@@ -12,13 +12,13 @@ feature "Requests", "" do
     # Request creation
     page.should have_content "New request"
     fill_in "request_description", :with => "I need to go because a ghost told me to do it"
-    fill_in "request_expenses_attributes_0_subject", :with => "Gas"
+    select "Gas", :from => "request_expenses_attributes_0_subject"
     fill_in "request_expenses_attributes_0_description", :with => "Gas"
     fill_in "request_expenses_attributes_0_estimated_amount", :with => "100"
     fill_in "request_expenses_attributes_0_estimated_currency", :with => "EUR"
     click_link "add expense"
     within(:xpath, "//tr[@class='nested-fields'][last()]") do
-      find('input[name$="[subject]"]').set "Droid rental"
+      find('select[name$="[subject]"]').set "Droid rental"
       find('input[name$="[description]"]').set "R2D2"
       #find('input[name$="[estimated_amount]"]').set "50"
       #find('input[name$="[estimated_currency]"]').set "EUR"
