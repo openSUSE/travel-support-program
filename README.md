@@ -38,7 +38,8 @@ $ git clone https://github.com/openSUSE/travel-support-program
 $ cd travel-support-program
 $ vi Gemfile # edit Gemfile to uncomment your favorite database driver
 $ bundle
-$ cp config/database.sample.yml config/database.yml
+$ cp config/database.example.yml config/database.yml
+$ cp config/site.example.yml config/site.yml
 $ rake db:create db:migrate db:seed
 $ rails s
 ```
