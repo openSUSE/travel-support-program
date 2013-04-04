@@ -42,7 +42,7 @@
             %ul.nav.nav-list
               %li.nav-header= t(:sidebar)
               - if user_signed_in?
-                = render "layouts/sidebar_#{current_role}"
+                = render "layouts/sidebar"
               - else
                 %li= link_to t(:events), events_path
         .span9

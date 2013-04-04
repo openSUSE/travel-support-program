@@ -92,4 +92,14 @@ module ApplicationHelper
       request_reimbursement_url(machine.request)
     end
   end
+
+  def menu_path_to(machine_class)
+    helper = machine_class.model_name.tableize + "_path"
+    states = machine_class.states_assigned_to(current_role)
+    if states.size == 1
+      send(helper, :q => {:state_eq => states.first})
+    else
+      send helper
+    end
+  end
 end
