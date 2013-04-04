@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'ruby-debug'
+#require 'ruby-debug'
 
 describe Reimbursement do
   fixtures :users, :user_profiles, :events, :requests, :request_expenses, :state_transitions
