@@ -45,6 +45,9 @@ gem 'daemons'
 gem 'delayed_job_active_record'
 # As gem is not updated since Jan-2012, git version in order to use not-so-new features as YARD integration.
 gem "state_machine", :git => "https://github.com/pluginaweek/state_machine"
+# Added to avoid an error in every rake execution caused by lib/tasks/doc.rake
+# (at least until we figure out a cleaner solution)
+gem "yard"
 
 group :production do
   gem 'exception_notification'
@@ -52,7 +55,6 @@ end
 
 group :development do
   gem "rspec-rails"
-  gem "yard"
   gem "yard-activerecord"
   gem 'ruby-graphviz'
   gem "redcarpet", :require => false
