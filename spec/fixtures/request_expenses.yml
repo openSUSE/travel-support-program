@@ -17,7 +17,7 @@ luke_for_yavin_droid:
 
 luke_for_yavin_hotel:
   request: luke_for_yavin
-  subject: "Hotel"
+  subject: "Lodging"
   estimated_amount: 80
   estimated_currency: "EUR"
   approved_amount: 50
