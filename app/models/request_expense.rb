@@ -25,7 +25,7 @@ class RequestExpense < ActiveRecord::Base
   
   # Convenience method that simply aliases approved_currency since currency
   # cannot be changed after approval
-  def total_currency; approved_currency; end
+  def total_currency; estimated_currency; end
   # (see #total_currency)
   def authorized_currency; approved_currency; end
 

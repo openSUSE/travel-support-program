@@ -140,4 +140,15 @@ module ApplicationHelper
     end
     flash_messages.join("\n").html_safe
   end
+
+  # Currency codes that can be selected for a given field
+  #
+  # @param [#to_s]  field  Name of the field as specified in the site.yml file,
+  #            like 'estimated' or 'approved'
+  # @return [Array]  Array with the currency codes
+  def currencies_for_select(field)
+    currencies = TravelSupportProgram::Config.setting("currencies_for_#{field}")
+    currencies ||= I18n.translate(:currencies).keys.sort
+  end
+
 end

@@ -9,6 +9,9 @@ common: &common
     - Bus
     - Lodging
     - Other
+  currencies_for_approved:
+    - EUR
+    - USD
 
 production:
   <<: *common
