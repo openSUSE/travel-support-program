@@ -10,18 +10,26 @@ class HasStateMailer < ActionMailer::Base
   end
 
   def self.notify_state(machine, roles)
-    HasStateMailer.delay.state(machine.user.email,
-                                   machine,
-                                   machine.human_state_name,
-                                   machine.state_updated_at)
+    HasStateMailer.notify(:state, machine.user.email,
+                                  machine,
+                                  machine.human_state_name,
+                                  machine.state_updated_at)
     roles.each do |role|
       User.with_role(role).each do |u|
-        HasStateMailer.delay.state(u.email,
-                                     machine,
-                                     machine.human_state_name,
-                                     machine.state_updated_at)
+        HasStateMailer.notify(:state, u.email,
+                                      machine,
+                                      machine.human_state_name,
+                                      machine.state_updated_at)
       end
     end
     true
+  end
+
+  def self.notify(method, *args)
+   if TravelSupportProgram::Config.setting(:async_emails)
+      HasStateMailer.delay.send(method, *args)
+    else
+      HasStateMailer.send(method, *args).deliver
+    end
   end
 end
