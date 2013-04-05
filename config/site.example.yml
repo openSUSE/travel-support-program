@@ -21,6 +21,7 @@ development:
 
 test:
   <<: *common
+  async_emails: false
   request_expense_subjects:
     - Gas
     - Droid rental
