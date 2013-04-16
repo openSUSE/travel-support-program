@@ -6,6 +6,9 @@ class StateTransition < ActiveRecord::Base
   before_create :fire_state_event
   before_update :prevent_update
 
+  scope :oldest_first, order("created_at asc")
+  scope :newest_first, order("created_at desc")
+
   def before_update
     false
   end

@@ -1,0 +1,9 @@
+- transitions = resource.transitions.newest_first
+%ul
+  = render transitions[0,1]
+  %li
+    = collapse_link "history"
+    = t(:oldest_entries)
+    %blockquote#history.collapse
+      %ul
+        = render transitions[1..-1]

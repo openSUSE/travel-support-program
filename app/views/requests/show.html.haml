@@ -7,12 +7,9 @@
     = render @request.event
   = r.association :user do
     = render @request.user
-  = r.attribute :state do
-    = collapse_link "history"
-    = timestamped_state(@request)
-    %blockquote#history.collapse
-      %ul
-        = render @request.transitions
+  = r.attribute :state
+  = r.attribute :transactions do
+    = render "transitions_list", :locals => {:resource => @request}
 
   - if @request.can_have_reimbursement?
     = r.association :reimbursement do
