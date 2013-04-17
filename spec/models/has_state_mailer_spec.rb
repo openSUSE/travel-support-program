@@ -11,8 +11,8 @@ describe HasStateMailer do
       @mail = ActionMailer::Base.deliveries.last
     end
 
-    it "should include state in the mail subject" do
-      @mail.subject.should include @request.human_state_name
+    it "should include state in the mail body" do
+      @mail.body.encoded.should include @request.human_state_name
     end
 
     it "should include request url in the mail body" do
@@ -29,7 +29,7 @@ describe HasStateMailer do
       end
 
       it "should include state in the mail subject" do
-        @mail.subject.should include @reimbursement.human_state_name
+        @mail.body.encoded.should include @reimbursement.human_state_name
       end
 
       it "should include request url in the mail body" do
