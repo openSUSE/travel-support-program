@@ -9,10 +9,6 @@ module TravelSupportProgram
 
         validates :user, :presence => true
 
-        state_machine :state do
-          before_transition :set_state_updated_at
-        end
-
         @assigned_states = {}
         @assigned_roles = {}
       end
