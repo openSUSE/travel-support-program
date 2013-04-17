@@ -1,6 +1,3 @@
 TravelSupportProgram::Config.init(Rails.env)
 
-TravelSupportProgram::Application.configure do
-  config.action_mailer.default_url_options ||= {:host => TravelSupportProgram::Config.setting(:email_base_url)}
-end
-
+ActionMailer::Base.default_url_options = TravelSupportProgram::Config.setting(:email_default_url_options).symbolize_keys
