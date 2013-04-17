@@ -5,13 +5,12 @@ module TravelSupportProgram
         # Requester, that is, the user asking for help.
         belongs_to :user
         # Transitions are logged as StateTransition records
-        has_many :transitions, :as => :machine, :class_name => "StateTransition"
+        has_many :transitions, :as => :machine, :class_name => "StateTransition", :inverse_of => :machine
 
         validates :user, :presence => true
 
         state_machine :state do
           before_transition :set_state_updated_at
-          after_transition :notify_state
         end
 
         @assigned_states = {}

@@ -5,6 +5,13 @@
             :date => (l(@updated_at) rescue "...")) %>
 </p>
 
+<p>
+<%= t(:state_transition_title_line, :date => l(@transition.created_at, :format => :short), :event => t("activerecord.state_machines.events.#{@transition.state_event}"), :user => @transition.user.nickname) %>
+<%= t(:with_notes_below) %>
+</p>
+
+<p><%= @transition.notes %></p>
+
 <p><%= t(:visit_machine) %><br/><%= link_to(*[machine_url(@machine)]*2) %></p>
 
 <p>--<br>

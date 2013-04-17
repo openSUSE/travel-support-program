@@ -6,7 +6,8 @@ class HasStateMailer < ActionMailer::Base
     @machine = state_machine
     @state_name = state_name
     @updated_at = state_updated_at
-    mail(:to => to,  :subject => t(:mailer_subject_state, :type => @machine.class.model_name, :state => state_name))
+    @transition = @machine.transitions.newest_first.first
+    mail(:to => to,  :subject => t(:mailer_subject_state, :type => @machine.class.model_name, :id => @machine.id))
   end
 
   def self.notify_state(machine, roles)
