@@ -73,6 +73,8 @@ GEM
     commonjs (0.2.6)
     daemons (1.1.9)
     database_cleaner (0.9.1)
+    date_validator (0.6.4)
+      activemodel (>= 3)
     delayed_job (3.0.5)
       activesupport (~> 3.0)
     delayed_job_active_record (0.3.3)
@@ -248,6 +250,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   daemons
   database_cleaner
+  date_validator
   delayed_job_active_record
   devise
   exception_notification

@@ -10,6 +10,9 @@ class Event < ActiveRecord::Base
   attr_accessible :name, :description, :start_date, :end_date, :url, :country_code, :validated
   has_many :requests, :inverse_of => :event
 
+  validates :name, :start_date, :end_date, :country_code, :presence => true
+  validates :end_date, :date => {:after_or_equal_to => :start_date }
+
   # Checks whether the event can be freely updated or destroyed by all users.
   #
   # @return [Boolean] true if any user can modify the object, false if only

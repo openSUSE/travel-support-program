@@ -21,6 +21,11 @@
 window.init_page = ->
   $('input.dpicker').datepicker()
 
+  $('#event_end_date.dpicker').datepicker "setStartDate", $('#event_start_date.dpicker').val()
+
+  $('#event_start_date.dpicker').datepicker().on "changeDate", (date) ->
+    $('#event_end_date.dpicker').datepicker "setStartDate", $('#event_start_date.dpicker').val()
+
 window.build_dialog = (selector, content) ->
   # Close it and remove content if it's already open
   $("#" + selector).modal 'hide'
