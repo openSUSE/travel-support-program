@@ -15,7 +15,7 @@ feature "Requests", "" do
     select "Gas", :from => "request_expenses_attributes_0_subject"
     fill_in "request_expenses_attributes_0_description", :with => "Gas"
     fill_in "request_expenses_attributes_0_estimated_amount", :with => "100"
-    fill_in "request_expenses_attributes_0_estimated_currency", :with => "EUR"
+    select "EUR", :from => "request_expenses_attributes_0_estimated_currency"
     click_link "add expense"
     within(:xpath, "//tr[@class='nested-fields'][last()]") do
       find('select[name$="[subject]"]').set "Droid rental"
@@ -37,7 +37,7 @@ feature "Requests", "" do
     click_link "Edit"
     page.should have_content "Edit request"
     fill_in "request_expenses_attributes_1_estimated_amount", :with => "50"
-    fill_in "request_expenses_attributes_1_estimated_currency", :with => "EUR"
+    select "EUR", :from => "request_expenses_attributes_1_estimated_currency"
     click_button "Update request"
     page.should have_content "request was successfully updated"
 
@@ -61,9 +61,9 @@ feature "Requests", "" do
     click_link "Edit"
     page.should have_content "Edit request"
     fill_in "request_expenses_attributes_0_approved_amount", :with => "60"
-    fill_in "request_expenses_attributes_0_approved_currency", :with => "EUR"
+    select "EUR", :from => "request_expenses_attributes_0_approved_currency"
     fill_in "request_expenses_attributes_1_approved_amount", :with => "0"
-    fill_in "request_expenses_attributes_1_approved_currency", :with => "EUR"
+    select "EUR", :from => "request_expenses_attributes_1_approved_currency"
     click_button "Update request"
     page.should have_content "request was successfully updated"
 
