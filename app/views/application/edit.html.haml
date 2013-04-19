@@ -1,4 +1,3 @@
 - model_class = resource.class
-.page-header
-  %h1=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human
+= content_for :page_header, t('.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human)
 = render :partial => "form"

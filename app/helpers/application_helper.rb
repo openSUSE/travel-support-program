@@ -151,4 +151,8 @@ module ApplicationHelper
     currencies ||= I18n.translate(:currencies).keys.sort
   end
 
+  def themed(filename)
+    theme = TravelSupportProgram::Config.setting("theme")
+    theme.blank? ? filename : "#{filename}-bento"
+  end
 end

@@ -15,7 +15,6 @@
 #= require twitter/bootstrap
 #= require bootstrap-datepicker
 #= require cocoon
-#= require_tree .
 #
 
 window.init_page = ->

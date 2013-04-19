@@ -1,0 +1,26 @@
+.row-fluid#subheader
+  .span6
+  .span6.text-right
+    - if user_signed_in?
+      = link_to t(:signed_in_as, :nickname => current_user.nickname), edit_user_registration_path
+      |
+      = link_to t(:logout), destroy_user_session_path, :method => :delete
+    - else
+      = link_to t(:sign_up), new_user_registration_path
+      |
+      = link_to t(:login), new_user_session_path, :id => "login-trigger"
+      #login-form
+        = form_tag("A", :method => :post, :id => 'login_form', :enctype => 'application/x-www-form-urlencoded') do
+          %p
+            = hidden_field_tag(:url, "") #"#{@return_to_host}#{@return_to_path}")
+            = hidden_field_tag(:context, 'default')
+            = hidden_field_tag(:proxypath, 'reserve')
+            = hidden_field_tag(:message, 'Please log in')
+            = hidden_field_tag(:return_to_path, "")#)@return_to_path)
+            = label_tag(:username, 'Username')
+            = text_field_tag(:username, '')
+          %p
+            = label_tag(:password, 'Password')
+            = password_field_tag(:password, '')
+          %p= submit_tag('Login', :onclick => 'fillEmptyFields();')
+          %p.slim-footer= link_to('Cancel', '#', id: 'close-login')

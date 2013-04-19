@@ -1,0 +1,24 @@
+/*
+ *= require bootstrap-datepicker
+*/
+
+@import "twitter/bootstrap/bootstrap";
+@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings.png");
+@iconWhiteSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings-white.png");
+
+@import "bento/bootstrap_variables.css.less";
+@import "bento/bootstrap_overrides.css.less";
+@import "bento/global-navigation.css.less";
+@import "bento/login-form.css.less";
+
+blockquote.collapse {
+  margin-bottom: 0px;
+  p {
+    font-size: @baseFontSize;
+    line-height: @baseLineHeight;
+  }
+}
+

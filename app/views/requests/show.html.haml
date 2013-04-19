@@ -1,6 +1,5 @@
 - model_class = Request
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human
+= content_for :page_header, t('.title', :default => model_class.model_name.human)
 
 = show_for @request do |r|
   = r.association :event do
