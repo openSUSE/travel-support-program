@@ -3,11 +3,17 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  if TravelSupportProgram::Config.setting(:auth_method) == "opensuse"
+    devise :opensuse_authenticatable
+  else
+    devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+    attr_accessible :password, :password_confirmation, :remember_me, :reset_password_token
+  end
+
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :reset_password_token
+  attr_accessible :email
   attr_accessible :nickname, :locale
   has_one :profile, :class_name => "UserProfile"
 
@@ -25,4 +31,12 @@ class User < ActiveRecord::Base
     UserProfile.with_role(name).map(&:user)
   end
 
+  def self.find_or_create_from_opensuse(username, email)
+    if user = find_by_nickname(username)
+      update_all({:email => email}, {:id => user.id}) if user.email != email
+    else
+      user = create(nickname: username, email: email)
+    end
+    user
+  end
 end

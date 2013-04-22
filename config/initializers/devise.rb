@@ -1,3 +1,4 @@
+require 'devise/devise_opensuse_authenticatable'
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -237,4 +238,9 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
+
+  # ==> OpenSUSE authenticatable configuration
+  # config.opensuse_test_mode = true
+  # config.opensuse_test_username = "johndoe"
+  # config.opensuse_test_email = "johndoe@example.com"
 end

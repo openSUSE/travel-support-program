@@ -155,4 +155,12 @@ module ApplicationHelper
     theme = TravelSupportProgram::Config.setting("theme")
     theme.blank? ? filename : "#{filename}-bento"
   end
+
+  def opensuse_logout_url
+    "#{TravelSupportProgram::Config.setting('opensuse_logout_page')}?%22#{@return_to_host}%22"
+  end
+
+  def opensuse_register_url
+    "#{TravelSupportProgram::Config.setting('opensuse_register_page')}?%22#{@return_to_host}/#{@return_to_path}%22"
+  end
 end
