@@ -10,8 +10,8 @@ module TravelSupportProgram
       end
     end
 
-    def self.setting(key)
-      @@config[key.to_s]
+    def self.setting(*keys)
+      keys.inject(@@config) {|val, k| val.kind_of?(Hash) ? val[k.to_s] : nil}
     end
   end
 end
