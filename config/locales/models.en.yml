@@ -12,6 +12,8 @@ en:
         invalid: "is unknown"
         invalid_event: "cannot run the transition when %{state}"
         invalid_transition: "cannot run the transition via %{event}"
+      request:
+        only_one_active: "another request already exists for the same event and user"
 
     models:
       event: "event"

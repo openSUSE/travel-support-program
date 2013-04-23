@@ -18,6 +18,14 @@ class Request < ActiveRecord::Base
 
   validates :event, :presence => true
   validates_associated :expenses
+  validate :only_one_active_request, :if => :active?
+
+  scope :active, where(["state <> ?", 'canceled'])
+  scope :in_conflict_with, lambda { |req|
+    others = active.where(user_id: req.user_id, event_id: req.event_id)
+    others = others.where(["id <> ?", req.id]) if req.id
+    others
+  }
 
   # Automatic yardoc+graphviz generator is confused by the :unless parameter, so
   # please simply ignore the unless -> has_no_expenses states in the resulting drawing
@@ -100,6 +108,14 @@ class Request < ActiveRecord::Base
     can_have_reimbursement? and (reimbursement.nil? || reimbursement.new_record?)
   end
 
+  # Check wheter the request is active (currently, 'active' means any state
+  # except canceled).
+  #
+  # @return [Boolean] if the request is active
+  def active?
+    not canceled?
+  end
+
   # Summarizes one of the xxx_amount attributes from the request's expenses grouping
   # it by currency.
   #
@@ -119,5 +135,13 @@ class Request < ActiveRecord::Base
     nonils = grouped.each {|k,v| v.delete_if {|i| i.send(:"#{attr}_amount").nil?}}.delete_if {|k,v| v.empty?}
     unordered = nonils.map {|k,v| [k, v.sum(&:"#{attr}_amount")] }
     ActiveSupport::OrderedHash[ unordered.sort_by(&:first) ]
+  end
+
+  protected
+
+  def only_one_active_request
+    if Request.in_conflict_with(self).count > 0
+      errors.add(:event_id, I18n.t("activerecord.errors.request.only_one_active"))
+    end
   end
 end

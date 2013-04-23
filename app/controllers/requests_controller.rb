@@ -14,8 +14,13 @@ class RequestsController < InheritedResources::Base
     @request ||= Request.new(params[:request])
     @request.event = Event.find(params[:event_id])
     @request.user = current_user
-    @request.expenses.build
-    new!
+    if previous = Request.in_conflict_with(@request).first
+      flash[:warning] = I18n.t(:redirect_to_previous_request)
+      redirect_to previous
+    else
+      @request.expenses.build
+      new!
+    end
   end
 
   protected

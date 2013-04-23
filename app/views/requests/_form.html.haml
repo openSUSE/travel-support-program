@@ -1,6 +1,8 @@
 %strong.label= Request.human_attribute_name(:event)
 %br
 = render resource.event
+- unless resource.errors[:event_id].empty?
+  %div.alert.alert-error= resource.errors[:event_id].join("<br>")
 
 %strong.label= t(:general_info)
 %br
