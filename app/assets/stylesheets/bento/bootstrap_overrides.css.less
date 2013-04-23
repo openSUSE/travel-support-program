@@ -57,6 +57,7 @@ h2 small { font-size: @baseFontSize * 1.20; }
 #main, .well {
   background-color: @wellBackground;
   padding: @bentoWellPadding;
+  padding-top: 0px;
   border: 1px solid @bentoWellBorderColor;
   .border-radius(@baseBorderRadius);
   box-shadow: 0px 1px 3px @bentoShadowColor;
@@ -67,5 +68,29 @@ h2 small { font-size: @baseFontSize * 1.20; }
     &:hover {
       color: @bentoGreen;
     }
+
+    // Avoid overwriting good bootstrap defaults
+    &.btn { color: @grayDark; }
+    &.btn-primary, &.btn-warning, &.btn-danger, &.btn-success,
+    &.btn-info, &.btn-inverse {
+      color: @white
+    }
   }
+
+  .nav-list {
+    padding-left: 5px;
+    padding-right: 5px;
+
+    .nav-header {
+      background:@white image-url('bento/gradient-light.png') repeat-x scroll 0 -25px;
+      color: @grayDarker;
+      margin-bottom: 5px;
+      text-transform: none;
+      font-size: @baseFontSize;
+      font-weight: bold;
+      margin: 1px -14px 5px;
+      border-bottom: 1px solid @bentoWellBorderColor;
+    }
+  }
+
 }
