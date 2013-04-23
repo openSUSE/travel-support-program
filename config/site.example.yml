@@ -1,9 +1,18 @@
 common: &common
+
+  async_emails: true
   email_from: "Travel Support Program <noreply@example.com>"
   email_footer: "Travel Support Program"
   email_default_url_options:
     host: 'localhost:3000'
-  async_emails: true
+
+  opensuse_auth_proxy:
+    enabled: false
+    proxy_base_url: "https://connect.opensuse.org"
+    connect_api:
+      api_key: "10ec755da3117f3048e0e2dd6c2cb30a2fa2c118"
+      base_url: "https://connect.opensuse.org/services/api/rest"
+
   request_expense_subjects:
     - Plane
     - Train

@@ -156,11 +156,15 @@ module ApplicationHelper
     theme.blank? ? filename : "#{filename}-bento"
   end
 
+  def opensuse_login_url
+    TravelSupportProgram::Config.setting(:opensuse_auth_proxy, :proxy_base_url) + "/ICSLogin/auth-up"
+  end
+
   def opensuse_logout_url
-    "#{TravelSupportProgram::Config.setting('opensuse_logout_page')}?%22#{@return_to_host}/cmd/ICSLogout%22"
+    TravelSupportProgram::Config.setting(:opensuse_auth_proxy, :proxy_base_url) + "/ICHAINLogout/?%22#{@return_to_host}/cmd/ICSLogout%22"
   end
 
   def opensuse_register_url
-    "#{TravelSupportProgram::Config.setting('opensuse_register_page')}?%22#{@return_to_host}/#{@return_to_path}%22"
+    TravelSupportProgram::Config.setting(:opensuse_auth_proxy, :proxy_base_url) + "/ICSLogin/?%22#{@return_to_host}/#{@return_to_path}%22"
   end
 end

@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  if TravelSupportProgram::Config.setting(:auth_method) == "opensuse"
+  if TravelSupportProgram::Config.setting(:opensuse_auth_proxy, :enabled)
     devise :opensuse_authenticatable
   else
     devise :database_authenticatable, :registerable,

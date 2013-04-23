@@ -2,7 +2,7 @@
   .sign_in
     %h2= t(:sign_in)
 
-    - if TravelSupportProgram::Config.setting(:auth_method) == "opensuse"
+    - if TravelSupportProgram::Config.setting(:opensuse_auth_proxy, :enabled)
       = render "devise/sessions/new-opensuse"
     - else
       = render "devise/sessions/new-database"
