@@ -2,8 +2,12 @@ require 'devise/strategies/base'
 
 class Devise::Strategies::OpensuseAuthenticatable < Devise::Strategies::Authenticatable
 
+  def store?
+    super && !mapping.to.skip_session_storage.include?(:opensuse_auth)
+  end
+
   def valid?
-    true
+    !request.env['HTTP_X_USERNAME'].blank?
   end
 
   def authenticate!

@@ -157,7 +157,7 @@ module ApplicationHelper
   end
 
   def opensuse_logout_url
-    "#{TravelSupportProgram::Config.setting('opensuse_logout_page')}?%22#{@return_to_host}%22"
+    "#{TravelSupportProgram::Config.setting('opensuse_logout_page')}?%22#{@return_to_host}/cmd/ICSLogout%22"
   end
 
   def opensuse_register_url
