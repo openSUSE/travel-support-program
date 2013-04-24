@@ -2,7 +2,7 @@
   .span6
   .span6.text-right
     - if user_signed_in?
-      = link_to t(:signed_in_as, :nickname => current_user.nickname), ""
+      = link_to t(:signed_in_as, :nickname => current_user.nickname), profile_path
       |
       = link_to t(:logout), opensuse_logout_url
     - else

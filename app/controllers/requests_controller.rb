@@ -23,6 +23,12 @@ class RequestsController < InheritedResources::Base
     end
   end
 
+  def show
+    # We don't want to break the normal process if something goes wrong
+    resource.user.profile.refresh rescue nil
+    show!
+  end
+
   protected
 
   def collection

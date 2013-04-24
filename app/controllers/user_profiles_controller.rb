@@ -28,6 +28,7 @@ class UserProfilesController < ApplicationController
   
   def set_profile
     @profile = current_user.find_profile
+    @profile.refresh
   end
 
   # To prevent users changing their own role

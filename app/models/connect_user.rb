@@ -2,9 +2,9 @@ class ConnectUser
 
   def initialize(login)
     begin
-      api_conf = TravelSupportProgram::Config.setting(:opensuse_auth_proxy, :connect_api)
+      api_conf = TravelSupportProgram::Config.setting(:opensuse_auth_proxy, :connect)
       api_key = api_conf["api_key"]
-      url = api_conf["base_url"] + "/json"
+      url = api_conf["base_url"] + "/services/api/rest/json"
       method = "connect.user.attribute.get"
       elgg = Elgg.new(url, api_key)
       @attributes = ActiveSupport::JSON.decode(elgg.get(method: method, login: login, attribute: "*"))["result"]["all"]
@@ -28,4 +28,9 @@ class ConnectUser
       super
     end
   end
+
+  def self.profile_url_for(login)
+    TravelSupportProgram::Config.setting(:opensuse_auth_proxy, :connect, :base_url) + "/pg/profile/#{login}"
+  end
+
 end

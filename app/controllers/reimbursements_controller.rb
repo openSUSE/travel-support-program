@@ -14,4 +14,10 @@ class ReimbursementsController < InheritedResources::Base
       redirect_to edit_resource_path
     end
   end
+
+  def show
+    # We don't want to break the normal process if something goes wrong
+    resource.user.profile.refresh rescue nil
+    show!
+  end
 end

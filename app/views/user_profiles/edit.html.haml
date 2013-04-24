@@ -1,22 +1,23 @@
 = content_for :page_header, current_user.nickname
-= render 'profile_menu'
+= render 'profile_menu' unless TravelSupportProgram::Config.setting(:opensuse_auth_proxy, :enabled)
+= profile_info
 = simple_form_for @profile, :url => user_profile_path, :as => :user do |f|
   .row-fluid
     .span6
-      = f.input :full_name
-      = f.input :country_code, :as => :country
-      = f.input :location
-      = f.input :passport
-      = f.input :alternate_id_document
+      = profile_input f, :full_name
+      = profile_input f, :country_code, :as => :country, :input_html => {:autocomplete => "off"}
+      = profile_input f, :location
+      = profile_input f, :passport
+      = profile_input f, :alternate_id_document
     .span6
-      = f.input :birthday, :as => :dpicker
-      = f.input :phone_number, :as => :string
-      = f.input :second_phone_number, :as => :string
-      = f.input :website, :as => :url
-      = f.input :blog, :as => :url
+      = profile_input f, :birthday, :as => :dpicker
+      = profile_input f, :phone_number, :as => :string
+      = profile_input f, :second_phone_number, :as => :string
+      = profile_input f, :website, :as => :url
+      = profile_input f, :blog, :as => :url
   .row-fluid
     .span12
-      = f.input :description, :as => :text, :input_html => {:rows => 2, :class => "input-xlarge"}
+      = profile_input f, :description, :as => :text, :input_html => {:rows => 2, :class => "input-xlarge"}
   .row-fluid
     .span12
       .form-actions

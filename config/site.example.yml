@@ -9,9 +9,9 @@ common: &common
   opensuse_auth_proxy:
     enabled: false
     proxy_base_url: "https://connect.opensuse.org"
-    connect_api:
+    connect:
       api_key: "10ec755da3117f3048e0e2dd6c2cb30a2fa2c118"
-      base_url: "https://connect.opensuse.org/services/api/rest"
+      base_url: "https://connect.opensuse.org"
 
   request_expense_subjects:
     - Plane
