@@ -16,13 +16,27 @@ en:
         only_one_active: "another request already exists for the same event and user"
 
     models:
-      event: "event"
-      request: "request"
-      request_expense: "expense"
-      state_transition: "state transition"
-      user: "user"
-      user_profile: "profile"
-      reimbursement: "reimbursement"
+      event:
+        one: "event"
+        other: "events"
+      request:
+        one: "request"
+        other: "requests"
+      request_expense:
+        one: "expense"
+        other: "expenses"
+      state_transition:
+        one: "state transition"
+        other: "state transitions"
+      user:
+        one: "user"
+        other: "users"
+      user_profile:
+        one: "profile"
+        other: "profiles"
+      reimbursement:
+        one: "reimbursement"
+        other: "reimbursements"
 
     attributes:
       event:
