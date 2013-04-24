@@ -114,7 +114,7 @@ en:
         blog: "blog"
         country: "country"
         country_code: "country"
-        description: "description"
+        description: "brief description"
         full_name: "full name"
         passport: "passport"
         phone_number: "phone number"
