@@ -7,7 +7,7 @@ class Devise::Strategies::OpensuseAuthenticatable < Devise::Strategies::Authenti
   end
 
   def valid?
-    !request.env['HTTP_X_USERNAME'].blank?
+    ::Devise.opensuse_test_mode || !request.env['HTTP_X_USERNAME'].blank?
   end
 
   def authenticate!
