@@ -6,7 +6,9 @@ class UserProfile < ActiveRecord::Base
 
   after_initialize :set_default_attrs, :if => :new_record?
 
-  attr_accessible :country_code, :full_name, :phone_number, :user_role_id
+  attr_accessible :country_code, :full_name, :location, :passport,
+    :alternate_id_document, :birthday, :phone_number, :second_phone_number,
+    :website, :blog, :description, :user_role_id
 
   delegate :name, :to => :role, :prefix => true, :allow_nil => true
 
