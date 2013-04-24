@@ -12,6 +12,12 @@ en:
       edit: "Edit %{model}"
       new: "New %{model}"
 
+  bento:
+    downloads: "Downloads"
+    support: "Support"
+    community: "Community"
+    development: "Development"
+
   sidebar: "Options"
   new_request: "New request"
   requests: "Requests"
