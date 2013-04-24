@@ -109,12 +109,20 @@ en:
         sign_in_count: "sign in count"
         updated_at: "updated at"
       user_profile:
+        alternate_id_document: "alternate ID document"
+        birthday: "birthday"
+        blog: "blog"
         country: "country"
         country_code: "country"
+        description: "description"
         full_name: "full name"
+        passport: "passport"
         phone_number: "phone number"
+        location: "location"
+        second_phone_number: "second phone number"
         user: "user"
         user_id: "user"
+        website: "website"
 
     state_machines:
       events:

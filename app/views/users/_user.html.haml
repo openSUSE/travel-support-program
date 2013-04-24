@@ -2,12 +2,24 @@
   = collapse_link "user_details"
   = user.nickname
   %blockquote#user_details.collapse
-    = show_for user do |u|
-      = u.attribute :email
-    = show_for user.profile do |p|
-      = p.attribute :full_name
-      = p.attribute :phone_number
-      = p.attribute :country do
-        = country_label(user.profile.country_code)
+    .row-fluid
+      .span6
+        = show_for user.profile do |p|
+          = p.attribute :full_name
+          = p.attribute :country do
+            = country_label(user.profile.country_code)
+          = p.attribute :location
+          = p.attribute :passport
+          = p.attribute :alternate_id_document
+          = p.attribute :description
+      .span6
+        = show_for user do |u|
+          = u.attribute :email
+        = show_for user.profile do |p|
+          = p.attribute :phone_number
+          = p.attribute :second_phone_number
+          = p.attribute :website
+          = p.attribute :blog
+          = p.attribute :birthday
 - else
   = user.nickname
