@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130423162229) do
+ActiveRecord::Schema.define(:version => 20130425064435) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20130423162229) do
     t.boolean  "validated"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.boolean  "visa_letters"
   end
 
   create_table "reimbursement_attachments", :force => true do |t|
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20130423162229) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.datetime "state_updated_at"
+    t.boolean  "visa_letter"
   end
 
   add_index "requests", ["event_id"], :name => "index_requests_on_event_id"

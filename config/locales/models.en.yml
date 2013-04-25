@@ -45,6 +45,7 @@ en:
         country: "country"
         country_code: "country"
         url: "url"
+        visa_letters: "visa letters offered"
         start_date: "starts at"
         end_date: "ends at"
       reimbursement:
@@ -79,6 +80,7 @@ en:
         tsp_notes: "Travel Support Program notes"
         user: "user"
         user_id: "user"
+        visa_letter: "visa letter needed"
         incomplete_since: "incomplete since"
         submitted_since: "submitted since"
         approved_since: "approved since"

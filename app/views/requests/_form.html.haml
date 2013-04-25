@@ -9,6 +9,7 @@
 = simple_form_for resource do |f|
   .form-inputs.form-horizontal
     = f.hidden_field :event_id
+    = f.input :visa_letter if resource.visa_letter_allowed?
     = f.input :description, :input_html => {:rows => 3}
   .form-inputs.form-inline
     %strong.label= Request.human_attribute_name(:expenses)

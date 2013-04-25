@@ -14,7 +14,7 @@ class Request < ActiveRecord::Base
 
   accepts_nested_attributes_for :expenses, :reject_if => :all_blank, :allow_destroy => true
 
-  attr_accessible :event_id, :description, :requester_notes, :tsp_notes, :expenses_attributes
+  attr_accessible :event_id, :description, :requester_notes, :tsp_notes, :expenses_attributes, :visa_letter
 
   validates :event, :presence => true
   validates_associated :expenses
@@ -114,6 +114,13 @@ class Request < ActiveRecord::Base
   # @return [Boolean] if the request is active
   def active?
     not canceled?
+  end
+
+  # Check wheter the visa_letter attribute can be used
+  #
+  # @return [Boolean] true if the requester can ask for visa letter
+  def visa_letter_allowed?
+    event.try(:visa_letters)
   end
 
   # Summarizes one of the xxx_amount attributes from the request's expenses grouping

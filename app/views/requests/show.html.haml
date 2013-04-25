@@ -21,6 +21,7 @@
         - if can? :create, @request.build_reimbursement
           = link_to t(:create_reimbursement), request_reimbursement_path(@request), :method => :post
 
+  = r.attribute :visa_letter if @request.visa_letter_allowed?
   = r.attribute :description
 
   %strong.label= Request.human_attribute_name(:expenses)
