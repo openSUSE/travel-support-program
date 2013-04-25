@@ -85,10 +85,20 @@ module ApplicationHelper
   # @return [String] a list of space separated links
   def transition_links(machine)
     trans_path = resource_path + "/state_transitions/new.js?state_transition[state_event]="
-    machine.state_events.map do |event|
+    links = machine.state_events.map do |event|
       next unless can? event, machine
-      link_to t("activerecord.state_machines.events.#{event}"), trans_path + event.to_s, :remote => true, :class => 'btn'
-    end.join(" ").html_safe
+      content_tag(:li, link_to(t("activerecord.state_machines.events.#{event}"), trans_path + event.to_s, :remote => true))
+    end.compact
+    if links.empty?
+      ""
+    else
+      content_tag(:div,
+        link_to(t(:state_event).html_safe + " " + content_tag(:span, "", class: "caret"),
+          "#",
+          class: "btn dropdown-toggle", data: {toggle: "dropdown"}) +
+        content_tag(:ul, links.join("\n").html_safe, class: "dropdown-menu"),
+        class: "btn-group dropup")
+    end
   end
 
   # URL for accesing to a given request or reimbursement

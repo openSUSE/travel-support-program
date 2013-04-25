@@ -41,5 +41,6 @@ en:
   show_history: "view history"
   signed_in_as: "Signed in as %{nickname}"
   since: "(since %{date})"
+  state_event: "Action"
   state_transition_title_line: "At %{date}, %{user} did %{event} it"
   state_transition_details: "From %{from} to %{to}"
