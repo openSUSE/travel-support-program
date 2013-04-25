@@ -3,17 +3,24 @@
 
 = show_for resource do |r|
   .row-fluid
-    .span6
+    .span12
       = r.attribute :name
-      = r.attribute :country do
-        = country_label(resource.country_code)
+  .row-fluid
+    .span6
       = r.attribute :start_date
       = r.attribute :end_date
-      = r.attribute :description
+    .span6
+      = r.attribute :country do
+        = country_label(resource.country_code)
       = r.attribute :url do
         = link_to resource.url
-      - if user_signed_in? && can?(:validate, resource)
-        = r.attribute :validated
+  .row-fluid
+    .span12
+      = r.attribute :description
+  - if user_signed_in? && can?(:validate, resource)
+    .row-fluid
+      .span6= r.attribute :validated
+      .span6= r.attribute :visa_letters
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), collection_path, :class => 'btn'

@@ -7,7 +7,7 @@
 # and destroy the event.
 #
 class Event < ActiveRecord::Base
-  attr_accessible :name, :description, :start_date, :end_date, :url, :country_code, :validated
+  attr_accessible :name, :description, :start_date, :end_date, :url, :country_code, :validated, :visa_letters
   has_many :requests, :inverse_of => :event
 
   validates :name, :start_date, :end_date, :country_code, :presence => true
@@ -33,6 +33,6 @@ class Event < ActiveRecord::Base
   #
   # @return [Array] a list of the restricted attribute names as symbols
   def self.validation_attributes
-    [:validated]
+    [:validated, :visa_letters]
   end
 end

@@ -1,3 +1,3 @@
-%li= link_to t(:events), events_path
-%li= link_to t(:requests), menu_path_to(Request)
-%li= link_to t(:reimbursements), menu_path_to(Reimbursement)
+%li= link_to Event.model_name.human(count: 2), events_path
+%li= link_to Request.model_name.human(count: 2), menu_path_to(Request)
+%li= link_to Reimbursement.model_name.human(count: 2), menu_path_to(Reimbursement)

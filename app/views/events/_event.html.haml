@@ -12,4 +12,10 @@
         = e.attribute :end_date
         = e.attribute :url do
           = link_to event.url
-    = e.attribute :description
+    .row-fluid
+      .span12
+        = e.attribute :description
+    - if user_signed_in? && can?(:validate, event)
+      .row-fluid
+        .span6= e.attribute :validated
+        .span6= e.attribute :visa_letters
