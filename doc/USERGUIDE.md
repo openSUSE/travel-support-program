@@ -29,7 +29,7 @@ planning to spend the money. You can add as many expenses as needed, specifying
 the amount you are planning to spend on every one using the 'estimated
 amount/currency' column. Sometimes you will know the
 exact amount in advance and sometimes you will have to do an estimation.
-Once you get a reply from the Travel Support Member managers, you will see real
+Once you get a reply from the Travel Support Program managers, you will see real
 approved amount for every expense in the 'approved amount' column. If you
 finally accept the proposal, **you will only get the approved amount, not the
 estimated one**. Keep this in mind.
