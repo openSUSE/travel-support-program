@@ -259,21 +259,21 @@ notifications and also as a default filter on lists.</p>
       <pre class="lines">
 
 
+56
+57
+58
+59
+60
 61
 62
 63
 64
 65
 66
-67
-68
-69
-70
-71
-72</pre>
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_assign_state'>assign_state</span><span class='lparen'>(</span><span class='id identifier rubyid_state_name'>state_name</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_to'>to</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:to</span><span class='rbracket'>]</span>
@@ -360,12 +360,12 @@ notifications and also as a default filter on lists.</p>
       <pre class="lines">
 
 
-93
-94
-95</pre>
+88
+89
+90</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 93</span>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 88</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_roles_assigned_to'>roles_assigned_to</span><span class='lparen'>(</span><span class='id identifier rubyid_state'>state</span><span class='rparen'>)</span>
   <span class='ivar'>@assigned_roles</span><span class='lbracket'>[</span><span class='id identifier rubyid_state'>state</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -443,17 +443,17 @@ notifications and also as a default filter on lists.</p>
       <pre class="lines">
 
 
+74
+75
+76
+77
+78
 79
 80
-81
-82
-83
-84
-85
-86</pre>
+81</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 74</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_states_assigned_to'>states_assigned_to</span><span class='lparen'>(</span><span class='id identifier rubyid_role'>role</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_role'>role</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>UserRole</span><span class='rparen'>)</span>
@@ -473,7 +473,7 @@ notifications and also as a default filter on lists.</p>
 </div>
 
     <div id="footer">
-  Generated on Thu Apr  4 16:45:08 2013 by
+  Generated on Wed May  1 16:34:12 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>

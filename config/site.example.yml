@@ -1,5 +1,4 @@
 common: &common
-
   async_emails: true
   email_from: "Travel Support Program <noreply@example.com>"
   email_footer: "Travel Support Program"
@@ -13,6 +12,11 @@ common: &common
       api_key: "10ec755da3117f3048e0e2dd6c2cb30a2fa2c118"
       base_url: "https://connect.opensuse.org"
 
+  external_links:
+    - title: "openSUSE TSP"
+      url: "http://opensuse.org/openSUSE:Travel_Support_Program"
+    - title: "Application's Github"
+      url: "https://github.com/openSUSE/travel-support-program"
   request_expense_subjects:
     - Plane
     - Train
