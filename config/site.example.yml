@@ -4,6 +4,11 @@ common: &common
   email_default_url_options:
     host: 'localhost:3000'
   async_emails: true
+  external_links:
+    - title: "openSUSE TSP"
+      url: "http://opensuse.org/openSUSE:Travel_Support_Program"
+    - title: "Application's Github"
+      url: "https://github.com/openSUSE/travel-support-program"
   request_expense_subjects:
     - Plane
     - Train

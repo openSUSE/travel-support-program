@@ -45,6 +45,9 @@
                 = render "layouts/sidebar"
               - else
                 %li= link_to t(:events), events_path
+
+          = render "layouts/external_links"
+
         .span9
           = bootstrap_flash_messages
           = yield
