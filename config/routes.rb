@@ -32,6 +32,7 @@ TravelSupportProgram::Application.routes.draw do
 
   match 'profile' => 'user_profiles#edit', :as => :profile
   match 'profile/password' => 'user_profiles#password', :as => :profile_password
+  match 'pages/:action', :controller => 'pages'
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
@@ -72,7 +73,7 @@ TravelSupportProgram::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
-  root :to => 'events#index'
+  root :to => 'pages#userguide'
 
   # See how all your routes lay out with "rake routes"
 
