@@ -1,10 +1,11 @@
 = form_tag(opensuse_login_url, :method => :post, :id => 'login_form', :enctype => 'application/x-www-form-urlencoded') do
   %p
-    = hidden_field_tag(:url, "#{@return_to_host}#{@return_to_path}")
+    - return_path =  session["user_return_to"] || @return_to_path
+    = hidden_field_tag(:url, "#{@return_to_host}#{return_path}")
     = hidden_field_tag(:context, 'default')
     = hidden_field_tag(:proxypath, 'reserve')
     = hidden_field_tag(:message, 'Please log in')
-    = hidden_field_tag(:return_to_path, @return_to_path)
+    = hidden_field_tag(:return_to_path, return_path)
     = label_tag(:username, 'Username')
     = text_field_tag(:username, '')
   %p
