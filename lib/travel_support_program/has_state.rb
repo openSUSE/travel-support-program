@@ -5,7 +5,7 @@ module TravelSupportProgram
         # Requester, that is, the user asking for help.
         belongs_to :user
         # Transitions are logged as StateTransition records
-        has_many :transitions, :as => :machine, :class_name => "StateTransition", :inverse_of => :machine
+        has_many :transitions, :as => :machine, :class_name => "StateTransition"
 
         validates :user, :presence => true
 
