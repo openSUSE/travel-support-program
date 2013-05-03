@@ -120,7 +120,7 @@ class Request < ActiveRecord::Base
   #
   # @return [Boolean] true if the requester can ask for visa letter
   def visa_letter_allowed?
-    event.try(:visa_letters)
+    event.try(:visa_letters) == true
   end
 
   # Summarizes one of the xxx_amount attributes from the request's expenses grouping
