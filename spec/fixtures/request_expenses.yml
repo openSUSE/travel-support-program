@@ -22,3 +22,27 @@ luke_for_yavin_hotel:
   estimated_currency: "EUR"
   approved_amount: 50
   approved_currency: "EUR"
+
+wedge_for_yavin_gas:
+  request: wedge_for_yavin
+  subject: "Gas"
+  estimated_amount: 70
+  estimated_currency: "EUR"
+  approved_amount: 40
+  approved_currency: "EUR"
+
+wedge_for_party_gas:
+  request: wedge_for_party
+  subject: "Gas"
+  estimated_amount: 70
+  estimated_currency: "EUR"
+  approved_amount: 40
+  approved_currency: "EUR"
+
+luke_for_party_gas:
+  request: luke_for_party
+  subject: "Gas"
+  estimated_amount: 100
+  estimated_currency: "EUR"
+  approved_amount: 80
+  approved_currency: "EUR"
