@@ -36,13 +36,9 @@ wedge_for_party_gas:
   subject: "Gas"
   estimated_amount: 70
   estimated_currency: "EUR"
-  approved_amount: 40
-  approved_currency: "EUR"
 
 luke_for_party_gas:
   request: luke_for_party
   subject: "Gas"
   estimated_amount: 100
   estimated_currency: "EUR"
-  approved_amount: 80
-  approved_currency: "EUR"

@@ -1,11 +1,7 @@
 require 'spec_helper'
-require 'ruby-debug'
+# require 'ruby-debug'
 
 describe Request do
-  # TODO
-  # * Creation of correct StateTransition objects
-  # * assign_state
-  # * trying to submit incomplete requests
   fixtures :users, :user_profiles, :events, :requests, :request_expenses, :state_transitions
 
   describe "#visa_letter_allowed?" do
@@ -62,6 +58,70 @@ describe Request do
       request.reload
       request.expenses_sum(:approved).size.should == 2
       request.expenses_sum(:approved).first.should == ["AAA", amount]
+    end
+  end
+
+  context "during initial submission" do
+    before(:each) do
+      @deliveries = ActionMailer::Base.deliveries.size
+      @request = requests(:luke_for_party)
+    end
+
+    context "if expenses are incomplete" do
+      before(:each) do
+        @request.expenses.create(:estimated_amount => 33) # no currency specified
+        transition(@request, :submit, users(:luke)) rescue nil
+      end
+
+      it "should not be submitted" do
+        @request.reload.state.should == "incomplete"
+      end
+    end
+
+    context "if submission success" do
+      before(:each) do 
+        transition(@request, :submit, users(:luke))
+      end
+
+      it "should change the state" do
+        @request.reload.state.should == "submitted"
+      end
+
+      it "should notify requester and TSP users" do
+        ActionMailer::Base.deliveries.size.should == @deliveries + 2
+      end
+      
+      it "should create an state transition" do
+        trans = @request.transitions.last
+        trans.from.should == "incomplete"
+        trans.to.should == "submitted"
+        trans.state_event.should == "submit"
+      end
+
+      it "should allow TSP to roll back" do
+        transition(@request, :roll_back, users(:tspmember))
+        @request.state.should == "incomplete"
+        trans = @request.transitions.last
+        trans.from.should == "submitted"
+        trans.to.should == "incomplete"
+        trans.state_event.should == "roll_back"
+      end
+
+      it "should not allow TSP to approve with incomplete information" do
+        transition(@request, :approve, users(:tspmember)) rescue nil
+        @request.state.should == "submitted"
+        @request.reload.state.should == "submitted"
+      end
+
+      it "should allow TSP to approve" do
+        @request.expenses.each {|e| e.update_attributes(:approved_amount => 40, :approved_currency => "EUR") }
+        transition(@request, :approve, users(:tspmember))
+        @request.state.should == "approved"
+        trans = @request.transitions.reload.last
+        trans.from.should == "submitted"
+        trans.to.should == "approved"
+        trans.state_event.should == "approve"
+      end
     end
   end
 end
