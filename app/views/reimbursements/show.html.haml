@@ -9,7 +9,8 @@
     = render resource.user
   = r.attribute :request do
     = render parent
-  = r.attribute :state
+  = r.attribute :state do
+    = state_info(r.object)
   = r.attribute :transactions do
     = render "transitions_list", :locals => {:resource => @request}
   = r.attribute :description

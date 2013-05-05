@@ -34,6 +34,18 @@ module ApplicationHelper
     raw(msg)
   end 
 
+  # Outputs the state of a model instance with a help tooltip if needed
+  #
+  # @param [#state] r  the request, reimbursement or any other object with state
+  # @return [String] HTML output
+  def state_info(r)
+    msg = content_tag(:span, r.human_state_name, :class => r.state)
+    if r.state_updated_at.blank?
+      msg += " "
+      msg += content_tag(:span, "!", :title => t(:state_help), :class => "badge badge-warning with-tooltip")
+    end
+    raw(msg)
+  end 
   # Outputs a link with an icon inside (and visible no text)
   #
   # @param [String] name   a icon name from http://twitter.github.com/bootstrap/base-css.html#icons

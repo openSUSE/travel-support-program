@@ -43,6 +43,7 @@ en:
   signed_in_as: "Signed in as %{nickname}"
   since: "(since %{date})"
   state_event: "Action"
+  state_help: "State have never changed. If unsure about what it means, read the user guide."
   state_transition_title_line: "At %{date}, %{user} did %{event} it"
   state_transition_details: "From %{from} to %{to}"
   user_guide: "User guide"
