@@ -132,7 +132,7 @@ en:
         country_code: "country"
         description: "brief description"
         full_name: "full name"
-        passport: "passport"
+        passport: "passport number"
         phone_number: "phone number"
         location: "location"
         second_phone_number: "second phone number"
