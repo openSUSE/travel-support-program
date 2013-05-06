@@ -76,6 +76,15 @@ class Ability
           r.user == user && r.send("can_#{action}?")
         end
       end
+
+      # Final notes
+      can :read, FinalNote do |n|
+        n.machine.user == user
+      end
+      can :create, FinalNote do |n|
+        n.machine.user == user && n.machine.can_have_final_notes?
+      end
+
     #
     # TSP members permissions
     # -----------------------
@@ -116,6 +125,13 @@ class Ability
           r.send("can_#{action}?") && r.tsp_pending?
         end
       end
+
+      # Final notes
+      can :read, FinalNote
+      can :create, FinalNote do |n|
+        n.machine.can_have_final_notes?
+      end
+
     #
     # Administratives permissions
     # -----------------------
@@ -142,6 +158,10 @@ class Ability
           r.send("can_#{action}?") && r.tsp_approved?
         end
       end
+
+      # Final notes
+      can :read, FinalNote
+
     end
   end
 end
