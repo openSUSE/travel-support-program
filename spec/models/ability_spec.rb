@@ -66,6 +66,36 @@ describe Ability do
         it{ should_not be_able_to(:cancel, @reimbursement) }
       end
     end
+
+    context 'adding final notes to his own requests' do
+      it{ should_not be_able_to(:create, requests(:luke_for_party).final_notes.build) }
+      it{ should be_able_to(:create, requests(:luke_for_yavin).final_notes.build) }
+    end
+
+    context 'accessing final notes on his own requests' do
+      before(:each) do
+        @final_note = requests(:luke_for_yavin).final_notes.create(:body => "whatever")
+      end
+      
+      it{ should be_able_to(:read, @final_note) }
+      it{ should_not be_able_to(:destroy, @final_note) }
+      it{ should_not be_able_to(:update, @final_note) }
+    end
+
+    context "adding final notes to other's requests" do
+      it{ should_not be_able_to(:create, requests(:wedge_for_party).final_notes.build) }
+      it{ should_not be_able_to(:create, requests(:wedge_for_yavin).final_notes.build) }
+    end
+
+    context "accessing final notes on other's requests" do
+      before(:each) do
+        @final_note = requests(:wedge_for_yavin).final_notes.create(:body => "whatever")
+      end
+      
+      it{ should_not be_able_to(:read, @final_note) }
+      it{ should_not be_able_to(:destroy, @final_note) }
+      it{ should_not be_able_to(:update, @final_note) }
+    end
   end
 
   context 'when is a TSP member' do
@@ -152,6 +182,21 @@ describe Ability do
         end
       end
     end
+
+    context 'adding final final notes to requests' do
+      it{ should_not be_able_to(:create, requests(:luke_for_party).final_notes.build) }
+      it{ should be_able_to(:create, requests(:luke_for_yavin).final_notes.build) }
+    end
+
+    context 'accessing final notes on requests' do
+      before(:each) do
+        @final_note = requests(:luke_for_yavin).final_notes.create(:body => "whatever")
+      end
+      
+      it{ should be_able_to(:read, @final_note) }
+      it{ should_not be_able_to(:destroy, @final_note) }
+      it{ should_not be_able_to(:update, @final_note) }
+    end
   end
 
   context 'when is an administrative' do
@@ -237,6 +282,21 @@ describe Ability do
           end
         end
       end
+    end
+
+    context 'adding final final notes to requests' do
+      it{ should_not be_able_to(:create, requests(:luke_for_party).final_notes.build) }
+      it{ should_not be_able_to(:create, requests(:luke_for_yavin).final_notes.build) }
+    end
+
+    context 'accessing final notes on requests' do
+      before(:each) do
+        @final_note = requests(:luke_for_yavin).final_notes.create(:body => "whatever")
+      end
+      
+      it{ should be_able_to(:read, @final_note) }
+      it{ should_not be_able_to(:destroy, @final_note) }
+      it{ should_not be_able_to(:update, @final_note) }
     end
   end
 end

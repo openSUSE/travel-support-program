@@ -5,8 +5,10 @@ TravelSupportProgram::Application.routes.draw do
 
   resources :requests do
     resources :state_transitions, :only => [:new, :create]
+    resources :final_notes, :only => [:new, :create]
     resource :reimbursement do
       resources :state_transitions, :only => [:new, :create]
+      resources :final_notes, :only => [:new, :create]
     end
   end
 

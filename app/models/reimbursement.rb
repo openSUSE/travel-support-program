@@ -9,6 +9,8 @@ class Reimbursement < ActiveRecord::Base
   # will be updated during reimbursement process
   has_many :expenses, :through => :request, :autosave => false
   has_many :attachments, :class_name => "ReimbursementAttachment", :inverse_of => :reimbursement
+  # Final notes are comments that users can add as feedback to a finished reimbursement
+  has_many :final_notes, :as => :machine
 
   delegate :event, :to => :request, :prefix => false
 
@@ -75,6 +77,14 @@ class Reimbursement < ActiveRecord::Base
   def editable_by_tsp?
     state == 'tsp_pending'
   end
+
+  # Checks whether the reimbursement can have final notes
+  #
+  # @return [Boolean] true if all conditions are met
+  def can_have_final_notes?
+    in_final_state?
+  end
+
 
   protected
 

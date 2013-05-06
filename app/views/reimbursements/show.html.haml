@@ -38,9 +38,14 @@
           %td= number_to_currency(expense.total_amount, :unit => expense.total_currency)
           %td= number_to_currency(expense.authorized_amount, :unit => expense.authorized_currency)
 
+  = render :partial => "final_notes", :locals => {:show_builder => r}
+
 .form-actions
 
   - if can? :edit, resource
     = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path, :class => 'btn'
 
   = transition_links(resource) 
+
+  - if can?(:create, resource.final_notes.build)
+    = link_to(t(:create_final_note), resource_path + "/final_notes/new.js", :remote => true, :class => 'btn')

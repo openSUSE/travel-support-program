@@ -11,4 +11,18 @@ class ApplicationController < ActionController::Base
     flash[:alert] = nil
     render :file => "#{Rails.root}/public/403.html", :status => 403
   end
+
+  protected
+
+  def prepare_for_nested_resource
+    @request ||= Request.find(params[:request_id])
+    if request.fullpath.include?("/reimbursement/")
+      @parent = @reimbursement = @request.reimbursement
+      @back_path = request_reimbursement_path(@request)
+    else
+      @parent = @request
+      @back_path = request_path(@request)
+    end
+  end
+
 end

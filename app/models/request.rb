@@ -11,6 +11,8 @@ class Request < ActiveRecord::Base
   has_many :expenses, :class_name => "RequestExpense", :inverse_of => :request
   # Every accepted request is followed by a reimbursement process
   has_one :reimbursement, :inverse_of => :request
+  # Final notes are comments that users can add as feedback to a finished request
+  has_many :final_notes, :as => :machine
 
   accepts_nested_attributes_for :expenses, :reject_if => :all_blank, :allow_destroy => true
 
@@ -98,6 +100,13 @@ class Request < ActiveRecord::Base
   # @return [Boolean] true if all conditions are met
   def can_have_reimbursement?
     accepted?
+  end
+
+  # Checks whether the request can have final notes
+  #
+  # @return [Boolean] true if all conditions are met
+  def can_have_final_notes?
+    in_final_state?
   end
 
   # Checks whether a request is ready for reimbursement but the process have not

@@ -23,6 +23,13 @@ module TravelSupportProgram
       not transitions.empty?
     end
 
+    # Checks if the object have reached a final state
+    #
+    # @return [Boolean] true if no possible transitions left
+    def in_final_state?
+      state_events.empty?
+    end
+
     # Notify the current state to all involved users
     #
     # Involved users means: requester + users with the tsp role + users with

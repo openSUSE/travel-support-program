@@ -10,21 +10,14 @@ class StateTransitionsController < ApplicationController
     else
       flash[:error] = t("activerecord.state_machines.messages.#{@state_transition.state_event}_failure")
     end
-    respond_with(@state_transition, :location => @back)
+    respond_with(@state_transition, :location => @back_path)
   end
 
   protected
 
   def load_transition_and_authorize
-    @request = Request.find(params[:request_id])
-    if request.fullpath.include?("/reimbursement/")
-      parent = @reimbursement = @request.reimbursement
-      @back = request_reimbursement_path(@request)
-    else
-      parent = @request
-      @back = request_path(@request)
-    end
-    @state_transition = parent.transitions.build(params[:state_transition])
-    authorize! @state_transition.state_event.to_sym, parent
+    prepare_for_nested_resource
+    @state_transition = @parent.transitions.build(params[:state_transition])
+    authorize! @state_transition.state_event.to_sym, @parent
   end
 end
