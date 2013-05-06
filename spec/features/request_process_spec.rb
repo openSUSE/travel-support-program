@@ -28,6 +28,7 @@ feature "Requests", "" do
     @request = Request.order(:created_at).last
 
     # Failed submission
+    click_link "Action"
     click_link "submit"
     fill_in "notes", :with => "I've not fulfilled the droid amount"
     click_button "submit"
@@ -42,16 +43,19 @@ feature "Requests", "" do
     page.should have_content "request was successfully updated"
 
     # Submit again
+    click_link "Action"
     click_link "submit"
     fill_in "notes", :with => "Ok, now all the information is there."
     click_button "submit"
     page.should have_content "Successfully submitted."
+    page.should have_content "From incomplete to submitted"
 
     # Log in as tspmember
     click_link "Log out"
     find_request_as(users(:tspmember), @request)
 
     # Failed approval
+    click_link "Action"
     click_link "approve"
     fill_in "notes", :with => "Trying to approve with no amount"
     click_button "approve"
@@ -68,10 +72,12 @@ feature "Requests", "" do
     page.should have_content "request was successfully updated"
 
     # Approve again
+    click_link "Action"
     click_link "approve"
     fill_in "notes", :with => "The Alliance do not pay droids"
     click_button "approve"
     page.should have_content "Successfully approved"
+    page.should have_content "From submitted to approved"
 
     # Log in as requester
     click_link "Log out"
@@ -84,10 +90,12 @@ feature "Requests", "" do
 
     # Not possible, so roll back
     visit request_path(@request)
+    click_link "Action"
     click_link "roll back"
     fill_in "notes", :with => "No way."
     click_button "roll back"
     page.should have_content "Successfully rolled back."
+    page.should have_content "From approved to incomplete"
 
     # And now edit
     click_link "Edit"
@@ -97,29 +105,35 @@ feature "Requests", "" do
     page.should have_content "request was successfully updated"
 
     # And submit again
+    click_link "Action"
     click_link "submit"
     fill_in "notes", :with => "I have negotiated a lower fare for R2D2 rental"
     click_button "submit"
     page.should have_content "Successfully submitted."
+    page.should have_content "From incomplete to submitted"
 
     # Log in as tspmember
     click_link "Log out"
     find_request_as(users(:tspmember), @request)
 
     # Approval
+    click_link "Action"
     click_link "approve"
     fill_in "notes", :with => "We do not pay droids anyway, not a matter of price."
     click_button "approve"
     page.should have_content "Successfully approved"
+    page.should have_content "From submitted to approved"
 
     # Log in as requester
     click_link "Log out"
     find_request_as(users(:luke), @request)
 
     # And finally accept
+    click_link "Action"
     click_link "accept"
     fill_in "notes", :with => "Ok, just give the gas, then. But don't expect me to clean the droid properly... and we are going to a swamp."
     click_button "accept"
     page.should have_content "Acceptance processed"
+    page.should have_content "From approved to accepted"
   end
 end

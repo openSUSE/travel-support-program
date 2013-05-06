@@ -13,7 +13,7 @@
       = r.attribute :country do
         = country_label(resource.country_code)
       = r.attribute :url do
-        = link_to resource.url
+        = link_to *([resource.url]*2)
   .row-fluid
     .span12
       = r.attribute :description

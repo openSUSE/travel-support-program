@@ -7,6 +7,7 @@ describe HasStateMailer do
   context "on request approval" do
     before(:each) do
       @request = requests(:wedge_for_party)
+      @request.expenses.each {|e| e.update_attributes(:approved_amount => 40, :approved_currency => "EUR") }
       transition(@request, :approve, users(:tspmember))
       @mail = ActionMailer::Base.deliveries.last
     end

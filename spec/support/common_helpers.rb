@@ -36,7 +36,7 @@ module CommonHelpers
   def find_request_as(user, request, opts = {})
     sign_in_as_user(user, opts)
     visit requests_path
-    find(:xpath, "//table[contains(@class,'requests')]//tbody/tr[last()]/td[1]//a[text()='#{request.id}']").click
+    find(:xpath, "//table[contains(@class,'requests')]//tbody/tr[last()]/td[1]//a[text()='##{request.id}']").click
     page.should have_content "request"
     request.expenses.each do |e|
       page.should have_content e.subject

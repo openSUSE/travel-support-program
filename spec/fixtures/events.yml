@@ -17,4 +17,5 @@ dagobah_camp:
   country_code: "ES"
   start_date: <%= 50.days.since %>
   end_date: <%= 60.days.since %>
-  validated: false
+  validated: true
+  visa_letters: true

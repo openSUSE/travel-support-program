@@ -3,7 +3,7 @@ require 'cancan/matchers'
 #require 'ruby-debug'
 
 describe Ability do
-  fixtures :users, :user_profiles, :events, :requests, :state_transitions
+  fixtures :users, :user_profiles, :events, :requests, :request_expenses, :state_transitions
   
   subject { Ability.new(user) }
 
@@ -49,6 +49,9 @@ describe Ability do
     context "managing a new reimbursement" do
       before(:each) do
         @reimbursement = requests(:luke_for_yavin).create_reimbursement
+        @reimbursement.request.expenses.each do |e|
+          e.total_amount = e.estimated_amount + 5
+        end
       end
 
       it{ should be_able_to(:submit, @reimbursement) }
@@ -94,6 +97,9 @@ describe Ability do
     context "managing reimbursements" do
       before(:each) do
         @reimbursement = requests(:luke_for_yavin).create_reimbursement
+        @reimbursement.request.expenses.each do |e|
+          e.total_amount = e.estimated_amount + 5
+        end
       end
 
       it{ should_not be_able_to(:create, Reimbursement.new) }
@@ -177,6 +183,9 @@ describe Ability do
     context "managing reimbursements" do
       before(:each) do
         @reimbursement = requests(:luke_for_yavin).create_reimbursement
+        @reimbursement.request.expenses.each do |e|
+          e.total_amount = e.estimated_amount + 5
+        end
       end
 
       it{ should_not be_able_to(:create, Reimbursement.new) }

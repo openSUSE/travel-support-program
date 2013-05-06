@@ -6,7 +6,8 @@
     = render @request.event
   = r.association :user do
     = render @request.user
-  = r.attribute :state
+  = r.attribute :state do
+    = state_info(r.object)
   = r.attribute :transactions do
     = render "transitions_list", :locals => {:resource => @request}
 
