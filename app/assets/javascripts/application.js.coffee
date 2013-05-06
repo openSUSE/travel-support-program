@@ -14,6 +14,7 @@
 #= require jquery_ujs
 #= require twitter/bootstrap
 #= require bootstrap-datepicker
+#= require bootstrap
 #= require cocoon
 #
 
