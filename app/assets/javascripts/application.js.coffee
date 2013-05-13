@@ -13,18 +13,20 @@
 #= require jquery
 #= require jquery_ujs
 #= require twitter/bootstrap
-#= require bootstrap-datepicker
+#= require datetimepicker/bootstrap-datetimepicker
 #= require cocoon
 #= require_tree .
 #
 
 window.init_page = ->
-  $('input.dpicker').datepicker()
+  $('input.dpicker.date-with-time').datetimepicker()
+  $('input.dpicker.date-without-time').datetimepicker
+    minView: 2
 
-  $('#event_end_date.dpicker').datepicker "setStartDate", $('#event_start_date.dpicker').val()
+  $('#event_end_date.dpicker').datetimepicker "setStartDate", $('#event_start_date.dpicker').val()
 
-  $('#event_start_date.dpicker').datepicker().on "changeDate", (date) ->
-    $('#event_end_date.dpicker').datepicker "setStartDate", $('#event_start_date.dpicker').val()
+  $('#event_start_date.dpicker').datetimepicker().on "changeDate", (date) ->
+    $('#event_end_date.dpicker').datetimepicker "setStartDate", $('#event_start_date.dpicker').val()
 
 window.build_dialog = (selector, content) ->
   # Close it and remove content if it's already open
