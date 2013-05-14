@@ -7,7 +7,8 @@
 # and destroy the event.
 #
 class Event < ActiveRecord::Base
-  attr_accessible :name, :description, :start_date, :end_date, :url, :country_code, :validated, :visa_letters
+  attr_accessible :name, :description, :start_date, :end_date, :url, :country_code,
+    :validated, :visa_letters, :request_creation_deadline
   has_many :requests, :inverse_of => :event
 
   validates :name, :start_date, :end_date, :country_code, :presence => true
@@ -28,11 +29,23 @@ class Event < ActiveRecord::Base
     requests.empty?
   end
 
+  # Check if new requests can be created based on request_creation_deadline
+  # and start_date
+  #
+  # @return [Boolean] true if accepting new requests
+  def accepting_requests?
+    open = (Date.today < start_date) rescue false
+    if open && request_creation_deadline
+      open = Time.now < request_creation_deadline
+    end
+    open
+  end
+
   # List of attributed that can only by accessed by users who have validation
   # permissions on the event.
   #
   # @return [Array] a list of the restricted attribute names as symbols
   def self.validation_attributes
-    [:validated, :visa_letters]
+    [:validated, :visa_letters, :request_creation_deadline]
   end
 end

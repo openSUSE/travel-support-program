@@ -19,7 +19,9 @@ describe Ability do
     end
 
     context 'managing his own requests' do
-      it{ should be_able_to(:create, Request.new) }
+      it{ should_not be_able_to(:create, Request.new) }
+      it{ should be_able_to(:create, Request.new(:event_id => events(:dagobah_camp).id)) }
+      it{ should_not be_able_to(:create, Request.new(:event_id => events(:hoth_hackaton).id)) }
       it{ should be_able_to(:read, requests(:luke_for_party)) }
       it{ should be_able_to(:read, requests(:luke_for_yavin)) }
       it{ should be_able_to(:update, requests(:luke_for_party)) }

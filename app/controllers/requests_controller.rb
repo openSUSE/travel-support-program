@@ -1,6 +1,6 @@
 class RequestsController < InheritedResources::Base
   respond_to :html, :js, :json
-  skip_load_resource :only => [:index]
+  skip_load_resource :only => [:index, :new]
   helper_method :request_states_collection
   before_filter :load_subjects
 
@@ -18,6 +18,7 @@ class RequestsController < InheritedResources::Base
       flash[:warning] = I18n.t(:redirect_to_previous_request)
       redirect_to previous
     else
+      authorize! :create, @request
       @request.expenses.build
       new!
     end
@@ -38,4 +39,5 @@ class RequestsController < InheritedResources::Base
   def load_subjects 
     @subjects = TravelSupportProgram::Config.setting :request_expense_subjects
   end
+
 end

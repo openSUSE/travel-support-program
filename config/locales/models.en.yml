@@ -48,6 +48,7 @@ en:
         visa_letters: "visa letters offered"
         start_date: "starts at"
         end_date: "ends at"
+        request_creation_deadline: "accepting requests until"
       reimbursement:
         state: "state"
         user_id: "requester"
