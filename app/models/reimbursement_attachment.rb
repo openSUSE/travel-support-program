@@ -9,4 +9,6 @@ class ReimbursementAttachment < ActiveRecord::Base
   validate :reimbursement, :title, :file, :presence => true
 
   mount_uploader :file, AttachmentUploader
+
+  audit(:create, :update, :destroy, :on => :reimbursement) {|m,u,a| "#{a} performed on ReimbursementAttachment by #{u.try(:nickname)}"}
 end

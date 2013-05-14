@@ -65,6 +65,7 @@ describe Request do
     before(:each) do
       @deliveries = ActionMailer::Base.deliveries.size
       @request = requests(:luke_for_party)
+      @audits = @request.audits
     end
 
     context "if expenses are incomplete" do
@@ -91,6 +92,10 @@ describe Request do
         ActionMailer::Base.deliveries.size.should == @deliveries + 2
       end
       
+      it "should audit the change" do
+        @request.audits.size == @audits.size + 1
+      end
+
       it "should create an state transition" do
         trans = @request.transitions.last
         trans.from.should == "incomplete"

@@ -1,6 +1,5 @@
 class UserProfilesController < ApplicationController
   force_ssl_if_available
-  before_filter :authenticate_user!
   before_filter :set_profile
   before_filter :remove_role_from_params, :only => [:update, :update_password]
 
