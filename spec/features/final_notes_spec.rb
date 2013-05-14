@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'ruby-debug'
+# require 'ruby-debug'
 
 feature "Final notes", "" do
   fixtures :events, :users, :user_profiles, :requests, :request_expenses
