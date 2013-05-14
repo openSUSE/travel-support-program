@@ -22,7 +22,6 @@ group :assets do
   gem 'therubyracer', :platforms => :ruby
   gem "less-rails"
   gem "twitter-bootstrap-rails"
-  gem 'bootstrap-datepicker-rails'
 
   gem 'uglifier', '>= 1.0.3'
 end

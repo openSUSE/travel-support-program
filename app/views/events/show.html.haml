@@ -19,7 +19,9 @@
       = r.attribute :description
   - if user_signed_in? && can?(:validate, resource)
     .row-fluid
-      .span6= r.attribute :validated
+      .span6
+        = r.attribute :request_creation_deadline
+        = r.attribute :validated
       .span6= r.attribute :visa_letters
 
 .form-actions
@@ -28,4 +30,5 @@
     = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path(resource), :class => 'btn'
   - if user_signed_in? && can?(:destroy, resource)
     = link_to t('.destroy', :default => t("helpers.links.destroy")), resource_path(resource), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-danger'
-  = link_to t(:apply), new_request_path(:event_id => resource), :class => 'btn'
+  - if resource.accepting_requests?
+    = link_to t(:apply), new_request_path(:event_id => resource), :class => 'btn'

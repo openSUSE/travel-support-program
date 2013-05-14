@@ -19,3 +19,11 @@ dagobah_camp:
   end_date: <%= 60.days.since %>
   validated: true
   visa_letters: true
+
+hoth_hackaton:
+  name: "Battle of Hoth"
+  country_code: "DE"
+  start_date: <%= 40.days.since %>
+  end_date: <%= 40.days.since %>
+  validated: true
+  request_creation_deadline: <%= 2.days.ago %>

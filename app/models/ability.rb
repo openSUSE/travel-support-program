@@ -44,7 +44,9 @@ class Ability
       end
 
       # Requests
-      can :create, Request
+      can :create, Request do |r|
+        r.event && r.event.accepting_requests?
+      end
       can :create, RequestExpense do |e|
         e.request && e.request.editable_by_requester? && e.request.user == user
       end
