@@ -7,7 +7,7 @@ gem 'rails', '3.2.12'
 
 # Choose your weapon
 gem 'sqlite3'
-gem 'pg'
+#gem 'pg'
 #gem 'mysql'
 
 
@@ -83,4 +83,4 @@ end
 # gem 'capistrano'
 
 # To use debugger
-gem 'debugger'
+# gem 'debugger'
