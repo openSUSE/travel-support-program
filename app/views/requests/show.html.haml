@@ -1,6 +1,6 @@
 - model_class = Request
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human
+  %h1= t('.title', :default => model_class.model_name.human) + " ##{resource.id}"
 
 = show_for @request do |r|
   = r.association :event do
