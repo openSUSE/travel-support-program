@@ -27,6 +27,11 @@ feature "Requests", "" do
     page.should have_content "request was successfully created"
     @request = Request.order(:created_at).last
 
+    # Testing audits, just in case
+    @request.audits.last.user.should == users(:luke)
+    @request.expenses.first.audits.last.user.should == users(:luke)
+    @request.expenses.last.audits.last.owner.should == @request
+
     # Failed submission
     click_link "Action"
     click_link "submit"

@@ -22,7 +22,9 @@ class RequestExpense < ActiveRecord::Base
   validates :authorized_amount, :presence => true, :if => "request.reimbursement && request.reimbursement.tsp_approved?"
 
   before_validation :set_authorized_amount
-  
+
+  audit(:create, :update, :destroy, :on => :request) {|m,u,a| "#{a} performed on RequestExpense by #{u.try(:nickname)}"}
+
   # Convenience method that simply aliases approved_currency since currency
   # cannot be changed after approval
   def total_currency; estimated_currency; end

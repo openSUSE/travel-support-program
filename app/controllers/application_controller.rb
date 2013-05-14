@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   extend TravelSupportProgram::ForceSsl
 
   force_ssl_if_available
-  before_filter :authenticate_user!, :unless => :devise_controller?
+  before_filter :authenticate_and_audit_user, :unless => :devise_controller?
   load_and_authorize_resource :unless => :devise_controller?
 
   protect_from_forgery
@@ -25,4 +25,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate_and_audit_user
+    authenticate_user!
+    Auditor::User.current_user = current_user
+  end
 end

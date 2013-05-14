@@ -1,6 +1,6 @@
 class EventsController < InheritedResources::Base
   respond_to :html, :js, :json
-  skip_before_filter :authenticate_user!, :only => [:index, :show]
+  skip_before_filter :authenticate_and_audit_user, :only => [:index, :show]
   skip_load_and_authorize_resource :only => [:index, :show]
   before_filter :protect_validation_attributes, :only => [:create, :update]
 

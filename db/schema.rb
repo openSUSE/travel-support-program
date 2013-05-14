@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130513114015) do
+ActiveRecord::Schema.define(:version => 20130514134105) do
+
+  create_table "audits", :force => true do |t|
+    t.integer  "auditable_id",                   :null => false
+    t.string   "auditable_type",                 :null => false
+    t.integer  "owner_id",                       :null => false
+    t.string   "owner_type",                     :null => false
+    t.integer  "user_id"
+    t.string   "user_type"
+    t.string   "action",                         :null => false
+    t.text     "audited_changes"
+    t.integer  "version",         :default => 0
+    t.text     "comment"
+    t.datetime "created_at",                     :null => false
+  end
+
+  add_index "audits", ["auditable_id", "auditable_type", "version"], :name => "auditable_index"
+  add_index "audits", ["created_at"], :name => "index_audits_on_created_at"
+  add_index "audits", ["user_id", "user_type"], :name => "user_index"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0

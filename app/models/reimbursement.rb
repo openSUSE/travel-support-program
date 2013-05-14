@@ -25,6 +25,8 @@ class Reimbursement < ActiveRecord::Base
   validates :request, :presence => true
   validates_associated :expenses
 
+  audit(:create, :update, :destroy) {|m,u,a| "#{a} performed on Reimbursement by #{u.try(:nickname)}"}
+
   # Synchronizes user_id and request_id
   before_validation :set_user_id
 

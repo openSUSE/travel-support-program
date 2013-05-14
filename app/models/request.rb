@@ -22,6 +22,8 @@ class Request < ActiveRecord::Base
   validates_associated :expenses
   validate :only_one_active_request, :if => :active?
 
+  audit(:create, :update, :destroy) {|m,u,a| "#{a} performed on Request by #{u.try(:nickname)}"}
+
   scope :active, where(["state <> ?", 'canceled'])
   scope :in_conflict_with, lambda { |req|
     others = active.where(user_id: req.user_id, event_id: req.event_id)
