@@ -173,11 +173,6 @@ module ApplicationHelper
     currencies ||= I18n.translate(:currencies).keys.sort
   end
 
-  def themed(filename)
-    theme = TravelSupportProgram::Config.setting("theme")
-    theme.blank? ? filename : "#{filename}-bento"
-  end
-
   def opensuse_login_url
     TravelSupportProgram::Config.setting(:opensuse_auth_proxy, :proxy_base_url) + "/ICSLogin/auth-up"
   end

@@ -10,7 +10,7 @@
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
     = stylesheet_link_tag "application", :media => "all"
-    = stylesheet_link_tag themed("additional"), :media => "all"
+    = stylesheet_link_tag "additional", :media => "all"
 
   %body
     .navbar.navbar-fluid-top
@@ -19,11 +19,11 @@
           %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
             %span.icon-bar
             %span.icon-bar
-          = render(themed "layouts/navbar-top")
+          = render "layouts/navbar-top"
 
     .container-fluid
 
-      = render(themed "layouts/subheader")
+      = render "layouts/subheader"
 
       .row-fluid
         .span3
@@ -46,4 +46,4 @@
       \==================================================
     / Placed at the end of the document so the pages load faster
     = javascript_include_tag "application"
-    = javascript_include_tag(themed "additional")
+    = javascript_include_tag "additional"
