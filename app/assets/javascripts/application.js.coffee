@@ -12,10 +12,9 @@
 #
 #= require jquery
 #= require jquery_ujs
-#= require twitter/bootstrap
 #= require bootstrap
-#= require datetimepicker/bootstrap-datetimepicker
 #= require cocoon
+#= require additional
 #
 
 window.init_page = ->
