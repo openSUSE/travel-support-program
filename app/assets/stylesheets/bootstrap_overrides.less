@@ -5,3 +5,32 @@ blockquote.collapse {
     line-height: @baseLineHeight;
   }
 }
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#full-page-wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -@baseFontSize*1.5;
+}
+
+/* Set the fixed height of the footer here */
+#push-footer, #footer {
+  height: @baseFontSize*1.5;
+}
+#footer {
+  background-color: @navbarBackground;
+  div {
+    font-size: @fontSizeSmall;
+  }
+}

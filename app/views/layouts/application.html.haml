@@ -12,34 +12,37 @@
     = stylesheet_link_tag "application", :media => "all"
 
   %body
-    .navbar.navbar-fluid-top
-      .navbar-inner
-        .container-fluid
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-          = render "layouts/navbar-top"
+    #full-page-wrap
+      .navbar.navbar-fluid-top
+        .navbar-inner
+          .container-fluid
+            %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
+              %span.icon-bar
+              %span.icon-bar
+            = render "layouts/navbar-top"
 
-    .container-fluid
+      .container-fluid
 
-      = render "layouts/subheader"
+        = render "layouts/subheader"
 
-      .row-fluid
-        .span3
-          .well.sidebar-nav
-            %ul.nav.nav-list
-              %li.nav-header= t(:sidebar)
-              = render "layouts/sidebar"
+        .row-fluid
+          .span3
+            .well.sidebar-nav
+              %ul.nav.nav-list
+                %li.nav-header= t(:sidebar)
+                = render "layouts/sidebar"
 
-          = render "layouts/external_links"
+            = render "layouts/external_links"
 
-        .span9#main
-          = bootstrap_flash_messages
-          .page-header
-            %h1= yield :page_header
-          = yield
-    
-      %footer#footer
+          .span9#main
+            = bootstrap_flash_messages
+            .page-header
+              %h1= yield :page_header
+            = yield
+
+      #push-footer
+
+    = render "layouts/footer"
     /
       Javascripts
       \==================================================
