@@ -14,7 +14,7 @@
   .form-inputs.form-inline
     %strong.label= Request.human_attribute_name(:expenses)
     - if !resource.errors[:expenses].empty?
-      .error= resource.expenses.map {|e| e.errors.full_messages}.uniq.join("; ")
+      .alert.alert-inline.alert-error= resource.expenses.map {|e| e.errors.full_messages}.uniq.join("; ")
     - delete_me = resource.expenses.build
     - can_create_expense = can?(:create, delete_me)
     - resource.expenses.delete(delete_me)

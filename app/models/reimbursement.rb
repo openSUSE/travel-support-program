@@ -23,7 +23,7 @@ class Reimbursement < ActiveRecord::Base
     :request_attributes, :attachments_attributes
 
   validates :request, :presence => true
-  validates_associated :expenses
+  validates_associated :expenses, :attachments
 
   audit(:create, :update, :destroy) {|m,u,a| "#{a} performed on Reimbursement by #{u.try(:nickname)}"}
 

@@ -17,7 +17,7 @@
   .form-inputs.form-inline
     %strong.label= Request.human_attribute_name(:attachments)
     - if !resource.errors[:attachments].empty?
-      .error= resource.attachments.map {|e| e.errors.full_messages}.uniq.join("; ")
+      .alert.alert-inline.alert-error= resource.attachments.map {|e| e.errors.full_messages}.uniq.join("; ")
     %table.table.table-condensed
       %thead
         %tr
@@ -33,7 +33,7 @@
   .form-inputs.form-inline
     %strong.label= Reimbursement.human_attribute_name(:expenses)
     - if !resource.errors[:"request.expenses"].empty?
-      .error= resource.expenses.map {|e| e.errors.full_messages}.uniq.join("; ")
+      .alert.alert-inline.alert-error= resource.expenses.map {|e| e.errors.full_messages}.uniq.join("; ")
     %table.table.table-condensed
       %thead
         %tr

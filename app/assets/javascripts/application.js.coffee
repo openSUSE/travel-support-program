@@ -27,6 +27,9 @@ window.init_page = ->
   $('#event_start_date.dpicker').datetimepicker().on "changeDate", (date) ->
     $('#event_end_date.dpicker').datetimepicker "setStartDate", $('#event_start_date.dpicker').val()
 
+  $('#attachments').bind "cocoon:after-insert", (e, added) ->
+    added.fileupload()
+
 window.build_dialog = (selector, content) ->
   # Close it and remove content if it's already open
   $("#" + selector).modal 'hide'
