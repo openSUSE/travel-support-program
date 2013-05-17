@@ -27,8 +27,8 @@ class User < ActiveRecord::Base
     profile || create_profile
   end
 
-  def self.with_role(name)
-    UserProfile.with_role(name).map(&:user)
+  def self.with_role(role)
+    UserProfile.with_role(role).map(&:user)
   end
 
   def self.find_or_create_from_opensuse(username, email)

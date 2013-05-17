@@ -25,6 +25,7 @@ feature "Final notes", "" do
     sign_in_as_user(users(:wedge))
     visit request_path(requests(:wedge_for_yavin))
     find("h1").should have_content "request"
+    @deliveries = ActionMailer::Base.deliveries.size
 
     click_link "Add final note"
     page.should have_xpath("//div[@id='new_final_note']")
@@ -37,5 +38,6 @@ feature "Final notes", "" do
     page.should have_content "Final note added"
     page.should have_content "final notes"
     page.should have_content "Luke always get all the money. That's unfair."
+    ActionMailer::Base.deliveries.size.should == @deliveries + 2
   end
 end

@@ -19,7 +19,13 @@ class UserProfile < ActiveRecord::Base
 
   audit(:create, :update, :destroy) {|m,u,a| "#{a} performed on UserProfile by #{u.try(:nickname)}"}
 
-  scope :with_role, lambda { |name| where(:role_id => UserRole.find_by_name(name.to_s).id) }
+  scope :with_role, lambda { |role|
+    if role.kind_of?(UserRole)
+      where(:role_id => role.id)
+    else
+      where(:role_id => UserRole.find_by_name(role.to_s).id)
+    end
+  }
 
   def set_default_attrs
     self.role_name ||= "requester"

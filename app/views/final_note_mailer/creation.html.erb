@@ -1,0 +1,13 @@
+<p>
+<%= t(:new_final_note_title_line,
+          :date => l(@final_note.created_at, :format => :short),
+          :machine => "#{@machine.class.model_name} ##{@machine.id}",
+          :user => @final_note.user.nickname) %>
+</p>
+
+<p><%= @final_note.body %></p>
+
+<p><%= t(:visit_machine) %><br/><%= link_to(*[machine_url(@machine)]*2) %></p>
+
+<p>--<br>
+<%= TravelSupportProgram::Config.setting :email_footer %></p>

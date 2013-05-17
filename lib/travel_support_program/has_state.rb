@@ -9,6 +9,7 @@ module TravelSupportProgram
 
         validates :user, :presence => true
 
+        @involved_roles = []
         @assigned_states = {}
         @assigned_roles = {}
       end
@@ -35,8 +36,8 @@ module TravelSupportProgram
     # Involved users means: requester + users with the tsp role + users with
     # the roles designed using the macro method assign_state_to
     def notify_state
-      roles = ([:tsp] + self.class.roles_assigned_to(state)).uniq
-      HasStateMailer::notify_state(self, roles)
+      people = ([self.user, :tsp] + self.class.roles_assigned_to(state)).uniq
+      HasStateMailer::notify_to(people, :state, self, self.human_state_name, self.state_updated_at)
     end
 
     protected
@@ -50,6 +51,10 @@ module TravelSupportProgram
     # Class methods
     #
     module ClassMethods
+
+      # Roles involved in the workflow in any way.
+      # Used for sending important notifications
+      def involved_roles; @involved_roles; end
 
       # Macro-style method to define the role which is responsible of the next
       # action for a given state. This definition is used for sending
