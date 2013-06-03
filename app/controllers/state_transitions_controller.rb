@@ -9,6 +9,7 @@ class StateTransitionsController < ApplicationController
       flash[:notice] = t("activerecord.state_machines.messages.#{@state_transition.state_event}_success")
     else
       flash[:error] = t("activerecord.state_machines.messages.#{@state_transition.state_event}_failure")
+      flash[:error] << "\n<br/>" + @state_transition.machine.errors.full_messages.map {|i| i.humanize + "."}.join(" ")
     end
     respond_with(@state_transition, :location => @back_path)
   end
