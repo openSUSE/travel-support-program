@@ -1,0 +1,7 @@
+wedge_for_training_bank:
+  reimbursement: wedge_for_training_reim
+  holder: "Wedge Antilles"
+  bank_name: "Intergalactic Mortage Bank"
+  format: "iban"
+  iban: "AT611904300234573201"
+  bic: "BNPAFRPP"

@@ -27,3 +27,10 @@ hoth_hackaton:
   end_date: <%= 40.days.since %>
   validated: true
   request_creation_deadline: <%= 2.days.ago %>
+
+training:
+  name: "Rebel Academy course"
+  country_code: "DE"
+  start_date: <%= 30.days.ago %>
+  end_date: <%= 20.days.ago %>
+  validated: true

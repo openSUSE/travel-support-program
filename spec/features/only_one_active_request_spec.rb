@@ -2,7 +2,7 @@ require 'spec_helper'
 # require 'ruby-debug'
 
 feature "Only one active request", "" do
-  fixtures :events, :users, :user_profiles, :requests, :request_expenses
+  fixtures :all
 
   scenario "Trying to create a new request" do
     sign_in_as_user(users(:luke))

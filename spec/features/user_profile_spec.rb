@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 feature "Edit my account", "" do
-  fixtures :users, :user_profiles
+  fixtures :all
 
   background do
     I18n.locale = :en

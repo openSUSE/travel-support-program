@@ -1,0 +1,4 @@
+wedge_for_training_reim:
+  state: "incomplete"
+  user: wedge
+  request: wedge_for_training

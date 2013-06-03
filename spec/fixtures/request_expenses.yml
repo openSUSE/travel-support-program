@@ -42,3 +42,12 @@ luke_for_party_gas:
   subject: "Gas"
   estimated_amount: 100
   estimated_currency: "EUR"
+
+wedge_for_training_gas:
+  request: wedge_for_training
+  subject: "Gas"
+  estimated_amount: 50
+  estimated_currency: "EUR"
+  approved_amount: 30
+  approved_currency: "EUR"
+  total_amount: 40

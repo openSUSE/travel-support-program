@@ -2,7 +2,7 @@ require 'spec_helper'
 # require 'ruby-debug'
 
 describe Request do
-  fixtures :users, :user_profiles, :events, :requests, :request_expenses, :state_transitions
+  fixtures :all
 
   describe "#visa_letter_allowed?" do
     it "should be false for default events" do

@@ -2,7 +2,7 @@ require 'spec_helper'
 #require 'ruby-debug'
 
 describe HasStateMailer do
-  fixtures :users, :user_profiles, :events, :requests, :request_expenses, :state_transitions
+  fixtures :all
 
   context "on request approval" do
     before(:each) do

@@ -2,7 +2,7 @@ require 'spec_helper'
 #require 'ruby-debug'
 
 describe FinalNoteMailer do
-  fixtures :users, :user_profiles, :events, :requests, :request_expenses, :state_transitions
+  fixtures :all
 
   context "adding a note to a request" do
     before(:each) do

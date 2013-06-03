@@ -2,7 +2,7 @@ require 'spec_helper'
 #require 'ruby-debug'
 
 feature "Requests", "" do
-  fixtures :events, :users, :user_profiles
+  fixtures :all
 
   scenario "Full request process" do
     sign_in_as_user(users(:luke))

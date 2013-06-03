@@ -52,5 +52,15 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  config.before(:all) do
+    FileUtils.rm_rf("public/spec")
+    FileUtils.mkdir("public/spec")
+    FileUtils.cp_r("spec/support/uploads", "public/spec")
+  end
+
+  config.after(:all) do
+    FileUtils.rm_r(Dir["#{Rails.root}/public/spec"])
+  end
+
   config.include(::CommonHelpers)
 end

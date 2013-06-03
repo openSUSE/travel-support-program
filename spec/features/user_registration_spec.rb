@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 feature "User registration and password recovery", "" do
-  fixtures :users, :user_profiles
+  fixtures :all
 
   scenario "Register as user" do
     visit root_path

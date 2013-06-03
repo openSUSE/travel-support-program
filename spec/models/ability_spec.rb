@@ -3,8 +3,8 @@ require 'cancan/matchers'
 #require 'ruby-debug'
 
 describe Ability do
-  fixtures :users, :user_profiles, :events, :requests, :request_expenses, :state_transitions
-  
+  fixtures :all
+
   subject { Ability.new(user) }
 
   context 'when is a requester' do
@@ -78,7 +78,7 @@ describe Ability do
       before(:each) do
         @final_note = requests(:luke_for_yavin).final_notes.create(:body => "whatever")
       end
-      
+
       it{ should be_able_to(:read, @final_note) }
       it{ should_not be_able_to(:destroy, @final_note) }
       it{ should_not be_able_to(:update, @final_note) }
@@ -93,10 +93,41 @@ describe Ability do
       before(:each) do
         @final_note = requests(:wedge_for_yavin).final_notes.create(:body => "whatever")
       end
-      
+
       it{ should_not be_able_to(:read, @final_note) }
       it{ should_not be_able_to(:destroy, @final_note) }
       it{ should_not be_able_to(:update, @final_note) }
+    end
+
+    context 'manage attachments to his own reimbursements' do
+      before(:each) do
+        @reimbursement = reimbursements(:wedge_for_training_reim)
+      end
+      let(:user){ users(:wedge) }
+
+      it{ should be_able_to(:read, @reimbursement.attachments.first) }
+      it{ should be_able_to(:destroy, @reimbursement.attachments.first) }
+      it{ should be_able_to(:update, @reimbursement.attachments.first) }
+      it{ should be_able_to(:create, @reimbursement.attachments.build) }
+
+      context 'after submitting it' do
+        before(:each) do
+          transition(@reimbursement, :submit, users(:wedge))
+        end
+
+        it{ should be_able_to(:read, @reimbursement.attachments.first) }
+        it{ should_not be_able_to(:destroy, @reimbursement.attachments.first) }
+        it{ should_not be_able_to(:update, @reimbursement.attachments.first) }
+        it{ should_not be_able_to(:create, @reimbursement.attachments.build) }
+      end
+
+      context "and trying to look into other's reimbursements" do
+        let(:user){ users(:luke) }
+        it{ should_not be_able_to(:read, @reimbursement.attachments.first) }
+        it{ should_not be_able_to(:destroy, @reimbursement.attachments.first) }
+        it{ should_not be_able_to(:update, @reimbursement.attachments.first) }
+        it{ should_not be_able_to(:create, @reimbursement.attachments.build) }
+      end
     end
   end
 
@@ -194,10 +225,32 @@ describe Ability do
       before(:each) do
         @final_note = requests(:luke_for_yavin).final_notes.create(:body => "whatever")
       end
-      
+
       it{ should be_able_to(:read, @final_note) }
       it{ should_not be_able_to(:destroy, @final_note) }
       it{ should_not be_able_to(:update, @final_note) }
+    end
+
+    context 'accessing attachments in a reimbursement' do
+      before(:each) do
+        @reimbursement = reimbursements(:wedge_for_training_reim)
+      end
+
+      it{ should be_able_to(:read, @reimbursement.attachments.first) }
+      it{ should_not be_able_to(:destroy, @reimbursement.attachments.first) }
+      it{ should_not be_able_to(:update, @reimbursement.attachments.first) }
+      it{ should_not be_able_to(:create, @reimbursement.attachments.build) }
+
+      context 'after submitting it' do
+        before(:each) do
+          transition(@reimbursement, :submit, users(:wedge))
+        end
+
+        it{ should be_able_to(:read, @reimbursement.attachments.first) }
+        it{ should_not be_able_to(:destroy, @reimbursement.attachments.first) }
+        it{ should_not be_able_to(:update, @reimbursement.attachments.first) }
+        it{ should_not be_able_to(:create, @reimbursement.attachments.build) }
+      end
     end
   end
 
@@ -295,10 +348,32 @@ describe Ability do
       before(:each) do
         @final_note = requests(:luke_for_yavin).final_notes.create(:body => "whatever")
       end
-      
+
       it{ should be_able_to(:read, @final_note) }
       it{ should_not be_able_to(:destroy, @final_note) }
       it{ should_not be_able_to(:update, @final_note) }
+    end
+
+    context 'accessing attachments in a reimbursement' do
+      before(:each) do
+        @reimbursement = reimbursements(:wedge_for_training_reim)
+      end
+
+      it{ should be_able_to(:read, @reimbursement.attachments.first) }
+      it{ should_not be_able_to(:destroy, @reimbursement.attachments.first) }
+      it{ should_not be_able_to(:update, @reimbursement.attachments.first) }
+      it{ should_not be_able_to(:create, @reimbursement.attachments.build) }
+
+      context 'after submitting it' do
+        before(:each) do
+          transition(@reimbursement, :submit, users(:wedge))
+        end
+
+        it{ should be_able_to(:read, @reimbursement.attachments.first) }
+        it{ should_not be_able_to(:destroy, @reimbursement.attachments.first) }
+        it{ should_not be_able_to(:update, @reimbursement.attachments.first) }
+        it{ should_not be_able_to(:create, @reimbursement.attachments.build) }
+      end
     end
   end
 end

@@ -14,7 +14,7 @@ luke_for_yavin_approval:
   user: tspmember
   created_at: <%= 30.days.ago + 3.hours %>
 
-luke_for_yavin_approval:
+luke_for_yavin_acceptance:
   machine: luke_for_yavin (Request)
   state_event: "accept"
   from: "approved"
@@ -45,3 +45,27 @@ wedge_for_party_submission:
   to: "submitted"
   user: wedge
   created_at: <%= 2.days.ago %>
+
+wedge_for_training_submission:
+  machine: wedge_for_training (Request)
+  state_event: "submit"
+  from: "incomplete"
+  to: "submitted"
+  user: wedge
+  created_at: <%= 40.days.ago + 1.hour %>
+
+wedge_for_training_approval:
+  machine: wedge_for_training (Request)
+  state_event: "approve"
+  from: "submitted"
+  to: "approved"
+  user: tspmember
+  created_at: <%= 40.days.ago + 3.hours %>
+
+wedge_for_training_acceptance:
+  machine: wedge_for_training (Request)
+  state_event: "accept"
+  from: "approved"
+  to: "accepted"
+  user: wedge
+  created_at: <%= 40.days.ago + 5.hours %>

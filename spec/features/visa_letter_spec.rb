@@ -2,7 +2,7 @@ require 'spec_helper'
 #require 'ruby-debug'
 
 feature "Visa letter", "" do
-  fixtures :events, :users, :user_profiles, :requests, :request_expenses
+  fixtures :all
 
   scenario "Applying to an event without visa option" do
     sign_in_as_user(users(:luke))

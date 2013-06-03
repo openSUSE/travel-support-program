@@ -2,13 +2,16 @@ require 'spec_helper'
 #require 'ruby-debug'
 
 describe Reimbursement do
-  fixtures :users, :user_profiles, :events, :requests, :request_expenses, :state_transitions
+  fixtures :all
 
   context "during initial submission" do
     before(:each) do
       @deliveries = ActionMailer::Base.deliveries.size
       @reimbursement = requests(:luke_for_yavin).create_reimbursement
       @reimbursement.request.expenses.each {|e| e.total_amount = 55 }
+      @reimbursement.build_bank_account(:holder => "Owen Lars", :bank_name => "Tatooine Saving Bank",
+                                        :format => "iban", :iban => "AT611904300234574444",
+                                        :bic => "ABCDEABCDE")
       @reimbursement.save!
       transition(@reimbursement, :submit, users(:luke))
     end

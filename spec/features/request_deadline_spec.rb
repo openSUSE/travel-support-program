@@ -2,7 +2,7 @@ require 'spec_helper'
 #require 'ruby-debug'
 
 feature "Request deadline", "" do
-  fixtures :events, :users, :user_profiles, :requests, :request_expenses
+  fixtures :all
 
   scenario "Trying to apply to an open event" do
     sign_in_as_user(users(:wedge))
