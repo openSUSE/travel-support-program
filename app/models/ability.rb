@@ -79,6 +79,22 @@ class Ability
         end
       end
 
+      # Reimbursement's attachments
+      can :read, ReimbursementAttachment do |a|
+        a.reimbursement.user == user
+      end
+      can [:create, :update, :destroy], ReimbursementAttachment do |a|
+        a.reimbursement.user == user && a.reimbursement.editable_by_requester?
+      end
+
+      # Reimbursement's bank account
+      can :read, BankAccount do |a|
+        a.reimbursement.user == user
+      end
+      can [:create, :update], BankAccount do |a|
+        a.reimbursement.user == user && a.reimbursement.editable_by_requester?
+      end
+
       # Final notes
       can :read, FinalNote do |n|
         n.machine.user == user
@@ -128,6 +144,11 @@ class Ability
         end
       end
 
+      # Reimbursement's attachments
+      can :read, ReimbursementAttachment
+      # Reimbursement's bank account
+      can :read, BankAccount
+
       # Final notes
       can :read, FinalNote
       can :create, FinalNote do |n|
@@ -160,6 +181,11 @@ class Ability
           r.send("can_#{action}?") && r.tsp_approved?
         end
       end
+
+      # Reimbursement's attachments
+      can :read, ReimbursementAttachment
+      # Reimbursement's bank account
+      can :read, BankAccount
 
       # Final notes
       can :read, FinalNote

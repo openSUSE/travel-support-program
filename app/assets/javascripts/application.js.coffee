@@ -30,6 +30,9 @@ window.init_page = ->
   $('#attachments').bind "cocoon:after-insert", (e, added) ->
     added.fileupload()
 
+  $('.tab-trigger').click ->
+    $(this).tab('show')
+
 window.build_dialog = (selector, content) ->
   # Close it and remove content if it's already open
   $("#" + selector).modal 'hide'

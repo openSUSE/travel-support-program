@@ -1,0 +1,20 @@
+- if user_signed_in? && can?(:read, bank_account)
+  = collapse_link "bank_account_details"
+  = bank_account.human_format_name
+  %blockquote#bank_account_details.collapse
+    .row-fluid
+      = show_for bank_account do |a|
+        .span6
+          = a.attribute :holder
+          = a.attribute :bank_name
+          - if bank_account.national?
+            = a.attribute :country do
+              = country_label(a.object.country_code)
+        .span6
+          - if bank_account.iban?
+            = a.attribute :iban
+            = a.attribute :bic
+          - else
+            = a.attribute :national_bank_code
+            = a.attribute :national_account_code
+            = a.attribute :bank_postal_address

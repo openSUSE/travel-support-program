@@ -11,6 +11,8 @@ class Reimbursement < ActiveRecord::Base
   has_many :attachments, :class_name => "ReimbursementAttachment", :inverse_of => :reimbursement
   # Final notes are comments that users can add as feedback to a finished reimbursement
   has_many :final_notes, :as => :machine
+  # Bank information goes to another model
+  has_one :bank_account, :inverse_of => :reimbursement, :dependent => :destroy, :autosave => true
 
   delegate :event, :to => :request, :prefix => false
 
@@ -19,16 +21,19 @@ class Reimbursement < ActiveRecord::Base
 
   accepts_nested_attributes_for :attachments, :allow_destroy => true
 
+  accepts_nested_attributes_for :bank_account, :allow_destroy => false
+
   attr_accessible :description, :requester_notes, :tsp_notes, :administrative_notes,
-    :request_attributes, :attachments_attributes
+    :request_attributes, :attachments_attributes, :bank_account_attributes
 
   validates :request, :presence => true
-  validates_associated :expenses, :attachments
+  validates_associated :expenses, :attachments, :bank_account
 
   audit(:create, :update, :destroy) {|m,u,a| "#{a} performed on Reimbursement by #{u.try(:nickname)}"}
 
   # Synchronizes user_id and request_id
   before_validation :set_user_id
+  before_validation :ensure_bank_account
 
   #
   state_machine :state, :initial => :incomplete do |machine|
@@ -89,12 +94,15 @@ class Reimbursement < ActiveRecord::Base
     in_final_state?
   end
 
-
   protected
 
   # Used internally to synchronize request_id and user_id
   def set_user_id
     self.user_id = request.user_id
+  end
+
+  def ensure_bank_account
+    build_bank_account if bank_account.nil?
   end
 
   # Used internally by accepts_nested_attributes to ensure that only

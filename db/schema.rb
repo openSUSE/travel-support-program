@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130514134105) do
+ActiveRecord::Schema.define(:version => 20130531095040) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id",                   :null => false
@@ -30,6 +30,21 @@ ActiveRecord::Schema.define(:version => 20130514134105) do
   add_index "audits", ["auditable_id", "auditable_type", "version"], :name => "auditable_index"
   add_index "audits", ["created_at"], :name => "index_audits_on_created_at"
   add_index "audits", ["user_id", "user_type"], :name => "user_index"
+
+  create_table "bank_accounts", :force => true do |t|
+    t.string   "holder"
+    t.string   "bank_name"
+    t.string   "format"
+    t.string   "iban"
+    t.string   "bic"
+    t.string   "national_bank_code"
+    t.string   "national_account_code"
+    t.string   "country_code"
+    t.string   "bank_postal_address"
+    t.integer  "reimbursement_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0

@@ -16,6 +16,12 @@ en:
         only_one_active: "another request already exists for the same event and user"
 
     models:
+      bank_account:
+        one: "bank account"
+        other: "bank accounts"
+        formats:
+          iban: "IBAN"
+          national: "National code"
       event:
         one: "event"
         other: "events"
@@ -39,6 +45,17 @@ en:
         other: "reimbursements"
 
     attributes:
+      bank_account:
+        bank_name: "financial institution"
+        bank_postal_address: "postal address of bank"
+        bic: "account BIC/SWIFT code"
+        country: "country"
+        country_code: "country"
+        format: "format"
+        holder: "holder"
+        iban: "account IBAN"
+        national_account_code: "account code"
+        national_bank_code: "bank code"
       event:
         name: "name"
         description: "description"
