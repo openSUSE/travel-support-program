@@ -67,7 +67,8 @@ group :test do
   gem "capybara-email"
   gem "capybara-webkit"
   gem "shoulda-matchers"
-  gem "database_cleaner"
+#  gem "database_cleaner"
+  gem "database_cleaner", :git => 'git@github.com:bmabey/database_cleaner.git'
 #  gem "delorean"
 end
 
