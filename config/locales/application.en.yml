@@ -23,7 +23,9 @@ en:
   requests: "Requests"
 
   cocoon_remove: "remove"
+  add_attachment: "add attachment"
   add_expense: "add expense"
+  add_link: "add link"
   estimated_amount_header: "estimated cost (amount/currency)"
   approved_amount_header: "approved (amount/currency)"
 

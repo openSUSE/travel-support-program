@@ -43,6 +43,12 @@ en:
       reimbursement:
         one: "reimbursement"
         other: "reimbursements"
+      reimbursement_attachment:
+        one: "attachment"
+        other: "attachments"
+      reimbursement_link:
+        one: "link"
+        other: "links"
 
     attributes:
       bank_account:
@@ -67,6 +73,7 @@ en:
         end_date: "ends at"
         request_creation_deadline: "accepting requests until"
       reimbursement:
+        attachments: "attachments"
         state: "state"
         user_id: "requester"
         user: "requester"
@@ -75,6 +82,7 @@ en:
         description: "description"
         final_notes: "final notes"
         incomplete_since: "incomplete since"
+        links: "links"
         transactions: "history"
         tsp_pending_since: "TSP pending since"
         tsp_approved_since: "TSP approved since"
@@ -82,6 +90,14 @@ en:
         payed_since: "payed since"
         completed_since: "completed since"
         canceled_since: "canceled since"
+      reimbursement_attachment:
+        reimbursement: "reimbursement"
+        title: "title"
+        file: "file"
+      reimbursement_link:
+        reimbursement: "reimbursement"
+        title: "title"
+        url: "url"
       request:
         approved_sum: "approved"
         authorized_sum: "authorized"

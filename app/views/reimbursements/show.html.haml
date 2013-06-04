@@ -19,6 +19,9 @@
     - else
       = render resource.bank_account
 
+  = r.association :links do
+    = reimbursement_links(resource)
+
   = r.association :attachments do
     = reimbursement_attachments(resource)
 

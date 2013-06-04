@@ -8,7 +8,11 @@ class Reimbursement < ActiveRecord::Base
   # The expenses of the associated request, total_amount and authorized_amount
   # will be updated during reimbursement process
   has_many :expenses, :through => :request, :autosave => false
+  # Attachments for providing invoices and reports
   has_many :attachments, :class_name => "ReimbursementAttachment", :inverse_of => :reimbursement
+  # Links pointing to reports (ie., blog posts) regarding the requester
+  # participation in the event
+  has_many :links, :class_name => "ReimbursementLink", :inverse_of => :reimbursement
   # Final notes are comments that users can add as feedback to a finished reimbursement
   has_many :final_notes, :as => :machine
   # Bank information goes to another model
@@ -21,13 +25,15 @@ class Reimbursement < ActiveRecord::Base
 
   accepts_nested_attributes_for :attachments, :allow_destroy => true
 
+  accepts_nested_attributes_for :links, :allow_destroy => true
+
   accepts_nested_attributes_for :bank_account, :allow_destroy => false
 
   attr_accessible :description, :requester_notes, :tsp_notes, :administrative_notes,
-    :request_attributes, :attachments_attributes, :bank_account_attributes
+    :request_attributes, :attachments_attributes, :links_attributes, :bank_account_attributes
 
   validates :request, :presence => true
-  validates_associated :expenses, :attachments, :bank_account
+  validates_associated :expenses, :attachments, :links, :bank_account
 
   audit(:create, :update, :destroy) {|m,u,a| "#{a} performed on Reimbursement by #{u.try(:nickname)}"}
 
