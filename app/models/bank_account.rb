@@ -8,7 +8,7 @@ class BankAccount < ActiveRecord::Base
   validates :bank_name, :presence => true, :unless => "reimbursement.incomplete?"
   validates :format, :presence => true, :inclusion => {:in => %w(iban national)}
   validate :iban, :bic, :presence => true, :unless => "reimbursement.incomplete? || !iban?"
-  validate :national_account_number, :country_code, :presence => true, :unless => "reimbursement.incomplete? || iban?"
+  validate :national_account_code, :country_code, :presence => true, :unless => "reimbursement.incomplete? || iban?"
 
   after_initialize :set_default_attrs, :if => :new_record?
 
