@@ -6,11 +6,12 @@
       .span6
         = show_for user.profile do |p|
           = p.attribute :full_name
+          = p.attribute :birthday
           = p.attribute :country do
             = country_label(user.profile.country_code)
           = p.attribute :location
-          = p.attribute :passport
-          = p.attribute :alternate_id_document
+          = p.attribute :postal_address
+          = p.attribute :zip_code
           = p.attribute :description
       .span6
         = show_for user do |u|
@@ -20,6 +21,7 @@
           = p.attribute :second_phone_number
           = p.attribute :website
           = p.attribute :blog
-          = p.attribute :birthday
+          = p.attribute :passport
+          = p.attribute :alternate_id_document
 - else
   = user.nickname

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130604121207) do
+ActiveRecord::Schema.define(:version => 20130605133121) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id",                   :null => false
@@ -167,6 +167,8 @@ ActiveRecord::Schema.define(:version => 20130604121207) do
     t.string   "blog"
     t.string   "passport"
     t.string   "alternate_id_document"
+    t.string   "zip_code"
+    t.string   "postal_address"
   end
 
   create_table "users", :force => true do |t|
