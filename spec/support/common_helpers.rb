@@ -18,8 +18,8 @@ module CommonHelpers
     options.merge!(opts)
     visit options[:path] if options[:path]
     within(options[:context]) do
-      fill_in "Email", :with => user.email
-      fill_in "Password", :with => options[:password]
+      fill_in "email", :with => user.email
+      fill_in "password", :with => options[:password]
       click_button "Sign in"
     end
   end

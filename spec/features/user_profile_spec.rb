@@ -13,7 +13,7 @@ feature "Edit my account", "" do
   scenario "Edit profile data" do
     click_link "Profile"
     fill_in "user[phone_number]", :with => "+99 555 343 3433"
-    fill_in "second phone number", :with => "+99 555 343 3433"
+    fill_in "other phone", :with => "+99 555 343 3433"
     fill_in "description", :with => "I was an interesting character in the REAL trilogy. Now I'm CR7."
     fill_in "website", :with => "http://www.starwars.com/anakin/"
     click_button "Update profile"
@@ -30,16 +30,16 @@ feature "Edit my account", "" do
 
   scenario "Change account" do
     click_link "Account"
-    fill_in "Nickname", :with => "Darth Vader"
-    fill_in "Email", :with => "vader@empire.gob"
+    fill_in "nickname", :with => "Darth Vader"
+    fill_in "email", :with => "vader@empire.gob"
     click_button "Update user"
     page.should have_content "Your account was updated"
   end
 
   scenario "Change account without name" do
     click_link "Account"
-    fill_in "Nickname", :with => ""
-    fill_in "Email", :with => "vader@empire.gob"
+    fill_in "nickname", :with => ""
+    fill_in "email", :with => "vader@empire.gob"
     click_button "Update user"
     page.should have_content "Your account wasn't updated"
   end
