@@ -79,6 +79,16 @@ class Reimbursement < ActiveRecord::Base
     request.expenses_sum(*args)
   end
 
+  # @see Request.expenses_sum
+  def self.expenses_sum(attr = :total, reimbursements)
+    if reimbursements.kind_of?(ActiveRecord::Relation)
+      r_ids = reimbursements.reorder("").pluck("reimbursements.request_id")
+    else
+      r_ids = reimbursements.map(&:request_id)
+    end
+    Request.expenses_sum(attr, r_ids)
+  end
+
   # Checks whether the requester should be allowed to do changes.
   #
   # @return [Boolean] true if allowed

@@ -157,6 +157,19 @@ class Request < ActiveRecord::Base
     ActiveSupport::OrderedHash[ unordered.sort_by(&:first) ]
   end
 
+  def self.expenses_sum(attr = :total, requests)
+    currency_field = RequestExpense.currency_field_for(attr)
+    amount_field = :"#{attr}_amount"
+    if requests.kind_of?(ActiveRecord::Relation)
+      r_ids = requests.reorder("").pluck("requests.id")
+    else
+      r_ids = requests.map {|i| i.kind_of?(Integer) ? i : i.id }
+    end
+    RequestExpense.sum(amount_field, :group => currency_field,
+        :conditions => ["#{amount_field} is not null and request_id in (?)", r_ids],
+        :order => currency_field)
+  end
+
   protected
 
   def only_one_active_request

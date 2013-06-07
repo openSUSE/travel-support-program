@@ -16,10 +16,10 @@ class RequestExpense < ActiveRecord::Base
   delegate :reimbursement, :to => :request, :prefix => false
 
   validates :request, :subject, :presence => true
-  validates :estimated_amount, :estimated_currency, :presence => true, :if => "request.submitted?"
-  validates :approved_amount, :approved_currency, :presence => true, :if => "request.approved?"
-  validates :total_amount, :presence => true, :if => "request.reimbursement && request.reimbursement.tsp_pending?"
-  validates :authorized_amount, :presence => true, :if => "request.reimbursement && request.reimbursement.tsp_approved?"
+  validates :estimated_amount, :estimated_currency, :presence => true, :if => "request && request.submitted?"
+  validates :approved_amount, :approved_currency, :presence => true, :if => "request && request.approved?"
+  validates :total_amount, :presence => true, :if => "request && request.reimbursement && request.reimbursement.tsp_pending?"
+  validates :authorized_amount, :presence => true, :if => "request && request.reimbursement && request.reimbursement.tsp_approved?"
 
   before_validation :set_authorized_amount
 
@@ -27,9 +27,26 @@ class RequestExpense < ActiveRecord::Base
 
   # Convenience method that simply aliases approved_currency since currency
   # cannot be changed after approval
-  def total_currency; estimated_currency; end
+  def total_currency
+    send(RequestExpense.currency_field_for(:total))
+  end
   # (see #total_currency)
-  def authorized_currency; approved_currency; end
+  def authorized_currency
+    send(RequestExpense.currency_field_for(:authorized))
+  end
+
+  def self.currency_field_for(attr)
+    case attr
+    when :estimated
+      :estimated_currency
+    when :approved
+      :approved_currency
+    when :total
+      :estimated_currency
+    when :authorized
+      :approved_currency
+    end
+  end
 
   protected
 

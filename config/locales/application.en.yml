@@ -47,11 +47,13 @@ en:
   final_note_added: "Final note added."
   final_note_failed: "Some error prevented the note to be added."
   final_note_line: "By %{user} at %{date}: %{body}"
+  full_total: "Total"
   general_info: "general information"
   goto: "go to"
   new_event_warning: "Make sure that the event is not currently included in the list. Event duplication can cause the request rejection"
   no_reimbursement_yet: "The reimbursement process has not started"
   opensuse_profile_info: 'Information on disabled controls have to be changed in <a href="%{url}">your Connect profile</a>.'
+  page_total: "Total in this page"
   redirect_to_previous_request: "A request already exists for this event. Redirected."
   reset_search: "all"
   search: "search"

@@ -64,15 +64,26 @@ module ApplicationHelper
     icon_to "resize-vertical", "\##{target}", :title => t(:collapse), :data => {:toggle => :collapse}
   end
 
-  # Outputs the sum of the expenses of a request or a reimbursement,
+  # Outputs the sum of the expenses of a request or a reimbursement
+  # (or for a collection of requests/reimbursents),
   # as a list of comma separated number_to_currency (one for
   # every used currency)
   #
-  # @param [#expenses_sum] r a request or a reimbursement
+  # @param [Object] r a request, a reimbursement or a collection (reimbursements
+  #                   or request, not mixed)
   # @param [Symbol] attr can be :estimated, :approved, :total or :authorized
   # @return [String] HTML output
   def expenses_sum(r, attr)
-    r.expenses_sum(attr).map {|k,v| number_to_currency(v, :unit => (k || "?"))}.join(", ")
+    if r.respond_to?(:size)
+      if first = r.first
+        sum = first.class.expenses_sum(attr, r)
+      else
+        sum = []
+      end
+    else
+      sum = r.expenses_sum(attr)
+    end
+    sum.map {|k,v| number_to_currency(v, :unit => (k || "?"))}.join(", ")
   end
 
   # Outputs the role of the current user. Useful, for example, for deciding which partial

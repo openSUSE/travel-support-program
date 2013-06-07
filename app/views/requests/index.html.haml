@@ -26,5 +26,21 @@
         %td= expenses_sum(request, :estimated)
         %td= expenses_sum(request, :approved)
         %td= timestamped_state(request)
+  %tfoot
+    - if @all_requests.size > @requests.size
+      %tr
+        %td
+        %td
+        %th.text-right= t(:page_total)
+        %td= expenses_sum(@all_requests, :estimated)
+        %td= expenses_sum(@all_requests, :approved)
+        %td
+    %tr
+      %td
+      %td
+      %th.text-right= t(:full_total)
+      %td= expenses_sum(@requests, :estimated)
+      %td= expenses_sum(@requests, :approved)
+      %td
 
 = paginate collection
