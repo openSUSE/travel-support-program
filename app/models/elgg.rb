@@ -1,5 +1,9 @@
 require 'net/http'
 
+#
+# Provides read access to the Elgg REST API.
+# See http://docs.elgg.org/wiki/Web_Services
+#
 class Elgg
    
   def initialize(base_url, api_key)

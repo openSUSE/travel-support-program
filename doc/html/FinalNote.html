@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
-  Class: StateTransition
+  Class: FinalNote
   
     &mdash; Documentation by YARD 0.8.5.2
   
@@ -31,10 +31,10 @@
     <div id="header">
       <div id="menu">
   
-    <a href="_index.html">Index (S)</a> &raquo;
+    <a href="_index.html">Index (F)</a> &raquo;
     
     
-    <span class="title">StateTransition</span>
+    <span class="title">FinalNote</span>
   
 
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
@@ -63,7 +63,7 @@
 
     <iframe id="search_frame"></iframe>
 
-    <div id="content"><h1>Class: StateTransition
+    <div id="content"><h1>Class: FinalNote
   
   
   
@@ -80,7 +80,7 @@
           
             <li class="next">ActiveRecord::Base</li>
           
-            <li class="next">StateTransition</li>
+            <li class="next">FinalNote</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -96,20 +96,16 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">app/models/state_transition.rb</dd>
+    <dd class="r2 last">app/models/final_note.rb</dd>
   
 </dl>
 <div class="clear"></div>
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>Transition of a state machine (a request, a reimbursement...) from one state
-to another. Saving the StateTransition to the database will correctly update
-the associated state machine automatically.</p>
-
-<p>Saving StateTransition objects to the database is the right way of changing
-the state, as it creates a log of the change, allows the user to add textual
-information and notifies the change to all involved users.</p>
+    <p>Final note attached to a state machine.
+When the machine reaches a final state, users cannot longer modify the state,
+but they can add comments creating final notes.</p>
 
 
   </div>
@@ -123,6 +119,31 @@ information and notifies the change to all involved users.</p>
 
   <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
   <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#body-instance_method" title="#body (instance method)">- (Text) <strong>body</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
     
       <li class="public ">
   <span class="summary_signature">
@@ -152,107 +173,7 @@ information and notifies the change to all involved users.</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#from-instance_method" title="#from (instance method)">- (String) <strong>from</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#machine_type-instance_method" title="#machine_type (instance method)">- (String) <strong>machine_type</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#notes-instance_method" title="#notes (instance method)">- (String) <strong>notes</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#state_event-instance_method" title="#state_event (instance method)">- (String) <strong>state_event</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#to-instance_method" title="#to (instance method)">- (String) <strong>to</strong> </a>
     
 
     
@@ -352,7 +273,7 @@ information and notifies the change to all involved users.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>The user creating the transition.</p>
+    <span class="summary_desc"><div class='inline'><p>The author of the note.</p>
 </div></span>
   
 </li>
@@ -370,7 +291,7 @@ information and notifies the change to all involved users.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#newest_first-class_method" title="newest_first (class method)">+ (Array&lt;StateTransition&gt;) <strong>newest_first</strong> </a>
+      <a href="#newest_first-class_method" title="newest_first (class method)">+ (Array&lt;FinalNote&gt;) <strong>newest_first</strong> </a>
     
 
     
@@ -384,7 +305,7 @@ information and notifies the change to all involved users.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>An array of StateTransitions that are newest first.</p>
+    <span class="summary_desc"><div class='inline'><p>An array of FinalNotes that are newest first.</p>
 </div></span>
   
 </li>
@@ -393,7 +314,7 @@ information and notifies the change to all involved users.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#oldest_first-class_method" title="oldest_first (class method)">+ (Array&lt;StateTransition&gt;) <strong>oldest_first</strong> </a>
+      <a href="#oldest_first-class_method" title="oldest_first (class method)">+ (Array&lt;FinalNote&gt;) <strong>oldest_first</strong> </a>
     
 
     
@@ -407,7 +328,7 @@ information and notifies the change to all involved users.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>An array of StateTransitions that are oldest first.</p>
+    <span class="summary_desc"><div class='inline'><p>An array of FinalNotes that are oldest first.</p>
 </div></span>
   
 </li>
@@ -422,9 +343,59 @@ information and notifies the change to all involved users.</p>
     <h2>Instance Attribute Details</h2>
     
       
-      <span id="created_at=-instance_method"></span>
+      <span id="body=-instance_method"></span>
       <div class="method_details first">
-  <h3 class="signature first" id="created_at-instance_method">
+  <h3 class="signature first" id="body-instance_method">
+  
+    - (<tt>Text</tt>) <strong>body</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Text</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+82</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 82</span>
+
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>body</span><span class='tstring_end'>&quot;</span></span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="created_at=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="created_at-instance_method">
   
     - (<tt>DateTime</tt>) <strong>created_at</strong> 
   
@@ -460,62 +431,12 @@ information and notifies the change to all involved users.</p>
       <pre class="lines">
 
 
-150</pre>
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 150</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 84</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>   <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id="from=-instance_method"></span>
-      <div class="method_details ">
-  <h3 class="signature " id="from-instance_method">
-  
-    - (<tt>String</tt>) <strong>from</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-146</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 146</span>
-
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>from</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>         <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
   </tr>
 </table>
@@ -560,162 +481,12 @@ information and notifies the change to all involved users.</p>
       <pre class="lines">
 
 
-144</pre>
+81</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 144</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 81</span>
 
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>machine_type</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id="notes=-instance_method"></span>
-      <div class="method_details ">
-  <h3 class="signature " id="notes-instance_method">
-  
-    - (<tt>String</tt>) <strong>notes</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-149</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 149</span>
-
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>notes</span><span class='tstring_end'>&quot;</span></span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id="state_event=-instance_method"></span>
-      <div class="method_details ">
-  <h3 class="signature " id="state_event-instance_method">
-  
-    - (<tt>String</tt>) <strong>state_event</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-145</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 145</span>
-
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>state_event</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>  <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id="to=-instance_method"></span>
-      <div class="method_details ">
-  <h3 class="signature " id="to-instance_method">
-  
-    - (<tt>String</tt>) <strong>to</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-147</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 147</span>
-
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>to</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>           <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>machine_type</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
   </tr>
 </table>
@@ -760,10 +531,10 @@ information and notifies the change to all involved users.</p>
       <pre class="lines">
 
 
-151</pre>
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 151</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 85</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>updated_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>   <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -781,7 +552,7 @@ information and notifies the change to all involved users.</p>
       <div class="method_details first">
   <h3 class="signature first" id="newest_first-class_method">
   
-    + (<tt>Array&lt;<span class='object_link'><a href="" title="StateTransition (class)">StateTransition</a></span>&gt;</tt>) <strong>newest_first</strong> 
+    + (<tt>Array&lt;<span class='object_link'><a href="" title="FinalNote (class)">FinalNote</a></span>&gt;</tt>) <strong>newest_first</strong> 
   
 
   
@@ -789,7 +560,7 @@ information and notifies the change to all involved users.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>An array of StateTransitions that are newest first. <strong>Active Record Scope</strong></p>
+    <p>An array of FinalNotes that are newest first. <strong>Active Record Scope</strong></p>
 
 
   </div>
@@ -802,7 +573,7 @@ information and notifies the change to all involved users.</p>
     <li>
       
       
-        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="" title="StateTransition (class)">StateTransition</a></span>&gt;</tt>)</span>
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="" title="FinalNote (class)">FinalNote</a></span>&gt;</tt>)</span>
       
       
       
@@ -823,10 +594,10 @@ information and notifies the change to all involved users.</p>
       <pre class="lines">
 
 
-23</pre>
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/state_transition.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'app/models/final_note.rb', line 18</span>
 
 <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:newest_first</span><span class='comma'>,</span> <span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at desc</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></pre>
     </td>
@@ -837,7 +608,7 @@ information and notifies the change to all involved users.</p>
       <div class="method_details ">
   <h3 class="signature " id="oldest_first-class_method">
   
-    + (<tt>Array&lt;<span class='object_link'><a href="" title="StateTransition (class)">StateTransition</a></span>&gt;</tt>) <strong>oldest_first</strong> 
+    + (<tt>Array&lt;<span class='object_link'><a href="" title="FinalNote (class)">FinalNote</a></span>&gt;</tt>) <strong>oldest_first</strong> 
   
 
   
@@ -845,7 +616,7 @@ information and notifies the change to all involved users.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>An array of StateTransitions that are oldest first. <strong>Active Record Scope</strong></p>
+    <p>An array of FinalNotes that are oldest first. <strong>Active Record Scope</strong></p>
 
 
   </div>
@@ -858,7 +629,7 @@ information and notifies the change to all involved users.</p>
     <li>
       
       
-        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="" title="StateTransition (class)">StateTransition</a></span>&gt;</tt>)</span>
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="" title="FinalNote (class)">FinalNote</a></span>&gt;</tt>)</span>
       
       
       
@@ -879,10 +650,10 @@ information and notifies the change to all involved users.</p>
       <pre class="lines">
 
 
-22</pre>
+17</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/state_transition.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/final_note.rb', line 17</span>
 
 <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:oldest_first</span><span class='comma'>,</span> <span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at asc</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></pre>
     </td>
@@ -921,10 +692,10 @@ information and notifies the change to all involved users.</p>
       <pre class="lines">
 
 
-14</pre>
+9</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/state_transition.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'app/models/final_note.rb', line 9</span>
 
 <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:machine</span><span class='comma'>,</span> <span class='symbol'>:polymorphic</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:inverse_of</span> <span class='op'>=&gt;</span> <span class='symbol'>:transitions</span></pre>
     </td>
@@ -943,7 +714,7 @@ information and notifies the change to all involved users.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>The user creating the transition</p>
+    <p>The author of the note</p>
 
 
   </div>
@@ -957,10 +728,10 @@ information and notifies the change to all involved users.</p>
       <pre class="lines">
 
 
-16</pre>
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/state_transition.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'app/models/final_note.rb', line 11</span>
 
 <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:user</span></pre>
     </td>

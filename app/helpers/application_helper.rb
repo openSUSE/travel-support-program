@@ -1,3 +1,6 @@
+#
+# Application-wide helpers
+#
 module ApplicationHelper
   # Outputs a <li> element suitable for use in Bootstrap nav menus, that is,
   # with the 'active' css class when needed
@@ -46,6 +49,7 @@ module ApplicationHelper
     end
     raw(msg)
   end 
+
   # Outputs a link with an icon inside (and visible no text)
   #
   # @param [String] name   a icon name from http://twitter.github.com/bootstrap/base-css.html#icons

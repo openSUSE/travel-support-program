@@ -1,4 +1,11 @@
+#
+# Module for application-wide code
+#
 module TravelSupportProgram
+  #
+  # Mixin for creating state machines managed by creating associated
+  # StateTransition objects.
+  #
   module HasState
     def self.included(base)
       base.class_eval do

@@ -1,3 +1,6 @@
+#
+# CanCan permissions
+#
 class Ability
   include CanCan::Ability
 

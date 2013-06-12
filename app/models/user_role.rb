@@ -1,3 +1,6 @@
+#
+# ActiveHash containing the application user's roles
+#
 class UserRole < ActiveHash::Base
   include ActiveHash::Enum
 

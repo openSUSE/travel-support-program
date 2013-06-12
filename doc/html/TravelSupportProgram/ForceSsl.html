@@ -84,7 +84,17 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Module for application-wide code</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -116,7 +126,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Before filter for redirecting to the SSL-enabled version of the url.</p>
+</div></span>
   
 </li>
 
@@ -139,18 +150,28 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Before filter for redirecting to the SSL-enabled version of the url</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-2
-3
-4</pre>
+6
+7
+8</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/travel_support_program/force_ssl.rb', line 2</span>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/force_ssl.rb', line 6</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_force_ssl_if_available'>force_ssl_if_available</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_force_ssl'>force_ssl</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_env'>env</span><span class='period'>.</span><span class='id identifier rubyid_test?'>test?</span>
@@ -165,7 +186,7 @@
 </div>
 
     <div id="footer">
-  Generated on Wed May  1 16:34:12 2013 by
+  Generated on Wed Jun 12 11:39:50 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>

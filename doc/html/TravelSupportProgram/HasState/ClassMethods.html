@@ -136,6 +136,29 @@ action for a given state.</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#involved_roles-instance_method" title="#involved_roles (instance method)">- (Object) <strong>involved_roles</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Roles involved in the workflow in any way.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#roles_assigned_to-instance_method" title="#roles_assigned_to (instance method)">- (Array) <strong>roles_assigned_to</strong>(state) </a>
     
 
@@ -259,21 +282,21 @@ notifications and also as a default filter on lists.</p>
       <pre class="lines">
 
 
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67</pre>
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_assign_state'>assign_state</span><span class='lparen'>(</span><span class='id identifier rubyid_state_name'>state_name</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_to'>to</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:to</span><span class='rbracket'>]</span>
@@ -287,6 +310,43 @@ notifications and also as a default filter on lists.</p>
     <span class='kw'>true</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="involved_roles-instance_method">
+  
+    - (<tt>Object</tt>) <strong>involved_roles</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Roles involved in the workflow in any way.
+Used for sending important notifications</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+64</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 64</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_involved_roles'>involved_roles</span><span class='semicolon'>;</span> <span class='ivar'>@involved_roles</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -360,12 +420,12 @@ notifications and also as a default filter on lists.</p>
       <pre class="lines">
 
 
-88
-89
-90</pre>
+107
+108
+109</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 107</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_roles_assigned_to'>roles_assigned_to</span><span class='lparen'>(</span><span class='id identifier rubyid_state'>state</span><span class='rparen'>)</span>
   <span class='ivar'>@assigned_roles</span><span class='lbracket'>[</span><span class='id identifier rubyid_state'>state</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -443,17 +503,17 @@ notifications and also as a default filter on lists.</p>
       <pre class="lines">
 
 
-74
-75
-76
-77
-78
-79
-80
-81</pre>
+93
+94
+95
+96
+97
+98
+99
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 93</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_states_assigned_to'>states_assigned_to</span><span class='lparen'>(</span><span class='id identifier rubyid_role'>role</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_role'>role</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>UserRole</span><span class='rparen'>)</span>
@@ -473,7 +533,7 @@ notifications and also as a default filter on lists.</p>
 </div>
 
     <div id="footer">
-  Generated on Wed May  1 16:34:12 2013 by
+  Generated on Wed Jun 12 11:39:50 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>

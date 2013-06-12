@@ -1,0 +1,366 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: UserProfilesHelper
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (U)</a> &raquo;
+    
+    
+    <span class="title">UserProfilesHelper</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: UserProfilesHelper
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">app/helpers/user_profiles_helper.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Helpers for user profile form</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#profile_info-instance_method" title="#profile_info (instance method)">- (String) <strong>profile_info</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Outputs a block with information to show to the user while editing his/her
+own profile.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#profile_input-instance_method" title="#profile_input (instance method)">- (String) <strong>profile_input</strong>(f, attribute, args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Renders a input for a UserProfile&#39;s field, disabled when needed.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="profile_info-instance_method">
+  
+    - (<tt>String</tt>) <strong>profile_info</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Outputs a block with information to show to the user while editing his/her
+own profile. Explains why some inputs are disabled when opensuse_auth_proxy
+is enabled.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>HTML output</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/user_profiles_helper.rb', line 11</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_profile_info'>profile_info</span>
+  <span class='kw'>if</span> <span class='const'>TravelSupportProgram</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_setting'>setting</span> <span class='symbol'>:opensuse_auth_proxy</span><span class='comma'>,</span> <span class='symbol'>:enabled</span>
+    <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:div</span><span class='comma'>,</span>
+        <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='symbol'>:opensuse_profile_info</span><span class='comma'>,</span> <span class='symbol'>:url</span> <span class='op'>=&gt;</span> <span class='const'>ConnectUser</span><span class='period'>.</span><span class='id identifier rubyid_profile_url_for'>profile_url_for</span><span class='lparen'>(</span><span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_nickname'>nickname</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span><span class='comma'>,</span>
+        <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>alert alert-info</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="profile_input-instance_method">
+  
+    - (<tt>String</tt>) <strong>profile_input</strong>(f, attribute, args = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Renders a input for a UserProfile&#39;s field, disabled when needed.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>f</span>
+      
+      
+        <span class='type'>(<tt>SimpleForm::FormBuilder</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the simple_form form builder</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>attribute</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the attribute name</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>arguments to bypass to the #input call</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>HTML output</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29
+30
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/user_profiles_helper.rb', line 27</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_profile_input'>profile_input</span><span class='lparen'>(</span><span class='id identifier rubyid_f'>f</span><span class='comma'>,</span> <span class='id identifier rubyid_attribute'>attribute</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_have_editable?'>have_editable?</span> <span class='id identifier rubyid_attribute'>attribute</span>
+    <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_input'>input</span> <span class='id identifier rubyid_attribute'>attribute</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_input'>input</span> <span class='id identifier rubyid_attribute'>attribute</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>disabled:</span> <span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Wed Jun 12 11:39:50 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

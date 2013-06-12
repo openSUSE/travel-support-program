@@ -1,3 +1,9 @@
+#
+# Devise user.
+#
+# This model only keeps the information and methods needed for authentication.
+# For user information or role, use UserProfile
+#
 class User < ActiveRecord::Base
   extend ActiveHash::Associations::ActiveRecordExtensions
   # Include default devise modules. Others available are:
@@ -15,6 +21,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email
   attr_accessible :nickname, :locale
+  # Associated object with all information not directly related to authentication
   has_one :profile, :class_name => "UserProfile"
 
   after_create :create_profile

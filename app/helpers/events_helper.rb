@@ -1,3 +1,6 @@
+#
+# Helpers for events
+#
 module EventsHelper
   # Outputs a one-line summary of the event information
   #

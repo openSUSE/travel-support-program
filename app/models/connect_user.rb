@@ -1,5 +1,15 @@
+#
+# A user at connect.opensuse.org.
+# This class uses the REST interface of connect.opensuse.org to read information
+# about a given Connect user. See
+# http://en.opensuse.org/openSUSE:Connect_API
+#
 class ConnectUser
 
+  # Creates a new instance for accessing the information of a given connect user
+  #
+  # @param [String] login the username of the user in Connect.
+  # @return [ConnectUser]
   def initialize(login)
     begin
       api_conf = TravelSupportProgram::Config.setting(:opensuse_auth_proxy, :connect)
