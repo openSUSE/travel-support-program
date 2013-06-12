@@ -12,7 +12,7 @@ module ReimbursementsHelper
     if reimbursement.attachments.empty?
       I18n.t("show_for.blank")
     else
-      reimbursement.attachments.map {|a| link_to(a.title, a.file_url) }.join(", ").html_safe
+      reimbursement.attachments.map {|a| link_to(a.title, asset_path(a.file_url)) }.join(", ").html_safe
     end
   end
 
