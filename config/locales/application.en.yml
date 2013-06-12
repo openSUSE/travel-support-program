@@ -67,3 +67,4 @@ en:
   state_transition_title_line: "At %{date}, %{user} did %{event} it"
   state_transition_details: "From %{from} to %{to}"
   user_guide: "User guide"
+  version: "Version %{version}"
