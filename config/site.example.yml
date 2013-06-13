@@ -14,7 +14,7 @@ common: &common
     enabled: false
     proxy_base_url: "https://connect.opensuse.org"
     connect:
-      api_key: "10ec755da3117f3048e0e2dd6c2cb30a2fa2c118"
+      api_key: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
       base_url: "https://connect.opensuse.org"
 
   external_links:
