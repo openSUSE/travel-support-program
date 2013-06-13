@@ -194,11 +194,10 @@ en:
         accepted: "accepted"
         approved: "approved"
         canceled: "canceled"
-        finished: "finished"
         incomplete: "incomplete"
+        payed: "payed"
+        processed: "processed"
         submitted: "submitted"
-        tsp_approved: "TSP approved"
-        tsp_pending: "TSP pending"
       messages:
         accept_success: "Acceptance processed."
         accept_failure: "Something went wrong. Not accepted"

@@ -48,7 +48,7 @@ describe Ability do
       it{ should_not be_able_to(:create, requests(:wedge_for_yavin).build_reimbursement) }
     end
 
-    context "managing a new reimbursement" do
+    context "managing a reimbursement" do
       before(:each) do
         @reimbursement = requests(:luke_for_yavin).create_reimbursement
         @reimbursement.request.expenses.each do |e|
@@ -59,6 +59,11 @@ describe Ability do
       it{ should be_able_to(:submit, @reimbursement) }
       it{ should be_able_to(:update, @reimbursement) }
       it{ should be_able_to(:cancel, @reimbursement) }
+      it{ should_not be_able_to(:approve, @reimbursement) }
+      it{ should_not be_able_to(:accept, @reimbursement) }
+      it{ should_not be_able_to(:process, @reimbursement) }
+      it{ should_not be_able_to(:confirm, @reimbursement) }
+      it{ should_not be_able_to(:reject, @reimbursement) }
 
       context "and trying to look into other's reimbursements" do
         let(:user){ users(:wedge) }
@@ -66,6 +71,96 @@ describe Ability do
         it{ should_not be_able_to(:update, @reimbursement) }
         it{ should_not be_able_to(:submit, @reimbursement) }
         it{ should_not be_able_to(:cancel, @reimbursement) }
+        it{ should_not be_able_to(:approve, @reimbursement) }
+        it{ should_not be_able_to(:accept, @reimbursement) }
+        it{ should_not be_able_to(:process, @reimbursement) }
+        it{ should_not be_able_to(:confirm, @reimbursement) }
+        it{ should_not be_able_to(:reject, @reimbursement) }
+      end
+
+      context "already submitted" do
+        before(:each) do
+          @reimbursement.submit!
+        end
+
+        it{ should be_able_to(:read, @reimbursement) }
+        it{ should be_able_to(:roll_back, @reimbursement) }
+        it{ should be_able_to(:cancel, @reimbursement) }
+        it{ should_not be_able_to(:update, @reimbursement) }
+        it{ should_not be_able_to(:approve, @reimbursement) }
+        it{ should_not be_able_to(:accept, @reimbursement) }
+        it{ should_not be_able_to(:process, @reimbursement) }
+        it{ should_not be_able_to(:confirm, @reimbursement) }
+        it{ should_not be_able_to(:destroy, @reimbursement) }
+        it{ should_not be_able_to(:reject, @reimbursement) }
+
+        context "and approved" do
+          before(:each) do
+            @reimbursement.approve!
+          end
+
+          it{ should be_able_to(:read, @reimbursement) }
+          it{ should be_able_to(:cancel, @reimbursement) }
+          it{ should be_able_to(:roll_back, @reimbursement) }
+          it{ should be_able_to(:accept, @reimbursement) }
+          it{ should_not be_able_to(:update, @reimbursement) }
+          it{ should_not be_able_to(:destroy, @reimbursement) }
+          it{ should_not be_able_to(:approve, @reimbursement) }
+          it{ should_not be_able_to(:process, @reimbursement) }
+          it{ should_not be_able_to(:confirm, @reimbursement) }
+          it{ should_not be_able_to(:reject, @reimbursement) }
+
+          context "and accepted" do
+            before(:each) do
+              @reimbursement.accept!
+            end
+
+            it{ should be_able_to(:read, @reimbursement) }
+            it{ should_not be_able_to(:update, @reimbursement) }
+            it{ should_not be_able_to(:destroy, @reimbursement) }
+            it{ should_not be_able_to(:cancel, @reimbursement) }
+            it{ should_not be_able_to(:approve, @reimbursement) }
+            it{ should_not be_able_to(:roll_back, @reimbursement) }
+            it{ should_not be_able_to(:accept, @reimbursement) }
+            it{ should_not be_able_to(:process, @reimbursement) }
+            it{ should_not be_able_to(:confirm, @reimbursement) }
+            it{ should_not be_able_to(:reject, @reimbursement) }
+
+            context "and processed" do
+              before(:each) do
+                @reimbursement.process!
+              end
+
+              it{ should be_able_to(:read, @reimbursement) }
+              it{ should_not be_able_to(:update, @reimbursement) }
+              it{ should_not be_able_to(:destroy, @reimbursement) }
+              it{ should_not be_able_to(:cancel, @reimbursement) }
+              it{ should_not be_able_to(:approve, @reimbursement) }
+              it{ should_not be_able_to(:roll_back, @reimbursement) }
+              it{ should_not be_able_to(:accept, @reimbursement) }
+              it{ should_not be_able_to(:process, @reimbursement) }
+              it{ should_not be_able_to(:confirm, @reimbursement) }
+              it{ should_not be_able_to(:reject, @reimbursement) }
+
+              context "and payed" do
+                before(:each) do
+                  @reimbursement.confirm!
+                end
+
+                it{ should be_able_to(:read, @reimbursement) }
+                it{ should_not be_able_to(:update, @reimbursement) }
+                it{ should_not be_able_to(:destroy, @reimbursement) }
+                it{ should_not be_able_to(:cancel, @reimbursement) }
+                it{ should_not be_able_to(:approve, @reimbursement) }
+                it{ should_not be_able_to(:roll_back, @reimbursement) }
+                it{ should_not be_able_to(:accept, @reimbursement) }
+                it{ should_not be_able_to(:process, @reimbursement) }
+                it{ should_not be_able_to(:confirm, @reimbursement) }
+                it{ should_not be_able_to(:reject, @reimbursement) }
+              end
+            end
+          end
+        end
       end
     end
 
@@ -170,8 +265,12 @@ describe Ability do
       it{ should be_able_to(:cancel, @reimbursement) }
       it{ should_not be_able_to(:update, @reimbursement) }
       it{ should_not be_able_to(:approve, @reimbursement) }
+      it{ should_not be_able_to(:accept, @reimbursement) }
+      it{ should_not be_able_to(:process, @reimbursement) }
+      it{ should_not be_able_to(:confirm, @reimbursement) }
       it{ should_not be_able_to(:roll_back, @reimbursement) }
       it{ should_not be_able_to(:destroy, @reimbursement) }
+      it{ should_not be_able_to(:reject, @reimbursement) }
 
       context "already submitted" do
         before(:each) do
@@ -183,8 +282,11 @@ describe Ability do
         it{ should be_able_to(:approve, @reimbursement) }
         it{ should be_able_to(:roll_back, @reimbursement) }
         it{ should be_able_to(:cancel, @reimbursement) }
+        it{ should_not be_able_to(:accept, @reimbursement) }
+        it{ should_not be_able_to(:process, @reimbursement) }
+        it{ should_not be_able_to(:confirm, @reimbursement) }
         it{ should_not be_able_to(:destroy, @reimbursement) }
-        it{ should_not be_able_to(:authorize, @reimbursement) }
+        it{ should_not be_able_to(:reject, @reimbursement) }
 
         context "and approved" do
           before(:each) do
@@ -192,25 +294,65 @@ describe Ability do
           end
 
           it{ should be_able_to(:read, @reimbursement) }
-          it{ should_not be_able_to(:cancel, @reimbursement) }
+          it{ should be_able_to(:cancel, @reimbursement) }
+          it{ should be_able_to(:roll_back, @reimbursement) }
           it{ should_not be_able_to(:update, @reimbursement) }
-          it{ should_not be_able_to(:approve, @reimbursement) }
           it{ should_not be_able_to(:destroy, @reimbursement) }
-          it{ should_not be_able_to(:roll_back, @reimbursement) }
-          it{ should_not be_able_to(:authorize, @reimbursement) }
+          it{ should_not be_able_to(:approve, @reimbursement) }
+          it{ should_not be_able_to(:accept, @reimbursement) }
+          it{ should_not be_able_to(:process, @reimbursement) }
+          it{ should_not be_able_to(:confirm, @reimbursement) }
+          it{ should_not be_able_to(:reject, @reimbursement) }
 
-          context "and authorized" do
+          context "and accepted" do
             before(:each) do
-              @reimbursement.authorize!
+              @reimbursement.accept!
             end
 
             it{ should be_able_to(:read, @reimbursement) }
             it{ should_not be_able_to(:update, @reimbursement) }
-            it{ should_not be_able_to(:approve, @reimbursement) }
-            it{ should_not be_able_to(:cancel, @reimbursement) }
             it{ should_not be_able_to(:destroy, @reimbursement) }
+            it{ should_not be_able_to(:cancel, @reimbursement) }
+            it{ should_not be_able_to(:approve, @reimbursement) }
             it{ should_not be_able_to(:roll_back, @reimbursement) }
-            it{ should_not be_able_to(:authorize, @reimbursement) }
+            it{ should_not be_able_to(:accept, @reimbursement) }
+            it{ should_not be_able_to(:process, @reimbursement) }
+            it{ should_not be_able_to(:confirm, @reimbursement) }
+            it{ should_not be_able_to(:reject, @reimbursement) }
+
+            context "and processed" do
+              before(:each) do
+                @reimbursement.process!
+              end
+
+              it{ should be_able_to(:read, @reimbursement) }
+              it{ should_not be_able_to(:update, @reimbursement) }
+              it{ should_not be_able_to(:destroy, @reimbursement) }
+              it{ should_not be_able_to(:cancel, @reimbursement) }
+              it{ should_not be_able_to(:approve, @reimbursement) }
+              it{ should_not be_able_to(:roll_back, @reimbursement) }
+              it{ should_not be_able_to(:accept, @reimbursement) }
+              it{ should_not be_able_to(:process, @reimbursement) }
+              it{ should_not be_able_to(:confirm, @reimbursement) }
+              it{ should_not be_able_to(:reject, @reimbursement) }
+
+              context "and payed" do
+                before(:each) do
+                  @reimbursement.confirm!
+                end
+
+                it{ should be_able_to(:read, @reimbursement) }
+                it{ should_not be_able_to(:update, @reimbursement) }
+                it{ should_not be_able_to(:destroy, @reimbursement) }
+                it{ should_not be_able_to(:cancel, @reimbursement) }
+                it{ should_not be_able_to(:approve, @reimbursement) }
+                it{ should_not be_able_to(:roll_back, @reimbursement) }
+                it{ should_not be_able_to(:accept, @reimbursement) }
+                it{ should_not be_able_to(:process, @reimbursement) }
+                it{ should_not be_able_to(:confirm, @reimbursement) }
+                it{ should_not be_able_to(:reject, @reimbursement) }
+              end
+            end
           end
         end
       end
@@ -295,6 +437,10 @@ describe Ability do
       it{ should_not be_able_to(:roll_back, @reimbursement) }
       it{ should_not be_able_to(:cancel, @reimbursement) }
       it{ should_not be_able_to(:destroy, @reimbursement) }
+      it{ should_not be_able_to(:accept, @reimbursement) }
+      it{ should_not be_able_to(:reject, @reimbursement) }
+      it{ should_not be_able_to(:process, @reimbursement) }
+      it{ should_not be_able_to(:confirm, @reimbursement) }
 
       context "already submitted" do
         before(:each) do
@@ -307,7 +453,10 @@ describe Ability do
         it{ should_not be_able_to(:roll_back, @reimbursement) }
         it{ should_not be_able_to(:cancel, @reimbursement) }
         it{ should_not be_able_to(:destroy, @reimbursement) }
-        it{ should_not be_able_to(:authorize, @reimbursement) }
+        it{ should_not be_able_to(:accept, @reimbursement) }
+        it{ should_not be_able_to(:reject, @reimbursement) }
+        it{ should_not be_able_to(:process, @reimbursement) }
+        it{ should_not be_able_to(:confirm, @reimbursement) }
 
         context "and approved" do
           before(:each) do
@@ -319,21 +468,61 @@ describe Ability do
           it{ should_not be_able_to(:approve, @reimbursement) }
           it{ should_not be_able_to(:cancel, @reimbursement) }
           it{ should_not be_able_to(:destroy, @reimbursement) }
-          it{ should be_able_to(:roll_back, @reimbursement) }
-          it{ should be_able_to(:authorize, @reimbursement) }
+          it{ should_not be_able_to(:roll_back, @reimbursement) }
+          it{ should_not be_able_to(:accept, @reimbursement) }
+          it{ should_not be_able_to(:reject, @reimbursement) }
+          it{ should_not be_able_to(:process, @reimbursement) }
+          it{ should_not be_able_to(:confirm, @reimbursement) }
 
-          context "and authorized" do
+          context "and accepted" do
             before(:each) do
-              @reimbursement.authorize!
+              @reimbursement.accept!
             end
 
             it{ should be_able_to(:read, @reimbursement) }
+            it{ should be_able_to(:process, @reimbursement) }
+            it{ should be_able_to(:reject, @reimbursement) }
             it{ should_not be_able_to(:update, @reimbursement) }
             it{ should_not be_able_to(:approve, @reimbursement) }
             it{ should_not be_able_to(:cancel, @reimbursement) }
             it{ should_not be_able_to(:destroy, @reimbursement) }
             it{ should_not be_able_to(:roll_back, @reimbursement) }
-            it{ should_not be_able_to(:authorize, @reimbursement) }
+            it{ should_not be_able_to(:accept, @reimbursement) }
+            it{ should_not be_able_to(:confirm, @reimbursement) }
+
+            context "and processed" do
+              before(:each) do
+                @reimbursement.process!
+              end
+
+              it{ should be_able_to(:read, @reimbursement) }
+              it{ should be_able_to(:confirm, @reimbursement) }
+              it{ should_not be_able_to(:update, @reimbursement) }
+              it{ should_not be_able_to(:approve, @reimbursement) }
+              it{ should_not be_able_to(:cancel, @reimbursement) }
+              it{ should_not be_able_to(:destroy, @reimbursement) }
+              it{ should_not be_able_to(:roll_back, @reimbursement) }
+              it{ should_not be_able_to(:accept, @reimbursement) }
+              it{ should_not be_able_to(:reject, @reimbursement) }
+              it{ should_not be_able_to(:process, @reimbursement) }
+
+              context "and payed" do
+                before(:each) do
+                  @reimbursement.confirm!
+                end
+
+                it{ should be_able_to(:read, @reimbursement) }
+                it{ should_not be_able_to(:update, @reimbursement) }
+                it{ should_not be_able_to(:approve, @reimbursement) }
+                it{ should_not be_able_to(:cancel, @reimbursement) }
+                it{ should_not be_able_to(:destroy, @reimbursement) }
+                it{ should_not be_able_to(:roll_back, @reimbursement) }
+                it{ should_not be_able_to(:accept, @reimbursement) }
+                it{ should_not be_able_to(:reject, @reimbursement) }
+                it{ should_not be_able_to(:process, @reimbursement) }
+                it{ should_not be_able_to(:confirm, @reimbursement) }
+              end
+            end
           end
         end
       end

@@ -46,33 +46,46 @@ class Reimbursement < ActiveRecord::Base
     before_transition :set_state_updated_at
 
     event :submit do
-      transition :incomplete => :tsp_pending
+      transition :incomplete => :submitted
     end
 
     event :approve do
-      transition :tsp_pending => :tsp_approved
+      transition :submitted => :approved
     end
 
-    event :authorize do
-      transition :tsp_approved => :finished
+    event :accept do
+      transition :approved => :accepted
+    end
+
+    event :process do
+      transition :accepted => :processed
+    end
+
+    event :confirm do
+      transition :processed => :payed
     end
 
     event :roll_back do
-      transition :tsp_pending => :incomplete
-      transition :tsp_approved => :tsp_pending
+      transition :submitted => :incomplete
+      transition :approved => :incomplete
+    end
+
+    event :reject do
+      transition :accepted => :submitted
     end
 
     event :cancel do
       transition :incomplete => :canceled
-      transition :tsp_pending => :canceled
+      transition :submitted => :canceled
+      transition :approved  => :canceled
     end
   end
 
   # @see HasState.involved_roles
   @involved_roles = [:tsp, :administrative]
   # @see HasState.assign_state
-  assign_state :tsp_pending, :to => :tsp
-  assign_state :tsp_approved, :to => :administrative
+  assign_state :submitted, :to => :tsp
+  assign_state :accepted, :to => :administrative
 
   # @see Request#expenses_sum
   def expenses_sum(*args)
@@ -100,7 +113,7 @@ class Reimbursement < ActiveRecord::Base
   #
   # @return [Boolean] true if allowed
   def editable_by_tsp?
-    state == 'tsp_pending'
+    state == 'submitted'
   end
 
   # Checks whether the reimbursement can have final notes

@@ -18,8 +18,8 @@ class RequestExpense < ActiveRecord::Base
   validates :request, :subject, :presence => true
   validates :estimated_amount, :estimated_currency, :presence => true, :if => "request && request.submitted?"
   validates :approved_amount, :approved_currency, :presence => true, :if => "request && request.approved?"
-  validates :total_amount, :presence => true, :if => "request && request.reimbursement && request.reimbursement.tsp_pending?"
-  validates :authorized_amount, :presence => true, :if => "request && request.reimbursement && request.reimbursement.tsp_approved?"
+  validates :total_amount, :presence => true, :if => "request && request.reimbursement && request.reimbursement.submitted?"
+  validates :authorized_amount, :presence => true, :if => "request && request.reimbursement && request.reimbursement.approved?"
 
   before_validation :set_authorized_amount
 
