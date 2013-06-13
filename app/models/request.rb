@@ -16,7 +16,7 @@ class Request < ActiveRecord::Base
 
   accepts_nested_attributes_for :expenses, :reject_if => :all_blank, :allow_destroy => true
 
-  attr_accessible :event_id, :description, :requester_notes, :tsp_notes, :expenses_attributes, :visa_letter
+  attr_accessible :event_id, :description, :expenses_attributes, :visa_letter
 
   validates :event, :presence => true
   validates_associated :expenses
@@ -64,8 +64,6 @@ class Request < ActiveRecord::Base
     end
   end
 
-  # @see HasState.involved_roles
-  @involved_roles = [:tsp]
   # @see HasState.assign_state
   assign_state :submitted, :to => :tsp
 

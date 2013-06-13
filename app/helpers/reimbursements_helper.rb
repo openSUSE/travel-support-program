@@ -27,4 +27,25 @@ module ReimbursementsHelper
       reimbursement.links.map {|a| link_to(a.title, a.url) }.join(", ").html_safe
     end
   end
+
+  # Outputs the download link to acceptance_file, with instructions to
+  # attach it if needed
+  #
+  # @param [Reimbursement] reimbursement
+  # @return [String] HTML output
+  def reimbursement_acceptance_file(reimbursement)
+    if reimbursement.acceptance_file.blank?
+      out = t("show_for.blank").html_safe
+    else
+      out = link_to(File.basename(reimbursement.acceptance_file.path), asset_path(reimbursement.acceptance_file_url))
+    end
+    if can? :accept, reimbursement
+      out << "<br/>".html_safe
+      out << content_tag(:span, "!", :class => "badge badge-info")
+      out << " ".html_safe
+      print_url = request_reimbursement_path(reimbursement.request, :format => :pdf)
+      out << t(:reimbursement_acceptance_intro, :print_url => print_url).html_safe
+    end
+    out
+  end
 end

@@ -29,13 +29,16 @@ class Reimbursement < ActiveRecord::Base
 
   accepts_nested_attributes_for :bank_account, :allow_destroy => false
 
-  attr_accessible :description, :requester_notes, :tsp_notes, :administrative_notes,
-    :request_attributes, :attachments_attributes, :links_attributes, :bank_account_attributes
+  attr_accessible :description, :request_attributes, :attachments_attributes,
+    :links_attributes, :bank_account_attributes
 
   validates :request, :presence => true
   validates_associated :expenses, :attachments, :links, :bank_account
+  validates :acceptance_file, :presence => true, :if => "acceptance_file_required?"
 
-  audit(:create, :update, :destroy) {|m,u,a| "#{a} performed on Reimbursement by #{u.try(:nickname)}"}
+  mount_uploader :acceptance_file, AttachmentUploader
+
+  audit(:create, :update, :destroy, :except => :acceptance_file) {|m,u,a| "#{a} performed on Reimbursement by #{u.try(:nickname)}"}
 
   # Synchronizes user_id and request_id
   before_validation :set_user_id
@@ -46,33 +49,44 @@ class Reimbursement < ActiveRecord::Base
     before_transition :set_state_updated_at
 
     event :submit do
-      transition :incomplete => :tsp_pending
+      transition :incomplete => :submitted
     end
 
     event :approve do
-      transition :tsp_pending => :tsp_approved
+      transition :submitted => :approved
     end
 
-    event :authorize do
-      transition :tsp_approved => :finished
+    event :accept do
+      transition :approved => :accepted
+    end
+
+    event :process do
+      transition :accepted => :processed
+    end
+
+    event :confirm do
+      transition :processed => :payed
     end
 
     event :roll_back do
-      transition :tsp_pending => :incomplete
-      transition :tsp_approved => :tsp_pending
+      transition :submitted => :incomplete
+      transition :approved => :incomplete
+    end
+
+    event :reject do
+      transition :accepted => :submitted
     end
 
     event :cancel do
       transition :incomplete => :canceled
-      transition :tsp_pending => :canceled
+      transition :submitted => :canceled
+      transition :approved  => :canceled
     end
   end
 
-  # @see HasState.involved_roles
-  @involved_roles = [:tsp, :administrative]
   # @see HasState.assign_state
-  assign_state :tsp_pending, :to => :tsp
-  assign_state :tsp_approved, :to => :administrative
+  assign_state :submitted, :to => :tsp
+  assign_state :accepted, :to => :administrative
 
   # @see Request#expenses_sum
   def expenses_sum(*args)
@@ -100,7 +114,7 @@ class Reimbursement < ActiveRecord::Base
   #
   # @return [Boolean] true if allowed
   def editable_by_tsp?
-    state == 'tsp_pending'
+    state == 'submitted'
   end
 
   # Checks whether the reimbursement can have final notes
@@ -108,6 +122,14 @@ class Reimbursement < ActiveRecord::Base
   # @return [Boolean] true if all conditions are met
   def can_have_final_notes?
     in_final_state?
+  end
+
+  # Checks whether the acceptance file is required in order to be a valid
+  # reimbursement
+  #
+  # @return [Boolean] true if signed acceptance is required
+  def acceptance_file_required?
+    accepted? || processed? || payed?
   end
 
   protected

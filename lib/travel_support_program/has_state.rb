@@ -16,7 +16,6 @@ module TravelSupportProgram
 
         validates :user, :presence => true
 
-        @involved_roles = []
         @assigned_states = {}
         @assigned_roles = {}
       end
@@ -59,9 +58,11 @@ module TravelSupportProgram
     #
     module ClassMethods
 
-      # Roles involved in the workflow in any way.
+      # Roles involved in the workflow at any point (that is, that have
+      # any assigned state)
+      # @see #assign_state
       # Used for sending important notifications
-      def involved_roles; @involved_roles; end
+      def involved_roles; @assigned_states.keys; end
 
       # Macro-style method to define the role which is responsible of the next
       # action for a given state. This definition is used for sending

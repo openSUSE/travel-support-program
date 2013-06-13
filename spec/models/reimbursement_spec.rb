@@ -39,10 +39,31 @@ describe Reimbursement do
         @reimbursement.expenses.reload.map {|i| i.authorized_amount.to_f}.sort.should == [10.0, 10.0, 10.0]
       end
 
-      it "should notify approval to requester, TSP and administrative" do
+      it "should notify negotiation steps to requester and TSP" do
         ActionMailer::Base.deliveries.size.should == @deliveries + 6
-        transition(@reimbursement, :approve, users(:tspmember))
-        ActionMailer::Base.deliveries.size.should == @deliveries + 9
+      end
+
+      context "and approval" do
+        before(:each) do
+          @deliveries = ActionMailer::Base.deliveries.size
+          transition(@reimbursement, :approve, users(:tspmember))
+        end
+
+        it "should not override the manually set authorized amounts" do
+          @reimbursement.expenses.reload.map {|i| i.authorized_amount.to_f}.sort.should == [10.0, 10.0, 10.0]
+        end
+
+        it "should notify approval to requester and TSP" do
+          ActionMailer::Base.deliveries.size.should == @deliveries + 2
+        end
+
+        it "should notify acceptance to requester, TSP and administrative" do
+          ActionMailer::Base.deliveries.size.should == @deliveries + 2
+          file = Rails.root.join("spec", "support", "files", "scan001.pdf")
+          @reimbursement.acceptance_file = File.open(file, "rb")
+          transition(@reimbursement, :accept, users(:tspmember))
+          ActionMailer::Base.deliveries.size.should == @deliveries + 5
+        end
       end
     end
   end

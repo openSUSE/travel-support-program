@@ -76,7 +76,7 @@ class Ability
       can :update, Reimbursement do |r|
         r.user == user && r.editable_by_requester?
       end
-      [:submit, :cancel].each do |action|
+      [:submit, :accept, :roll_back, :cancel].each do |action|
         can action, Reimbursement do |r|
           r.user == user && r.send("can_#{action}?")
         end
@@ -138,12 +138,9 @@ class Ability
       can :update, Reimbursement do |r|
         r.editable_by_tsp?
       end
-      can :cancel, Reimbursement do |r|
-        r.can_cancel?
-      end
-      [:approve, :roll_back].each do |action|
+      [:approve, :cancel, :roll_back].each do |action|
         can action, Reimbursement do |r|
-          r.send("can_#{action}?") && r.tsp_pending?
+          r.send("can_#{action}?")
         end
       end
 
@@ -179,9 +176,9 @@ class Ability
 
       # Reimbursements
       can :read, Reimbursement
-      [:authorize, :roll_back].each do |action|
+      [:process, :reject, :confirm].each do |action|
         can action, Reimbursement do |r|
-          r.send("can_#{action}?") && r.tsp_approved?
+          r.send("can_#{action}?")
         end
       end
 
