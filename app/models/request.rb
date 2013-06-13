@@ -64,8 +64,6 @@ class Request < ActiveRecord::Base
     end
   end
 
-  # @see HasState.involved_roles
-  @involved_roles = [:tsp]
   # @see HasState.assign_state
   assign_state :submitted, :to => :tsp
 
