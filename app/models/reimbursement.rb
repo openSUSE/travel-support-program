@@ -34,8 +34,11 @@ class Reimbursement < ActiveRecord::Base
 
   validates :request, :presence => true
   validates_associated :expenses, :attachments, :links, :bank_account
+  validates :acceptance_file, :presence => true, :if => "acceptance_file_required?"
 
-  audit(:create, :update, :destroy) {|m,u,a| "#{a} performed on Reimbursement by #{u.try(:nickname)}"}
+  mount_uploader :acceptance_file, AttachmentUploader
+
+  audit(:create, :update, :destroy, :except => :acceptance_file) {|m,u,a| "#{a} performed on Reimbursement by #{u.try(:nickname)}"}
 
   # Synchronizes user_id and request_id
   before_validation :set_user_id
@@ -119,6 +122,14 @@ class Reimbursement < ActiveRecord::Base
   # @return [Boolean] true if all conditions are met
   def can_have_final_notes?
     in_final_state?
+  end
+
+  # Checks whether the acceptance file is required in order to be a valid
+  # reimbursement
+  #
+  # @return [Boolean] true if signed acceptance is required
+  def acceptance_file_required?
+    accepted? || processed? || payed?
   end
 
   protected

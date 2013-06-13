@@ -25,6 +25,9 @@
   = r.association :attachments do
     = reimbursement_attachments(resource)
 
+  = r.attribute :acceptance_file do
+    = reimbursement_acceptance_file(resource)
+
   %strong.label= Request.human_attribute_name(:expenses)
   %table.table.table-condensed
     %thead
@@ -51,6 +54,10 @@
 
   - if can? :edit, resource
     = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path, :class => 'btn'
+
+  - if can? :accept, resource
+    = link_to t(:send_reimbursement_acceptance), new_request_reimbursement_acceptance_path(resource.request), :remote => true, :class => 'btn'
+    = link_to t(:pdf_format), {:format => :pdf}, :class => 'btn'
 
   = transition_links(resource) 
 

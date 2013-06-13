@@ -112,6 +112,8 @@ describe Ability do
 
           context "and accepted" do
             before(:each) do
+              file = Rails.root.join("spec", "support", "files", "scan001.pdf")
+              @reimbursement.acceptance_file = File.open(file, "rb")
               @reimbursement.accept!
             end
 
@@ -306,6 +308,8 @@ describe Ability do
 
           context "and accepted" do
             before(:each) do
+              file = Rails.root.join("spec", "support", "files", "scan001.pdf")
+              @reimbursement.acceptance_file = File.open(file, "rb")
               @reimbursement.accept!
             end
 
@@ -476,6 +480,8 @@ describe Ability do
 
           context "and accepted" do
             before(:each) do
+              file = Rails.root.join("spec", "support", "files", "scan001.pdf")
+              @reimbursement.acceptance_file = File.open(file, "rb")
               @reimbursement.accept!
             end
 

@@ -59,6 +59,8 @@ describe Reimbursement do
 
         it "should notify acceptance to requester, TSP and administrative" do
           ActionMailer::Base.deliveries.size.should == @deliveries + 2
+          file = Rails.root.join("spec", "support", "files", "scan001.pdf")
+          @reimbursement.acceptance_file = File.open(file, "rb")
           transition(@reimbursement, :accept, users(:tspmember))
           ActionMailer::Base.deliveries.size.should == @deliveries + 5
         end

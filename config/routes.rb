@@ -9,6 +9,7 @@ TravelSupportProgram::Application.routes.draw do
     resource :reimbursement do
       resources :state_transitions, :only => [:new, :create]
       resources :final_notes, :only => [:new, :create]
+      resource :acceptance, :only => [:new, :create], :controller => :reimbursement_acceptances
     end
   end
 

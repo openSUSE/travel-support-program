@@ -1,0 +1,15 @@
+-label = t(:send_reimbursement_acceptance)
+.modal-header
+  %button.close{:type => "button", :data => {:dismiss => "modal"}} &times;
+  %h3= label
+  %div.alert= t(:reimbursement_acceptance_info, :print_url => request_reimbursement_path(@request, :format => :pdf)).html_safe
+= form_tag request_reimbursement_acceptance_path(@request), :method => :post, :multipart => true do
+  .form-inputs.form-horizontal.modal-body
+    .control-group.required
+      %label.required.control-label= Reimbursement.human_attribute_name(:acceptance_file)
+      .controls
+        = file_field_tag "acceptance[file]", :class => "required"
+
+  .modal-footer
+    = link_to t("helpers.links.back"), "#", :data => {:dismiss => "modal"}, :class => 'btn'
+    = submit_tag label, :class => 'btn btn-primary'
