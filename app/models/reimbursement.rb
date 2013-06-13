@@ -29,8 +29,8 @@ class Reimbursement < ActiveRecord::Base
 
   accepts_nested_attributes_for :bank_account, :allow_destroy => false
 
-  attr_accessible :description, :requester_notes, :tsp_notes, :administrative_notes,
-    :request_attributes, :attachments_attributes, :links_attributes, :bank_account_attributes
+  attr_accessible :description, :request_attributes, :attachments_attributes,
+    :links_attributes, :bank_account_attributes
 
   validates :request, :presence => true
   validates_associated :expenses, :attachments, :links, :bank_account
