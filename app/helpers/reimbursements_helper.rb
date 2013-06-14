@@ -37,7 +37,7 @@ module ReimbursementsHelper
     if reimbursement.acceptance_file.blank?
       out = t("show_for.blank").html_safe
     else
-      out = link_to(File.basename(reimbursement.acceptance_file.path), asset_path(reimbursement.acceptance_file_url))
+      out = link_to(reimbursement.acceptance_file.file.filename, asset_path(reimbursement.acceptance_file_url))
     end
     if can? :accept, reimbursement
       out << "<br/>".html_safe
