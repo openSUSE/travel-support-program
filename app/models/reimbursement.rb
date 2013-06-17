@@ -15,6 +15,8 @@ class Reimbursement < ActiveRecord::Base
   has_many :links, :class_name => "ReimbursementLink", :inverse_of => :reimbursement
   # Final notes are comments that users can add as feedback to a finished reimbursement
   has_many :final_notes, :as => :machine
+  # Can have several payments, not related to the number of expenses
+  has_many :payments, :inverse_of => :reimbursement
   # Bank information goes to another model
   has_one :bank_account, :inverse_of => :reimbursement, :dependent => :destroy, :autosave => true
 

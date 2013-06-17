@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130613093318) do
+ActiveRecord::Schema.define(:version => 20130614130054) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id",                   :null => false
@@ -83,6 +83,22 @@ ActiveRecord::Schema.define(:version => 20130613093318) do
     t.integer  "user_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "payments", :force => true do |t|
+    t.integer  "reimbursement_id"
+    t.date     "date"
+    t.decimal  "amount"
+    t.string   "currency"
+    t.decimal  "cost_amount"
+    t.string   "cost_currency"
+    t.string   "method"
+    t.string   "code"
+    t.string   "subject"
+    t.string   "notes"
+    t.string   "file"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "reimbursement_attachments", :force => true do |t|

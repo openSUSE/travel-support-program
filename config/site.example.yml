@@ -31,6 +31,9 @@ common: &common
   currencies_for_approved:
     - EUR
     - USD
+  payment_methods:
+    - Transfer
+    - Check
 
 production:
   <<: *common

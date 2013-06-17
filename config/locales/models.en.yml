@@ -49,6 +49,9 @@ en:
       reimbursement_link:
         one: "link"
         other: "links"
+      payment:
+        one: "payment"
+        other: "payments"
 
     attributes:
       bank_account:
@@ -72,6 +75,19 @@ en:
         start_date: "starts at"
         end_date: "ends at"
         request_creation_deadline: "accepting requests until"
+      payment:
+        date: "date"
+        reimbursement: "reimbursement"
+        reimbursement_id: "reimbursement"
+        amount: "amount"
+        currency: "currency"
+        cost_amount: "cost amount"
+        cost_currency: "cost currency"
+        method: "method"
+        code: "code"
+        subject: "subject"
+        notes: "notes"
+        file: "file"
       reimbursement:
         acceptance_file: "signed acceptance"
         approved_sum: "approved"

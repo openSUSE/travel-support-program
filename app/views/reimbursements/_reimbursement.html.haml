@@ -1,0 +1,24 @@
+= collapse_link "reimbursement_details"
+= timestamped_state(reimbursement)
+= icon_to "share-alt", request_reimbursement_path(reimbursement.request), :title => t(:goto)
+%blockquote#reimbursement_details.collapse
+  = show_for reimbursement do |r|
+    = r.attribute :description
+    = r.attribute :transactions do
+      %ul
+        = render reimbursement.transitions.newest_first
+    %strong.label= Request.human_attribute_name(:expenses)
+    %table.table.table-condensed
+      %thead
+        %tr
+          %th= RequestExpense.human_attribute_name(:subject)
+          %th= RequestExpense.human_attribute_name(:description)
+          %th= RequestExpense.human_attribute_name(:approved_amount)
+          %th= RequestExpense.human_attribute_name(:authorized_amount)
+      %tbody#expenses
+        - reimbursement.expenses.each do |expense|
+          %tr
+            %td= expense.subject
+            %td= expense.description
+            %td= number_to_currency(expense.approved_amount, :unit => expense.approved_currency)
+            %td= number_to_currency(expense.authorized_amount, :unit => expense.authorized_currency)

@@ -51,6 +51,7 @@ en:
   general_info: "general information"
   goto: "go to"
   new_event_warning: "Make sure that the event is not currently included in the list. Event duplication can cause the request rejection"
+  new_payment: "Add payment"
   no_reimbursement_yet: "The reimbursement process has not started"
   opensuse_profile_info: 'Information on disabled controls have to be changed in <a href="%{url}">your Connect profile</a>.'
   page_total: "Total in this page"

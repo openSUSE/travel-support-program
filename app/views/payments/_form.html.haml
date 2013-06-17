@@ -1,0 +1,33 @@
+%strong.label= Reimbursement.human_attribute_name(:event)
+%br
+= render parent.event
+
+%strong.label= Reimbursement.human_attribute_name(:user)
+%br
+= render parent.user
+
+%strong.label= Payment.human_attribute_name(:reimbursement)
+%br
+= render parent
+
+- form_path = resource.new_record? ? collection_path : resource_path
+= simple_form_for resource, :url => form_path do |f|
+  %strong.label= Payment.model_name.human
+  %br
+  .form-inputs.form-horizontal
+    = f.input :date, :as => :dpicker
+    = f.input :amount do
+      = f.text_field :amount, :class => "input-small"
+      = f.select :currency, currencies_for_select(:approved), {}, :class => "input-small"
+    = f.input :method, :collection => @methods
+    = f.input :cost_amount do
+      = f.text_field :cost_amount, :class => "input-small"
+      = f.select :cost_currency, currencies_for_select(:approved), {}, :class => "input-small"
+    = f.input :code
+    = f.input :subject
+    = f.input :notes, :as => :text, :input_html => {:rows => 3}
+    = f.input :file, :as => :fileupload
+
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), request_reimbursement_path(@request), :class => 'btn'

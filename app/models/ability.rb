@@ -98,6 +98,9 @@ class Ability
         a.reimbursement.user == user && a.reimbursement.editable_by_requester?
       end
 
+      # Reimbursement's payments
+      can :read, Payment, :reimbursement => {:user_id => user.id}
+
       # Final notes
       can :read, FinalNote do |n|
         n.machine.user == user
@@ -148,6 +151,8 @@ class Ability
       can :read, ReimbursementAttachment
       # Reimbursement's bank account
       can :read, BankAccount
+      # Reimbursement's payments
+      can :read, Payment
 
       # Final notes
       can :read, FinalNote
@@ -186,6 +191,8 @@ class Ability
       can :read, ReimbursementAttachment
       # Reimbursement's bank account
       can :read, BankAccount
+      # Reimbursement's payments
+      can [:read, :create, :update, :destroy], Payment
 
       # Final notes
       can :read, FinalNote
