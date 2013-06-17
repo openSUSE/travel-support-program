@@ -3,7 +3,8 @@ class ReimbursementsController < InheritedResources::Base
   load_and_authorize_resource :request
   load_and_authorize_resource :reimbursement, :through => :request, :singleton => true, :except => [:create]
 
-  belongs_to :request, :singleton => true
+  defaults :singleton => true
+  belongs_to :request
 
   def create
     if parent.reimbursement.nil? || parent.reimbursement.new_record?
