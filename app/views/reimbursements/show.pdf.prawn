@@ -48,6 +48,12 @@ prawn_document :page_size => "A4" do |pdf|
 
   # And now, the real layout and formating information
   pdf.font "Helvetica", :size => 9
+  pdf.image pdf_header_image, :height => 50, :align => :left
+  pdf.move_down(5)
+  pdf.stroke_color = "666666"
+  pdf.horizontal_rule
+  pdf.fill_and_stroke
+  pdf.move_down(30)
   pdf.bounding_box [ pdf.bounds.left, pdf.cursor ], :width => 550, :height => 650 do
     pdf.text_box "#{Reimbursement.model_name.human} ##{resource.id}".titleize, :size => 16, :style => :bold
     # Requester

@@ -188,6 +188,17 @@ module ApplicationHelper
     currencies ||= I18n.translate(:currencies).keys.sort
   end
 
+  # Image to be used as header in pdf files
+  #
+  # @return [String] local path of the image
+  def pdf_header_image
+    if theme = TravelSupportProgram::Config.setting(:theme)
+      path = File.join(Rails.root.to_s, 'app', 'themes', theme, 'assets', 'images', 'pdf', 'header.png')
+      return path if File.exists?(path)
+    end
+    File.join(Rails.root.to_s, 'app', 'assets', 'images', 'pdf', 'header.png')
+  end
+
   def opensuse_login_url
     TravelSupportProgram::Config.setting(:opensuse_auth_proxy, :proxy_base_url) + "/ICSLogin/auth-up"
   end
