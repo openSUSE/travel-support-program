@@ -19,7 +19,7 @@ module ApplicationHelper
   # param [String] country_code  as specified in locale file
   # return [String] HTML output
   def country_label(country_code)
-    if country_code.nil?
+    if country_code.blank?
       t("show_for.blank")
     else
       country_code + " - " + t("countries.#{country_code}")
