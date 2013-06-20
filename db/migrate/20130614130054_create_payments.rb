@@ -10,7 +10,7 @@ class CreatePayments < ActiveRecord::Migration
       t.string      :method
       t.string      :code
       t.string      :subject
-      t.string      :notes
+      t.text        :notes
       t.string      :file
 
       t.timestamps

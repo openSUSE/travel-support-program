@@ -25,7 +25,7 @@
       = f.select :cost_currency, currencies_for_select(:approved), {}, :class => "input-small"
     = f.input :code
     = f.input :subject
-    = f.input :notes, :as => :text, :input_html => {:rows => 3}
+    = f.input :notes, :input_html => {:rows => 5, :class => "input-xlarge"}
     = f.input :file, :as => :fileupload
 
   .form-actions

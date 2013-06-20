@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(:version => 20130614130054) do
     t.string   "method"
     t.string   "code"
     t.string   "subject"
-    t.string   "notes"
+    t.text     "notes"
     t.string   "file"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
