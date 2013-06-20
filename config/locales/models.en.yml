@@ -26,6 +26,8 @@ en:
         one: "event"
         other: "events"
       expense_report:
+        one: "expenses report"
+        other: "expenses reports"
         type:
           estimated: "estimated"
           approved: "approved"

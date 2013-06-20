@@ -1,4 +1,4 @@
-= content_for :page_header, t(:expenses_report)
+= content_for :page_header, ExpenseReport.model_name.human
 
 .navbar
   .navbar-inner
@@ -27,12 +27,13 @@
           - lte = filter_datepicker(:event_start_lte)
           - gte = filter_datepicker(:event_start_gte)
           = t(:expenses_report_event_date, :lte => lte, :gte => gte).html_safe
-      .row
-        .control-group.pull-right
-          %label= t(:expenses_report_user_name)
-          = filter_text_field :user_name_contains
-          %label= t(:expenses_report_user_country)
-          = filter_select :user_country_code_eq, @countries, :first, :last
+      - unless current_role? :requester
+        .row
+          .control-group.pull-right
+            %label= t(:expenses_report_user_name)
+            = filter_text_field :user_name_contains
+            %label= t(:expenses_report_user_country)
+            = filter_select :user_country_code_eq, @countries, :first, :last
       .row
         .control-group.pull-right
           = submit_tag t(:report_html), :class => "btn"

@@ -3,3 +3,4 @@
 - if user_signed_in?
   %li= link_to Request.model_name.human(count: 2).humanize, menu_path_to(Request)
   %li= link_to Reimbursement.model_name.human(count: 2).humanize, menu_path_to(Reimbursement)
+  %li= link_to ExpenseReport.model_name.human.humanize, expenses_report_path
