@@ -109,6 +109,9 @@ class Ability
         n.machine.user == user && n.machine.can_have_final_notes?
       end
 
+      # Expenses Reports
+      can :read, ExpenseReport, :request => {:user_id => user.id}
+
     #
     # TSP members permissions
     # -----------------------
@@ -160,6 +163,9 @@ class Ability
         n.machine.can_have_final_notes?
       end
 
+      # Expenses Reports
+      can :read, ExpenseReport
+
     #
     # Administratives permissions
     # -----------------------
@@ -196,6 +202,42 @@ class Ability
 
       # Final notes
       can :read, FinalNote
+
+    #
+    # Supervisors permissions
+    # --------------------------------------
+    #
+    elsif role == "supervisor"
+      # User profiles
+      can :read, UserProfile
+
+      # Events
+      can [:update, :validate], Event
+      can :destroy, Event do |e|
+        e.can_be_destroyed?
+      end
+
+      # Requests
+      can :read, Request
+
+      # Reimbursements
+      can :read, Reimbursement
+
+      # Reimbursement's attachments
+      can :read, ReimbursementAttachment
+      # Reimbursement's bank account
+      can :read, BankAccount
+      # Reimbursement's payments
+      can :read, Payment
+
+      # Final notes
+      can :read, FinalNote
+      can :create, FinalNote do |n|
+        n.machine.can_have_final_notes?
+      end
+
+      # Expenses Reports
+      can :read, ExpenseReport
 
     end
   end

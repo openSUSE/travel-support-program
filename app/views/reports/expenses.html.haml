@@ -1,0 +1,53 @@
+= content_for :page_header, t(:expenses_report)
+
+.navbar
+  .navbar-inner
+    = form_tag expenses_report_path, :method => :get, :class => "navbar-form form-inline"  do
+      .row
+        .control-group.pull-right
+          - options = @by_type_options.map {|i| [t("activerecord.models.expense_report.type.#{i}"), i] }
+          - type_select = select_tag(:by_type, options_for_select(options, @type))
+          - options = @by_group_options.map {|i| [t("activerecord.models.expense_report.group.#{i}"), i] }
+          - group_select = select_tag :by_group, options_for_select(options, @group)
+          = t(:expenses_report_intro, :type => type_select, :group => group_select).html_safe
+      .row
+        .control-group.pull-right
+          %label= t(:expenses_report_request_state)
+          = filter_select :request_state_eq, @request_states, :first, :last
+          %label= t(:expenses_report_reimbursement_state)
+          = filter_select :reimbursement_state_eq, @reimbursement_states, :first, :last
+      .row
+        .control-group.pull-right
+          %label= t(:expenses_report_event_name)
+          = filter_text_field :event_name_contains
+          %label= t(:expenses_report_event_country)
+          = filter_select :event_country_code_eq, @countries, :first, :last
+      .row
+        .control-group.pull-right
+          - lte = filter_datepicker(:event_start_lte)
+          - gte = filter_datepicker(:event_start_gte)
+          = t(:expenses_report_event_date, :lte => lte, :gte => gte).html_safe
+      .row
+        .control-group.pull-right
+          %label= t(:expenses_report_user_name)
+          = filter_text_field :user_name_contains
+          %label= t(:expenses_report_user_country)
+          = filter_select :user_country_code_eq, @countries, :first, :last
+      .row
+        .control-group.pull-right
+          = submit_tag t(:report_html), :class => "btn"
+
+- if @group
+  - fields = ExpenseReport.fields_for(@group).select {|f| !f[:hidden]}
+  %table.table.table-striped.expense-reports
+    %thead
+      %tr
+        - fields.each do |field|
+          %th= t("activerecord.attributes.expense_report.#{field[:field]}")
+    %tbody
+      - @expenses.each do |expense|
+        %tr
+          - fields.map {|i| i[:field]}.each do |field|
+            %td= value_for(field, expense)
+
+  = paginate @expenses

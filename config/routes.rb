@@ -37,6 +37,7 @@ TravelSupportProgram::Application.routes.draw do
   match 'profile' => 'user_profiles#edit', :as => :profile
   match 'profile/password' => 'user_profiles#password', :as => :profile_password
   match 'pages/:action', :controller => 'pages'
+  match 'reports/expenses' => "reports#expenses", :as => :expenses_report
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

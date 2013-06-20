@@ -25,6 +25,20 @@ en:
       event:
         one: "event"
         other: "events"
+      expense_report:
+        type:
+          estimated: "estimated"
+          approved: "approved"
+          total: "total"
+          authorized: "authorized"
+        group:
+          event: "event"
+          event_country: "event's country"
+          user: "user"
+          user_country: "user's country"
+          subject: "subject"
+          request: "request"
+          expense: "expense (no grouping)"
       request:
         one: "request"
         other: "requests"
@@ -75,6 +89,23 @@ en:
         start_date: "starts at"
         end_date: "ends at"
         request_creation_deadline: "accepting requests until"
+      expense_report:
+        event_country: "country"
+        event_end_date: "end"
+        event_id: "event"
+        event_name: "event"
+        event_start_date: "start"
+        reimbursement_id: "reimburs."
+        reimbursement_state: "state"
+        request_id: "request"
+        request_state: "state"
+        subject: "subject"
+        sum_amount: "total"
+        sum_currency: "currency"
+        user_country: "country"
+        user_fullname: "name"
+        user_id: "user"
+        user_nickname: "username"
       payment:
         date: "date"
         reimbursement: "reimbursement"
