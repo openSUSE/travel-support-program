@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:bmabey/database_cleaner.git
+  remote: https://github.com/bmabey/database_cleaner
   revision: 5dc784af6661fd9067953458fbac1b2e0334f0db
   specs:
     database_cleaner (1.0.1)
@@ -47,6 +47,13 @@ GEM
     arel (3.0.2)
     auditor (2.3.3)
       activerecord (~> 3.0)
+    axlsx (1.3.6)
+      htmlentities (~> 4.3.1)
+      nokogiri (>= 1.4.1)
+      rubyzip (>= 0.9.5)
+    axlsx_rails (0.1.4)
+      axlsx
+      rails (>= 3.1)
     bcrypt-ruby (3.0.1)
     bourne (1.1.2)
       mocha (= 0.10.5)
@@ -106,6 +113,7 @@ GEM
     hashery (2.1.0)
     hike (1.2.3)
     hpricot (0.8.6)
+    htmlentities (4.3.1)
     i18n (0.6.4)
     inherited_resources (1.4.0)
       has_scope (~> 0.5.0)
@@ -201,6 +209,7 @@ GEM
       rspec-mocks (~> 2.13.0)
     ruby-graphviz (1.0.8)
     ruby-rc4 (0.1.5)
+    rubyzip (0.9.9)
     sass (3.2.6)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -252,6 +261,7 @@ PLATFORMS
 DEPENDENCIES
   active_hash
   auditor
+  axlsx_rails
   cancan
   capybara
   capybara-email

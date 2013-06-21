@@ -45,6 +45,7 @@ gem 'delayed_job_active_record'
 gem 'date_validator'
 gem 'auditor'
 gem 'prawn_rails'
+gem 'axlsx_rails'
 # As gem is not updated since Jan-2012, git version in order to use not-so-new features as YARD integration.
 gem "state_machine", :git => "https://github.com/pluginaweek/state_machine"
 # Added to avoid an error in every rake execution caused by lib/tasks/doc.rake
@@ -69,7 +70,7 @@ group :test do
   gem "capybara-webkit"
   gem "shoulda-matchers"
 #  gem "database_cleaner"
-  gem "database_cleaner", :git => 'git@github.com:bmabey/database_cleaner.git'
+  gem "database_cleaner", :git => 'https://github.com/bmabey/database_cleaner'
 #  gem "delorean"
 end
 

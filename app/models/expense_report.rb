@@ -99,10 +99,22 @@ class ExpenseReport < ActiveRecord::Base
   }
 
   def self.fields_for(group)
-    @by[group.to_sym] + [ {:field => :sum_amount}, {:field => :sum_currency} ]
+    @by[group.to_sym].select {|f| !f[:hidden]}.map {|i| i[:field]} + [ :sum_amount, :sum_currency ]
   end
 
   def self.groups
     @by.keys
+  end
+
+  def value_for(name)
+    # At this point creating a more generic solution is not worthy, we simply
+    # check explicitly for one of the three special cases
+    if name.to_sym == :sum_amount
+      BigDecimal.new(sum_amount)
+    elsif [:event_start_date, :event_end_date].include? name.to_sym
+      Date.parse(send(name))
+    else
+      send(name)
+    end
   end
 end

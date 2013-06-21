@@ -1,0 +1,16 @@
+fields = ExpenseReport.fields_for(@group)
+wb = xlsx_package.workbook
+wb.add_worksheet(:name => ExpenseReport.model_name.human) do |sheet|
+  bold_style = wb.styles.add_style(:b => true)
+  row = fields.map {|f| t("activerecord.attributes.expense_report.#{f}") }
+  sheet.add_row row, :style => bold_style
+
+  styles = fields.map do |f|
+    s = xlsx_style_for(f)
+    s ? wb.styles.add_style(s) : nil
+  end
+  @expenses.each do |expense|
+    row = fields.map {|f| xlsx_value_for(f, expense) }
+    sheet.add_row row, :style => styles
+  end
+end

@@ -36,19 +36,21 @@
             = filter_select :user_country_code_eq, @countries, :first, :last
       .row
         .control-group.pull-right
-          = submit_tag t(:report_html), :class => "btn"
+          %label= t(:report_view_as)
+          = submit_tag "html", :name => "format", :class => "btn"
+          = submit_tag "xlsx", :name => "format", :class => "btn"
 
 - if @group
-  - fields = ExpenseReport.fields_for(@group).select {|f| !f[:hidden]}
+  - fields = ExpenseReport.fields_for(@group)
   %table.table.table-striped.expense-reports
     %thead
       %tr
         - fields.each do |field|
-          %th= t("activerecord.attributes.expense_report.#{field[:field]}")
+          %th= t("activerecord.attributes.expense_report.#{field}")
     %tbody
       - @expenses.each do |expense|
         %tr
-          - fields.map {|i| i[:field]}.each do |field|
-            %td= value_for(field, expense)
+          - fields.each do |field|
+            %td= html_value_for(field, expense)
 
   = paginate @expenses
