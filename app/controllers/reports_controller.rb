@@ -8,7 +8,7 @@ class ReportsController < ApplicationController
       if @filter
         @filter.each { |k,v| @expenses = @expenses.send(k, v) unless v.blank? }
       end
-      @expenses = @expenses.order(:sum_amount)
+      @expenses = @expenses.order("sum_amount desc")
       respond_to do |format|
         format.html {
           init_form
