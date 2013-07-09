@@ -871,7 +871,7 @@ except canceled).</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#can_cancel%3F-instance_method" title="#can_cancel? (instance method)">- (Boolean) <strong>can_cancel?</strong>(requirements = {}) </a>
+      <a href="#can_cancel%3F-instance_method" title="#can_cancel? (instance method)">- (Boolean) <strong>can_cancel?</strong> </a>
     
 
     
@@ -885,7 +885,7 @@ except canceled).</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Checks whether :cancel can be fired.</p>
+    <span class="summary_desc"><div class='inline'><p>Checks whether can have a transition to &#39;canceled&#39; state.</p>
 </div></span>
   
 </li>
@@ -986,7 +986,7 @@ except canceled).</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#cancel-instance_method" title="#cancel (instance method)">- (Boolean) <strong>cancel</strong>(*args) </a>
+      <a href="#cancelable_by_tsp%3F-instance_method" title="#cancelable_by_tsp? (instance method)">- (Boolean) <strong>cancelable_by_tsp?</strong> </a>
     
 
     
@@ -1000,53 +1000,7 @@ except canceled).</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Fires the :cancel event.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#cancel%21-instance_method" title="#cancel! (instance method)">- (Boolean) <strong>cancel!</strong>(*args) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Fires the :cancel event, raising an exception if it fails.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#cancel_transition-instance_method" title="#cancel_transition (instance method)">- (StateMachine::Transition) <strong>cancel_transition</strong>(requirements = {}) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Gets the next transition that would be performed if :cancel were to be fired.</p>
+    <span class="summary_desc"><div class='inline'><p>Checks whether a tsp user should be allowed to cancel.</p>
 </div></span>
   
 </li>
@@ -1596,7 +1550,7 @@ yet started.</p>
   
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="TravelSupportProgram/HasState.html" title="TravelSupportProgram::HasState (module)">TravelSupportProgram::HasState</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="TravelSupportProgram/HasState.html#in_final_state%3F-instance_method" title="TravelSupportProgram::HasState#in_final_state? (method)">#in_final_state?</a></span>, <span class='object_link'><a href="TravelSupportProgram/HasState.html#included-class_method" title="TravelSupportProgram::HasState.included (method)">included</a></span>, <span class='object_link'><a href="TravelSupportProgram/HasState.html#notify_state-instance_method" title="TravelSupportProgram::HasState#notify_state (method)">#notify_state</a></span>, <span class='object_link'><a href="TravelSupportProgram/HasState.html#with_transitions%3F-instance_method" title="TravelSupportProgram::HasState#with_transitions? (method)">#with_transitions?</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="TravelSupportProgram/HasState.html#cancel-instance_method" title="TravelSupportProgram::HasState#cancel (method)">#cancel</a></span>, <span class='object_link'><a href="TravelSupportProgram/HasState.html#in_final_state%3F-instance_method" title="TravelSupportProgram::HasState#in_final_state? (method)">#in_final_state?</a></span>, <span class='object_link'><a href="TravelSupportProgram/HasState.html#included-class_method" title="TravelSupportProgram::HasState.included (method)">included</a></span>, <span class='object_link'><a href="TravelSupportProgram/HasState.html#notify_state-instance_method" title="TravelSupportProgram::HasState#notify_state (method)">#notify_state</a></span>, <span class='object_link'><a href="TravelSupportProgram/HasState.html#with_transitions%3F-instance_method" title="TravelSupportProgram::HasState#with_transitions? (method)">#with_transitions?</a></span></p>
 
   
   <div id="instance_attr_details" class="attr_details">
@@ -1819,13 +1773,7 @@ yet started.</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -1852,13 +1800,7 @@ yet started.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2093,21 +2035,21 @@ yet started.</p>
       <pre class="lines">
 
 
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169</pre>
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 158</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 173</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_expenses_sum'>expenses_sum</span><span class='lparen'>(</span><span class='id identifier rubyid_attr'>attr</span> <span class='op'>=</span> <span class='symbol'>:total</span><span class='comma'>,</span> <span class='id identifier rubyid_requests'>requests</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_currency_field'>currency_field</span> <span class='op'>=</span> <span class='const'>RequestExpense</span><span class='period'>.</span><span class='id identifier rubyid_currency_field_for'>currency_field_for</span><span class='lparen'>(</span><span class='id identifier rubyid_attr'>attr</span><span class='rparen'>)</span>
@@ -2210,13 +2152,7 @@ yet started.</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -2243,13 +2179,7 @@ yet started.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2340,13 +2270,7 @@ yet started.</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -2373,13 +2297,7 @@ yet started.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2521,13 +2439,7 @@ yet started.</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -2554,13 +2466,7 @@ yet started.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2651,13 +2557,7 @@ yet started.</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -2684,13 +2584,7 @@ yet started.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2798,13 +2692,7 @@ yet started.</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -2831,13 +2719,7 @@ yet started.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2978,13 +2860,7 @@ yet started.</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -3011,13 +2887,7 @@ yet started.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3089,13 +2959,7 @@ yet started.</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -3122,13 +2986,7 @@ yet started.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3178,12 +3036,12 @@ except canceled).</p>
       <pre class="lines">
 
 
-126
-127
-128</pre>
+141
+142
+143</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 126</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 141</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_active?'>active?</span>
   <span class='kw'>not</span> <span class='id identifier rubyid_canceled?'>canceled?</span>
@@ -3277,13 +3135,7 @@ except canceled).</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -3310,13 +3162,7 @@ except canceled).</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3424,13 +3270,7 @@ except canceled).</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -3457,13 +3297,7 @@ except canceled).</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3604,13 +3438,7 @@ except canceled).</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -3637,13 +3465,7 @@ except canceled).</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3715,13 +3537,7 @@ except canceled).</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -3748,13 +3564,7 @@ except canceled).</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3895,13 +3705,7 @@ except canceled).</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -3928,13 +3732,7 @@ except canceled).</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -4075,13 +3873,7 @@ except canceled).</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -4108,13 +3900,7 @@ except canceled).</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -4163,12 +3949,12 @@ except canceled).</p>
       <pre class="lines">
 
 
-96
-97
-98</pre>
+100
+101
+102</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 96</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_can_be_destroyed?'>can_be_destroyed?</span>
   <span class='kw'>not</span> <span class='id identifier rubyid_with_transitions?'>with_transitions?</span>
@@ -4181,7 +3967,7 @@ except canceled).</p>
       <div class="method_details ">
   <h3 class="signature " id="can_cancel?-instance_method">
   
-    - (<tt>Boolean</tt>) <strong>can_cancel?</strong>(requirements = {}) 
+    - (<tt>Boolean</tt>) <strong>can_cancel?</strong> 
   
 
   
@@ -4189,82 +3975,17 @@ except canceled).</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Checks whether :cancel can be fired.</p>
+    <p>Checks whether can have a transition to &#39;canceled&#39; state</p>
+
+<p>Overrides the HasState.can_cancel?, preventing cancelation of requests that
+already have a reimbursement
+return [Boolean] true if #cancel can be called</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
   
-    <li>
-      
-        <span class='name'>requirements</span>
-      
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt>{}</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>The transition requirements to test against</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-  
-    
-    
-    <p class="tag_title">Options Hash (<tt>requirements</tt>):</p>
-    <ul class="option">
-      
-        <li>
-          <span class="name">:from</span>
-          <span class="type">(<tt>Symbol</tt>)</span>
-          <span class="default">
-            
-              &mdash; default:
-              <tt>the current state</tt>
-            
-          </span>
-          
-            &mdash; <div class='inline'><p>One or more initial states</p>
-</div>
-          
-        </li>
-      
-        <li>
-          <span class="name">:to</span>
-          <span class="type">(<tt>Symbol</tt>)</span>
-          <span class="default">
-            
-          </span>
-          
-            &mdash; <div class='inline'><p>One or more target states</p>
-</div>
-          
-        </li>
-      
-        <li>
-          <span class="name">:guard</span>
-          <span class="type">(<tt>Boolean</tt>)</span>
-          <span class="default">
-            
-          </span>
-          
-            &mdash; <div class='inline'><p>Whether to guard transitions with conditionals</p>
-</div>
-          
-        </li>
-      
-    </ul>
-  
-
 <p class="tag_title">Returns:</p>
 <ul class="return">
   
@@ -4275,13 +3996,16 @@ except canceled).</p>
       
       
       
-        &mdash;
-        <div class='inline'><p>+true+ if :cancel can be fired, otherwise +false+</p>
-</div>
-      
     </li>
   
 </ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li>HasState.can_cancel?</li>
+    
+  </ul>
 
 </div><table class="source_code">
   <tr>
@@ -4289,69 +4013,15 @@ except canceled).</p>
       <pre class="lines">
 
 
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65</pre>
+111
+112
+113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 111</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span><span class='comma'>,</span> <span class='symbol'>:unless</span> <span class='op'>=&gt;</span> <span class='symbol'>:has_no_expenses?</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:approve</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:approved</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:accept</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_can_cancel?'>can_cancel?</span>
+  <span class='kw'>not</span> <span class='id identifier rubyid_canceled?'>canceled?</span> <span class='kw'>and</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -4400,12 +4070,12 @@ except canceled).</p>
       <pre class="lines">
 
 
-110
-111
-112</pre>
+125
+126
+127</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 110</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 125</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_can_have_final_notes?'>can_have_final_notes?</span>
   <span class='id identifier rubyid_in_final_state?'>in_final_state?</span>
@@ -4457,12 +4127,12 @@ except canceled).</p>
       <pre class="lines">
 
 
-103
-104
-105</pre>
+118
+119
+120</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 103</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 118</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_can_have_reimbursement?'>can_have_reimbursement?</span>
   <span class='id identifier rubyid_accepted?'>accepted?</span>
@@ -4606,13 +4276,7 @@ except canceled).</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -4639,13 +4303,7 @@ except canceled).</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -4786,13 +4444,7 @@ except canceled).</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -4819,13 +4471,7 @@ except canceled).</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -4833,9 +4479,9 @@ except canceled).</p>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="cancel-instance_method">
+  <h3 class="signature " id="cancelable_by_tsp?-instance_method">
   
-    - (<tt>Boolean</tt>) <strong>cancel</strong>(*args) 
+    - (<tt>Boolean</tt>) <strong>cancelable_by_tsp?</strong> 
   
 
   
@@ -4843,32 +4489,16 @@ except canceled).</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Fires the :cancel event.</p>
+    <p>Checks whether a tsp user should be allowed to cancel</p>
+
+<p>tsp users cannot cancel a request if it has already been accepted by the
+requester</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
   
-    <li>
-      
-        <span class='name'>args</span>
-      
-      
-        <span class='type'>(<tt>Array</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>Optional arguments to include in transition callbacks</p>
-</div>
-      
-    </li>
-  
-</ul>
-
 <p class="tag_title">Returns:</p>
 <ul class="return">
   
@@ -4880,7 +4510,7 @@ except canceled).</p>
       
       
         &mdash;
-        <div class='inline'><p>+true+ if the transition succeeds, otherwise +false+</p>
+        <div class='inline'><p>true if allowed</p>
 </div>
       
     </li>
@@ -4893,396 +4523,15 @@ except canceled).</p>
       <pre class="lines">
 
 
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65</pre>
+93
+94
+95</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 93</span>
 
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span><span class='comma'>,</span> <span class='symbol'>:unless</span> <span class='op'>=&gt;</span> <span class='symbol'>:has_no_expenses?</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:approve</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:approved</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:accept</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="cancel!-instance_method">
-  
-    - (<tt>Boolean</tt>) <strong>cancel!</strong>(*args) 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>Fires the :cancel event, raising an exception if it fails.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>args</span>
-      
-      
-        <span class='type'>(<tt>Array</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>Optional arguments to include in transition callbacks</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Boolean</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>+true+ if the transition succeeds</p>
-</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>StateMachine::InvalidTransition</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>If the transition fails</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
-
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span><span class='comma'>,</span> <span class='symbol'>:unless</span> <span class='op'>=&gt;</span> <span class='symbol'>:has_no_expenses?</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:approve</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:approved</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:accept</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="cancel_transition-instance_method">
-  
-    - (<tt>StateMachine::Transition</tt>) <strong>cancel_transition</strong>(requirements = {}) 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>Gets the next transition that would be performed if :cancel were to be fired.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>requirements</span>
-      
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt>{}</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>The transition requirements to test against</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-  
-    
-    
-    <p class="tag_title">Options Hash (<tt>requirements</tt>):</p>
-    <ul class="option">
-      
-        <li>
-          <span class="name">:from</span>
-          <span class="type">(<tt>Symbol</tt>)</span>
-          <span class="default">
-            
-              &mdash; default:
-              <tt>the current state</tt>
-            
-          </span>
-          
-            &mdash; <div class='inline'><p>One or more initial states</p>
-</div>
-          
-        </li>
-      
-        <li>
-          <span class="name">:to</span>
-          <span class="type">(<tt>Symbol</tt>)</span>
-          <span class="default">
-            
-          </span>
-          
-            &mdash; <div class='inline'><p>One or more target states</p>
-</div>
-          
-        </li>
-      
-        <li>
-          <span class="name">:guard</span>
-          <span class="type">(<tt>Boolean</tt>)</span>
-          <span class="default">
-            
-          </span>
-          
-            &mdash; <div class='inline'><p>Whether to guard transitions with conditionals</p>
-</div>
-          
-        </li>
-      
-    </ul>
-  
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>StateMachine::Transition</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The transition that would be performed or +nil+</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
-
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span><span class='comma'>,</span> <span class='symbol'>:unless</span> <span class='op'>=&gt;</span> <span class='symbol'>:has_no_expenses?</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:approve</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:approved</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:accept</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_cancelable_by_tsp?'>cancelable_by_tsp?</span>
+  <span class='id identifier rubyid_can_cancel?'>can_cancel?</span> <span class='kw'>and</span> <span class='kw'>not</span> <span class='id identifier rubyid_accepted?'>accepted?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -5354,13 +4603,7 @@ except canceled).</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -5387,13 +4630,7 @@ except canceled).</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -5442,12 +4679,12 @@ except canceled).</p>
       <pre class="lines">
 
 
-82
-83
-84</pre>
+76
+77
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 82</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_editable_by_requester?'>editable_by_requester?</span>
   <span class='id identifier rubyid_state'>state</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>incomplete</span><span class='tstring_end'>'</span></span>
@@ -5499,12 +4736,12 @@ except canceled).</p>
       <pre class="lines">
 
 
-89
-90
-91</pre>
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 89</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 83</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_editable_by_tsp?'>editable_by_tsp?</span>
   <span class='id identifier rubyid_state'>state</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>submitted</span><span class='tstring_end'>'</span></span>
@@ -5661,15 +4898,15 @@ ordered by currencies&#39; alphabetic order</p>
       <pre class="lines">
 
 
-151
-152
-153
-154
-155
-156</pre>
+166
+167
+168
+169
+170
+171</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 151</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 166</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_expenses_sum'>expenses_sum</span><span class='lparen'>(</span><span class='id identifier rubyid_attr'>attr</span> <span class='op'>=</span> <span class='symbol'>:total</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_grouped'>grouped</span> <span class='op'>=</span> <span class='id identifier rubyid_expenses'>expenses</span><span class='period'>.</span><span class='id identifier rubyid_group_by'>group_by</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:#{</span><span class='id identifier rubyid_attr'>attr</span><span class='rbrace'>}</span><span class='tstring_content'>_currency</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -5817,13 +5054,7 @@ ordered by currencies&#39; alphabetic order</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -5850,13 +5081,7 @@ ordered by currencies&#39; alphabetic order</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -5905,12 +5130,12 @@ documentation to work, because it doesn&#39;t work if a string is used in the
       <pre class="lines">
 
 
-75
-76
-77</pre>
+69
+70
+71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_has_no_expenses?'>has_no_expenses?</span>
   <span class='id identifier rubyid_expenses'>expenses</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -5985,13 +5210,7 @@ documentation to work, because it doesn&#39;t work if a string is used in the
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -6018,13 +5237,7 @@ documentation to work, because it doesn&#39;t work if a string is used in the
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -6096,13 +5309,7 @@ documentation to work, because it doesn&#39;t work if a string is used in the
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -6129,13 +5336,7 @@ documentation to work, because it doesn&#39;t work if a string is used in the
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -6207,13 +5408,7 @@ documentation to work, because it doesn&#39;t work if a string is used in the
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -6240,13 +5435,7 @@ documentation to work, because it doesn&#39;t work if a string is used in the
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -6296,12 +5485,12 @@ yet started</p>
       <pre class="lines">
 
 
-118
-119
-120</pre>
+133
+134
+135</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 118</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 133</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_lacks_reimbursement?'>lacks_reimbursement?</span>
   <span class='id identifier rubyid_can_have_reimbursement?'>can_have_reimbursement?</span> <span class='kw'>and</span> <span class='lparen'>(</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_new_record?'>new_record?</span><span class='rparen'>)</span>
@@ -6431,13 +5620,7 @@ yet started</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -6464,13 +5647,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -6578,13 +5755,7 @@ yet started</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -6611,13 +5782,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -6758,13 +5923,7 @@ yet started</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -6791,13 +5950,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -6905,13 +6058,7 @@ yet started</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -6938,13 +6085,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -7097,13 +6238,7 @@ yet started</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -7130,13 +6265,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -7208,13 +6337,7 @@ yet started</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -7241,13 +6364,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -7400,13 +6517,7 @@ yet started</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -7433,13 +6544,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -7592,13 +6697,7 @@ yet started</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -7625,13 +6724,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -7722,13 +6815,7 @@ yet started</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -7755,13 +6842,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -7869,13 +6950,7 @@ yet started</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -7902,13 +6977,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -8049,13 +7118,7 @@ yet started</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -8082,13 +7145,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -8160,13 +7217,7 @@ yet started</p>
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</pre>
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request.rb', line 36</span>
@@ -8193,13 +7244,7 @@ yet started</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:cancel</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:canceled</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -8248,12 +7293,12 @@ yet started</p>
       <pre class="lines">
 
 
-133
-134
-135</pre>
+148
+149
+150</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 148</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visa_letter_allowed?'>visa_letter_allowed?</span>
   <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_try'>try</span><span class='lparen'>(</span><span class='symbol'>:visa_letters</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='kw'>true</span>
@@ -8268,7 +7313,7 @@ yet started</p>
 </div>
 
     <div id="footer">
-  Generated on Tue Jun 18 10:24:56 2013 by
+  Generated on Tue Jul  9 15:25:57 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>

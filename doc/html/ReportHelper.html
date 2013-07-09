@@ -1,0 +1,1604 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: ReportHelper
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (R)</a> &raquo;
+    
+    
+    <span class="title">ReportHelper</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: ReportHelper
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">app/helpers/report_helper.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#filter_datepicker-instance_method" title="#filter_datepicker (instance method)">- (Object) <strong>filter_datepicker</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Outputs a date picker for filtering the expenses report with a given scope.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#filter_select-instance_method" title="#filter_select (instance method)">- (Object) <strong>filter_select</strong>(name, collection, value_method = :id, text_method = :name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Outputs a dropdown for filtering the expenses report with a given scope.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#filter_text_field-instance_method" title="#filter_text_field (instance method)">- (Object) <strong>filter_text_field</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Outputs a text input for filtering the expenses report with a given scope.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#html_value_for-instance_method" title="#html_value_for (instance method)">- (Object) <strong>html_value_for</strong>(field, expense) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Outputs the html representation of the field for a given ExpenseReport
+instance.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#html_value_for_event_country-instance_method" title="#html_value_for_event_country (instance method)">- (Object) <strong>html_value_for_event_country</strong>(expense) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Called from html_value_for.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#html_value_for_event_end_date-instance_method" title="#html_value_for_event_end_date (instance method)">- (Object) <strong>html_value_for_event_end_date</strong>(expense) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Called from html_value_for.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#html_value_for_event_name-instance_method" title="#html_value_for_event_name (instance method)">- (Object) <strong>html_value_for_event_name</strong>(expense) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Called from html_value_for.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#html_value_for_event_start_date-instance_method" title="#html_value_for_event_start_date (instance method)">- (Object) <strong>html_value_for_event_start_date</strong>(expense) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Called from html_value_for.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#html_value_for_reimbursement_id-instance_method" title="#html_value_for_reimbursement_id (instance method)">- (Object) <strong>html_value_for_reimbursement_id</strong>(expense) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Called from html_value_for.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#html_value_for_request_id-instance_method" title="#html_value_for_request_id (instance method)">- (Object) <strong>html_value_for_request_id</strong>(expense) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Called from html_value_for.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#html_value_for_sum_amount-instance_method" title="#html_value_for_sum_amount (instance method)">- (Object) <strong>html_value_for_sum_amount</strong>(expense) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Called from html_value_for.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#html_value_for_user_country-instance_method" title="#html_value_for_user_country (instance method)">- (Object) <strong>html_value_for_user_country</strong>(expense) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Called from html_value_for.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#value_for_reimbursement_state-instance_method" title="#value_for_reimbursement_state (instance method)">- (Object) <strong>value_for_reimbursement_state</strong>(expense) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Called from html_value_for and xlsx_value_for.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#value_for_request_state-instance_method" title="#value_for_request_state (instance method)">- (Object) <strong>value_for_request_state</strong>(expense) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Called from html_value_for and xlsx_value_for.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#xlsx_style_for-instance_method" title="#xlsx_style_for (instance method)">- (Hash) <strong>xlsx_style_for</strong>(field) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Style for the axlsx template for a given field.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#xlsx_style_for_sum_amount-instance_method" title="#xlsx_style_for_sum_amount (instance method)">- (Object) <strong>xlsx_style_for_sum_amount</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Called from xlsx_style_for.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#xlsx_value_for-instance_method" title="#xlsx_value_for (instance method)">- (Object) <strong>xlsx_value_for</strong>(field, expense) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Return the value of a field for a given ExpenseReport
+instance, in a format useful to the axlsx template.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#xlsx_value_for_event_country-instance_method" title="#xlsx_value_for_event_country (instance method)">- (Object) <strong>xlsx_value_for_event_country</strong>(expense) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Called from xlsx_value_for.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#xlsx_value_for_user_country-instance_method" title="#xlsx_value_for_user_country (instance method)">- (Object) <strong>xlsx_value_for_user_country</strong>(expense) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Called from xlsx_value_for.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="filter_datepicker-instance_method">
+  
+    - (<tt>Object</tt>) <strong>filter_datepicker</strong>(name) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Outputs a date picker for filtering the expenses report with a given scope</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11
+12
+13
+14
+15</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 11</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_filter_datepicker'>filter_datepicker</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+   <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='ivar'>@filter</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@filter</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>
+   <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>date-autoclose</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>date-format</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>yyyy-mm-dd</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>date-language</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_locale'>locale</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbrace'>}</span>
+   <span class='id identifier rubyid_text_field_tag'>text_field_tag</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>filter[</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>]</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>date-without-time dpicker</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:data</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_data'>data</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="filter_select-instance_method">
+  
+    - (<tt>Object</tt>) <strong>filter_select</strong>(name, collection, value_method = :id, text_method = :name) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Outputs a dropdown for filtering the expenses report with a given scope</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+3
+4
+5
+6
+7
+8</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 3</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_filter_select'>filter_select</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_collection'>collection</span><span class='comma'>,</span> <span class='id identifier rubyid_value_method'>value_method</span> <span class='op'>=</span> <span class='symbol'>:id</span><span class='comma'>,</span> <span class='id identifier rubyid_text_method'>text_method</span> <span class='op'>=</span> <span class='symbol'>:name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='ivar'>@filter</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@filter</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:option</span><span class='comma'>,</span> <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='symbol'>:expenses_report_all</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_options_from_collection_for_select'>options_from_collection_for_select</span><span class='lparen'>(</span><span class='id identifier rubyid_collection'>collection</span><span class='comma'>,</span> <span class='id identifier rubyid_value_method'>value_method</span><span class='comma'>,</span> <span class='id identifier rubyid_text_method'>text_method</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_select_tag'>select_tag</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>filter[</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>]</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="filter_text_field-instance_method">
+  
+    - (<tt>Object</tt>) <strong>filter_text_field</strong>(name) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Outputs a text input for filtering the expenses report with a given scope</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18
+19
+20
+21</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 18</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_filter_text_field'>filter_text_field</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='ivar'>@filter</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@filter</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_text_field_tag'>text_field_tag</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>filter[</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>]</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="html_value_for-instance_method">
+  
+    - (<tt>Object</tt>) <strong>html_value_for</strong>(field, expense) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Outputs the html representation of the field for a given ExpenseReport
+instance.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>field</span>
+      
+      
+        <span class='type'>(<tt>#to_sym</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>name of the field</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>expense</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="ExpenseReport.html" title="ExpenseReport (class)">ExpenseReport</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the instance</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'><p>HTML output</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 29</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_html_value_for'>html_value_for</span><span class='lparen'>(</span><span class='id identifier rubyid_field'>field</span><span class='comma'>,</span> <span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span> <span class='symbol'>:html_value_for_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_field'>field</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:html_value_for_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_field'>field</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span> <span class='symbol'>:value_for_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_field'>field</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:value_for_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_field'>field</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_expense'>expense</span><span class='period'>.</span><span class='id identifier rubyid_value_for'>value_for</span> <span class='id identifier rubyid_field'>field</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="html_value_for_event_country-instance_method">
+  
+    - (<tt>Object</tt>) <strong>html_value_for_event_country</strong>(expense) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Called from html_value_for</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#html_value_for-instance_method" title="ReportHelper#html_value_for (method)">#html_value_for</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+97
+98
+99</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 97</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_html_value_for_event_country'>html_value_for_event_country</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:span</span><span class='comma'>,</span> <span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='symbol'>:event_country</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='symbol'>:title</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>countries.</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='symbol'>:event_country</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="html_value_for_event_end_date-instance_method">
+  
+    - (<tt>Object</tt>) <strong>html_value_for_event_end_date</strong>(expense) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Called from html_value_for</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#html_value_for-instance_method" title="ReportHelper#html_value_for (method)">#html_value_for</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+115
+116
+117</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 115</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_html_value_for_event_end_date'>html_value_for_event_end_date</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_l'>l</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='period'>.</span><span class='id identifier rubyid_value_for'>value_for</span><span class='lparen'>(</span><span class='symbol'>:event_end_date</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="html_value_for_event_name-instance_method">
+  
+    - (<tt>Object</tt>) <strong>html_value_for_event_name</strong>(expense) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Called from html_value_for</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#html_value_for-instance_method" title="ReportHelper#html_value_for (method)">#html_value_for</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+72
+73
+74</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 72</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_html_value_for_event_name'>html_value_for_event_name</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_link_to'>link_to</span> <span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='symbol'>:event_name</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_event_path'>event_path</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='symbol'>:event_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="html_value_for_event_start_date-instance_method">
+  
+    - (<tt>Object</tt>) <strong>html_value_for_event_start_date</strong>(expense) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Called from html_value_for</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#html_value_for-instance_method" title="ReportHelper#html_value_for (method)">#html_value_for</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+109
+110
+111</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 109</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_html_value_for_event_start_date'>html_value_for_event_start_date</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_l'>l</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='period'>.</span><span class='id identifier rubyid_value_for'>value_for</span><span class='lparen'>(</span><span class='symbol'>:event_start_date</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="html_value_for_reimbursement_id-instance_method">
+  
+    - (<tt>Object</tt>) <strong>html_value_for_reimbursement_id</strong>(expense) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Called from html_value_for</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#html_value_for-instance_method" title="ReportHelper#html_value_for (method)">#html_value_for</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+84
+85
+86
+87</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 84</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_html_value_for_reimbursement_id'>html_value_for_reimbursement_id</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='symbol'>:reimbursement_id</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_id'>id</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_request_reimbursement_path'>request_reimbursement_path</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='symbol'>:request_id</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="html_value_for_request_id-instance_method">
+  
+    - (<tt>Object</tt>) <strong>html_value_for_request_id</strong>(expense) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Called from html_value_for</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#html_value_for-instance_method" title="ReportHelper#html_value_for (method)">#html_value_for</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+78
+79
+80</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 78</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_html_value_for_request_id'>html_value_for_request_id</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_link_to'>link_to</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='symbol'>:request_id</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_request_path'>request_path</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='symbol'>:request_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="html_value_for_sum_amount-instance_method">
+  
+    - (<tt>Object</tt>) <strong>html_value_for_sum_amount</strong>(expense) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Called from html_value_for</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#html_value_for-instance_method" title="ReportHelper#html_value_for (method)">#html_value_for</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+91
+92
+93</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 91</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_html_value_for_sum_amount'>html_value_for_sum_amount</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_number_to_currency'>number_to_currency</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='period'>.</span><span class='id identifier rubyid_value_for'>value_for</span><span class='lparen'>(</span><span class='symbol'>:sum_amount</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='int'>0</span><span class='comma'>,</span> <span class='symbol'>:unit</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="html_value_for_user_country-instance_method">
+  
+    - (<tt>Object</tt>) <strong>html_value_for_user_country</strong>(expense) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Called from html_value_for</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#html_value_for-instance_method" title="ReportHelper#html_value_for (method)">#html_value_for</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+103
+104
+105</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 103</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_html_value_for_user_country'>html_value_for_user_country</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:span</span><span class='comma'>,</span> <span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='symbol'>:user_country</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='symbol'>:title</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>countries.</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='symbol'>:user_country</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="value_for_reimbursement_state-instance_method">
+  
+    - (<tt>Object</tt>) <strong>value_for_reimbursement_state</strong>(expense) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Called from html_value_for and xlsx_value_for</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#html_value_for-instance_method" title="ReportHelper#html_value_for (method)">#html_value_for</a></span></li>
+    
+      <li><span class='object_link'><a href="#xlsx_value_for-instance_method" title="ReportHelper#xlsx_value_for (method)">#xlsx_value_for</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+65
+66
+67
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 65</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_value_for_reimbursement_state'>value_for_reimbursement_state</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_state'>state</span> <span class='op'>=</span> <span class='id identifier rubyid_expense'>expense</span><span class='period'>.</span><span class='id identifier rubyid_value_for'>value_for</span><span class='lparen'>(</span><span class='symbol'>:reimbursement_state</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_state'>state</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='const'>Reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_human_state_name'>human_state_name</span><span class='lparen'>(</span><span class='id identifier rubyid_state'>state</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="value_for_request_state-instance_method">
+  
+    - (<tt>Object</tt>) <strong>value_for_request_state</strong>(expense) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Called from html_value_for and xlsx_value_for</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#html_value_for-instance_method" title="ReportHelper#html_value_for (method)">#html_value_for</a></span></li>
+    
+      <li><span class='object_link'><a href="#xlsx_value_for-instance_method" title="ReportHelper#xlsx_value_for (method)">#xlsx_value_for</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 58</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_value_for_request_state'>value_for_request_state</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
+  <span class='const'>Request</span><span class='period'>.</span><span class='id identifier rubyid_human_state_name'>human_state_name</span> <span class='id identifier rubyid_expense'>expense</span><span class='period'>.</span><span class='id identifier rubyid_value_for'>value_for</span><span class='lparen'>(</span><span class='symbol'>:request_state</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="xlsx_style_for-instance_method">
+  
+    - (<tt>Hash</tt>) <strong>xlsx_style_for</strong>(field) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Style for the axlsx template for a given field</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>field</span>
+      
+      
+        <span class='type'>(<tt>#to_sym</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>name of the field</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Style definition, nil if no special style is defined</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+135
+136
+137
+138
+139
+140
+141</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 135</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_xlsx_style_for'>xlsx_style_for</span><span class='lparen'>(</span><span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span> <span class='symbol'>:xlsx_style_for_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_field'>field</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:xlsx_style_for_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_field'>field</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="xlsx_style_for_sum_amount-instance_method">
+  
+    - (<tt>Object</tt>) <strong>xlsx_style_for_sum_amount</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Called from xlsx_style_for</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#xlsx_style_for-instance_method" title="ReportHelper#xlsx_style_for (method)">#xlsx_style_for</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+145
+146
+147</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 145</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_xlsx_style_for_sum_amount'>xlsx_style_for_sum_amount</span>
+  <span class='lbrace'>{</span><span class='symbol'>:num_fmt</span> <span class='op'>=&gt;</span> <span class='int'>2</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="xlsx_value_for-instance_method">
+  
+    - (<tt>Object</tt>) <strong>xlsx_value_for</strong>(field, expense) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Return the value of a field for a given ExpenseReport
+instance, in a format useful to the axlsx template.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>field</span>
+      
+      
+        <span class='type'>(<tt>#to_sym</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>name of the field</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>expense</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="ExpenseReport.html" title="ExpenseReport (class)">ExpenseReport</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the instance</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>value for the template</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47
+48
+49
+50
+51
+52
+53</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_xlsx_value_for'>xlsx_value_for</span><span class='lparen'>(</span><span class='id identifier rubyid_field'>field</span><span class='comma'>,</span> <span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span> <span class='symbol'>:xlsx_value_for_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_field'>field</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:xlsx_value_for_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_field'>field</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span> <span class='symbol'>:value_for_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_field'>field</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:value_for_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_field'>field</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_expense'>expense</span><span class='period'>.</span><span class='id identifier rubyid_value_for'>value_for</span> <span class='id identifier rubyid_field'>field</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="xlsx_value_for_event_country-instance_method">
+  
+    - (<tt>Object</tt>) <strong>xlsx_value_for_event_country</strong>(expense) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Called from xlsx_value_for</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#xlsx_value_for-instance_method" title="ReportHelper#xlsx_value_for (method)">#xlsx_value_for</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+127
+128
+129</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 127</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_xlsx_value_for_event_country'>xlsx_value_for_event_country</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_country_label'>country_label</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='period'>.</span><span class='id identifier rubyid_value_for'>value_for</span><span class='lparen'>(</span><span class='symbol'>:event_country</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="xlsx_value_for_user_country-instance_method">
+  
+    - (<tt>Object</tt>) <strong>xlsx_value_for_user_country</strong>(expense) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Called from xlsx_value_for</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#xlsx_value_for-instance_method" title="ReportHelper#xlsx_value_for (method)">#xlsx_value_for</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+121
+122
+123</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 121</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_xlsx_value_for_user_country'>xlsx_value_for_user_country</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_country_label'>country_label</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='period'>.</span><span class='id identifier rubyid_value_for'>value_for</span><span class='lparen'>(</span><span class='symbol'>:user_country</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue Jul  9 15:25:54 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

@@ -158,6 +158,52 @@ StateTransition objects.</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#can_cancel%3F-instance_method" title="#can_cancel? (instance method)">- (Boolean) <strong>can_cancel?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks whether can have a transition to &#39;canceled&#39; state.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cancel-instance_method" title="#cancel (instance method)">- (Object) <strong>cancel</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets the state to &#39;canceled&#39;.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#in_final_state%3F-instance_method" title="#in_final_state? (instance method)">- (Boolean) <strong>in_final_state?</strong> </a>
     
 
@@ -293,7 +339,127 @@ matters which the current state is.</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="in_final_state?-instance_method">
+  <h3 class="signature first" id="can_cancel?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>can_cancel?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks whether can have a transition to &#39;canceled&#39; state</p>
+
+<p>Compatibility for #cancel with transitions defined by state_machine.
+Default implementation always return true if state is not already
+&#39;canceled&#39;, meaning that a process can be canceled at any moment.
+Classes using this mixin should implement their own custom behaviour.
+return [Boolean] true if #cancel can be called</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#cancel-instance_method" title="TravelSupportProgram::HasState#cancel (method)">#cancel</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 74</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_can_cancel?'>can_cancel?</span>
+  <span class='kw'>not</span> <span class='id identifier rubyid_canceled?'>canceled?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="cancel-instance_method">
+  
+    - (<tt>Object</tt>) <strong>cancel</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Sets the state to &#39;canceled&#39;</p>
+
+<p>It works exactly in the same way that any other transition defined by
+state_machine. It&#39;s implemented in a separate way to keep the workflow as
+clean as possible. Since a cancelation can happen at any moment,
+implementing it as a regular transition could lead state_machine to the
+conclusion that &#39;canceled&#39; is the only valid final state.</p>
+
+<p>return [Boolean] true if the state is updated</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+58
+59
+60
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 58</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cancel'>cancel</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='kw'>not</span> <span class='id identifier rubyid_can_cancel?'>can_cancel?</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_state'>state</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>canceled</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_state_updated_at'>state_updated_at</span> <span class='op'>=</span> <span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+  <span class='id identifier rubyid_save'>save</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="in_final_state?-instance_method">
   
     - (<tt>Boolean</tt>) <strong>in_final_state?</strong> 
   
@@ -457,7 +623,7 @@ matters which the current state is.</p>
 </div>
 
     <div id="footer">
-  Generated on Tue Jun 18 10:24:54 2013 by
+  Generated on Tue Jul  9 15:25:54 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>
