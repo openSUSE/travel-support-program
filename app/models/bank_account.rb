@@ -9,11 +9,11 @@ class BankAccount < ActiveRecord::Base
   # The associated reimbursement
   belongs_to :reimbursement, :inverse_of => :bank_account
 
-  validates :holder, :presence => true, :unless => "reimbursement.incomplete?"
-  validates :bank_name, :presence => true, :unless => "reimbursement.incomplete?"
+  validates :holder, :presence => true, :unless => "reimbursement.incomplete? || reimbursement.canceled?"
+  validates :bank_name, :presence => true, :unless => "reimbursement.incomplete? || reimbursement.canceled?"
   validates :format, :presence => true, :inclusion => {:in => %w(iban national)}
-  validate :iban, :bic, :presence => true, :unless => "reimbursement.incomplete? || !iban?"
-  validate :national_account_code, :country_code, :presence => true, :unless => "reimbursement.incomplete? || iban?"
+  validate :iban, :bic, :presence => true, :unless => "reimbursement.incomplete? || reimbursement.canceled? || !iban?"
+  validate :national_account_code, :country_code, :presence => true, :unless => "reimbursement.incomplete? || reimbursement.canceled? || iban?"
 
   after_initialize :set_default_attrs, :if => :new_record?
 

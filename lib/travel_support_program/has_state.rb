@@ -46,6 +46,35 @@ module TravelSupportProgram
       HasStateMailer::notify_to(people, :state, self, self.human_state_name, self.state_updated_at)
     end
 
+    # Sets the state to 'canceled'
+    #
+    # It works exactly in the same way that any other transition defined by
+    # state_machine. It's implemented in a separate way to keep the workflow as
+    # clean as possible. Since a cancelation can happen at any moment,
+    # implementing it as a regular transition could lead state_machine to the
+    # conclusion that 'canceled' is the only valid final state.
+    #
+    # return [Boolean] true if the state is updated
+    def cancel
+      return false if not can_cancel?
+      self.state = 'canceled'
+      self.state_updated_at = DateTime.now
+      save
+    end
+
+    # Checks whether can have a transition to 'canceled' state
+    #
+    # Compatibility for #cancel with transitions defined by state_machine.
+    # Default implementation always return true if state is not already
+    # 'canceled', meaning that a process can be canceled at any moment.
+    # Classes using this mixin should implement their own custom behaviour.
+    # @see #cancel
+    #
+    # return [Boolean] true if #cancel can be called
+    def can_cancel?
+      not canceled?
+    end
+
     protected
 
     # User internally to set the state_updated_at attribute

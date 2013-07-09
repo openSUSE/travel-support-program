@@ -69,3 +69,6 @@
 
   - if can?(:create, resource.final_notes.build)
     = link_to(t(:create_final_note), resource_path + "/final_notes/new.js", :remote => true, :class => 'btn')
+
+  - if can? :cancel, resource
+    = link_to t("helpers.links.cancel"), new_request_reimbursement_state_transition_path(resource.request, "state_transition[state_event]" => "cancel"), :remote => true, :class => 'btn btn-danger'

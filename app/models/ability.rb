@@ -131,9 +131,12 @@ class Ability
       can :update, Request do |r|
         r.editable_by_tsp?
       end
-      # TSP members can approve, roll back or cancel any request, but only when
+      can :cancel, Request do |r|
+        r.cancelable_by_tsp?
+      end
+      # TSP members can approve and roll back any request, but only when
       # state_machines allows to do it
-      [:approve, :roll_back, :cancel].each do |action|
+      [:approve, :roll_back].each do |action|
         can action, Request do |r|
           r.send("can_#{action}?")
         end
@@ -144,7 +147,10 @@ class Ability
       can :update, Reimbursement do |r|
         r.editable_by_tsp?
       end
-      [:approve, :cancel, :roll_back].each do |action|
+      can :cancel, Reimbursement do |r|
+        r.cancelable_by_tsp?
+      end
+      [:approve, :roll_back].each do |action|
         can action, Reimbursement do |r|
           r.send("can_#{action}?")
         end

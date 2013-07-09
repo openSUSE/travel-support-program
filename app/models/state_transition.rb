@@ -24,13 +24,17 @@ class StateTransition < ActiveRecord::Base
 
   protected
 
-  def before_update
+  def prevent_update
     false
   end
 
   def fire_state_event
     self.from = machine.state
-    result = machine.fire_state_event(state_event.to_sym)
+    if state_event.to_sym == :cancel
+      result = machine.cancel
+    else
+      result = machine.fire_state_event(state_event.to_sym)
+    end
     self.to = machine.state
     result
   end

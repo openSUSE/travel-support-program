@@ -59,3 +59,6 @@
 
   - if can? :destroy, @request
     = link_to t('.destroy', :default => t("helpers.links.destroy")), request_path(@request), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-danger'
+  - elsif can? :cancel, @request
+    = link_to t("helpers.links.cancel"), new_request_state_transition_path(@request, "state_transition[state_event]" => "cancel"), :remote => true, :class => 'btn btn-danger'
+

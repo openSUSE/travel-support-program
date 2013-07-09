@@ -79,11 +79,7 @@ class Reimbursement < ActiveRecord::Base
       transition :accepted => :submitted
     end
 
-    event :cancel do
-      transition :incomplete => :canceled
-      transition :submitted => :canceled
-      transition :approved  => :canceled
-    end
+    state :canceled
   end
 
   # @see HasState.assign_state
@@ -117,6 +113,27 @@ class Reimbursement < ActiveRecord::Base
   # @return [Boolean] true if allowed
   def editable_by_tsp?
     state == 'submitted'
+  end
+
+  # Checks whether a tsp user should be allowed to cancel
+  #
+  # tsp users cannot cancel a reimbursement if it has already been accepted
+  # by the requester
+  #
+  # @return [Boolean] true if allowed
+  def cancelable_by_tsp?
+    can_cancel? and not accepted?
+  end
+
+  # Checks whether can have a transition to 'canceled' state
+  #
+  # Overrides the HasState.can_cancel?, preventing cancelation of reimbursements
+  # that have already been processed
+  # @see HasState.can_cancel?
+  #
+  # return [Boolean] true if #cancel can be called
+  def can_cancel?
+    not canceled? and not processed? and not payed?
   end
 
   # Checks whether the reimbursement can have final notes

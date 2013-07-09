@@ -29,7 +29,7 @@ describe Ability do
       it{ should be_able_to(:destroy, requests(:luke_for_party)) }
       it{ should_not be_able_to(:destroy, requests(:luke_for_yavin)) }
       it{ should be_able_to(:cancel, requests(:luke_for_party)) }
-      it{ should_not be_able_to(:cancel, requests(:luke_for_yavin)) }
+      it{ should be_able_to(:cancel, requests(:luke_for_yavin)) }
     end
 
     context "trying to look into other's requests" do
@@ -120,7 +120,7 @@ describe Ability do
             it{ should be_able_to(:read, @reimbursement) }
             it{ should_not be_able_to(:update, @reimbursement) }
             it{ should_not be_able_to(:destroy, @reimbursement) }
-            it{ should_not be_able_to(:cancel, @reimbursement) }
+            it{ should be_able_to(:cancel, @reimbursement) }
             it{ should_not be_able_to(:approve, @reimbursement) }
             it{ should_not be_able_to(:roll_back, @reimbursement) }
             it{ should_not be_able_to(:accept, @reimbursement) }

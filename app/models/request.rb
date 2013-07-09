@@ -55,13 +55,7 @@ class Request < ActiveRecord::Base
       transition :approved => :incomplete
     end
 
-    event :cancel do
-      # Separated transitions because grouping them using arrays confuses the
-      # Graphviz task for automatic documentation
-      transition :incomplete => :canceled
-      transition :submitted => :canceled
-      transition :approved => :canceled
-    end
+    state :canceled
   end
 
   # @see HasState.assign_state
@@ -90,11 +84,32 @@ class Request < ActiveRecord::Base
     state == 'submitted'
   end
 
+  # Checks whether a tsp user should be allowed to cancel
+  #
+  # tsp users cannot cancel a request if it has already been accepted by the
+  # requester
+  #
+  # @return [Boolean] true if allowed
+  def cancelable_by_tsp?
+    can_cancel? and not accepted?
+  end
+
   # Checks whether a user should be allowed to completely delete the request.
   #
   # @return [Boolean] true if allowed
   def can_be_destroyed?
     not with_transitions?
+  end
+
+  # Checks whether can have a transition to 'canceled' state
+  #
+  # Overrides the HasState.can_cancel?, preventing cancelation of requests that
+  # already have a reimbursement
+  # @see HasState.can_cancel?
+  #
+  # return [Boolean] true if #cancel can be called
+  def can_cancel?
+    not canceled? and reimbursement.nil?
   end
 
   # Checks whether the request is ready for reimbursement
