@@ -1,4 +1,4 @@
-=link_to t(:application_title), root_path, :class => "brand"
+=link_to TravelSupportProgram::Config.setting(:program_name), root_path, :class => "brand"
 .container.nav-collapse
   %ul.nav
     - if user_signed_in?

@@ -33,7 +33,6 @@ en:
   profile_update_failed: "Errors updating profile information"
   profile_updated: "Profile information updated"
 
-  application_title: "Travel Support Program"
   apply: "Apply"
   collapse: "roll/unroll"
   create_final_note: "Add final note"
@@ -66,6 +65,7 @@ en:
   page_total: "Total in this page"
   pdf_format: "Printable version"
   redirect_to_previous_request: "A request already exists for this event. Redirected."
+  reimbursement_acceptance_title: "Acceptance (signature)"
   reimbursement_acceptance_info: 'A signed copy of the reimbursement needs to be attached in order to be processed. <a href="%{print_url}">Click here</a> to get an updated pdf version of the reimbursement. Print it, sign it, scan the signed version and upload it using the form below.'
   reimbursement_acceptance_intro: 'An updated signed version of the reimbursement request is required for payment. For attaching it or updating it (if necessary), <a href="%{print_url}">print it</a>, sign it and click on &quot;attach signature&quot;.'
   reimbursement_acceptance_success: "Signed acceptance attached."

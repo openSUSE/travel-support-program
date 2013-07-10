@@ -28,8 +28,8 @@ prawn_document :page_size => "A4" do |pdf|
   event = resource.event
   event1_data = [ [Event.human_attribute_name(:name), event.name],
                   [Event.human_attribute_name(:country), country_label(event.country_code) ] ]
-  event2_data = [ [Event.human_attribute_name(:start_date), I18n.l(event.start_date)],
-                  [Event.human_attribute_name(:end_date), I18n.l(event.end_date) ] ]
+  event2_data = [ [Event.human_attribute_name(:start_date), I18n.l(event.start_date, :format => :long)],
+                  [Event.human_attribute_name(:end_date), I18n.l(event.end_date, :format => :long) ] ]
 
   # Bank information
   bank = resource.bank_account
@@ -53,11 +53,13 @@ prawn_document :page_size => "A4" do |pdf|
   pdf.stroke_color = "666666"
   pdf.horizontal_rule
   pdf.fill_and_stroke
-  pdf.move_down(30)
+  pdf.move_down(20)
   pdf.bounding_box [ pdf.bounds.left, pdf.cursor ], :width => 550, :height => 650 do
-    pdf.text_box "#{Reimbursement.model_name.human} ##{resource.id}".titleize, :size => 16, :style => :bold
+    pdf.text TravelSupportProgram::Config.setting(:program_name), :size => 16, :style => :bold
+    pdf.move_down(10)
+    pdf.text "#{Reimbursement.model_name.human.titleize} ##{resource.id} - #{profile.full_name}", :size => 14, :style => :bold
     # Requester
-    pdf.move_down(30)
+    pdf.move_down(20)
     pdf.text Reimbursement.human_attribute_name(:user).titleize, :style => :bold, :size => 12
     top = pdf.cursor
     pdf.bounding_box [ pdf.bounds.left, top ], :width => 250 do
@@ -79,7 +81,7 @@ prawn_document :page_size => "A4" do |pdf|
     end
     pdf.move_cursor_to [bottom, pdf.cursor].min
     # Event
-    pdf.move_down(20)
+    pdf.move_down(25)
     pdf.text Reimbursement.human_attribute_name(:event).titleize, :style => :bold, :size => 12
     top = pdf.cursor
     pdf.bounding_box [ pdf.bounds.left, top ], :width => 250 do
@@ -100,7 +102,7 @@ prawn_document :page_size => "A4" do |pdf|
     end
     pdf.bounding_box [ pdf.bounds.left, pdf.cursor ], :width => 550 do
       # Expenses
-      pdf.move_down(20)
+      pdf.move_down(25)
       pdf.text Request.human_attribute_name(:expenses).titleize, :style => :bold, :size => 12
       pdf.table expenses_data do |t|
         t.column_widths = [90, 330, 90]
@@ -114,7 +116,7 @@ prawn_document :page_size => "A4" do |pdf|
       end
       # Bank account
       unless bank.nil? # Should not happen with sane data, anyway
-        pdf.move_down(20)
+        pdf.move_down(25)
         pdf.text Reimbursement.human_attribute_name(:bank_account).titleize, :style => :bold, :size => 12
         pdf.table bank_data do |t|
           t.column_widths = [130, 410]
@@ -123,7 +125,9 @@ prawn_document :page_size => "A4" do |pdf|
           t.columns(0).style :font_style => :bold
         end
       end
-      pdf.move_down(30)
+      pdf.move_down(25)
+      pdf.text I18n.t(:reimbursement_acceptance_title), :style => :bold, :size => 12
+      pdf.move_down(5)
       pdf.text I18n.t(:signature_date), :style => :bold, :size => 10
       pdf.move_down(5)
       pdf.text I18n.t(:signature), :style => :bold, :size => 10
