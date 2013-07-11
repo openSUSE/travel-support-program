@@ -64,6 +64,7 @@
 
   - if can? :create, resource.payments.build
     = link_to t(:new_payment), new_request_reimbursement_payment_path(resource.request), :class => 'btn'
+    = check_request_link(resource)
 
   = transition_links(resource) 
 

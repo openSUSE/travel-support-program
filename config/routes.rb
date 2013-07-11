@@ -14,6 +14,7 @@ TravelSupportProgram::Application.routes.draw do
       resources :payments, :except => [:show, :index] do
         get :file, :on => :member
       end
+      get :check_request, :on => :member
     end
   end
 

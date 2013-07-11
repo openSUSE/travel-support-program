@@ -99,4 +99,15 @@ module ReimbursementsHelper
     end
   end
 
+  # Outputs a link to the reimbursement's check request only if everything
+  # related to check requests is configured
+  #
+  # @param [Reimbursement] reimbursement
+  # @return [String] HTML output
+  def check_request_link(reimbursement)
+    return "" if TravelSupportProgram::Config.setting(:pdftk_path).blank?
+    return "" if TravelSupportProgram::Config.setting(:check_request_template).blank?
+    url = check_request_request_reimbursement_path(reimbursement.request)
+    link_to t(:check_request), url, :class => "btn"
+  end
 end
