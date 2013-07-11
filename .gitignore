@@ -20,3 +20,4 @@ config/site.yml
 *.swp
 .ruby-version
 public/upload*
+upload*

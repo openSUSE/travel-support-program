@@ -3,8 +3,9 @@ class PaymentsController < InheritedResources::Base
   load_and_authorize_resource :request
   load_and_authorize_resource :reimbursement, :through => :request, :singleton => true
   load_and_authorize_resource :through => :request
+  skip_authorize_resource :only => :file
 
-  before_filter :load_methods
+  before_filter :load_methods, :except => :file
 
   belongs_to :request
   belongs_to :reimbursement, :singleton => true
@@ -19,6 +20,11 @@ class PaymentsController < InheritedResources::Base
 
   def destroy
     destroy! { parent_url }
+  end
+
+  def file
+    authorize! :update, resource
+    send_file resource.file.path
   end
 
   protected

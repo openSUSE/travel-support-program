@@ -1,7 +1,7 @@
 class ReimbursementAcceptancesController < ApplicationController
   respond_to :html, :js, :json
   skip_load_and_authorize_resource
-  before_filter :load_reimbursement_and_authorize
+  before_filter :load_reimbursement_and_authorize, :except => :show
 
   def create
     if params[:acceptance]
@@ -26,11 +26,21 @@ class ReimbursementAcceptancesController < ApplicationController
     end
   end
 
+  def show
+    load_reimbursement
+    authorize! :read, @reimbursement
+    send_file @reimbursement.acceptance_file.path
+  end
+
   protected
 
-  def load_reimbursement_and_authorize
+  def load_reimbursement
     @request = Request.find(params[:request_id])
     @reimbursement = @request.reimbursement
+  end
+
+  def load_reimbursement_and_authorize
+    load_reimbursement
     authorize! :accept, @reimbursement
   end
 end

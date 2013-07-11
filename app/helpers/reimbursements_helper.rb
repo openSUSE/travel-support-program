@@ -12,7 +12,9 @@ module ReimbursementsHelper
     if reimbursement.attachments.empty?
       I18n.t("show_for.blank")
     else
-      reimbursement.attachments.map {|a| link_to(a.title, asset_path(a.file_url)) }.join(", ").html_safe
+      req = reimbursement.request
+      links = reimbursement.attachments.map {|a| link_to(a.title, request_reimbursement_attachment_path(req, a))}
+      links.join(", ").html_safe
     end
   end
 
@@ -37,7 +39,8 @@ module ReimbursementsHelper
     if reimbursement.acceptance_file.blank?
       out = t("show_for.blank").html_safe
     else
-      out = link_to(reimbursement.acceptance_file.file.filename, asset_path(reimbursement.acceptance_file_url))
+      out = link_to(reimbursement.acceptance_file.file.filename,
+                    request_reimbursement_acceptance_path(reimbursement.request))
     end
     if can? :accept, reimbursement
       out << "<br/>".html_safe
@@ -64,6 +67,7 @@ module ReimbursementsHelper
       header << content_tag(:th, Payment.human_attribute_name(:amount), :class => "text-right")
       header << content_tag(:th, "")
 
+      req = reimbursement.request
       rows = payments.map do |payment|
         p = content_tag(:td, l(payment.date, :format => :short))
         p << content_tag(:td, payment.method)
@@ -71,15 +75,15 @@ module ReimbursementsHelper
         p << content_tag(:td, number_to_currency(payment.amount, :unit => payment.currency), :class => "text-right")
         links = []
         if can? :update, payment
-          links << link_to(t("helpers.links.edit"), edit_request_reimbursement_payment_path(reimbursement.request, payment))
+          links << link_to(t("helpers.links.edit"), edit_request_reimbursement_payment_path(req, payment))
         end
         if can? :destroy, payment
           links << link_to(t("helpers.links.destroy"),
-                                 request_reimbursement_payment_path(reimbursement.request, payment),
+                                 request_reimbursement_payment_path(req, payment),
                                  :confirm => t("helpers.links.confirm"), :method => :delete)
         end
         if can?(:update, payment) && !payment.file.blank?
-          links << link_to(Payment.human_attribute_name(:file), asset_path(payment.file_url))
+          links << link_to(Payment.human_attribute_name(:file), file_request_reimbursement_payment_path(req, payment))
         end
         if links.empty?
           p << content_tag(:td, "")
