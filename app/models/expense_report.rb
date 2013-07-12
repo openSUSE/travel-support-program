@@ -153,7 +153,8 @@ class ExpenseReport < ActiveRecord::Base
     # At this point creating a more generic solution is not worthy, we simply
     # check explicitly for one of the three special cases
     if name.to_sym == :sum_amount
-      BigDecimal.new(sum_amount || "0.0")
+      # to_f.to_s to ensure that it has a decimal part (with any db engine)
+      BigDecimal.new(sum_amount.to_f.to_s || "0.0")
     elsif [:event_start_date, :event_end_date].include? name.to_sym
       d = send(name)
       d.blank? ? nil : Date.parse(d)
