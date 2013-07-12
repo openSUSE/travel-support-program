@@ -105,9 +105,37 @@ module ReimbursementsHelper
   # @param [Reimbursement] reimbursement
   # @return [String] HTML output
   def check_request_link(reimbursement)
-    return "" if TravelSupportProgram::Config.setting(:pdftk_path).blank?
+    return "" if TravelSupportProgram::Config.setting(:check_request_layout).blank?
     return "" if TravelSupportProgram::Config.setting(:check_request_template).blank?
     url = check_request_request_reimbursement_path(reimbursement.request)
     link_to t(:check_request), url, :class => "btn"
   end
+
+  # Outputs the value for the given reimbursement of one of the check request's
+  # fields
+  #
+  # @param [Reimbursement] reimbursement
+  # @param [#to_sym] field the name of one of the fields defined in check requests
+  # @return [String] value to show in the resulting pdf
+  def check_request_value(reimb, field)
+    case field.to_sym
+    when :amount
+      expenses_sum(reimb, :authorized)
+    when :full_name
+      reimb.user.profile.full_name
+    when :date
+      l(Date.today)
+    when :postal_address
+      reimb.user.profile.postal_address
+    when :city
+      reimb.user.profile.location
+    when :country
+      country_label(reimb.user.profile.country_code)
+    when :zip_code
+      reimb.user.profile.zip_code
+    when :phone_number
+      reimb.user.profile.phone_number
+    end
+  end
+
 end
