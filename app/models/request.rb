@@ -59,7 +59,9 @@ class Request < ActiveRecord::Base
   end
 
   # @see HasState.assign_state
+  assign_state :incomplete, :to => :requester
   assign_state :submitted, :to => :tsp
+  assign_state :approved, :to => :requester
 
   # Checks is expenses.empty?
   #

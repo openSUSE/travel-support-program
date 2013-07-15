@@ -83,7 +83,9 @@ class Reimbursement < ActiveRecord::Base
   end
 
   # @see HasState.assign_state
+  assign_state :incomplete, :to => :requester
   assign_state :submitted, :to => :tsp
+  assign_state :approved, :to => :requester
   assign_state :accepted, :to => :administrative
 
   # @see Request#expenses_sum

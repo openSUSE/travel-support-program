@@ -137,6 +137,13 @@ module TravelSupportProgram
       def roles_assigned_to(state)
         @assigned_roles[state.to_sym] || []
       end
+
+      def notify_inactive_since(date)
+        where(["state in (?) and state_updated_at < ?", @assigned_roles.keys, date]).joins(:user).each do |m|
+          people = roles_assigned_to(m.state).map {|i| i.to_sym == :requester ? m.user : i }
+          HasStateMailer::notify_to(people, :state, m, m.human_state_name, m.state_updated_at)
+        end
+      end
     end
   end
 end
