@@ -2,8 +2,15 @@
 .container.nav-collapse
   %ul.nav
     - if user_signed_in?
-      %li= link_to t(:signed_in_as, :nickname => current_user.nickname), edit_user_registration_path
-      %li= link_to t(:logout), destroy_user_session_path, :method => :delete
+      %li= link_to t(:signed_in_as, :nickname => current_user.nickname), profile_path
+      - if user_signed_in_by_ichain?
+        %li= link_to t(:logout), destroy_user_ichain_session_path, :method => :delete
+      - else
+        %li= link_to t(:logout), destroy_user_session_path, :method => :delete
     - else
-      %li= link_to t(:login), new_user_session_path
-      %li= link_to t(:sign_up), new_user_registration_path
+      - if TravelSupportProgram::Config.setting :authentication, :database, :enabled
+        %li= link_to t(:login), new_user_session_path
+        %li= link_to t(:sign_up), new_registration_path(User)
+      - if TravelSupportProgram::Config.setting :authentication, :ichain, :enabled
+        %li= link_to t(:ichain_login), new_user_ichain_session_path
+        %li= link_to t(:ichain_sign_up), new_ichain_registration_path(User)

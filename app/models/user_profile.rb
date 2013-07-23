@@ -58,7 +58,7 @@ class UserProfile < ActiveRecord::Base
   # 
   # @return [Boolean] true if the information is correctly updated
   def refresh
-    if TravelSupportProgram::Config.setting :opensuse_auth_proxy, :enabled
+    if TravelSupportProgram::Config.setting :opensuse_connect, :enabled
       update_attributes(connect_attrib_values)
     else
       true
@@ -71,7 +71,7 @@ class UserProfile < ActiveRecord::Base
   # @return [Boolean] true unless the attributes is mean to be fetched from an
   #       external source (openSUSE Connect at this moment)
   def have_editable?(attrib)
-    return true unless TravelSupportProgram::Config.setting :opensuse_auth_proxy, :enabled
+    return true unless TravelSupportProgram::Config.setting :opensuse_connect, :enabled
     not UserProfile::FROM_OPENSUSE_CONNECT.keys.include?(attrib.to_sym)
   end
 
@@ -79,7 +79,7 @@ class UserProfile < ActiveRecord::Base
   protected
 
   def connect_attrib_values
-    return {} unless TravelSupportProgram::Config.setting :opensuse_auth_proxy, :enabled
+    return {} unless TravelSupportProgram::Config.setting :opensuse_connect, :enabled
     new_values = {}
     connect = ConnectUser.new(user.nickname)
     UserProfile::FROM_OPENSUSE_CONNECT.each_pair do |k,v|

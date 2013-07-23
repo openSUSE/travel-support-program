@@ -1,0 +1,11 @@
+= form_tag(@login_url, :method => :post, :enctype => 'application/x-www-form-urlencoded', :id => 'login_form') do
+  %p
+    = hidden_field_tag :url, @back_url
+    = hidden_field_tag :context, @context
+    = hidden_field_tag :proxypath, @proxypath
+    = label_tag :username, t("activerecord.attributes.user.nickname")
+    = text_field_tag :username, ""
+  %p
+    = label_tag :password, t("activerecord.attributes.user.password")
+    = password_field_tag :password, ""
+  %p= submit_tag(t(:login), :onclick => 'fillEmptyFields();')

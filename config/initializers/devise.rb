@@ -1,4 +1,3 @@
-require 'devise/devise_opensuse_authenticatable'
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -71,7 +70,7 @@ Devise.setup do |config|
   # Notice that if you are skipping storage for all authentication paths, you
   # may want to disable generating routes to Devise's sessions controller by
   # passing :skip => :sessions to `devise_for` in your config/routes.rb
-  config.skip_session_storage = [:http_auth, :opensuse_auth]
+  # config.skip_session_storage = [:http_auth, :ichain_auth]
 
   # ==> Configuration for :database_authenticatable
   # For bcrypt, this is the cost for hashing the password and defaults to 10. If
@@ -239,8 +238,7 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
 
-  # ==> OpenSUSE authenticatable configuration
-  # config.opensuse_test_mode = true
-  # config.opensuse_test_username = "johndoe"
-  # config.opensuse_test_email = "johndoe@example.com"
+  # ==> iChain authenticatable configuration
+  # config.ichain_test_mode = true
+  config.ichain_base_url = TravelSupportProgram::Config.setting(:authentication, :ichain, :base_url)
 end

@@ -8,6 +8,8 @@ en:
   didnt_receive_unlock: "Didn't receive unlock instructions?"
   edit_registration: "Edit registration"
   forgot_password: "Forgot password?"
+  ichain_login: "Log in with iChain"
+  ichain_sign_up: "Sign up with iChain"
   leave_blank_to_keep: "Leave blank to keep"
   login: "Log in"
   logout: "Log out"

@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
 
   force_ssl_if_available
   before_filter :authenticate_and_audit_user, :unless => :devise_controller?
-  before_filter :set_return_to
   load_and_authorize_resource :unless => :devise_controller?
 
   protect_from_forgery
@@ -14,18 +13,6 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-
-  def set_return_to
-    if params['return_to_host']
-      @return_to_host = params['return_to_host']
-    else
-      # we have a proxy in front of us
-      @return_to_host = TravelSupportProgram::Config.setting(:external_protocol) || "http"
-      @return_to_host += "://"
-      @return_to_host += TravelSupportProgram::Config.setting(:external_host) || request.host
-    end
-    @return_to_path = params['return_to_path'] || request.env['ORIGINAL_FULLPATH']
-  end
 
   def prepare_for_nested_resource
     @request ||= Request.find(params[:request_id])

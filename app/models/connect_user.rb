@@ -12,7 +12,7 @@ class ConnectUser
   # @return [ConnectUser]
   def initialize(login)
     begin
-      api_conf = TravelSupportProgram::Config.setting(:opensuse_auth_proxy, :connect)
+      api_conf = TravelSupportProgram::Config.setting(:opensuse_connect)
       api_key = api_conf["api_key"]
       url = api_conf["base_url"] + "/services/api/rest/json"
       method = "connect.user.attribute.get"
@@ -40,7 +40,7 @@ class ConnectUser
   end
 
   def self.profile_url_for(login)
-    TravelSupportProgram::Config.setting(:opensuse_auth_proxy, :connect, :base_url) + "/pg/profile/#{login}"
+    TravelSupportProgram::Config.setting(:opensuse_connect, :base_url) + "/pg/profile/#{login}"
   end
 
 end

@@ -1,0 +1,22 @@
+.content
+  .sign_in
+    %h2= t(:sign_in)
+
+    = form_tag(@login_url, :method => :post, :enctype => 'application/x-www-form-urlencoded', :class => 'form-horizontal') do
+      = hidden_field_tag :url, @back_url
+      = hidden_field_tag :context, @context
+      = hidden_field_tag :proxypath, @proxypath
+      .inputs
+        .control-group.username.required
+          = label_tag :username, t("activerecord.attributes.user.nickname"), :class => "control-label required"
+          .controls
+            = text_field_tag :username, "", :autofocus => true, :class => "string username required"
+        .control-group.password.required
+          = label_tag :password, t("activerecord.attributes.user.password"), :class => "control-label required"
+          .controls
+            = password_field_tag :password, "", :class => "password required"
+      .actions
+        = submit_tag t(:sign_in), :class => "btn"
+      .links
+        - if devise_mapping.ichain_registerable?
+          = link_to t(:sign_up)

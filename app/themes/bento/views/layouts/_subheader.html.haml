@@ -4,11 +4,19 @@
     - if user_signed_in?
       = link_to t(:signed_in_as, :nickname => current_user.nickname), profile_path
       |
-      = link_to t(:logout), opensuse_logout_url
+      - if user_signed_in_by_ichain?
+        = link_to t(:logout), destroy_user_ichain_session_path, :method => :delete
+      - else
+        = link_to t(:logout), destroy_user_session_path, :method => :delete
     - else
-      = link_to t(:sign_up), opensuse_register_url
-      |
-      = link_to t(:login), new_user_session_path, :id => "login-trigger"
-      #login-form
-        =render "devise/sessions/new-opensuse"
-        %p.slim-footer= link_to('Cancel', '#', id: 'close-login')
+      - if TravelSupportProgram::Config.setting :authentication, :database, :enabled
+        = link_to t(:sign_up), new_registration_path(User)
+        |
+        = link_to t(:login), new_user_session_path
+      - if TravelSupportProgram::Config.setting :authentication, :ichain, :enabled
+        = link_to t(:sign_up), new_ichain_registration_path(User)
+        |
+        = link_to t(:login), new_user_ichain_session_path, :id => "login-trigger"
+        #login-form
+          =render "devise/ichain_sessions/_form"
+          %p.slim-footer= link_to('Cancel', '#', id: 'close-login')

@@ -1,5 +1,8 @@
 TravelSupportProgram::Application.routes.draw do
-  devise_for :users, :controllers => {:registrations => 'registrations'}
+  devise_for :users,
+    :controllers => { :registrations => 'registrations',
+                      :ichain_registrations => "ichain_registrations"},
+    :failure_app => Devise::IchainFailureApp
 
   resources :events
 

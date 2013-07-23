@@ -1,4 +1,7 @@
 %ul.nav.nav-tabs
-  =nav_tab :account, edit_user_registration_path
   =nav_tab :profile, profile_path
-  =nav_tab :password, profile_password_path
+  - if user_signed_in_by_ichain?
+    = nav_tab :account, edit_user_ichain_registration_path
+  - else
+    = nav_tab :account, edit_user_registration_path
+    = nav_tab :password, profile_password_path

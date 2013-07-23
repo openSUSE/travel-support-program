@@ -9,7 +9,7 @@ module UserProfilesHelper
   #
   # @return [String] HTML output
   def profile_info
-    if TravelSupportProgram::Config.setting :opensuse_auth_proxy, :enabled
+    if TravelSupportProgram::Config.setting :opensuse_connect, :enabled
       content_tag(:div,
           t(:opensuse_profile_info, :url => ConnectUser.profile_url_for(current_user.nickname)).html_safe,
           :class => "alert alert-info")

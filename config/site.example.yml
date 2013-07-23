@@ -9,16 +9,18 @@ common: &common
     host: 'localhost:3000'
 
   # theme: "bento"
-  # Currently, when enabling opensuse_auth_proxy, the usage of bento theme is
-  # mandatory as long as there are some issues combining the openSUSE
-  # authentication proxy and the default theme. These issues will be solved as
-  # soon as possible.
-  opensuse_auth_proxy:
-    enabled: false
-    proxy_base_url: "https://connect.opensuse.org"
-    connect:
-      api_key: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-      base_url: "https://connect.opensuse.org"
+
+  authentication:
+    ichain:
+      enabled: false
+      base_url: ""
+    database:
+      enabled: true
+
+  opensuse_connect:
+    enabled: true
+    api_key: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    base_url: "https://connect.opensuse.org"
 
   external_links:
     - title: "openSUSE TSP"

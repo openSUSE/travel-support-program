@@ -199,15 +199,11 @@ module ApplicationHelper
     File.join(Rails.root.to_s, 'app', 'assets', 'images', 'pdf', 'header.png')
   end
 
-  def opensuse_login_url
-    TravelSupportProgram::Config.setting(:opensuse_auth_proxy, :proxy_base_url) + "/ICSLogin/auth-up"
-  end
-
-  def opensuse_logout_url
-    TravelSupportProgram::Config.setting(:opensuse_auth_proxy, :proxy_base_url) + "/ICHAINLogout/?%22#{@return_to_host}/cmd/ICSLogout%22"
-  end
-
-  def opensuse_register_url
-    TravelSupportProgram::Config.setting(:opensuse_auth_proxy, :proxy_base_url) + "/ICSLogin/?%22#{@return_to_host}/#{@return_to_path}%22"
+  # Checks if the current user logged in using iChain
+  #
+  # @return [Boolean] true if signed in by means of iChain
+  def user_signed_in_by_ichain?
+    return false unless user_signed_in?
+    current_user.respond_to?(:signed_in_by_ichain?) && current_user.signed_in_by_ichain?
   end
 end
