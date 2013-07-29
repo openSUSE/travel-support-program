@@ -10,6 +10,8 @@ class ApplicationMailer < ActionMailer::Base
       if target.kind_of?(User)
         notify(method, target.email, *args)
       else
+        # Just in case, I can't think in a reason for mailing all requesters
+        next if target == :requester
         User.with_role(target).each do |u|
           notify(method, u.email, *args)
         end

@@ -20,6 +20,6 @@ class FinalNote < ActiveRecord::Base
   protected
 
   def notify_creation
-    FinalNoteMailer.notify_to [user] + machine.class.involved_roles, :creation, self
+    FinalNoteMailer.notify_to [user] + machine.class.involved_roles - [:requester], :creation, self
   end
 end
