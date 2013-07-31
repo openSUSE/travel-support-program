@@ -36,11 +36,11 @@ class Event < ActiveRecord::Base
   #
   # @return [Boolean] true if accepting new requests
   def accepting_requests?
-    open = (Date.today < start_date) rescue false
-    if open && request_creation_deadline
-      open = Time.now < request_creation_deadline
+    if request_creation_deadline
+      Time.now < request_creation_deadline
+    else
+      (Date.today < start_date) rescue false
     end
-    open
   end
 
   # List of attributed that can only by accessed by users who have validation
