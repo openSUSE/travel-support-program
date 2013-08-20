@@ -60,6 +60,7 @@
 
   - if can? :accept, resource
     = link_to t(:send_reimbursement_acceptance), new_request_reimbursement_acceptance_path(resource.request), :remote => true, :class => 'btn'
+  - if can_read_pdf_for? resource
     = link_to t(:pdf_format), {:format => :pdf}, :class => 'btn'
 
   - if can? :create, resource.payments.build
