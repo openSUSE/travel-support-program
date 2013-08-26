@@ -12,8 +12,15 @@ en:
         invalid: "is unknown"
         invalid_event: "cannot run the transition when %{state}"
         invalid_transition: "cannot run the transition via %{event}"
-      request:
-        only_one_active: "another request already exists for the same event and user"
+      models:
+        request:
+          attributes:
+            event_id:
+              only_one_active: "another request already exists for the same event and user"
+        reimbursement:
+          attributes:
+            user:
+              incomplete: "important information is missing in the user's profile"
 
     models:
       bank_account:

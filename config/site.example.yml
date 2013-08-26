@@ -37,6 +37,13 @@ common: &common
   payment_methods:
     - Transfer
     - Check
+  relevant_profile_fields:
+    - full_name
+    - country_code
+    - location
+    - zip_code
+    - postal_address
+    - phone_number
 
 production:
   <<: *common
@@ -52,3 +59,7 @@ test:
     - Droid rental
     - Lodging
     - Other
+  relevant_profile_fields:
+    - full_name
+    - location
+    - zip_code

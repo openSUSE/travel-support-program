@@ -189,7 +189,7 @@ class Request < ActiveRecord::Base
 
   def only_one_active_request
     if Request.in_conflict_with(self).count > 0
-      errors.add(:event_id, I18n.t("activerecord.errors.request.only_one_active"))
+      errors.add(:event_id, :only_one_active)
     end
   end
 end

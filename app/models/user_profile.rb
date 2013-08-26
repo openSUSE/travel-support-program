@@ -75,6 +75,19 @@ class UserProfile < ActiveRecord::Base
     not UserProfile::FROM_OPENSUSE_CONNECT.keys.include?(attrib.to_sym)
   end
 
+  # Checks whether all the fields that are required for processing
+  # reimbursements are present. The list of fields is set as a configuration
+  # parameter for the application.
+  #
+  # @return [Boolean] true unless some of the required attributes is missing
+  def complete?
+    fields = TravelSupportProgram::Config.setting(:relevant_profile_fields)
+    return true if fields.blank?
+    fields.each do |f|
+      return false if send(f.to_sym).blank?
+    end
+    true
+  end
 
   protected
 

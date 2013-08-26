@@ -37,6 +37,7 @@ class Reimbursement < ActiveRecord::Base
   validates :request, :presence => true
   validates_associated :expenses, :attachments, :links, :bank_account
   validates :acceptance_file, :presence => true, :if => "acceptance_file_required?"
+  validate :user_profile_is_complete, :if => "complete_profile_required?"
 
   mount_uploader :acceptance_file, AttachmentUploader
 
@@ -153,6 +154,18 @@ class Reimbursement < ActiveRecord::Base
     accepted? || processed? || payed?
   end
 
+  # Checks whether a complete user profile (with the required information
+  # filled) is required in order to be a valid reimbursement. A complete profile
+  # is not required if the reimbursement is being rolled back or rejected, only
+  # when trying to go further into the workflow.
+  #
+  # @return [Boolean] true if the profile have to be complete
+  def complete_profile_required?
+    (submitted? && state_was == "incomplete") ||
+      (approved? && state_was == "submitted") ||
+      (accepted? && state_was == "approved")
+  end
+
   protected
 
   # Used internally to synchronize request_id and user_id
@@ -162,6 +175,13 @@ class Reimbursement < ActiveRecord::Base
 
   def ensure_bank_account
     build_bank_account if bank_account.nil?
+  end
+
+  # Validates the existance of a complete profile
+  def user_profile_is_complete
+    unless user.profile.complete?
+      errors.add(:user, :incomplete)
+    end
   end
 
   # Used internally by accepts_nested_attributes to ensure that only
