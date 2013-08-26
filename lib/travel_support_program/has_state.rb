@@ -62,17 +62,27 @@ module TravelSupportProgram
       save
     end
 
+    # Check whether is active (by default, 'active' means any state
+    # except canceled).
+    # @see #can_cancel?
+    #
+    # @return [Boolean] if is active (not canceled)
+    def active?
+      not canceled?
+    end
+
     # Checks whether can have a transition to 'canceled' state
     #
     # Compatibility for #cancel with transitions defined by state_machine.
-    # Default implementation always return true if state is not already
-    # 'canceled', meaning that a process can be canceled at any moment.
+    # Default implementation always return true when active, meaning that
+    # a process can be canceled at any moment.
     # Classes using this mixin should implement their own custom behaviour.
     # @see #cancel
+    # @see #active?
     #
     # return [Boolean] true if #cancel can be called
     def can_cancel?
-      not canceled?
+      active?
     end
 
     protected

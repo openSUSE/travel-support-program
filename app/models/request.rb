@@ -106,12 +106,12 @@ class Request < ActiveRecord::Base
   # Checks whether can have a transition to 'canceled' state
   #
   # Overrides the HasState.can_cancel?, preventing cancelation of requests that
-  # already have a reimbursement
+  # already have an active reimbursement
   # @see HasState.can_cancel?
   #
   # return [Boolean] true if #cancel can be called
   def can_cancel?
-    not canceled? and reimbursement.nil?
+    not canceled? and (reimbursement.nil? or not reimbursement.active?)
   end
 
   # Checks whether the request is ready for reimbursement
@@ -134,14 +134,6 @@ class Request < ActiveRecord::Base
   # @return [Boolean] if there is no associated reimbursement
   def lacks_reimbursement?
     can_have_reimbursement? and (reimbursement.nil? || reimbursement.new_record?)
-  end
-
-  # Check wheter the request is active (currently, 'active' means any state
-  # except canceled).
-  #
-  # @return [Boolean] if the request is active
-  def active?
-    not canceled?
   end
 
   # Check wheter the visa_letter attribute can be used
