@@ -66,6 +66,7 @@ en:
   opensuse_profile_info: 'Information on disabled controls have to be changed in <a href="%{url}">your Connect profile</a>.'
   page_total: "Total in this page"
   pdf_format: "Printable version"
+  profile_link: "Your profile"
   redirect_to_previous_request: "A request already exists for this event. Redirected."
   reimbursement_acceptance_title: "Acceptance (signature)"
   reimbursement_acceptance_info: 'A signed copy of the reimbursement needs to be attached in order to be processed. <a href="%{print_url}">Click here</a> to get an updated pdf version of the reimbursement. Print it, sign it, scan the signed version and upload it using the form below.'
