@@ -6,7 +6,7 @@
 class FinalNote < ActiveRecord::Base
   attr_accessible :body
   # The associated state machine (request, reimbursement...)
-  belongs_to :machine, :polymorphic => true, :inverse_of => :transitions
+  belongs_to :machine, :polymorphic => true, :inverse_of => :final_notes
   # The author of the note
   belongs_to :user
 
