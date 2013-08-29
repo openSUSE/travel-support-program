@@ -34,7 +34,6 @@ class Request < ActiveRecord::Base
   # Automatic yardoc+graphviz generator is confused by the :unless parameter, so
   # please simply ignore the unless -> has_no_expenses states in the resulting drawing
   state_machine :state, :initial => :incomplete do |machine|
-    before_transition :set_state_updated_at
 
     event :submit do
       transition :incomplete => :submitted, :unless => :has_no_expenses?

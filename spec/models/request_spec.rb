@@ -121,8 +121,8 @@ describe Request do
       it "should allow TSP to approve" do
         @request.expenses.each {|e| e.update_attributes(:approved_amount => 40, :approved_currency => "EUR") }
         transition(@request, :approve, users(:tspmember))
-        @request.state.should == "approved"
-        trans = @request.transitions.reload.last
+        @request.reload.state.should == "approved"
+        trans = @request.transitions.newest_first.reload.first
         trans.from.should == "submitted"
         trans.to.should == "approved"
         trans.state_event.should == "approve"

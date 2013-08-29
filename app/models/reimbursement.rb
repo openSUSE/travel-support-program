@@ -49,7 +49,6 @@ class Reimbursement < ActiveRecord::Base
 
   #
   state_machine :state, :initial => :incomplete do |machine|
-    before_transition :set_state_updated_at
 
     event :submit do
       transition :incomplete => :submitted

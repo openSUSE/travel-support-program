@@ -229,6 +229,8 @@ class Ability
       can :cancel, Request do |r|
         r.can_cancel?
       end
+      # Or even create state adjustments
+      can :adjust_state, Request
 
       # Reimbursements
       can :read, Reimbursement
@@ -236,6 +238,8 @@ class Ability
       can :cancel, Reimbursement do |r|
         r.can_cancel?
       end
+      # Or even create state adjustments
+      can :adjust_state, Reimbursement
 
       # Reimbursement's attachments
       can :read, ReimbursementAttachment

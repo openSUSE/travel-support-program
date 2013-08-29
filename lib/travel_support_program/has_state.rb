@@ -11,10 +11,16 @@ module TravelSupportProgram
       base.class_eval do
         # Requester, that is, the user asking for help.
         belongs_to :user
+        # State changes are logged as StateChange records
+        has_many :state_changes, :as => :machine
         # Transitions are logged as StateTransition records
         has_many :transitions, :as => :machine, :class_name => "StateTransition"
+        # Manual adjustments in the state are logged as StateAdjustment records
+        has_many :state_adjustments, :as => :machine, :class_name => "StateAdjustment"
 
         validates :user, :presence => true
+
+        before_save :set_state_updated_at
 
         @assigned_states = {}
         @assigned_roles = {}
@@ -34,7 +40,7 @@ module TravelSupportProgram
     #
     # @return [Boolean] true if no possible transitions left
     def in_final_state?
-      state_events.empty?
+      state_events(:guard => false).empty?
     end
 
     # Notify the current state to all involved users
@@ -58,7 +64,6 @@ module TravelSupportProgram
     def cancel
       return false if not can_cancel?
       self.state = 'canceled'
-      self.state_updated_at = DateTime.now
       save
     end
 
@@ -89,7 +94,10 @@ module TravelSupportProgram
 
     # User internally to set the state_updated_at attribute
     def set_state_updated_at
-      self.state_updated_at = DateTime.now
+      if state_changed?
+        self.state_updated_at = Time.current
+      end
+      true
     end
 
     #

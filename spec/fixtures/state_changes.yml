@@ -1,4 +1,5 @@
 luke_for_yavin_submission:
+  type: "StateTransition"
   machine: luke_for_yavin (Request)
   state_event: "submit"
   from: "incomplete"
@@ -7,6 +8,7 @@ luke_for_yavin_submission:
   created_at: <%= 30.days.ago + 1.hour %>
 
 luke_for_yavin_approval:
+  type: "StateTransition"
   machine: luke_for_yavin (Request)
   state_event: "approve"
   from: "submitted"
@@ -15,6 +17,7 @@ luke_for_yavin_approval:
   created_at: <%= 30.days.ago + 3.hours %>
 
 luke_for_yavin_acceptance:
+  type: "StateTransition"
   machine: luke_for_yavin (Request)
   state_event: "accept"
   from: "approved"
@@ -23,6 +26,7 @@ luke_for_yavin_acceptance:
   created_at: <%= 30.days.ago + 5.hours %>
 
 wedge_for_yavin_submission:
+  type: "StateTransition"
   machine: wedge_for_yavin (Request)
   state_event: "submit"
   from: "incomplete"
@@ -31,6 +35,7 @@ wedge_for_yavin_submission:
   created_at: <%= 30.days.ago + 6.hour %>
 
 wedge_for_yavin_cancelation:
+  type: "StateTransition"
   machine: wedge_for_yavin (Request)
   state_event: "cancel"
   from: "submitted"
@@ -39,6 +44,7 @@ wedge_for_yavin_cancelation:
   created_at: <%= 30.days.ago + 12.hours %>
 
 wedge_for_party_submission:
+  type: "StateTransition"
   machine: wedge_for_party (Request)
   state_event: "submit"
   from: "incomplete"
@@ -47,6 +53,7 @@ wedge_for_party_submission:
   created_at: <%= 2.days.ago %>
 
 wedge_for_training_submission:
+  type: "StateTransition"
   machine: wedge_for_training (Request)
   state_event: "submit"
   from: "incomplete"
@@ -55,6 +62,7 @@ wedge_for_training_submission:
   created_at: <%= 40.days.ago + 1.hour %>
 
 wedge_for_training_approval:
+  type: "StateTransition"
   machine: wedge_for_training (Request)
   state_event: "approve"
   from: "submitted"
@@ -63,6 +71,7 @@ wedge_for_training_approval:
   created_at: <%= 40.days.ago + 3.hours %>
 
 wedge_for_training_acceptance:
+  type: "StateTransition"
   machine: wedge_for_training (Request)
   state_event: "accept"
   from: "approved"

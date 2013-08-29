@@ -82,7 +82,7 @@ describe Reimbursement do
     end
 
     it "should fail" do
-      expect { transition(@reimbursement, :submit, users(:luke)) }.to raise_error(ActiveRecord::RecordNotSaved)
+      expect { transition(@reimbursement, :submit, users(:luke)) }.to raise_error(ActiveRecord::RecordInvalid)
     end
 
     context "and fixing the profile" do

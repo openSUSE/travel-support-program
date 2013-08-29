@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130614130054) do
+ActiveRecord::Schema.define(:version => 20130827110329) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id",                   :null => false
@@ -156,17 +156,20 @@ ActiveRecord::Schema.define(:version => 20130614130054) do
   add_index "requests", ["event_id"], :name => "index_requests_on_event_id"
   add_index "requests", ["user_id"], :name => "index_requests_on_user_id"
 
-  create_table "state_transitions", :force => true do |t|
+  create_table "state_changes", :force => true do |t|
     t.integer  "machine_id",   :null => false
     t.string   "machine_type", :null => false
-    t.string   "state_event",  :null => false
+    t.string   "state_event"
     t.string   "from",         :null => false
     t.string   "to",           :null => false
     t.integer  "user_id"
     t.string   "notes"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "type"
   end
+
+  add_index "state_changes", ["type"], :name => "index_state_changes_on_type"
 
   create_table "user_profiles", :force => true do |t|
     t.integer  "user_id",               :null => false
