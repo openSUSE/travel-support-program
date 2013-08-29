@@ -1,7 +1,0 @@
-%li
-  = t(:state_transition_title_line, :date => l(state_transition.created_at, :format => :short), :event => t("activerecord.state_machines.events.#{state_transition.state_event}"), :user => state_transition.user.nickname)
-  %blockquote
-    = t(:state_transition_details, :from => t("activerecord.state_machines.states.#{state_transition.from}"), :to => t("activerecord.state_machines.states.#{state_transition.to}"))
-    %br
-    = "#{StateTransition.human_attribute_name(:notes)}: "
-    = state_transition.notes

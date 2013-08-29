@@ -37,6 +37,7 @@ feature "Reimbursements", "" do
     page.should have_content "Something went wrong. Unable to submit."
 
     # Correct the request
+    close_modal_dialog
     click_link "Edit"
     page.should have_content "Edit reimbursement"
     within(:xpath, "//tbody[@id='expenses']//tr[td[contains(.,'Lodging')]]") do
@@ -130,7 +131,9 @@ feature "Reimbursements", "" do
     fill_in "notes", :with => "I don't sign autograph for free."
     click_button "accept"
     page.should have_content "Not accepted"
+
     # No way. Time to attach
+    close_modal_dialog
     click_link "Attach signature"
     page.should have_content "Print it, sign it, scan the signed version and upload it using the form below"
     attach_file "acceptance_file", Rails.root.join("spec", "support", "files", "scan001.pdf")

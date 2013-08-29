@@ -40,6 +40,7 @@ feature "Requests", "" do
     page.should have_content "Something went wrong. Unable to submit."
 
     # Correct the request
+    close_modal_dialog
     click_link "Edit"
     page.should have_content "Edit request"
     fill_in "request_expenses_attributes_1_estimated_amount", :with => "50"
@@ -67,6 +68,7 @@ feature "Requests", "" do
     page.should have_content "Something went wrong. Not approved."
 
     # Fulfill approval information
+    close_modal_dialog
     click_link "Edit"
     page.should have_content "Edit request"
     fill_in "request_expenses_attributes_0_approved_amount", :with => "60"

@@ -4,7 +4,7 @@
 %blockquote#request_details.collapse
   = show_for request do |r|
     = r.attribute :description
-    = r.attribute :transactions do
+    = r.attribute :state_changes do
       %ul
-        = render @request.transitions.newest_first
+        = render :partial => "state_changes/state_change", :collection => @request.state_changes.newest_first
 

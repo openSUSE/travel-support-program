@@ -10,8 +10,8 @@
     = render parent
   = r.attribute :state do
     = state_info(r.object)
-  = r.attribute :transactions do
-    = render "transitions_list", :locals => {:resource => @request}
+  = r.attribute :state_changes do
+    = render "state_changes_list", :locals => {:resource => @request}
   = r.attribute :description
   = r.association :bank_account do
     - if resource.bank_account.nil?
@@ -74,3 +74,6 @@
 
   - if can? :cancel, resource
     = link_to t("helpers.links.cancel"), new_request_reimbursement_state_transition_path(resource.request, "state_transition[state_event]" => "cancel"), :remote => true, :class => 'btn btn-danger'
+
+  - if can? :adjust_state, resource
+    = link_to t("helpers.links.adjust_state"), new_request_reimbursement_state_adjustment_path(resource.request), :remote => true, :class => 'btn btn-danger'

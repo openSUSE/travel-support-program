@@ -4,9 +4,9 @@
 %blockquote#reimbursement_details.collapse
   = show_for reimbursement do |r|
     = r.attribute :description
-    = r.attribute :transactions do
+    = r.attribute :state_changes do
       %ul
-        = render reimbursement.transitions.newest_first
+        = render :partial => "state_changes/state_change", :collection => reimbursement.state_changes.newest_first
     %strong.label= Request.human_attribute_name(:expenses)
     %table.table.table-condensed
       %thead
