@@ -18,7 +18,7 @@ common: &common
       enabled: true
 
   opensuse_connect:
-    enabled: true
+    enabled: false
     api_key: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     base_url: "https://connect.opensuse.org"
 
@@ -49,6 +49,10 @@ development:
 test:
   <<: *common
   async_emails: false
+
+  opensuse_connect:
+    enabled: false
+
   request_expense_subjects:
     - Gas
     - Droid rental
