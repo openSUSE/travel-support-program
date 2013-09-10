@@ -18,5 +18,5 @@
         |
         = link_to t(:login), new_user_ichain_session_path, :id => "login-trigger"
         #login-form
-          =render "devise/ichain_sessions/_form"
+          =render "devise/ichain_sessions/form"
           %p.slim-footer= link_to('Cancel', '#', id: 'close-login')
