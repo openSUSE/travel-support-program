@@ -1,10 +1,5 @@
 # Travel Support Program management application
 
-## Disclaimmer
-
-THIS IS A WORK IN PROGRESS AND IS NOT READY YET FOR ANY REAL USAGE...
-you have been warned.
-
 ## About
 
 This is a Ruby on Rails based application to manage the requests and
