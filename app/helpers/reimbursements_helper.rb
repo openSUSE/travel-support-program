@@ -138,4 +138,12 @@ module ReimbursementsHelper
     end
   end
 
+  # Checks whether the current user should be authorized to read the pdf version of a reimbursement, since the
+  # pdf version includes information about the user profile and bank information.
+  #
+  # @param [Reimbursement] reimbursement
+  # @return [Boolean] true if authorized
+  def can_read_pdf_for?(reimb)
+    can?(:read, reimb) && can?(:read, reimb.user.profile) && (reimb.bank_account.nil? || can?(:read, reimb.bank_account))
+  end
 end

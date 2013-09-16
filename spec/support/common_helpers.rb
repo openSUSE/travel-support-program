@@ -36,7 +36,7 @@ module CommonHelpers
   def find_request_as(user, request, opts = {})
     sign_in_as_user(user, opts)
     visit requests_path
-    find(:xpath, "//table[contains(@class,'requests')]//tbody/tr[last()]/td[1]//a[text()='##{request.id}']").click
+    find(:xpath, "//table[contains(@class,'requests')]//tbody/tr/td[1]//a[text()='##{request.id}']").click
     page.should have_content "request"
     request.expenses.each do |e|
       page.should have_content e.subject
@@ -88,6 +88,16 @@ module CommonHelpers
       submission.machine = machine
       submission.user = user
       submission.save!
+  end
+
+  #
+  # Closes a modal dialog and waits until it's really closed
+  #
+  def close_modal_dialog
+    within(".modal") do
+      click_link "Back"
+    end
+    page.should_not have_css(".modal-backdrop", :wait => 15)
   end
 
 end

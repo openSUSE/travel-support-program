@@ -34,7 +34,6 @@ class Request < ActiveRecord::Base
   # Automatic yardoc+graphviz generator is confused by the :unless parameter, so
   # please simply ignore the unless -> has_no_expenses states in the resulting drawing
   state_machine :state, :initial => :incomplete do |machine|
-    before_transition :set_state_updated_at
 
     event :submit do
       transition :incomplete => :submitted, :unless => :has_no_expenses?
@@ -106,12 +105,12 @@ class Request < ActiveRecord::Base
   # Checks whether can have a transition to 'canceled' state
   #
   # Overrides the HasState.can_cancel?, preventing cancelation of requests that
-  # already have a reimbursement
+  # already have an active reimbursement
   # @see HasState.can_cancel?
   #
   # return [Boolean] true if #cancel can be called
   def can_cancel?
-    not canceled? and reimbursement.nil?
+    not canceled? and (reimbursement.nil? or not reimbursement.active?)
   end
 
   # Checks whether the request is ready for reimbursement
@@ -134,14 +133,6 @@ class Request < ActiveRecord::Base
   # @return [Boolean] if there is no associated reimbursement
   def lacks_reimbursement?
     can_have_reimbursement? and (reimbursement.nil? || reimbursement.new_record?)
-  end
-
-  # Check wheter the request is active (currently, 'active' means any state
-  # except canceled).
-  #
-  # @return [Boolean] if the request is active
-  def active?
-    not canceled?
   end
 
   # Check wheter the visa_letter attribute can be used
@@ -189,7 +180,7 @@ class Request < ActiveRecord::Base
 
   def only_one_active_request
     if Request.in_conflict_with(self).count > 0
-      errors.add(:event_id, I18n.t("activerecord.errors.request.only_one_active"))
+      errors.add(:event_id, :only_one_active)
     end
   end
 end

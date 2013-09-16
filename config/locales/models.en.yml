@@ -9,11 +9,26 @@ en:
   activerecord:
     errors:
       messages:
-        invalid: "is unknown"
+        invalid: "is invalid"
         invalid_event: "cannot run the transition when %{state}"
         invalid_transition: "cannot run the transition via %{event}"
-      request:
-        only_one_active: "another request already exists for the same event and user"
+      models:
+        request:
+          attributes:
+            event_id:
+              only_one_active: "another request already exists for the same event and user"
+            expenses:
+              invalid: "are missing or invalid (some required field is probably blank in some of the expenses)"
+        reimbursement:
+          attributes:
+            user:
+              incomplete: "important information is missing in the user's profile"
+            expenses:
+              invalid: "are missing or invalid (some required field is probably blank in some of the expenses)"
+        state_adjustment:
+          attributes:
+            to:
+              state_not_changed: "this is already the current state"
 
     models:
       bank_account:
@@ -47,6 +62,13 @@ en:
       request_expense:
         one: "expense"
         other: "expenses"
+      state_adjustment:
+        one: "state adjustment"
+        other: "state adjustments"
+      state_change:
+        one: "state change"
+        other: "state changes"
+        action_name: "adjust"
       state_transition:
         one: "state transition"
         other: "state transitions"
@@ -141,7 +163,9 @@ en:
         request_id: "request"
         state: "state"
         total_sum: "total"
-        transactions: "history"
+        state_changes: "history"
+        state_adjustments: "state adjustments"
+        transitions: "transitions"
         tsp_approved_since: "TSP approved since"
         tsp_pending_since: "TSP pending since"
         user: "requester"
@@ -165,7 +189,9 @@ en:
         final_notes: "final notes"
         state: "state"
         reimbursement: "reimbursement"
-        transactions: "history"
+        state_changes: "history"
+        state_adjustments: "state adjustments"
+        transitions: "transitions"
         total_sum: "total"
         user: "user"
         user_id: "user"
@@ -188,7 +214,7 @@ en:
         subject: "subject"
         total_amount: "total"
         total_currency: "total currency"
-      state_transition:
+      state_change:
         state_event: "what"
         from: "from"
         to: "to"

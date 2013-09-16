@@ -63,3 +63,44 @@
   request. For example, you will be able to change your request information while
   it&#39;s on &#39;incomplete&#39; state, but only Travel Support Program members can change
   requests in &#39;submited&#39; state.
+
+%h2 Asking for reimbursement
+
+%p
+  When the event is over, you can go to your accepted request and click the &#39;ask for
+  reimbursement&#39; button. It will create a new reimbursement, which is quite similar
+  to a request but includes more fields and have a slightly longer workflow, with some
+  additional states. The new reimbursement will be added to
+  = link_to "your reimbursements list", reimbursements_path
+  at the left menu.
+
+%p
+  The main operation is almost identical to the requests, with fields for describing
+  your activities, for providing your bank information and the final real amount for
+  every expense, for attaching the corresponding invoices or any other relevant files
+  and for linking to your reports. Before submiting the reimbursement, make sure that
+  the personal information in
+  - if user_signed_in?
+    = link_to "your profile", profile_path
+  - else
+    your profile
+  is up to date by checking the printable version of the reimbursement or by clicking
+  on your username, in the top right corner of the page, next to the &#39;log out&#39;
+  link.
+
+%p
+  The full workflow for a reimbursement is displayed below. Once more, the only two
+  actions that the applicant needs to perform are &#39;submit&#39; (for sending the
+  information to the Travel Support Program members) and &#39;accept&#39;. The last
+  states are administrative states related to the payment.
+  = image_tag "Reimbursement_state.png", :alt => "Reimbursement workflow diagram"
+
+%p
+  There is an additional requirement for accepting reimbursements compared to accepting
+  requests. In the same way that before clicking on &#39;submit&#39; you need to fulfill
+  all the information, before clicking on &#39;accept&#39; you need to upload a signed
+  version of the reimbursement. That means printing (click on &#39;printable
+  version&#39;), signing with a pen, scanning the result and uploading it (click on
+  &#39;attach signature&#39;). If you already did it but your reimbursement was rejected
+  and you are performing your second acceptance, make sure to update the signed file to
+  fit the current information in the application.

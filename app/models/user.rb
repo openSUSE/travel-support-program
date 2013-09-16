@@ -25,6 +25,12 @@ class User < ActiveRecord::Base
   attr_accessible :nickname, :locale
   # Associated object with all information not directly related to authentication
   has_one :profile, :class_name => "UserProfile"
+  # Requests created by the user
+  has_many :requests, :inverse_of => :user
+  # Reimbursements created by the user
+  has_many :reimbursements, :inverse_of => :user
+  # State changes (transitions or manual adjustments) performed by the user
+  has_many :state_changes, :inverse_of => :user
 
   after_create :create_profile
 

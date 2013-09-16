@@ -8,8 +8,8 @@
     = render @request.user
   = r.attribute :state do
     = state_info(r.object)
-  = r.attribute :transactions do
-    = render "transitions_list", :locals => {:resource => @request}
+  = r.attribute :state_changes do
+    = render "state_changes_list", :locals => {:resource => @request}
 
   - if @request.can_have_reimbursement?
     = r.association :reimbursement do
@@ -61,4 +61,7 @@
     = link_to t('.destroy', :default => t("helpers.links.destroy")), request_path(@request), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-danger'
   - elsif can? :cancel, @request
     = link_to t("helpers.links.cancel"), new_request_state_transition_path(@request, "state_transition[state_event]" => "cancel"), :remote => true, :class => 'btn btn-danger'
+    
+  - if can? :adjust_state, @request
+    = link_to t("helpers.links.adjust_state"), new_request_state_adjustment_path(@request), :remote => true, :class => 'btn btn-danger'
 

@@ -225,9 +225,21 @@ class Ability
 
       # Requests
       can :read, Request
+      # Supervisors can cancel any request, if possible
+      can :cancel, Request do |r|
+        r.can_cancel?
+      end
+      # Or even create state adjustments
+      can :adjust_state, Request
 
       # Reimbursements
       can :read, Reimbursement
+      # Supervisors can cancel any reimbursement, if possible
+      can :cancel, Reimbursement do |r|
+        r.can_cancel?
+      end
+      # Or even create state adjustments
+      can :adjust_state, Reimbursement
 
       # Reimbursement's attachments
       can :read, ReimbursementAttachment

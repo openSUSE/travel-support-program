@@ -1,6 +1,7 @@
 %li= link_to t(:user_guide), :controller => '/pages', :action => 'userguide'
 %li= link_to Event.model_name.human(count: 2).humanize, events_path
 - if user_signed_in?
+  %li= link_to t(:profile_link), profile_path
   %li= link_to Request.model_name.human(count: 2).humanize, menu_path_to(Request)
   %li= link_to Reimbursement.model_name.human(count: 2).humanize, menu_path_to(Reimbursement)
   %li= link_to ExpenseReport.model_name.human.humanize, expenses_report_path

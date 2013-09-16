@@ -2,6 +2,7 @@ en:
   helpers:
     actions: "Actions"
     links:
+      adjust_state: "Adjust state"
       back: "Back"
       cancel: "Cancel"
       confirm: "Are you sure?"
@@ -61,9 +62,11 @@ en:
   new_event_warning: "Make sure that the event is not currently included in the list. Event duplication can cause the request rejection"
   new_payment: "Add payment"
   no_reimbursement_yet: "The reimbursement process has not started"
+  no_state_changes_yet: "No state changes yet"
   opensuse_profile_info: 'Information on disabled controls have to be changed in <a href="%{url}">your Connect profile</a>.'
   page_total: "Total in this page"
   pdf_format: "Printable version"
+  profile_link: "Your profile"
   redirect_to_previous_request: "A request already exists for this event. Redirected."
   reimbursement_acceptance_title: "Acceptance (signature)"
   reimbursement_acceptance_info: 'A signed copy of the reimbursement needs to be attached in order to be processed. <a href="%{print_url}">Click here</a> to get an updated pdf version of the reimbursement. Print it, sign it, scan the signed version and upload it using the form below.'
@@ -79,9 +82,10 @@ en:
   signature: "Signature:"
   signed_in_as: "Signed in as %{nickname}"
   since: "(since %{date})"
+  state_adjustment_done: "The state have been changed"
   state_event: "Action"
   state_help: "State have never changed. If unsure about what it means, read the user guide."
-  state_transition_title_line: "At %{date}, %{user} did %{event} it"
-  state_transition_details: "From %{from} to %{to}"
+  state_change_title_line: "At %{date}, %{user} did %{event} it"
+  state_change_details: "From %{from} to %{to}"
   user_guide: "User guide"
   version: "Version %{version}"

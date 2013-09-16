@@ -11,10 +11,16 @@ module TravelSupportProgram
       base.class_eval do
         # Requester, that is, the user asking for help.
         belongs_to :user
+        # State changes are logged as StateChange records
+        has_many :state_changes, :as => :machine
         # Transitions are logged as StateTransition records
         has_many :transitions, :as => :machine, :class_name => "StateTransition"
+        # Manual adjustments in the state are logged as StateAdjustment records
+        has_many :state_adjustments, :as => :machine, :class_name => "StateAdjustment"
 
         validates :user, :presence => true
+
+        before_save :set_state_updated_at
 
         @assigned_states = {}
         @assigned_roles = {}
@@ -34,7 +40,7 @@ module TravelSupportProgram
     #
     # @return [Boolean] true if no possible transitions left
     def in_final_state?
-      state_events.empty?
+      state_events(:guard => false).empty?
     end
 
     # Notify the current state to all involved users
@@ -42,7 +48,7 @@ module TravelSupportProgram
     # Involved users means: requester + users with the tsp role + users with
     # the roles designed using the macro method assign_state_to
     def notify_state
-      people = ([self.user, :tsp] + self.class.roles_assigned_to(state)).uniq
+      people = ([self.user, :tsp] + self.class.roles_assigned_to(state)).uniq - [:requester]
       HasStateMailer::notify_to(people, :state, self, self.human_state_name, self.state_updated_at)
     end
 
@@ -58,28 +64,40 @@ module TravelSupportProgram
     def cancel
       return false if not can_cancel?
       self.state = 'canceled'
-      self.state_updated_at = DateTime.now
       save
+    end
+
+    # Check whether is active (by default, 'active' means any state
+    # except canceled).
+    # @see #can_cancel?
+    #
+    # @return [Boolean] if is active (not canceled)
+    def active?
+      not canceled?
     end
 
     # Checks whether can have a transition to 'canceled' state
     #
     # Compatibility for #cancel with transitions defined by state_machine.
-    # Default implementation always return true if state is not already
-    # 'canceled', meaning that a process can be canceled at any moment.
+    # Default implementation always return true when active, meaning that
+    # a process can be canceled at any moment.
     # Classes using this mixin should implement their own custom behaviour.
     # @see #cancel
+    # @see #active?
     #
     # return [Boolean] true if #cancel can be called
     def can_cancel?
-      not canceled?
+      active?
     end
 
     protected
 
     # User internally to set the state_updated_at attribute
     def set_state_updated_at
-      self.state_updated_at = DateTime.now
+      if state_changed?
+        self.state_updated_at = Time.current
+      end
+      true
     end
 
     #

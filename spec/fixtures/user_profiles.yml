@@ -5,10 +5,15 @@ anakin_profile:
 luke_profile:
   user: luke
   full_name: "Luke Skywalker"
+  zip_code: "T19"
+  location: "Tatooine"
   role_id: 1
 wedge_profile:
   user: wedge
   role_id: 1
+  full_name: "Wedge Antilles"
+  location: "Corellia"
+  zip_code: "C21"
 tspmember_profile:
   user: tspmember
   role_id: 2

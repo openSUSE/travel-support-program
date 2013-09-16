@@ -67,4 +67,33 @@ describe Reimbursement do
       end
     end
   end
+
+  context "submitting with incomplete profile" do
+    before(:each) do
+      @user = users(:luke)
+      @user.profile.location = nil
+      @user.profile.save!
+      @reimbursement = requests(:luke_for_yavin).create_reimbursement
+      @reimbursement.request.expenses.each {|e| e.total_amount = 55 }
+      @reimbursement.build_bank_account(:holder => "Owen Lars", :bank_name => "Tatooine Saving Bank",
+                                        :format => "iban", :iban => "AT611904300234574444",
+                                        :bic => "ABCDEABCDE")
+      @reimbursement.save!
+    end
+
+    it "should fail" do
+      expect { transition(@reimbursement, :submit, users(:luke)) }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+
+    context "and fixing the profile" do
+      before(:each) do
+        @user.profile.update_attribute :location, "Nomad"
+      end
+
+      it "should success" do
+        transition(@reimbursement, :submit, users(:luke))
+        @reimbursement.submitted?.should be_true
+      end
+    end
+  end
 end
