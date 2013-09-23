@@ -88,6 +88,13 @@
   on your username, in the top right corner of the page, next to the &#39;log out&#39;
   link.
 
+- if TravelSupportProgram::Config.setting :opensuse_connect, :enabled
+  %p
+    Some of the information in the profile cannot be entered directly in the
+    application. That information is read from
+    = link_to "openSUSE Connect", TravelSupportProgram::Config.setting(:opensuse_connect, :base_url)
+    and should be updated in the Connect profile of the user.
+
 %p
   The full workflow for a reimbursement is displayed below. Once more, the only two
   actions that the applicant needs to perform are &#39;submit&#39; (for sending the
