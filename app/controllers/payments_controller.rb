@@ -32,4 +32,11 @@ class PaymentsController < InheritedResources::Base
   def load_methods
     @methods = TravelSupportProgram::Config.setting :payment_methods
   end
+
+  def set_breadcrumbs
+    @breadcrumbs = [ :label => parent.request, :url => parent.request ]
+    @breadcrumbs << { :label => Reimbursement.model_name.human,
+                      :url => request_reimbursement_path(parent.request)}
+    @breadcrumbs << {:label => Payment.model_name.human(:count => 2) }
+  end
 end

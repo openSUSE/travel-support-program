@@ -41,4 +41,13 @@ class ReimbursementsController < InheritedResources::Base
       @fields = YAML.load_file(@layout)
     end
   end
+
+  protected
+
+  def set_breadcrumbs
+    @breadcrumbs = [ :label => parent, :url => parent ]
+    unless resource.blank? || resource.new_record?
+      @breadcrumbs << {:label => Reimbursement.model_name.human, :url => resource_path }
+    end
+  end
 end

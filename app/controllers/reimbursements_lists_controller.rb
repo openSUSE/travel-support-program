@@ -4,7 +4,8 @@
 #
 class ReimbursementsListsController < InheritedResources::Base
   respond_to :html, :js, :json
-  defaults :resource_class => Reimbursement, :collection_name => 'reimbursements'
+  defaults :resource_class => Reimbursement, :collection_name => 'reimbursements',
+    :route_collection_name => 'reimbursements'
   skip_load_and_authorize_resource
   helper_method :reimbursement_states_collection
 

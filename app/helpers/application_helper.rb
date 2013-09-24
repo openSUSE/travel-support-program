@@ -206,4 +206,40 @@ module ApplicationHelper
     return false unless user_signed_in?
     current_user.respond_to?(:signed_in_by_ichain?) && current_user.signed_in_by_ichain?
   end
+
+  # Outputs the breadcrumbs based in the @breadcrumbs variable
+  #
+  # @return [String] unordered list containing the breadcrumbs
+  def breadcrumbs
+    return "" unless @breadcrumbs and @breadcrumbs.respond_to?(:map)
+    crumbs = @breadcrumbs.map do |b|
+      # First of all, adjust the label,...
+      label = b[:label]
+      # ...that can be a string, but...
+      unless label.kind_of? String
+        # ...also a symbol...
+        if label.kind_of? Symbol
+          label = I18n.t(label)
+        # ...or a more complex object.
+        # In that case, some methods are tried before
+        # falling back to 'classname #id'
+        elsif label.respond_to? :name
+          label = label.name
+        elsif label.respond_to? :title
+          label = label.title
+        else
+          label = "#{label.class.model_name.human} ##{label.id}"
+        end
+      end
+
+      if b[:url].blank? || current_page?(b[:url])
+        content_tag(:li, label, :class => "active")
+      else
+        content_tag(:li, link_to(label, b[:url]))
+      end
+    end
+
+    crumbs = crumbs.join(" " + content_tag(:span, ">", :class => "divider") + " ")
+    content_tag(:ul, crumbs.html_safe, :class => "breadcrumb")
+  end
 end

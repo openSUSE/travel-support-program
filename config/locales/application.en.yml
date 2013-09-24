@@ -34,6 +34,10 @@ en:
   profile_update_failed: "Errors updating profile information"
   profile_updated: "Profile information updated"
 
+  breadcrumb_user: "user"
+  breadcrumb_userguide: "user guide"
+  breadcrumb_reports: "reports"
+
   apply: "Apply"
   collapse: "roll/unroll"
   create_final_note: "Add final note"

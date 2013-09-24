@@ -37,4 +37,7 @@ class UserProfilesController < ApplicationController
     params[:user].delete("role_name")
   end
 
+  def users_controller?
+    true
+  end
 end

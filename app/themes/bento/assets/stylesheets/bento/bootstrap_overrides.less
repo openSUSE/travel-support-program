@@ -115,3 +115,25 @@ input[type="color"],
 .uneditable-input {
   color: @grayDarker;
 }
+
+// Breadcrumbs
+// ---------------------------
+.breadcrumb {
+  background:transparent image-url('bento/home_grey.png') no-repeat;
+  margin: 0px;
+  padding: 0px 0px 0px 20px;
+
+  li {
+    color: @grayDarker;
+
+    text-shadow: none;
+
+    &.active {
+      color: @grayDarker;
+    }
+
+    a {
+      color: @grayDark;
+    }
+  }
+}

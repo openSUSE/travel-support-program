@@ -34,4 +34,8 @@ class ReportsController < ApplicationController
     @reimbursement_states = Reimbursement.state_machines[:state].states.map {|s| [ s.value, s.human_name] }
     @countries = I18n.t(:countries).map {|k,v| [k.to_s,v]}.sort_by(&:last)
   end
+
+  def set_breadcrumbs
+    @breadcrumbs = [{:label => :breadcrumb_reports}]
+  end
 end
