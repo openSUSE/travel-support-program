@@ -117,7 +117,7 @@ class Request < ActiveRecord::Base
   #
   # @return [Boolean] true if all conditions are met
   def can_have_reimbursement?
-    accepted?
+    accepted? && (!reimbursement.nil? || event.accepting_reimbursements?)
   end
 
   # Checks whether the request can have final notes

@@ -7,10 +7,7 @@ feature "Reimbursements", "" do
   scenario "Full reimbursement process" do
     sign_in_as_user(users(:luke))
     visit request_path(requests(:luke_for_yavin))
-    # To avoid ambiguity
-    within(:xpath, "//div[@class='form-actions']") do
-      click_link "Ask for reimbursement"
-    end
+    click_link "Ask for reimbursement"
 
     # Request creation
     page.should have_content "reimbursement was successfully created"

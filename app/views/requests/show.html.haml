@@ -11,15 +11,17 @@
   = r.attribute :state_changes do
     = render "state_changes_list", :locals => {:resource => @request}
 
-  - if @request.can_have_reimbursement?
+  - if @request.reimbursement
     = r.association :reimbursement do
-      - if @request.reimbursement
-        = timestamped_state(@request.reimbursement)
-        = icon_to "share-alt", request_reimbursement_path(@request), :title => t(:goto)
-      - else
-        = t(:no_reimbursement_yet)
-        - if can? :create, @request.build_reimbursement
-          = link_to t(:create_reimbursement), request_reimbursement_path(@request), :method => :post
+      = timestamped_state(@request.reimbursement)
+      = icon_to "share-alt", request_reimbursement_path(@request), :title => t(:goto)
+  - elsif @request.can_have_reimbursement?
+    = r.association :reimbursement do
+      = t(:no_reimbursement_yet)
+  - elsif !@request.event.accepting_reimbursements?
+    = r.association :reimbursement do
+      = t(:not_accepting_reimbursements)
+      = content_tag(:span, "!", :class => "badge badge-info")
 
   = r.attribute :visa_letter if @request.visa_letter_allowed?
   = r.attribute :description

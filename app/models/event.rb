@@ -8,7 +8,7 @@
 #
 class Event < ActiveRecord::Base
   attr_accessible :name, :description, :start_date, :end_date, :url, :country_code,
-    :validated, :visa_letters, :request_creation_deadline
+    :validated, :visa_letters, :request_creation_deadline, :reimbursement_creation_deadline
   has_many :requests, :inverse_of => :event
 
   validates :name, :start_date, :end_date, :country_code, :presence => true
@@ -37,9 +37,20 @@ class Event < ActiveRecord::Base
   # @return [Boolean] true if accepting new requests
   def accepting_requests?
     if request_creation_deadline
-      Time.now < request_creation_deadline
+      Time.zone.now < request_creation_deadline
     else
       (Date.today < start_date) rescue false
+    end
+  end
+
+  # Check if new reimbursements can be created based on reimbursement_creation_deadline
+  #
+  # @return [Boolean] true if accepting new reimbursements
+  def accepting_reimbursements?
+    if reimbursement_creation_deadline
+      Time.zone.now < reimbursement_creation_deadline
+    else
+      true
     end
   end
 
@@ -48,6 +59,6 @@ class Event < ActiveRecord::Base
   #
   # @return [Array] a list of the restricted attribute names as symbols
   def self.validation_attributes
-    [:validated, :visa_letters, :request_creation_deadline]
+    [:validated, :visa_letters, :request_creation_deadline, :reimbursement_creation_deadline]
   end
 end

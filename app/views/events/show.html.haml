@@ -20,9 +20,11 @@
   - if user_signed_in? && can?(:validate, resource)
     .row-fluid
       .span6
-        = r.attribute :request_creation_deadline
+        = r.attribute :visa_letters
         = r.attribute :validated
-      .span6= r.attribute :visa_letters
+      .span6
+        = r.attribute :request_creation_deadline
+        = r.attribute :reimbursement_creation_deadline
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), collection_path, :class => 'btn'

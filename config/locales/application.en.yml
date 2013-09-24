@@ -67,6 +67,7 @@ en:
   new_payment: "Add payment"
   no_reimbursement_yet: "The reimbursement process has not started"
   no_state_changes_yet: "No state changes yet"
+  not_accepting_reimbursements: "The event is not open for requesting reimbursement"
   opensuse_profile_info: 'Information on disabled controls have to be changed in <a href="%{url}">your Connect profile</a>.'
   page_total: "Total in this page"
   pdf_format: "Printable version"

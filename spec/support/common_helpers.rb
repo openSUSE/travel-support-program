@@ -25,6 +25,13 @@ module CommonHelpers
   end
 
   #
+  # Destroys current user session
+  #
+  def logout
+    click_link "Log out"
+  end
+
+  #
   # Find a given request through the index view
   #
   # Logs in as a user, goes to the list of requests and clicks on the given

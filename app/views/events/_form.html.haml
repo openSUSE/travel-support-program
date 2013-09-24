@@ -9,6 +9,7 @@
     - if can? :validate, resource
       = f.input :visa_letters
       = f.input :request_creation_deadline, :as => :dpicker, :with_time => true, :format => :long
+      = f.input :reimbursement_creation_deadline, :as => :dpicker, :with_time => true, :format => :long
       = f.input :validated
 
   .form-actions

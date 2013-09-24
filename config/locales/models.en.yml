@@ -109,9 +109,11 @@ en:
         country: "country"
         country_code: "country"
         url: "url"
+        validated: "validated"
         visa_letters: "visa letters offered"
         start_date: "starts at"
         end_date: "ends at"
+        reimbursement_creation_deadline: "accepting reimbursements until"
         request_creation_deadline: "accepting requests until"
       expense_report:
         event_country: "country"
