@@ -2,6 +2,7 @@
 #= require twitter/bootstrap
 #= require datetimepicker/bootstrap-datetimepicker
 #= require bootstrap-fileupload
+#= require bootstrap-multiselect
 #
 
 jQuery ->
