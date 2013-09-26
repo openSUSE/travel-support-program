@@ -8,13 +8,20 @@
 #
 class Event < ActiveRecord::Base
   attr_accessible :name, :description, :start_date, :end_date, :url, :country_code,
-    :validated, :visa_letters, :request_creation_deadline, :reimbursement_creation_deadline
+    :validated, :visa_letters, :request_creation_deadline, :reimbursement_creation_deadline,
+    :budget_ids
+
+  # Requests for attending the event
   has_many :requests, :inverse_of => :event
+  # Budgets to use as a limit for approved amounts
+  has_and_belongs_to_many :budgets
 
   validates :name, :start_date, :end_date, :country_code, :presence => true
   validates :end_date, :date => {:after_or_equal_to => :start_date }
 
   audit(:create, :update, :destroy) {|m,u,a| "#{a} performed on Event by #{u.try(:nickname)}"}
+
+  default_scope order('name asc')
 
   # Checks whether the event can be freely updated or destroyed by all users.
   #

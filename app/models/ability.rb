@@ -120,6 +120,9 @@ class Ability
       # User profiles
       can :read, UserProfile
 
+      # Budgets
+      can :manage, Budget
+
       # Events
       can [:update, :validate], Event
       can :destroy, Event do |e|
@@ -216,6 +219,9 @@ class Ability
     elsif role == "supervisor"
       # User profiles
       can :read, UserProfile
+
+      # Budgets
+      can :manage, Budget
 
       # Events
       can [:update, :validate], Event

@@ -10,6 +10,13 @@ describe Ability do
   context 'when is a requester' do
     let(:user){ users(:luke) }
 
+    context 'managing budgets' do
+      it{ should_not be_able_to(:create, Budget.new) }
+      it{ should_not be_able_to(:read, budgets(:general_budget)) }
+      it{ should_not be_able_to(:update, budgets(:general_budget)) }
+      it{ should_not be_able_to(:destroy, budgets(:general_budget)) }
+    end
+
     context 'managing events' do
       it{ should be_able_to(:create, Event.new) }
       it{ should_not be_able_to(:update, events(:yavin_hackaton)) }
@@ -241,6 +248,13 @@ describe Ability do
   context 'when is a TSP member' do
     let(:user){ users(:tspmember) }
 
+    context 'managing budgets' do
+      it{ should be_able_to(:create, Budget.new) }
+      it{ should be_able_to(:read, budgets(:general_budget)) }
+      it{ should be_able_to(:update, budgets(:general_budget)) }
+      it{ should be_able_to(:destroy, budgets(:general_budget)) }
+    end
+
     context 'managing events' do
       it{ should be_able_to(:create, Event.new) }
       it{ should be_able_to(:update, events(:yavin_hackaton)) }
@@ -420,6 +434,13 @@ describe Ability do
 
   context 'when is an administrative' do
     let(:user){ users(:administrative) }
+
+    context 'managing budgets' do
+      it{ should_not be_able_to(:create, Budget.new) }
+      it{ should_not be_able_to(:read, budgets(:general_budget)) }
+      it{ should_not be_able_to(:update, budgets(:general_budget)) }
+      it{ should_not be_able_to(:destroy, budgets(:general_budget)) }
+    end
 
     context 'managing events' do
       it{ should be_able_to(:create, Event.new) }
@@ -601,6 +622,13 @@ describe Ability do
 
   context 'when is an supervisor' do
     let(:user){ users(:supervisor) }
+
+    context 'managing budgets' do
+      it{ should be_able_to(:create, Budget.new) }
+      it{ should be_able_to(:read, budgets(:general_budget)) }
+      it{ should be_able_to(:update, budgets(:general_budget)) }
+      it{ should be_able_to(:destroy, budgets(:general_budget)) }
+    end
 
     context 'managing events' do
       it{ should be_able_to(:create, Event.new) }

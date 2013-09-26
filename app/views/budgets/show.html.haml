@@ -1,0 +1,18 @@
+- model_class = Budget
+= content_for :page_header, t('.title', :default => model_class.model_name.human)
+
+= show_for resource do |r|
+  .row-fluid
+    .span12
+      = r.attribute :name
+      = r.attribute :description
+      = r.attribute :amount do
+        = number_to_currency(r.object.amount, :unit => r.object.currency)
+      = r.association :events
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), collection_path, :class => 'btn'
+  - if can?(:update, resource)
+    = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path(resource), :class => 'btn'
+  - if can?(:destroy, resource)
+    = link_to t('.destroy', :default => t("helpers.links.destroy")), resource_path(resource), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-danger'

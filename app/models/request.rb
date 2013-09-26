@@ -21,6 +21,7 @@ class Request < ActiveRecord::Base
   validates :event, :presence => true
   validates_associated :expenses
   validate :only_one_active_request, :if => :active?
+  validate :dont_exceed_budget, :if => :approved?
 
   audit(:create, :update, :destroy) {|m,u,a| "#{a} performed on Request by #{u.try(:nickname)}"}
 
@@ -181,6 +182,34 @@ class Request < ActiveRecord::Base
   def only_one_active_request
     if Request.in_conflict_with(self).count > 0
       errors.add(:event_id, :only_one_active)
+    end
+  end
+
+  # Validates that the approved amount doesn't exceed the total of the budgets
+  # associated to the event.
+  def dont_exceed_budget
+    if TravelSupportProgram::Config.setting :budget_limits
+      budget_ids = event.budget_ids
+      budgets = event.budgets
+      expenses.group_by(&:approved_currency).each do |currency, cexpenses|
+        more_expenses = RequestExpense.joins(:request => {:event => :budgets})
+        more_expenses = more_expenses.where("budgets.currency" => currency)
+        more_expenses = more_expenses.where("request_expenses.approved_currency" => currency)
+        more_expenses = more_expenses.where(["requests.state in (?)", %w(approved accepted)])
+        more_expenses = more_expenses.where(["budgets.id in (?) and requests.id <> ?", budget_ids, id])
+
+        if budgets.where(:currency => currency).count.zero?
+          errors.add(:expenses, :no_budget_found)
+          return
+        else
+          limit = budgets.where(:currency => currency).sum(:amount)
+          total = more_expenses.sum(:approved_amount) + cexpenses.sum(&:approved_amount)
+          if limit < total
+            errors.add(:expenses, :budget_exceeded)
+            return
+          end
+        end
+      end
     end
   end
 end

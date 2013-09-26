@@ -1,0 +1,11 @@
+= simple_form_for resource do |f|
+  .form-inputs.form-horizontal
+    = f.input :name
+    = f.input :description
+    = f.input :amount
+    = f.input :currency, :collection => currencies_for_select(:approved)
+    = f.association :events
+
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), collection_path, :class => 'btn'

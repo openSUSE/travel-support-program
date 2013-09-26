@@ -1,6 +1,8 @@
 common: &common
   program_name: "Demo Travel Support Program"
 
+  budget_limits: true
+
   days_for_reminder: 3
   async_emails: true
   email_from: "Travel Support Program <noreply@example.com>"
@@ -57,9 +59,14 @@ test:
   <<: *common
   async_emails: false
 
+  budget_limits: true
+
   opensuse_connect:
     enabled: false
 
+  currencies_for_approved:
+    - EUR
+    - USD
   request_expense_subjects:
     - Gas
     - Droid rental

@@ -25,6 +25,10 @@
       .span6
         = r.attribute :request_creation_deadline
         = r.attribute :reimbursement_creation_deadline
+  - if user_signed_in? && can?(:read, Budget)
+    .row-fluid
+      .span12
+        = r.association :budgets
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), collection_path, :class => 'btn'

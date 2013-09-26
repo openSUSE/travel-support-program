@@ -4,4 +4,6 @@
   %li= link_to t(:profile_link), profile_path
   %li= link_to Request.model_name.human(count: 2).humanize, menu_path_to(Request)
   %li= link_to Reimbursement.model_name.human(count: 2).humanize, menu_path_to(Reimbursement)
+  - if can? :read, Budget
+    %li= link_to Budget.model_name.human(count: 2).humanize, budgets_path
   %li= link_to ExpenseReport.model_name.human.humanize, expenses_report_path

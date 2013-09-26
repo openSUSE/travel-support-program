@@ -19,6 +19,8 @@ en:
               only_one_active: "another request already exists for the same event and user"
             expenses:
               invalid: "are missing or invalid (some required field is probably blank in some of the expenses)"
+              no_budget_found: "no budget defined for the event with the selected currency"
+              budget_exceeded: "approved amount exceeds the budget for the event and the selected currency"
         reimbursement:
           attributes:
             user:
@@ -37,6 +39,9 @@ en:
         formats:
           iban: "IBAN"
           national: "National code"
+      budget:
+        one: "budget"
+        other: "budgets"
       event:
         one: "event"
         other: "events"
@@ -103,6 +108,12 @@ en:
         iban: "account IBAN"
         national_account_code: "account code"
         national_bank_code: "bank code"
+      budget:
+        name: "name"
+        description: "description"
+        amount: "amount"
+        currency: "currency"
+        events: "events"
       event:
         name: "name"
         description: "description"
@@ -115,6 +126,7 @@ en:
         end_date: "ends at"
         reimbursement_creation_deadline: "accepting reimbursements until"
         request_creation_deadline: "accepting requests until"
+        budgets: "budgets"
       expense_report:
         event_country: "country"
         event_end_date: "end"

@@ -1,0 +1,5 @@
+general_budget:
+  name: "General Alliance Budget"
+  amount: 250
+  currency: "EUR"
+  events: yavin_hackaton, party, training, dagobah_camp

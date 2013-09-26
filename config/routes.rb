@@ -5,6 +5,7 @@ TravelSupportProgram::Application.routes.draw do
     :failure_app => Devise::IchainFailureApp
 
   resources :events
+  resources :budgets
 
   resources :requests do
     resources :state_transitions, :only => [:new, :create]
