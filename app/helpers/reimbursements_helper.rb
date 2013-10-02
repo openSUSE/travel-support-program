@@ -48,6 +48,9 @@ module ReimbursementsHelper
       out << " ".html_safe
       print_url = request_reimbursement_path(reimbursement.request, :format => :pdf)
       out << t(:reimbursement_acceptance_intro, :print_url => print_url).html_safe
+    elsif current_user == reimbursement.user && !reimbursement.acceptance_file.blank?
+      out << "<br/>".html_safe
+      out << t(:reimbursement_acceptance_warning).html_safe
     end
     out
   end

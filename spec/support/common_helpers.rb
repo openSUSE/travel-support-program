@@ -107,4 +107,30 @@ module CommonHelpers
     page.should_not have_css(".modal-backdrop", :wait => 15)
   end
 
+  #
+  # Creates a state adjustment through the web interface
+  #
+  # @param [#state] machine      Request or Reimbursement
+  # @param [#to_s]  state        Target state
+  def adjust_state(machine, state)
+    if machine.kind_of? Reimbursement
+      find_reimbursement_as users(:supervisor), machine
+    else
+      find_request_as users(:supervisor), machine
+    end
+    click_link "Adjust state"
+    select state.to_s, :from => :state_adjustment_to
+    click_button "Create state adjustment"
+    logout
+  end
+
+  #
+  # Assign a file to the attribute acceptance_file
+  #
+  # param [Reimbursement] reimbursement Reimbursement object to assign the file
+  # param [String]        filename      Name of the file located in support/files
+  def set_acceptance_file(reimbursement, filename = "scan001.pdf")
+    file = Rails.root.join("spec", "support", "files", filename)
+    reimbursement.acceptance_file = File.open(file, "rb")
+  end
 end
