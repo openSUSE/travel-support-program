@@ -135,6 +135,29 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#breadcrumbs-instance_method" title="#breadcrumbs (instance method)">- (String) <strong>breadcrumbs</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Outputs the breadcrumbs based in the @breadcrumbs variable.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#collapse_link-instance_method" title="#collapse_link (instance method)">- (String) <strong>collapse_link</strong>(target) </a>
     
 
@@ -372,72 +395,6 @@ with the &#39;active&#39; css class when needed.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#opensuse_login_url-instance_method" title="#opensuse_login_url (instance method)">- (Object) <strong>opensuse_login_url</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#opensuse_logout_url-instance_method" title="#opensuse_logout_url (instance method)">- (Object) <strong>opensuse_logout_url</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#opensuse_register_url-instance_method" title="#opensuse_register_url (instance method)">- (Object) <strong>opensuse_register_url</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#pdf_header_image-instance_method" title="#pdf_header_image (instance method)">- (String) <strong>pdf_header_image</strong> </a>
     
 
@@ -529,6 +486,29 @@ authorized state transition for a given state machine.</p>
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#user_signed_in_by_ichain%3F-instance_method" title="#user_signed_in_by_ichain? (instance method)">- (Boolean) <strong>user_signed_in_by_ichain?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks if the current user logged in using iChain.</p>
+</div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -606,6 +586,121 @@ authorized state transition for a given state machine.</p>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_flash_messages'>flash_messages</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="breadcrumbs-instance_method">
+  
+    - (<tt>String</tt>) <strong>breadcrumbs</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Outputs the breadcrumbs based in the @breadcrumbs variable</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>unordered list containing the breadcrumbs</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/application_helper.rb', line 213</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_breadcrumbs'>breadcrumbs</span>
+  <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='ivar'>@breadcrumbs</span> <span class='kw'>and</span> <span class='ivar'>@breadcrumbs</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:map</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_crumbs'>crumbs</span> <span class='op'>=</span> <span class='ivar'>@breadcrumbs</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_b'>b</span><span class='op'>|</span>
+    <span class='comment'># First of all, adjust the label,...
+</span>    <span class='id identifier rubyid_label'>label</span> <span class='op'>=</span> <span class='id identifier rubyid_b'>b</span><span class='lbracket'>[</span><span class='symbol'>:label</span><span class='rbracket'>]</span>
+    <span class='comment'># ...that can be a string, but...
+</span>    <span class='kw'>unless</span> <span class='id identifier rubyid_label'>label</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span> <span class='const'>String</span>
+      <span class='comment'># ...also a symbol...
+</span>      <span class='kw'>if</span> <span class='id identifier rubyid_label'>label</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span> <span class='const'>Symbol</span>
+        <span class='id identifier rubyid_label'>label</span> <span class='op'>=</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='id identifier rubyid_label'>label</span><span class='rparen'>)</span>
+      <span class='comment'># ...or a more complex object.
+</span>      <span class='comment'># In that case, some methods are tried before
+</span>      <span class='comment'># falling back to 'classname #id'
+</span>      <span class='kw'>elsif</span> <span class='id identifier rubyid_label'>label</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span> <span class='symbol'>:name</span>
+        <span class='id identifier rubyid_label'>label</span> <span class='op'>=</span> <span class='id identifier rubyid_label'>label</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
+      <span class='kw'>elsif</span> <span class='id identifier rubyid_label'>label</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span> <span class='symbol'>:title</span>
+        <span class='id identifier rubyid_label'>label</span> <span class='op'>=</span> <span class='id identifier rubyid_label'>label</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span>
+      <span class='kw'>else</span>
+        <span class='id identifier rubyid_label'>label</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_label'>label</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_model_name'>model_name</span><span class='period'>.</span><span class='id identifier rubyid_human'>human</span><span class='rbrace'>}</span><span class='tstring_content'> #</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_label'>label</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_b'>b</span><span class='lbracket'>[</span><span class='symbol'>:url</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>||</span> <span class='id identifier rubyid_current_page?'>current_page?</span><span class='lparen'>(</span><span class='id identifier rubyid_b'>b</span><span class='lbracket'>[</span><span class='symbol'>:url</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:li</span><span class='comma'>,</span> <span class='id identifier rubyid_label'>label</span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>active</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:li</span><span class='comma'>,</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='id identifier rubyid_label'>label</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span><span class='lbracket'>[</span><span class='symbol'>:url</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_crumbs'>crumbs</span> <span class='op'>=</span> <span class='id identifier rubyid_crumbs'>crumbs</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:span</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>divider</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:ul</span><span class='comma'>,</span> <span class='id identifier rubyid_crumbs'>crumbs</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>breadcrumb</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1313,96 +1408,6 @@ return [String] HTML output</p>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="opensuse_login_url-instance_method">
-  
-    - (<tt>Object</tt>) <strong>opensuse_login_url</strong> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-202
-203
-204</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/application_helper.rb', line 202</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_opensuse_login_url'>opensuse_login_url</span>
-  <span class='const'>TravelSupportProgram</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='symbol'>:opensuse_auth_proxy</span><span class='comma'>,</span> <span class='symbol'>:proxy_base_url</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/ICSLogin/auth-up</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="opensuse_logout_url-instance_method">
-  
-    - (<tt>Object</tt>) <strong>opensuse_logout_url</strong> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-206
-207
-208</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/application_helper.rb', line 206</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_opensuse_logout_url'>opensuse_logout_url</span>
-  <span class='const'>TravelSupportProgram</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='symbol'>:opensuse_auth_proxy</span><span class='comma'>,</span> <span class='symbol'>:proxy_base_url</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/ICHAINLogout/?%22</span><span class='embexpr_beg'>#{</span><span class='ivar'>@return_to_host</span><span class='rbrace'>}</span><span class='tstring_content'>/cmd/ICSLogout%22</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="opensuse_register_url-instance_method">
-  
-    - (<tt>Object</tt>) <strong>opensuse_register_url</strong> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-210
-211
-212</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/application_helper.rb', line 210</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_opensuse_register_url'>opensuse_register_url</span>
-  <span class='const'>TravelSupportProgram</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='symbol'>:opensuse_auth_proxy</span><span class='comma'>,</span> <span class='symbol'>:proxy_base_url</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/ICSLogin/?%22</span><span class='embexpr_beg'>#{</span><span class='ivar'>@return_to_host</span><span class='rbrace'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='ivar'>@return_to_path</span><span class='rbrace'>}</span><span class='tstring_content'>%22</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
   <h3 class="signature " id="pdf_header_image-instance_method">
   
     - (<tt>String</tt>) <strong>pdf_header_image</strong> 
@@ -1740,12 +1745,71 @@ object including the HasState mixin)</p>
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="user_signed_in_by_ichain?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>user_signed_in_by_ichain?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks if the current user logged in using iChain</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>true if signed in by means of iChain</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+205
+206
+207
+208</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/application_helper.rb', line 205</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_user_signed_in_by_ichain?'>user_signed_in_by_ichain?</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='id identifier rubyid_user_signed_in?'>user_signed_in?</span>
+  <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:signed_in_by_ichain?</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_signed_in_by_ichain?'>signed_in_by_ichain?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
     <div id="footer">
-  Generated on Tue Jul  9 15:25:53 2013 by
+  Generated on Sat Oct  5 10:08:34 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>

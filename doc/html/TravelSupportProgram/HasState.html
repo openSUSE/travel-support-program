@@ -158,6 +158,30 @@ StateTransition objects.</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#active%3F-instance_method" title="#active? (instance method)">- (Boolean) <strong>active?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Check whether is active (by default, &#39;active&#39; means any state
+except canceled).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#can_cancel%3F-instance_method" title="#can_cancel? (instance method)">- (Boolean) <strong>can_cancel?</strong> </a>
     
 
@@ -308,7 +332,13 @@ matters which the current state is.</p>
 20
 21
 22
-23</pre>
+23
+24
+25
+26
+27
+28
+29</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 10</span>
@@ -317,10 +347,16 @@ matters which the current state is.</p>
   <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_class_eval'>class_eval</span> <span class='kw'>do</span>
     <span class='comment'># Requester, that is, the user asking for help.
 </span>    <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:user</span>
+    <span class='comment'># State changes are logged as StateChange records
+</span>    <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:state_changes</span><span class='comma'>,</span> <span class='symbol'>:as</span> <span class='op'>=&gt;</span> <span class='symbol'>:machine</span>
     <span class='comment'># Transitions are logged as StateTransition records
 </span>    <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:transitions</span><span class='comma'>,</span> <span class='symbol'>:as</span> <span class='op'>=&gt;</span> <span class='symbol'>:machine</span><span class='comma'>,</span> <span class='symbol'>:class_name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>StateTransition</span><span class='tstring_end'>&quot;</span></span>
+    <span class='comment'># Manual adjustments in the state are logged as StateAdjustment records
+</span>    <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:state_adjustments</span><span class='comma'>,</span> <span class='symbol'>:as</span> <span class='op'>=&gt;</span> <span class='symbol'>:machine</span><span class='comma'>,</span> <span class='symbol'>:class_name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>StateAdjustment</span><span class='tstring_end'>&quot;</span></span>
 
     <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:user</span><span class='comma'>,</span> <span class='symbol'>:presence</span> <span class='op'>=&gt;</span> <span class='kw'>true</span>
+
+    <span class='id identifier rubyid_before_save'>before_save</span> <span class='symbol'>:set_state_updated_at</span>
 
     <span class='ivar'>@assigned_states</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
     <span class='ivar'>@assigned_roles</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -339,7 +375,72 @@ matters which the current state is.</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="can_cancel?-instance_method">
+  <h3 class="signature first" id="active?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>active?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Check whether is active (by default, &#39;active&#39; means any state
+except canceled).</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>if is active (not canceled)</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#can_cancel%3F-instance_method" title="TravelSupportProgram::HasState#can_cancel? (method)">#can_cancel?</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+75
+76
+77</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 75</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_active?'>active?</span>
+  <span class='kw'>not</span> <span class='id identifier rubyid_canceled?'>canceled?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="can_cancel?-instance_method">
   
     - (<tt>Boolean</tt>) <strong>can_cancel?</strong> 
   
@@ -352,8 +453,8 @@ matters which the current state is.</p>
     <p>Checks whether can have a transition to &#39;canceled&#39; state</p>
 
 <p>Compatibility for #cancel with transitions defined by state_machine.
-Default implementation always return true if state is not already
-&#39;canceled&#39;, meaning that a process can be canceled at any moment.
+Default implementation always return true when active, meaning that
+a process can be canceled at any moment.
 Classes using this mixin should implement their own custom behaviour.
 return [Boolean] true if #cancel can be called</p>
 
@@ -381,6 +482,8 @@ return [Boolean] true if #cancel can be called</p>
     
       <li><span class='object_link'><a href="#cancel-instance_method" title="TravelSupportProgram::HasState#cancel (method)">#cancel</a></span></li>
     
+      <li><span class='object_link'><a href="#active%3F-instance_method" title="TravelSupportProgram::HasState#active? (method)">#active?</a></span></li>
+    
   </ul>
 
 </div><table class="source_code">
@@ -389,15 +492,15 @@ return [Boolean] true if #cancel can be called</p>
       <pre class="lines">
 
 
-74
-75
-76</pre>
+89
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 89</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_can_cancel?'>can_cancel?</span>
-  <span class='kw'>not</span> <span class='id identifier rubyid_canceled?'>canceled?</span>
+  <span class='id identifier rubyid_active?'>active?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -437,20 +540,18 @@ conclusion that &#39;canceled&#39; is the only valid final state.</p>
       <pre class="lines">
 
 
-58
-59
-60
-61
-62
-63</pre>
+64
+65
+66
+67
+68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cancel'>cancel</span>
   <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='kw'>not</span> <span class='id identifier rubyid_can_cancel?'>can_cancel?</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_state'>state</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>canceled</span><span class='tstring_end'>'</span></span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_state_updated_at'>state_updated_at</span> <span class='op'>=</span> <span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
   <span class='id identifier rubyid_save'>save</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -500,15 +601,15 @@ conclusion that &#39;canceled&#39; is the only valid final state.</p>
       <pre class="lines">
 
 
-36
-37
-38</pre>
+42
+43
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_in_final_state?'>in_final_state?</span>
-  <span class='id identifier rubyid_state_events'>state_events</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+  <span class='id identifier rubyid_state_events'>state_events</span><span class='lparen'>(</span><span class='symbol'>:guard</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -543,16 +644,16 @@ the roles designed using the macro method assign_state_to</p>
       <pre class="lines">
 
 
-44
-45
-46
-47</pre>
+50
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_notify_state'>notify_state</span>
-  <span class='id identifier rubyid_people'>people</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='lbracket'>[</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='symbol'>:tsp</span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_roles_assigned_to'>roles_assigned_to</span><span class='lparen'>(</span><span class='id identifier rubyid_state'>state</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_uniq'>uniq</span>
+  <span class='id identifier rubyid_people'>people</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='lbracket'>[</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='symbol'>:tsp</span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_roles_assigned_to'>roles_assigned_to</span><span class='lparen'>(</span><span class='id identifier rubyid_state'>state</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_uniq'>uniq</span> <span class='op'>-</span> <span class='lbracket'>[</span><span class='symbol'>:requester</span><span class='rbracket'>]</span>
   <span class='const'>HasStateMailer</span><span class='op'>::</span><span class='id identifier rubyid_notify_to'>notify_to</span><span class='lparen'>(</span><span class='id identifier rubyid_people'>people</span><span class='comma'>,</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_human_state_name'>human_state_name</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_state_updated_at'>state_updated_at</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -603,12 +704,12 @@ matters which the current state is.</p>
       <pre class="lines">
 
 
-29
-30
-31</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_with_transitions?'>with_transitions?</span>
   <span class='kw'>not</span> <span class='id identifier rubyid_transitions'>transitions</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -623,7 +724,7 @@ matters which the current state is.</p>
 </div>
 
     <div id="footer">
-  Generated on Tue Jul  9 15:25:54 2013 by
+  Generated on Sat Oct  5 10:08:34 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>

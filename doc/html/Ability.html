@@ -427,7 +427,25 @@
 246
 247
 248
-249</pre>
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/ability.rb', line 7</span>
@@ -548,6 +566,9 @@
     <span class='comment'># User profiles
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>UserProfile</span>
 
+    <span class='comment'># Budgets
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:manage</span><span class='comma'>,</span> <span class='const'>Budget</span>
+
     <span class='comment'># Events
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:update</span><span class='comma'>,</span> <span class='symbol'>:validate</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>Event</span>
     <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:destroy</span><span class='comma'>,</span> <span class='const'>Event</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>
@@ -645,6 +666,9 @@
     <span class='comment'># User profiles
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>UserProfile</span>
 
+    <span class='comment'># Budgets
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:manage</span><span class='comma'>,</span> <span class='const'>Budget</span>
+
     <span class='comment'># Events
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:update</span><span class='comma'>,</span> <span class='symbol'>:validate</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>Event</span>
     <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:destroy</span><span class='comma'>,</span> <span class='const'>Event</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>
@@ -653,9 +677,21 @@
 
     <span class='comment'># Requests
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Request</span>
+    <span class='comment'># Supervisors can cancel any request, if possible
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:cancel</span><span class='comma'>,</span> <span class='const'>Request</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
+      <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_can_cancel?'>can_cancel?</span>
+    <span class='kw'>end</span>
+    <span class='comment'># Or even create state adjustments
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:adjust_state</span><span class='comma'>,</span> <span class='const'>Request</span>
 
     <span class='comment'># Reimbursements
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Reimbursement</span>
+    <span class='comment'># Supervisors can cancel any reimbursement, if possible
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:cancel</span><span class='comma'>,</span> <span class='const'>Reimbursement</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
+      <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_can_cancel?'>can_cancel?</span>
+    <span class='kw'>end</span>
+    <span class='comment'># Or even create state adjustments
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:adjust_state</span><span class='comma'>,</span> <span class='const'>Reimbursement</span>
 
     <span class='comment'># Reimbursement's attachments
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>ReimbursementAttachment</span>
@@ -686,7 +722,7 @@
 </div>
 
     <div id="footer">
-  Generated on Tue Jul  9 15:25:55 2013 by
+  Generated on Sat Oct  5 10:08:36 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>

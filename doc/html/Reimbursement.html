@@ -1086,6 +1086,30 @@ reimbursement.</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#complete_profile_required%3F-instance_method" title="#complete_profile_required? (instance method)">- (Boolean) <strong>complete_profile_required?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks whether a complete user profile (with the required information
+filled) is required in order to be a valid reimbursement.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#confirm-instance_method" title="#confirm (instance method)">- (Boolean) <strong>confirm</strong>(*args) </a>
     
 
@@ -1762,7 +1786,7 @@ reimbursement.</p>
   
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="TravelSupportProgram/HasState.html" title="TravelSupportProgram::HasState (module)">TravelSupportProgram::HasState</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="TravelSupportProgram/HasState.html#cancel-instance_method" title="TravelSupportProgram::HasState#cancel (method)">#cancel</a></span>, <span class='object_link'><a href="TravelSupportProgram/HasState.html#in_final_state%3F-instance_method" title="TravelSupportProgram::HasState#in_final_state? (method)">#in_final_state?</a></span>, <span class='object_link'><a href="TravelSupportProgram/HasState.html#included-class_method" title="TravelSupportProgram::HasState.included (method)">included</a></span>, <span class='object_link'><a href="TravelSupportProgram/HasState.html#notify_state-instance_method" title="TravelSupportProgram::HasState#notify_state (method)">#notify_state</a></span>, <span class='object_link'><a href="TravelSupportProgram/HasState.html#with_transitions%3F-instance_method" title="TravelSupportProgram::HasState#with_transitions? (method)">#with_transitions?</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="TravelSupportProgram/HasState.html#active%3F-instance_method" title="TravelSupportProgram::HasState#active? (method)">#active?</a></span>, <span class='object_link'><a href="TravelSupportProgram/HasState.html#cancel-instance_method" title="TravelSupportProgram::HasState#cancel (method)">#cancel</a></span>, <span class='object_link'><a href="TravelSupportProgram/HasState.html#in_final_state%3F-instance_method" title="TravelSupportProgram::HasState#in_final_state? (method)">#in_final_state?</a></span>, <span class='object_link'><a href="TravelSupportProgram/HasState.html#included-class_method" title="TravelSupportProgram::HasState.included (method)">included</a></span>, <span class='object_link'><a href="TravelSupportProgram/HasState.html#notify_state-instance_method" title="TravelSupportProgram::HasState#notify_state (method)">#notify_state</a></span>, <span class='object_link'><a href="TravelSupportProgram/HasState.html#with_transitions%3F-instance_method" title="TravelSupportProgram::HasState#with_transitions? (method)">#with_transitions?</a></span></p>
 
   
   <div id="instance_attr_details" class="attr_details">
@@ -1807,10 +1831,10 @@ reimbursement.</p>
       <pre class="lines">
 
 
-128</pre>
+148</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 128</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 148</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>acceptance_file</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1857,10 +1881,10 @@ reimbursement.</p>
       <pre class="lines">
 
 
-125</pre>
+145</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 125</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 145</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>       <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -1907,10 +1931,10 @@ reimbursement.</p>
       <pre class="lines">
 
 
-124</pre>
+144</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 124</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 144</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>description</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1957,10 +1981,10 @@ reimbursement.</p>
       <pre class="lines">
 
 
-121</pre>
+141</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 121</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 141</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>state</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -2012,7 +2036,6 @@ reimbursement.</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -2045,13 +2068,15 @@ reimbursement.</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -2082,7 +2107,10 @@ reimbursement.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2128,10 +2156,10 @@ reimbursement.</p>
       <pre class="lines">
 
 
-127</pre>
+147</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 127</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 147</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>state_updated_at</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -2178,10 +2206,10 @@ reimbursement.</p>
       <pre class="lines">
 
 
-126</pre>
+146</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 126</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 146</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>updated_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>       <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -2227,17 +2255,17 @@ reimbursement.</p>
       <pre class="lines">
 
 
-95
-96
-97
-98
-99
 100
 101
-102</pre>
+102
+103
+104
+105
+106
+107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 95</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_expenses_sum'>expenses_sum</span><span class='lparen'>(</span><span class='id identifier rubyid_attr'>attr</span> <span class='op'>=</span> <span class='symbol'>:total</span><span class='comma'>,</span> <span class='id identifier rubyid_reimbursements'>reimbursements</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_reimbursements'>reimbursements</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>Relation</span><span class='rparen'>)</span>
@@ -2313,7 +2341,6 @@ reimbursement.</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -2346,13 +2373,15 @@ reimbursement.</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -2383,7 +2412,10 @@ reimbursement.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2451,7 +2483,6 @@ reimbursement.</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -2484,13 +2515,15 @@ reimbursement.</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -2521,7 +2554,10 @@ reimbursement.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2595,7 +2631,6 @@ reimbursement.</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -2628,13 +2663,15 @@ reimbursement.</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -2665,7 +2702,10 @@ reimbursement.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2750,7 +2790,6 @@ reimbursement.</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -2783,13 +2822,15 @@ reimbursement.</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -2820,7 +2861,10 @@ reimbursement.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2938,7 +2982,6 @@ reimbursement.</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -2971,13 +3014,15 @@ reimbursement.</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -3008,7 +3053,10 @@ reimbursement.</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3058,12 +3106,12 @@ reimbursement</p>
       <pre class="lines">
 
 
-150
-151
-152</pre>
+155
+156
+157</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 150</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 155</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_acceptance_file_required?'>acceptance_file_required?</span>
   <span class='id identifier rubyid_accepted?'>accepted?</span> <span class='op'>||</span> <span class='id identifier rubyid_processed?'>processed?</span> <span class='op'>||</span> <span class='id identifier rubyid_payed?'>payed?</span>
@@ -3115,7 +3163,6 @@ reimbursement</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -3148,13 +3195,15 @@ reimbursement</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -3185,7 +3234,10 @@ reimbursement</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3253,7 +3305,6 @@ reimbursement</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -3286,13 +3337,15 @@ reimbursement</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -3323,7 +3376,10 @@ reimbursement</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3408,7 +3464,6 @@ reimbursement</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -3441,13 +3496,15 @@ reimbursement</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -3478,7 +3535,10 @@ reimbursement</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3596,7 +3656,6 @@ reimbursement</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -3629,13 +3688,15 @@ reimbursement</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -3666,7 +3727,10 @@ reimbursement</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3715,7 +3779,6 @@ reimbursement</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -3748,13 +3811,15 @@ reimbursement</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -3785,7 +3850,10 @@ reimbursement</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3975,7 +4043,6 @@ reimbursement</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -4008,13 +4075,15 @@ reimbursement</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -4045,7 +4114,10 @@ reimbursement</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -4163,7 +4235,6 @@ reimbursement</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -4196,13 +4267,15 @@ reimbursement</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -4233,7 +4306,10 @@ reimbursement</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -4289,12 +4365,12 @@ return [Boolean] true if #cancel can be called</p>
       <pre class="lines">
 
 
-135
-136
-137</pre>
+140
+141
+142</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 135</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 140</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_can_cancel?'>can_cancel?</span>
   <span class='kw'>not</span> <span class='id identifier rubyid_canceled?'>canceled?</span> <span class='kw'>and</span> <span class='kw'>not</span> <span class='id identifier rubyid_processed?'>processed?</span> <span class='kw'>and</span> <span class='kw'>not</span> <span class='id identifier rubyid_payed?'>payed?</span>
@@ -4415,7 +4491,6 @@ return [Boolean] true if #cancel can be called</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -4448,13 +4523,15 @@ return [Boolean] true if #cancel can be called</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -4485,7 +4562,10 @@ return [Boolean] true if #cancel can be called</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -4534,12 +4614,12 @@ return [Boolean] true if #cancel can be called</p>
       <pre class="lines">
 
 
-142
-143
-144</pre>
+147
+148
+149</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 142</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 147</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_can_have_final_notes?'>can_have_final_notes?</span>
   <span class='id identifier rubyid_in_final_state?'>in_final_state?</span>
@@ -4660,7 +4740,6 @@ return [Boolean] true if #cancel can be called</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -4693,13 +4772,15 @@ return [Boolean] true if #cancel can be called</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -4730,7 +4811,10 @@ return [Boolean] true if #cancel can be called</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -4848,7 +4932,6 @@ return [Boolean] true if #cancel can be called</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -4881,13 +4964,15 @@ return [Boolean] true if #cancel can be called</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -4918,7 +5003,10 @@ return [Boolean] true if #cancel can be called</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -5036,7 +5124,6 @@ return [Boolean] true if #cancel can be called</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -5069,13 +5156,15 @@ return [Boolean] true if #cancel can be called</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -5106,7 +5195,10 @@ return [Boolean] true if #cancel can be called</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -5224,7 +5316,6 @@ return [Boolean] true if #cancel can be called</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -5257,13 +5348,15 @@ return [Boolean] true if #cancel can be called</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -5294,7 +5387,10 @@ return [Boolean] true if #cancel can be called</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -5346,12 +5442,12 @@ by the requester</p>
       <pre class="lines">
 
 
-124
-125
-126</pre>
+129
+130
+131</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 124</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 129</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cancelable_by_tsp?'>cancelable_by_tsp?</span>
   <span class='id identifier rubyid_can_cancel?'>can_cancel?</span> <span class='kw'>and</span> <span class='kw'>not</span> <span class='id identifier rubyid_accepted?'>accepted?</span>
@@ -5403,7 +5499,6 @@ by the requester</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -5436,13 +5531,15 @@ by the requester</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -5473,7 +5570,74 @@ by the requester</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="complete_profile_required?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>complete_profile_required?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks whether a complete user profile (with the required information
+filled) is required in order to be a valid reimbursement. A complete profile
+is not required if the reimbursement is being rolled back or rejected, only
+when trying to go further into the workflow.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>true if the profile have to be complete</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+165
+166
+167
+168
+169</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 165</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_complete_profile_required?'>complete_profile_required?</span>
+  <span class='lparen'>(</span><span class='id identifier rubyid_submitted?'>submitted?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_state_was'>state_was</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>incomplete</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='op'>||</span>
+    <span class='lparen'>(</span><span class='id identifier rubyid_approved?'>approved?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_state_was'>state_was</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>submitted</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='op'>||</span>
+    <span class='lparen'>(</span><span class='id identifier rubyid_accepted?'>accepted?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_state_was'>state_was</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>approved</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -5541,7 +5705,6 @@ by the requester</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -5574,13 +5737,15 @@ by the requester</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -5611,7 +5776,10 @@ by the requester</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -5696,7 +5864,6 @@ by the requester</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -5729,13 +5896,15 @@ by the requester</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -5766,7 +5935,10 @@ by the requester</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -5884,7 +6056,6 @@ by the requester</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -5917,13 +6088,15 @@ by the requester</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -5954,7 +6127,10 @@ by the requester</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -6003,12 +6179,12 @@ by the requester</p>
       <pre class="lines">
 
 
-107
-108
-109</pre>
+112
+113
+114</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 107</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 112</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_editable_by_requester?'>editable_by_requester?</span>
   <span class='id identifier rubyid_state'>state</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>incomplete</span><span class='tstring_end'>'</span></span>
@@ -6060,12 +6236,12 @@ by the requester</p>
       <pre class="lines">
 
 
-114
-115
-116</pre>
+119
+120
+121</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 114</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 119</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_editable_by_tsp?'>editable_by_tsp?</span>
   <span class='id identifier rubyid_state'>state</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>submitted</span><span class='tstring_end'>'</span></span>
@@ -6203,12 +6379,12 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-90
-91
-92</pre>
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_expenses_sum'>expenses_sum</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_expenses_sum'>expenses_sum</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
@@ -6330,7 +6506,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -6363,13 +6538,15 @@ will be updated during reimbursement process</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -6400,7 +6577,10 @@ will be updated during reimbursement process</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -6449,7 +6629,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -6482,13 +6661,15 @@ will be updated during reimbursement process</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -6519,7 +6700,10 @@ will be updated during reimbursement process</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -6568,7 +6752,6 @@ will be updated during reimbursement process</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -6601,13 +6784,15 @@ will be updated during reimbursement process</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -6638,7 +6823,10 @@ will be updated during reimbursement process</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -6724,7 +6912,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -6757,13 +6944,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -6794,7 +6983,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -6898,7 +7090,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -6931,13 +7122,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -6968,7 +7161,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -7053,7 +7249,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -7086,13 +7281,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -7123,7 +7320,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -7241,7 +7441,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -7274,13 +7473,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -7311,7 +7512,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -7360,7 +7564,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -7393,13 +7596,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -7430,7 +7635,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -7498,7 +7706,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -7531,13 +7738,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -7568,7 +7777,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -7653,7 +7865,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -7686,13 +7897,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -7723,7 +7936,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -7841,7 +8057,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -7874,13 +8089,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -7911,7 +8128,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -8015,7 +8235,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -8048,13 +8267,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -8085,7 +8306,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -8170,7 +8394,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -8203,13 +8426,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -8240,7 +8465,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -8358,7 +8586,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -8391,13 +8618,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -8428,7 +8657,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -8513,7 +8745,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -8546,13 +8777,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -8583,7 +8816,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -8713,7 +8949,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -8746,13 +8981,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -8783,7 +9020,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -8832,7 +9072,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -8865,13 +9104,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -8902,7 +9143,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -9032,7 +9276,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -9065,13 +9308,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -9102,7 +9347,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -9232,7 +9480,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -9265,13 +9512,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -9302,7 +9551,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -9370,7 +9622,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -9403,13 +9654,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -9440,7 +9693,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -9525,7 +9781,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -9558,13 +9813,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -9595,7 +9852,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -9713,7 +9973,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -9746,13 +10005,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -9783,7 +10044,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -9832,7 +10096,6 @@ participation in the event</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
@@ -9865,13 +10128,15 @@ participation in the event</p>
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 51</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-  <span class='id identifier rubyid_before_transition'>before_transition</span> <span class='symbol'>:set_state_updated_at</span>
 
   <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
@@ -9902,7 +10167,10 @@ participation in the event</p>
     <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:accepted</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span>
+  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
+</span>  <span class='comment'># during automatic documentation generation
+</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -9914,7 +10182,7 @@ participation in the event</p>
 </div>
 
     <div id="footer">
-  Generated on Tue Jul  9 15:25:55 2013 by
+  Generated on Sat Oct  5 10:08:38 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>

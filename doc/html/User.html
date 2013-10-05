@@ -514,6 +514,84 @@ For user information or role, use UserProfile</p>
     </ul>
   
     <h2>
+      Has many
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reimbursements-instance_method" title="#reimbursements (instance method)">- (Object) <strong>reimbursements</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reimbursements created by the user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#requests-instance_method" title="#requests (instance method)">- (Object) <strong>requests</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Requests created by the user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#state_changes-instance_method" title="#state_changes (instance method)">- (Object) <strong>state_changes</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>State changes (transitions or manual adjustments) performed by the user.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
       Class Method Summary
       <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
     </h2>
@@ -523,7 +601,7 @@ For user information or role, use UserProfile</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#find_or_create_from_opensuse-class_method" title="find_or_create_from_opensuse (class method)">+ (Object) <strong>find_or_create_from_opensuse</strong>(username, email) </a>
+      <a href="#for_ichain_username-class_method" title="for_ichain_username (class method)">+ (Object) <strong>for_ichain_username</strong>(username, attributes) </a>
     
 
     
@@ -665,10 +743,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-204</pre>
+227</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 204</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 227</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                               <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -715,10 +793,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-198</pre>
+221</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 198</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 221</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>current_sign_in_at</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -765,10 +843,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-200</pre>
+223</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 200</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 223</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>current_sign_in_ip</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -815,10 +893,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-192</pre>
+215</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 192</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 215</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>email</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                  <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>   <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -865,10 +943,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-193</pre>
+216</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 193</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 216</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>encrypted_password</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>     <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>   <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -915,10 +993,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-199</pre>
+222</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 199</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 222</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>last_sign_in_at</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -965,10 +1043,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-201</pre>
+224</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 201</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 224</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>last_sign_in_ip</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1015,10 +1093,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-203</pre>
+226</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 203</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 226</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>locale</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                 <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>en</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -1065,10 +1143,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-202</pre>
+225</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 202</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 225</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>nickname</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                                 <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -1115,10 +1193,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-196</pre>
+219</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 196</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 219</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>remember_created_at</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1165,10 +1243,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-195</pre>
+218</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 195</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 218</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>reset_password_sent_at</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1215,10 +1293,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-194</pre>
+217</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 194</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 217</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>reset_password_token</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1265,10 +1343,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-197</pre>
+220</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 197</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 220</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_integer'>integer</span>  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sign_in_count</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>          <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='int'>0</span></pre>
     </td>
@@ -1315,10 +1393,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-205</pre>
+228</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 205</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 228</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>updated_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                               <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -1334,9 +1412,9 @@ For user information or role, use UserProfile</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="find_or_create_from_opensuse-class_method">
+  <h3 class="signature first" id="for_ichain_username-class_method">
   
-    + (<tt>Object</tt>) <strong>find_or_create_from_opensuse</strong>(username, email) 
+    + (<tt>Object</tt>) <strong>for_ichain_username</strong>(username, attributes) 
   
 
   
@@ -1348,23 +1426,23 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-41
-42
-43
-44
-45
-46
-47
-48</pre>
+49
+50
+51
+52
+53
+54
+55
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 49</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_find_or_create_from_opensuse'>find_or_create_from_opensuse</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_for_ichain_username'>for_ichain_username</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_find_by_nickname'>find_by_nickname</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_update_all'>update_all</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='symbol'>:email</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_email'>email</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span> <span class='op'>!=</span> <span class='id identifier rubyid_email'>email</span>
+    <span class='id identifier rubyid_update_all'>update_all</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='symbol'>:email</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='symbol'>:email</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span> <span class='op'>!=</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='symbol'>:email</span><span class='rbracket'>]</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='label'>nickname:</span> <span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='label'>email:</span> <span class='id identifier rubyid_email'>email</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='label'>nickname:</span> <span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='label'>email:</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='symbol'>:email</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_user'>user</span>
 <span class='kw'>end</span></pre>
@@ -1388,12 +1466,12 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-37
-38
-39</pre>
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_with_role'>with_role</span><span class='lparen'>(</span><span class='id identifier rubyid_role'>role</span><span class='rparen'>)</span>
   <span class='const'>UserProfile</span><span class='period'>.</span><span class='id identifier rubyid_with_role'>with_role</span><span class='lparen'>(</span><span class='id identifier rubyid_role'>role</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:user</span><span class='rparen'>)</span>
@@ -1424,12 +1502,12 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-33
-34
-35</pre>
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_profile'>find_profile</span>
   <span class='id identifier rubyid_profile'>profile</span> <span class='op'>||</span> <span class='id identifier rubyid_create_profile'>create_profile</span>
@@ -1464,12 +1542,120 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-25</pre>
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 27</span>
 
 <span class='id identifier rubyid_has_one'>has_one</span> <span class='symbol'>:profile</span><span class='comma'>,</span> <span class='symbol'>:class_name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>UserProfile</span><span class='tstring_end'>&quot;</span></span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reimbursements-instance_method">
+  
+    - (<tt>Object</tt>) <strong>reimbursements</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reimbursements created by the user</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 31</span>
+
+<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:reimbursements</span><span class='comma'>,</span> <span class='symbol'>:inverse_of</span> <span class='op'>=&gt;</span> <span class='symbol'>:user</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="requests-instance_method">
+  
+    - (<tt>Object</tt>) <strong>requests</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Requests created by the user</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 29</span>
+
+<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:requests</span><span class='comma'>,</span> <span class='symbol'>:inverse_of</span> <span class='op'>=&gt;</span> <span class='symbol'>:user</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="state_changes-instance_method">
+  
+    - (<tt>Object</tt>) <strong>state_changes</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>State changes (transitions or manual adjustments) performed by the user</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 33</span>
+
+<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:state_changes</span><span class='comma'>,</span> <span class='symbol'>:inverse_of</span> <span class='op'>=&gt;</span> <span class='symbol'>:user</span></pre>
     </td>
   </tr>
 </table>
@@ -1490,10 +1676,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-31</pre>
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_title'>title</span><span class='semicolon'>;</span> <span class='id identifier rubyid_nickname'>nickname</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1506,7 +1692,7 @@ For user information or role, use UserProfile</p>
 </div>
 
     <div id="footer">
-  Generated on Tue Jul  9 15:25:55 2013 by
+  Generated on Sat Oct  5 10:08:35 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>

@@ -1478,7 +1478,8 @@ correct type. Intended to be used on records resulting from a call to the
 160
 161
 162
-163</pre>
+163
+164</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/expense_report.rb', line 152</span>
@@ -1487,7 +1488,8 @@ correct type. Intended to be used on records resulting from a call to the
   <span class='comment'># At this point creating a more generic solution is not worthy, we simply
 </span>  <span class='comment'># check explicitly for one of the three special cases
 </span>  <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span> <span class='op'>==</span> <span class='symbol'>:sum_amount</span>
-    <span class='const'>BigDecimal</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_sum_amount'>sum_amount</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0.0</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='comment'># to_f.to_s to ensure that it has a decimal part (with any db engine)
+</span>    <span class='const'>BigDecimal</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_sum_amount'>sum_amount</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0.0</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>elsif</span> <span class='lbracket'>[</span><span class='symbol'>:event_start_date</span><span class='comma'>,</span> <span class='symbol'>:event_end_date</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
     <span class='id identifier rubyid_d'>d</span> <span class='op'>=</span> <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>?</span> <span class='kw'>nil</span> <span class='op'>:</span> <span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_d'>d</span><span class='rparen'>)</span>
@@ -1505,7 +1507,7 @@ correct type. Intended to be used on records resulting from a call to the
 </div>
 
     <div id="footer">
-  Generated on Tue Jul  9 15:25:57 2013 by
+  Generated on Sat Oct  5 10:08:38 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>

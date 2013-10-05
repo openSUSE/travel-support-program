@@ -251,6 +251,31 @@ and destroy the event.</p>
       <li class="public ">
   <span class="summary_signature">
     
+      <a href="#reimbursement_creation_deadline-instance_method" title="#reimbursement_creation_deadline (instance method)">- (DateTime) <strong>reimbursement_creation_deadline</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#request_creation_deadline-instance_method" title="#request_creation_deadline (instance method)">- (DateTime) <strong>request_creation_deadline</strong> </a>
     
 
@@ -414,7 +439,7 @@ and destroy the event.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#requests-instance_method" title="#requests (instance method)">- (Array&lt;Request&gt;) <strong>requests</strong> </a>
+      <a href="#requests-instance_method" title="#requests (instance method)">- (Object) <strong>requests</strong> </a>
     
 
     
@@ -428,7 +453,40 @@ and destroy the event.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Requests for attending the event.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Has and belongs to many
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#budgets-instance_method" title="#budgets (instance method)">- (Object) <strong>budgets</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Budgets to use as a limit for approved amounts.</p>
+</div></span>
   
 </li>
 
@@ -474,6 +532,29 @@ permissions on the event.</p>
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#accepting_reimbursements%3F-instance_method" title="#accepting_reimbursements? (instance method)">- (Boolean) <strong>accepting_reimbursements?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Check if new reimbursements can be created based on reimbursement_creation_deadline.</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -592,10 +673,10 @@ and start_date.</p>
       <pre class="lines">
 
 
-68</pre>
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 87</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>country_code</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -642,12 +723,12 @@ and start_date.</p>
       <pre class="lines">
 
 
-73</pre>
+92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 92</span>
 
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                      <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
   </tr>
 </table>
@@ -692,10 +773,10 @@ and start_date.</p>
       <pre class="lines">
 
 
-67</pre>
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 86</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>description</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -742,10 +823,10 @@ and start_date.</p>
       <pre class="lines">
 
 
-71</pre>
+90</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 90</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_date'>date</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>end_date</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -792,12 +873,62 @@ and start_date.</p>
       <pre class="lines">
 
 
-66</pre>
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 66</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 85</span>
 
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                      <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                            <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="reimbursement_creation_deadline=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="reimbursement_creation_deadline-instance_method">
+  
+    - (<tt>DateTime</tt>) <strong>reimbursement_creation_deadline</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>DateTime</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+96</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 96</span>
+
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>reimbursement_creation_deadline</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
   </tr>
 </table>
@@ -842,10 +973,10 @@ and start_date.</p>
       <pre class="lines">
 
 
-76</pre>
+95</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 95</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>request_creation_deadline</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -892,10 +1023,10 @@ and start_date.</p>
       <pre class="lines">
 
 
-70</pre>
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 89</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_date'>date</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>start_date</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -942,12 +1073,12 @@ and start_date.</p>
       <pre class="lines">
 
 
-74</pre>
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 93</span>
 
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>updated_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>updated_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                      <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
   </tr>
 </table>
@@ -992,10 +1123,10 @@ and start_date.</p>
       <pre class="lines">
 
 
-69</pre>
+88</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 69</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 88</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>url</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1042,10 +1173,10 @@ and start_date.</p>
       <pre class="lines">
 
 
-72</pre>
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 72</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 91</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_boolean'>boolean</span>  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>validated</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1092,10 +1223,10 @@ and start_date.</p>
       <pre class="lines">
 
 
-75</pre>
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 94</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_boolean'>boolean</span>  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>visa_letters</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1153,15 +1284,15 @@ permissions on the event.</p>
       <pre class="lines">
 
 
-50
-51
-52</pre>
+68
+69
+70</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 68</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_validation_attributes'>validation_attributes</span>
-  <span class='lbracket'>[</span><span class='symbol'>:validated</span><span class='comma'>,</span> <span class='symbol'>:visa_letters</span><span class='comma'>,</span> <span class='symbol'>:request_creation_deadline</span><span class='rbracket'>]</span>
+  <span class='lbracket'>[</span><span class='symbol'>:validated</span><span class='comma'>,</span> <span class='symbol'>:visa_letters</span><span class='comma'>,</span> <span class='symbol'>:request_creation_deadline</span><span class='comma'>,</span> <span class='symbol'>:reimbursement_creation_deadline</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1175,7 +1306,72 @@ permissions on the event.</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="accepting_requests?-instance_method">
+  <h3 class="signature first" id="accepting_reimbursements?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>accepting_reimbursements?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Check if new reimbursements can be created based on reimbursement_creation_deadline</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>true if accepting new reimbursements</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58
+59
+60
+61
+62</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_accepting_reimbursements?'>accepting_reimbursements?</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_reimbursement_creation_deadline'>reimbursement_creation_deadline</span>
+    <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_zone'>zone</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_reimbursement_creation_deadline'>reimbursement_creation_deadline</span>
+  <span class='kw'>else</span>
+    <span class='kw'>true</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="accepting_requests?-instance_method">
   
     - (<tt>Boolean</tt>) <strong>accepting_requests?</strong> 
   
@@ -1217,24 +1413,60 @@ and start_date</p>
       <pre class="lines">
 
 
-38
-39
-40
-41
-42
-43
-44</pre>
+45
+46
+47
+48
+49
+50
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_accepting_requests?'>accepting_requests?</span>
-  <span class='id identifier rubyid_open'>open</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_start_date'>start_date</span><span class='rparen'>)</span> <span class='kw'>rescue</span> <span class='kw'>false</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_open'>open</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_request_creation_deadline'>request_creation_deadline</span>
-    <span class='id identifier rubyid_open'>open</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_request_creation_deadline'>request_creation_deadline</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_request_creation_deadline'>request_creation_deadline</span>
+    <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_zone'>zone</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_request_creation_deadline'>request_creation_deadline</span>
+  <span class='kw'>else</span>
+    <span class='lparen'>(</span><span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_start_date'>start_date</span><span class='rparen'>)</span> <span class='kw'>rescue</span> <span class='kw'>false</span>
   <span class='kw'>end</span>
-  <span class='id identifier rubyid_open'>open</span>
 <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="budgets-instance_method">
+  
+    - (<tt>Object</tt>) <strong>budgets</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Budgets to use as a limit for approved amounts</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 17</span>
+
+<span class='id identifier rubyid_has_and_belongs_to_many'>has_and_belongs_to_many</span> <span class='symbol'>:budgets</span></pre>
     </td>
   </tr>
 </table>
@@ -1282,12 +1514,12 @@ and start_date</p>
       <pre class="lines">
 
 
-30
-31
-32</pre>
+37
+38
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_can_be_destroyed?'>can_be_destroyed?</span>
   <span class='id identifier rubyid_requests'>requests</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -1340,12 +1572,12 @@ authorized users can do it</p>
       <pre class="lines">
 
 
-23
-24
-25</pre>
+30
+31
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 30</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_editable_by_requesters?'>editable_by_requesters?</span>
   <span class='kw'>not</span> <span class='id identifier rubyid_validated'>validated</span>
@@ -1358,7 +1590,7 @@ authorized users can do it</p>
       <div class="method_details ">
   <h3 class="signature " id="requests-instance_method">
   
-    - (<tt>Array&lt;<span class='object_link'><a href="Request.html" title="Request (class)">Request</a></span>&gt;</tt>) <strong>requests</strong> 
+    - (<tt>Object</tt>) <strong>requests</strong> 
   
 
   
@@ -1366,32 +1598,13 @@ authorized users can do it</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p>Requests for attending the event</p>
+
 
   </div>
 </div>
 <div class="tags">
   
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Request.html" title="Request (class)">Request</a></span>&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-  <p class="tag_title">See Also:</p>
-  <ul class="see">
-    
-      <li>http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html</li>
-    
-  </ul>
 
 </div><table class="source_code">
   <tr>
@@ -1399,10 +1612,10 @@ authorized users can do it</p>
       <pre class="lines">
 
 
-12</pre>
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 15</span>
 
 <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:requests</span><span class='comma'>,</span> <span class='symbol'>:inverse_of</span> <span class='op'>=&gt;</span> <span class='symbol'>:event</span></pre>
     </td>
@@ -1415,7 +1628,7 @@ authorized users can do it</p>
 </div>
 
     <div id="footer">
-  Generated on Tue Jul  9 15:25:56 2013 by
+  Generated on Sat Oct  5 10:08:35 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>

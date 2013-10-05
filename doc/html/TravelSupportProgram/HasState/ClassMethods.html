@@ -161,6 +161,28 @@ Used for sending important notifications.</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#notify_inactive_since-instance_method" title="#notify_inactive_since (instance method)">- (Object) <strong>notify_inactive_since</strong>(date) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#roles_assigned_to-instance_method" title="#roles_assigned_to (instance method)">- (Array) <strong>roles_assigned_to</strong>(state) </a>
     
 
@@ -284,21 +306,21 @@ notifications and also as a default filter on lists.</p>
       <pre class="lines">
 
 
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116</pre>
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 123</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_assign_state'>assign_state</span><span class='lparen'>(</span><span class='id identifier rubyid_state_name'>state_name</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_to'>to</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:to</span><span class='rbracket'>]</span>
@@ -351,12 +373,48 @@ Used for sending important notifications</p>
       <pre class="lines">
 
 
-94</pre>
+112</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 94</span>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 112</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_involved_roles'>involved_roles</span><span class='semicolon'>;</span> <span class='ivar'>@assigned_states</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="notify_inactive_since-instance_method">
+  
+    - (<tt>Object</tt>) <strong>notify_inactive_since</strong>(date) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+159
+160
+161
+162
+163
+164</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 159</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_notify_inactive_since'>notify_inactive_since</span><span class='lparen'>(</span><span class='id identifier rubyid_date'>date</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>state in (?) and state_updated_at &lt; ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='ivar'>@assigned_roles</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='comma'>,</span> <span class='id identifier rubyid_date'>date</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_joins'>joins</span><span class='lparen'>(</span><span class='symbol'>:user</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_m'>m</span><span class='op'>|</span>
+    <span class='id identifier rubyid_people'>people</span> <span class='op'>=</span> <span class='id identifier rubyid_roles_assigned_to'>roles_assigned_to</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_state'>state</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_i'>i</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span> <span class='op'>==</span> <span class='symbol'>:requester</span> <span class='op'>?</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>:</span> <span class='id identifier rubyid_i'>i</span> <span class='rbrace'>}</span>
+    <span class='const'>HasStateMailer</span><span class='op'>::</span><span class='id identifier rubyid_notify_to'>notify_to</span><span class='lparen'>(</span><span class='id identifier rubyid_people'>people</span><span class='comma'>,</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='id identifier rubyid_m'>m</span><span class='comma'>,</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_human_state_name'>human_state_name</span><span class='comma'>,</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_state_updated_at'>state_updated_at</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -430,12 +488,12 @@ Used for sending important notifications</p>
       <pre class="lines">
 
 
-137
-138
-139</pre>
+155
+156
+157</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 137</span>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 155</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_roles_assigned_to'>roles_assigned_to</span><span class='lparen'>(</span><span class='id identifier rubyid_state'>state</span><span class='rparen'>)</span>
   <span class='ivar'>@assigned_roles</span><span class='lbracket'>[</span><span class='id identifier rubyid_state'>state</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -513,17 +571,17 @@ Used for sending important notifications</p>
       <pre class="lines">
 
 
-123
-124
-125
-126
-127
-128
-129
-130</pre>
+141
+142
+143
+144
+145
+146
+147
+148</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 123</span>
+      <pre class="code"><span class="info file"># File 'lib/travel_support_program/has_state.rb', line 141</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_states_assigned_to'>states_assigned_to</span><span class='lparen'>(</span><span class='id identifier rubyid_role'>role</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_role'>role</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>UserRole</span><span class='rparen'>)</span>
@@ -543,7 +601,7 @@ Used for sending important notifications</p>
 </div>
 
     <div id="footer">
-  Generated on Tue Jul  9 15:25:54 2013 by
+  Generated on Sat Oct  5 10:08:34 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>

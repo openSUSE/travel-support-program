@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
-  Class: StateTransition
+  Class: StateAdjustment
   
     &mdash; Documentation by YARD 0.8.5.2
   
@@ -34,7 +34,7 @@
     <a href="_index.html">Index (S)</a> &raquo;
     
     
-    <span class="title">StateTransition</span>
+    <span class="title">StateAdjustment</span>
   
 
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
@@ -63,7 +63,7 @@
 
     <iframe id="search_frame"></iframe>
 
-    <div id="content"><h1>Class: StateTransition
+    <div id="content"><h1>Class: StateAdjustment
   
   
   
@@ -82,7 +82,7 @@
           
             <li class="next"><span class='object_link'><a href="StateChange.html" title="StateChange (class)">StateChange</a></span></li>
           
-            <li class="next">StateTransition</li>
+            <li class="next">StateAdjustment</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -98,22 +98,36 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">app/models/state_transition.rb</dd>
+    <dd class="r2 last">app/models/state_adjustment.rb</dd>
   
 </dl>
 <div class="clear"></div>
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>Transition of a state machine (a request, a reimbursement...) from one state
-to another, using the state machine methods. Saving the StateTransition to the
-database will correctly update the associated state machine automatically.</p>
+    <p>Manual and arbitrary adjustment in the state of a state machine (a request,
+reimbursement, etc.) ignoring the transitions definitions in the state
+machine. Saving the StateAdjustment to the database will update the associated
+state machine automatically.</p>
+
+<p>StateAdjustment objects should only be used in situations in which
+StateTransition is not applicable. In order to keep the information as sane
+as possible, state transitions are cleary encouraged instead of state
+adjustments, since the former follows the the state machine specification and
+the later can break the expected workflow.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="StateTransition.html" title="StateTransition (class)">StateTransition</a></span></li>
+    
+  </ul>
 
 </div>
 
@@ -209,15 +223,15 @@ database will correctly update the associated state machine automatically.</p>
       <pre class="lines">
 
 
-12
-13
-14</pre>
+20
+21
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/state_transition.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'app/models/state_adjustment.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_human_action_name'>human_action_name</span>
-  <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>activerecord.state_machines.events.</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_state_event'>state_event</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>activerecord.models.state_change.action_name</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
