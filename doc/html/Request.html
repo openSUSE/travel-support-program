@@ -121,8 +121,7 @@ This class contains 1 state machine(s).
 
 
   <h3>state</h3>
-  <p>Automatic yardoc+graphviz generator is confused by the :unless parameter, so
-please simply ignore the unless -&gt; has_no_expenses states in the resulting drawing</p>
+  <p></p>
   
   
   <img alt="State machine diagram for state" src="Request_state.png" />
@@ -1680,6 +1679,8 @@ yet started.</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -1703,12 +1704,10 @@ yet started.</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -1969,6 +1968,8 @@ yet started.</p>
       <pre class="lines">
 
 
+168
+169
 170
 171
 172
@@ -1978,12 +1979,10 @@ yet started.</p>
 176
 177
 178
-179
-180
-181</pre>
+179</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 170</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 168</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_expenses_sum'>expenses_sum</span><span class='lparen'>(</span><span class='id identifier rubyid_attr'>attr</span> <span class='op'>=</span> <span class='symbol'>:total</span><span class='comma'>,</span> <span class='id identifier rubyid_requests'>requests</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_currency_field'>currency_field</span> <span class='op'>=</span> <span class='const'>RequestExpense</span><span class='period'>.</span><span class='id identifier rubyid_currency_field_for'>currency_field_for</span><span class='lparen'>(</span><span class='id identifier rubyid_attr'>attr</span><span class='rparen'>)</span>
@@ -2063,6 +2062,8 @@ yet started.</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -2086,12 +2087,10 @@ yet started.</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -2185,6 +2184,8 @@ yet started.</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -2208,12 +2209,10 @@ yet started.</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -2377,6 +2376,8 @@ yet started.</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -2400,12 +2401,10 @@ yet started.</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -2516,6 +2515,8 @@ yet started.</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -2539,12 +2540,10 @@ yet started.</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -2688,6 +2687,8 @@ yet started.</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -2711,12 +2712,10 @@ yet started.</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -2791,6 +2790,8 @@ yet started.</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -2814,12 +2815,10 @@ yet started.</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -2913,6 +2912,8 @@ yet started.</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -2936,12 +2937,10 @@ yet started.</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -3052,6 +3051,8 @@ yet started.</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -3075,12 +3076,10 @@ yet started.</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -3224,6 +3223,8 @@ yet started.</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -3247,12 +3248,10 @@ yet started.</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -3327,6 +3326,8 @@ yet started.</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -3350,12 +3351,10 @@ yet started.</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -3499,6 +3498,8 @@ yet started.</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -3522,12 +3523,10 @@ yet started.</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -3671,6 +3670,8 @@ yet started.</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -3694,12 +3695,10 @@ yet started.</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -3774,12 +3773,12 @@ yet started.</p>
       <pre class="lines">
 
 
-105
-106
-107</pre>
+103
+104
+105</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 103</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_can_be_destroyed?'>can_be_destroyed?</span>
   <span class='kw'>not</span> <span class='id identifier rubyid_with_transitions?'>with_transitions?</span>
@@ -3838,12 +3837,12 @@ return [Boolean] true if #cancel can be called</p>
       <pre class="lines">
 
 
-116
-117
-118</pre>
+114
+115
+116</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 116</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 114</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_can_cancel?'>can_cancel?</span>
   <span class='kw'>not</span> <span class='id identifier rubyid_canceled?'>canceled?</span> <span class='kw'>and</span> <span class='lparen'>(</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='kw'>or</span> <span class='kw'>not</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_active?'>active?</span><span class='rparen'>)</span>
@@ -3895,12 +3894,12 @@ return [Boolean] true if #cancel can be called</p>
       <pre class="lines">
 
 
-130
-131
-132</pre>
+128
+129
+130</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 130</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 128</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_can_have_final_notes?'>can_have_final_notes?</span>
   <span class='id identifier rubyid_in_final_state?'>in_final_state?</span>
@@ -3952,12 +3951,12 @@ return [Boolean] true if #cancel can be called</p>
       <pre class="lines">
 
 
-123
-124
-125</pre>
+121
+122
+123</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 123</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 121</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_can_have_reimbursement?'>can_have_reimbursement?</span>
   <span class='id identifier rubyid_accepted?'>accepted?</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_accepting_reimbursements?'>accepting_reimbursements?</span><span class='rparen'>)</span>
@@ -4078,6 +4077,8 @@ return [Boolean] true if #cancel can be called</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -4101,12 +4102,10 @@ return [Boolean] true if #cancel can be called</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -4250,6 +4249,8 @@ return [Boolean] true if #cancel can be called</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -4273,12 +4274,10 @@ return [Boolean] true if #cancel can be called</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -4356,12 +4355,12 @@ requester</p>
       <pre class="lines">
 
 
-98
-99
-100</pre>
+96
+97
+98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 96</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cancelable_by_tsp?'>cancelable_by_tsp?</span>
   <span class='id identifier rubyid_can_cancel?'>can_cancel?</span> <span class='kw'>and</span> <span class='kw'>not</span> <span class='id identifier rubyid_accepted?'>accepted?</span>
@@ -4413,6 +4412,8 @@ requester</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -4436,12 +4437,10 @@ requester</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -4516,12 +4515,12 @@ requester</p>
       <pre class="lines">
 
 
-81
-82
-83</pre>
+79
+80
+81</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 79</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_editable_by_requester?'>editable_by_requester?</span>
   <span class='id identifier rubyid_state'>state</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>incomplete</span><span class='tstring_end'>'</span></span>
@@ -4573,12 +4572,12 @@ requester</p>
       <pre class="lines">
 
 
-88
-89
-90</pre>
+86
+87
+88</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 86</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_editable_by_tsp?'>editable_by_tsp?</span>
   <span class='id identifier rubyid_state'>state</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>submitted</span><span class='tstring_end'>'</span></span>
@@ -4735,15 +4734,15 @@ ordered by currencies&#39; alphabetic order</p>
       <pre class="lines">
 
 
+161
+162
 163
 164
 165
-166
-167
-168</pre>
+166</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 163</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 161</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_expenses_sum'>expenses_sum</span><span class='lparen'>(</span><span class='id identifier rubyid_attr'>attr</span> <span class='op'>=</span> <span class='symbol'>:total</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_grouped'>grouped</span> <span class='op'>=</span> <span class='id identifier rubyid_expenses'>expenses</span><span class='period'>.</span><span class='id identifier rubyid_group_by'>group_by</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:#{</span><span class='id identifier rubyid_attr'>attr</span><span class='rbrace'>}</span><span class='tstring_content'>_currency</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -4868,6 +4867,8 @@ ordered by currencies&#39; alphabetic order</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -4891,12 +4892,10 @@ ordered by currencies&#39; alphabetic order</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -4971,12 +4970,12 @@ documentation to work, because it doesn&#39;t work if a string is used in the
       <pre class="lines">
 
 
-74
-75
-76</pre>
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_has_no_expenses?'>has_no_expenses?</span>
   <span class='id identifier rubyid_expenses'>expenses</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -5028,6 +5027,8 @@ documentation to work, because it doesn&#39;t work if a string is used in the
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -5051,12 +5052,10 @@ documentation to work, because it doesn&#39;t work if a string is used in the
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -5131,6 +5130,8 @@ documentation to work, because it doesn&#39;t work if a string is used in the
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -5154,12 +5155,10 @@ documentation to work, because it doesn&#39;t work if a string is used in the
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -5235,12 +5234,12 @@ yet started</p>
       <pre class="lines">
 
 
-138
-139
-140</pre>
+136
+137
+138</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 138</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 136</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_lacks_reimbursement?'>lacks_reimbursement?</span>
   <span class='id identifier rubyid_can_have_reimbursement?'>can_have_reimbursement?</span> <span class='kw'>and</span> <span class='lparen'>(</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_new_record?'>new_record?</span><span class='rparen'>)</span>
@@ -5347,6 +5346,8 @@ yet started</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -5370,12 +5371,10 @@ yet started</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -5486,6 +5485,8 @@ yet started</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -5509,12 +5510,10 @@ yet started</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -5658,6 +5657,8 @@ yet started</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -5681,12 +5682,10 @@ yet started</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -5797,6 +5796,8 @@ yet started</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -5820,12 +5821,10 @@ yet started</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -5981,6 +5980,8 @@ yet started</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -6004,12 +6005,10 @@ yet started</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -6084,6 +6083,8 @@ yet started</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -6107,12 +6108,10 @@ yet started</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -6268,6 +6267,8 @@ yet started</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -6291,12 +6292,10 @@ yet started</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -6452,6 +6451,8 @@ yet started</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -6475,12 +6476,10 @@ yet started</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -6574,6 +6573,8 @@ yet started</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -6597,12 +6598,10 @@ yet started</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -6713,6 +6712,8 @@ yet started</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -6736,12 +6737,10 @@ yet started</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -6885,6 +6884,8 @@ yet started</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -6908,12 +6909,10 @@ yet started</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -6988,6 +6987,8 @@ yet started</p>
       <pre class="lines">
 
 
+35
+36
 37
 38
 39
@@ -7011,12 +7012,10 @@ yet started</p>
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 35</span>
 
 <span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
 
@@ -7091,12 +7090,12 @@ yet started</p>
       <pre class="lines">
 
 
-145
-146
-147</pre>
+143
+144
+145</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 145</span>
+      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 143</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visa_letter_allowed?'>visa_letter_allowed?</span>
   <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_try'>try</span><span class='lparen'>(</span><span class='symbol'>:visa_letters</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='kw'>true</span>
@@ -7111,7 +7110,7 @@ yet started</p>
 </div>
 
     <div id="footer">
-  Generated on Sat Oct  5 12:25:24 2013 by
+  Generated on Sat Oct  5 12:48:00 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>
