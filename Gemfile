@@ -48,8 +48,7 @@ gem 'auditor'
 gem 'prawn_rails'
 gem 'axlsx_rails'
 gem 'clockwork'
-# As gem is not updated since Jan-2012, git version in order to use not-so-new features as YARD integration.
-gem "state_machine", :git => "https://github.com/pluginaweek/state_machine"
+gem "state_machine"
 # Added to avoid an error in every rake execution caused by lib/tasks/doc.rake
 # (at least until we figure out a cleaner solution)
 gem "yard"
@@ -71,8 +70,7 @@ group :test do
   gem "capybara-email"
   gem "capybara-webkit"
   gem "shoulda-matchers"
-#  gem "database_cleaner"
-  gem "database_cleaner", :git => 'https://github.com/bmabey/database_cleaner'
+  gem "database_cleaner"
 #  gem "delorean"
 end
 

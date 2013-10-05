@@ -1,15 +1,3 @@
-GIT
-  remote: https://github.com/bmabey/database_cleaner
-  revision: 5dc784af6661fd9067953458fbac1b2e0334f0db
-  specs:
-    database_cleaner (1.0.1)
-
-GIT
-  remote: https://github.com/pluginaweek/state_machine
-  revision: 5660706f2ddec8a111ce61cee2a655aa535a1eeb
-  specs:
-    state_machine (1.1.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -87,6 +75,7 @@ GEM
     coffee-script-source (1.5.0)
     commonjs (0.2.6)
     daemons (1.1.9)
+    database_cleaner (1.1.1)
     date_validator (0.6.4)
       activemodel (>= 3)
     delayed_job (3.0.5)
@@ -235,6 +224,7 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.6)
+    state_machine (1.2.0)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
@@ -276,7 +266,7 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 3.2.1)
   daemons
-  database_cleaner!
+  database_cleaner
   date_validator
   delayed_job_active_record
   devise
@@ -300,7 +290,7 @@ DEPENDENCIES
   show_for
   simple_form
   sqlite3
-  state_machine!
+  state_machine
   therubyracer
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
