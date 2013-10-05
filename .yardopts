@@ -1,0 +1,11 @@
+-o doc/html
+--markup markdown
+--tag callback
+--plugin activerecord
+--plugin state_machine
+app/helpers/*.rb
+app/inputs/*.rb
+lib/travel_support_program/*.rb
+app/models/*.rb
+db/schema.rb -
+doc/ABOUT.md doc/USERGUIDE.md LICENSE
