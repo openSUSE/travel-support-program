@@ -79,7 +79,10 @@ class Reimbursement < ActiveRecord::Base
       transition :accepted => :submitted
     end
 
-    state :canceled
+    # The empty block for this state is needed to prevent yardoc's error
+    # during automatic documentation generation
+    state :canceled do
+    end
   end
 
   # @see HasState.assign_state

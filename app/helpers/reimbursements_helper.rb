@@ -117,8 +117,8 @@ module ReimbursementsHelper
   # Outputs the value for the given reimbursement of one of the check request's
   # fields
   #
-  # @param [Reimbursement] reimbursement
-  # @param [#to_sym] field the name of one of the fields defined in check requests
+  # @param [Reimbursement] reimb   the reimbursement
+  # @param [#to_sym]  field  the name of one of the fields defined in check requests
   # @return [String] value to show in the resulting pdf
   def check_request_value(reimb, field)
     case field.to_sym
@@ -144,7 +144,7 @@ module ReimbursementsHelper
   # Checks whether the current user should be authorized to read the pdf version of a reimbursement, since the
   # pdf version includes information about the user profile and bank information.
   #
-  # @param [Reimbursement] reimbursement
+  # @param [Reimbursement] reimb  the reimbursement
   # @return [Boolean] true if authorized
   def can_read_pdf_for?(reimb)
     can?(:read, reimb) && can?(:read, reimb.user.profile) && (reimb.bank_account.nil? || can?(:read, reimb.bank_account))

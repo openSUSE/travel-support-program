@@ -33,7 +33,7 @@ class BankAccount < ActiveRecord::Base
 
   # Internationalized version of an account format
   #
-  # @params [#to_s] format
+  # @param [#to_s] format  account format (iban or national)
   # @return [String] human version of format
   def self.human_format_name(format)
     I18n.t("activerecord.models.bank_account.formats.#{format}")
