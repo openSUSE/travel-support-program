@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'ruby-debug'
+# require 'ruby-debug'
 
 feature "Acceptance info", "" do
   fixtures :all
