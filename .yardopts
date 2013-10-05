@@ -1,4 +1,3 @@
--o doc/html
 --markup markdown
 --tag callback
 --plugin activerecord
