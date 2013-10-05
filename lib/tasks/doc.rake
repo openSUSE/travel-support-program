@@ -1,4 +1,4 @@
-require "yard"
+require "fix_state_machine_yard"
 
 namespace :doc do
   desc "Technical documentation"
