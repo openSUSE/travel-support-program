@@ -3,7 +3,7 @@ require "fix_state_machine_yard"
 namespace :doc do
   desc "Technical documentation"
   YARD::Rake::YardocTask.new("html") do |doc|
-    doc.options += ["-o", "doc/html"]
+    doc.options += ["-o", "doc/html", "--plugin", "activerecord", "--plugin", "state_machine"]
 
     doc.after = Proc.new {
       images_path = Rails.root.join('app', 'assets', 'images')
