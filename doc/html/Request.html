@@ -571,29 +571,6 @@ the amount that is going to be reimbursed.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#%3Aunless%3F-instance_method" title="#:unless? (instance method)">- (Boolean) <strong>:unless?</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Checks whether :&quot;:unless&quot; is the current state.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#accept-instance_method" title="#accept (instance method)">- (Boolean) <strong>accept</strong>(*args) </a>
     
 
@@ -1116,29 +1093,6 @@ it by currency.</p>
 
   
     <span class="summary_desc"><div class='inline'><p>Checks is expenses.empty?.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#has_no_expenses%3F%3F-instance_method" title="#has_no_expenses?? (instance method)">- (Boolean) <strong>has_no_expenses??</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Checks whether :has_no_expenses? is the current state.</p>
 </div></span>
   
 </li>
@@ -2363,110 +2317,7 @@ yet started.</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id=":unless?-instance_method">
-  
-    - (<tt>Boolean</tt>) <strong>:unless?</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>Checks whether :&quot;:unless&quot; is the current state.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Boolean</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>+true+ if this is the current state, otherwise +false+</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
-
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span><span class='comma'>,</span> <span class='symbol'>:unless</span> <span class='op'>=&gt;</span> <span class='symbol'>:has_no_expenses?</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:approve</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:approved</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:accept</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
-  <span class='kw'>end</span>
-
-  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
-</span>  <span class='comment'># during automatic documentation generation
-</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="accept-instance_method">
+  <h3 class="signature first" id="accept-instance_method">
   
     - (<tt>Boolean</tt>) <strong>accept</strong>(*args) 
   
@@ -5136,109 +4987,6 @@ documentation to work, because it doesn&#39;t work if a string is used in the
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="has_no_expenses??-instance_method">
-  
-    - (<tt>Boolean</tt>) <strong>has_no_expenses??</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>Checks whether :has_no_expenses? is the current state.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Boolean</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>+true+ if this is the current state, otherwise +false+</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/models/request.rb', line 37</span>
-
-<span class='id identifier rubyid_state_machine'>state_machine</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='symbol'>:initial</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:submit</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:incomplete</span> <span class='op'>=&gt;</span> <span class='symbol'>:submitted</span><span class='comma'>,</span> <span class='symbol'>:unless</span> <span class='op'>=&gt;</span> <span class='symbol'>:has_no_expenses?</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:approve</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:approved</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:accept</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:accepted</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_event'>event</span> <span class='symbol'>:roll_back</span> <span class='kw'>do</span>
-    <span class='comment'># Separated transitions because grouping them using arrays confuses the
-</span>    <span class='comment'># Graphviz task for automatic documentation
-</span>    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:submitted</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
-    <span class='id identifier rubyid_transition'>transition</span> <span class='symbol'>:approved</span> <span class='op'>=&gt;</span> <span class='symbol'>:incomplete</span>
-  <span class='kw'>end</span>
-
-  <span class='comment'># The empty block for this state is needed to prevent yardoc's error
-</span>  <span class='comment'># during automatic documentation generation
-</span>  <span class='id identifier rubyid_state'>state</span> <span class='symbol'>:canceled</span> <span class='kw'>do</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
   <h3 class="signature " id="human_state_name-instance_method">
   
     - (<tt>String</tt>) <strong>human_state_name</strong> 
@@ -7363,7 +7111,7 @@ yet started</p>
 </div>
 
     <div id="footer">
-  Generated on Sat Oct  5 10:08:36 2013 by
+  Generated on Sat Oct  5 12:25:24 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.5.2 (ruby-1.9.3).
 </div>
