@@ -10,7 +10,7 @@ or the KDE e.V. Travel Cost Reimbursement initiative.
 Although been developed initially at the openSUSE Team at SUSE, the goal is to
 write a generic application including all the common features so it can be extended
 and adapted to fulfill the needs of any organization. This is achieved using
-widely used and flexible components as [Bootstrap](http://github.com/twitter/bootstrap)
+widely used and flexible components like [Bootstrap](http://github.com/twitter/bootstrap)
 for the frontend layout or [Devise](https://github.com/plataformatec/devise)
 for user authentication.
 
