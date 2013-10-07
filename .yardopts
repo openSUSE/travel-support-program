@@ -1,5 +1,6 @@
 --markup markdown
 --tag callback
+--plugin activerecord
 app/helpers/*.rb
 app/inputs/*.rb
 lib/travel_support_program/*.rb
