@@ -45,10 +45,10 @@ the accounting responsible before the payment order can be issued.
 
 ## When
 
-For obvious reasons, requests should be accepted before the event starts.
-Usually there is a maximum period of time for reimbursements after the event
-have finished. Requests and reimbursements exceding those time limits could be
-cancelled.
+For every event, a deadline can be set for both requests (with the event's start
+date as a default deadline in no other is set) and reimbursements. The
+application will prevent the creation of requests and reimbursements out of the
+expected time frames.
 
 ## Where
 
