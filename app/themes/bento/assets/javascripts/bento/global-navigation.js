@@ -26,6 +26,10 @@ $(document).ready(function() {
     $('#global-navigation').after(html);
 
     $('#global-navigation li[id^=item-]').click(function(){
+        // Disable dropdown menu if the navbar has become collapsible
+        if ($(".btn-navbar").is(':visible')) {
+            return true;
+        }
         var name = $(this).attr('id').substring(5);
         $("ul[id^=menu-]:visible").each(function() {
             $(this).fadeOut('fast');
