@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
     :budget_ids
 
   # Requests for attending the event
-  has_many :requests, :inverse_of => :event
+  has_many :requests, :inverse_of => :event, :dependent => :restrict
   # Budgets to use as a limit for approved amounts
   has_and_belongs_to_many :budgets
 

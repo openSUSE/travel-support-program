@@ -12,7 +12,7 @@ module TravelSupportProgram
         # Requester, that is, the user asking for help.
         belongs_to :user
         # State changes are logged as StateChange records
-        has_many :state_changes, :as => :machine
+        has_many :state_changes, :as => :machine, :dependent => :destroy
         # Transitions are logged as StateTransition records
         has_many :transitions, :as => :machine, :class_name => "StateTransition"
         # Manual adjustments in the state are logged as StateAdjustment records

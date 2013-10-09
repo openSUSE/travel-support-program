@@ -9,14 +9,14 @@ class Reimbursement < ActiveRecord::Base
   # will be updated during reimbursement process
   has_many :expenses, :through => :request, :autosave => false
   # Attachments for providing invoices and reports
-  has_many :attachments, :class_name => "ReimbursementAttachment", :inverse_of => :reimbursement
+  has_many :attachments, :class_name => "ReimbursementAttachment", :inverse_of => :reimbursement, :dependent => :destroy
   # Links pointing to reports (ie., blog posts) regarding the requester
   # participation in the event
-  has_many :links, :class_name => "ReimbursementLink", :inverse_of => :reimbursement
+  has_many :links, :class_name => "ReimbursementLink", :inverse_of => :reimbursement, :dependent => :destroy
   # Final notes are comments that users can add as feedback to a finished reimbursement
-  has_many :final_notes, :as => :machine
+  has_many :final_notes, :as => :machine, :dependent => :destroy
   # Can have several payments, not related to the number of expenses
-  has_many :payments, :inverse_of => :reimbursement
+  has_many :payments, :inverse_of => :reimbursement, :dependent => :restrict
   # Bank information goes to another model
   has_one :bank_account, :inverse_of => :reimbursement, :dependent => :destroy, :autosave => true
 

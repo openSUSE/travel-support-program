@@ -8,11 +8,11 @@ class Request < ActiveRecord::Base
   # Estimated expenses, including (for every expense) the estimated amount,
   # the amount of the help that TSP approves, the amount finally expended and
   # the amount that is going to be reimbursed
-  has_many :expenses, :class_name => "RequestExpense", :inverse_of => :request
+  has_many :expenses, :class_name => "RequestExpense", :inverse_of => :request, :dependent => :destroy
   # Every accepted request is followed by a reimbursement process
-  has_one :reimbursement, :inverse_of => :request
+  has_one :reimbursement, :inverse_of => :request, :dependent => :restrict
   # Final notes are comments that users can add as feedback to a finished request
-  has_many :final_notes, :as => :machine
+  has_many :final_notes, :as => :machine, :dependent => :destroy
 
   accepts_nested_attributes_for :expenses, :reject_if => :all_blank, :allow_destroy => true
 
