@@ -190,27 +190,28 @@ class Request < ActiveRecord::Base
   # associated to the event.
   def dont_exceed_budget
     if TravelSupportProgram::Config.setting :budget_limits
-      budget_ids = event.budget_ids
-      budgets = event.budgets
-      expenses.group_by(&:approved_currency).each do |currency, cexpenses|
-        more_expenses = RequestExpense.joins(:request => {:event => :budgets})
-        more_expenses = more_expenses.where("budgets.currency" => currency)
-        more_expenses = more_expenses.where("request_expenses.approved_currency" => currency)
-        more_expenses = more_expenses.where(["requests.state in (?)", %w(approved accepted)])
-        more_expenses = more_expenses.where(["budgets.id in (?) and requests.id <> ?", budget_ids, id])
+      budget = event.budget
+      currency = budget ? budget.currency : nil
 
-        if budgets.where(:currency => currency).count.zero?
-          errors.add(:expenses, :no_budget_found)
-          return
-        else
-          limit = budgets.where(:currency => currency).sum(:amount)
-          total = more_expenses.sum(:approved_amount) + cexpenses.sum(&:approved_amount)
-          if limit < total
-            errors.add(:expenses, :budget_exceeded)
-            return
-          end
-        end
+      # With the current implementation, it should be only one approved currency
+      if currency.nil? || expenses.any? {|e| e.approved_currency != currency }
+        errors.add(:expenses, :no_budget_found)
+        return
       end
+
+      # Expenses for other requests using the same budget
+      more_expenses = RequestExpense.includes(:request => [:event, :reimbursement])
+      more_expenses = more_expenses.where("events.budget_id" => budget.id)
+      more_expenses = more_expenses.where("request_expenses.approved_currency" => currency)
+      more_expenses = more_expenses.where(["requests.id <> ?", id])
+      more_expenses = more_expenses.where(["requests.state in (?)", %w(approved accepted)])
+      # If the request have a canceled reimbursement, it means that the money is in fact available
+      more_expenses = more_expenses.where(["reimbursements.id is null or reimbursements.state <> ?", "canceled"])
+
+      total = more_expenses.where(["authorized_amount is null"]).sum(:approved_amount) +
+              more_expenses.where(["authorized_amount is not null"]).sum(:authorized_amount) +
+              expenses.sum(&:approved_amount)
+      errors.add(:expenses, :budget_exceeded) if total > budget.amount
     end
   end
 end

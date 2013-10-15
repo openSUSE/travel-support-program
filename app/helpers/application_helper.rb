@@ -182,9 +182,16 @@ module ApplicationHelper
   #
   # @param [#to_s]  field  Name of the field as specified in the site.yml file,
   #            like 'estimated' or 'approved'
+  # @param [Event]  event  An optional event in which context the currency is
+  #            going to be defined. Only relevant if budget_limits are enabled.
   # @return [Array]  Array with the currency codes
-  def currencies_for_select(field)
-    currencies = TravelSupportProgram::Config.setting("currencies_for_#{field}")
+  def currencies_for_select(field, event = nil)
+    if TravelSupportProgram::Config.setting(:budget_limits) &&
+          event && event.budget && event.budget.currency &&
+          %w(approved authorized).include?(field.to_s)
+      currencies = [event.budget.currency]
+    end
+    currencies ||= TravelSupportProgram::Config.setting("currencies_for_#{field}")
     currencies ||= I18n.translate(:currencies).keys.sort
   end
 

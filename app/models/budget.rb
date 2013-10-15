@@ -10,7 +10,7 @@
 class Budget < ActiveRecord::Base
   attr_accessible :name, :description, :amount, :currency, :event_ids
   # Events that are covered by the budget
-  has_and_belongs_to_many :events
+  has_many :events
 
   validates :name, :amount, :currency, :presence => true
 

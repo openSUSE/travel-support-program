@@ -14,6 +14,7 @@ class RequestExpense < ActiveRecord::Base
     :authorized_amount
 
   delegate :reimbursement, :to => :request, :prefix => false
+  delegate :event, :to => :request, :prefix => false
 
   validates :request, :subject, :presence => true
   validates :estimated_amount, :estimated_currency, :presence => true, :if => "request && request.submitted?"

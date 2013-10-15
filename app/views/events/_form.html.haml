@@ -12,7 +12,7 @@
       = f.input :reimbursement_creation_deadline, :as => :dpicker, :with_time => true, :format => :long
       = f.input :validated
     - if can? :read, Budget
-      = f.association :budgets
+      = f.association :budget
 
   .form-actions
     = f.button :submit, :class => 'btn-primary'

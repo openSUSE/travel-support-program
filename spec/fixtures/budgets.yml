@@ -2,4 +2,9 @@ general_budget:
   name: "General Alliance Budget"
   amount: 250
   currency: "EUR"
-  events: yavin_hackaton, party, training, dagobah_camp
+
+irrelevant_budget:
+  name: "Irrelevant Budget"
+  description: "Not associated to any event"
+  amount: 1500
+  currency: "EUR"

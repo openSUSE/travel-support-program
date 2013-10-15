@@ -28,7 +28,7 @@
   - if user_signed_in? && can?(:read, Budget)
     .row-fluid
       .span12
-        = r.association :budgets
+        = r.association :budget
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), collection_path, :class => 'btn'

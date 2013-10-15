@@ -4,6 +4,7 @@ yavin_hackaton:
   start_date: <%= 2.days.ago %>
   end_date: <%= 2.days.ago %>
   validated: true
+  budget: general_budget
 
 party:
   name: "Death Star's destruction celebration"
@@ -11,6 +12,7 @@ party:
   start_date: <%= 32.days.since %>
   end_date: <%= 33.days.since %>
   validated: false
+  budget: general_budget
 
 dagobah_camp:
   name: "Dagobah Camp"
@@ -19,6 +21,7 @@ dagobah_camp:
   end_date: <%= 60.days.since %>
   validated: true
   visa_letters: true
+  budget: general_budget
 
 hoth_hackaton:
   name: "Battle of Hoth"
@@ -34,3 +37,4 @@ training:
   start_date: <%= 30.days.ago %>
   end_date: <%= 20.days.ago %>
   validated: true
+  budget: general_budget

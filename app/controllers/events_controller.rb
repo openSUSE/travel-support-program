@@ -22,6 +22,6 @@ class EventsController < InheritedResources::Base
         params[:event].delete(att)
       end
     end
-    params[:event].delete(:budget_ids) if cannot? :read, Budget
+    params[:event].delete(:budget_id) if cannot? :read, Budget
   end
 end

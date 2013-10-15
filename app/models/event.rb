@@ -9,12 +9,12 @@
 class Event < ActiveRecord::Base
   attr_accessible :name, :description, :start_date, :end_date, :url, :country_code,
     :validated, :visa_letters, :request_creation_deadline, :reimbursement_creation_deadline,
-    :budget_ids
+    :budget_id
 
   # Requests for attending the event
   has_many :requests, :inverse_of => :event, :dependent => :restrict
-  # Budgets to use as a limit for approved amounts
-  has_and_belongs_to_many :budgets
+  # Budget to use as a limit for approved amounts
+  belongs_to :budget
 
   validates :name, :start_date, :end_date, :country_code, :presence => true
   validates :end_date, :date => {:after_or_equal_to => :start_date }

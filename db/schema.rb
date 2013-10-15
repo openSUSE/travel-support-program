@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130926075906) do
+ActiveRecord::Schema.define(:version => 20131014112943) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id",                   :null => false
@@ -57,14 +57,6 @@ ActiveRecord::Schema.define(:version => 20130926075906) do
 
   add_index "budgets", ["currency"], :name => "index_budgets_on_currency"
 
-  create_table "budgets_events", :id => false, :force => true do |t|
-    t.integer "event_id"
-    t.integer "budget_id"
-  end
-
-  add_index "budgets_events", ["budget_id"], :name => "index_budgets_events_on_budget_id"
-  add_index "budgets_events", ["event_id"], :name => "index_budgets_events_on_event_id"
-
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
     t.integer  "attempts",   :default => 0
@@ -94,7 +86,10 @@ ActiveRecord::Schema.define(:version => 20130926075906) do
     t.boolean  "visa_letters"
     t.datetime "request_creation_deadline"
     t.datetime "reimbursement_creation_deadline"
+    t.integer  "budget_id"
   end
+
+  add_index "events", ["budget_id"], :name => "index_events_on_budget_id"
 
   create_table "final_notes", :force => true do |t|
     t.integer  "machine_id"
