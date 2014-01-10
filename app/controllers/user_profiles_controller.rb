@@ -1,5 +1,5 @@
 class UserProfilesController < ApplicationController
-  force_ssl_if_available
+  force_ssl :unless => Proc.new { Rails.env.test? || Rails.env.development? }
   before_filter :set_user_and_profile
   before_filter :remove_role_from_params, :only => [:update, :update_password]
 

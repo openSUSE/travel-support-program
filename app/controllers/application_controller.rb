@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
-  extend TravelSupportProgram::ForceSsl
 
-  force_ssl_if_available
+  force_ssl :unless => Proc.new { Rails.env.test? || Rails.env.development? }
   before_filter :authenticate_and_audit_user, :unless => :devise_controller?
   load_and_authorize_resource :unless => :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
