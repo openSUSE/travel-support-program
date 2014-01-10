@@ -1,4 +1,4 @@
-=link_to TravelSupportProgram::Config.setting(:program_name), root_path, :class => "brand"
+=link_to TravelSupport::Config.setting(:program_name), root_path, :class => "brand"
 .container.nav-collapse
   %ul.nav
     - if user_signed_in?
@@ -8,9 +8,9 @@
       - else
         %li= link_to t(:logout), destroy_user_session_path, :method => :delete
     - else
-      - if TravelSupportProgram::Config.setting :authentication, :database, :enabled
+      - if TravelSupport::Config.setting :authentication, :database, :enabled
         %li= link_to t(:login), new_user_session_path
         %li= link_to t(:sign_up), new_registration_path(User)
-      - if TravelSupportProgram::Config.setting :authentication, :ichain, :enabled
+      - if TravelSupport::Config.setting :authentication, :ichain, :enabled
         %li= link_to t(:ichain_login), new_user_ichain_session_path
         %li= link_to t(:ichain_sign_up), new_ichain_registration_path(User)

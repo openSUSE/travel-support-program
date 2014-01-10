@@ -186,7 +186,7 @@ class Request < ActiveRecord::Base
   # Validates that the approved amount doesn't exceed the total of the budgets
   # associated to the event.
   def dont_exceed_budget
-    if TravelSupportProgram::Config.setting :budget_limits
+    if TravelSupport::Config.setting :budget_limits
       budget = event.budget
       currency = budget ? budget.currency : nil
 

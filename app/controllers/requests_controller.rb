@@ -44,7 +44,7 @@ class RequestsController < InheritedResources::Base
   end
 
   def load_subjects 
-    @subjects = TravelSupportProgram::Config.setting :request_expense_subjects
+    @subjects = TravelSupport::Config.setting :request_expense_subjects
   end
 
 end

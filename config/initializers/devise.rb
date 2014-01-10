@@ -4,7 +4,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = TravelSupportProgram::Config.setting(:email_from)
+  config.mailer_sender = TravelSupport::Config.setting(:email_from)
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -242,5 +242,5 @@ Devise.setup do |config|
 
   # ==> iChain authenticatable configuration
   # config.ichain_test_mode = true
-  config.ichain_base_url = TravelSupportProgram::Config.setting(:authentication, :ichain, :base_url)
+  config.ichain_base_url = TravelSupport::Config.setting(:authentication, :ichain, :base_url)
 end

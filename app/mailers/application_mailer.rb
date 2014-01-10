@@ -1,6 +1,6 @@
 class ApplicationMailer < ActionMailer::Base
   helper ApplicationHelper
-  default :from => Proc.new { TravelSupportProgram::Config.setting(:email_from) }
+  default :from => Proc.new { TravelSupport::Config.setting(:email_from) }
 
   # This method assumes that the first parameter of the mailer method is the
   # recipient address (:to)
@@ -20,7 +20,7 @@ class ApplicationMailer < ActionMailer::Base
   end
 
   def self.notify(method, *args)
-   if TravelSupportProgram::Config.setting(:async_emails)
+   if TravelSupport::Config.setting(:async_emails)
       delay.send(method, *args)
     else
       send(method, *args).deliver

@@ -186,12 +186,12 @@ module ApplicationHelper
   #            going to be defined. Only relevant if budget_limits are enabled.
   # @return [Array]  Array with the currency codes
   def currencies_for_select(field, event = nil)
-    if TravelSupportProgram::Config.setting(:budget_limits) &&
+    if TravelSupport::Config.setting(:budget_limits) &&
           event && event.budget && event.budget.currency &&
           %w(approved authorized).include?(field.to_s)
       currencies = [event.budget.currency]
     end
-    currencies ||= TravelSupportProgram::Config.setting("currencies_for_#{field}")
+    currencies ||= TravelSupport::Config.setting("currencies_for_#{field}")
     currencies ||= I18n.translate(:currencies).keys.sort
   end
 
@@ -199,7 +199,7 @@ module ApplicationHelper
   #
   # @return [String] local path of the image
   def pdf_header_image
-    if theme = TravelSupportProgram::Config.setting(:theme)
+    if theme = TravelSupport::Config.setting(:theme)
       path = File.join(Rails.root.to_s, 'app', 'themes', theme, 'assets', 'images', 'pdf', 'header.png')
       return path if File.exists?(path)
     end

@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-TravelSupportProgram::Application.load_tasks
+TravelSupport::Application.load_tasks

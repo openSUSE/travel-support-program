@@ -8,10 +8,10 @@ class User < ActiveRecord::Base
   extend ActiveHash::Associations::ActiveRecordExtensions
 
   devise_modules = []
-  if TravelSupportProgram::Config.setting(:authentication, :ichain, :enabled)
+  if TravelSupport::Config.setting(:authentication, :ichain, :enabled)
     devise_modules += [:ichain_authenticatable, :ichain_registerable]
   end
-  if TravelSupportProgram::Config.setting(:authentication, :database, :enabled)
+  if TravelSupport::Config.setting(:authentication, :database, :enabled)
     devise_modules += [:database_authenticatable, :registerable, :recoverable,
       :rememberable, :trackable, :validatable]
 

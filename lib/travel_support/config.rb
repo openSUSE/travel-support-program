@@ -1,7 +1,7 @@
 #
 # Module for application-wide code
 #
-module TravelSupportProgram
+module TravelSupport
   #
   # Facility class for system configuration
   #

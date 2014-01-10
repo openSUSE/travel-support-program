@@ -30,7 +30,7 @@ class PaymentsController < InheritedResources::Base
   protected
 
   def load_methods
-    @methods = TravelSupportProgram::Config.setting :payment_methods
+    @methods = TravelSupport::Config.setting :payment_methods
   end
 
   def set_breadcrumbs
