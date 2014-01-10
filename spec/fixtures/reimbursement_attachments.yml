@@ -2,3 +2,5 @@ wedge_for_training_attch1:
   reimbursement: wedge_for_training_reim
   title: "Gas invoice"
   file: "scan001.pdf"
+#  file: File.open(Rails.root.join("spec/support/files/scan001.pdf"))
+#   file: Rack::Test::UploadedFile.new(Rails.root.join("spec/support/files/scan001.pdf"), "application/pdf")

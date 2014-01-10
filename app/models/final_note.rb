@@ -14,8 +14,8 @@ class FinalNote < ActiveRecord::Base
 
   after_create :notify_creation
 
-  scope :oldest_first, order("created_at asc")
-  scope :newest_first, order("created_at desc")
+  scope :oldest_first, -> { order("created_at asc") }
+  scope :newest_first, -> { order("created_at desc") }
 
   protected
 

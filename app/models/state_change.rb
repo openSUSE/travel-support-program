@@ -24,8 +24,8 @@ class StateChange < ActiveRecord::Base
 
   validates :from, :to, :user, :machine, :presence => true
 
-  scope :oldest_first, order("created_at asc")
-  scope :newest_first, order("created_at desc")
+  scope :oldest_first, -> { order("created_at asc") }
+  scope :newest_first, -> { order("created_at desc") }
 
   # Short and human readable explanation of the change. To be implemented by
   # subclasses.

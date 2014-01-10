@@ -10,7 +10,7 @@ class Request < ActiveRecord::Base
   # the amount that is going to be reimbursed
   has_many :expenses, :class_name => "RequestExpense", :inverse_of => :request, :dependent => :destroy
   # Every accepted request is followed by a reimbursement process
-  has_one :reimbursement, :inverse_of => :request, :dependent => :restrict
+  has_one :reimbursement, :inverse_of => :request, :dependent => :restrict_with_exception
   # Final notes are comments that users can add as feedback to a finished request
   has_many :final_notes, :as => :machine, :dependent => :destroy
 
@@ -25,7 +25,7 @@ class Request < ActiveRecord::Base
 
   audit(:create, :update, :destroy) {|m,u,a| "#{a} performed on Request by #{u.try(:nickname)}"}
 
-  scope :active, where(["state <> ?", 'canceled'])
+  scope :active, -> { where(["state <> ?", 'canceled']) }
   scope :in_conflict_with, lambda { |req|
     others = active.where(user_id: req.user_id, event_id: req.event_id)
     others = others.where(["id <> ?", req.id]) if req.id
@@ -166,16 +166,13 @@ class Request < ActiveRecord::Base
   end
 
   def self.expenses_sum(attr = :total, requests)
-    currency_field = RequestExpense.currency_field_for(attr)
     amount_field = :"#{attr}_amount"
     if requests.kind_of?(ActiveRecord::Relation)
       r_ids = requests.reorder("").pluck("requests.id")
     else
       r_ids = requests.map {|i| i.kind_of?(Integer) ? i : i.id }
     end
-    RequestExpense.sum(amount_field, :group => currency_field,
-        :conditions => ["#{amount_field} is not null and request_id in (?)", r_ids],
-        :order => currency_field)
+    RequestExpense.by_attr_for_requests(attr, r_ids).sum(amount_field)
   end
 
   protected
@@ -210,7 +207,7 @@ class Request < ActiveRecord::Base
 
       total = more_expenses.where(["authorized_amount is null"]).sum(:approved_amount) +
               more_expenses.where(["authorized_amount is not null"]).sum(:authorized_amount) +
-              expenses.sum(&:approved_amount)
+              expenses.to_a.sum(&:approved_amount)
       errors.add(:expenses, :budget_exceeded) if total > budget.amount
     end
   end

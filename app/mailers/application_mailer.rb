@@ -1,6 +1,6 @@
 class ApplicationMailer < ActionMailer::Base
   helper ApplicationHelper
-  default :from => lambda { TravelSupportProgram::Config.setting(:email_from) }
+  default :from => Proc.new { TravelSupportProgram::Config.setting(:email_from) }
 
   # This method assumes that the first parameter of the mailer method is the
   # recipient address (:to)

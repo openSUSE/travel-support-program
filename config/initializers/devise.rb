@@ -4,7 +4,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
+  config.mailer_sender = TravelSupportProgram::Config.setting(:email_from)
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -237,6 +237,8 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
+
+  config.secret_key = '2c7c74b13fd40b1c8ab023572976cee212568deb37ac2c749a9ec83884feee435fcca771a914161aca33239877634cacb5065994bae79c99df71c7003ac94bc2'
 
   # ==> iChain authenticatable configuration
   # config.ichain_test_mode = true

@@ -1,6 +1,6 @@
 class UserProfilesController < ApplicationController
   force_ssl_if_available
-  before_filter :set_profile
+  before_filter :set_user_and_profile
   before_filter :remove_role_from_params, :only => [:update, :update_password]
 
   def update
@@ -14,7 +14,6 @@ class UserProfilesController < ApplicationController
   end
 
   def update_password
-    @user = current_user
     if @user.update_attributes(params[:user])
       # Sign in the user by passing validation in case his password changed
       sign_in @user, :bypass => true
@@ -25,8 +24,9 @@ class UserProfilesController < ApplicationController
 
   private
   
-  def set_profile
-    @profile = current_user.find_profile
+  def set_user_and_profile
+    @user = current_user
+    @profile = @user.find_profile
     @profile.refresh
   end
 

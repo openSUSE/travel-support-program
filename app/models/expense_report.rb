@@ -157,7 +157,7 @@ class ExpenseReport < ActiveRecord::Base
       BigDecimal.new(sum_amount.to_f.to_s || "0.0")
     elsif [:event_start_date, :event_end_date].include? name.to_sym
       d = send(name)
-      d.blank? ? nil : Date.parse(d)
+      d.blank? ? nil : (d.kind_of?(Date) ? d : Date.parse(d))
     else
       send(name)
     end

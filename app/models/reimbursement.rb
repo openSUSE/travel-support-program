@@ -16,7 +16,7 @@ class Reimbursement < ActiveRecord::Base
   # Final notes are comments that users can add as feedback to a finished reimbursement
   has_many :final_notes, :as => :machine, :dependent => :destroy
   # Can have several payments, not related to the number of expenses
-  has_many :payments, :inverse_of => :reimbursement, :dependent => :restrict
+  has_many :payments, :inverse_of => :reimbursement, :dependent => :restrict_with_exception
   # Bank information goes to another model
   has_one :bank_account, :inverse_of => :reimbursement, :dependent => :destroy, :autosave => true
 

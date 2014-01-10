@@ -24,6 +24,8 @@ describe HasStateMailer do
       before(:each) do
         @reimbursement = @request.create_reimbursement
         @reimbursement.request.expenses.each {|e| e.total_amount = 55 }
+        @reimbursement.create_bank_account(:holder => "Luke", :bank_name => "Bank",
+                                           :format => "iban", :iban => "IBAN", :bic => "BIC")
         @reimbursement.save!
         transition(@reimbursement, :submit, users(:wedge))
         @mail = ActionMailer::Base.deliveries.last

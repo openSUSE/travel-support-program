@@ -11,7 +11,7 @@
       - t_text = f.text_field :name_or_description_cont, :class => "input-small"
       = raw(t(:events_search, :start => t_start, :end => t_end, :text => t_text))
       = f.submit t(:search), :class => "btn"
-      = link_to t(:reset_search), collection_path(:q => {:end_date_gteq => ''}), :class => "btn"
+      = link_to t(:reset_search), collection_path(:q => {:end_date_gteq => '0'}), :class => "btn"
 
 %table.table.table-striped.events
   %thead

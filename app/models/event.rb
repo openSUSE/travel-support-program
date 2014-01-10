@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
     :budget_id
 
   # Requests for attending the event
-  has_many :requests, :inverse_of => :event, :dependent => :restrict
+  has_many :requests, :inverse_of => :event, :dependent => :restrict_with_exception
   # Budget to use as a limit for approved amounts
   belongs_to :budget
 
@@ -21,7 +21,7 @@ class Event < ActiveRecord::Base
 
   audit(:create, :update, :destroy) {|m,u,a| "#{a} performed on Event by #{u.try(:nickname)}"}
 
-  default_scope order('name asc')
+  default_scope { order('name asc') }
 
   # Checks whether the event can be freely updated or destroyed by all users.
   #

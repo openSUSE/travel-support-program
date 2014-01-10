@@ -1,33 +1,35 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.12'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rails', '4.0.2'
 
 # Choose your weapon
 gem 'sqlite3'
 #gem 'pg'
 #gem 'mysql'
 
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 4.0.0'
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier', '>= 1.3.0'
+# Use CoffeeScript for .js.coffee assets and views
+gem 'coffee-rails', '~> 4.0.0'
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'turbolinks'
+# HAML as default
+gem 'haml-rails'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # You should use Node.js on production
-  gem 'therubyracer', :platforms => :ruby
-  gem "less-rails"
-  gem "twitter-bootstrap-rails"
-
-  gem 'uglifier', '>= 1.0.3'
+group :doc do
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'sdoc', require: false
 end
 
-gem 'jquery-rails'
-gem 'haml-rails'
+# less support
+gem 'therubyracer', platforms: :ruby
+gem "less-rails"
+gem "twitter-bootstrap-rails"
+
 gem 'rein'
 gem 'devise'
 gem 'devise_ichain_authenticatable', '>= 0.3.0'
@@ -52,20 +54,19 @@ gem "state_machine"
 # Added to avoid an error in every rake execution caused by lib/tasks/doc.rake
 # (at least until we figure out a cleaner solution)
 gem "yard"
+# For using rails3-style attributes protection
+gem 'protected_attributes'
 
-group :production do
-  gem 'exception_notification'
-end
+gem "rspec-rails", group: [:development, :test]
+gem 'exception_notification', group: :production
 
 group :development do
-  gem "rspec-rails"
   gem "yard-activerecord"
   gem 'ruby-graphviz'
   gem "redcarpet", :require => false
 end
 
 group :test do
-  gem "rspec-rails"
   gem "capybara"
   gem "capybara-email"
   gem "capybara-webkit"

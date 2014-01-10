@@ -26,6 +26,13 @@ class RequestExpense < ActiveRecord::Base
 
   audit(:create, :update, :destroy, :on => :request) {|m,u,a| "#{a} performed on RequestExpense by #{u.try(:nickname)}"}
 
+  # Scope needed by Request.expenses_sum
+  scope :by_attr_for_requests, lambda {|attr, req_ids|
+    currency_field = RequestExpense.currency_field_for(attr)
+    amount_field = :"#{attr}_amount"
+    group(currency_field).where(["#{amount_field} is not null and request_id in (?)", req_ids]).order(currency_field)
+  }
+
   # Convenience method that simply aliases approved_currency since currency
   # cannot be changed after approval
   def total_currency

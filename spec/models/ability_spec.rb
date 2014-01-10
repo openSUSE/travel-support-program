@@ -64,6 +64,8 @@ describe Ability do
         @reimbursement.request.expenses.each do |e|
           e.total_amount = e.estimated_amount + 5
         end
+        @reimbursement.create_bank_account(:holder => "luke", :bank_name => "Bank",
+                                           :format => "iban", :iban => "IBAN", :bic => "BIC")
       end
 
       it{ should be_able_to(:submit, @reimbursement) }
@@ -285,6 +287,8 @@ describe Ability do
         @reimbursement.request.expenses.each do |e|
           e.total_amount = e.estimated_amount + 5
         end
+        @reimbursement.create_bank_account(:holder => "Luke", :bank_name => "Bank",
+                                           :format => "iban", :iban => "IBAN", :bic => "BIC")
       end
 
       it{ should_not be_able_to(:create, Reimbursement.new) }
@@ -472,6 +476,8 @@ describe Ability do
         @reimbursement.request.expenses.each do |e|
           e.total_amount = e.estimated_amount + 5
         end
+        @reimbursement.create_bank_account(:holder => "Luke", :bank_name => "Bank",
+                                           :format => "iban", :iban => "IBAN", :bic => "BIC")
       end
 
       it{ should_not be_able_to(:create, Reimbursement.new) }

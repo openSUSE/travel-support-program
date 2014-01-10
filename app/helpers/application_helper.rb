@@ -146,7 +146,7 @@ module ApplicationHelper
   #
   # @see HasState.assign_state
   def menu_path_to(machine_class)
-    helper = machine_class.model_name.tableize + "_path"
+    helper = machine_class.model_name.to_s.tableize + "_path"
     states = machine_class.states_assigned_to(current_role)
     if states.size == 1
       send(helper, :q => {:state_eq => states.first})
