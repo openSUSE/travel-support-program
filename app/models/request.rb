@@ -2,7 +2,7 @@
 # Request from a user to get help from the TSP for a given event
 #
 class Request < ActiveRecord::Base
-  include TravelSupportProgram::HasState
+  include HasState
   # The event the requester wants to attend.
   belongs_to :event
   # Estimated expenses, including (for every expense) the estimated amount,

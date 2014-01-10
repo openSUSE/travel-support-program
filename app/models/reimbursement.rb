@@ -2,7 +2,7 @@
 # Reimbursement for a given request
 #
 class Reimbursement < ActiveRecord::Base
-  include TravelSupportProgram::HasState
+  include HasState
   # The associated request
   belongs_to :request, :inverse_of => :reimbursement
   # The expenses of the associated request, total_amount and authorized_amount
