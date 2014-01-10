@@ -7,9 +7,7 @@ class ReimbursementAttachment < ActiveRecord::Base
 
   attr_accessible :reimbursement_id, :title, :file, :file_cache
 
-  # TODO FIXME don't let me like this... please
-  # Temporary commented after migrating to Rails 4 since the fixture is not working.
-  validates :reimbursement, :title, :presence => true #:file, :presence => true
+  validates :reimbursement, :title, :file, :presence => true
 
   mount_uploader :file, AttachmentUploader
 
