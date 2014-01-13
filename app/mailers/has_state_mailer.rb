@@ -5,6 +5,6 @@ class HasStateMailer < ApplicationMailer
     @state_name = state_name
     @updated_at = state_updated_at
     @change = @machine.state_changes.newest_first.first
-    mail(:to => to,  :subject => t(:mailer_subject_state, :type => @machine.class.model_name, :id => @machine.id))
+    mail(:to => to,  :subject => t(:mailer_subject_state, :machine => @machine.title))
   end
 end

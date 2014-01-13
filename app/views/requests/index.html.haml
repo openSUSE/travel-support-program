@@ -21,7 +21,7 @@
   %tbody
     - collection.each do |request|
       %tr
-        %td= link_to "##{request.id}", request_path(request)
+        %td= link_to "#{request.label}", request_path(request)
         %td= request.user.try(:title)
         %td= request.event.try(:name)
         %td= expenses_sum(request, :estimated)

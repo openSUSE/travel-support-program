@@ -175,6 +175,20 @@ class Request < ActiveRecord::Base
     RequestExpense.by_attr_for_requests(attr, r_ids).sum(amount_field)
   end
 
+  # Label to identify the request
+  #
+  # @return [String] label based in the id of the request
+  def label
+    "##{id}"
+  end
+
+  # Title to show the request in the UI
+  #
+  # @return [String] Class name and label
+  def title
+    "#{self.class.model_name} #{label}"
+  end
+
   protected
 
   def only_one_active_request

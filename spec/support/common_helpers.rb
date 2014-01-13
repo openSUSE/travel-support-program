@@ -63,7 +63,13 @@ module CommonHelpers
   def find_reimbursement_as(user, reimbursement, opts = {})
     sign_in_as_user(user, opts)
     visit reimbursements_path
-    find(:xpath, "//table//tbody/tr/td[1]//a[text()='##{reimbursement.id}']").click
+    # Use the event filter
+    select(reimbursement.event.name, :from => "q_request_event_id_eq")
+    click_button "search"
+    # Check the url to ensure that the form have been submitted
+    current_url.should match /request_event_id_eq/
+    # If so, the reimbursement should be in the first page
+    find(:xpath, "//table//tbody/tr/td[1]//a[text()='##{reimbursement.request.id}']").click
     page.should have_content "reimbursement"
     reimbursement.expenses.each do |e|
       page.should have_content e.subject

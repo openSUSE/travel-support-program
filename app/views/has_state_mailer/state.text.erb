@@ -1,5 +1,5 @@
 <%= t(:machine_in_state,
-            :machine => "#{@machine.class.model_name} ##{@machine.id}",
+            :machine => @machine.title,
             :state => @state_name,
             :date => (l(@updated_at) rescue "...")) %>
 

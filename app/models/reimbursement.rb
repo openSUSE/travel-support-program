@@ -168,6 +168,20 @@ class Reimbursement < ActiveRecord::Base
       (accepted? && state_was == "approved")
   end
 
+  # Label to identify the reimbursement
+  #
+  # @return [String] label based in the id of the associated request
+  def label
+    "##{request_id}"
+  end
+
+  # Title to show the request in the UI
+  #
+  # @return [String] Class name and label
+  def title
+    "#{self.class.model_name} #{label}"
+  end
+
   protected
 
   # Used internally to synchronize request_id and user_id

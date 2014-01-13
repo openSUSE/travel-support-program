@@ -57,7 +57,7 @@ prawn_document :page_size => "A4" do |pdf|
   pdf.bounding_box [ pdf.bounds.left, pdf.cursor ], :width => 550, :height => 650 do
     pdf.text TravelSupport::Config.setting(:program_name), :size => 16, :style => :bold
     pdf.move_down(10)
-    pdf.text "#{Reimbursement.model_name.human.titleize} ##{resource.id} (#{resource.human_state_name}) - #{profile.full_name}", :size => 14, :style => :bold
+    pdf.text "#{resource.title} (#{resource.human_state_name}) - #{profile.full_name}", :size => 14, :style => :bold
     # Requester
     pdf.move_down(20)
     pdf.text Reimbursement.human_attribute_name(:user).titleize, :style => :bold, :size => 12

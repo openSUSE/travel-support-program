@@ -1,7 +1,7 @@
 en:
-  mailer_subject_state: "%{type} #%{id} state information"
+  mailer_subject_state: "%{machine} state information"
   machine_in_state: "%{machine} is in %{state} state since %{date}"
   visit_machine: "To access the related information, just follow the link below:"
   with_notes_below: "with the following notes:"
-  mailer_subject_new_final_note: "New final note on %{type} #%{id}"
+  mailer_subject_new_final_note: "New final note on %{machine}"
   new_final_note_title_line: "At %{date}, %{user} added the following final note to %{machine}"
