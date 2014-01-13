@@ -1,6 +1,6 @@
 class RenameStateTransitions < ActiveRecord::Migration
   class DummyStateChange < ActiveRecord::Base
-    set_table_name :state_changes
+    self.table_name = "state_changes"
   end
 
   def up
