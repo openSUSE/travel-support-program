@@ -4,6 +4,7 @@
 .navbar
   .navbar-inner
     = search_form_for @q, :class => "navbar-form pull-right" do |f|
+      = f.collection_select :event_id_eq, Event.all, :id, :name, {:include_blank => true}, :class => "input-large"
       = f.select :state_eq, request_states_collection, {:include_blank => true}, :class => "input-medium"
       = f.submit t(:search), :class => "btn"
       = link_to t(:reset_search), collection_path, :class => "btn"
