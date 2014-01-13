@@ -43,6 +43,12 @@ module CommonHelpers
   def find_request_as(user, request, opts = {})
     sign_in_as_user(user, opts)
     visit requests_path
+    # Use the event filter
+    select(request.event.name, :from => "q_event_id_eq")
+    click_button "search"
+    # Check the url to ensure that the form have been submitted
+    current_url.should match /event_id_eq/
+    # If so, the request should be in the first page
     find(:xpath, "//table[contains(@class,'requests')]//tbody/tr/td[1]//a[text()='##{request.id}']").click
     page.should have_content "request"
     request.expenses.each do |e|
