@@ -5,6 +5,7 @@ en:
       tsp: "Travel Support Program"
       supervisor: "Supervisor"
       administrative: "Administrative"
+      assistant: "Assistant"
 
   activerecord:
     errors:

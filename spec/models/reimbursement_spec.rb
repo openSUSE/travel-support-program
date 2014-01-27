@@ -20,8 +20,8 @@ describe Reimbursement do
       @reimbursement.expenses.reload.map {|i| i.authorized_amount.to_f}.sort.should == [0.0, 50.0, 55.0]
     end
 
-    it "should notify requester and TSP users" do
-      ActionMailer::Base.deliveries.size.should == @deliveries + 2
+    it "should notify requester, TSP users and assistants" do
+      ActionMailer::Base.deliveries.size.should == @deliveries + 3
     end
 
     context "after negotiation" do
@@ -39,8 +39,8 @@ describe Reimbursement do
         @reimbursement.expenses.reload.map {|i| i.authorized_amount.to_f}.sort.should == [10.0, 10.0, 10.0]
       end
 
-      it "should notify negotiation steps to requester and TSP" do
-        ActionMailer::Base.deliveries.size.should == @deliveries + 6
+      it "should notify negotiation steps to requester, TSP and assistants" do
+        ActionMailer::Base.deliveries.size.should == @deliveries + 9
       end
 
       context "and approval" do
@@ -53,15 +53,15 @@ describe Reimbursement do
           @reimbursement.expenses.reload.map {|i| i.authorized_amount.to_f}.sort.should == [10.0, 10.0, 10.0]
         end
 
-        it "should notify approval to requester and TSP" do
-          ActionMailer::Base.deliveries.size.should == @deliveries + 2
+        it "should notify approval to requester, TSP and assistants" do
+          ActionMailer::Base.deliveries.size.should == @deliveries + 3
         end
 
-        it "should notify acceptance to requester, TSP and administrative" do
-          ActionMailer::Base.deliveries.size.should == @deliveries + 2
+        it "should notify acceptance to requester, TSP, assistants and administrative" do
+          ActionMailer::Base.deliveries.size.should == @deliveries + 3
           set_acceptance_file @reimbursement
           transition(@reimbursement, :accept, users(:tspmember))
-          ActionMailer::Base.deliveries.size.should == @deliveries + 5
+          ActionMailer::Base.deliveries.size.should == @deliveries + 7
         end
       end
     end

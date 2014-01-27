@@ -12,3 +12,8 @@ administrative = User.create!(nickname: 'administrative', email: 'administrative
                        password: 'administrative1', password_confirmation: 'administrative1')
 administrative.profile.role_name = 'administrative'
 administrative.profile.save!
+
+assistant = User.create!(nickname: 'assistant', email: 'assistant@example.com',
+                       password: 'assistant1', password_confirmation: 'assistant1')
+assistant.profile.role_name = 'assistant'
+assistant.profile.save!

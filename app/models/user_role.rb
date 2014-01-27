@@ -8,7 +8,8 @@ class UserRole < ActiveHash::Base
     { :id => 1, :name => 'requester' },
     { :id => 2, :name => 'tsp' },
     { :id => 3, :name => 'supervisor' },
-    { :id => 4, :name => 'administrative'} 
+    { :id => 4, :name => 'administrative'},
+    { :id => 5, :name => 'assistant' }
   ]
 
   enum_accessor :name

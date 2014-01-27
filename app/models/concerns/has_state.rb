@@ -37,10 +37,10 @@ module HasState
 
   # Notify the current state to all involved users
   #
-  # Involved users means: requester + users with the tsp role + users with
-  # the roles designed using the macro method assign_state_to
+  # Involved users means: requester + users with the tsp or assistant roles + users with
+  # the role designed using the macro method assign_state
   def notify_state
-    people = ([self.user, :tsp] + self.class.roles_assigned_to(state)).uniq - [:requester]
+    people = ([self.user, :tsp, :assistant] + self.class.roles_assigned_to(state)).uniq - [:requester]
     HasStateMailer::notify_to(people, :state, self, self.human_state_name, self.state_updated_at)
   end
 

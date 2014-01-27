@@ -88,8 +88,8 @@ describe Request do
         @request.reload.state.should == "submitted"
       end
 
-      it "should notify requester and TSP users" do
-        ActionMailer::Base.deliveries.size.should == @deliveries + 2
+      it "should notify requester, TSP users and assistants" do
+        ActionMailer::Base.deliveries.size.should == @deliveries + 3
       end
       
       it "should audit the change" do

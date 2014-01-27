@@ -176,6 +176,44 @@ class Ability
       can :read, ExpenseReport
 
     #
+    # TSP assistants permissions
+    # --------------------------
+    #
+    elsif role == "assistant"
+      # User profiles
+      can :read, UserProfile
+
+      # Budgets
+      can :read, Budget
+
+      # Events (same permissions as requesters)
+      can :update, Event do |e|
+        e.editable_by_requesters?
+      end
+      can :destroy, Event do |e|
+        e.editable_by_requesters? && e.can_be_destroyed?
+      end
+
+      # Requests
+      can :read, Request
+
+      # Reimbursements
+      can :read, Reimbursement
+
+      # Reimbursement's attachments
+      can :read, ReimbursementAttachment
+      # Reimbursement's bank account
+      can :read, BankAccount
+      # Reimbursement's payments
+      can :read, Payment
+
+      # Final notes
+      can :read, FinalNote
+
+      # Expenses Reports
+      can :read, ExpenseReport
+
+    #
     # Administratives permissions
     # -----------------------
     #

@@ -22,3 +22,7 @@ administrative:
   email: "c3po@droids.com"
   nickname: "C3PO"
   encrypted_password: "$2a$10$9avVKOmjbCWh0m5p/frG7uX3S0LbF8ZtRS/QocBkmXiiDbh9.bKsq"
+assistant:
+  email: "gial.ackbar@rebel-alliance.org"
+  nickname: "acalamari"
+  encrypted_password: "$2a$10$9avVKOmjbCWh0m5p/frG7uX3S0LbF8ZtRS/QocBkmXiiDbh9.bKsq"

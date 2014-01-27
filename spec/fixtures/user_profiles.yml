@@ -23,3 +23,6 @@ supervisor_profile:
 administrative_profile:
   user: administrative
   role_id: 4
+assistant_profile:
+  user: assistant
+  role_id: 5
