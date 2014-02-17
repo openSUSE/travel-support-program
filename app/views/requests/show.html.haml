@@ -42,7 +42,7 @@
           %td= number_to_currency(expense.estimated_amount, :unit => expense.estimated_currency)
           %td= number_to_currency(expense.approved_amount, :unit => expense.approved_currency)
 
-  = render :partial => "final_notes", :locals => {:show_builder => r}
+  = render :partial => "comments", :locals => {:show_builder => r}
 
 .form-actions
 
@@ -56,8 +56,8 @@
   - if @request.lacks_reimbursement? && can?(:create, @request.build_reimbursement)
     = link_to t(:create_reimbursement), request_reimbursement_path(@request), :method => :post, :class => 'btn'
 
-  - if can?(:create, @request.final_notes.build)
-    = link_to(t(:create_final_note), resource_path + "/final_notes/new.js", :remote => true, :class => 'btn')
+  - if can?(:create, @request.comments.build)
+    = link_to(t(:create_comment), resource_path + "/comments/new.js", :remote => true, :class => 'btn')
 
   - if can? :destroy, @request
     = link_to t('.destroy', :default => t("helpers.links.destroy")), request_path(@request), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-danger'

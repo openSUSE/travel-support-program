@@ -43,6 +43,9 @@ en:
       budget:
         one: "budget"
         other: "budgets"
+      comment:
+        one: "comment"
+        other: "comments"
       event:
         one: "event"
         other: "events"
@@ -115,6 +118,10 @@ en:
         amount: "amount"
         currency: "currency"
         events: "events"
+      comment:
+        user: "user"
+        body: "body"
+        private: "private"
       event:
         name: "name"
         description: "description"
@@ -169,7 +176,7 @@ en:
         description: "description"
         estimated_sum: "estimated"
         event: "event"
-        final_notes: "final notes"
+        comments: "comments"
         incomplete_since: "incomplete since"
         links: "links"
         payed_since: "payed since"
@@ -201,7 +208,7 @@ en:
         event: "event"
         event_id: "event"
         expenses: "expenses"
-        final_notes: "final notes"
+        comments: "comments"
         state: "state"
         reimbursement: "reimbursement"
         state_changes: "history"

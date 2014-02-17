@@ -3,5 +3,5 @@ en:
   machine_in_state: "%{machine} is in %{state} state since %{date}"
   visit_machine: "To access the related information, just follow the link below:"
   with_notes_below: "with the following notes:"
-  mailer_subject_new_final_note: "New final note on %{machine}"
-  new_final_note_title_line: "At %{date}, %{user} added the following final note to %{machine}"
+  mailer_subject_new_comment: "New comment on %{machine}"
+  new_comment_title_line: "At %{date}, %{user} added the following comment to %{machine}"

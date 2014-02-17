@@ -51,7 +51,7 @@
           %td= number_to_currency(expense.total_amount, :unit => expense.total_currency)
           %td= number_to_currency(expense.authorized_amount, :unit => expense.authorized_currency)
 
-  = render :partial => "final_notes", :locals => {:show_builder => r}
+  = render :partial => "comments", :locals => {:show_builder => r}
 
 .form-actions
 
@@ -69,8 +69,8 @@
 
   = transition_links(resource) 
 
-  - if can?(:create, resource.final_notes.build)
-    = link_to(t(:create_final_note), resource_path + "/final_notes/new.js", :remote => true, :class => 'btn')
+  - if can?(:create, resource.comments.build)
+    = link_to(t(:create_comment), resource_path + "/comments/new.js", :remote => true, :class => 'btn')
 
   - if can? :cancel, resource
     = link_to t("helpers.links.cancel"), new_request_reimbursement_state_transition_path(resource.request, "state_transition[state_event]" => "cancel"), :remote => true, :class => 'btn btn-danger'

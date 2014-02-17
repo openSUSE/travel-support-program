@@ -101,12 +101,19 @@ class Ability
       # Reimbursement's payments
       can :read, Payment, :reimbursement => {:user_id => user.id}
 
-      # Final notes
-      can :read, FinalNote do |n|
-        n.machine.user == user
-      end
-      can :create, FinalNote do |n|
-        n.machine.user == user && n.machine.can_have_final_notes?
+      # Comments
+      if Comment.private_role?(role)
+        # Not suitable for fetching
+        can [:read, :create], Comment do |c|
+          c.machine.user == user
+        end
+      else
+        # Allows fetching other user's comments, but is not a real problem with
+        # the current implementation (comments are always fetched in the scope
+        # of a request or reimbursement)
+        can [:read, :create], Comment, Comment.public do |c|
+          c.machine.user == user && c.public?
+        end
       end
 
       # Expenses Reports
@@ -166,10 +173,13 @@ class Ability
       # Reimbursement's payments
       can :read, Payment
 
-      # Final notes
-      can :read, FinalNote
-      can :create, FinalNote do |n|
-        n.machine.can_have_final_notes?
+      # Comments
+      if Comment.private_role?(role)
+        can [:read, :create], Comment
+      else
+        can [:read, :create], Comment, Comment.public do |c|
+          c.public?
+        end
       end
 
       # Expenses Reports
@@ -207,8 +217,14 @@ class Ability
       # Reimbursement's payments
       can :read, Payment
 
-      # Final notes
-      can :read, FinalNote
+      # Comments
+      if Comment.private_role?(role)
+        can [:read, :create], Comment
+      else
+        can [:read, :create], Comment, Comment.public do |c|
+          c.public?
+        end
+      end
 
       # Expenses Reports
       can :read, ExpenseReport
@@ -247,8 +263,14 @@ class Ability
       # Reimbursement's payments
       can [:read, :create, :update, :destroy], Payment
 
-      # Final notes
-      can :read, FinalNote
+      # Comments
+      if Comment.private_role?(role)
+        can :read, Comment
+      else
+        can :read, Comment, Comment.public do |c|
+          c.public?
+        end
+      end
 
     #
     # Supervisors permissions
@@ -292,10 +314,13 @@ class Ability
       # Reimbursement's payments
       can :read, Payment
 
-      # Final notes
-      can :read, FinalNote
-      can :create, FinalNote do |n|
-        n.machine.can_have_final_notes?
+      # Comments
+      if Comment.private_role?(role)
+        can [:read, :create], Comment
+      else
+        can [:read, :create], Comment, Comment.public do |c|
+          c.public?
+        end
       end
 
       # Expenses Reports

@@ -184,34 +184,43 @@ describe Ability do
       end
     end
 
-    context 'adding final notes to his own requests' do
-      it{ should_not be_able_to(:create, requests(:luke_for_party).final_notes.build) }
-      it{ should be_able_to(:create, requests(:luke_for_yavin).final_notes.build) }
+    context 'adding comments to his own requests' do
+      it{ should be_able_to(:create, requests(:luke_for_yavin).comments.build) }
+      it{ should_not be_able_to(:create, requests(:luke_for_yavin).comments.build(:private => true)) }
     end
 
-    context 'accessing final notes on his own requests' do
+    context 'accessing public comments on his own requests' do
       before(:each) do
-        @final_note = requests(:luke_for_yavin).final_notes.create(:body => "whatever")
+        @comment = requests(:luke_for_yavin).comments.create(:body => "whatever")
       end
 
-      it{ should be_able_to(:read, @final_note) }
-      it{ should_not be_able_to(:destroy, @final_note) }
-      it{ should_not be_able_to(:update, @final_note) }
+      it{ should be_able_to(:read, @comment) }
+      it{ should_not be_able_to(:destroy, @comment) }
+      it{ should_not be_able_to(:update, @comment) }
     end
 
-    context "adding final notes to other's requests" do
-      it{ should_not be_able_to(:create, requests(:wedge_for_party).final_notes.build) }
-      it{ should_not be_able_to(:create, requests(:wedge_for_yavin).final_notes.build) }
-    end
-
-    context "accessing final notes on other's requests" do
+    context 'accessing private comments on his own requests' do
       before(:each) do
-        @final_note = requests(:wedge_for_yavin).final_notes.create(:body => "whatever")
+        @comment = requests(:luke_for_yavin).comments.create(:body => "whatever", :private => true)
       end
 
-      it{ should_not be_able_to(:read, @final_note) }
-      it{ should_not be_able_to(:destroy, @final_note) }
-      it{ should_not be_able_to(:update, @final_note) }
+      it{ should_not be_able_to(:read, @comment) }
+      it{ should_not be_able_to(:destroy, @comment) }
+      it{ should_not be_able_to(:update, @comment) }
+    end
+
+    context "adding comments to other's requests" do
+      it{ should_not be_able_to(:create, requests(:wedge_for_party).comments.build) }
+    end
+
+    context "accessing comments on other's requests" do
+      before(:each) do
+        @comment = requests(:wedge_for_yavin).comments.create(:body => "whatever")
+      end
+
+      it{ should_not be_able_to(:read, @comment) }
+      it{ should_not be_able_to(:destroy, @comment) }
+      it{ should_not be_able_to(:update, @comment) }
     end
 
     context 'manage attachments to his own reimbursements' do
@@ -396,19 +405,29 @@ describe Ability do
       end
     end
 
-    context 'adding final final notes to requests' do
-      it{ should_not be_able_to(:create, requests(:luke_for_party).final_notes.build) }
-      it{ should be_able_to(:create, requests(:luke_for_yavin).final_notes.build) }
+    context 'adding comments to requests' do
+      it{ should be_able_to(:create, requests(:luke_for_yavin).comments.build) }
+      it{ should be_able_to(:create, requests(:luke_for_yavin).comments.build(:private => true)) }
     end
 
-    context 'accessing final notes on requests' do
+    context 'accessing public comments on requests' do
       before(:each) do
-        @final_note = requests(:luke_for_yavin).final_notes.create(:body => "whatever")
+        @comment = requests(:luke_for_yavin).comments.create(:body => "whatever")
       end
 
-      it{ should be_able_to(:read, @final_note) }
-      it{ should_not be_able_to(:destroy, @final_note) }
-      it{ should_not be_able_to(:update, @final_note) }
+      it{ should be_able_to(:read, @comment) }
+      it{ should_not be_able_to(:destroy, @comment) }
+      it{ should_not be_able_to(:update, @comment) }
+    end
+
+    context 'accessing private comments on requests' do
+      before(:each) do
+        @comment = requests(:luke_for_yavin).comments.create(:body => "whatever", :private => true)
+      end
+
+      it{ should be_able_to(:read, @comment) }
+      it{ should_not be_able_to(:destroy, @comment) }
+      it{ should_not be_able_to(:update, @comment) }
     end
 
     context 'accessing attachments in a reimbursement' do
@@ -585,19 +604,29 @@ describe Ability do
       end
     end
 
-    context 'adding final final notes to requests' do
-      it{ should_not be_able_to(:create, requests(:luke_for_party).final_notes.build) }
-      it{ should_not be_able_to(:create, requests(:luke_for_yavin).final_notes.build) }
+    context 'adding comments to requests' do
+      it{ should_not be_able_to(:create, requests(:luke_for_party).comments.build) }
+      it{ should_not be_able_to(:create, requests(:luke_for_party).comments.build(:private => true)) }
     end
 
-    context 'accessing final notes on requests' do
+    context 'accessing public comments notes on requests' do
       before(:each) do
-        @final_note = requests(:luke_for_yavin).final_notes.create(:body => "whatever")
+        @comment = requests(:luke_for_yavin).comments.create(:body => "whatever")
       end
 
-      it{ should be_able_to(:read, @final_note) }
-      it{ should_not be_able_to(:destroy, @final_note) }
-      it{ should_not be_able_to(:update, @final_note) }
+      it{ should be_able_to(:read, @comment) }
+      it{ should_not be_able_to(:destroy, @comment) }
+      it{ should_not be_able_to(:update, @comment) }
+    end
+
+    context 'accessing private comments notes on requests' do
+      before(:each) do
+        @comment = requests(:luke_for_yavin).comments.create(:body => "whatever", :private => true)
+      end
+
+      it{ should_not be_able_to(:read, @comment) }
+      it{ should_not be_able_to(:destroy, @comment) }
+      it{ should_not be_able_to(:update, @comment) }
     end
 
     context 'accessing attachments in a reimbursement' do
@@ -680,19 +709,29 @@ describe Ability do
       it{ should_not be_able_to(:confirm, @reimbursement) }
     end
 
-    context 'adding final final notes to requests' do
-      it{ should_not be_able_to(:create, requests(:luke_for_party).final_notes.build) }
-      it{ should be_able_to(:create, requests(:luke_for_yavin).final_notes.build) }
+    context 'adding comments to requests' do
+      it{ should be_able_to(:create, requests(:luke_for_yavin).comments.build) }
+      it{ should_not be_able_to(:create, requests(:luke_for_yavin).comments.build(:private => true)) }
     end
 
-    context 'accessing final notes on requests' do
+    context 'accessing public comments on requests' do
       before(:each) do
-        @final_note = requests(:luke_for_yavin).final_notes.create(:body => "whatever")
+        @comment = requests(:luke_for_yavin).comments.create(:body => "whatever")
       end
 
-      it{ should be_able_to(:read, @final_note) }
-      it{ should_not be_able_to(:destroy, @final_note) }
-      it{ should_not be_able_to(:update, @final_note) }
+      it{ should be_able_to(:read, @comment) }
+      it{ should_not be_able_to(:destroy, @comment) }
+      it{ should_not be_able_to(:update, @comment) }
+    end
+
+    context 'accessing private comments on requests' do
+      before(:each) do
+        @comment = requests(:luke_for_yavin).comments.create(:body => "whatever", :private => true)
+      end
+
+      it{ should_not be_able_to(:read, @comment) }
+      it{ should_not be_able_to(:destroy, @comment) }
+      it{ should_not be_able_to(:update, @comment) }
     end
 
     context 'accessing attachments in a reimbursement' do
@@ -778,19 +817,29 @@ describe Ability do
       it{ should_not be_able_to(:adjust_state, @reimbursement) }
     end
 
-    context 'adding final final notes to requests' do
-      it{ should_not be_able_to(:create, requests(:luke_for_party).final_notes.build) }
-      it{ should_not be_able_to(:create, requests(:luke_for_yavin).final_notes.build) }
+    context 'adding comments to requests' do
+      it{ should be_able_to(:create, requests(:luke_for_yavin).comments.build) }
+      it{ should be_able_to(:create, requests(:luke_for_yavin).comments.build(:private => true)) }
     end
 
-    context 'accessing final notes on requests' do
+    context 'accessing public comments on requests' do
       before(:each) do
-        @final_note = requests(:luke_for_yavin).final_notes.create(:body => "whatever")
+        @comment = requests(:luke_for_yavin).comments.create(:body => "whatever")
       end
 
-      it{ should be_able_to(:read, @final_note) }
-      it{ should_not be_able_to(:destroy, @final_note) }
-      it{ should_not be_able_to(:update, @final_note) }
+      it{ should be_able_to(:read, @comment) }
+      it{ should_not be_able_to(:destroy, @comment) }
+      it{ should_not be_able_to(:update, @comment) }
+    end
+
+    context 'accessing private comments on requests' do
+      before(:each) do
+        @comment = requests(:luke_for_yavin).comments.create(:body => "whatever", :private => true)
+      end
+
+      it{ should be_able_to(:read, @comment) }
+      it{ should_not be_able_to(:destroy, @comment) }
+      it{ should_not be_able_to(:update, @comment) }
     end
 
     context 'accessing attachments in a reimbursement' do

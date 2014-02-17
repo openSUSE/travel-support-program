@@ -6,14 +6,21 @@ class ApplicationMailer < ActionMailer::Base
   # recipient address (:to)
   def self.notify_to(targets, method, *args)
     targets = [targets] unless targets.kind_of?(Array)
+    mailed = [] # To avoid mailing the same address more than once
     targets.each do |target|
       if target.kind_of?(User)
-        notify(method, target.email, *args)
+        unless mailed.include?(email = target.email)
+          notify(method, email, *args)
+          mailed << email
+        end
       else
         # Just in case, I can't think in a reason for mailing all requesters
         next if target == :requester
         User.with_role(target).each do |u|
-          notify(method, u.email, *args)
+          unless mailed.include?(email = u.email)
+            notify(method, email, *args)
+            mailed << email
+          end
         end
       end
     end

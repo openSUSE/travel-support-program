@@ -1,0 +1,3 @@
+= show_builder.association :comments do
+  %ul
+    = render resource.comments.accessible_by(current_ability).newest_first

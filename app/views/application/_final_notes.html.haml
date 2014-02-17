@@ -1,5 +1,0 @@
-- if resource.can_have_final_notes?
-  = show_builder.association :final_notes do
-    = t(:final_state_message)
-    %ul
-      = render resource.final_notes.newest_first

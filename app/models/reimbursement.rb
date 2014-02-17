@@ -13,8 +13,8 @@ class Reimbursement < ActiveRecord::Base
   # Links pointing to reports (ie., blog posts) regarding the requester
   # participation in the event
   has_many :links, :class_name => "ReimbursementLink", :inverse_of => :reimbursement, :dependent => :destroy
-  # Final notes are comments that users can add as feedback to a finished reimbursement
-  has_many :final_notes, :as => :machine, :dependent => :destroy
+  # Comments used to discuss decisions (private) or communicate with the requester (public)
+  has_many :comments, :as => :machine, :dependent => :destroy
   # Can have several payments, not related to the number of expenses
   has_many :payments, :inverse_of => :reimbursement, :dependent => :restrict_with_exception
   # Bank information goes to another model
@@ -139,13 +139,6 @@ class Reimbursement < ActiveRecord::Base
   # return [Boolean] true if #cancel can be called
   def can_cancel?
     not canceled? and not processed? and not payed?
-  end
-
-  # Checks whether the reimbursement can have final notes
-  #
-  # @return [Boolean] true if all conditions are met
-  def can_have_final_notes?
-    in_final_state?
   end
 
   # Checks whether the acceptance file is required in order to be a valid

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131014112943) do
+ActiveRecord::Schema.define(version: 20140214101857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,18 @@ ActiveRecord::Schema.define(version: 20131014112943) do
 
   add_index "budgets", ["currency"], name: "index_budgets_on_currency", using: :btree
 
+  create_table "comments", force: true do |t|
+    t.integer  "machine_id"
+    t.string   "machine_type"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.boolean  "private"
+  end
+
+  add_index "comments", ["private"], name: "index_comments_on_private", using: :btree
+
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0
     t.integer  "attempts",   default: 0
@@ -93,15 +105,6 @@ ActiveRecord::Schema.define(version: 20131014112943) do
   end
 
   add_index "events", ["budget_id"], name: "index_events_on_budget_id", using: :btree
-
-  create_table "final_notes", force: true do |t|
-    t.integer  "machine_id"
-    t.string   "machine_type"
-    t.text     "body"
-    t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
 
   create_table "payments", force: true do |t|
     t.integer  "reimbursement_id"

@@ -1,0 +1,17 @@
+<p>
+<%= t(:new_comment_title_line,
+          :date => l(@comment.created_at, :format => :short),
+          :machine => @machine.title,
+          :user => @comment.user.nickname) %>
+</p>
+
+<% if @comment.private %>
+  <p><b><%= t(:private_comment_label) %></b> <%= Comment.private_hint %></p>
+<% end %>
+
+<p><%= @comment.body %></p>
+
+<p><%= t(:visit_machine) %><br/><%= link_to(*[machine_url(@machine)]*2) %></p>
+
+<p>--<br>
+<%= TravelSupport::Config.setting :email_footer %></p>

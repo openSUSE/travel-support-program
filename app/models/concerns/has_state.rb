@@ -82,6 +82,14 @@ module HasState
     active?
   end
 
+  # Roles assigned to the machine according to its state
+  #
+  # @see roles_assigned_to
+  # @return [Array] list of roles as symbols
+  def assigned_roles
+    self.class.roles_assigned_to(state)
+  end
+
   protected
 
   # User internally to set the state_updated_at attribute

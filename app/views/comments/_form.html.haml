@@ -1,11 +1,14 @@
 .modal-header
   %button.close{:type => "button", :data => {:dismiss => "modal"}} &times;
-  %h3= t(:create_final_note)
+  %h3= t(:create_comment)
 = bootstrap_flash_messages
-= simple_form_for @final_note, :url => @back_path + "/final_notes", :remote => true do |f|
+= simple_form_for @comment, :url => @back_path + "/comments", :remote => true do |f|
   .form-inputs.form-horizontal.modal-body
+    - if Comment.private_role? current_role
+      .row-fluid
+        = f.input :private, hint: Comment.private_hint
     .row-fluid
-      = f.text_area :body, :rows => 4, :class => "span12"
+      = f.text_area :body, :rows => 2, :class => "span12"
 
   .modal-footer
     = link_to t("helpers.links.back"), "#", :data => {:dismiss => "modal"}, :class => 'btn'
