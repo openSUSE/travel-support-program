@@ -74,11 +74,12 @@ describe CommentMailer do
       ActionMailer::Base.deliveries.size.should == @mcount + 4
     end
 
-    context "and other people adding more comments" do
+    context "and other people adding more public comments" do
       before(:each) do
         @body = "Could you please be more precise?"
+        @wedge = users(:wedge)
         comment = @reimbursement.comments.build(:body => @body)
-        comment.user = users(:wedge)
+        comment.user = @wedge
         comment.save!
         @mails = ActionMailer::Base.deliveries[-4..-1]
       end
@@ -86,6 +87,22 @@ describe CommentMailer do
       it "should mail tsp, assistant, requester and supervisor (due to his previous comment)" do
         ActionMailer::Base.deliveries.size.should == @mcount + 8
         @mails.map(&:to).flatten.should include @user.email
+      end
+
+      context "and adding a subsequent private comment" do
+        before(:each) do
+          @body = "I still don't like this guy."
+          comment = @reimbursement.comments.build(:body => @body, :private => true)
+          comment.user = users(:tspmember)
+          comment.save!
+          @mails = ActionMailer::Base.deliveries[-3..-1]
+        end
+
+        it "should mail tsp, assistant and supervisor but not requester" do
+          ActionMailer::Base.deliveries.size.should == @mcount + 8 + 3
+          @mails.map(&:to).flatten.should include @user.email
+          @mails.map(&:to).flatten.should_not include @wedge.email
+        end
       end
     end
   end

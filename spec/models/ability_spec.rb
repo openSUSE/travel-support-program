@@ -711,7 +711,7 @@ describe Ability do
 
     context 'adding comments to requests' do
       it{ should be_able_to(:create, requests(:luke_for_yavin).comments.build) }
-      it{ should_not be_able_to(:create, requests(:luke_for_yavin).comments.build(:private => true)) }
+      it{ should be_able_to(:create, requests(:luke_for_yavin).comments.build(:private => true)) }
     end
 
     context 'accessing public comments on requests' do
@@ -729,7 +729,7 @@ describe Ability do
         @comment = requests(:luke_for_yavin).comments.create(:body => "whatever", :private => true)
       end
 
-      it{ should_not be_able_to(:read, @comment) }
+      it{ should be_able_to(:read, @comment) }
       it{ should_not be_able_to(:destroy, @comment) }
       it{ should_not be_able_to(:update, @comment) }
     end

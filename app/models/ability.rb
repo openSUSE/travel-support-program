@@ -315,13 +315,7 @@ class Ability
       can :read, Payment
 
       # Comments
-      if Comment.private_role?(role)
-        can [:read, :create], Comment
-      else
-        can [:read, :create], Comment, Comment.public do |c|
-          c.public?
-        end
-      end
+      can [:read, :create], Comment
 
       # Expenses Reports
       can :read, ExpenseReport

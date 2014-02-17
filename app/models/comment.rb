@@ -54,19 +54,21 @@ class Comment < ActiveRecord::Base
 
   # Notify creation to involved users
   #
-  # If the comment is private, 'involved users' means those with the proper role
+  # If the comment is private, 'involved users' means those with the proper
+  # role + supervisors that have previously commented
   #
   # If the comment is public, it means: requester + users with the tsp or
   # assistant roles + users with the role designed using the macro method
   # assign_state + users that have already commented
   def notify_creation
     if private
-      CommentMailer.notify_to Comment.private_roles, :creation, self
+      people = Comment.private_roles
+      people += machine.comments.includes(:user).map(&:user).select {|u| u.profile.role_name == "supervisor"}.uniq
     else
       people = ([machine.user, :tsp, :assistant] + machine.assigned_roles).uniq - [:requester]
       people += machine.comments.includes(:user).map(&:user).uniq
-      CommentMailer.notify_to people, :creation, self
     end
+    CommentMailer.notify_to people, :creation, self
   end
 
   def set_default_attrs
