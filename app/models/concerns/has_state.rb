@@ -94,7 +94,7 @@ module HasState
 
   # User internally to set the state_updated_at attribute
   def set_state_updated_at
-    if state_changed?
+    if state_changed? && !state_was.nil?
       self.state_updated_at = Time.current
     end
     true

@@ -16,6 +16,27 @@ describe Request do
     end
   end
 
+  describe "#state_updated_at" do
+    before(:each) do
+      @request = Request.new
+      @request.user = users(:wedge)
+      @request.event = events(:dagobah_camp)
+      @request.save
+    end
+
+    it "should be nil for new events" do
+      @request.state.should == 'incomplete'
+      @request.state_updated_at.should be_nil
+    end
+
+    it "should be updated for on state changes" do
+      @request.expenses.create(:subject => "Lodging", :estimated_amount => 10, :estimated_currency => 'USD')
+      transition(@request, :submit, users(:wedge)) rescue nil
+      @request.reload.state.should == "submitted"
+      @request.reload.state_updated_at.should_not be_nil
+    end
+  end
+
   describe "#only_one_active_request" do
     before(:each) do
       @request = Request.new
