@@ -90,7 +90,7 @@
               %td= number_to_currency(expense.estimated_amount, :unit => expense.estimated_currency)
               %td= number_to_currency(expense.approved_amount, :unit => expense.approved_currency)
               - if can? :submit, resource
-                %td= number_to_currency(e.text_field(:total_amount, :class => 'input-mini'), :unit => expense.approved_currency)
+                %td= number_to_currency(e.text_field(:total_amount, :class => 'input-mini'), :unit => expense.total_currency)
                 %td= number_to_currency(expense.authorized_amount, :unit => expense.authorized_currency)
               - elsif can? :approve, resource
                 %td= number_to_currency(expense.total_amount, :unit => expense.total_currency)
