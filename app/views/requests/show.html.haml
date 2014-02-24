@@ -8,6 +8,7 @@
     = render @request.user
   = r.attribute :state do
     = state_info(r.object)
+    %div.alert-info= @request.human_state_guide
   = r.attribute :state_changes do
     = render "state_changes_list", :locals => {:resource => @request}
 

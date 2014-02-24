@@ -10,6 +10,7 @@
     = render parent
   = r.attribute :state do
     = state_info(r.object)
+    %div.alert-info= resource.human_state_guide
   = r.attribute :state_changes do
     = render "state_changes_list", :locals => {:resource => @request}
   = r.attribute :description

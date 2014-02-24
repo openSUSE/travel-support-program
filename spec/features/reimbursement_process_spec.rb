@@ -32,6 +32,7 @@ feature "Reimbursements", "" do
     fill_in "notes", :with => "I've not fulfilled one of the amounts"
     click_button "submit"
     page.should have_content "Something went wrong. Unable to submit."
+    page.should have_content "under modification, not submitted"
 
     # Correct the request
     close_modal_dialog
@@ -54,6 +55,7 @@ feature "Reimbursements", "" do
     click_button "submit"
     page.should have_content "Successfully submitted."
     page.should have_content "From incomplete to submitted"
+    page.should have_content "is being evaluated"
 
     # Log in as tspmember
     click_link "Log out"
@@ -65,6 +67,7 @@ feature "Reimbursements", "" do
     fill_in "notes", :with => "Sorry Mr. Idestroyedthedeathstar: no invoices, no money"
     click_button "roll back"
     page.should have_content "Successfully rolled back."
+    page.should have_content "requester must update the reimbursement with all the relevant information"
 
     # Log in as requester
     click_link "Log out"
@@ -113,6 +116,7 @@ feature "Reimbursements", "" do
     fill_in "notes", :with => "Everything ok know."
     click_button "approve"
     page.should have_content "Successfully approved."
+    page.should have_content "requester has to accept the conditions (attaching or updating the signed acceptance)"
 
     # Log in as requester
     click_link "Log out"
@@ -142,6 +146,7 @@ feature "Reimbursements", "" do
     fill_in "notes", :with => "Acceptance included."
     click_button "accept"
     page.should have_content "Acceptance processed"
+    page.should have_content "reimbursement musts be now processed by the administrative"
     page.should_not have_link "Action"
 
     # Log in as tsp member
@@ -160,10 +165,12 @@ feature "Reimbursements", "" do
     fill_in "notes", :with => "Every ok. Sending to accounting dept."
     click_button "process"
     page.should have_content "Payment processed"
+    page.should have_content "payment is ongoing"
     # And mark it as payed
     click_link "Action"
     click_link "confirm"
     click_button "confirm"
     page.should have_content "Confirmation processed"
+    page.should have_content "process have ended succesfully"
   end
 end

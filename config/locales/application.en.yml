@@ -91,7 +91,7 @@ en:
   since: "(since %{date})"
   state_adjustment_done: "The state have been changed"
   state_event: "Action"
-  state_help: "State have never changed. If unsure about what it means, read the user guide."
+  state_help: "State has never changed. The process has not started."
   state_change_title_line: "At %{date}, %{user} did %{event} it"
   state_change_details: "From %{from} to %{to}"
   user_guide: "User guide"

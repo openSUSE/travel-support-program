@@ -43,6 +43,7 @@ module ApplicationHelper
   # @return [String] HTML output
   def state_info(r)
     msg = content_tag(:span, r.human_state_name, :class => r.state)
+    msg += " (#{r.human_state_description})"
     if r.state_updated_at.blank?
       msg += " "
       msg += content_tag(:span, "!", :title => t(:state_help), :class => "badge badge-warning with-tooltip")

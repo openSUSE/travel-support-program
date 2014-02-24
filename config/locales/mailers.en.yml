@@ -1,6 +1,6 @@
 en:
   mailer_subject_state: "%{machine} state information"
-  machine_in_state: "%{machine} is in %{state} state since %{date}"
+  machine_in_state: "%{machine} is in %{state} (%{description}) state since %{date}"
   visit_machine: "To access the related information, just follow the link below:"
   with_notes_below: "with the following notes:"
   mailer_subject_new_comment: "New comment on %{machine}"
