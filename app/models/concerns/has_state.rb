@@ -90,6 +90,20 @@ module HasState
     self.class.roles_assigned_to(state)
   end
 
+  # Localized state description, to complete human_state_name
+  #
+  # return [String] localized description of the current state
+  def human_state_description
+    I18n.t(self.state, :scope => "activerecord.models.#{self.class.model_name.singular}.states")
+  end
+
+  # Localized guide of the next step, based in current state
+  #
+  # return [String] localized guide text
+  def human_state_guide
+    I18n.t(self.state, :scope => "activerecord.models.#{self.class.model_name.singular}.state_guides")
+  end
+
   protected
 
   # User internally to set the state_updated_at attribute

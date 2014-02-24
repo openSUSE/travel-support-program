@@ -68,6 +68,18 @@ en:
       request:
         one: "request"
         other: "requests"
+        states:
+          accepted: "by requester"
+          approved: "ready for final requester's acceptance"
+          canceled: "no more actions allowed"
+          incomplete: "under modification, not submitted"
+          submitted: "waiting for approval"
+        state_guides:
+          accepted: "The reimbursement process has started or can be started using the 'ask for reimbursement' button (if the reimbursement period is open)."
+          approved: "Now the requester has to accept the conditions or roll the request back to propose different ones."
+          canceled: "The request have been canceled and cannot be longer modified."
+          incomplete: "The requester must update the request with all the relevant information. Afterwards, the request must be explicitly submitted."
+          submitted: "The request is being evaluated. The responsible people can adjust some values and approve it or can roll it back (again to incomplete state) if the requester needs to correct something."
       request_expense:
         one: "expense"
         other: "expenses"
@@ -90,6 +102,22 @@ en:
       reimbursement:
         one: "reimbursement"
         other: "reimbursements"
+        states:
+          accepted: "by requester"
+          approved: "ready for final requester's acceptance"
+          canceled: "no more actions allowed"
+          incomplete: "under modification, not submitted"
+          payed: "the requester have received the reimbursement"
+          processed: "by administrative, payment is ongoing"
+          submitted: "waiting for approval"
+        state_guides:
+          accepted: "The reimbursement musts be now processed by the administrative to start the payment process."
+          approved: "Now the requester has to accept the conditions (attaching or updating the signed acceptance) or roll the reimbursement back to make corrections."
+          canceled: "The reimbursement has been canceled and cannot be longer modified."
+          incomplete: "The requester must update the reimbursement with all the relevant information. Afterwards, the reimbursement must be explicitly submitted."
+          payed: "The process have ended succesfully."
+          processed: "The reimbursement must be confirmed after completing the payment."
+          submitted: "The reimbursement is being evaluated. The responsible people can adjust some values and approve it or can roll it back (again to incomplete state) if the requester needs to correct something."
       reimbursement_attachment:
         one: "attachment"
         other: "attachments"
@@ -290,7 +318,7 @@ en:
         reject: "reject"
         roll_back: "roll back"
         submit: "submit"
-      states: 
+      states:
         accepted: "accepted"
         approved: "approved"
         canceled: "canceled"

@@ -1,8 +1,10 @@
 <%= t(:machine_in_state,
             :machine => @machine.title,
             :state => @state_name,
+            :description => @machine.human_state_description,
             :date => (l(@updated_at) rescue "...")) %>
 
+<%= @machine.human_state_guide %>
 
 <%= t(:state_change_title_line, :date => l(@change.created_at, :format => :short), :event => @change.human_action_name, :user => @change.user.nickname) %> <%= t(:with_notes_below) %>
 
