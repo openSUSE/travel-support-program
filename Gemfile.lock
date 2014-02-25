@@ -181,8 +181,6 @@ GEM
       json (~> 1.4)
     redcarpet (3.0.0)
     ref (1.0.5)
-    rein (0.8.3)
-      activerecord
     responders (1.0.0)
       railties (>= 3.2, < 5)
     rspec-core (2.14.7)
@@ -288,7 +286,6 @@ DEPENDENCIES
   rails (= 4.0.2)
   ransack
   redcarpet
-  rein
   rspec-rails
   ruby-graphviz
   sass-rails (~> 4.0.0)

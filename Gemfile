@@ -5,7 +5,7 @@ gem 'rails', '4.0.2'
 # Choose your weapon
 gem 'sqlite3'
 #gem 'pg'
-#gem 'mysql'
+#gem 'mysql2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -30,7 +30,6 @@ gem 'therubyracer', platforms: :ruby
 gem "less-rails"
 gem "twitter-bootstrap-rails"
 
-gem 'rein'
 gem 'devise'
 gem 'devise_ichain_authenticatable', '>= 0.3.0'
 gem 'cancan'
