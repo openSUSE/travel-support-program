@@ -5,7 +5,7 @@ gem 'rails', '4.0.2'
 # Choose your weapon
 gem 'sqlite3'
 #gem 'pg'
-#gem 'mysql'
+#gem 'mysql2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
