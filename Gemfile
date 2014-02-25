@@ -30,7 +30,6 @@ gem 'therubyracer', platforms: :ruby
 gem "less-rails"
 gem "twitter-bootstrap-rails"
 
-gem 'rein'
 gem 'devise'
 gem 'devise_ichain_authenticatable', '>= 0.3.0'
 gem 'cancan'
