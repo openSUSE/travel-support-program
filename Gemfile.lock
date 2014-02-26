@@ -144,7 +144,6 @@ GEM
       hashery (~> 2.0)
       ruby-rc4
       ttfunk
-    pg (0.15.1)
     polyamorous (0.6.4)
       activerecord (>= 3.0)
     polyglot (0.3.3)
@@ -282,7 +281,6 @@ DEPENDENCIES
   kaminari
   less-rails
   localized_country_select
-  pg
   prawn_rails
   protected_attributes
   rails (= 4.0.2)
