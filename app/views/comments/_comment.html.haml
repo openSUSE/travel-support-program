@@ -1,4 +1,9 @@
 %li
+  /- if comment.private
+  /  %span.private_label= t(:private_comment_label)
+  / = t(:comment_line, :date => l(comment.created_at, :format => :short), :user => comment.user.nickname, :body => comment.body)
   - if comment.private
-    %span.private_label= t(:private_comment_label)
-  = t(:comment_line, :date => l(comment.created_at, :format => :short), :user => comment.user.nickname, :body => comment.body)
+    %strong.label= "private"
+  %strong= comment.user.nickname
+  = comment.body
+  %h6= "#{time_ago_in_words(comment.created_at)} ago"
