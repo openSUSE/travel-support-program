@@ -24,8 +24,10 @@ class StateChange < ActiveRecord::Base
 
   validates :from, :to, :user, :machine, :presence => true
 
-  scope :oldest_first, -> { order("created_at asc") }
-  scope :newest_first, -> { order("created_at desc") }
+  # The precision of 'created_at' is one second. For changes in the same second
+  # we must use the id for fine-tuning
+  scope :oldest_first, -> { order("created_at asc, id asc") }
+  scope :newest_first, -> { order("created_at desc, id desc") }
 
   # Short and human readable explanation of the change. To be implemented by
   # subclasses.

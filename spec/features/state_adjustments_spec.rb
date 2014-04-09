@@ -4,7 +4,7 @@ require 'spec_helper'
 feature "State adjustments", "" do
   fixtures :all
 
-  scenario "Adjust a request" do
+  scenario "Adjust a request", :js => true do
     find_request_as users(:supervisor), requests(:luke_for_party)
     click_link "Adjust state"
     select "canceled", :from => :state_adjustment_to
@@ -17,7 +17,7 @@ feature "State adjustments", "" do
     end
   end
 
-  scenario "Invalid adjustment" do
+  scenario "Invalid adjustment", :js => true do
     find_reimbursement_as users(:supervisor), reimbursements(:wedge_for_training_reim)
     click_link "Adjust state"
     select "incomplete", :from => :state_adjustment_to

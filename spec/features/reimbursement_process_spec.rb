@@ -4,7 +4,7 @@ require 'spec_helper'
 feature "Reimbursements", "" do
   fixtures :all
 
-  scenario "Full reimbursement process" do
+  scenario "Full reimbursement process", :js => true do
     sign_in_as_user(users(:luke))
     visit request_path(requests(:luke_for_yavin))
     click_link "Ask for reimbursement"

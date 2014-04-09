@@ -14,7 +14,7 @@ require 'database_cleaner'
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
-  Capybara.default_driver = :webkit
+  Capybara.javascript_driver = :webkit
 
   # ## Mock Framework
   #
@@ -45,6 +45,14 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, :js => true) do
+    DatabaseCleaner.strategy = :deletion
+  end
+
+  config.before(:each) do
     DatabaseCleaner.start
   end
 
@@ -56,6 +64,7 @@ RSpec.configure do |config|
     FileUtils.rm_rf("public/spec")
     FileUtils.mkdir("public/spec")
     FileUtils.cp_r("spec/support/uploads", "public/spec")
+    DatabaseCleaner.clean_with(:deletion) # Just in case
   end
 
   config.after(:all) do

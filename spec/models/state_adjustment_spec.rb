@@ -24,6 +24,7 @@ describe StateAdjustment do
     describe "which is valid" do
       before(:each) do
         @adjustment.to = "submitted"
+        sleep 2 # To ensure that we can compare timestamps
         @adjustment.save
         @request.reload
       end

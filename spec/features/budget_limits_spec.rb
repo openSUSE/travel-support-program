@@ -4,7 +4,7 @@ require 'spec_helper'
 feature "Budget limits", "" do
   fixtures :all
 
-  scenario "Trying to approve too much money" do
+  scenario "Trying to approve too much money", :js => true do
     sign_in_as_user(users(:tspmember))
     visit request_path(requests(:wedge_for_party))
     click_link "Edit"
@@ -23,7 +23,7 @@ feature "Budget limits", "" do
     page.should have_content "approved amount exceeds the budget"
   end
 
-  scenario "Approving the right amount" do
+  scenario "Approving the right amount", :js => true do
     sign_in_as_user(users(:tspmember))
     visit request_path(requests(:wedge_for_party))
     click_link "Edit"
@@ -42,7 +42,7 @@ feature "Budget limits", "" do
     page.should have_content "From submitted to approved"
   end
 
-  scenario "Choosing the currency" do
+  scenario "Choosing the currency", :js => true do
     sign_in_as_user(users(:tspmember))
     visit request_path(requests(:wedge_for_party))
     click_link "Edit"

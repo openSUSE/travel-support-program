@@ -4,7 +4,7 @@ require 'spec_helper'
 feature "Requests", "" do
   fixtures :all
 
-  scenario "Full request process" do
+  scenario "Full request process", :js => true do
     sign_in_as_user(users(:luke))
     visit event_path(events(:dagobah_camp))
     click_link "Apply"
@@ -26,12 +26,12 @@ feature "Requests", "" do
     click_button "Create request"
     page.should have_content "request was successfully created"
     page.should have_content "request must be explicitly submitted."
-    @request = Request.order(:created_at).last
+    @request = Request.order(:created_at, :id).last
 
     # Testing audits, just in case
-    @request.audits.last.user.should == users(:luke)
-    @request.expenses.first.audits.last.user.should == users(:luke)
-    @request.expenses.last.audits.last.owner.should == @request
+    @request.audits.order("created_at, id").last.user.should == users(:luke)
+    @request.expenses.first.audits.order("created_at, id").last.user.should == users(:luke)
+    @request.expenses.last.audits.order("created_at, id").last.owner.should == @request
 
     # Failed submission
     click_link "Action"

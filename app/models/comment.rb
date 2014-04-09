@@ -17,8 +17,10 @@ class Comment < ActiveRecord::Base
   after_create :notify_creation
   after_initialize :set_default_attrs, :if => :new_record?
 
-  scope :oldest_first, -> { order("created_at asc") }
-  scope :newest_first, -> { order("created_at desc") }
+  # The precision of 'created_at' is one second. For comments in the same second
+  # we must use the id for fine-tuning
+  scope :oldest_first, -> { order("created_at asc, id asc") }
+  scope :newest_first, -> { order("created_at desc, id desc") }
   scope :public, -> {where(:private => false) }
 
   # List of roles with access to private comments

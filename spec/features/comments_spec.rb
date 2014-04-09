@@ -4,7 +4,7 @@ require 'spec_helper'
 feature "Comments", "" do
   fixtures :all
 
-  scenario "Empty comment" do
+  scenario "Empty comment", :js => true do
     sign_in_as_user(users(:wedge))
     visit request_path(requests(:wedge_for_yavin))
 
@@ -14,7 +14,7 @@ feature "Comments", "" do
     page.should have_content "Some error prevented the comment to be added"
   end
 
-  scenario "Add comment as requester" do
+  scenario "Add comment as requester", :js => true do
     sign_in_as_user(users(:wedge))
     visit request_path(requests(:wedge_for_yavin))
     find("h1").should have_content "request"
@@ -36,7 +36,7 @@ feature "Comments", "" do
     ActionMailer::Base.deliveries.size.should == @deliveries + 3
   end
 
-  scenario "Add private comment" do
+  scenario "Add private comment", :js => true do
     sign_in_as_user(users(:tspmember))
     visit request_path(requests(:wedge_for_yavin))
     find("h1").should have_content "request"
