@@ -43,7 +43,6 @@ gem 'ransack'
 gem 'kaminari'
 gem 'carrierwave'
 gem 'daemons'
-gem 'delayed_job_active_record'
 gem 'date_validator'
 gem 'auditor'
 gem 'prawn_rails'
@@ -55,6 +54,8 @@ gem "state_machine"
 gem "yard"
 # For using rails3-style attributes protection
 gem 'protected_attributes'
+# delayed_job must appear after protected_attributes
+gem 'delayed_job_active_record'
 
 gem "rspec-rails", group: [:development, :test]
 gem 'exception_notification', group: :production
