@@ -54,6 +54,10 @@ TravelSupport::Application.configure do
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( additional.js additional.css )
 
+  # After migration to Rails 4, this seems to be needed. Otherwise, images
+  # inside "themes" directory with no equivalent in "/app/assets" are ignored
+  config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
