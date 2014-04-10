@@ -125,6 +125,11 @@ class ExpenseReport < ActiveRecord::Base
     where("reimbursements.state" => state.to_s)
   }
 
+  # Scope for controlling user read access
+  scope :related_to, lambda {|user|
+      joins(:request).where("requests.user_id" => user)
+  }
+
   # Ordered list of field names for a given call to the 'by' scope
   #
   # @param [#to_sym] group The grouping option used when invoking the scope
@@ -162,4 +167,15 @@ class ExpenseReport < ActiveRecord::Base
       send(name)
     end
   end
+
+  # Checks if the report is related to a given user.
+  #
+  # Used during access control.
+  #
+  # @param [User] user
+  # @return [Boolean] true if the request that originated the report record is associated with the user
+  def related_to?(user)
+      request.user == user
+  end
+
 end

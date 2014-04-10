@@ -117,7 +117,9 @@ class Ability
       end
 
       # Expenses Reports
-      can :read, ExpenseReport, :request => {:user_id => user.id}
+      can :read, ExpenseReport, ExpenseReport.related_to(user) do |e|
+          e.related_to(user)
+      end
 
     #
     # TSP members permissions

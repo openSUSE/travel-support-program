@@ -32,7 +32,7 @@ gem "twitter-bootstrap-rails"
 
 gem 'devise'
 gem 'devise_ichain_authenticatable', '>= 0.3.0'
-gem 'cancan'
+gem 'cancancan', '~> 1.7'
 gem 'simple_form'
 gem 'show_for'
 gem 'inherited_resources'
