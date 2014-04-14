@@ -41,7 +41,7 @@ module HasState
   # the role designed using the macro method assign_state
   def notify_state
     people = ([self.user, :tsp, :assistant] + self.class.roles_assigned_to(state)).uniq - [:requester]
-    HasStateMailer::notify_to(people, :state, self, self.human_state_name, self.state_updated_at)
+    HasStateMailer::notify_to(people, :state, self)
   end
 
   # Sets the state to 'canceled'
@@ -173,7 +173,7 @@ module HasState
     def notify_inactive_since(date)
       where(["state in (?) and state_updated_at < ?", @assigned_roles.keys, date]).joins(:user).each do |m|
         people = roles_assigned_to(m.state).map {|i| i.to_sym == :requester ? m.user : i }
-        HasStateMailer::notify_to(people, :state, m, m.human_state_name, m.state_updated_at)
+        HasStateMailer::notify_to(people, :state, m)
       end
     end
   end
