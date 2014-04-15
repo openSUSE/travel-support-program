@@ -1,6 +1,6 @@
 = form_tag(User.ichain_login_url, :method => :post, :enctype => 'application/x-www-form-urlencoded', :id => 'login_form') do
   %p
-    = hidden_field_tag :url, request.original_url
+    = hidden_field_tag :url, @back_url || request.original_url
     = hidden_field_tag :context, ::Devise.ichain_context
     = hidden_field_tag :proxypath, ::Devise.ichain_proxypath
     = label_tag :username, t("activerecord.attributes.user.nickname")
