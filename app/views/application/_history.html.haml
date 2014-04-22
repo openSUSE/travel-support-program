@@ -1,0 +1,12 @@
+- events = resource.state_changes.oldest_first + resource.comments.accessible_by(current_ability).oldest_first
+- events.sort_by! {|e| e.created_at }
+- if events.empty?
+  %p= t(:no_history_yet)
+- else
+  %ul.history
+    - events.each do |e|
+      %li
+        - if e.kind_of? Comment
+          = render e
+        - else
+          = render :partial => "state_changes/state_change", :object => e

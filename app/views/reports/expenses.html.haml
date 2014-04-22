@@ -1,4 +1,5 @@
-= content_for :page_header, ExpenseReport.model_name.human
+= content_for :page_header do
+  %h1= ExpenseReport.model_name.human
 
 .navbar
   .navbar-inner

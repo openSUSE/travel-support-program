@@ -1,6 +1,5 @@
 - if user_signed_in? && can?(:read, user.profile)
-  = collapse_link "user_details"
-  = user.nickname
+  = collapse_link "user_details", user.nickname
   %blockquote#user_details.collapse
     .row-fluid
       .span6

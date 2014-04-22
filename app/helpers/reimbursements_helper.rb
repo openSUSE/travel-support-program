@@ -42,15 +42,25 @@ module ReimbursementsHelper
       out = link_to(reimbursement.acceptance_file.file.filename,
                     request_reimbursement_acceptance_path(reimbursement.request))
     end
+
+    links = []
+    if can_read_pdf_for? resource
+      links << link_to(t(:pdf_format), request_reimbursement_path(reimbursement.request, :format => :pdf))
+    end
     if can? :accept, reimbursement
-      out << "<br/>".html_safe
-      out << content_tag(:span, "!", :class => "badge badge-info")
-      out << " ".html_safe
-      print_url = request_reimbursement_path(reimbursement.request, :format => :pdf)
-      out << t(:reimbursement_acceptance_intro, :print_url => print_url).html_safe
+      links << link_to(t(:send_reimbursement_acceptance), new_request_reimbursement_acceptance_path(resource.request), :remote => true)
+    end
+
+    if can? :accept, reimbursement
+      info = t(:reimbursement_acceptance_intro).html_safe
     elsif current_user == reimbursement.user && !reimbursement.acceptance_file.blank?
-      out << "<br/>".html_safe
-      out << t(:reimbursement_acceptance_warning).html_safe
+      info = t(:reimbursement_acceptance_warning).html_safe
+    else
+      info = t(:reimbursement_acceptance_blank).html_safe
+    end
+    info << content_tag(:p, links.join(" | ").html_safe, :class => "text-right")
+    unless info.empty?
+      out << content_tag(:div, info, :class => "alert-info")
     end
     out
   end
@@ -62,7 +72,7 @@ module ReimbursementsHelper
   def reimbursement_payments(reimbursement)
     payments = reimbursement.payments.order(:date).accessible_by(current_ability)
     if payments.empty?
-      I18n.t("show_for.blank")
+      content_tag(:p, I18n.t("show_for.blank"))
     else
       header = content_tag(:th, Payment.human_attribute_name(:date))
       header << content_tag(:th, Payment.human_attribute_name(:method))
@@ -98,7 +108,7 @@ module ReimbursementsHelper
 
       content_tag(:table,
                   content_tag(:thead, content_tag(:tr, header.html_safe)) + content_tag(:tbody, rows.join("").html_safe),
-                 :class => "table table-condensed")
+                 :class => "table table-condensed", :id => "reimbursement-payments")
     end
   end
 

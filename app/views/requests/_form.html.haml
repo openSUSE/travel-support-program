@@ -43,4 +43,7 @@
 
   .form-actions
     = f.button :submit, :class => 'btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), requests_path, :class => 'btn'
+    - if resource.new_record?
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), requests_path, :class => 'btn'
+    - else
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), resource, :class => 'btn'

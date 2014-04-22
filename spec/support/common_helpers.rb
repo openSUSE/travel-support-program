@@ -130,6 +130,7 @@ module CommonHelpers
     else
       find_request_as users(:supervisor), machine
     end
+    click_link "Action"
     click_link "Adjust state"
     select state.to_s, :from => :state_adjustment_to
     click_button "Create state adjustment"

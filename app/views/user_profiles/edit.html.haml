@@ -1,4 +1,5 @@
-= content_for :page_header, current_user.nickname
+= content_for :page_header do
+  %h1= current_user.nickname
 = render 'profile_menu'
 = profile_info
 = simple_form_for @profile, :url => user_profile_path, :as => :user do |f|

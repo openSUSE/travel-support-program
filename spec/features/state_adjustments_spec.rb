@@ -6,6 +6,7 @@ feature "State adjustments", "" do
 
   scenario "Adjust a request", :js => true do
     find_request_as users(:supervisor), requests(:luke_for_party)
+    click_link "Action"
     click_link "Adjust state"
     select "canceled", :from => :state_adjustment_to
     fill_in "notes", :with => "I know I could use the cancel button, but..."
@@ -19,6 +20,7 @@ feature "State adjustments", "" do
 
   scenario "Invalid adjustment", :js => true do
     find_reimbursement_as users(:supervisor), reimbursements(:wedge_for_training_reim)
+    click_link "Action"
     click_link "Adjust state"
     select "incomplete", :from => :state_adjustment_to
     fill_in "notes", :with => "Quite stupid, in fact."

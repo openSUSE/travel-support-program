@@ -1,5 +1,16 @@
 - model_class = Event
-= content_for :page_header, t('.title', :default => model_class.model_name.human)
+= content_for :page_header do
+  .row-fluid
+    .span7
+      %h1= t('.title', :default => model_class.model_name.human)
+    .span5
+      %br
+      - if user_signed_in? && can?(:update, resource)
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path(resource), :class => 'btn'
+      - if user_signed_in? && can?(:destroy, resource)
+        = link_to t('.destroy', :default => t("helpers.links.destroy")), resource_path(resource), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn'
+      - if resource.accepting_requests?
+        = link_to t(:apply), new_request_path(:event_id => resource), :class => 'btn btn-primary'
 
 = show_for resource do |r|
   .row-fluid
@@ -29,12 +40,3 @@
     .row-fluid
       .span12
         = r.association :budget
-
-.form-actions
-  = link_to t('.back', :default => t("helpers.links.back")), collection_path, :class => 'btn'
-  - if user_signed_in? && can?(:update, resource)
-    = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path(resource), :class => 'btn'
-  - if user_signed_in? && can?(:destroy, resource)
-    = link_to t('.destroy', :default => t("helpers.links.destroy")), resource_path(resource), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-danger'
-  - if resource.accepting_requests?
-    = link_to t(:apply), new_request_path(:event_id => resource), :class => 'btn'

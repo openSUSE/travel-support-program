@@ -1,5 +1,6 @@
 - model_class = Event
-= content_for :page_header, t('.title', :default => model_class.model_name.human(count: 2))
+= content_for :page_header do
+  %h1= t('.title', :default => model_class.model_name.human(count: 2))
 
 .navbar
   .navbar-inner
@@ -20,6 +21,7 @@
       %th= sort_link(@q, :country_code)
       %th= sort_link(@q, :start_date)
       %th= sort_link(@q, :end_date)
+      %th
   %tbody
     - collection.each do |r|
       %tr
@@ -27,5 +29,6 @@
         %td= country_label(r.country_code)
         %td= l(r.start_date)
         %td= l(r.end_date)
+        %td= link_to t(:apply), new_request_path(:event_id => r), :class => 'btn btn-mini'
 
 = paginate collection

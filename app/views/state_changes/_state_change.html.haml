@@ -1,7 +1,5 @@
-%li
-  = t(:state_change_title_line, :date => l(state_change.created_at, :format => :short), :event => state_change.human_action_name, :user => state_change.user.nickname)
-  %blockquote
-    = t(:state_change_details, :from => t("activerecord.state_machines.states.#{state_change.from}"), :to => t("activerecord.state_machines.states.#{state_change.to}"))
-    %br
-    = "#{StateChange.human_attribute_name(:notes)}: "
-    = state_change.notes
+- date = content_tag(:b, time_ago_in_words(state_change.created_at), :class => "text-info", :title => l(state_change.created_at, :format => :short))
+= t(:state_change_li, :date => date, :user => state_change.user.nickname, :from => t("activerecord.state_machines.states.#{state_change.from}"), :to => t("activerecord.state_machines.states.#{state_change.to}")).html_safe
+
+%blockquote
+  = simple_format(state_change.notes)

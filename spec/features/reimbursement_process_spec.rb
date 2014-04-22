@@ -28,7 +28,7 @@ feature "Reimbursements", "" do
 
     # Failed submission
     click_link "Action"
-    click_link "submit"
+    click_link "Submit"
     fill_in "notes", :with => "I've not fulfilled one of the amounts"
     click_button "submit"
     page.should have_content "Something went wrong. Unable to submit."
@@ -50,11 +50,11 @@ feature "Reimbursements", "" do
 
     # Submit again
     click_link "Action"
-    click_link "submit"
+    click_link "Submit"
     fill_in "notes", :with => "Ok, now all the information is there."
     click_button "submit"
     page.should have_content "Successfully submitted."
-    page.should have_content "From incomplete to submitted"
+    page.should have_content "from incomplete to submitted"
     page.should have_content "is being evaluated"
 
     # Log in as tspmember
@@ -63,7 +63,7 @@ feature "Reimbursements", "" do
 
     # Rolling back
     click_link "Action"
-    click_link "roll back"
+    click_link "Roll Back"
     fill_in "notes", :with => "Sorry Mr. Idestroyedthedeathstar: no invoices, no money"
     click_button "roll back"
     page.should have_content "Successfully rolled back."
@@ -98,7 +98,7 @@ feature "Reimbursements", "" do
 
     # And submit again
     click_link "Action"
-    click_link "submit"
+    click_link "Submit"
     fill_in "notes", :with => "Here you are the invoices. Make sure you also watch the video."
     click_button "submit"
     page.should have_content "Successfully submitted."
@@ -112,11 +112,11 @@ feature "Reimbursements", "" do
     page.should have_content "Lodging receipt"
     page.should have_content "Gas receipt"
     click_link "Action"
-    click_link "approve"
+    click_link "Approve"
     fill_in "notes", :with => "Everything ok know."
     click_button "approve"
     page.should have_content "Successfully approved."
-    page.should have_content "requester has to accept the conditions (attaching or updating the signed acceptance)"
+    page.should have_content "has to accept the conditions (after attaching or updating the signed acceptance)"
 
     # Log in as requester
     click_link "Log out"
@@ -124,30 +124,29 @@ feature "Reimbursements", "" do
 
     # The signature notification (and the button) should be there...
     page.should have_content "An updated signed version of the reimbursement request is required"
-    page.should have_link "Attach signature"
-    page.should have_link "Printable version"
+    page.should have_link "Attach signed document"
+    page.should have_link "Download printable version"
     # ..but our hero decides to ignore it
     click_link "Action"
-    click_link "accept"
+    click_link "Accept"
     fill_in "notes", :with => "I don't sign autograph for free."
     click_button "accept"
     page.should have_content "Not accepted"
 
     # No way. Time to attach
-    close_modal_dialog
-    click_link "Attach signature"
+    visit request_reimbursement_path(@reimbursement.request)
+    click_link "Attach signed document"
     page.should have_content "Print it, sign it, scan the signed version and upload it using the form below"
     attach_file "acceptance_file", Rails.root.join("spec", "support", "files", "scan001.pdf")
-    click_button "Attach signature"
+    click_button "Attach signed document"
     page.should have_content "scan001.pdf"
     # Accept again
     click_link "Action"
-    click_link "accept"
+    click_link "Accept"
     fill_in "notes", :with => "Acceptance included."
     click_button "accept"
     page.should have_content "Acceptance processed"
     page.should have_content "reimbursement musts be now processed by the administrative"
-    page.should_not have_link "Action"
 
     # Log in as tsp member
     click_link "Log out"
@@ -161,14 +160,14 @@ feature "Reimbursements", "" do
     find_reimbursement_as(users(:administrative), @reimbursement)
     # Process the reimbursement
     click_link "Action"
-    click_link "process"
+    click_link "Process"
     fill_in "notes", :with => "Every ok. Sending to accounting dept."
     click_button "process"
     page.should have_content "Payment processed"
     page.should have_content "payment is ongoing"
     # And mark it as payed
     click_link "Action"
-    click_link "confirm"
+    click_link "Confirm"
     click_button "confirm"
     page.should have_content "Confirmation processed"
     page.should have_content "process have ended succesfully"

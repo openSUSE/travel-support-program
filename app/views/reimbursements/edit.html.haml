@@ -101,4 +101,4 @@
 
   .form-actions
     = f.button :submit, :class => 'btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), reimbursements_path, :class => 'btn'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), request_reimbursement_path(resource.request), :class => 'btn'

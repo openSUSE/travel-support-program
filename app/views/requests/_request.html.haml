@@ -1,10 +1,7 @@
-= collapse_link "request_details"
-= timestamped_state(request)
-= icon_to "share-alt", request, :title => t(:goto)
+= collapse_link "request_details", request.label
 %blockquote#request_details.collapse
   = show_for request do |r|
+    = r.attribute :state do
+      = timestamped_state(request)
     = r.attribute :description
-    = r.attribute :state_changes do
-      %ul
-        = render :partial => "state_changes/state_change", :collection => @request.state_changes.newest_first
-
+  .text-right= goto_link request

@@ -1,4 +1,4 @@
-prawn_document :page_size => "A4" do |pdf|
+prawn_document :page_size => "A4", :force_download => true do |pdf|
   # First of all, we instantiate some data variables
   
   # For expenses table

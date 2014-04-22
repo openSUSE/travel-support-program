@@ -31,7 +31,7 @@ feature "Comments", "" do
     find("h1").should have_content "request"
     page.should_not have_xpath("//div[@id='new_comment']")
     page.should have_content "Comment added"
-    page.should have_content "comments"
+    page.should have_content "history"
     page.should have_content "Luke always get all the money. That's unfair."
     ActionMailer::Base.deliveries.size.should == @deliveries + 3
   end
@@ -53,7 +53,7 @@ feature "Comments", "" do
     find("h1").should have_content "request"
     page.should_not have_xpath("//div[@id='new_comment']")
     page.should have_content "Comment added"
-    page.should have_content "comments"
+    page.should have_content "history"
     page.should have_content "private"
     page.should have_content "I don't like this guy"
     ActionMailer::Base.deliveries.size.should == @deliveries + 2
@@ -62,7 +62,7 @@ feature "Comments", "" do
     logout
     sign_in_as_user(users(:wedge))
     visit request_path(requests(:wedge_for_yavin))
-    page.should have_content "comments"
+    page.should have_content "history"
     page.should_not have_content "I don't like this guy"
   end
 end

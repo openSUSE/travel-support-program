@@ -1,6 +1,5 @@
 - if user_signed_in? && can?(:read, bank_account)
-  = collapse_link "bank_account_details"
-  = bank_account.human_format_name
+  = collapse_link "bank_account_details", bank_account.human_format_name
   %blockquote#bank_account_details.collapse
     .row-fluid
       = show_for bank_account do |a|

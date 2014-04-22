@@ -16,7 +16,7 @@ feature "Budget limits", "" do
 
     # Approval should fail
     click_link "Action"
-    click_link "approve"
+    click_link "Approve"
     fill_in "notes", :with => "Not enough money, but let's try."
     click_button "approve"
     page.should have_content "Something went wrong. Not approved."
@@ -35,11 +35,11 @@ feature "Budget limits", "" do
 
     # Approval should success
     click_link "Action"
-    click_link "approve"
+    click_link "Approve"
     fill_in "notes", :with => "Not enough money, but let's try."
     click_button "approve"
     page.should have_content "Successfully approved"
-    page.should have_content "From submitted to approved"
+    page.should have_content "from submitted to approved"
   end
 
   scenario "Choosing the currency", :js => true do

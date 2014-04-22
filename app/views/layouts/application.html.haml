@@ -38,7 +38,7 @@
             = render "layouts/main_content_header"
             = bootstrap_flash_messages
             .page-header
-              %h1= yield :page_header
+              =yield :page_header
             = yield
 
       #push-footer

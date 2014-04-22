@@ -1,4 +1,6 @@
-= content_for :page_header, t(:change_your_password)
+= content_for :page_header do
+  %h1= t(:change_your_password)
+
 = simple_form_for(@user, :as => 'user', :url => user_password_path, :html => { :method => :put, :class => 'form-horizontal' }) do |f|
   = f.hidden_field :reset_password_token
   = f.error_notification

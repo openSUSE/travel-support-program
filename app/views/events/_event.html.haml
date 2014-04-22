@@ -1,6 +1,4 @@
-= collapse_link "event_details"
-= event_title_line(event)
-= icon_to "share-alt", event, :title => t(:goto)
+= collapse_link "event_details", event_title_line(event)
 %blockquote#event_details.collapse
   = show_for event do |e|
     .row-fluid
@@ -19,3 +17,6 @@
       .row-fluid
         .span6= e.attribute :validated
         .span6= e.attribute :visa_letters
+    .row-fluid
+      .span12.text-right
+        = goto_link event

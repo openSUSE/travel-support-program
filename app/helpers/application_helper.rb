@@ -64,9 +64,21 @@ module ApplicationHelper
   # Outputs a trigger for (un)collapsing a target element
   #
   # @param [String] target  id of the HTML element to (un)collapse
+  # @param [String] label  additional text to prepend to the icon
   # @return [String] HTML output
-  def collapse_link(target)
-    icon_to "resize-vertical", "\##{target}", :title => t(:collapse), :data => {:toggle => :collapse}
+  def collapse_link(target, label='')
+    label << " " unless label.empty?
+    link_to(label.html_safe + content_tag(:i, "", :class => "icon-resize-vertical"),
+            "\##{target}", :title => t(:collapse), :data => {:toggle => :collapse})
+  end
+
+  # Outputs a link with the "go to" label and an icon
+  #
+  # @param [String] path  url for the link
+  # @return [String] HTML output
+  def goto_link(path)
+    link_to("#{t(:goto)} ".html_safe + content_tag(:i, "", :class => "icon-share-alt"),
+            path, :title => t(:goto))
   end
 
   # Outputs the sum of the expenses of a request or a reimbursement
@@ -106,26 +118,55 @@ module ApplicationHelper
   end
 
   # Outputs a list of links to create every possible and
-  # authorized state transition for a given state machine
+  # authorized state transition for a given state machine.
+  # If the user is authorized, it also adds the 'cancel' and 'adjust state'
+  # options.
   #
   # @param [#state_events]  machine  a request or a reimbursement (or any other
   #                                  object including the HasState mixin)
-  # @return [String] a list of space separated links
-  def transition_links(machine)
+  # @return [String] a bootstrap-based button dropdown menu
+  def state_change_links(machine)
     trans_path = resource_path + "/state_transitions/new.js?state_transition[state_event]="
     links = machine.state_events.map do |event|
       next unless can? event, machine
-      content_tag(:li, link_to(t("activerecord.state_machines.events.#{event}"), trans_path + event.to_s, :remote => true))
+      link_to(t("activerecord.state_machines.events.#{event}").titleize, trans_path + event.to_s, :remote => true)
     end.compact
+    # Add cancel link
+    if can? :cancel, machine
+      links << ""
+      links << link_to(t("helpers.links.cancel"), "#{trans_path}cancel", :remote => true)
+    end
+    # Add adjust_state link
+    if can? :adjust_state, machine
+      links << ""
+      links << link_to(t("helpers.links.adjust_state"), resource_path + "/state_adjustments/new.js", :remote => true)
+    end
+    dropdown t("helpers.workflow_actions"), links
+  end
+
+  # Outputs a Bootstrap's button dropdown menu
+  #
+  # @param [String]  label  the title of the button
+  # @param [Array]  links  list of options for the dropdown. Empty strings are
+  #   considered dividers
+  # @return [String] a btn-group div
+  def dropdown(label, links)
     if links.empty?
       ""
     else
+      li_tags = links.map do |l|
+        if l.empty?
+          content_tag(:li, "", :class => "divider")
+        else
+          content_tag(:li, l)
+        end
+      end
       content_tag(:div,
-        link_to(t(:state_event).html_safe + " " + content_tag(:span, "", class: "caret"),
+        link_to(label.html_safe + " " + content_tag(:span, "", class: "caret"),
           "#",
           class: "btn dropdown-toggle", data: {toggle: "dropdown"}) +
-        content_tag(:ul, links.join("\n").html_safe, class: "dropdown-menu"),
-        class: "btn-group dropup")
+        content_tag(:ul, li_tags.join("\n").html_safe, class: "dropdown-menu"),
+        class: "btn-group")
     end
   end
 
