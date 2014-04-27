@@ -192,7 +192,9 @@ module ApplicationHelper
     # Assistants are a special case, they should have the same default filters than tsp
     role = current_role.to_s == "assistant" ? :tsp : current_role
     states = machine_class.states_assigned_to(role)
-    if states.size == 1
+    # FIXME: requesters are also an special case nowadays. Let's look for a
+    # better solution afterward.
+    if !current_role?(:requester) && states.size == 1
       send(helper, :q => {:state_eq => states.first})
     else
       send helper

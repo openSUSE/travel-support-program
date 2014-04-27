@@ -58,17 +58,14 @@ class RequestExpense < ActiveRecord::Base
 
   protected
 
-  # Set the authorized amount if possible and not already set/reviewed by a TSP
-  # member
+  # Set the authorized amount if possible
   #
   # This callback sets the authorized amount as the minimum among approved and
-  # total, but only if the reimbursement process has started and if the
-  # reimbursement has neven been submited. After first submission the authorized
-  # amount is never changed automatically, to avoid confussion.
+  # total, but only if the reimbursement process has started.
   #
   # @callback
   def set_authorized_amount
-    if !total_amount.blank? && !approved_amount.blank? && reimbursement && !reimbursement.with_transitions?
+    if !total_amount.blank? && !approved_amount.blank?
       if total_currency != approved_currency
         self.authorized_amount = approved_amount
       else

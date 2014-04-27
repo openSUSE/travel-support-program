@@ -25,6 +25,6 @@ feature "Menu", "" do
   scenario "as administrative" do
     sign_in_as_user(users(:administrative))
     find("#options").should have_link "Requests", :href => requests_path
-    find("#options").should have_link "Reimbursements", :href => reimbursements_path(:q => {:state_eq => "accepted"})
+    find("#options").should have_link "Reimbursements", :href => reimbursements_path(:q => {:state_eq => "approved"})
   end
 end

@@ -41,6 +41,6 @@ class ReimbursementAcceptancesController < ApplicationController
 
   def load_reimbursement_and_authorize
     load_reimbursement
-    authorize! :accept, @reimbursement
+    authorize! :submit, @reimbursement
   end
 end

@@ -182,6 +182,7 @@ describe Request do
       reimb = reimbursements(:wedge_for_training_reim)
       reimb.expenses.first.update_attribute(:authorized_amount, 30)
       transition(reimb, :cancel, users(:wedge)) rescue nil
+      reimb.reload.state.should == 'canceled'
       @expense.update_attributes(:approved_amount => 70, :approved_currency => "EUR")
       transition(@request, :approve, users(:tspmember)) rescue nil
       @request.reload.state.should == "approved"

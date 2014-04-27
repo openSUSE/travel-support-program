@@ -70,8 +70,8 @@
 %p
   When the event is over, you can go to your accepted request and click the &#39;ask for
   reimbursement&#39; button. It will create a new reimbursement, which is quite similar
-  to a request but includes more fields and have a slightly longer workflow, with some
-  additional states. The new reimbursement will be added to
+  to a request but includes more fields and have a slightly different workflow.
+  The new reimbursement will be added to
   = link_to "your reimbursements list", reimbursements_path
   at the left menu.
 
@@ -85,9 +85,8 @@
     = link_to "your profile", profile_path
   - else
     your profile
-  is up to date by checking the printable version of the reimbursement or by clicking
-  on your username, in the top right corner of the page, next to the &#39;log out&#39;
-  link.
+  is up to date by clicking on your username, in the top right corner of the page,
+  next to the &#39;log out&#39; link.
 
 - if TravelSupport::Config.setting :opensuse_connect, :enabled
   %p
@@ -97,18 +96,13 @@
     and should be updated in the Connect profile of the user.
 
 %p
-  The full workflow for a reimbursement is displayed below. Once more, the only two
-  actions that the applicant needs to perform are &#39;submit&#39; (for sending the
-  information to the Travel Support Program members) and &#39;accept&#39;. The last
-  states are administrative states related to the payment.
-  = image_tag "Reimbursement_state.png", :alt => "Reimbursement workflow diagram"
-
-%p
-  There is an additional requirement for accepting reimbursements compared to accepting
-  requests. In the same way that before clicking on &#39;submit&#39; you need to fulfill
-  all the information, before clicking on &#39;accept&#39; you need to upload a signed
-  version of the reimbursement. That means printing (click on &#39;printable
+  The full workflow for a reimbursement is displayed below. The last states correspond to
+  administrative steps related to the payment.
+  There is an additional requirement for submitting reimbursements compared to submitting
+  requests. You need to upload a signed
+  version of the reimbursement. That means printing (click on &#39a;download printable
   version&#39;), signing with a pen, scanning the result and uploading it (click on
-  &#39;attach signature&#39;). If you already did it but your reimbursement was rejected
-  and you are performing your second acceptance, make sure to update the signed file to
+  &#39;attach signed document&#39;). If you already did it but your reimbursement was
+  rolled back and you are performing a second submission, make sure to update the signed file to
   fit the current information in the application.
+  = image_tag "Reimbursement_state.png", :alt => "Reimbursement workflow diagram"

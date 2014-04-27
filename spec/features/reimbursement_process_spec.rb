@@ -33,6 +33,7 @@ feature "Reimbursements", "" do
     click_button "submit"
     page.should have_content "Something went wrong. Unable to submit."
     page.should have_content "under modification, not submitted"
+    page.should have_content "Expenses are missing or invalid"
 
     # Correct the request
     close_modal_dialog
@@ -44,10 +45,26 @@ feature "Reimbursements", "" do
     click_button "Update reimbursement"
     page.should have_content "reimbursement was successfully updated"
 
-    # Testing audits, just in case
-    @reimbursement.audits.last.user.should == users(:luke)
-    @reimbursement.expenses.first.audits.last.user.should == users(:luke)
+    # The signature notification (and the link) should be there...
+    page.should have_content "An updated signed version of the reimbursement request is required"
+    page.should have_link "Attach signed document"
+    page.should have_link "Download printable version"
+    # ..but our hero decides to ignore it
+    click_link "Action"
+    click_link "Submit"
+    fill_in "notes", :with => "I don't sign autograph for free."
+    click_button "submit"
+    page.should have_content "Unable to submit."
+    page.should have_content "Signed acceptance can't be blank"
+    page.should_not have_content "Expenses are missing or invalid" # Not longer the problem
 
+    # No way. Time to attach
+    visit request_reimbursement_path(@reimbursement.request)
+    click_link "Attach signed document"
+    page.should have_content "Print it, sign it, scan the signed version and upload it using the form below"
+    attach_file "acceptance_file", Rails.root.join("spec", "support", "files", "scan001.pdf")
+    click_button "Attach signed document"
+    page.should have_content "scan001.pdf"
     # Submit again
     click_link "Action"
     click_link "Submit"
@@ -56,10 +73,16 @@ feature "Reimbursements", "" do
     page.should have_content "Successfully submitted."
     page.should have_content "from incomplete to submitted"
     page.should have_content "is being evaluated"
+    page.should_not have_link "Attach signed document"
+
+    # Testing audits, just in case
+    @reimbursement.audits.last.user.should == users(:luke)
+    @reimbursement.expenses.first.audits.last.user.should == users(:luke)
 
     # Log in as tspmember
     click_link "Log out"
     find_reimbursement_as(users(:tspmember), @reimbursement)
+    page.should_not have_link "Attach signed document"
 
     # Rolling back
     click_link "Action"
@@ -68,10 +91,12 @@ feature "Reimbursements", "" do
     click_button "roll back"
     page.should have_content "Successfully rolled back."
     page.should have_content "requester must update the reimbursement with all the relevant information"
+    page.should_not have_link "Attach signed document"
 
     # Log in as requester
     click_link "Log out"
     find_reimbursement_as(users(:luke), @reimbursement)
+    page.should have_link "Attach signed document"
 
     # Add links and attachments
     click_link "Edit"
@@ -116,44 +141,7 @@ feature "Reimbursements", "" do
     fill_in "notes", :with => "Everything ok know."
     click_button "approve"
     page.should have_content "Successfully approved."
-    page.should have_content "has to accept the conditions (after attaching or updating the signed acceptance)"
-
-    # Log in as requester
-    click_link "Log out"
-    find_reimbursement_as(users(:luke), @reimbursement)
-
-    # The signature notification (and the button) should be there...
-    page.should have_content "An updated signed version of the reimbursement request is required"
-    page.should have_link "Attach signed document"
-    page.should have_link "Download printable version"
-    # ..but our hero decides to ignore it
-    click_link "Action"
-    click_link "Accept"
-    fill_in "notes", :with => "I don't sign autograph for free."
-    click_button "accept"
-    page.should have_content "Not accepted"
-
-    # No way. Time to attach
-    visit request_reimbursement_path(@reimbursement.request)
-    click_link "Attach signed document"
-    page.should have_content "Print it, sign it, scan the signed version and upload it using the form below"
-    attach_file "acceptance_file", Rails.root.join("spec", "support", "files", "scan001.pdf")
-    click_button "Attach signed document"
-    page.should have_content "scan001.pdf"
-    # Accept again
-    click_link "Action"
-    click_link "Accept"
-    fill_in "notes", :with => "Acceptance included."
-    click_button "accept"
-    page.should have_content "Acceptance processed"
-    page.should have_content "reimbursement musts be now processed by the administrative"
-
-    # Log in as tsp member
-    click_link "Log out"
-    find_reimbursement_as(users(:tspmember), @reimbursement)
-
-    # Nothing to do, time for the administrative
-    page.should_not have_link "Action"
+    page.should have_content "will be now processed by the administrative"
 
     # Log in as administrative
     click_link "Log out"

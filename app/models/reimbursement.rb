@@ -58,12 +58,8 @@ class Reimbursement < ActiveRecord::Base
       transition :submitted => :approved
     end
 
-    event :accept do
-      transition :approved => :accepted
-    end
-
     event :process do
-      transition :accepted => :processed
+      transition :approved => :processed
     end
 
     event :confirm do
@@ -75,10 +71,6 @@ class Reimbursement < ActiveRecord::Base
       transition :approved => :incomplete
     end
 
-    event :reject do
-      transition :accepted => :submitted
-    end
-
     # The empty block for this state is needed to prevent yardoc's error
     # during automatic documentation generation
     state :canceled do
@@ -88,8 +80,7 @@ class Reimbursement < ActiveRecord::Base
   # @see HasState.assign_state
   assign_state :incomplete, :to => :requester
   assign_state :submitted, :to => :tsp
-  assign_state :approved, :to => :requester
-  assign_state :accepted, :to => :administrative
+  assign_state :approved, :to => :administrative
 
   # @see Request#expenses_sum
   def expenses_sum(*args)
@@ -117,17 +108,16 @@ class Reimbursement < ActiveRecord::Base
   #
   # @return [Boolean] true if allowed
   def editable_by_tsp?
-    state == 'submitted'
+    false
   end
 
   # Checks whether a tsp user should be allowed to cancel
   #
-  # tsp users cannot cancel a reimbursement if it has already been accepted
-  # by the requester
+  # No special case, simply call to #can_cancel?
   #
   # @return [Boolean] true if allowed
   def cancelable_by_tsp?
-    can_cancel? and not accepted?
+    can_cancel?
   end
 
   # Checks whether can have a transition to 'canceled' state
@@ -146,19 +136,18 @@ class Reimbursement < ActiveRecord::Base
   #
   # @return [Boolean] true if signed acceptance is required
   def acceptance_file_required?
-    accepted? || processed? || payed?
+    not (incomplete? || canceled?)
   end
 
   # Checks whether a complete user profile (with the required information
   # filled) is required in order to be a valid reimbursement. A complete profile
-  # is not required if the reimbursement is being rolled back or rejected, only
+  # is not required if the reimbursement is being rolled back, only
   # when trying to go further into the workflow.
   #
   # @return [Boolean] true if the profile have to be complete
   def complete_profile_required?
     (submitted? && state_was == "incomplete") ||
-      (approved? && state_was == "submitted") ||
-      (accepted? && state_was == "approved")
+      (approved? && state_was == "submitted")
   end
 
   # Label to identify the reimbursement
@@ -201,7 +190,7 @@ class Reimbursement < ActiveRecord::Base
   # @return [Boolean] true if the request should be rejected
   def reject_request(attrs)
     acceptable_request_attrs = %w(id expenses_attributes)
-    acceptable_expenses_attrs = %w(id total_amount authorized_amount)
+    acceptable_expenses_attrs = %w(id total_amount)
     return true unless (attrs.keys - acceptable_request_attrs).empty?
     if expenses = attrs['expenses_attributes']
       expenses.values.each do |expense|

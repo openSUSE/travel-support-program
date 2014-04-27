@@ -47,16 +47,18 @@ module ReimbursementsHelper
     if can_read_pdf_for? resource
       links << link_to(t(:pdf_format), request_reimbursement_path(reimbursement.request, :format => :pdf))
     end
-    if can? :accept, reimbursement
+    if can? :submit, reimbursement
       links << link_to(t(:send_reimbursement_acceptance), new_request_reimbursement_acceptance_path(resource.request), :remote => true)
     end
 
-    if can? :accept, reimbursement
+    if can? :submit, reimbursement
       info = t(:reimbursement_acceptance_intro).html_safe
-    elsif current_user == reimbursement.user && !reimbursement.acceptance_file.blank?
-      info = t(:reimbursement_acceptance_warning).html_safe
     else
-      info = t(:reimbursement_acceptance_blank).html_safe
+      if reimbursement.acceptance_file.blank?
+        info = t(:reimbursement_acceptance_blank).html_safe
+      else
+        info = t(:reimbursement_acceptance_update).html_safe
+      end
     end
     info << content_tag(:p, links.join(" | ").html_safe, :class => "text-right")
     unless info.empty?

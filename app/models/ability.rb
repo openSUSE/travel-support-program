@@ -76,7 +76,7 @@ class Ability
       can :update, Reimbursement do |r|
         r.user == user && r.editable_by_requester?
       end
-      [:submit, :accept, :roll_back, :cancel].each do |action|
+      [:submit, :roll_back, :cancel].each do |action|
         can action, Reimbursement do |r|
           r.user == user && r.send("can_#{action}?")
         end
@@ -252,7 +252,7 @@ class Ability
 
       # Reimbursements
       can :read, Reimbursement
-      [:process, :reject, :confirm].each do |action|
+      [:process, :roll_back, :confirm].each do |action|
         can action, Reimbursement do |r|
           r.send("can_#{action}?")
         end

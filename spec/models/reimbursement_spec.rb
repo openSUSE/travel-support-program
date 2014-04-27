@@ -9,6 +9,7 @@ describe Reimbursement do
       @deliveries = ActionMailer::Base.deliveries.size
       @reimbursement = requests(:luke_for_yavin).create_reimbursement
       @reimbursement.request.expenses.each {|e| e.total_amount = 55 }
+      set_acceptance_file @reimbursement
       @reimbursement.build_bank_account(:holder => "Owen Lars", :bank_name => "Tatooine Saving Bank",
                                         :format => "iban", :iban => "AT611904300234574444",
                                         :bic => "ABCDEABCDE")
@@ -27,17 +28,15 @@ describe Reimbursement do
     context "after negotiation" do
       before(:each) do
         @reimbursement.reload
-        @reimbursement.request.expenses.each {|e| e.authorized_amount = 10 }
-        @reimbursement.save!
         transition(@reimbursement, :roll_back, users(:tspmember))
         @reimbursement.request.expenses.each {|e| e.total_amount = 80 }
         @reimbursement.save!
         transition(@reimbursement, :submit, users(:luke))
       end
 
-      it "should not override the manually set authorized amounts" do
-        @reimbursement.expenses.reload.map {|i| i.authorized_amount.to_f}.sort.should == [10.0, 10.0, 10.0]
-      end
+      #it "should not override the manually set authorized amounts" do
+      #  @reimbursement.expenses.reload.map {|i| i.authorized_amount.to_f}.sort.should == [10.0, 10.0, 10.0]
+      #end
 
       it "should notify negotiation steps to requester, TSP and assistants" do
         ActionMailer::Base.deliveries.size.should == @deliveries + 9
@@ -49,19 +48,12 @@ describe Reimbursement do
           transition(@reimbursement, :approve, users(:tspmember))
         end
 
-        it "should not override the manually set authorized amounts" do
-          @reimbursement.expenses.reload.map {|i| i.authorized_amount.to_f}.sort.should == [10.0, 10.0, 10.0]
-        end
+        #it "should not override the manually set authorized amounts" do
+        #  @reimbursement.expenses.reload.map {|i| i.authorized_amount.to_f}.sort.should == [10.0, 10.0, 10.0]
+        #end
 
-        it "should notify approval to requester, TSP and assistants" do
-          ActionMailer::Base.deliveries.size.should == @deliveries + 3
-        end
-
-        it "should notify acceptance to requester, TSP, assistants and administrative" do
-          ActionMailer::Base.deliveries.size.should == @deliveries + 3
-          set_acceptance_file @reimbursement
-          transition(@reimbursement, :accept, users(:tspmember))
-          ActionMailer::Base.deliveries.size.should == @deliveries + 7
+        it "should notify approval to requester, TSP, assistants and administrative" do
+          ActionMailer::Base.deliveries.size.should == @deliveries + 4
         end
       end
     end
@@ -74,6 +66,7 @@ describe Reimbursement do
       @user.profile.save!
       @reimbursement = requests(:luke_for_yavin).create_reimbursement
       @reimbursement.request.expenses.each {|e| e.total_amount = 55 }
+      set_acceptance_file @reimbursement
       @reimbursement.build_bank_account(:holder => "Owen Lars", :bank_name => "Tatooine Saving Bank",
                                         :format => "iban", :iban => "AT611904300234574444",
                                         :bic => "ABCDEABCDE")

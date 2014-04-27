@@ -104,20 +104,19 @@ en:
         other: "reimbursements"
         states:
           accepted: "by requester"
-          approved: "ready for final requester's acceptance"
+          approved: "waiting for payment process"
           canceled: "no more actions allowed"
           incomplete: "under modification, not submitted"
           payed: "the requester have received the reimbursement"
           processed: "by administrative, payment is ongoing"
           submitted: "waiting for approval"
         state_guides:
-          accepted: "The reimbursement musts be now processed by the administrative to start the payment process."
-          approved: "Now the requester has to accept the conditions (after attaching or updating the signed acceptance) or roll the reimbursement back to make corrections."
+          approved: "The reimbursement will be now processed by the administrative to start the payment process."
           canceled: "The reimbursement has been canceled and cannot be longer modified."
           incomplete: "The requester must update the reimbursement with all the relevant information. Afterwards, the reimbursement must be explicitly submitted."
           payed: "The process have ended succesfully."
           processed: "The reimbursement must be confirmed after completing the payment."
-          submitted: "The reimbursement is being evaluated. The responsible people can adjust some values and approve it or can roll it back (again to incomplete state) if the requester needs to correct something."
+          submitted: "The reimbursement is being evaluated. It will be approved or rolled back (again to incomplete state) whether the requester needs to correct something."
       reimbursement_attachment:
         one: "attachment"
         other: "attachments"
