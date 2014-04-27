@@ -61,6 +61,12 @@ test:
 
   budget_limits: true
 
+  authentication:
+    ichain:
+      enabled: false
+    database:
+      enabled: true
+
   opensuse_connect:
     enabled: false
 
