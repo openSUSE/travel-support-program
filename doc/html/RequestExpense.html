@@ -6,13 +6,13 @@
 <title>
   Class: RequestExpense
   
-    &mdash; Documentation by YARD 0.8.5.2
+    &mdash; Documentation by YARD 0.8.7.3
   
 </title>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
@@ -320,6 +320,29 @@ reimbursement process</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#event-instance_method" title="#event (instance method)">- (Object) <strong>event</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Alias for =&gt; false#event.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#reimbursement-instance_method" title="#reimbursement (instance method)">- (Object) <strong>reimbursement</strong> </a>
     
 
@@ -348,6 +371,29 @@ reimbursement process</p>
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#by_attr_for_requests-class_method" title="by_attr_for_requests (class method)">+ (Object) <strong>by_attr_for_requests</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Scope needed by Request.expenses_sum.</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -397,7 +443,8 @@ reimbursement process</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Convenience method that simply aliases approved_currency since currency cannot be changed after approval.</p>
+</div></span>
   
 </li>
 
@@ -419,8 +466,7 @@ reimbursement process</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Convenience method that simply aliases approved_currency since currency
-cannot be changed after approval.</p>
+    <span class="summary_desc"><div class='inline'><p>Convenience method that simply aliases approved_currency since currency cannot be changed after approval.</p>
 </div></span>
   
 </li>
@@ -473,10 +519,10 @@ cannot be changed after approval.</p>
       <pre class="lines">
 
 
-158</pre>
+159</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 158</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 159</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>approved_currency</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -523,12 +569,12 @@ cannot be changed after approval.</p>
       <pre class="lines">
 
 
-159</pre>
+160</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 159</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 160</span>
 
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>         <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>         <span class='label'>null:</span> <span class='kw'>false</span></pre>
     </td>
   </tr>
 </table>
@@ -573,10 +619,10 @@ cannot be changed after approval.</p>
       <pre class="lines">
 
 
-154</pre>
+155</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 154</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 155</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>description</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -623,10 +669,10 @@ cannot be changed after approval.</p>
       <pre class="lines">
 
 
-156</pre>
+157</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 156</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 157</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>estimated_currency</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -673,10 +719,10 @@ cannot be changed after approval.</p>
       <pre class="lines">
 
 
-153</pre>
+154</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 153</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 154</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>subject</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -723,12 +769,12 @@ cannot be changed after approval.</p>
       <pre class="lines">
 
 
-160</pre>
+161</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 160</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 161</span>
 
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>updated_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>         <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>updated_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>         <span class='label'>null:</span> <span class='kw'>false</span></pre>
     </td>
   </tr>
 </table>
@@ -742,7 +788,51 @@ cannot be changed after approval.</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="currency_field_for-class_method">
+  <h3 class="signature first" id="by_attr_for_requests-class_method">
+  
+    + (<tt>Object</tt>) <strong>by_attr_for_requests</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Scope needed by Request.expenses_sum</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+30
+31
+32
+33
+34</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 30</span>
+
+<span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:by_attr_for_requests</span><span class='comma'>,</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_attr'>attr</span><span class='comma'>,</span> <span class='id identifier rubyid_req_ids'>req_ids</span><span class='op'>|</span>
+  <span class='id identifier rubyid_currency_field'>currency_field</span> <span class='op'>=</span> <span class='const'>RequestExpense</span><span class='period'>.</span><span class='id identifier rubyid_currency_field_for'>currency_field_for</span><span class='lparen'>(</span><span class='id identifier rubyid_attr'>attr</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_amount_field'>amount_field</span> <span class='op'>=</span> <span class='symbol'>:#{</span><span class='id identifier rubyid_attr'>attr</span><span class='rbrace'>}</span><span class='tstring_content'>_amount</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_group'>group</span><span class='lparen'>(</span><span class='id identifier rubyid_currency_field'>currency_field</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_amount_field'>amount_field</span><span class='rbrace'>}</span><span class='tstring_content'> is not null and request_id in (?)</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_req_ids'>req_ids</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='id identifier rubyid_currency_field'>currency_field</span><span class='rparen'>)</span>
+<span class='rbrace'>}</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="currency_field_for-class_method">
   
     + (<tt>Object</tt>) <strong>currency_field_for</strong>(attr) 
   
@@ -756,21 +846,21 @@ cannot be changed after approval.</p>
       <pre class="lines">
 
 
-38
-39
-40
-41
-42
-43
-44
-45
 46
 47
 48
-49</pre>
+49
+50
+51
+52
+53
+54
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_currency_field_for'>currency_field_for</span><span class='lparen'>(</span><span class='id identifier rubyid_attr'>attr</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_attr'>attr</span>
@@ -804,22 +894,93 @@ cannot be changed after approval.</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Convenience method that simply aliases approved_currency since currency
+cannot be changed after approval</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-34
-35
-36</pre>
+42
+43
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_authorized_currency'>authorized_currency</span>
   <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='const'>RequestExpense</span><span class='period'>.</span><span class='id identifier rubyid_currency_field_for'>currency_field_for</span><span class='lparen'>(</span><span class='symbol'>:authorized</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="event-instance_method">
+  
+    - (<tt>Object</tt>) <strong>event</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Alias for =&gt; false#event</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>=&gt; false#event</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li>http://api.rubyonrails.org/classes/Module.html#method-i-delegate</li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 17</span>
+
+<span class='id identifier rubyid_delegate'>delegate</span> <span class='symbol'>:event</span><span class='comma'>,</span> <span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='symbol'>:request</span><span class='comma'>,</span> <span class='symbol'>:prefix</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
   </tr>
 </table>
@@ -966,12 +1127,12 @@ cannot be changed after approval</p>
       <pre class="lines">
 
 
-30
-31
-32</pre>
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_total_currency'>total_currency</span>
   <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='const'>RequestExpense</span><span class='period'>.</span><span class='id identifier rubyid_currency_field_for'>currency_field_for</span><span class='lparen'>(</span><span class='symbol'>:total</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -986,9 +1147,9 @@ cannot be changed after approval</p>
 </div>
 
     <div id="footer">
-  Generated on Mon Oct  7 10:46:39 2013 by
+  Generated on Sun Apr 27 06:31:14 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.5.2 (ruby-1.9.3).
+  0.8.7.3 (ruby-1.9.3).
 </div>
 
   </body>

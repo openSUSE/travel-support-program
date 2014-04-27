@@ -6,13 +6,13 @@
 <title>
   Class: ExpenseReport
   
-    &mdash; Documentation by YARD 0.8.5.2
+    &mdash; Documentation by YARD 0.8.7.3
   
 </title>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
@@ -456,6 +456,29 @@ model for that purpose.</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#related_to-class_method" title="related_to (class method)">+ (Object) <strong>related_to</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Scope for controlling user read access.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#request_state_eq-class_method" title="request_state_eq (class method)">+ (Object) <strong>request_state_eq</strong> </a>
     
 
@@ -530,6 +553,29 @@ model for that purpose.</p>
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#related_to%3F-instance_method" title="#related_to? (instance method)">- (Boolean) <strong>related_to?</strong>(user) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks if the report is related to a given user.</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -928,12 +974,12 @@ options, use ExpenseReport.groups</p>
       <pre class="lines">
 
 
-132
-133
-134</pre>
+137
+138
+139</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/expense_report.rb', line 132</span>
+      <pre class="code"><span class="info file"># File 'app/models/expense_report.rb', line 137</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_fields_for'>fields_for</span><span class='lparen'>(</span><span class='id identifier rubyid_group'>group</span><span class='rparen'>)</span>
   <span class='ivar'>@by</span><span class='lbracket'>[</span><span class='id identifier rubyid_group'>group</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span> <span class='op'>!</span><span class='id identifier rubyid_f'>f</span><span class='lbracket'>[</span><span class='symbol'>:hidden</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_i'>i</span><span class='lbracket'>[</span><span class='symbol'>:field</span><span class='rbracket'>]</span><span class='rbrace'>}</span> <span class='op'>+</span> <span class='lbracket'>[</span> <span class='symbol'>:sum_amount</span><span class='comma'>,</span> <span class='symbol'>:sum_currency</span> <span class='rbracket'>]</span>
@@ -985,12 +1031,12 @@ options, use ExpenseReport.groups</p>
       <pre class="lines">
 
 
-139
-140
-141</pre>
+144
+145
+146</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/expense_report.rb', line 139</span>
+      <pre class="code"><span class="info file"># File 'app/models/expense_report.rb', line 144</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_groups'>groups</span>
   <span class='ivar'>@by</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span>
@@ -1034,6 +1080,46 @@ options, use ExpenseReport.groups</p>
 
 <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:reimbursement_state_eq</span><span class='comma'>,</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_state'>state</span><span class='op'>|</span>
   <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>reimbursements.state</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_state'>state</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
+<span class='rbrace'>}</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="related_to-class_method">
+  
+    + (<tt>Object</tt>) <strong>related_to</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Scope for controlling user read access</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+129
+130
+131</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/expense_report.rb', line 129</span>
+
+<span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:related_to</span><span class='comma'>,</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_user'>user</span><span class='op'>|</span>
+    <span class='id identifier rubyid_joins'>joins</span><span class='lparen'>(</span><span class='symbol'>:request</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>requests.user_id</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
 <span class='rbrace'>}</span></pre>
     </td>
   </tr>
@@ -1287,6 +1373,80 @@ options, use ExpenseReport.groups</p>
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="related_to?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>related_to?</strong>(user) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks if the report is related to a given user.</p>
+
+<p>Used during access control.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>user</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="User.html" title="User (class)">User</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>true if the request that originated the report record is associated with the user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+177
+178
+179</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/expense_report.rb', line 177</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_related_to?'>related_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="request-instance_method">
   
     - (<tt><span class='object_link'><a href="Request.html" title="Request (class)">Request</a></span></tt>) <strong>request</strong> 
@@ -1467,11 +1627,6 @@ correct type. Intended to be used on records resulting from a call to the
       <pre class="lines">
 
 
-152
-153
-154
-155
-156
 157
 158
 159
@@ -1479,10 +1634,15 @@ correct type. Intended to be used on records resulting from a call to the
 161
 162
 163
-164</pre>
+164
+165
+166
+167
+168
+169</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/expense_report.rb', line 152</span>
+      <pre class="code"><span class="info file"># File 'app/models/expense_report.rb', line 157</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_value_for'>value_for</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='comment'># At this point creating a more generic solution is not worthy, we simply
@@ -1492,7 +1652,7 @@ correct type. Intended to be used on records resulting from a call to the
 </span>    <span class='const'>BigDecimal</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_sum_amount'>sum_amount</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0.0</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>elsif</span> <span class='lbracket'>[</span><span class='symbol'>:event_start_date</span><span class='comma'>,</span> <span class='symbol'>:event_end_date</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
     <span class='id identifier rubyid_d'>d</span> <span class='op'>=</span> <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>?</span> <span class='kw'>nil</span> <span class='op'>:</span> <span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_d'>d</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>?</span> <span class='kw'>nil</span> <span class='op'>:</span> <span class='lparen'>(</span><span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Date</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_d'>d</span> <span class='op'>:</span> <span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_d'>d</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -1507,9 +1667,9 @@ correct type. Intended to be used on records resulting from a call to the
 </div>
 
     <div id="footer">
-  Generated on Mon Oct  7 10:46:39 2013 by
+  Generated on Sun Apr 27 06:31:14 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.5.2 (ruby-1.9.3).
+  0.8.7.3 (ruby-1.9.3).
 </div>
 
   </body>

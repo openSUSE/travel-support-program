@@ -6,13 +6,13 @@
 <title>
   Class: ConnectUser
   
-    &mdash; Documentation by YARD 0.8.5.2
+    &mdash; Documentation by YARD 0.8.7.3
   
 </title>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
@@ -295,7 +295,7 @@ about a given Connect user. See
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_login'>login</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
-    <span class='id identifier rubyid_api_conf'>api_conf</span> <span class='op'>=</span> <span class='const'>TravelSupportProgram</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='symbol'>:opensuse_connect</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_api_conf'>api_conf</span> <span class='op'>=</span> <span class='const'>TravelSupport</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='symbol'>:opensuse_connect</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_api_key'>api_key</span> <span class='op'>=</span> <span class='id identifier rubyid_api_conf'>api_conf</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>api_key</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='id identifier rubyid_api_conf'>api_conf</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>base_url</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/services/api/rest/json</span><span class='tstring_end'>&quot;</span></span>
     <span class='id identifier rubyid_method'>method</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>connect.user.attribute.get</span><span class='tstring_end'>&quot;</span></span>
@@ -386,7 +386,7 @@ about a given Connect user. See
       <pre class="code"><span class="info file"># File 'app/models/connect_user.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_profile_url_for'>profile_url_for</span><span class='lparen'>(</span><span class='id identifier rubyid_login'>login</span><span class='rparen'>)</span>
-  <span class='const'>TravelSupportProgram</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='symbol'>:opensuse_connect</span><span class='comma'>,</span> <span class='symbol'>:base_url</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/pg/profile/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_login'>login</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='const'>TravelSupport</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='symbol'>:opensuse_connect</span><span class='comma'>,</span> <span class='symbol'>:base_url</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/pg/profile/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_login'>login</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -464,9 +464,9 @@ about a given Connect user. See
 </div>
 
     <div id="footer">
-  Generated on Mon Oct  7 10:46:37 2013 by
+  Generated on Sun Apr 27 06:31:13 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.5.2 (ruby-1.9.3).
+  0.8.7.3 (ruby-1.9.3).
 </div>
 
   </body>
