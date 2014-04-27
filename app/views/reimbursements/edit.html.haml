@@ -1,4 +1,5 @@
-= content_for :page_header, t('.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Reimbursement.model_name.human)
+= content_for :page_header do
+  %h1= t('.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Reimbursement.model_name.human)
 
 %strong.label= Reimbursement.human_attribute_name(:event)
 %br
