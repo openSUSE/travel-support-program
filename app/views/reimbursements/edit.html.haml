@@ -70,6 +70,10 @@
 
   .form-inputs.form-inline
     %strong.label= Reimbursement.human_attribute_name(:expenses)
+    .alert.alert-inline.alert-info
+      = t(:reimbursement_expenses_help)
+      - if manual_authorized_amount_is_needed_for? resource
+        = t(:reimbursement_manual_expenses_help)
     - if !resource.errors[:"request.expenses"].empty?
       .alert.alert-inline.alert-error= resource.expenses.map {|e| e.errors.full_messages}.uniq.join("; ")
     %table.table.table-condensed
