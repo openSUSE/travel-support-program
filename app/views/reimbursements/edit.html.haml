@@ -80,6 +80,9 @@
           %th= RequestExpense.human_attribute_name(:estimated_amount)
           %th= RequestExpense.human_attribute_name(:approved_amount)
           %th= RequestExpense.human_attribute_name(:total_amount)
+          - if manual_authorized_amount_is_needed_for? resource
+            %th= RequestExpense.human_attribute_name(:authorized_amount)
+
       %tbody#expenses
         = f.simple_fields_for :request do |request|
           = request.simple_fields_for :expenses do |e|
@@ -90,6 +93,11 @@
               %td= number_to_currency(expense.estimated_amount, :unit => expense.estimated_currency)
               %td= number_to_currency(expense.approved_amount, :unit => expense.approved_currency)
               %td= number_to_currency(e.text_field(:total_amount, :class => 'input-mini'), :unit => expense.total_currency)
+              - if manual_authorized_amount_is_needed_for? resource
+                - if expense.authorized_can_be_calculated?
+                  %td= number_to_currency("XX", :unit => expense.approved_currency)
+                - else
+                  %td= number_to_currency(e.text_field(:authorized_amount, :class => 'input-mini'), :unit => expense.authorized_currency)
 
   .form-actions
     = f.button :submit, :class => 'btn-primary'

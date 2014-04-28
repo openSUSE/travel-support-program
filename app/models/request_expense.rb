@@ -20,7 +20,7 @@ class RequestExpense < ActiveRecord::Base
   validates :estimated_amount, :estimated_currency, :presence => true, :if => "request && request.submitted?"
   validates :approved_amount, :approved_currency, :presence => true, :if => "request && request.approved?"
   validates :total_amount, :presence => true, :if => "request && request.reimbursement && request.reimbursement.submitted?"
-  validates :authorized_amount, :presence => true, :if => "request && request.reimbursement && request.reimbursement.approved?"
+  validates :authorized_amount, :presence => true, :if => "request && request.reimbursement && request.reimbursement.submitted?"
 
   before_validation :set_authorized_amount
 
@@ -56,21 +56,30 @@ class RequestExpense < ActiveRecord::Base
     end
   end
 
+  # Checks whether authorized_amount can be automatically calculated or needs to
+  # be manually set.
+  #
+  # It can only be automated if the currency for both total and approved are the
+  # same, otherwise exchange rates and other rules may come into play
+  #
+  # @return [Boolean] true whether automatic calculation is possible
+  def authorized_can_be_calculated?
+    !total_currency.blank? && !approved_currency.blank? && total_currency == approved_currency
+  end
+
   protected
 
   # Set the authorized amount if possible
   #
   # This callback sets the authorized amount as the minimum among approved and
-  # total, but only if the reimbursement process has started.
+  # total, but only if the reimbursement process has started and if the same
+  # currency is used for total amount and approved. Otherwise, manual
+  # intervention is needed to set the authorized amount.
   #
   # @callback
   def set_authorized_amount
-    if !total_amount.blank? && !approved_amount.blank?
-      if total_currency != approved_currency
-        self.authorized_amount = approved_amount
-      else
-        self.authorized_amount = [approved_amount, total_amount].min
-      end
+    if !total_amount.blank? && !approved_amount.blank? && authorized_can_be_calculated?
+      self.authorized_amount = [approved_amount, total_amount].min
     end
   end
 

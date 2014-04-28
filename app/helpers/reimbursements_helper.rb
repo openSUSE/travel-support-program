@@ -161,4 +161,9 @@ module ReimbursementsHelper
   def can_read_pdf_for?(reimb)
     can?(:read, reimb) && can?(:read, reimb.user.profile) && (reimb.bank_account.nil? || can?(:read, reimb.bank_account))
   end
+
+  def manual_authorized_amount_is_needed_for?(reimb)
+    reimb.expenses.any? {|r| !r.authorized_can_be_calculated? }
+  end
+
 end
