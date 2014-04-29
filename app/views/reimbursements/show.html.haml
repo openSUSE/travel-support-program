@@ -43,7 +43,7 @@
 
   %strong.label= Request.human_attribute_name(:expenses)
   %table.table.table-condensed
-    %thead
+    %thead#expenses_head
       %tr
         %th= RequestExpense.human_attribute_name(:subject)
         %th= RequestExpense.human_attribute_name(:description)
@@ -54,12 +54,12 @@
     %tbody#expenses
       - @request.expenses.each do |expense|
         %tr
-          %td= expense.subject
-          %td= expense.description
-          %td= number_to_currency(expense.estimated_amount, :unit => expense.estimated_currency)
-          %td= number_to_currency(expense.approved_amount, :unit => expense.approved_currency)
-          %td= number_to_currency(expense.total_amount, :unit => expense.total_currency)
-          %td= number_to_currency(expense.authorized_amount, :unit => expense.authorized_currency)
+          %td.subject= expense.subject
+          %td.description= expense.description
+          %td.estimated= number_to_currency(expense.estimated_amount, :unit => expense.estimated_currency)
+          %td.approved= number_to_currency(expense.approved_amount, :unit => expense.approved_currency)
+          %td.total= number_to_currency(expense.total_amount, :unit => expense.total_currency)
+          %td.authorized= number_to_currency(expense.authorized_amount, :unit => expense.authorized_currency)
 
   = r.association :payments do
     = reimbursement_payments(resource)

@@ -77,7 +77,7 @@
     - if !resource.errors[:"request.expenses"].empty?
       .alert.alert-inline.alert-error= resource.expenses.map {|e| e.errors.full_messages}.uniq.join("; ")
     %table.table.table-condensed
-      %thead
+      %thead#expenses_head
         %tr
           %th= Reimbursement.human_attribute_name(:subject)
           %th= Reimbursement.human_attribute_name(:description)
@@ -92,16 +92,16 @@
           = request.simple_fields_for :expenses do |e|
             - expense = e.object
             %tr
-              %td= expense.subject
-              %td= expense.description
-              %td= number_to_currency(expense.estimated_amount, :unit => expense.estimated_currency)
-              %td= number_to_currency(expense.approved_amount, :unit => expense.approved_currency)
-              %td= number_to_currency(e.text_field(:total_amount, :class => 'input-mini'), :unit => expense.total_currency)
+              %td.subject= expense.subject
+              %td.description= expense.description
+              %td.estimated= number_to_currency(expense.estimated_amount, :unit => expense.estimated_currency)
+              %td.approved= number_to_currency(expense.approved_amount, :unit => expense.approved_currency)
+              %td.total= number_to_currency(e.text_field(:total_amount, :class => 'input-mini'), :unit => expense.total_currency)
               - if manual_authorized_amount_is_needed_for? resource
                 - if expense.authorized_can_be_calculated?
-                  %td= number_to_currency("XX", :unit => expense.approved_currency)
+                  %td.authorized= number_to_currency("XX", :unit => expense.authorized_currency)
                 - else
-                  %td= number_to_currency(e.text_field(:authorized_amount, :class => 'input-mini'), :unit => expense.authorized_currency)
+                  %td.authorized= number_to_currency(e.text_field(:authorized_amount, :class => 'input-mini'), :unit => expense.authorized_currency)
 
   .form-actions
     = f.button :submit, :class => 'btn-primary'

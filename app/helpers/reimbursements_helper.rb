@@ -162,6 +162,10 @@ module ReimbursementsHelper
     can?(:read, reimb) && can?(:read, reimb.user.profile) && (reimb.bank_account.nil? || can?(:read, reimb.bank_account))
   end
 
+  # Checks whether some manual adjustment of 'authorized amount' is required for a reimbursement
+  #
+  # @param [Reimbursement] reimb  the reimbursement
+  # @return [Boolean] true unless all authorized values can be automatically set
   def manual_authorized_amount_is_needed_for?(reimb)
     reimb.expenses.any? {|r| !r.authorized_can_be_calculated? }
   end

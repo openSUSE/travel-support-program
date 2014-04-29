@@ -34,9 +34,9 @@ describe Reimbursement do
         transition(@reimbursement, :submit, users(:luke))
       end
 
-      #it "should not override the manually set authorized amounts" do
-      #  @reimbursement.expenses.reload.map {|i| i.authorized_amount.to_f}.sort.should == [10.0, 10.0, 10.0]
-      #end
+      it "should recalculate authorized amounts" do
+        @reimbursement.expenses.reload.map {|i| i.authorized_amount.to_f}.sort.should == [0.0, 50.0, 60.0]
+      end
 
       it "should notify negotiation steps to requester, TSP and assistants" do
         ActionMailer::Base.deliveries.size.should == @deliveries + 9
@@ -48,9 +48,9 @@ describe Reimbursement do
           transition(@reimbursement, :approve, users(:tspmember))
         end
 
-        #it "should not override the manually set authorized amounts" do
-        #  @reimbursement.expenses.reload.map {|i| i.authorized_amount.to_f}.sort.should == [10.0, 10.0, 10.0]
-        #end
+        it "should not change the authorized amounts" do
+          @reimbursement.expenses.reload.map {|i| i.authorized_amount.to_f}.sort.should == [0.0, 50.0, 60.0]
+        end
 
         it "should notify approval to requester, TSP, assistants and administrative" do
           ActionMailer::Base.deliveries.size.should == @deliveries + 4
@@ -86,6 +86,36 @@ describe Reimbursement do
         transition(@reimbursement, :submit, users(:luke))
         @reimbursement.submitted?.should be_true
       end
+    end
+  end
+
+  context "mixing currencies" do
+    before(:each) do
+      @request = requests(:luke_for_yavin)
+      @request.expenses.where(:subject => "Lodging").first.update_column(:estimated_currency, "USD")
+      @reimbursement = @request.create_reimbursement
+      @reimbursement.request.expenses.each {|e| e.total_amount = 55 }
+      set_acceptance_file @reimbursement
+      @reimbursement.build_bank_account(:holder => "Owen Lars", :bank_name => "Tatooine Saving Bank",
+                                        :format => "iban", :iban => "AT611904300234574444",
+                                        :bic => "ABCDEABCDE")
+      @reimbursement.save!
+    end
+
+    it "should calculate the authorized only when possible" do
+      @reimbursement.expenses.where(:subject => "Lodging").first.authorized_amount.should be_nil
+      @reimbursement.expenses.reload.map {|i| i.authorized_amount.to_f}.sort.should == [0.0, 0.0, 55.0]
+    end
+
+    it "should not be possible to submit without setting the authorized manually" do
+      transition(@reimbursement, :submit, users(:luke)) rescue nil
+      @reimbursement.reload.state.should == "incomplete"
+    end
+
+    it "should override authorized amount for some expenses and respect the manual ones" do
+      @reimbursement.request.expenses.each {|e| e.authorized_amount = 25 }
+      @reimbursement.save!
+      @reimbursement.expenses.reload.map {|i| i.authorized_amount.to_f}.sort.should == [0.0, 25.0, 55.0]
     end
   end
 end

@@ -11,6 +11,9 @@ feature "Reimbursements", "" do
 
     # Request creation
     page.should have_content "reimbursement was successfully created"
+    page.should have_content "authorized amount for every expense will be automatically calculated"
+    # No 'authorized' column is expected in the expenses table
+    page.should_not have_xpath("//thead[@id='expenses_head']//tr//th[contains(.,'authorized')]")
     fill_in "reimbursement_description", :with => "Hey, I destroyed the Death Star so I deserve the reimbursement."
     fill_in "holder", :with => "Owen Lars"
     fill_in "financial institution", :with => "Tatooine Saving Bank"
