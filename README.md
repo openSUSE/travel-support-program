@@ -1,5 +1,7 @@
 # Travel Support Program management application
 
+[![Build Status](https://travis-ci.org/openSUSE/travel-support-program.svg?branch=master)](https://travis-ci.org/openSUSE/travel-support-program)
+
 ## About
 
 This is a Ruby on Rails based application to manage the requests and
