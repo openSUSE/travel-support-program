@@ -1,6 +1,7 @@
 # Travel Support Program management application
 
 [![Build Status](https://travis-ci.org/openSUSE/travel-support-program.svg?branch=master)](https://travis-ci.org/openSUSE/travel-support-program)
+[![Coverage Status](https://coveralls.io/repos/openSUSE/travel-support-program/badge.png?branch=master)](https://coveralls.io/r/openSUSE/travel-support-program?branch=master)
 
 ## About
 
