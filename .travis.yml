@@ -5,3 +5,4 @@ rvm:
 before_script:
   - cp config/database.travis.yml config/database.yml
   - cp config/site.example.yml config/site.yml
+script: xvfb-run bundle exec rake
