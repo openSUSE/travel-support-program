@@ -59,6 +59,7 @@ gem 'delayed_job_active_record'
 
 gem "rspec-rails", group: [:development, :test]
 gem 'exception_notification', group: :production
+gem 'coveralls', require: false
 
 group :development do
   gem "yard-activerecord"
