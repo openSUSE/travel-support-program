@@ -70,6 +70,9 @@ test:
   opensuse_connect:
     enabled: false
 
+  check_request_template: "check_request.example.pdf"
+  check_request_layout: "check_request.example.yml"
+
   currencies_for_approved:
     - EUR
     - USD
