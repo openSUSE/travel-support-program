@@ -157,6 +157,10 @@ feature "Reimbursements", "" do
     @pdf.should include('Payee Name')
     @pdf.should include('Luke Skywalker')
 
+    # Check the acceptance
+    visit request_reimbursement_acceptance_path(@reimbursement.request)
+    pdf_content.should include('Just an example')
+
     # Process the reimbursement
     visit request_reimbursement_path(@reimbursement.request)
     click_link "Action"
@@ -182,5 +186,14 @@ feature "Reimbursements", "" do
     click_button "confirm"
     page.should have_content "Confirmation processed"
     page.should have_content "process have ended succesfully"
+
+    # Final check,
+    # try to access the acceptance or the check request as another user
+    click_link "Log out"
+    sign_in_as_user users(:wedge)
+    visit request_reimbursement_acceptance_path(@reimbursement.request)
+    page.status_code.should == 403
+    visit check_request_request_reimbursement_path(@reimbursement.request)
+    page.status_code.should == 403
   end
 end
