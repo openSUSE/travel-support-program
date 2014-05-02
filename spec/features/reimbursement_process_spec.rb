@@ -7,6 +7,7 @@ feature "Reimbursements", "" do
   scenario "Full reimbursement process", :js => true do
     sign_in_as_user(users(:luke))
     visit request_path(requests(:luke_for_yavin))
+    page.should have_content "The reimbursement process has not started"
     click_link "Ask for reimbursement"
 
     # Request creation
@@ -164,6 +165,17 @@ feature "Reimbursements", "" do
     click_button "process"
     page.should have_content "Payment processed"
     page.should have_content "payment is ongoing"
+
+    # Add a payment
+    click_link "Add payment"
+    fill_in "date", :with => Date.today.to_s
+    fill_in "payment_amount", :with => "80"
+    fill_in "subject", :with => "This is the payment subject"
+    select "Transfer", :from => "payment_method"
+    click_button "Create payment"
+    page.should have_content "ayment was successfully created"
+    page.should have_content "This is the payment subject"
+
     # And mark it as payed
     click_link "Action"
     click_link "Confirm"

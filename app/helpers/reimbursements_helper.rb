@@ -95,7 +95,7 @@ module ReimbursementsHelper
         if can? :destroy, payment
           links << link_to(t("helpers.links.destroy"),
                                  request_reimbursement_payment_path(req, payment),
-                                 :confirm => t("helpers.links.confirm"), :method => :delete)
+                                 :data => {:confirm => t("helpers.links.confirm")}, :method => :delete)
         end
         if can?(:update, payment) && !payment.file.blank?
           links << link_to(Payment.human_attribute_name(:file), file_request_reimbursement_payment_path(req, payment))

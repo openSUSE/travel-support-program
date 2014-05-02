@@ -10,8 +10,12 @@
         = link_to t('.edit', :default => t("helpers.links.edit")), edit_request_path(@request), :class => 'btn'
       - if can? :destroy, @request
         = link_to t('.destroy', :default => t("helpers.links.destroy")), request_path(@request), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn'
-      - if @request.lacks_reimbursement? && can?(:create, @request.build_reimbursement)
-        = link_to t(:create_reimbursement), request_reimbursement_path(@request), :method => :post, :class => 'btn'
+      - if @request.lacks_reimbursement?
+        -# Protect the rest of the template from the side effect of build_reimbursement
+        - reimb = @request.reimbursement
+        - if can?(:create, @request.build_reimbursement)
+          = link_to t(:create_reimbursement), request_reimbursement_path(@request), :method => :post, :class => 'btn'
+        - @request.reimbursement = reimb
 
 = show_for @request do |r|
   .row-fluid
@@ -25,7 +29,7 @@
         = render @request.event
       = r.association :user do
         = render @request.user
-      - if @request.reimbursement
+      - if @request.reimbursement && !@request.reimbursement.new_record?
         = r.association :reimbursement do
           = render @request.reimbursement
       - elsif @request.can_have_reimbursement?

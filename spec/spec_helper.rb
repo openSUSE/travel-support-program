@@ -1,8 +1,12 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 
 # First of all, coveralls
+require 'simplecov'
 require 'coveralls'
-Coveralls.wear!('rails')
+SimpleCov.start do
+  # Not covered because they are overriden in spec/support/carrierwave.rb
+  add_filter 'app/uploaders/'
+end
 
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
