@@ -73,6 +73,7 @@ group :test do
   gem "capybara-webkit"
   gem "shoulda-matchers"
   gem "database_cleaner"
+  gem "pdf-reader"
 #  gem "delorean"
 end
 

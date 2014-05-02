@@ -299,6 +299,7 @@ DEPENDENCIES
   kaminari
   less-rails
   localized_country_select
+  pdf-reader
   prawn_rails
   protected_attributes
   rails (= 4.0.2)

@@ -146,4 +146,16 @@ module CommonHelpers
     file = Rails.root.join("spec", "support", "files", filename)
     reimbursement.acceptance_file = File.open(file, "rb")
   end
+
+  #
+  # Content of the pdf returned by the last request
+  #
+  def pdf_content
+    temp_pdf = Tempfile.new('pdf')
+    temp_pdf << page.source.force_encoding('UTF-8')
+    reader = PDF::Reader.new(temp_pdf)
+    pdf_text = reader.pages.map(&:text).join("\n")
+    temp_pdf.close
+    pdf_text
+  end
 end

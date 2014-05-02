@@ -1,0 +1,35 @@
+amount:
+  left: 58
+  top: 629
+  width: 130
+date:
+  - left: 215
+    top: 629
+    width: 130
+  - left: 50
+    top: 340
+    width: 130
+full_name:
+  left: 82
+  top: 604
+  width: 400
+postal_address:
+  left: 60
+  top: 580
+  width: 400
+city:
+  left: 42
+  top: 554.5
+  width: 100
+country:
+  left: 177
+  top: 554.5
+  width: 100
+zip_code:
+  left: 323
+  top: 554.5
+  width: 75
+phone_number:
+  left: 423
+  top: 554.5
+  width: 100

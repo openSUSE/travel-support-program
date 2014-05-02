@@ -149,7 +149,15 @@ feature "Reimbursements", "" do
     # Log in as administrative
     click_link "Log out"
     find_reimbursement_as(users(:administrative), @reimbursement)
+
+    # Print the check request
+    click_link "Check Request"
+    @pdf = pdf_content
+    @pdf.should include('Payee Name')
+    @pdf.should include('Luke Skywalker')
+
     # Process the reimbursement
+    visit request_reimbursement_path(@reimbursement.request)
     click_link "Action"
     click_link "Process"
     fill_in "notes", :with => "Every ok. Sending to accounting dept."
