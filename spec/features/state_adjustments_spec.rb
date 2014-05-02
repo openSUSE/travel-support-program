@@ -12,7 +12,7 @@ feature "State adjustments", "" do
     fill_in "notes", :with => "I know I could use the cancel button, but..."
     click_button "Create state adjustment"
 
-    page.should have_content "The state have been changed"
+    page.should have_content "The state has been changed"
     within(".request_state") do
       page.should have_content "canceled"
     end

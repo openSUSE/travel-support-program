@@ -134,6 +134,7 @@ module CommonHelpers
     click_link "Adjust state"
     select state.to_s, :from => :state_adjustment_to
     click_button "Create state adjustment"
+    page.should have_content "state has been changed"
     logout
   end
 

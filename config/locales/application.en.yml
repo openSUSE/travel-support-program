@@ -92,7 +92,7 @@ en:
   signature: "Signature:"
   signed_in_as: "Signed in as %{nickname}"
   since: "(since %{date})"
-  state_adjustment_done: "The state have been changed"
+  state_adjustment_done: "The state has been changed"
   state_event: "Action"
   state_help: "State has never changed. The process has not started."
   state_change_li: "%{date} ago %{user} changed the state from %{from} to %{to}."
