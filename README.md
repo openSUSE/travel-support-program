@@ -24,8 +24,8 @@ name).
 
 ## Requirements
 
-* Ruby 1.9
-* Any Rails supported database system: PosgreSQL, MariaDB, MySQL...
+* Ruby >= 1.9
+* Any Rails supported database system: PosgreSQL, SQLite3, MariaDB, MySQL...
 
 ## Getting Started
 
@@ -38,6 +38,7 @@ $ vi Gemfile # edit Gemfile to uncomment your favorite database driver
 $ bundle
 $ cp config/database.example.yml config/database.yml
 $ cp config/site.example.yml config/site.yml
+$ vi config/site.yml # edit configuration DON'T FORGET to set proper secrets
 $ rake db:create db:migrate db:seed
 $ rails s
 ```
@@ -48,6 +49,7 @@ Three initial users should be available with the following emails and passwords:
 * tspmember@example.com / tspmember1
 * requester@example.com / requester1
 * administrative@example.com / administrative1
+* assistant@example.com / assistant1
 
 ## Contact
 
