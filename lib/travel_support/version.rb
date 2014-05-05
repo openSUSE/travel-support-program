@@ -3,5 +3,5 @@
 #
 module TravelSupport
   # Current version of the application
-  VERSION = "0.9.7"
+  VERSION = "0.9.8"
 end
