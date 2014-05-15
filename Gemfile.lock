@@ -31,8 +31,6 @@ GEM
     afm (0.2.0)
     arel (4.0.1)
     atomic (1.1.14)
-    auditor (2.1.1)
-      activerecord (> 3.0.0)
     axlsx (2.0.1)
       htmlentities (~> 4.3.1)
       nokogiri (>= 1.4.1)
@@ -97,6 +95,9 @@ GEM
     diff-lcs (1.2.5)
     docile (1.1.3)
     erubis (2.7.0)
+    espinita (0.0.7)
+      rails (>= 4.0)
+      request_store
     exception_notification (4.0.1)
       actionmailer (>= 3.0.4)
       activesupport (>= 3.0.4)
@@ -188,6 +189,7 @@ GEM
       json (~> 1.4)
     redcarpet (3.0.0)
     ref (1.0.5)
+    request_store (1.0.5)
     responders (1.0.0)
       railties (>= 3.2, < 5)
     rest-client (1.6.7)
@@ -275,7 +277,6 @@ PLATFORMS
 
 DEPENDENCIES
   active_hash
-  auditor
   axlsx_rails
   cancancan (~> 1.7)
   capybara
@@ -292,6 +293,7 @@ DEPENDENCIES
   delayed_job_active_record
   devise
   devise_ichain_authenticatable (>= 0.3.0)
+  espinita
   exception_notification
   haml-rails
   inherited_resources

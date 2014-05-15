@@ -24,7 +24,7 @@ class RequestExpense < ActiveRecord::Base
 
   before_validation :set_authorized_amount
 
-  audit(:create, :update, :destroy, :on => :request) {|m,u,a| "#{a} performed on RequestExpense by #{u.try(:nickname)}"}
+  auditable
 
   # Scope needed by Request.expenses_sum
   scope :by_attr_for_requests, lambda {|attr, req_ids|

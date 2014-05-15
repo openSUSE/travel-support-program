@@ -41,7 +41,7 @@ class Reimbursement < ActiveRecord::Base
 
   mount_uploader :acceptance_file, AttachmentUploader
 
-  audit(:create, :update, :destroy, :except => :acceptance_file) {|m,u,a| "#{a} performed on Reimbursement by #{u.try(:nickname)}"}
+  auditable :except => [:acceptance_file]
 
   # Synchronizes user_id and request_id
   before_validation :set_user_id

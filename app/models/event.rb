@@ -19,7 +19,7 @@ class Event < ActiveRecord::Base
   validates :name, :start_date, :end_date, :country_code, :presence => true
   validates :end_date, :date => {:after_or_equal_to => :start_date }
 
-  audit(:create, :update, :destroy) {|m,u,a| "#{a} performed on Event by #{u.try(:nickname)}"}
+  auditable
 
   default_scope { order('name asc') }
 

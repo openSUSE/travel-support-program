@@ -29,7 +29,6 @@ class ApplicationController < ActionController::Base
 
   def authenticate_and_audit_user
     authenticate_user!
-    Auditor::User.current_user = current_user
   end
 
   # Can be overidden by individuals controllers. Some logic merged here, though,

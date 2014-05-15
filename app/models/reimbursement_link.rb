@@ -9,5 +9,5 @@ class ReimbursementLink < ActiveRecord::Base
 
   validates :reimbursement, :title, :url, :presence => true
 
-  audit(:create, :update, :destroy, :on => :reimbursement) {|m,u,a| "#{a} performed on ReimbursementLink by #{u.try(:nickname)}"}
+  auditable
 end

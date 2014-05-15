@@ -12,5 +12,5 @@ class Payment < ActiveRecord::Base
 
   mount_uploader :file, AttachmentUploader
 
-  audit(:create, :update, :destroy, :except => :file, :on => :reimbursement) {|m,u,a| "#{a} performed on Payment by #{u.try(:nickname)}"}
+  auditable :except => [:file]
 end

@@ -31,7 +31,6 @@ feature "Requests", "" do
     # Testing audits, just in case
     @request.audits.order("created_at, id").last.user.should == users(:luke)
     @request.expenses.first.audits.order("created_at, id").last.user.should == users(:luke)
-    @request.expenses.last.audits.order("created_at, id").last.owner.should == @request
 
     # Failed submission
     click_link "Action"

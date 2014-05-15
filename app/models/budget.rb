@@ -14,5 +14,5 @@ class Budget < ActiveRecord::Base
 
   validates :name, :amount, :currency, :presence => true
 
-  audit(:create, :update, :destroy) {|m,u,a| "#{a} performed on Budget by #{u.try(:nickname)}"}
+  auditable
 end

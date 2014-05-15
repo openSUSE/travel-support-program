@@ -26,7 +26,7 @@ class UserProfile < ActiveRecord::Base
 
   validates :role_id, :presence => true
 
-  audit(:create, :update, :destroy) {|m,u,a| "#{a} performed on UserProfile by #{u.try(:nickname)}"}
+  auditable
 
   scope :with_role, lambda { |role|
     if role.kind_of?(UserRole)

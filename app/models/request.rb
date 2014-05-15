@@ -23,7 +23,7 @@ class Request < ActiveRecord::Base
   validate :only_one_active_request, :if => :active?
   validate :dont_exceed_budget, :if => :approved?
 
-  audit(:create, :update, :destroy) {|m,u,a| "#{a} performed on Request by #{u.try(:nickname)}"}
+  auditable
 
   scope :active, -> { where(["state <> ?", 'canceled']) }
   scope :in_conflict_with, lambda { |req|
