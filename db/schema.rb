@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140515105850) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20140528180830) do
 
   create_table "audits", force: true do |t|
     t.integer  "auditable_id",                null: false
@@ -30,9 +27,9 @@ ActiveRecord::Schema.define(version: 20140515105850) do
     t.datetime "created_at",                  null: false
   end
 
-  add_index "audits", ["auditable_id", "auditable_type", "version"], name: "auditable_index", using: :btree
-  add_index "audits", ["created_at"], name: "index_audits_on_created_at", using: :btree
-  add_index "audits", ["user_id", "user_type"], name: "user_index", using: :btree
+  add_index "audits", ["auditable_id", "auditable_type", "version"], name: "auditable_index"
+  add_index "audits", ["created_at"], name: "index_audits_on_created_at"
+  add_index "audits", ["user_id", "user_type"], name: "user_index"
 
   create_table "bank_accounts", force: true do |t|
     t.string   "holder"
@@ -45,8 +42,8 @@ ActiveRecord::Schema.define(version: 20140515105850) do
     t.string   "country_code"
     t.string   "bank_postal_address"
     t.integer  "reimbursement_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "budgets", force: true do |t|
@@ -54,23 +51,23 @@ ActiveRecord::Schema.define(version: 20140515105850) do
     t.string   "description"
     t.decimal  "amount"
     t.string   "currency"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "budgets", ["currency"], name: "index_budgets_on_currency", using: :btree
+  add_index "budgets", ["currency"], name: "index_budgets_on_currency"
 
   create_table "comments", force: true do |t|
     t.integer  "machine_id"
     t.string   "machine_type"
     t.text     "body"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "private"
   end
 
-  add_index "comments", ["private"], name: "index_comments_on_private", using: :btree
+  add_index "comments", ["private"], name: "index_comments_on_private"
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0
@@ -82,11 +79,11 @@ ActiveRecord::Schema.define(version: 20140515105850) do
     t.datetime "failed_at"
     t.string   "locked_by"
     t.string   "queue"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "espinita_audits", force: true do |t|
     t.integer  "auditable_id"
@@ -102,8 +99,8 @@ ActiveRecord::Schema.define(version: 20140515105850) do
     t.datetime "updated_at"
   end
 
-  add_index "espinita_audits", ["auditable_id", "auditable_type"], name: "index_espinita_audits_on_auditable_id_and_auditable_type", using: :btree
-  add_index "espinita_audits", ["user_id", "user_type"], name: "index_espinita_audits_on_user_id_and_user_type", using: :btree
+  add_index "espinita_audits", ["auditable_id", "auditable_type"], name: "index_espinita_audits_on_auditable_id_and_auditable_type"
+  add_index "espinita_audits", ["user_id", "user_type"], name: "index_espinita_audits_on_user_id_and_user_type"
 
   create_table "events", force: true do |t|
     t.string   "name",                            null: false
@@ -113,15 +110,15 @@ ActiveRecord::Schema.define(version: 20140515105850) do
     t.date     "start_date"
     t.date     "end_date"
     t.boolean  "validated"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "visa_letters"
     t.datetime "request_creation_deadline"
     t.datetime "reimbursement_creation_deadline"
     t.integer  "budget_id"
   end
 
-  add_index "events", ["budget_id"], name: "index_events_on_budget_id", using: :btree
+  add_index "events", ["budget_id"], name: "index_events_on_budget_id"
 
   create_table "payments", force: true do |t|
     t.integer  "reimbursement_id"
@@ -135,24 +132,24 @@ ActiveRecord::Schema.define(version: 20140515105850) do
     t.string   "subject"
     t.text     "notes"
     t.string   "file"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "reimbursement_attachments", force: true do |t|
     t.integer  "reimbursement_id"
     t.string   "title",            null: false
     t.string   "file",             null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "reimbursement_links", force: true do |t|
     t.integer  "reimbursement_id"
     t.string   "title",            null: false
     t.string   "url",              null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "reimbursements", force: true do |t|
@@ -160,8 +157,8 @@ ActiveRecord::Schema.define(version: 20140515105850) do
     t.integer  "user_id",          null: false
     t.integer  "request_id",       null: false
     t.text     "description"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.datetime "state_updated_at"
     t.string   "acceptance_file"
   end
@@ -174,8 +171,8 @@ ActiveRecord::Schema.define(version: 20140515105850) do
     t.string   "estimated_currency"
     t.decimal  "approved_amount"
     t.string   "approved_currency"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.decimal  "total_amount"
     t.decimal  "authorized_amount"
   end
@@ -185,14 +182,19 @@ ActiveRecord::Schema.define(version: 20140515105850) do
     t.integer  "user_id",          null: false
     t.integer  "event_id",         null: false
     t.text     "description"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.datetime "state_updated_at"
     t.boolean  "visa_letter"
   end
 
-  add_index "requests", ["event_id"], name: "index_requests_on_event_id", using: :btree
-  add_index "requests", ["user_id"], name: "index_requests_on_user_id", using: :btree
+  add_index "requests", ["event_id"], name: "index_requests_on_event_id"
+  add_index "requests", ["user_id"], name: "index_requests_on_user_id"
+
+  create_table "source_states_transitions", id: false, force: true do |t|
+    t.integer "state_id"
+    t.integer "transition_event_id"
+  end
 
   create_table "state_changes", force: true do |t|
     t.integer  "machine_id",   null: false
@@ -202,12 +204,33 @@ ActiveRecord::Schema.define(version: 20140515105850) do
     t.string   "to",           null: false
     t.integer  "user_id"
     t.string   "notes"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "type"
   end
 
-  add_index "state_changes", ["type"], name: "index_state_changes_on_type", using: :btree
+  add_index "state_changes", ["type"], name: "index_state_changes_on_type"
+
+  create_table "states", force: true do |t|
+    t.string   "name",          null: false
+    t.string   "description"
+    t.text     "temp_comments"
+    t.integer  "user_id"
+    t.string   "machine_type",  null: false
+    t.integer  "role_id",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transition_events", force: true do |t|
+    t.string   "name",            null: false
+    t.string   "description"
+    t.integer  "user_id"
+    t.string   "machine_type",    null: false
+    t.integer  "target_state_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "user_profiles", force: true do |t|
     t.integer  "user_id",               null: false
@@ -215,8 +238,8 @@ ActiveRecord::Schema.define(version: 20140515105850) do
     t.string   "full_name"
     t.string   "phone_number"
     t.string   "country_code"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "second_phone_number"
     t.string   "description"
     t.string   "location"
@@ -242,11 +265,11 @@ ActiveRecord::Schema.define(version: 20140515105850) do
     t.string   "last_sign_in_ip"
     t.string   "nickname",                              null: false
     t.string   "locale",                 default: "en", null: false
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

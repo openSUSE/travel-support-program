@@ -31,6 +31,10 @@ class User < ActiveRecord::Base
   has_many :reimbursements, :inverse_of => :user
   # State changes (transitions or manual adjustments) performed by the user
   has_many :state_changes, :inverse_of => :user
+  # Customised states created by the user
+  has_many :states, :inverse_of => :user
+  # Customised transition_events created by the user
+  has_many :transition_events, :inverse_of => :user
 
   after_create :create_profile
 
