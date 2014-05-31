@@ -1,0 +1,29 @@
+incomplete_one_request:
+  name: "incomplete_one"
+  machine_type: "request"
+  role_id: 1
+
+incomplete_two_request:
+  name: "incomplete_two"
+  machine_type: "request"
+  role_id: 2
+
+incomplete_one_reimbursement:
+  name: "incomplete_one"
+  machine_type: "reimbursement"
+  role_id: 1
+
+incomplete_two_reimbursement:
+  name: "incomplete_two"
+  machine_type: "reimbursement"
+  role_id: 2  
+
+submitted_for_request:
+  name: "submitted"
+  machine_type: "request"
+  role_id: 3
+
+submitted_for_reimbursement:
+  name: "submitted"
+  machine_type: "reimbursement"
+  role_id: 3
