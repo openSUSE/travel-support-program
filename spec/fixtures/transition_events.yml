@@ -1,0 +1,23 @@
+submit:
+  name: "submit"
+  machine_type: "request"
+  source_states: [incomplete]
+  target_state: submitted
+
+roll_back:
+  name: "roll_back"
+  machine_type: "request"
+  source_states: [submitted,approved]
+  target_state: incomplete
+
+approve:
+  name: "approve"
+  machine_type: "request"
+  source_states: [submitted]
+  target_state: approved
+
+accept:
+  name: "accept"
+  machine_type: "request"
+  source_states: [approved]
+  target_state: accepted

@@ -16,38 +16,63 @@ describe TransitionEvent do
       @t_event.save
     end
 
-  	it "should be true if source states,target state and transition event belong to same machine" do
-	  	
-	  	@t_event.source_states<<[states(:incomplete_one_request),states(:incomplete_two_request)]
-	  	@t_event.target_state=states(:submitted_for_request)
-	  	@t_event.valid_transition?.should be_true
+    it "should be true if source states,target state and transition event belong to same machine" do
+      
+      @t_event.source_states<<[states(:state_one_request),states(:state_two_request)]
+      @t_event.target_state=states(:target_state_for_request)
+      @t_event.valid_transition?.should be_true
 
-  	end
+    end
 
     it "should be false if source states and target state don't belong to same machine" do
       
-      @t_event.source_states<<[states(:incomplete_one_request),states(:incomplete_two_request)]
-      @t_event.target_state=states(:submitted_for_reimbursement)
+      @t_event.source_states<<[states(:state_one_request),states(:state_two_request)]
+      @t_event.target_state=states(:target_state_for_reimbursement)
       @t_event.valid_transition?.should be_false
 
     end
+
 
     it "should be false if source states and transition event don't belong to same machine" do
       
-      @t_event.source_states<<[states(:incomplete_one_reimbursement),states(:incomplete_two_reimbursement)]
-      @t_event.target_state=states(:submitted_for_request)
+      @t_event.source_states<<[states(:state_one_reimbursement),states(:state_two_reimbursement)]
+      @t_event.target_state=states(:target_state_for_request)
       @t_event.valid_transition?.should be_false
 
     end
+
 
     it "should be false if target state and transition event don't belong to same machine" do
       
-      @t_event.source_states<<[states(:incomplete_one_request),states(:incomplete_two_request)]
-      @t_event.target_state=states(:submitted_for_reimbursement)
+      @t_event.source_states<<[states(:state_one_request),states(:state_two_request)]
+      @t_event.target_state=states(:target_state_for_reimbursement)
       @t_event.valid_transition?.should be_false
 
     end
 
+
   end
+
+  it "should verify with the current request workflow" do
+
+    #submit transition : incomplete->submitted
+    transition_events(:submit).source_states.should == [states(:incomplete)]
+    transition_events(:submit).target_state.should == states(:submitted)
+
+    #roll_back transition : submitted,approved -> incomplete
+    transition_events(:roll_back).source_states.should == [states(:submitted),states(:approved)]
+    transition_events(:roll_back).target_state.should == states(:incomplete)
+
+    #approve transition : submitted -> approved
+    transition_events(:approve).source_states.should == [states(:submitted)]
+    transition_events(:approve).target_state.should == states(:approved)
+
+    #accept transition : approved -> accepted
+    transition_events(:accept).source_states.should == [states(:approved)]
+    transition_events(:accept).target_state.should == states(:accepted)
+
+
+  end
+
 
 end

@@ -1,29 +1,59 @@
-incomplete_one_request:
-  name: "incomplete_one"
+#States fixtures for testing validations
+
+state_one_request:
+  name: "state_one"
   machine_type: "request"
   role_id: 1
 
-incomplete_two_request:
-  name: "incomplete_two"
+state_two_request:
+  name: "state_two"
   machine_type: "request"
   role_id: 2
 
-incomplete_one_reimbursement:
-  name: "incomplete_one"
+state_one_reimbursement:
+  name: "state_one"
   machine_type: "reimbursement"
   role_id: 1
 
-incomplete_two_reimbursement:
-  name: "incomplete_two"
+state_two_reimbursement:
+  name: "state_two"
   machine_type: "reimbursement"
   role_id: 2  
 
-submitted_for_request:
-  name: "submitted"
+target_state_for_request:
+  name: "target_state_one"
   machine_type: "request"
   role_id: 3
 
-submitted_for_reimbursement:
-  name: "submitted"
+target_state_for_reimbursement:
+  name: "target_state_two"
   machine_type: "reimbursement"
   role_id: 3
+
+#States fixtures for the request machine
+# roles- 1: requester 2:tsp 4:admin(default)
+
+incomplete:
+  name: "incomplete"
+  machine_type: "request"
+  role_id: 1
+
+submitted:
+  name: "submitted"
+  machine_type: "request"
+  role_id: 2
+
+approved:
+  name: "approved"
+  machine_type: "request"
+  role_id: 1
+
+accepted:
+  name: "accepted"
+  machine_type: "request"
+  role_id: 4
+
+cancelled:
+  name: "cancelled"
+  machine_type: "request"
+  role_id: 4
