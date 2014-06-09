@@ -16,18 +16,10 @@ class TransitionEvent < ActiveRecord::Base
  validates :target_state_id, :uniqueness => true
 
 
-#Method to validate(i.e. belong to same machine) the transition occuring between the states
+#Method to validate(i.e. belong to same machine) the transition occuring between the states by checking
+#for number of unique values in an array of all associated machine_types
  def valid_transition?
- 	self.source_states.each do |source_state|
- 		if(source_state.machine_type != self.target_state.machine_type)  #source-target conflict
- 			return false
- 		elsif(source_state.machine_type != self.machine_type)            #source-event conflict
- 			return false
- 		elsif (target_state.machine_type != self.machine_type)			 #target-event conflict
- 			return false	
- 		end
- 	end
- 	return true
+ 	(source_states.map(&:machine_type) + [target_state.machine_type] + [machine_type]).uniq.size == 1
  end
 
 end
