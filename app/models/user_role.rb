@@ -9,7 +9,8 @@ class UserRole < ActiveHash::Base
     { :id => 2, :name => 'tsp' },
     { :id => 3, :name => 'supervisor' },
     { :id => 4, :name => 'administrative'},
-    { :id => 5, :name => 'assistant' }
+    { :id => 5, :name => 'assistant' },
+    { :id => 6, :name => 'admin' }            # new user role to monitor the customisation of state machines
   ]
 
   enum_accessor :name

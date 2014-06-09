@@ -322,6 +322,13 @@ class Ability
       # Expenses Reports
       can :read, ExpenseReport
 
+    #
+    # admin permissions
+    # --------------------------
+    #
+    elsif role == "admin"
+      can :manage, State
+
     end
   end
 end

@@ -33,6 +33,12 @@ TravelSupport::Application.routes.draw do
     put :update_password, :on => :member
   end
 
+  # namespaced routes for admin portal
+
+  namespace :admin do
+    resources :states
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

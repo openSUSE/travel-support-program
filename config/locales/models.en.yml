@@ -6,6 +6,7 @@ en:
       supervisor: "Supervisor"
       administrative: "Administrative"
       assistant: "Assistant"
+      admin: "Admin"
 
   activerecord:
     errors:
@@ -126,6 +127,9 @@ en:
       payment:
         one: "payment"
         other: "payments"
+      state:
+        one: "state"
+        other: "states"
 
     attributes:
       bank_account:

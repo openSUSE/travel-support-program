@@ -1,0 +1,33 @@
+- model_class = State
+= content_for :page_header do
+	.row-fluid
+		.span7
+			%h1= t('.title', :default => model_class.model_name.human)
+		.span5
+			%br
+			- if user_signed_in? && can?(:update, resource)
+				= link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path(resource), :class => 'btn'
+			- if user_signed_in? && can?(:destroy, resource)
+				= link_to t('.destroy', :default => t("helpers.links.destroy")), resource_path(resource), :method => 'delete', :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn'
+
+
+= show_for resource do |r|
+	.row-fluid
+		.span12
+			= r.attribute :name
+	.row-fluid
+		.span6
+			= r.attribute :machine_type
+		.span6
+			= r.attribute :user_role_responsible do
+				=resource.role.name
+	.row-fluid
+		.span6
+			= r.attribute :description
+		.span6
+			= r.association :user, :label => 'Created By'
+	.row-fluid
+		.span12
+			= r.attribute :temp_comments, :label => 'Comments'
+
+
