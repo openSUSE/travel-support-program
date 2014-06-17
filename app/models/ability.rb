@@ -328,7 +328,7 @@ class Ability
     #
     elsif role == "admin"
       can :manage, State
-
+      can :manage, TransitionEvent
     end
   end
 end

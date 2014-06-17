@@ -1,7 +1,7 @@
 class TransitionEvent < ActiveRecord::Base
  
 
- attr_accessible :name, :machine_type, :user_id, :description
+ attr_accessible :name, :machine_type, :user_id, :description, :source_state_ids, :target_state_id
 
  #The user creating this transition_event
  belongs_to :user

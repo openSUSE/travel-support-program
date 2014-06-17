@@ -1,0 +1,15 @@
+= simple_form_for [:admin, resource] do |f|
+	.form-inputs.form-horizontal
+		= f.input :name
+		= f.input :description, label: 'Description'
+		= f.input :machine_type, collection: ["request","reimbursement"], include_blank: false
+		.row-fluid
+			.span6 
+				= f.association :source_states, include_blank: false
+			.span6
+				= f.association :target_state, include_blank: false
+	  	
+	.form-actions
+		= f.button :submit, :class => 'btn-primary'
+		= link_to t('.cancel', :default => t("helpers.links.cancel")), collection_path, :class => 'btn'
+

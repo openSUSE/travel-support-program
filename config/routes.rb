@@ -37,6 +37,7 @@ TravelSupport::Application.routes.draw do
 
   namespace :admin do
     resources :states
+    resources :transition_events
   end
 
   # The priority is based upon order of creation:

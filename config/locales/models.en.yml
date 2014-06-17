@@ -130,6 +130,9 @@ en:
       state:
         one: "state"
         other: "states"
+      transition_event:
+        one: "transition event"
+        other: "transition events"
 
     attributes:
       bank_account:

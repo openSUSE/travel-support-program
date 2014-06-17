@@ -1,0 +1,33 @@
+- model_class = TransitionEvent
+= content_for :page_header do
+	%h1= t('.title', :default => model_class.model_name.human(count: 2))
+
+.navbar
+	.navbar-inner
+		= link_to t('.new', :default => t("helpers.links.new")), new_resource_path, :class => 'btn btn-primary'
+
+		= search_form_for [:admin, @q], :builder => SimpleForm::FormBuilder, :class => 'navbar-form pull-right' do |f|
+			= f.text_field :machine_type_cont, :class => "input-small"
+			= f.submit t(:search), :class => "btn"   
+
+%table.table.table-striped.states
+	%thead
+		%tr
+			%th Name
+			%th Machine Type
+			%th Source states
+			%th Target state
+			%th Created by
+
+	%tbody
+		- collection.each do |r|
+			%tr
+				%td= link_to r.name, resource_path(r)
+				%td= r.machine_type
+				%td
+					-r.source_states.each do |state|
+						= link_to state.name+',', admin_state_path(state.id)
+				%td= link_to r.target_state.name, admin_state_path(r.target_state.id)
+				%td= r.user.nickname
+
+= paginate collection
