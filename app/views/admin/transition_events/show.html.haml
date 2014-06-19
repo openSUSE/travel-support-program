@@ -1,31 +1,30 @@
 - model_class = TransitionEvent
 = content_for :page_header do
-	.row-fluid
-		.span7
-			%h1= t('.title', :default => model_class.model_name.human)
-		.span5
-			%br
-			- if user_signed_in? && can?(:update, resource)
-				= link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path(resource), :class => 'btn'
-			- if user_signed_in? && can?(:destroy, resource)
-				= link_to t('.destroy', :default => t("helpers.links.destroy")), resource_path(resource), :method => 'delete', :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn'
+  .row-fluid
+    .span7
+      %h1= t('.title', :default => model_class.model_name.human)
+    .span5
+      %br
+      - if user_signed_in? && can?(:update, resource)
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path(resource), :class => 'btn'
+      - if user_signed_in? && can?(:destroy, resource)
+        = link_to t('.destroy', :default => t("helpers.links.destroy")), resource_path(resource), :method => 'delete', :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn'
 
 
 = show_for resource do |r|
-	.row-fluid
-		.span12
-			= r.attribute :name
-	.row-fluid
-		.span6
-			= r.attribute :description, :label => 'Description'
-		.span6
-			= r.attribute :machine_type
-	.row-fluid
-		.span6
-			= r.association :source_states do
-				- resource.source_states.each do |state|
-					= state.name
-		.span6
-			= r.association :target_state
-
+  .row-fluid
+    .span12
+      = r.attribute :name
+  .row-fluid
+    .span6
+      = r.attribute :description, :label => 'Description'
+    .span6
+      = r.attribute :machine_type
+  .row-fluid
+    .span6
+      = r.association :source_states do
+        - resource.source_states.each do |state|
+          = state.name
+    .span6
+      = r.association :target_state
 

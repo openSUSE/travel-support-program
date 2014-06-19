@@ -33,6 +33,10 @@ en:
           attributes:
             to:
               state_not_changed: "this is already the current state"
+        transition_event:
+          attributes:
+            name:
+              invalid_transition_event: "is an invalid transition (mismatching machine_type)"
 
     models:
       bank_account:

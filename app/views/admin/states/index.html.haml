@@ -1,29 +1,28 @@
 - model_class = State
 = content_for :page_header do
-	%h1= t('.title', :default => model_class.model_name.human(count: 2))
+  %h1= t('.title', :default => model_class.model_name.human(count: 2))
 
 .navbar
-	.navbar-inner
-		= link_to t('.new', :default => t("helpers.links.new")), new_resource_path, :class => 'btn btn-primary'
-
-		= search_form_for [:admin, @q], :builder => SimpleForm::FormBuilder, :class => 'navbar-form pull-right' do |f|
-			= f.text_field :machine_type_cont, :class => "input-small"
-			= f.submit t(:search), :class => "btn"   
+  .navbar-inner
+    = link_to t('.new', :default => t("helpers.links.new")), new_resource_path, :class => 'btn btn-primary'
+    = search_form_for [:admin, @q], :builder => SimpleForm::FormBuilder, :class => 'navbar-form pull-right' do |f|
+      = f.select :machine_type_eq,[["request","request"],["reimbursement","reimbursement"]], {:include_blank => true}, :class => "input-medium"
+      = f.submit t(:search), :class => "btn"   
 
 %table.table.table-striped.states
-	%thead
-		%tr
-			%th Name
-			%th Machine Type
-			%th Role
-			%th Created by
+  %thead
+    %tr
+      %th= sort_link(@q, :name)
+      %th= sort_link(@q, :machine_type)
+      %th= sort_link(@q, :role_id)
+      %th= sort_link(@q, :user_id, "Created by")
 
-	%tbody
-		- collection.each do |r|
-			%tr
-				%td= link_to r.name, resource_path(r)
-				%td= r.machine_type
-				%td= r.role.name
-				%td= r.user.nickname
+  %tbody
+    - collection.each do |r|
+      %tr
+        %td= link_to r.name, resource_path(r)
+        %td= r.machine_type
+        %td= r.role.name
+        %td= r.user.nickname
 
 = paginate collection

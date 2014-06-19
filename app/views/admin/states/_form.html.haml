@@ -1,12 +1,12 @@
 = simple_form_for [:admin, resource] do |f|
-	.form-inputs.form-horizontal
-		= f.input :name
-		= f.input :description
-		= f.input :machine_type, collection: ["request","reimbursement"], include_blank: false
-		= f.input :temp_comments, label: 'Comments'
-		= f.input :role_id, collection: UserRole.all, label_method: 'title', value_method: 'id', include_blank: false
+  .form-inputs.form-horizontal
+    = f.input :name
+    = f.input :description
+    = f.input :machine_type, collection: ["request","reimbursement"], include_blank: false
+    = f.input :temp_comments, label: 'Comments'
+    = f.input :role_id, collection: UserRole.all, label_method: 'title', value_method: 'id', include_blank: false
 	  	
-	.form-actions
-		= f.button :submit, :class => 'btn-primary'
-		= link_to t('.cancel', :default => t("helpers.links.cancel")), collection_path, :class => 'btn'
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), collection_path, :class => 'btn'
 

@@ -1,5 +1,5 @@
 class State < ActiveRecord::Base
-	extend ActiveHash::Associations::ActiveRecordExtensions
+  extend ActiveHash::Associations::ActiveRecordExtensions
 
 
   attr_accessible :name, :machine_type, :user_id, :temp_comments, :description, :role_id
