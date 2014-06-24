@@ -5,8 +5,6 @@ class ReimbursementAttachment < ActiveRecord::Base
   # The associated reimbursement
   belongs_to :reimbursement
 
-  attr_accessible :reimbursement_id, :title, :file, :file_cache
-
   validates :reimbursement, :title, :file, :presence => true
 
   mount_uploader :file, AttachmentUploader

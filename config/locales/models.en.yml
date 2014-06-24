@@ -137,6 +137,23 @@ en:
       transition_event:
         one: "transition event"
         other: "transition events"
+      shipment:
+        one: "shipment"
+        other: "shipments"
+        states:
+          approved: "shipment authorized"
+          canceled: "no more actions allowed"
+          incomplete: "under modification, not requested"
+          requested: "waiting for approval"
+          received: "by requester"
+          send: "traveling"
+        state_guides:
+          approved: "It will be now sent by the shipper."
+          canceled: "The shipment has been canceled and cannot be longer modified."
+          incomplete: "The requester must update all the relevant information. Afterwards, the shipment must be explicitly requested."
+          requested: "The shipment is being evaluated. It will be approved or rolled back (again to incomplete state) whether the requester needs to correct something."
+          received: "The requester has received the shipment. Final state."
+          send: "After actually receiving it, the requester must confirm the shipment in the application."
 
     attributes:
       bank_account:
@@ -172,6 +189,7 @@ en:
         end_date: "ends at"
         reimbursement_creation_deadline: "accepting reimbursements until"
         request_creation_deadline: "accepting requests until"
+        shipment_type: "shipment type"
         budgets: "budgets"
       expense_report:
         event_country: "country"
@@ -319,6 +337,14 @@ en:
         user_id: "user"
         website: "website"
         zip_code: "ZIP code"
+      shipment:
+        description: "description"
+        delivery_address: "delivery address"
+        event: "event"
+        event_id: "event"
+        history: "history"
+        state: "state"
+        type: "type"
 
     state_machines:
       events:
@@ -328,6 +354,7 @@ en:
         confirm: "confirm"
         process: "process"
         reject: "reject"
+        request: "request"
         roll_back: "roll back"
         submit: "submit"
       states:
@@ -337,6 +364,7 @@ en:
         incomplete: "incomplete"
         payed: "payed"
         processed: "processed"
+        requested: "requested"
         submitted: "submitted"
       messages:
         accept_success: "Acceptance processed."
@@ -351,6 +379,8 @@ en:
         process_failure: "Something went wrong. Payment process failed."
         reject_success: "Successfully rejected."
         reject_failure: "Something went wrong. Not rejected."
+        request_success: "Successfully requested."
+        request_failure: "Something went wrong. Not requested."
         roll_back_success: "Successfully rolled back."
         roll_back_failure: "Something went wrong. Unable to roll back."
         submit_success: "Successfully submitted."

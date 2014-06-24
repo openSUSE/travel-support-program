@@ -7,7 +7,7 @@ feature "Only one active request", "" do
   scenario "Trying to create a new request" do
     sign_in_as_user(users(:luke))
     visit event_path(events(:party))
-    click_link "Apply"
+    click_link "Travel support"
 
     # Redirect
     current_path.should == request_path(requests(:luke_for_party))

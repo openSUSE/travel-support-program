@@ -4,17 +4,21 @@ TravelSupport::Application.routes.draw do
                       :ichain_registrations => "ichain_registrations"},
     :failure_app => Devise::IchainFailureApp
 
+  concern :state_machine do
+    resources :state_transitions, :only => [:new, :create]
+    resources :state_adjustments, :only => [:new, :create]
+  end
+
+  concern :commentable do
+    resources :comments, :only => [:new, :create]
+  end
+
   resources :events
   resources :budgets
 
-  resources :requests do
-    resources :state_transitions, :only => [:new, :create]
-    resources :state_adjustments, :only => [:new, :create]
-    resources :comments, :only => [:new, :create]
-    resource :reimbursement do
-      resources :state_transitions, :only => [:new, :create]
-      resources :state_adjustments, :only => [:new, :create]
-      resources :comments, :only => [:new, :create]
+  resources :requests, :concerns => [:state_machine, :commentable], :defaults => {:machine => 'request'} do
+    resource :expenses_approval, :only => [:edit, :update]
+    resource :reimbursement, :concerns => [:state_machine, :commentable], :defaults => {:machine => 'reimbursement'} do
       resources :attachments, :only => [:show], :controller => :reimbursement_attachments
       resource  :acceptance, :only => [:new, :create, :show], :controller => :reimbursement_acceptances
       resources :payments, :except => [:show, :index] do
@@ -23,6 +27,8 @@ TravelSupport::Application.routes.draw do
       get :check_request, :on => :member, :defaults => { :format => 'pdf' }
     end
   end
+
+  resources :shipments, :concerns => [:state_machine, :commentable], :defaults => {:machine => 'shipment'}
 
   # A separate controller is needed because inherited_resources cannot manage
   # belongs_to resources associations that are both singleton and optional

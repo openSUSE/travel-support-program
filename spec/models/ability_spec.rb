@@ -248,7 +248,7 @@ describe Ability do
       it{ should_not be_able_to(:create, Request.new) }
       it{ should be_able_to(:read, requests(:wedge_for_party)) }
       it{ should be_able_to(:read, requests(:luke_for_yavin)) }
-      it{ should be_able_to(:update, requests(:wedge_for_party)) }
+      it{ should_not be_able_to(:update, requests(:wedge_for_party)) }
       it{ should be_able_to(:approve, requests(:wedge_for_party)) }
       it{ should be_able_to(:roll_back, requests(:wedge_for_party)) }
       it{ should_not be_able_to(:update, requests(:luke_for_yavin)) }

@@ -47,4 +47,10 @@ class RequestsController < InheritedResources::Base
     @subjects = TravelSupport::Config.setting :request_expense_subjects
   end
 
+  def permitted_params
+    params.permit(:request => [ :event_id, :description, :visa_letter,
+                                {:expenses_attributes => [:id, :subject, :description,
+                                                          :estimated_amount, :estimated_currency]}])
+  end
+
 end

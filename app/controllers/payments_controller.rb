@@ -39,4 +39,9 @@ class PaymentsController < InheritedResources::Base
                       :url => request_reimbursement_path(parent.request)}
     @breadcrumbs << {:label => Payment.model_name.human(:count => 2) }
   end
+
+  def permitted_params
+    params.permit(:payment => [:date, :amount, :currency, :cost_amount, :cost_currency,
+                               :method, :code, :subject, :notes, :file, :file_cache])
+  end
 end

@@ -5,7 +5,6 @@
 # with the requester-.
 #
 class Comment < ActiveRecord::Base
-  attr_accessible :body, :private
   # The associated state machine (request, reimbursement...)
   belongs_to :machine, :polymorphic => true, :inverse_of => :comments
   # The author of the note

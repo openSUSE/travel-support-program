@@ -8,7 +8,6 @@
 # with the same currency, the amounts are added.
 #
 class Budget < ActiveRecord::Base
-  attr_accessible :name, :description, :amount, :currency, :event_ids
   # Events that are covered by the budget
   has_many :events
 

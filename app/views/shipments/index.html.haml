@@ -1,0 +1,30 @@
+- model_class = Shipment
+= content_for :page_header do
+  %h1= t('.title', :default => model_class.model_name.human(count: 2))
+
+.navbar
+  .navbar-inner
+    = search_form_for @q, :class => "navbar-form pull-right" do |f|
+      = f.collection_select :event_id_eq, Event.all, :id, :name, {:include_blank => true}, :class => "input-large"
+      = f.select :state_eq, @states_collection, {:include_blank => true}, :class => "input-medium"
+      = f.submit t(:search), :class => "btn"
+      = link_to t(:reset_search), collection_path, :class => "btn"
+
+%table.table.table-striped.requests
+  %thead
+    %tr
+      %th= sort_link(@q, :id)
+      %th= model_class.human_attribute_name(:user)
+      %th= model_class.human_attribute_name(:event)
+      %th= model_class.human_attribute_name(:type)
+      %th= sort_link(@q, :state)
+  %tbody
+    - collection.each do |resource|
+      %tr
+        %td= link_to "#{resource.label}", resource
+        %td= resource.user.try(:title)
+        %td= resource.event.try(:name)
+        %td= resource.type
+        %td= timestamped_state(resource)
+
+= paginate collection

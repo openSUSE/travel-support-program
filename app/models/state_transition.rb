@@ -4,7 +4,6 @@
 # database will correctly update the associated state machine automatically.
 #
 class StateTransition < StateChange
-  attr_accessible :state_event
 
   validates :state_event, :presence => true
 

@@ -11,7 +11,6 @@
 # @see StateAdjustment
 #
 class StateChange < ActiveRecord::Base
-  attr_accessible :machine_id, :machine_type, :notes
 
   before_validation :update_machine_state, :on => :create
   before_update :prevent_update

@@ -3,34 +3,32 @@
 #
 class Request < ActiveRecord::Base
   include HasState
-  # The event the requester wants to attend.
+
+  # The event associated to the state machine
   belongs_to :event
+  # Comments used to discuss decisions (private) or communicate with the requester (public)
+  has_many :comments, :as => :machine, :dependent => :destroy
   # Estimated expenses, including (for every expense) the estimated amount,
   # the amount of the help that TSP approves, the amount finally expended and
   # the amount that is going to be reimbursed
   has_many :expenses, :class_name => "RequestExpense", :inverse_of => :request, :dependent => :destroy
   # Every accepted request is followed by a reimbursement process
   has_one :reimbursement, :inverse_of => :request, :dependent => :restrict_with_exception
-  # Comments used to discuss decisions (private) or communicate with the requester (public)
-  has_many :comments, :as => :machine, :dependent => :destroy
 
   accepts_nested_attributes_for :expenses, :reject_if => :all_blank, :allow_destroy => true
-
-  attr_accessible :event_id, :description, :expenses_attributes, :visa_letter
 
   validates :event, :presence => true
   validates_associated :expenses
   validate :only_one_active_request, :if => :active?
   validate :dont_exceed_budget, :if => :approved?
 
-  auditable
-
-  scope :active, -> { where(["state <> ?", 'canceled']) }
   scope :in_conflict_with, lambda { |req|
     others = active.where(user_id: req.user_id, event_id: req.event_id)
     others = others.where(["id <> ?", req.id]) if req.id
     others
   }
+
+  auditable
 
   state_machine :state, :initial => :incomplete do |machine|
 
@@ -73,20 +71,6 @@ class Request < ActiveRecord::Base
     expenses.empty?
   end
 
-  # Checks whether the requester should be allowed to do changes.
-  #
-  # @return [Boolean] true if allowed
-  def editable_by_requester?
-    state == 'incomplete'
-  end
-
-  # Checks whether a tsp user should be allowed to do changes.
-  #
-  # @return [Boolean] true if allowed
-  def editable_by_tsp?
-    state == 'submitted'
-  end
-
   # Checks whether a tsp user should be allowed to cancel
   #
   # tsp users cannot cancel a request if it has already been accepted by the
@@ -95,13 +79,6 @@ class Request < ActiveRecord::Base
   # @return [Boolean] true if allowed
   def cancelable_by_tsp?
     can_cancel? and not accepted?
-  end
-
-  # Checks whether a user should be allowed to completely delete the request.
-  #
-  # @return [Boolean] true if allowed
-  def can_be_destroyed?
-    not with_transitions?
   end
 
   # Checks whether can have a transition to 'canceled' state
@@ -166,20 +143,6 @@ class Request < ActiveRecord::Base
       r_ids = requests.map {|i| i.kind_of?(Integer) ? i : i.id }
     end
     RequestExpense.by_attr_for_requests(attr, r_ids).sum(amount_field)
-  end
-
-  # Label to identify the request
-  #
-  # @return [String] label based in the id of the request
-  def label
-    "##{id}"
-  end
-
-  # Title to show the request in the UI
-  #
-  # @return [String] Class name and label
-  def title
-    "#{self.class.model_name} #{label}"
   end
 
   protected

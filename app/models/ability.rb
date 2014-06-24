@@ -28,6 +28,7 @@ class Ability
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
+    can :manage, Shipment
     can :manage, User, :id => user.id
     can :manage, UserProfile, :user_id => user.id
     can [:read, :create], Event
@@ -51,11 +52,11 @@ class Ability
         r.event && r.event.accepting_requests?
       end
       can :create, RequestExpense do |e|
-        e.request && e.request.editable_by_requester? && e.request.user == user
+        e.request && e.request.editable? && e.request.user == user
       end
       can :read, Request, :user_id => user.id
       can :update, Request do |r|
-        r.user == user && r.editable_by_requester?
+        r.user == user && r.editable?
       end
       can :destroy, Request do |r|
         r.user == user && r.can_be_destroyed?
@@ -74,7 +75,7 @@ class Ability
       end
       can :read, Reimbursement, :user_id => user.id
       can :update, Reimbursement do |r|
-        r.user == user && r.editable_by_requester?
+        r.user == user && r.editable?
       end
       [:submit, :roll_back, :cancel].each do |action|
         can action, Reimbursement do |r|
@@ -87,7 +88,7 @@ class Ability
         a.reimbursement.user == user
       end
       can [:create, :update, :destroy], ReimbursementAttachment do |a|
-        a.reimbursement.user == user && a.reimbursement.editable_by_requester?
+        a.reimbursement.user == user && a.reimbursement.editable?
       end
 
       # Reimbursement's bank account
@@ -95,7 +96,7 @@ class Ability
         a.reimbursement.user == user
       end
       can [:create, :update], BankAccount do |a|
-        a.reimbursement.user == user && a.reimbursement.editable_by_requester?
+        a.reimbursement.user == user && a.reimbursement.editable?
       end
 
       # Reimbursement's payments
@@ -140,9 +141,6 @@ class Ability
 
       # Requests
       can :read, Request
-      can :update, Request do |r|
-        r.editable_by_tsp?
-      end
       can :cancel, Request do |r|
         r.cancelable_by_tsp?
       end
@@ -156,9 +154,6 @@ class Ability
 
       # Reimbursements
       can :read, Reimbursement
-      can :update, Reimbursement do |r|
-        r.editable_by_tsp?
-      end
       can :cancel, Reimbursement do |r|
         r.cancelable_by_tsp?
       end

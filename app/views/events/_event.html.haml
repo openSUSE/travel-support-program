@@ -13,10 +13,11 @@
     .row-fluid
       .span12
         = e.attribute :description
+    .row-fluid
+      .span6= e.attribute :shipment_type
+      .span6= e.attribute :visa_letters
     - if user_signed_in? && can?(:validate, event)
       .row-fluid
-        .span6= e.attribute :validated
-        .span6= e.attribute :visa_letters
+        .span12= e.attribute :validated
     .row-fluid
-      .span12.text-right
-        = goto_link event
+      .span12= goto_link event

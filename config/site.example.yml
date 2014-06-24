@@ -53,6 +53,9 @@ common: &common
     - zip_code
     - postal_address
     - phone_number
+  shipment_types:
+    - Big booth box
+    - Small booth box
 
 production:
   <<: *common

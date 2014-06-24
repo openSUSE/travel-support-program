@@ -52,8 +52,6 @@ gem "state_machine"
 # Added to avoid an error in every rake execution caused by lib/tasks/doc.rake
 # (at least until we figure out a cleaner solution)
 gem "yard"
-# For using rails3-style attributes protection
-gem 'protected_attributes'
 # delayed_job must appear after protected_attributes
 gem 'delayed_job_active_record'
 
