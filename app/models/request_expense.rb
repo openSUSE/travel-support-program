@@ -9,10 +9,6 @@
 class RequestExpense < ActiveRecord::Base
   belongs_to :request, :inverse_of => :expenses
 
-  attr_accessible :request_id, :subject, :description, :estimated_amount,
-    :estimated_currency, :approved_amount, :approved_currency, :total_amount,
-    :authorized_amount
-
   delegate :reimbursement, :to => :request, :prefix => false
   delegate :event, :to => :request, :prefix => false
 

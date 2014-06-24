@@ -18,7 +18,7 @@ feature "Visa letter", "" do
   scenario "Applying to a visa enabled event" do
     sign_in_as_user(users(:wedge))
     visit event_path(events(:dagobah_camp))
-    click_link "Apply"
+    click_link "Travel support"
 
     # new_request form
     page.should have_content "New request"

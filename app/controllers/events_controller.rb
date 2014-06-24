@@ -2,7 +2,7 @@ class EventsController < InheritedResources::Base
   respond_to :html, :js, :json
   skip_before_filter :authenticate_and_audit_user, :only => [:index, :show]
   skip_load_and_authorize_resource :only => [:index, :show]
-  before_filter :protect_attributes, :only => [:create, :update]
+  before_filter :set_types
 
   protected
 
@@ -16,12 +16,20 @@ class EventsController < InheritedResources::Base
     @events ||= @q.result(:distinct => true).page(params[:page]).per(20)
   end
 
-  def protect_attributes
-    if cannot? :validate, resource
+  def set_types
+    @shipment_types = TravelSupport::Config.setting('shipment_types')
+  end
+
+  def permitted_params
+    attrs = [:name, :description, :start_date, :end_date, :url, :country_code,
+             :validated, :visa_letters, :request_creation_deadline,
+             :reimbursement_creation_deadline, :budget_id, :shipment_type ]
+    if cannot? :validate, Event.new
       Event.validation_attributes.each do |att|
-        params[:event].delete(att)
+        attrs.delete(att)
       end
     end
-    params[:event].delete(:budget_id) if cannot? :read, Budget
+    attrs.delete(:budget_id) if cannot? :read, Budget
+    params.permit(:event => attrs)
   end
 end

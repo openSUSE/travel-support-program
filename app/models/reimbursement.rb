@@ -3,8 +3,11 @@
 #
 class Reimbursement < ActiveRecord::Base
   include HasState
+
   # The associated request
   belongs_to :request, :inverse_of => :reimbursement
+  # Comments used to discuss decisions (private) or communicate with the requester (public)
+  has_many :comments, :as => :machine, :dependent => :destroy
   # The expenses of the associated request, total_amount and authorized_amount
   # will be updated during reimbursement process
   has_many :expenses, :through => :request, :autosave => false
@@ -13,8 +16,6 @@ class Reimbursement < ActiveRecord::Base
   # Links pointing to reports (ie., blog posts) regarding the requester
   # participation in the event
   has_many :links, :class_name => "ReimbursementLink", :inverse_of => :reimbursement, :dependent => :destroy
-  # Comments used to discuss decisions (private) or communicate with the requester (public)
-  has_many :comments, :as => :machine, :dependent => :destroy
   # Can have several payments, not related to the number of expenses
   has_many :payments, :inverse_of => :reimbursement, :dependent => :restrict_with_exception
   # Bank information goes to another model
@@ -30,9 +31,6 @@ class Reimbursement < ActiveRecord::Base
   accepts_nested_attributes_for :links, :allow_destroy => true
 
   accepts_nested_attributes_for :bank_account, :allow_destroy => false
-
-  attr_accessible :description, :request_attributes, :attachments_attributes,
-    :links_attributes, :bank_account_attributes
 
   validates :request, :presence => true
   validates_associated :expenses, :attachments, :links, :bank_account
@@ -97,20 +95,6 @@ class Reimbursement < ActiveRecord::Base
     Request.expenses_sum(attr, r_ids)
   end
 
-  # Checks whether the requester should be allowed to do changes.
-  #
-  # @return [Boolean] true if allowed
-  def editable_by_requester?
-    state == 'incomplete'
-  end
-
-  # Checks whether a tsp user should be allowed to do changes.
-  #
-  # @return [Boolean] true if allowed
-  def editable_by_tsp?
-    false
-  end
-
   # Checks whether a tsp user should be allowed to cancel
   #
   # No special case, simply call to #can_cancel?
@@ -152,16 +136,12 @@ class Reimbursement < ActiveRecord::Base
 
   # Label to identify the reimbursement
   #
+  # Overrides the default method to use the request id instead of the internal
+  # reimbursement id.
+  #
   # @return [String] label based in the id of the associated request
   def label
     "##{request_id}"
-  end
-
-  # Title to show the request in the UI
-  #
-  # @return [String] Class name and label
-  def title
-    "#{self.class.model_name} #{label}"
   end
 
   protected

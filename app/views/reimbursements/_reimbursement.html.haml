@@ -4,4 +4,4 @@
     = r.attribute :state do
       = timestamped_state(reimbursement)
     = r.attribute :description
-  .text-right= goto_link request_reimbursement_path(reimbursement.request)
+  %div= goto_link request_reimbursement_path(reimbursement.request)

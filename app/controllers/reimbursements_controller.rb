@@ -50,4 +50,15 @@ class ReimbursementsController < InheritedResources::Base
       @breadcrumbs << {:label => Reimbursement.model_name.human, :url => resource_path }
     end
   end
+
+  def permitted_params
+    params.permit(:reimbursement => [  :description,
+                                      {:request_attributes => [{:expenses_attributes => [:id, :total_amount,
+                                                                                         :authorized_amount]}]},
+                                      {:attachments_attributes => [:id, :title, :file, :file_cache, :_destroy]},
+                                      {:links_attributes => [:id, :title, :url, :_destroy]},
+                                      {:bank_account_attributes => [:holder, :bank_name, :iban, :bic, :national_bank_code,
+                                                                    :format, :national_account_code, :country_code,
+                                                                    :bank_postal_address]}])
+  end
 end

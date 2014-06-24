@@ -9,4 +9,8 @@ class BudgetsController < InheritedResources::Base
     @q.sorts = "name asc" if @q.sorts.empty?
     @budgets ||= @q.result(:distinct => true).page(params[:page]).per(20)
   end
+
+  def permitted_params
+    params.permit(:budget => [:name, :description, :amount, :currency, :event_ids => []])
+  end
 end

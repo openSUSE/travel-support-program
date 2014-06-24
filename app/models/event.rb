@@ -7,12 +7,11 @@
 # and destroy the event.
 #
 class Event < ActiveRecord::Base
-  attr_accessible :name, :description, :start_date, :end_date, :url, :country_code,
-    :validated, :visa_letters, :request_creation_deadline, :reimbursement_creation_deadline,
-    :budget_id
 
   # Requests for attending the event
   has_many :requests, :inverse_of => :event, :dependent => :restrict_with_exception
+  # Shipment requests for merchandising
+  has_many :shipments, :inverse_of => :event, :dependent => :restrict_with_exception
   # Budget to use as a limit for approved amounts
   belongs_to :budget
 
@@ -61,11 +60,19 @@ class Event < ActiveRecord::Base
     end
   end
 
+  # Check if new shipment can be created based on shipment_type
+  # and start_date
+  #
+  # @return [Boolean] true if accepting new shipments
+  def accepting_shipments?
+    (!shipment_type.blank? && Date.today < start_date) rescue false
+  end
+
   # List of attributed that can only by accessed by users who have validation
   # permissions on the event.
   #
   # @return [Array] a list of the restricted attribute names as symbols
   def self.validation_attributes
-    [:validated, :visa_letters, :request_creation_deadline, :reimbursement_creation_deadline]
+    [:validated, :visa_letters, :request_creation_deadline, :reimbursement_creation_deadline, :shipment_type]
   end
 end

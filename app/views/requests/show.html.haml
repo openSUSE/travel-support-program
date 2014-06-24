@@ -8,6 +8,8 @@
       = state_change_links(@request)
       - if can? :edit, @request
         = link_to t('.edit', :default => t("helpers.links.edit")), edit_request_path(@request), :class => 'btn'
+      - if can? :approve, @request
+        = link_to t(:set_approved), edit_request_expenses_approval_path(@request), :class => 'btn'
       - if can? :destroy, @request
         = link_to t('.destroy', :default => t("helpers.links.destroy")), request_path(@request), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn'
       - if @request.lacks_reimbursement?

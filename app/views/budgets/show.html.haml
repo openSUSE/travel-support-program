@@ -17,4 +17,5 @@
       = r.attribute :description
       = r.attribute :amount do
         = number_to_currency(r.object.amount, :unit => r.object.currency)
-      = r.association :events
+      = r.association :events do
+        = resource.events.map(&:name).to_sentence

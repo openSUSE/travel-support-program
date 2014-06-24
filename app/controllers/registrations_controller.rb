@@ -7,7 +7,8 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     @user = User.find(current_user.id)
-    if @user.update_attributes(params[:user])
+    attrs = params.require(:user).permit(:nickname, :email, :locale)
+    if @user.update_attributes(attrs)
       # Sign in the user bypassing validation in case his password changed
       #set_flash_key :notice, :updated
       flash[:notice] = 'Dreamland'

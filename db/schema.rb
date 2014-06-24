@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140515105850) do
+ActiveRecord::Schema.define(version: 20140516095800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 20140515105850) do
     t.datetime "request_creation_deadline"
     t.datetime "reimbursement_creation_deadline"
     t.integer  "budget_id"
+    t.string   "shipment_type"
   end
 
   add_index "events", ["budget_id"], name: "index_events_on_budget_id", using: :btree
@@ -193,6 +194,17 @@ ActiveRecord::Schema.define(version: 20140515105850) do
 
   add_index "requests", ["event_id"], name: "index_requests_on_event_id", using: :btree
   add_index "requests", ["user_id"], name: "index_requests_on_user_id", using: :btree
+
+  create_table "shipments", force: true do |t|
+    t.string   "state"
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.text     "delivery_address"
+    t.text     "description"
+    t.datetime "state_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "state_changes", force: true do |t|
     t.integer  "machine_id",   null: false

@@ -7,7 +7,7 @@ feature "Requests", "" do
   scenario "Full request process", :js => true do
     sign_in_as_user(users(:luke))
     visit event_path(events(:dagobah_camp))
-    click_link "Apply"
+    click_link "Travel support"
 
     # Request creation
     page.should have_content "New request"
@@ -70,12 +70,13 @@ feature "Requests", "" do
 
     # Fulfill approval information
     close_modal_dialog
-    click_link "Edit"
-    page.should have_content "Edit request"
-    fill_in "request_expenses_attributes_0_approved_amount", :with => "60"
-    select "EUR", :from => "request_expenses_attributes_0_approved_currency"
-    fill_in "request_expenses_attributes_1_approved_amount", :with => "0"
-    select "EUR", :from => "request_expenses_attributes_1_approved_currency"
+    click_link "Set amount"
+    page.should have_content "Set approved amount"
+    expenses = @request.expenses.to_a
+    fill_in "expenses_approval_amount_#{expenses.first.id}", :with => "60"
+    select "EUR", :from => "expenses_approval_currency_#{expenses.first.id}"
+    fill_in "expenses_approval_amount_#{expenses.last.id}", :with => "0"
+    select "EUR", :from => "expenses_approval_currency_#{expenses.last.id}"
     click_button "Update request"
     page.should have_content "request was successfully updated"
 

@@ -10,6 +10,7 @@
       = f.input :visa_letters
       = f.input :request_creation_deadline, :as => :dpicker, :with_time => true, :format => :long
       = f.input :reimbursement_creation_deadline, :as => :dpicker, :with_time => true, :format => :long
+      = f.input :shipment_type, :collection => @shipment_types, :include_blank => true
       = f.input :validated
     - if can? :read, Budget
       = f.association :budget

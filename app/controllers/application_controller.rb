@@ -17,13 +17,15 @@ class ApplicationController < ActionController::Base
   protected
 
   def prepare_for_nested_resource
-    @request ||= Request.find(params[:request_id])
-    if request.fullpath.include?("/reimbursement/")
-      @parent = @reimbursement = @request.reimbursement
+    machine = params[:machine].to_s
+    klass = machine.camelize.constantize
+    if machine == 'reimbursement'
+      @request = Request.find(params[:request_id])
+      @parent = @request.reimbursement
       @back_path = request_reimbursement_path(@request)
     else
-      @parent = @request
-      @back_path = request_path(@request)
+      @parent ||= klass.find(params["#{machine}_id"])
+      @back_path = url_for(@parent)
     end
   end
 

@@ -16,6 +16,8 @@ module HasState
 
     before_save :set_state_updated_at
 
+    scope :active, -> { where(["state <> ?", 'canceled']) }
+
     @assigned_states = {}
     @assigned_roles = {}
   end
@@ -33,6 +35,13 @@ module HasState
   # @return [Boolean] true if no possible transitions left
   def in_final_state?
     state_events(:guard => false).empty?
+  end
+
+  # Checks if the object is in the initial state
+  #
+  # @return [Boolean] true if the current state is the initial one
+  def in_initial_state?
+    self.class.state_machines[:state].initial_state(self).name == state_name
   end
 
   # Notify the current state to all involved users
@@ -102,6 +111,34 @@ module HasState
   # return [String] localized guide text
   def human_state_guide
     I18n.t(self.state, :scope => "activerecord.models.#{self.class.model_name.singular}.state_guides")
+  end
+
+  # Checks whether the requester should be allowed to do changes.
+  #
+  # @return [Boolean] true if allowed
+  def editable?
+    in_initial_state?
+  end
+
+  # Checks whether a user should be allowed to completely delete the object.
+  #
+  # @return [Boolean] true if allowed
+  def can_be_destroyed?
+    !with_transitions?
+  end
+
+  # Label to identify the state machine
+  #
+  # @return [String] label based in the id
+  def label
+    "##{id}"
+  end
+
+  # Title to show the state machine in the UI
+  #
+  # @return [String] Class name and label
+  def title
+    "#{self.class.model_name} #{label}"
   end
 
   protected

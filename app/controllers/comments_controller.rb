@@ -24,9 +24,11 @@ class CommentsController < ApplicationController
 
   def load_command_and_authorize
     prepare_for_nested_resource
-    @comment = @parent.comments.build(params[:comment])
-    if action_name.to_sym == :new && Comment.private_role?(current_user.profile.role_name)
-      @comment.private = true
+    if action_name.to_sym == :new
+      @comment = @parent.comments.build(:private => Comment.private_role?(current_user.profile.role_name))
+    else
+      @comment = @parent.comments.build(:body => params[:comment][:body],
+                                        :private => params[:comment][:private])
     end
     authorize! :create, @comment
   end

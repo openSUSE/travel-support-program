@@ -17,11 +17,6 @@ class UserProfile < ActiveRecord::Base
     self.attributes = connect_attrib_values
   end
 
-  attr_accessible :country_code, :full_name, :location, :passport,
-    :alternate_id_document, :birthday, :phone_number, :second_phone_number,
-    :website, :blog, :description, :user_role_id,
-    :postal_address, :zip_code
-
   delegate :name, :to => :role, :prefix => true, :allow_nil => true
 
   validates :role_id, :presence => true

@@ -1,0 +1,33 @@
+- model_class = Shipment
+= content_for :page_header do
+  .row-fluid
+    .span7
+      %h1= t('.title', :default => model_class.model_name.human) + " #{resource.label}"
+    .span5
+      %br
+      = state_change_links(resource)
+      - if can? :edit, resource
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path, :class => 'btn'
+      - if can? :destroy, resource
+        = link_to t('.destroy', :default => t("helpers.links.destroy")), resource, :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn'
+
+= show_for resource do |r|
+  .row-fluid
+    .span6
+      = r.attribute :state do
+        = state_info(r.object)
+        %div.alert-info= resource.human_state_guide
+    .span6
+      = r.attribute :type
+  .row-fluid
+    .span12
+      = r.attribute :description
+  .row-fluid
+    .span12
+      = r.attribute :delivery_address
+
+  = r.attribute :history do
+    = render :partial => "history"
+    - if can?(:create, resource.comments.build)
+      = link_to(t(:create_comment), resource_path + "/comments/new.js", :remote => true, :class => 'btn btn-small')
+

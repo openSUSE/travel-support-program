@@ -1,0 +1,42 @@
+= content_for :page_header do
+  %h1= t(:set_approved_header)
+
+= show_for @request do |r|
+  .row-fluid
+    .span6
+      = r.attribute :state do
+        = state_info(r.object)
+        %div.alert-info= @request.human_state_guide
+      = r.attribute :visa_letter if @request.visa_letter_allowed?
+    .span6
+      = r.association :event do
+        = render @request.event
+      = r.association :user do
+        = render @request.user
+  .row-fluid
+    .span12
+      = r.attribute :description
+
+  = form_tag request_expenses_approval_path(@request), :method => :patch do
+
+    %strong.label= Request.human_attribute_name(:expenses)
+    %table.table.table-condensed
+      %thead
+        %tr
+          %th= RequestExpense.human_attribute_name(:subject)
+          %th= RequestExpense.human_attribute_name(:description)
+          %th= RequestExpense.human_attribute_name(:estimated_amount)
+          %th= t(:approved_amount_header)
+      %tbody#expenses
+        - @request.expenses.each do |expense|
+          %tr
+            %td= expense.subject
+            %td= expense.description
+            %td= number_to_currency(expense.estimated_amount, :unit => expense.estimated_currency)
+            %td
+              = text_field_tag "expenses_approval[amount_#{expense.id}]", expense.approved_amount, :class => 'input-mini'
+              = select_tag "expenses_approval[currency_#{expense.id}]",  options_for_select(currencies_for_select(:approved, @request.event), expense.approved_currency), :class => 'input-mini'
+
+    .form-actions
+      = submit_tag t("helpers.submit.update", :model => Request.model_name.human), :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), @request, :class => 'btn'
