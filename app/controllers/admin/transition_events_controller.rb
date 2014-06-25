@@ -15,4 +15,9 @@ class Admin::TransitionEventsController < InheritedResources::Base
     @q.sorts = "name asc" if @q.sorts.empty?
     @transition_events ||= @q.result(:distinct => true).page(params[:page]).per(20)
   end
+
+  def permitted_params
+    params.permit(:transition_event => [:name, :machine_type, :user_id, :description,
+                                        :source_state_ids => [], :target_state_id])
+  end
 end

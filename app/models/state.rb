@@ -1,9 +1,6 @@
 class State < ActiveRecord::Base
   extend ActiveHash::Associations::ActiveRecordExtensions
 
-
-  attr_accessible :name, :machine_type, :user_id, :temp_comments, :description, :role_id
-
   #The user creating this state
   belongs_to :user
   # The role of the user assigned to perform a transition from this state

@@ -15,4 +15,8 @@ class Admin::StatesController < InheritedResources::Base
     @q.sorts = "name asc" if @q.sorts.empty?
     @states ||= @q.result(:distinct => true).page(params[:page]).per(20)
   end
+
+  def permitted_params
+    params.permit(:state=> [:name, :machine_type, :user_id, :temp_comments, :description, :role_id])
+  end
 end
