@@ -18,6 +18,6 @@ class Admin::TransitionEventsController < InheritedResources::Base
 
   def permitted_params
     params.permit(:transition_event => [:name, :machine_type, :user_id, :description,
-                                        :source_state_ids => [], :target_state_id])
+                                        {:source_state_ids => []}, :target_state_id])
   end
 end

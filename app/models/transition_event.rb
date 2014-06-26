@@ -12,13 +12,13 @@ class TransitionEvent < ActiveRecord::Base
   #Every tarnsition has only one unique target_state
   validates :target_state_id, :uniqueness => true
 
-  validate :valid_transition?
+  validate :validates_machine_type
 
 
   #Checks whether the transition event is valid
   #
   #valid if source_states and target_state are of same machine_type as transition_event
-  def valid_transition?
+  def validates_machine_type
     if (source_states.map(&:machine_type) + [target_state.machine_type] + [machine_type]).uniq.size != 1
  	    errors.add(:name, :invalid_transition_event)
     end

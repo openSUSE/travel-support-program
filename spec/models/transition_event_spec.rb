@@ -8,19 +8,20 @@ describe TransitionEvent do
   it { should validate_presence_of :machine_type }
   #it { should validate_uniqueness_of :target_state_id }
 
-  describe "#valid_transition?" do
+  describe "#validates_machine_type" do
     before(:each) do
       @t_event = TransitionEvent.new
       @t_event.name="transition_event_one"
       @t_event.machine_type="request"
-      @t_event.save
+      #@t_event.save
     end
 
-    it "should be true if source states,target state and transition event belong to same machine" do
+    it "should be valid if source states,target state and transition event belong to same machine" do
       
       @t_event.source_states<<[states(:state_one_request),states(:state_two_request)]
       @t_event.target_state=states(:target_state_for_request)
-      @t_event.valid_transition?.should be_true
+      @t_event.valid?
+      @t_event.errors[:name].should_not include "is an invalid transition (mismatching machine_type)"
 
     end
 
@@ -28,7 +29,8 @@ describe TransitionEvent do
       
       @t_event.source_states<<[states(:state_one_request),states(:state_two_request)]
       @t_event.target_state=states(:target_state_for_reimbursement)
-      @t_event.valid_transition?.should be_false
+      @t_event.valid?
+      @t_event.errors[:name].should include "is an invalid transition (mismatching machine_type)"
 
     end
 
@@ -37,7 +39,8 @@ describe TransitionEvent do
       
       @t_event.source_states<<[states(:state_one_reimbursement),states(:state_two_reimbursement)]
       @t_event.target_state=states(:target_state_for_request)
-      @t_event.valid_transition?.should be_false
+      @t_event.valid?
+      @t_event.errors[:name].should include "is an invalid transition (mismatching machine_type)"
 
     end
 
@@ -46,7 +49,8 @@ describe TransitionEvent do
       
       @t_event.source_states<<[states(:state_one_request),states(:state_two_request)]
       @t_event.target_state=states(:target_state_for_reimbursement)
-      @t_event.valid_transition?.should be_false
+      @t_event.valid?
+      @t_event.errors[:name].should include "is an invalid transition (mismatching machine_type)"
 
     end
 
