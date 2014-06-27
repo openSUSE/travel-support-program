@@ -19,7 +19,7 @@ class TransitionEvent < ActiveRecord::Base
   #
   #valid if source_states and target_state are of same machine_type as transition_event
   def validates_machine_type
-    if (source_states.map(&:machine_type) + [target_state.machine_type] + [machine_type]).uniq.size != 1
+    if (source_states.map(&:machine_type) + [target_state.try(:machine_type)] + [machine_type]).uniq.size != 1
  	    errors.add(:name, :invalid_transition_event)
     end
   end

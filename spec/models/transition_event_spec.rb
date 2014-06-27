@@ -6,7 +6,7 @@ describe TransitionEvent do
 
   it { should validate_presence_of :name }
   it { should validate_presence_of :machine_type }
-  #it { should validate_uniqueness_of :target_state_id }
+  it { should validate_uniqueness_of :target_state_id }
 
   describe "#validates_machine_type" do
     before(:each) do
@@ -25,7 +25,7 @@ describe TransitionEvent do
 
     end
 
-    it "should be false if source states and target state don't belong to same machine" do
+    it "should be invalid if source states and target state don't belong to same machine" do
       
       @t_event.source_states<<[states(:state_one_request),states(:state_two_request)]
       @t_event.target_state=states(:target_state_for_reimbursement)
@@ -35,7 +35,7 @@ describe TransitionEvent do
     end
 
 
-    it "should be false if source states and transition event don't belong to same machine" do
+    it "should be invalid if source states and transition event don't belong to same machine" do
       
       @t_event.source_states<<[states(:state_one_reimbursement),states(:state_two_reimbursement)]
       @t_event.target_state=states(:target_state_for_request)
@@ -45,7 +45,7 @@ describe TransitionEvent do
     end
 
 
-    it "should be false if target state and transition event don't belong to same machine" do
+    it "should be invalid if target state and transition event don't belong to same machine" do
       
       @t_event.source_states<<[states(:state_one_request),states(:state_two_request)]
       @t_event.target_state=states(:target_state_for_reimbursement)
