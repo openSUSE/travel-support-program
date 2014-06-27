@@ -17,3 +17,13 @@ assistant = User.create!(nickname: 'assistant', email: 'assistant@example.com',
                        password: 'assistant1', password_confirmation: 'assistant1')
 assistant.profile.role_name = 'assistant'
 assistant.profile.save!
+
+material = User.create!(nickname: 'material', email: 'material@example.com',
+                       password: 'material1', password_confirmation: 'material1')
+material.profile.role_name = 'material'
+material.profile.save!
+
+shipper = User.create!(nickname: 'shipper', email: 'shipper@example.com',
+                       password: 'shipper1', password_confirmation: 'shipper1')
+shipper.profile.role_name = 'shipper'
+shipper.profile.save!
