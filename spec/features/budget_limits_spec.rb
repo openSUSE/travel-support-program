@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'ruby-debug'
+# require 'ruby-debug'
 
 feature "Budget limits", "" do
   fixtures :all
