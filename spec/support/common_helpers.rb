@@ -58,6 +58,30 @@ module CommonHelpers
   end
 
   #
+  # Find a given shipment through the index view
+  #
+  # Logs in as a user, goes to the list of shipments and clicks on the given
+  # one. At the moment of calling, no user should be already signed in.
+  #
+  # @param [User]     user     User to authenticate
+  # @param [Shipment] shipemnt Shipment to look for
+  # @param [Hash]     opt      +password+: password used for authentication
+  def find_shipment_as(user, shipment, opts = {})
+    sign_in_as_user(user, opts)
+    visit shipments_path
+    # Use the event filter
+    page.save_screenshot('scr1.png')
+    select(shipment.event.name, :from => "q_event_id_eq")
+    click_button "search"
+    # Check the url to ensure that the form have been submitted
+    current_url.should match /event_id_eq/
+    # If so, the shipment should be in the first page
+    find(:xpath, "//table[contains(@class,'shipments')]//tbody/tr/td[1]//a[text()='##{shipment.id}']").click
+    page.should have_content "shipment ##{shipment.id}"
+    page.should have_content shipment.type
+  end
+
+  #
   # Find a given reimbursement through the index view
   #
   # Logs in as a user, goes to the list of reimbursements and clicks on the given

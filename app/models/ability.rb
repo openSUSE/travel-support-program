@@ -28,7 +28,6 @@ class Ability
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
-    can :manage, Shipment
     can :manage, User, :id => user.id
     can :manage, UserProfile, :user_id => user.id
     can [:read, :create], Event
@@ -102,19 +101,31 @@ class Ability
       # Reimbursement's payments
       can :read, Payment, :reimbursement => {:user_id => user.id}
 
+      # Shipments
+      can :create, Shipment do |s|
+        s.event && s.event.accepting_shipments?
+      end
+      can :read, Shipment, :user_id => user.id
+      can :update, Shipment do |s|
+        s.user == user && s.editable?
+      end
+      can :destroy, Shipment do |s|
+        s.user == user && s.can_be_destroyed?
+      end
+      # Requester can manage his own shipments, but only in the way that
+      # state_machine allows to do it
+      [:request, :roll_back, :confirm, :cancel].each do |action|
+        can action, Shipment do |s|
+          s.user == user && s.send("can_#{action}?")
+        end
+      end
+
       # Comments
-      if Comment.private_role?(role)
-        # Not suitable for fetching
-        can [:read, :create], Comment do |c|
-          c.machine.user == user
-        end
-      else
-        # Allows fetching other user's comments, but is not a real problem with
-        # the current implementation (comments are always fetched in the scope
-        # of a request or reimbursement)
-        can [:read, :create], Comment, Comment.public do |c|
-          c.machine.user == user && c.public?
-        end
+      # Allows fetching other user's comments, but is not a real problem with
+      # the current implementation (comments are always fetched in the scope
+      # of a request or reimbursement)
+      can [:read, :create], Comment, Comment.public do |c|
+        c.machine.user == user && c.public?
       end
 
       # Expenses Reports
@@ -171,12 +182,8 @@ class Ability
       can :read, Payment
 
       # Comments
-      if Comment.private_role?(role)
-        can [:read, :create], Comment
-      else
-        can [:read, :create], Comment, Comment.public do |c|
-          c.public?
-        end
+      can [:read, :create], Comment, Comment.for_role(role) do |c|
+        c.for_role? role
       end
 
       # Expenses Reports
@@ -215,12 +222,8 @@ class Ability
       can :read, Payment
 
       # Comments
-      if Comment.private_role?(role)
-        can [:read, :create], Comment
-      else
-        can [:read, :create], Comment, Comment.public do |c|
-          c.public?
-        end
+      can [:read, :create], Comment, Comment.for_role(role) do |c|
+        c.for_role? role
       end
 
       # Expenses Reports
@@ -261,12 +264,8 @@ class Ability
       can [:read, :create, :update, :destroy], Payment
 
       # Comments
-      if Comment.private_role?(role)
-        can :read, Comment
-      else
-        can :read, Comment, Comment.public do |c|
-          c.public?
-        end
+      can :read, Comment, Comment.for_role(role) do |c|
+        c.for_role? role
       end
 
     #
@@ -311,6 +310,15 @@ class Ability
       # Reimbursement's payments
       can :read, Payment
 
+      # Requests
+      can :read, Shipment
+      # Supervisors can cancel any shipment, if possible
+      can :cancel, Shipment do |s|
+        s.can_cancel?
+      end
+      # Or even create state adjustments
+      can :adjust_state, Shipment
+
       # Comments
       can [:read, :create], Comment
 
@@ -324,6 +332,63 @@ class Ability
     elsif role == "admin"
       can :manage, State
       can :manage, TransitionEvent
+
+    # Material manager permissions
+    # ----------------------------
+    #
+    elsif role == "material"
+      # User profiles
+      can :read, UserProfile
+
+      # Events
+      can [:update, :validate], Event
+      can :destroy, Event do |e|
+        e.can_be_destroyed?
+      end
+
+      # Shipments
+      can :read, Shipment
+      can :cancel, Shipment do |s|
+        s.can_cancel?
+      end
+      # Material managers can approve and roll back any shipment,
+      # but only when state_machines allows to do it
+      [:approve, :roll_back].each do |action|
+        can action, Shipment do |s|
+          s.send("can_#{action}?")
+        end
+      end
+
+      # Comments
+      can [:read, :create], Comment, Comment.for_role(role) do |c|
+        c.for_role? role
+      end
+
+    #
+    # Shipper permissions
+    # -------------------
+    #
+    elsif role == "shipper"
+      # Events
+      can :update, Event do |e|
+        e.editable_by_requesters?
+      end
+      can :destroy, Event do |e|
+        e.editable_by_requesters? && e.can_be_destroyed?
+      end
+
+      # Shipments
+      can :read, Shipment
+      # Shippers can dispatch any shipment,
+      # but only when state_machines allows to do it
+      can :dispatch, Shipment do |s|
+        s.can_dispatch?
+      end
+
+      # Comments
+      can :read, Comment, Comment.for_role(role) do |c|
+        c.for_role? role
+      end
     end
   end
 end

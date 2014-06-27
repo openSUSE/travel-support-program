@@ -1,0 +1,9 @@
+wedge_customes_for_party:
+  state: "requested"
+  user: wedge
+  event: party
+
+luke_customes_for_party:
+  state: "incomplete"
+  user: luke
+  event: party

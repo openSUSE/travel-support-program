@@ -18,8 +18,16 @@ module HasState
 
     scope :active, -> { where(["state <> ?", 'canceled']) }
 
+    # Roles that are responsible of whole process. This definition is used
+    # for sending notifications of every step to the corresponding users
+    # (in addition to the requester)
+    cattr_accessor :responsible_roles, :instance_accessor => false do
+      []
+    end
+
     @assigned_states = {}
     @assigned_roles = {}
+    @responsible_roles = []
   end
 
   # Checks whether the object has changed its state at least once in the past, no
@@ -49,7 +57,7 @@ module HasState
   # Involved users means: requester + users with the tsp or assistant roles + users with
   # the role designed using the macro method assign_state
   def notify_state
-    people = ([self.user, :tsp, :assistant] + self.class.roles_assigned_to(state)).uniq - [:requester]
+    people = ([self.user] + self.class.responsible_roles + self.class.roles_assigned_to(state)).uniq - [:requester]
     HasStateMailer::notify_to(people, :state, self)
   end
 

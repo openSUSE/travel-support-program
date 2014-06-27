@@ -78,3 +78,12 @@ wedge_for_training_acceptance:
   to: "accepted"
   user: wedge
   created_at: <%= 40.days.ago + 5.hours %>
+
+wedge_customes_for_party_request:
+  type: "StateTransition"
+  machine: wedge_customes_for_party (Shipment)
+  state_event: "request"
+  from: "incomplete"
+  to: "requested"
+  user: wedge
+  created_at: <%= 3.days.ago %>

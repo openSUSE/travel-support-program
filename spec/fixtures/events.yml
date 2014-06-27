@@ -13,6 +13,7 @@ party:
   end_date: <%= 33.days.since %>
   validated: false
   budget: general_budget
+  shipment_type: "Wookiee customes box"
 
 dagobah_camp:
   name: "Dagobah Camp"
@@ -30,6 +31,7 @@ hoth_hackaton:
   end_date: <%= 40.days.since %>
   validated: true
   request_creation_deadline: <%= 2.days.ago %>
+  shipment_type: "Death Star destruction kit"
 
 training:
   name: "Rebel Academy course"
@@ -38,3 +40,4 @@ training:
   end_date: <%= 20.days.ago %>
   validated: true
   budget: general_budget
+  shipment_type: "Death Star destruction kit"
