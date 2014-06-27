@@ -21,27 +21,50 @@ class Comment < ActiveRecord::Base
   scope :oldest_first, -> { order("created_at asc, id asc") }
   scope :newest_first, -> { order("created_at desc, id desc") }
   scope :public, -> {where(:private => false) }
+  # For access control
+  # TODO: needs refactoring
+  scope :for_role, lambda {|role|
+    conds = []
+    args = []
+    ROLES.each do |k, v|
+      if v[:private].include? role
+        conds << "(machine_type = ?)"
+        args << k.to_s.camelize
+      elsif v[:public].include? role
+        conds << "(machine_type = ? AND public = ?)"
+        args += [k.to_s.camelize, true]
+      end
+    end
+    where([conds.join(" OR ")] + args) }
+
+  ROLES = {
+    :request =>       {:public => [:administrative], :private => [:tsp, :assistant]},
+    :reimbursement => {:public => [:administrative], :private => [:tsp, :assistant]},
+    :shipment =>      {:public => [:shipper], :private => [:material]} }
 
   # List of roles with access to private comments
   #
+  # @param [#to_s]  klass  class of the commented object
   # @return [Array] Only tsp or assistant
-  def self.private_roles
-    [:tsp, :assistant]
+  def self.private_roles(klass)
+    ROLES[klass.to_s.underscore.to_sym][:private]
   end
 
   # Checks if the provided role have access to private comments
   #
+  # @param [#to_s]  klass  class of the commented object
   # @param [#to_sym] role Name of the role
   # @return [Boolean] true if the role is allowed
-  def self.private_role?(role)
-    private_roles.include?(role.to_sym)
+  def self.private_role?(role, klass)
+    private_roles(klass).include? role.to_sym
   end
 
   # Hint about the private field
   #
+  # @param [#to_s]  klass  class of the commented object
   # @return [String] a text explaining the meaning of the private field in
-  def self.private_hint
-    I18n.t(:comment_private_hint, roles: private_roles.to_sentence)
+  def self.private_hint(klass)
+    I18n.t(:comment_private_hint, roles: private_roles(klass).to_sentence)
   end
 
   # Checks if the comment is public
@@ -49,6 +72,21 @@ class Comment < ActiveRecord::Base
   # @return [Boolean] true is private is false (pretty obvious)
   def public?
     !self.private
+  end
+
+  # Checks if the comment is accessible to users of a given role
+  #
+  # @param [#to_s] role  role to check
+  # @return [Boolean] true if readable by all users of the role
+  def for_role?(role)
+    roles = ROLES[machine_type.underscore.to_sym]
+    if roles[:private].include? role.to_sym
+      true
+    elsif roles[:public].include? role.to_sym
+      self.public?
+    else
+      false
+    end
   end
 
   protected
@@ -62,14 +100,14 @@ class Comment < ActiveRecord::Base
   # assistant roles + users with the role designed using the macro method
   # assign_state + users that have already commented
   def notify_creation
+    people = Comment.private_roles(machine.class)
     if private
-      people = Comment.private_roles
       people += machine.comments.includes(:user).map(&:user).select {|u| u.profile.role_name == "supervisor"}.uniq
     else
-      people = ([machine.user, :tsp, :assistant] + machine.assigned_roles).uniq - [:requester]
+      people += [machine.user] + machine.assigned_roles - [:requester]
       people += machine.comments.includes(:user).map(&:user).uniq
     end
-    CommentMailer.notify_to people, :creation, self
+    CommentMailer.notify_to people.uniq, :creation, self
   end
 
   def set_default_attrs

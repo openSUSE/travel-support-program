@@ -75,6 +75,8 @@ class Reimbursement < ActiveRecord::Base
     end
   end
 
+  # @see HasState.responsible_roles
+  self.responsible_roles = [:tsp, :assistant]
   # @see HasState.assign_state
   assign_state :incomplete, :to => :requester
   assign_state :submitted, :to => :tsp

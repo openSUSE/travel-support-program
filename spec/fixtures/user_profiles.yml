@@ -26,3 +26,9 @@ administrative_profile:
 assistant_profile:
   user: assistant
   role_id: 5
+material_profile:
+  user: material
+  role_id: 6
+shipper_profile:
+  user: shipper
+  role_id: 7

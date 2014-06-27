@@ -4,9 +4,9 @@
 = bootstrap_flash_messages
 = simple_form_for @comment, :url => @back_path + "/comments", :remote => true do |f|
   .form-inputs.form-horizontal.modal-body
-    - if Comment.private_role? current_role
+    - if Comment.private_role? current_role, @parent.class
       .row-fluid
-        = f.input :private, hint: Comment.private_hint
+        = f.input :private, hint: Comment.private_hint(@parent.class)
     .row-fluid
       = f.text_area :body, :rows => 2, :class => "span12"
 
