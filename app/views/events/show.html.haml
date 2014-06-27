@@ -12,7 +12,7 @@
       - if resource.accepting_requests?
         = link_to t(:new_travel), new_request_path(:event_id => resource), :class => 'btn btn-primary'
       - if resource.accepting_shipments?
-        = link_to t(:new_shipment), new_request_path(:event_id => resource), :class => 'btn btn-primary'
+        = link_to t(:new_shipment), new_shipment_path(:event_id => resource), :class => 'btn btn-primary'
 
 = show_for resource do |r|
   .row-fluid

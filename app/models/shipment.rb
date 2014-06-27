@@ -21,7 +21,7 @@ class Shipment < ActiveRecord::Base
     end
 
     event :approve do
-      transition :submitted => :approved
+      transition :requested => :approved
     end
 
     event :dispatch do
@@ -33,7 +33,8 @@ class Shipment < ActiveRecord::Base
     end
 
     event :roll_back do
-      transition :submitted => :incomplete
+      transition :requested => :incomplete
+      transition :approved => :incomplete
     end
 
     # The empty block for this state is needed to prevent yardoc's error
@@ -42,6 +43,8 @@ class Shipment < ActiveRecord::Base
     end
   end
 
+  # @see HasState.responsible_roles
+  self.responsible_roles = [:material]
   # @see HasState.assign_state
   assign_state :incomplete, :to => :requester
   assign_state :requested, :to => :material
@@ -54,4 +57,12 @@ class Shipment < ActiveRecord::Base
   def type
     event.try(:shipment_type)
   end
+
+  # Check is the shipment can still be canceled
+  #
+  # @return [Boolean] true if it have not been sent yet
+  def can_cancel?
+    [:incomplete, :requested, :approved].include? state.to_sym
+  end
+
 end

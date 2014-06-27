@@ -175,10 +175,10 @@ module ApplicationHelper
   # This helper deals with the singleton issues in the reimbursement routes
   # definition.
   def machine_url(machine)
-    if machine.kind_of?(Request)
-      request_url(machine)
-    else
+    if machine.kind_of?(Reimbursement)
       request_reimbursement_url(machine.request)
+    else
+      send(:"#{machine.class.model_name.element}_url", machine)
     end
   end
 

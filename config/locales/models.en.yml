@@ -146,14 +146,14 @@ en:
           incomplete: "under modification, not requested"
           requested: "waiting for approval"
           received: "by requester"
-          send: "traveling"
+          sent: "traveling"
         state_guides:
           approved: "It will be now sent by the shipper."
           canceled: "The shipment has been canceled and cannot be longer modified."
           incomplete: "The requester must update all the relevant information. Afterwards, the shipment must be explicitly requested."
           requested: "The shipment is being evaluated. It will be approved or rolled back (again to incomplete state) whether the requester needs to correct something."
           received: "The requester has received the shipment. Final state."
-          send: "After actually receiving it, the requester must confirm the shipment in the application."
+          sent: "After actually receiving it, the requester must confirm the shipment in the application."
 
     attributes:
       bank_account:
@@ -364,7 +364,9 @@ en:
         incomplete: "incomplete"
         payed: "payed"
         processed: "processed"
+        received: "received"
         requested: "requested"
+        sent: "sent"
         submitted: "submitted"
       messages:
         accept_success: "Acceptance processed."
@@ -385,3 +387,5 @@ en:
         roll_back_failure: "Something went wrong. Unable to roll back."
         submit_success: "Successfully submitted."
         submit_failure: "Something went wrong. Unable to submit."
+        dispatch_success: "Succesfully dispatched."
+        dispatch_failure: "Something went wrong. Unable to dispatch."

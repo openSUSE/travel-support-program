@@ -93,3 +93,6 @@ test:
     - full_name
     - location
     - zip_code
+  shipment_types:
+    - Wookiee customes box
+    - Death Star destruction kit

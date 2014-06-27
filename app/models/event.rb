@@ -34,7 +34,7 @@ class Event < ActiveRecord::Base
   #
   # @return [Boolean] true if allowed
   def can_be_destroyed?
-    requests.empty?
+    requests.empty? && shipments.empty?
   end
 
   # Check if new requests can be created based on request_creation_deadline
