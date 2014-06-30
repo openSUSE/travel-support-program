@@ -46,6 +46,7 @@ en:
   comment_private_hint: "Only visible to users with roles %{roles}"
   create_comment: "Add comment"
   create_reimbursement: "Ask for reimbursement"
+  create_reimbursement_short: "Create"
   event_title_line: "%{name} (since %{start} at %{country})"
   events_search: "between %{start} and %{end} containing %{text}"
   expenses_report_all: "all"
