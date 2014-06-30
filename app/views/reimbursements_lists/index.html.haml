@@ -25,14 +25,14 @@
       %th= sort_link(@q, :state)
   %tbody
     - collection.each do |reimb|
-      %tr
-        %td= link_to "#{reimb.label}", request_reimbursement_path(reimb.request)
-        %td= reimb.user.try(:title)
-        %td= reimb.event.try(:name)
-        %td= expenses_sum(reimb, :approved)
-        %td= expenses_sum(reimb, :total)
-        %td= expenses_sum(reimb, :authorized)
-        %td= timestamped_state(reimb)
+      %tr{:id => "request-#{reimb.id}"}
+        %td.label= link_to "#{reimb.label}", request_reimbursement_path(reimb.request)
+        %td.user= reimb.user.try(:title)
+        %td.event= reimb.event.try(:name)
+        %td.approved= expenses_sum(reimb, :approved)
+        %td.total= expenses_sum(reimb, :total)
+        %td.authorized= expenses_sum(reimb, :authorized)
+        %td.state= timestamped_state(reimb)
   %tfoot
     - if @all_reimbursements.size > @reimbursements.size
       %tr

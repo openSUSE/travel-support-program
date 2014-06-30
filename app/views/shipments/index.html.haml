@@ -22,11 +22,11 @@
       %th= sort_link(@q, :state)
   %tbody
     - collection.each do |resource|
-      %tr
-        %td= link_to "#{resource.label}", resource
-        %td= resource.user.try(:title)
-        %td= resource.event.try(:name)
-        %td= resource.type
-        %td= timestamped_state(resource)
+      %tr{:id => "shipment-#{resource.id}"}
+        %td.label= link_to "#{resource.label}", resource
+        %td.user= resource.user.try(:title)
+        %td.event= resource.event.try(:name)
+        %td.type= resource.type
+        %td.state= timestamped_state(resource)
 
 = paginate collection

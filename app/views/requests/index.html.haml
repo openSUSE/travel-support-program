@@ -21,15 +21,17 @@
       %th= model_class.human_attribute_name(:estimated_sum)
       %th= model_class.human_attribute_name(:approved_sum)
       %th= sort_link(@q, :state)
+      %th= model_class.human_attribute_name(:reimbursement)
   %tbody
     - collection.each do |request|
-      %tr
-        %td= link_to "#{request.label}", request_path(request)
-        %td= request.user.try(:title)
-        %td= request.event.try(:name)
-        %td= expenses_sum(request, :estimated)
-        %td= expenses_sum(request, :approved)
-        %td= timestamped_state(request)
+      %tr{:id => "request-#{request.id}"}
+        %td.label= link_to "#{request.label}", request_path(request)
+        %td.user= request.user.try(:title)
+        %td.event= request.event.try(:name)
+        %td.estimated= expenses_sum(request, :estimated)
+        %td.approved= expenses_sum(request, :approved)
+        %td.state= timestamped_state(request)
+        %td.reimbursement= reimbursement_link(request)
   %tfoot
     - if @all_requests.size > @requests.size
       %tr
@@ -39,12 +41,14 @@
         %td= expenses_sum(@all_requests, :estimated)
         %td= expenses_sum(@all_requests, :approved)
         %td
+        %td
     %tr
       %td
       %td
       %th.text-right= t(:full_total)
       %td= expenses_sum(@requests, :estimated)
       %td= expenses_sum(@requests, :approved)
+      %td
       %td
 
 = paginate collection
