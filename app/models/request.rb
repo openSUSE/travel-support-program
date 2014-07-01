@@ -202,7 +202,7 @@ class Request < ActiveRecord::Base
     candidate_events.includes(:requests).each do |e|
       e.requests.each do |r|
         if r.lacks_reimbursement?
-          users = [r.user] + Request.responsible_roles
+          users = [r.user] + [:tsp, :assistant]
           RequestMailer::notify_to(users, :missing_reimbursement, r)
         end
       end
