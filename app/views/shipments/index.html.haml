@@ -23,7 +23,7 @@
   %tbody
     - collection.each do |resource|
       %tr{:id => "shipment-#{resource.id}"}
-        %td.label= link_to "#{resource.label}", resource
+        %td.id= link_to "#{resource.label}", resource
         %td.user= resource.user.try(:title)
         %td.event= resource.event.try(:name)
         %td.type= resource.type
