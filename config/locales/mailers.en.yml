@@ -3,5 +3,10 @@ en:
   machine_in_state: "%{machine} is in %{state} (%{description}) state since %{date}"
   visit_machine: "To access the related information, just follow the link below:"
   with_notes_below: "with the following notes:"
+
   mailer_subject_new_comment: "New comment on %{machine}"
   new_comment_title_line: "At %{date}, %{user} added the following comment to %{machine}"
+
+  mailer_subject_missing_reimbursement: "Missing reimbursement for %{request}"
+  missing_reimbursement_text: "No reimbursement has been created for %{request}. Remember that the reimbursement process can be started using the 'ask for reimbursement' button in the request view."
+  missing_reimbursement_advise: "You will keep receiving this daily reminder as long as the reimbursement period is open and no reimbursement has been created. If the requester has decided to renounce the reimbursement, maybe the best option is to actually create the reimbursement and then cancel it stating the reason."

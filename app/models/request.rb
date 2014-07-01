@@ -147,6 +147,33 @@ class Request < ActiveRecord::Base
     RequestExpense.by_attr_for_requests(attr, r_ids).sum(amount_field)
   end
 
+  # Sends notifications about requests lacking a reimbursement.
+  #
+  # Looks for events that finished some days ago or that are about to reach the
+  # reimbursement deadline and sends a reminder for every request associated to
+  # those events and lacking a reimbursement object.
+  #
+  # @param [#to_i]  after_end_threshold  number of days after the event to start
+  #                 sending reminders
+  # @param [#to_i]  before_deadline_threshold  number of days before the
+  #                 reimbursement deadline to start sending reminders
+  def self.notify_missing_reimbursement(after_end_threshold, before_deadline_threshold)
+    now = Time.zone.now
+    # Skip events finished more than 6 months ago to keep the size under control
+    candidate_events = Event.where(
+      [ "(end_date > ? and end_date < ?) or "\
+        "(reimbursement_creation_deadline > ? and reimbursement_creation_deadline < ?)",
+        now - 6.months, now - after_end_threshold, now, now + before_deadline_threshold])
+    candidate_events.includes(:requests).each do |e|
+      e.requests.each do |r|
+        if r.lacks_reimbursement?
+          users = [r.user] + Request.responsible_roles
+          RequestMailer::notify_to(users, :missing_reimbursement, r)
+        end
+      end
+    end
+  end
+
   protected
 
   def only_one_active_request

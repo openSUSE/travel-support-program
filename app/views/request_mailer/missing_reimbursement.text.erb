@@ -1,0 +1,8 @@
+<%= t(:missing_reimbursement_text, :request => @request.title) %>
+
+<%= request_url(@request) %>
+
+<%= t(:missing_reimbursement_advise) %>
+
+--
+<%= TravelSupport::Config.setting :email_footer %>
