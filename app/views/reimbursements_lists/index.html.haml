@@ -24,7 +24,7 @@
   %tbody
     - collection.each do |reimb|
       %tr{:id => "request-#{reimb.id}"}
-        %td.label= link_to "#{reimb.label}", request_reimbursement_path(reimb.request)
+        %td.id= link_to "#{reimb.label}", request_reimbursement_path(reimb.request)
         %td.user= reimb.user.try(:title)
         %td.event= reimb.event.try(:name)
         %td.approved= expenses_sum(reimb, :approved)
