@@ -7,15 +7,15 @@ feature "Shipment", "" do
   scenario "Full shipment process", :js => true do
     sign_in_as_user(users(:luke))
     visit event_path(events(:hoth_hackaton))
-    click_link "Merchandising"
+    click_link "Merch. shipment"
 
     # Shipment creation
-    page.should have_content "New shipment"
+    page.should have_content "New shipment request"
     fill_in "shipment_description", :with => "I need it to explain how to use it to other pilots."
     fill_in "shipment_delivery_address", :with => "Send it to the base."
-    click_button "Create shipment"
-    page.should have_content "shipment was successfully created"
-    page.should have_content "shipment must be explicitly requested."
+    click_button "Create shipment request"
+    page.should have_content "shipment request was successfully created"
+    page.should have_content "request must be explicitly submitted."
     @shipment = Shipment.order(:created_at, :id).last
 
     # Testing audits, just in case
@@ -23,10 +23,10 @@ feature "Shipment", "" do
 
     # Initial request
     click_link "Action"
-    click_link "Request"
-    click_button "request"
-    page.should have_content "Successfully requested."
-    page.should have_content "from incomplete to requested"
+    click_link "Submit"
+    click_button "submit"
+    page.should have_content "Successfully submitted."
+    page.should have_content "from incomplete to submitted"
     page.should have_content "waiting for approval"
 
     # Try to update
@@ -44,7 +44,7 @@ feature "Shipment", "" do
     fill_in "notes", :with => "We need a valid postal delivery address."
     click_button "roll back"
     page.should have_content "Successfully rolled back"
-    page.should have_content "from requested to incomplete"
+    page.should have_content "from submitted to incomplete"
     page.should have_content "requester must update all the relevant information"
 
     # Log in as requester
@@ -54,18 +54,18 @@ feature "Shipment", "" do
     # Update the shipment
     visit shipment_path(@shipment)
     click_link "Edit"
-    page.should have_content "Edit shipment"
+    page.should have_content "Edit shipment request"
     fill_in "shipment_delivery_address", :with => "Luke Skywalker\nSecret Rebel base at Hoth"
-    click_button "Update shipment"
-    page.should have_content "shipment was successfully updated"
+    click_button "Update shipment request"
+    page.should have_content "shipment request was successfully updated"
 
     # And request it again
     click_link "Action"
-    click_link "Request"
+    click_link "Submit"
     fill_in "notes", :with => "Added postal address"
-    click_button "request"
-    page.should have_content "Successfully requested."
-    page.should have_content "from incomplete to requested"
+    click_button "submit"
+    page.should have_content "Successfully submitted."
+    page.should have_content "from incomplete to submitted"
 
     # Log in as material manager
     click_link "Log out"
@@ -77,7 +77,7 @@ feature "Shipment", "" do
     fill_in "notes", :with => "Use with care."
     click_button "approve"
     page.should have_content "Successfully approved"
-    page.should have_content "from requested to approved"
+    page.should have_content "from submitted to approved"
     page.should have_content "will be now sent"
 
     # Log in as shipper

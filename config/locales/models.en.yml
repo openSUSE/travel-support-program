@@ -6,6 +6,8 @@ en:
       supervisor: "Supervisor"
       administrative: "Administrative"
       assistant: "Assistant"
+      material: "Material manager"
+      shipper: "Shipper"
 
   activerecord:
     errors:
@@ -66,8 +68,8 @@ en:
           request: "request"
           expense: "expense (no grouping)"
       request:
-        one: "request"
-        other: "requests"
+        one: "travel support request"
+        other: "travel support requests"
         states:
           accepted: "by requester"
           approved: "ready for final requester's acceptance"
@@ -127,8 +129,8 @@ en:
         one: "payment"
         other: "payments"
       shipment:
-        one: "shipment"
-        other: "shipments"
+        one: "shipment request"
+        other: "shipment requests"
         states:
           approved: "shipment authorized"
           canceled: "no more actions allowed"
@@ -138,9 +140,9 @@ en:
           sent: "traveling"
         state_guides:
           approved: "It will be now sent by the shipper."
-          canceled: "The shipment has been canceled and cannot be longer modified."
-          incomplete: "The requester must update all the relevant information. Afterwards, the shipment must be explicitly requested."
-          requested: "The shipment is being evaluated. It will be approved or rolled back (again to incomplete state) whether the requester needs to correct something."
+          canceled: "The request has been canceled and cannot be longer modified."
+          incomplete: "The requester must update all the relevant information. Afterwards, the request must be explicitly submitted."
+          requested: "The request is being evaluated. It will be approved or rolled back (again to incomplete state) whether the requester needs to correct something."
           received: "The requester has received the shipment. Final state."
           sent: "After actually receiving it, the requester must confirm the shipment in the application."
 
@@ -343,7 +345,7 @@ en:
         confirm: "confirm"
         process: "process"
         reject: "reject"
-        request: "request"
+        request: "submit"
         roll_back: "roll back"
         submit: "submit"
       states:
@@ -354,7 +356,7 @@ en:
         payed: "payed"
         processed: "processed"
         received: "received"
-        requested: "requested"
+        requested: "submitted"
         sent: "sent"
         submitted: "submitted"
       messages:
@@ -370,8 +372,8 @@ en:
         process_failure: "Something went wrong. Payment process failed."
         reject_success: "Successfully rejected."
         reject_failure: "Something went wrong. Not rejected."
-        request_success: "Successfully requested."
-        request_failure: "Something went wrong. Not requested."
+        request_success: "Successfully submitted."
+        request_failure: "Something went wrong. Not submitted."
         roll_back_success: "Successfully rolled back."
         roll_back_failure: "Something went wrong. Unable to roll back."
         submit_success: "Successfully submitted."

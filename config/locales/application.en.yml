@@ -69,7 +69,7 @@ en:
   new_event_warning: "Make sure that the event is not currently included in the list. Event duplication can cause the request rejection"
   new_payment: "Add payment"
   new_travel: "Travel support"
-  new_shipment: "Merchandising"
+  new_shipment: "Merch. shipment"
   no_reimbursement_yet: "The reimbursement process has not started"
   no_history_yet: "No state changes or comments yet."
   not_accepting_reimbursements: "The event is not open for requesting reimbursement"

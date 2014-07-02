@@ -10,7 +10,7 @@ feature "Requests", "" do
     click_link "Travel support"
 
     # Request creation
-    page.should have_content "New request"
+    page.should have_content "New travel support request"
     fill_in "request_description", :with => "I need to go because a ghost told me to do it"
     select "Gas", :from => "request_expenses_attributes_0_subject"
     fill_in "request_expenses_attributes_0_description", :with => "Gas"
@@ -23,7 +23,7 @@ feature "Requests", "" do
       #find('input[name$="[estimated_amount]"]').set "50"
       #find('input[name$="[estimated_currency]"]').set "EUR"
     end
-    click_button "Create request"
+    click_button "Create travel support request"
     page.should have_content "request was successfully created"
     page.should have_content "request must be explicitly submitted."
     @request = Request.order(:created_at, :id).last
@@ -42,10 +42,10 @@ feature "Requests", "" do
     # Correct the request
     close_modal_dialog
     click_link "Edit"
-    page.should have_content "Edit request"
+    page.should have_content "Edit travel support request"
     fill_in "request_expenses_attributes_1_estimated_amount", :with => "50"
     select "EUR", :from => "request_expenses_attributes_1_estimated_currency"
-    click_button "Update request"
+    click_button "Update travel support request"
     page.should have_content "request was successfully updated"
 
     # Submit again
@@ -77,7 +77,7 @@ feature "Requests", "" do
     select "EUR", :from => "expenses_approval_currency_#{expenses.first.id}"
     fill_in "expenses_approval_amount_#{expenses.last.id}", :with => "0"
     select "EUR", :from => "expenses_approval_currency_#{expenses.last.id}"
-    click_button "Update request"
+    click_button "Update travel support request"
     page.should have_content "request was successfully updated"
 
     # Approve again
@@ -110,9 +110,9 @@ feature "Requests", "" do
 
     # And now edit
     click_link "Edit"
-    page.should have_content "Edit request"
+    page.should have_content "Edit travel support request"
     fill_in "request_expenses_attributes_1_estimated_amount", :with => "35"
-    click_button "Update request"
+    click_button "Update travel support request"
     page.should have_content "request was successfully updated"
 
     # And submit again

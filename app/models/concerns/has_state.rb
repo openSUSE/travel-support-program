@@ -146,7 +146,7 @@ module HasState
   #
   # @return [String] Class name and label
   def title
-    "#{self.class.model_name} #{label}"
+    "#{self.class.model_name.human} #{label}"
   end
 
   protected

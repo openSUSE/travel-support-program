@@ -13,7 +13,7 @@ feature "Budget limits", "" do
     expense_id = @request.expenses.first.id
     fill_in "expenses_approval_amount_#{expense_id}", :with => "120"
     select "EUR", :from => "expenses_approval_currency_#{expense_id}"
-    click_button "Update request"
+    click_button "Update travel support request"
     page.should have_content "request was successfully updated"
 
     # Approval should fail
@@ -34,7 +34,7 @@ feature "Budget limits", "" do
     expense_id = @request.expenses.first.id
     fill_in "expenses_approval_amount_#{expense_id}", :with => "110"
     select "EUR", :from => "expenses_approval_currency_#{expense_id}"
-    click_button "Update request"
+    click_button "Update travel support request"
     page.should have_content "request was successfully updated"
 
     # Approval should success

@@ -78,7 +78,7 @@ module CommonHelpers
     current_url.should match /event_id_in/
     # If so, the shipment should be in the first page
     find(:xpath, "//table[contains(@class,'shipments')]//tbody/tr/td[1]//a[text()='##{shipment.id}']").click
-    page.should have_content "shipment ##{shipment.id}"
+    page.should have_content "shipment request ##{shipment.id}"
     page.should have_content shipment.type
   end
 
