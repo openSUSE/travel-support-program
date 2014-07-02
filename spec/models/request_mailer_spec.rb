@@ -9,16 +9,20 @@ describe RequestMailer do
       @mcount = ActionMailer::Base.deliveries.size
       Request.notify_missing_reimbursement 1.day, 10.days
       @request = requests(:luke_for_yavin)
-      @mails = ActionMailer::Base.deliveries[-3..-1]
+      @mail = ActionMailer::Base.deliveries.last
     end
 
-    it "should mail requester, tsp and assistant" do
-      ActionMailer::Base.deliveries.size.should == @mcount + 3
-      @mails.map(&:to).flatten.should include @request.user.email
+    it "should mail requester" do
+      ActionMailer::Base.deliveries.size.should == @mcount + 1
+      @mail.to.should == [@request.user.email]
+    end
+
+    it "should have the correct subject" do
+      @mail.subject.should == "Missing reimbursement for #{@request.title}"
     end
 
     it "should include request url in the mail body" do
-      @mails.first.body.encoded.should match "http.+/requests/#{@request.id}"
+      @mail.body.encoded.should match "http.+/requests/#{@request.id}"
     end
   end
 
@@ -41,8 +45,8 @@ describe RequestMailer do
       Request.notify_missing_reimbursement 10.days, 11.days
     end
 
-    it "should mail requester, tsp and assistant" do
-      ActionMailer::Base.deliveries.size.should == @mcount+3
+    it "should mail requester" do
+      ActionMailer::Base.deliveries.size.should == @mcount + 1
     end
   end
 end
