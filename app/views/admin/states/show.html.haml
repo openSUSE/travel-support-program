@@ -13,8 +13,11 @@
 
 = show_for resource do |r|
   .row-fluid
-    .span12
+    .span6
       = r.attribute :name
+    - if resource.initial_state?
+      .span6
+        = r.attribute :initial_state
   .row-fluid
     .span6
       = r.attribute :machine_type

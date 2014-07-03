@@ -13,4 +13,22 @@ class State < ActiveRecord::Base
 
   validates :name, :machine_type, :role_id, :presence => true
 
+  validate :validates_initial_state
+
+  private
+
+  # Checks that only one initial state exists per machine
+  #
+  # TODO : need a database check to be 100% safe
+  def validates_initial_state
+    if initial_state
+      conflicting = State.where(initial_state: true, machine_type: machine_type)
+      # To avoid self conflicts during update
+      conflicting = conflicting.where(["id <> ?", id]) unless new_record?
+      if conflicting.count > 0
+        errors.add(:initial_state, "there is already an initial state for this machine")
+      end
+    end
+  end
+
 end

@@ -14,6 +14,7 @@ class TransitionEvent < ActiveRecord::Base
 
   validate :validates_machine_type
 
+  private
 
   #Checks whether the transition event is valid
   #

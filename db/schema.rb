@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140528180830) do
+ActiveRecord::Schema.define(version: 20140703164114) do
 
   create_table "audits", force: true do |t|
     t.integer  "auditable_id",                null: false
@@ -232,6 +232,7 @@ ActiveRecord::Schema.define(version: 20140528180830) do
     t.integer  "role_id",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "initial_state"
   end
 
   create_table "transition_events", force: true do |t|

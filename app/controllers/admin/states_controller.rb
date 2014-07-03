@@ -17,6 +17,6 @@ class Admin::StatesController < InheritedResources::Base
   end
 
   def permitted_params
-    params.permit(:state=> [:name, :machine_type, :user_id, :temp_comments, :description, :role_id])
+    params.permit(:state=> [:name, :machine_type, :user_id, :temp_comments, :description, :role_id, :initial_state])
   end
 end
