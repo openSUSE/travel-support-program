@@ -30,39 +30,50 @@ class Request < ActiveRecord::Base
 
   auditable
 
-  state_machine :state, :initial => :incomplete do |machine|
 
-    event :submit do
-      transition :incomplete => :submitted, :unless => :has_no_expenses?
-    end
+  # Current implementation for creating state_machine
+  #
+  # This method fetches the data from db(defined by admin) and implements the above code dynamically
+  #
+  # NOTE -  data regarding :unless conditions for transition_events is not taken care yet.
+  #         Particularly in request, ":unless => :has_no_expenses?" for submit event is missing
+  #
+  t_events = TransitionEvent.where(machine_type: 'request').includes(:source_states, :target_state)
+  init_state = State.find_by(machine_type: 'request', initial_state: true)
 
-    event :approve do
-      transition :submitted => :approved
-    end
+  unless t_events.empty? || init_state.nil?
+    state_machine :state, :initial => init_state.name.to_sym do |machine|
 
-    event :accept do
-      transition :approved => :accepted
-    end
+      t_events.each do |t_event|
+        event t_event.name.to_sym do
+          t_event.source_states.each do |s_state|
+            transition s_state.name.to_sym => t_event.target_state.name.to_sym
+          end
+        end
+      end
 
-    event :roll_back do
-      # Separated transitions because grouping them using arrays confuses the
-      # Graphviz task for automatic documentation
-      transition :submitted => :incomplete
-      transition :approved => :incomplete
-    end
+      state :canceled do
+      end
 
-    # The empty block for this state is needed to prevent yardoc's error
-    # during automatic documentation generation
-    state :canceled do
     end
   end
 
   # @see HasState.responsible_roles
   self.responsible_roles = [:tsp, :assistant]
-  # @see HasState.assign_state
-  assign_state :incomplete, :to => :requester
-  assign_state :submitted, :to => :tsp
-  assign_state :approved, :to => :requester
+
+
+  # Current implementation for assigning states
+  #
+  # this method fetches the role assigned for a state from db(defined by admin)
+  machine_states=State.where(machine_type: 'request')
+  unless machine_states.empty?
+    machine_states.each do |s|
+      assign_state s.name.to_sym, :to => s.role.name.to_sym
+    end
+  end
+
+
+
 
   # Checks is expenses.empty?
   #

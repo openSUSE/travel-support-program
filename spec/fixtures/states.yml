@@ -2,32 +2,32 @@
 
 state_one_request:
   name: "state_one"
-  machine_type: "request"
+  machine_type: "mac_type_1"
   role_id: 1
 
 state_two_request:
   name: "state_two"
-  machine_type: "request"
+  machine_type: "mac_type_1"
   role_id: 2
 
 state_one_reimbursement:
   name: "state_one"
-  machine_type: "reimbursement"
+  machine_type: "mac_type_2"
   role_id: 1
 
 state_two_reimbursement:
   name: "state_two"
-  machine_type: "reimbursement"
+  machine_type: "mac_type_2"
   role_id: 2  
 
 target_state_for_request:
   name: "target_state_one"
-  machine_type: "request"
+  machine_type: "mac_type_1"
   role_id: 3
 
 target_state_for_reimbursement:
   name: "target_state_two"
-  machine_type: "reimbursement"
+  machine_type: "mac_type_2"
   role_id: 3
 
 #States fixtures for the request machine
@@ -37,6 +37,7 @@ incomplete:
   name: "incomplete"
   machine_type: "request"
   role_id: 1
+  initial_state: true
 
 submitted:
   name: "submitted"

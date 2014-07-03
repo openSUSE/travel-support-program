@@ -12,7 +12,7 @@ describe TransitionEvent do
     before(:each) do
       @t_event = TransitionEvent.new
       @t_event.name="transition_event_one"
-      @t_event.machine_type="request"
+      @t_event.machine_type="mac_type_1"
       #@t_event.save
     end
 
