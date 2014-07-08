@@ -23,8 +23,11 @@
     .span12
       = r.attribute :description
   .row-fluid
-    .span12
-      = r.attribute :delivery_address
+    .span6
+      = r.association :postal_address do
+        = render resource.postal_address
+    .span6
+      = r.attribute :contact_phone_number
 
   = r.attribute :history do
     = render :partial => "history"

@@ -18,6 +18,8 @@ class ShipmentsController < InheritedResources::Base
   def new
     @shipment ||= Shipment.new(params[:shipment])
     @shipment.event = Event.find(params[:event_id])
+    @shipment.build_postal_address if @shipment.postal_address.nil?
+    @shipment.postal_address.country_code ||= @shipment.event.country_code
     @shipment.user = current_user
     authorize! :create, @shipment
     new!
@@ -37,6 +39,8 @@ class ShipmentsController < InheritedResources::Base
   end
 
   def permitted_params
-    params.permit(:shipment => [:event_id, :description, :delivery_address])
+    params.permit(:shipment => [:event_id, :description, :contact_phone_number,
+                                :postal_address_attributes => [:line1, :line2, :city, :county,
+                                                               :postal_code, :country_code]])
   end
 end

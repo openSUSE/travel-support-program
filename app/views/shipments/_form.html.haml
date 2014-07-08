@@ -13,7 +13,18 @@
   .form-inputs.form-horizontal
     = f.hidden_field :event_id
     = f.input :description, :input_html => {:rows => 3}
-    = f.input :delivery_address, :input_html => {:rows => 3}
+    = f.input :contact_phone_number
+
+  %strong.label= t("activerecord.attributes.shipment.postal_address")
+  %br
+  = f.simple_fields_for :postal_address do |a|
+    .form-inputs.form-horizontal
+      = a.input :line1
+      = a.input :line2
+      = a.input :city
+      = a.input :county
+      = a.input :postal_code
+      = a.input :country_code, :as => :country, :input_html => {:autocomplete => "off"}
 
   .form-actions
     = f.button :submit, :class => 'btn-primary'

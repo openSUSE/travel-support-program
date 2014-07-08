@@ -12,7 +12,7 @@ feature "Shipment", "" do
     # Shipment creation
     page.should have_content "New shipment request"
     fill_in "shipment_description", :with => "I need it to explain how to use it to other pilots."
-    fill_in "shipment_delivery_address", :with => "Send it to the base."
+    fill_in "shipment_postal_address_attributes_line1", :with => "Send it to the base."
     click_button "Create shipment request"
     page.should have_content "shipment request was successfully created"
     page.should have_content "request must be explicitly submitted."
@@ -41,7 +41,7 @@ feature "Shipment", "" do
     # Roll back
     click_link "Action"
     click_link "Roll Back"
-    fill_in "notes", :with => "We need a valid postal delivery address."
+    fill_in "notes", :with => "We need a valid postal delivery address and a contact phone."
     click_button "roll back"
     page.should have_content "Successfully rolled back"
     page.should have_content "from submitted to incomplete"
@@ -55,9 +55,17 @@ feature "Shipment", "" do
     visit shipment_path(@shipment)
     click_link "Edit"
     page.should have_content "Edit shipment request"
-    fill_in "shipment_delivery_address", :with => "Luke Skywalker\nSecret Rebel base at Hoth"
+    fill_in "shipment_contact_phone_number", :with => "+19 800 521"
+    fill_in "shipment_postal_address_attributes_line1", :with => "Secret Rebel base"
+    fill_in "shipment_postal_address_attributes_city", :with => "Ice Mountain"
+    fill_in "shipment_postal_address_attributes_county", :with => "Hoth"
+    fill_in "shipment_postal_address_attributes_postal_code", :with => "1980"
     click_button "Update shipment request"
     page.should have_content "shipment request was successfully updated"
+    page.should have_content "1980 Ice Mountain"
+    page.should have_content "+19 800 521"
+    # Default country should be set from the event country
+    page.should have_content "DE - Germany"
 
     # And request it again
     click_link "Action"

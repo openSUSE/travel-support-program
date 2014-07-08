@@ -10,7 +10,14 @@ class Shipment < ActiveRecord::Base
   # Comments used to discuss decisions (private) or communicate with the requester (public)
   has_many :comments, :as => :machine, :dependent => :destroy
 
+  # Postal address extracted to another model
+  belongs_to :postal_address, :dependent => :destroy, :autosave => true
+
   validates :event, :presence => true
+
+  accepts_nested_attributes_for :postal_address, :allow_destroy => false
+
+  before_validation :ensure_postal_address
 
   auditable
 
@@ -65,4 +72,9 @@ class Shipment < ActiveRecord::Base
     [:incomplete, :requested, :approved].include? state.to_sym
   end
 
+  protected
+
+  def ensure_postal_address
+    build_postal_address if postal_address.nil?
+  end
 end

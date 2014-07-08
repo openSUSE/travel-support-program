@@ -212,6 +212,13 @@ en:
         subject: "subject"
         notes: "notes"
         file: "file"
+      postal_address:
+        line1: "line 1"
+        line2: "line 2"
+        city: "city"
+        county: "county/state"
+        postal_code: "postal code/zip"
+        country_code: "country"
       reimbursement:
         acceptance_file: "signed acceptance"
         approved_sum: "approved"
@@ -329,8 +336,9 @@ en:
         website: "website"
         zip_code: "ZIP code"
       shipment:
+        contact_phone_number: "contact phone #"
         description: "description"
-        delivery_address: "delivery address"
+        postal_address: "delivery address"
         event: "event"
         event_id: "event"
         history: "history"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140516095800) do
+ActiveRecord::Schema.define(version: 20140707154828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,6 +140,17 @@ ActiveRecord::Schema.define(version: 20140516095800) do
     t.datetime "updated_at",       null: false
   end
 
+  create_table "postal_addresses", force: true do |t|
+    t.string   "line1"
+    t.string   "line2"
+    t.string   "city"
+    t.string   "postal_code"
+    t.string   "county"
+    t.string   "country_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "reimbursement_attachments", force: true do |t|
     t.integer  "reimbursement_id"
     t.string   "title",            null: false
@@ -199,12 +210,15 @@ ActiveRecord::Schema.define(version: 20140516095800) do
     t.string   "state"
     t.integer  "user_id"
     t.integer  "event_id"
-    t.text     "delivery_address"
     t.text     "description"
     t.datetime "state_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "postal_address_id"
+    t.string   "contact_phone_number"
   end
+
+  add_index "shipments", ["postal_address_id"], name: "index_shipments_on_postal_address_id", using: :btree
 
   create_table "state_changes", force: true do |t|
     t.integer  "machine_id",   null: false
