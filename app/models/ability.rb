@@ -50,7 +50,7 @@ class Ability
       can :create, Request do |r|
         r.event && r.event.accepting_requests?
       end
-      can :create, RequestExpense do |e|
+      can :create, Expense do |e|
         e.request && e.request.editable? && e.request.user == user
       end
       can :read, Request, :user_id => user.id

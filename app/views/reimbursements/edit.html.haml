@@ -81,11 +81,11 @@
         %tr
           %th= Reimbursement.human_attribute_name(:subject)
           %th= Reimbursement.human_attribute_name(:description)
-          %th= RequestExpense.human_attribute_name(:estimated_amount)
-          %th= RequestExpense.human_attribute_name(:approved_amount)
-          %th= RequestExpense.human_attribute_name(:total_amount)
+          %th= Expense.human_attribute_name(:estimated_amount)
+          %th= Expense.human_attribute_name(:approved_amount)
+          %th= Expense.human_attribute_name(:total_amount)
           - if manual_authorized_amount_is_needed_for? resource
-            %th= RequestExpense.human_attribute_name(:authorized_amount)
+            %th= Expense.human_attribute_name(:authorized_amount)
 
       %tbody#expenses
         = f.simple_fields_for :request do |request|

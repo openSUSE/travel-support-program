@@ -51,6 +51,9 @@ en:
       event:
         one: "event"
         other: "events"
+      expense:
+        one: "expense"
+        other: "expenses"
       expense_report:
         one: "expenses report"
         other: "expenses reports"
@@ -82,9 +85,6 @@ en:
           canceled: "The request have been canceled and cannot be longer modified."
           incomplete: "The requester must update the request with all the relevant information. Afterwards, the request must be explicitly submitted."
           submitted: "The request is being evaluated. The responsible people can adjust some values and approve it or can roll it back (again to incomplete state) if the requester needs to correct something."
-      request_expense:
-        one: "expense"
-        other: "expenses"
       state_adjustment:
         one: "state adjustment"
         other: "state adjustments"
@@ -182,6 +182,19 @@ en:
         request_creation_deadline: "accepting requests until"
         shipment_type: "shipment type"
         budgets: "budgets"
+      expense:
+        approved_amount: "approved"
+        approved_currency: "approved currency"
+        authorized_amount: "authorized"
+        authorized_currency: "authorized currency"
+        description: "description"
+        estimated_amount: "estimated"
+        estimated_currency: "estimated currency"
+        request: "request"
+        request_id: "request"
+        subject: "subject"
+        total_amount: "total"
+        total_currency: "total currency"
       expense_report:
         event_country: "country"
         event_end_date: "end"
@@ -279,19 +292,6 @@ en:
         approved_since: "approved since"
         accepted_since: "accepted since"
         canceled_since: "canceled since"
-      request_expense:
-        approved_amount: "approved"
-        approved_currency: "approved currency"
-        authorized_amount: "authorized"
-        authorized_currency: "authorized currency"
-        description: "description"
-        estimated_amount: "estimated"
-        estimated_currency: "estimated currency"
-        request: "request"
-        request_id: "request"
-        subject: "subject"
-        total_amount: "total"
-        total_currency: "total currency"
       state_change:
         state_event: "what"
         from: "from"

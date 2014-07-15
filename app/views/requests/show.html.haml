@@ -49,10 +49,10 @@
   %table.table.table-condensed
     %thead
       %tr
-        %th= RequestExpense.human_attribute_name(:subject)
-        %th= RequestExpense.human_attribute_name(:description)
-        %th= RequestExpense.human_attribute_name(:estimated_amount)
-        %th= RequestExpense.human_attribute_name(:approved_amount)
+        %th= Expense.human_attribute_name(:subject)
+        %th= Expense.human_attribute_name(:description)
+        %th= Expense.human_attribute_name(:estimated_amount)
+        %th= Expense.human_attribute_name(:approved_amount)
     %tbody#expenses
       - @request.expenses.each do |expense|
         %tr
