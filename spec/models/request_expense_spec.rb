@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Expense do
+describe RequestExpense do
   it { should validate_presence_of :request }
 end

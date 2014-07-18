@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140715114631) do
+ActiveRecord::Schema.define(version: 20140707154828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,23 +124,6 @@ ActiveRecord::Schema.define(version: 20140715114631) do
 
   add_index "events", ["budget_id"], name: "index_events_on_budget_id", using: :btree
 
-  create_table "expenses", force: true do |t|
-    t.integer  "request_id",         null: false
-    t.string   "subject"
-    t.string   "description"
-    t.decimal  "estimated_amount"
-    t.string   "estimated_currency"
-    t.decimal  "approved_amount"
-    t.string   "approved_currency"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.decimal  "total_amount"
-    t.decimal  "authorized_amount"
-    t.string   "request_type"
-  end
-
-  add_index "expenses", ["request_type"], name: "index_expenses_on_request_type", using: :btree
-
   create_table "payments", force: true do |t|
     t.integer  "reimbursement_id"
     t.date     "date"
@@ -193,6 +176,20 @@ ActiveRecord::Schema.define(version: 20140715114631) do
     t.datetime "updated_at",       null: false
     t.datetime "state_updated_at"
     t.string   "acceptance_file"
+  end
+
+  create_table "request_expenses", force: true do |t|
+    t.integer  "request_id",         null: false
+    t.string   "subject"
+    t.string   "description"
+    t.decimal  "estimated_amount"
+    t.string   "estimated_currency"
+    t.decimal  "approved_amount"
+    t.string   "approved_currency"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.decimal  "total_amount"
+    t.decimal  "authorized_amount"
   end
 
   create_table "requests", force: true do |t|

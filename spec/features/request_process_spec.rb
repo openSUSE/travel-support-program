@@ -43,7 +43,7 @@ feature "Requests", "" do
     close_modal_dialog
     click_link "Edit"
     page.should have_content "Edit travel support request"
-    find(:xpath, "//tbody[@id='expenses']//tr[td[2]//input[@value='R2D2']]//input[contains(@id,'estimated_amount')]").set "50"
+    fill_in "request_expenses_attributes_1_estimated_amount", :with => "50"
     select "EUR", :from => "request_expenses_attributes_1_estimated_currency"
     click_button "Update travel support request"
     page.should have_content "request was successfully updated"

@@ -21,10 +21,10 @@
     %table.table.table-condensed
       %thead
         %tr
-          %th= Expense.human_attribute_name(:subject)
-          %th= Expense.human_attribute_name(:description)
+          %th= RequestExpense.human_attribute_name(:subject)
+          %th= RequestExpense.human_attribute_name(:description)
           %th= t(:estimated_amount_header)
-          %th= Expense.human_attribute_name(:approved_amount)
+          %th= RequestExpense.human_attribute_name(:approved_amount)
           %th
 
       %tbody#expenses

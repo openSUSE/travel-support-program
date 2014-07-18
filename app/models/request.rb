@@ -11,7 +11,7 @@ class Request < ActiveRecord::Base
   # Estimated expenses, including (for every expense) the estimated amount,
   # the amount of the help that TSP approves, the amount finally expended and
   # the amount that is going to be reimbursed
-  has_many :expenses, :as => :request, :dependent => :destroy, :inverse_of => :request
+  has_many :expenses, :class_name => "RequestExpense", :inverse_of => :request, :dependent => :destroy
   # Every accepted request is followed by a reimbursement process
   has_one :reimbursement, :inverse_of => :request, :dependent => :restrict_with_exception
 
@@ -144,7 +144,7 @@ class Request < ActiveRecord::Base
     else
       r_ids = requests.map {|i| i.kind_of?(Integer) ? i : i.id }
     end
-    Expense.by_attr_for_travel_requests(attr, r_ids).sum(amount_field)
+    RequestExpense.by_attr_for_requests(attr, r_ids).sum(amount_field)
   end
 
   # Sends notifications about requests lacking a reimbursement.
@@ -195,15 +195,9 @@ class Request < ActiveRecord::Base
       end
 
       # Expenses for other requests using the same budget
-      #  The commented equivalent option does not work because Expense#request
-      #  is polymorphic
-      #  more_expenses = Expense.joins(:requests => [:event, :reimbursement])
-      more_expenses = Expense.joins(
-        "LEFT JOIN requests ON requests.id = expenses.request_id AND expenses.request_type = 'Request' "\
-        "LEFT JOIN events ON events.id = requests.event_id "\
-        "LEFT JOIN reimbursements ON reimbursements.request_id = requests.id")
+      more_expenses = RequestExpense.includes(:request => [:event, :reimbursement])
       more_expenses = more_expenses.where("events.budget_id" => budget.id)
-      more_expenses = more_expenses.where("expenses.approved_currency" => currency)
+      more_expenses = more_expenses.where("request_expenses.approved_currency" => currency)
       more_expenses = more_expenses.where(["requests.id <> ?", id])
       more_expenses = more_expenses.where(["requests.state in (?)", %w(approved accepted)])
       # If the request have a canceled reimbursement, it means that the money is in fact available

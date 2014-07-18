@@ -1,22 +1,22 @@
 #
 # This model is used to encapsulate the queries involved in the expenses report
 # using the ActiveRecord query interface. It's a read-only model offering a more
-# convenient way of reading information from the expenses table, so it's not
-# intended for creating or updating records. Please, use the Expense model for
-# that purpose.
-# @see Expense
+# convenient way of reading information from the request_expenses table, so
+# it's not intended for creating or updating records. Please, use the RequestExpense
+# model for that purpose.
+# @see RequestExpense
 #
 class ExpenseReport < ActiveRecord::Base
-  self.table_name = "expenses"
+  self.table_name = "request_expenses"
 
-  belongs_to :request, :polymorphic => true
+  belongs_to :request
   delegate :reimbursement, :to => :request, :prefix => false
   delegate :user, :to => :request, :prefix => false
   delegate :event, :to => :request, :prefix => false
 
   @by = {
     :event => [
-          { :field => :event_id, :sql => "requests.event_id", :hidden => true },
+          { :field => :event_id, :sql => "event_id", :hidden => true },
           { :field => :event_name, :sql => "events.name" },
           { :field => :event_country, :sql => "events.country_code" },
           { :field => :event_start_date, :sql => "events.start_date" },
@@ -32,7 +32,7 @@ class ExpenseReport < ActiveRecord::Base
 
     :user_country => [ {:field => :user_country, :sql => "user_profiles.country_code"} ],
 
-    :subject => [ { :field => :subject, :sql => "expenses.subject" } ],
+    :subject => [ { :field => :subject, :sql => "request_expenses.subject" } ],
 
     :request => [
           { :field => :request_id, :sql => "requests.id" },
@@ -42,11 +42,11 @@ class ExpenseReport < ActiveRecord::Base
           { :field => :user_id, :sql => "requests.user_id", :hidden => true },
           { :field => :user_nickname, :sql => "users.nickname" },
           { :field => :user_fullname, :sql => "user_profiles.full_name" },
-          { :field => :event_id, :sql => "requests.event_id", :hidden => true },
+          { :field => :event_id, :sql => "event_id", :hidden => true },
           { :field => :event_name, :sql => "events.name" } ],
 
     :expense => [
-          { :field => :expense_id, :sql => "expenses.id", :hidden => true}, 
+          { :field => :expense_id, :sql => "request_expenses.id", :hidden => true}, 
           { :field => :request_id, :sql => "requests.id" },
           { :field => :request_state, :sql => "requests.state" },
           { :field => :reimbursement_id, :sql => "reimbursements.id" },
@@ -54,9 +54,9 @@ class ExpenseReport < ActiveRecord::Base
           { :field => :user_id, :sql => "requests.user_id", :hidden => true },
           { :field => :user_nickname, :sql => "users.nickname" },
           { :field => :user_fullname, :sql => "user_profiles.full_name" },
-          { :field => :event_id, :sql => "requests.event_id", :hidden => true },
+          { :field => :event_id, :sql => "event_id", :hidden => true },
           { :field => :event_name, :sql => "events.name" },
-          { :field => :subject, :sql => "expenses.subject" } ] }
+          { :field => :subject, :sql => "request_expenses.subject" } ] }
 
   # Main scope for using the whole model. Takes cares of all the grouping,
   # conditions and selections needed for a given amount field and a given
@@ -68,14 +68,8 @@ class ExpenseReport < ActiveRecord::Base
   #                     options, use ExpenseReport.groups
   # @see .groups                       
   scope :by, lambda {|type, g|
-    currency = Expense.currency_field_for(type.to_sym)
-    # When using polymorphic we need to build our own JOIN
-    # r = joins(:request => [{:user => :profile}, :event])
-    r = joins(
-        "LEFT OUTER JOIN requests ON requests.id = expenses.request_id AND expenses.request_type = 'Request' "\
-        "LEFT OUTER JOIN users ON users.id = requests.user_id "\
-        "LEFT OUTER JOIN user_profiles ON user_profiles.user_id = users.id "\
-        "LEFT OUTER JOIN events ON requests.event_id = events.id")
+    currency = RequestExpense.currency_field_for(type.to_sym)
+    r = joins(:request => [{:user => :profile}, :event])
     r = r.joins("LEFT JOIN reimbursements ON reimbursements.request_id = requests.id")
     # FIXME:
     # DISTINCT is used to force kaminari to use the "right" length calculation,
@@ -133,10 +127,7 @@ class ExpenseReport < ActiveRecord::Base
 
   # Scope for controlling user read access
   scope :related_to, lambda {|user|
-      # When using polymorphic we need to build our own JOIN
-      # joins(:request).where("requests.user_id" => user)
-      request = "LEFT JOIN requests user_requests ON user_requests.id = expenses.request_id AND expenses.request_type = 'Request'"
-      joins(request).where("user_requests.user_id" => user)
+      joins(:request).where("requests.user_id" => user)
   }
 
   # Ordered list of field names for a given call to the 'by' scope

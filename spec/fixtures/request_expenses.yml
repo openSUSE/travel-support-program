@@ -1,5 +1,5 @@
 luke_for_yavin_gas:
-  request: luke_for_yavin (Request)
+  request: luke_for_yavin
   subject: "Gas"
   estimated_amount: 100
   estimated_currency: "EUR"
@@ -7,7 +7,7 @@ luke_for_yavin_gas:
   approved_currency: "EUR"
 
 luke_for_yavin_droid:
-  request: luke_for_yavin (Request)
+  request: luke_for_yavin
   subject: "Droid rental"
   description: "R2-D2"
   estimated_amount: 80
@@ -16,7 +16,7 @@ luke_for_yavin_droid:
   approved_currency: "EUR"
 
 luke_for_yavin_hotel:
-  request: luke_for_yavin (Request)
+  request: luke_for_yavin
   subject: "Lodging"
   estimated_amount: 80
   estimated_currency: "EUR"
@@ -24,7 +24,7 @@ luke_for_yavin_hotel:
   approved_currency: "EUR"
 
 wedge_for_yavin_gas:
-  request: wedge_for_yavin (Request)
+  request: wedge_for_yavin
   subject: "Gas"
   estimated_amount: 70
   estimated_currency: "EUR"
@@ -32,19 +32,19 @@ wedge_for_yavin_gas:
   approved_currency: "EUR"
 
 wedge_for_party_gas:
-  request: wedge_for_party (Request)
+  request: wedge_for_party
   subject: "Gas"
   estimated_amount: 70
   estimated_currency: "EUR"
 
 luke_for_party_gas:
-  request: luke_for_party (Request)
+  request: luke_for_party
   subject: "Gas"
   estimated_amount: 100
   estimated_currency: "EUR"
 
 wedge_for_training_gas:
-  request: wedge_for_training (Request)
+  request: wedge_for_training
   subject: "Gas"
   estimated_amount: 50
   estimated_currency: "EUR"

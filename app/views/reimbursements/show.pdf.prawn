@@ -2,9 +2,9 @@ prawn_document :page_size => "A4", :force_download => true do |pdf|
   # First of all, we instantiate some data variables
   
   # For expenses table
-  expenses_data = [ [Expense.human_attribute_name(:subject),
-                    Expense.human_attribute_name(:description),
-                    Expense.human_attribute_name(:authorized_amount) ] ]
+  expenses_data = [ [RequestExpense.human_attribute_name(:subject),
+                    RequestExpense.human_attribute_name(:description),
+                    RequestExpense.human_attribute_name(:authorized_amount) ] ]
   expenses_data += resource.expenses.map do |e|
     [e.subject, e.description, number_to_currency(e.authorized_amount, :unit => e.authorized_currency)]
   end

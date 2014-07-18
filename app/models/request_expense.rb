@@ -1,14 +1,13 @@
 #
-# This class holds all the information related to every expense associated to a
-# Reimbursable object.
+# This class holds all the information related to every expense in a request.
 #
-# As there is only one reimbursement per reimbursable object, Expense objects hold
-# information from both the Reimbursable and the Reimbursement objects, so
-# total_currency and authorized_currency attributes are updated during the
+# As there is only one reimbursement per request, RequestExpense objects hold
+# information from both the Request and the Reimbursement corresponding objects,
+# so total_currency and authorized_currency attributes are updated during the
 # reimbursement process
 #
-class Expense < ActiveRecord::Base
-  belongs_to :request, :polymorphic => true, :inverse_of => :expenses
+class RequestExpense < ActiveRecord::Base
+  belongs_to :request, :inverse_of => :expenses
 
   delegate :reimbursement, :to => :request, :prefix => false
   delegate :event, :to => :request, :prefix => false
@@ -24,20 +23,20 @@ class Expense < ActiveRecord::Base
   auditable
 
   # Scope needed by Request.expenses_sum
-  scope :by_attr_for_travel_requests, lambda {|attr, req_ids|
-    currency_field = Expense.currency_field_for(attr)
+  scope :by_attr_for_requests, lambda {|attr, req_ids|
+    currency_field = RequestExpense.currency_field_for(attr)
     amount_field = :"#{attr}_amount"
-    group(currency_field).where(["#{amount_field} is not null and request_id in (?) and request_type = ?", req_ids, 'Request']).order(currency_field)
+    group(currency_field).where(["#{amount_field} is not null and request_id in (?)", req_ids]).order(currency_field)
   }
 
   # Convenience method that simply aliases approved_currency since currency
   # cannot be changed after approval
   def total_currency
-    send(Expense.currency_field_for(:total))
+    send(RequestExpense.currency_field_for(:total))
   end
   # (see #total_currency)
   def authorized_currency
-    send(Expense.currency_field_for(:authorized))
+    send(RequestExpense.currency_field_for(:authorized))
   end
 
   def self.currency_field_for(attr)
