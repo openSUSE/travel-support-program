@@ -1,4 +1,4 @@
-%strong.label= Request.human_attribute_name(:event)
+%strong.label= TravelSponsorship.human_attribute_name(:event)
 %br
 = render resource.event
 - unless resource.errors[:event_id].empty?
@@ -12,7 +12,7 @@
     = f.input :visa_letter if resource.visa_letter_allowed?
     = f.input :description, :input_html => {:rows => 3}
   .form-inputs.form-inline
-    %strong.label= Request.human_attribute_name(:expenses)
+    %strong.label= TravelSponsorship.human_attribute_name(:expenses)
     - if !resource.errors[:expenses].empty?
       .alert.alert-inline.alert-error= resource.expenses.map {|e| e.errors.full_messages}.uniq.join("; ")
     - delete_me = resource.expenses.build
@@ -36,6 +36,6 @@
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     - if resource.new_record?
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), requests_path, :class => 'btn'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), travel_sponsorships_path, :class => 'btn'
     - else
       = link_to t('.cancel', :default => t("helpers.links.cancel")), resource, :class => 'btn'

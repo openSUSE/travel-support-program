@@ -4,9 +4,9 @@ require 'spec_helper'
 describe Shipment do
   fixtures :all
 
-  describe "#type" do
+  describe "#shipment_type" do
     it "should be delegated to the event" do
-      shipments(:wedge_customes_for_party).type.should == "Wookiee customes box"
+      requests(:wedge_customes_for_party).shipment_type.should == "Wookiee customes box"
     end
   end
 
@@ -33,7 +33,7 @@ describe Shipment do
   context "during initial request" do
     before(:each) do
       @deliveries = ActionMailer::Base.deliveries.size
-      @shipment = shipments(:luke_customes_for_party)
+      @shipment = requests(:luke_customes_for_party)
       @audits = @shipment.audits
       transition(@shipment, :request, users(:luke))
     end

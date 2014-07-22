@@ -178,8 +178,8 @@ describe "Administrative" do
 
   context 'accessing shipments' do
     it{ should_not be_able_to(:create, Shipment.new) }
-    it{ should_not be_able_to(:read, shipments(:wedge_customes_for_party)) }
-    it{ should_not be_able_to(:update, shipments(:wedge_customes_for_party)) }
-    it{ should_not be_able_to(:destroy, shipments(:wedge_customes_for_party)) }
+    it{ should_not be_able_to(:read, requests(:wedge_customes_for_party)) }
+    it{ should_not be_able_to(:update, requests(:wedge_customes_for_party)) }
+    it{ should_not be_able_to(:destroy, requests(:wedge_customes_for_party)) }
   end
 end

@@ -1,13 +1,13 @@
 require 'spec_helper'
 #require 'ruby-debug'
 
-describe RequestMailer do
+describe ReimbursableRequestMailer do
   fixtures :all
 
   context "notifying missing reimbursements with a narrow threshold" do
     before(:each) do
       @mcount = ActionMailer::Base.deliveries.size
-      Request.notify_missing_reimbursement 1.day, 10.days
+      TravelSponsorship.notify_missing_reimbursement 1.day, 10.days
       @request = requests(:luke_for_yavin)
       @mail = ActionMailer::Base.deliveries.last
     end
@@ -22,14 +22,14 @@ describe RequestMailer do
     end
 
     it "should include request url in the mail body" do
-      @mail.body.encoded.should match "http.+/requests/#{@request.id}"
+      @mail.body.encoded.should match "http.+/travel_sponsorships/#{@request.id}"
     end
   end
 
   context "notifying missing reimbursements with a big threshold" do
     before(:each) do
       @mcount = ActionMailer::Base.deliveries.size
-      Request.notify_missing_reimbursement 10.days, 11.days
+      TravelSponsorship.notify_missing_reimbursement 10.days, 11.days
     end
 
     it "should mail nobody" do
@@ -42,7 +42,7 @@ describe RequestMailer do
       @mcount = ActionMailer::Base.deliveries.size
       event = events(:yavin_hackaton)
       event.update_attribute(:reimbursement_creation_deadline, 10.days.since)
-      Request.notify_missing_reimbursement 10.days, 11.days
+      TravelSponsorship.notify_missing_reimbursement 10.days, 11.days
     end
 
     it "should mail requester" do

@@ -111,21 +111,21 @@ describe "Supervisor" do
 
   context 'managing shipments' do
     it{ should_not be_able_to(:create, Shipment.new) }
-    it{ should be_able_to(:read, shipments(:wedge_customes_for_party)) }
-    it{ should be_able_to(:read, shipments(:luke_customes_for_party)) }
-    it{ should be_able_to(:adjust_state, shipments(:wedge_customes_for_party)) }
-    it{ should be_able_to(:cancel, shipments(:luke_customes_for_party)) }
-    it{ should_not be_able_to(:update, shipments(:wedge_customes_for_party)) }
-    it{ should_not be_able_to(:approve, shipments(:wedge_customes_for_party)) }
-    it{ should_not be_able_to(:roll_back, shipments(:wedge_customes_for_party)) }
-    it{ should_not be_able_to(:update, shipments(:luke_customes_for_party)) }
-    it{ should_not be_able_to(:destroy, shipments(:wedge_customes_for_party)) }
-    it{ should_not be_able_to(:destroy, shipments(:luke_customes_for_party)) }
+    it{ should be_able_to(:read, requests(:wedge_customes_for_party)) }
+    it{ should be_able_to(:read, requests(:luke_customes_for_party)) }
+    it{ should be_able_to(:adjust_state, requests(:wedge_customes_for_party)) }
+    it{ should be_able_to(:cancel, requests(:luke_customes_for_party)) }
+    it{ should_not be_able_to(:update, requests(:wedge_customes_for_party)) }
+    it{ should_not be_able_to(:approve, requests(:wedge_customes_for_party)) }
+    it{ should_not be_able_to(:roll_back, requests(:wedge_customes_for_party)) }
+    it{ should_not be_able_to(:update, requests(:luke_customes_for_party)) }
+    it{ should_not be_able_to(:destroy, requests(:wedge_customes_for_party)) }
+    it{ should_not be_able_to(:destroy, requests(:luke_customes_for_party)) }
   end
 
   context 'adding comments to shipments' do
-    it{ should be_able_to(:create, shipments(:luke_customes_for_party).comments.build) }
-    it{ should be_able_to(:create, shipments(:luke_customes_for_party).comments.build(:private => true)) }
+    it{ should be_able_to(:create, requests(:luke_customes_for_party).comments.build) }
+    it{ should be_able_to(:create, requests(:luke_customes_for_party).comments.build(:private => true)) }
   end
 
 end

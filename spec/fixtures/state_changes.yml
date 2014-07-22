@@ -81,7 +81,7 @@ wedge_for_training_acceptance:
 
 wedge_customes_for_party_request:
   type: "StateTransition"
-  machine: wedge_customes_for_party (Shipment)
+  machine: wedge_customes_for_party (Request)
   state_event: "request"
   from: "incomplete"
   to: "requested"

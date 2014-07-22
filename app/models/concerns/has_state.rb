@@ -18,16 +18,12 @@ module HasState
 
     scope :active, -> { where(["state <> ?", 'canceled']) }
 
-    # Roles that are responsible of whole process. This definition is used
-    # for sending notifications of every step to the corresponding users
-    # (in addition to the requester)
-    cattr_accessor :responsible_roles, :instance_accessor => false do
-      []
+    class << self
+      # Roles that are responsible of whole process. This definition is used
+      # for sending notifications of every step to the corresponding users
+      # (in addition to the requester)
+      attr_accessor :responsible_roles
     end
-
-    @assigned_states = {}
-    @assigned_roles = {}
-    @responsible_roles = []
   end
 
   # Checks whether the object has changed its state at least once in the past, no
@@ -184,8 +180,10 @@ module HasState
       if to.blank?
         false
       else
+        @assigned_states ||= {}
         @assigned_states[to.to_sym] ||= []
         @assigned_states[to.to_sym] << state_name.to_sym
+        @assigned_roles ||= {}
         @assigned_roles[state_name.to_sym] ||= []
         @assigned_roles[state_name.to_sym] << to.to_sym
         true

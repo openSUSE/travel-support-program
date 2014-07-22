@@ -37,7 +37,7 @@ common: &common
       url: "http://opensuse.org/openSUSE:Travel_Support_Program"
     - title: "Application's Github"
       url: "https://github.com/openSUSE/travel-support-program"
-  request_expense_subjects:
+  travel_expense_subjects:
     - Plane
     - Train
     - Bus
@@ -87,7 +87,7 @@ test:
   currencies_for_approved:
     - EUR
     - USD
-  request_expense_subjects:
+  travel_expense_subjects:
     - Gas
     - Droid rental
     - Lodging

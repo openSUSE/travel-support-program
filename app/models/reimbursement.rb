@@ -5,7 +5,9 @@ class Reimbursement < ActiveRecord::Base
   include HasState
 
   # The associated request
-  belongs_to :request, :inverse_of => :reimbursement
+  belongs_to :request, :inverse_of => :reimbursement,
+                       :class_name => "ReimbursableRequest",
+                       :foreign_key => "request_id"
   # Comments used to discuss decisions (private) or communicate with the requester (public)
   has_many :comments, :as => :machine, :dependent => :destroy
   # The expenses of the associated request, total_amount and authorized_amount
@@ -94,7 +96,7 @@ class Reimbursement < ActiveRecord::Base
     else
       r_ids = reimbursements.map(&:request_id)
     end
-    Request.expenses_sum(attr, r_ids)
+    ReimbursableRequest.expenses_sum(attr, r_ids)
   end
 
   # Checks whether a tsp user should be allowed to cancel

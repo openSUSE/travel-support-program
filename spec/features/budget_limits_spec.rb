@@ -7,7 +7,7 @@ feature "Budget limits", "" do
   scenario "Trying to approve too much money", :js => true do
     sign_in_as_user(users(:tspmember))
     @request = requests(:wedge_for_party)
-    visit request_path(@request)
+    visit travel_sponsorship_path(@request)
     click_link "Set amount"
     page.should have_content "Set approved amount"
     expense_id = @request.expenses.first.id
@@ -28,7 +28,7 @@ feature "Budget limits", "" do
   scenario "Approving the right amount", :js => true do
     sign_in_as_user(users(:tspmember))
     @request = requests(:wedge_for_party)
-    visit request_path(@request)
+    visit travel_sponsorship_path(@request)
     click_link "Set amount"
     page.should have_content "Set approved amount"
     expense_id = @request.expenses.first.id
@@ -49,7 +49,7 @@ feature "Budget limits", "" do
   scenario "Choosing the currency", :js => true do
     sign_in_as_user(users(:tspmember))
     @request = requests(:wedge_for_party)
-    visit request_path(@request)
+    visit travel_sponsorship_path(@request)
     click_link "Set amount"
     expense_id = @request.expenses.first.id
     page.should have_select "expenses_approval_currency_#{expense_id}", :with_options => %w(EUR)

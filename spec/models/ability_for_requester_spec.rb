@@ -24,9 +24,9 @@ describe "Requester" do
   end
 
   context 'managing his own requests' do
-    it{ should_not be_able_to(:create, Request.new) }
-    it{ should be_able_to(:create, Request.new(:event_id => events(:dagobah_camp).id)) }
-    it{ should_not be_able_to(:create, Request.new(:event_id => events(:hoth_hackaton).id)) }
+    it{ should_not be_able_to(:create, TravelSponsorship.new) }
+    it{ should be_able_to(:create, TravelSponsorship.new(:event_id => events(:dagobah_camp).id)) }
+    it{ should_not be_able_to(:create, TravelSponsorship.new(:event_id => events(:hoth_hackaton).id)) }
     it{ should be_able_to(:read, requests(:luke_for_party)) }
     it{ should be_able_to(:read, requests(:luke_for_yavin)) }
     it{ should be_able_to(:update, requests(:luke_for_party)) }
@@ -227,26 +227,26 @@ describe "Requester" do
     it{ should_not be_able_to(:create, Shipment.new) }
     it{ should be_able_to(:create, Shipment.new(:event_id => events(:hoth_hackaton).id)) }
     it{ should_not be_able_to(:create, Shipment.new(:event_id => events(:dagobah_camp).id)) }
-    it{ should be_able_to(:read, shipments(:luke_customes_for_party)) }
-    it{ should be_able_to(:update, shipments(:luke_customes_for_party)) }
-    it{ should be_able_to(:destroy, shipments(:luke_customes_for_party)) }
-    it{ should be_able_to(:cancel, shipments(:luke_customes_for_party)) }
-    it{ should_not be_able_to(:adjust_state, shipments(:luke_customes_for_party)) }
+    it{ should be_able_to(:read, requests(:luke_customes_for_party)) }
+    it{ should be_able_to(:update, requests(:luke_customes_for_party)) }
+    it{ should be_able_to(:destroy, requests(:luke_customes_for_party)) }
+    it{ should be_able_to(:cancel, requests(:luke_customes_for_party)) }
+    it{ should_not be_able_to(:adjust_state, requests(:luke_customes_for_party)) }
   end
 
   context "trying to look into other's requests" do
-    it{ should_not be_able_to(:read, shipments(:wedge_customes_for_party)) }
-    it{ should_not be_able_to(:update, shipments(:wedge_customes_for_party)) }
-    it{ should_not be_able_to(:adjust_state, shipments(:wedge_customes_for_party)) }
+    it{ should_not be_able_to(:read, requests(:wedge_customes_for_party)) }
+    it{ should_not be_able_to(:update, requests(:wedge_customes_for_party)) }
+    it{ should_not be_able_to(:adjust_state, requests(:wedge_customes_for_party)) }
   end
 
   context 'managing his own requested shipments' do
     let(:user){ users(:wedge) }
 
-    it{ should be_able_to(:read, shipments(:wedge_customes_for_party)) }
-    it{ should_not be_able_to(:update, shipments(:wedge_customes_for_party)) }
-    it{ should_not be_able_to(:destroy, shipments(:wedge_customes_for_party)) }
-    it{ should be_able_to(:cancel, shipments(:wedge_customes_for_party)) }
-    it{ should_not be_able_to(:adjust_state, shipments(:wedge_customes_for_party)) }
+    it{ should be_able_to(:read, requests(:wedge_customes_for_party)) }
+    it{ should_not be_able_to(:update, requests(:wedge_customes_for_party)) }
+    it{ should_not be_able_to(:destroy, requests(:wedge_customes_for_party)) }
+    it{ should be_able_to(:cancel, requests(:wedge_customes_for_party)) }
+    it{ should_not be_able_to(:adjust_state, requests(:wedge_customes_for_party)) }
   end
 end

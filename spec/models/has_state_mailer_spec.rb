@@ -17,7 +17,7 @@ describe HasStateMailer do
     end
 
     it "should include request url in the mail body" do
-      @mail.body.encoded.should match "http.+/requests/#{@request.id}"
+      @mail.body.encoded.should match "http.+/travel_sponsorships/#{@request.id}"
     end
 
     context "and after reimbursement submission" do

@@ -1,7 +1,7 @@
 require 'spec_helper'
 #require 'ruby-debug'
 
-describe Request do
+describe TravelSponsorship do
   fixtures :all
 
   describe "#visa_letter_allowed?" do
@@ -9,7 +9,7 @@ describe Request do
       requests(:wedge_for_party).should_not be_visa_letter_allowed
     end
     it "should be true for visa enabled events" do
-      r = Request.new
+      r = TravelSponsorship.new
       r.user = users(:wedge)
       r.event = events(:dagobah_camp)
       r.should be_visa_letter_allowed
@@ -18,7 +18,7 @@ describe Request do
 
   describe "#state_updated_at" do
     before(:each) do
-      @request = Request.new
+      @request = TravelSponsorship.new
       @request.user = users(:wedge)
       @request.event = events(:dagobah_camp)
       @request.save
@@ -39,7 +39,7 @@ describe Request do
 
   describe "#only_one_active_request" do
     before(:each) do
-      @request = Request.new
+      @request = TravelSponsorship.new
       @request.user = users(:wedge)
     end
 
@@ -55,7 +55,7 @@ describe Request do
   end
 
   describe "#expenses_sum" do
-    it ("should be empty if no expenses") { Request.new.expenses_sum(:estimated).should be_empty }
+    it ("should be empty if no expenses") { TravelSponsorship.new.expenses_sum(:estimated).should be_empty }
     it ("should be empty if no values") { requests(:luke_for_yavin).expenses_sum(:total).should be_empty }
     it ("should be zero if 0 values") do
       request = requests(:luke_for_yavin)

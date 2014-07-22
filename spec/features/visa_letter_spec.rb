@@ -6,7 +6,7 @@ feature "Visa letter", "" do
 
   scenario "Applying to an event without visa option" do
     sign_in_as_user(users(:luke))
-    visit request_path(requests(:luke_for_party))
+    visit travel_sponsorship_path(requests(:luke_for_party))
     # request show
     page.should_not have_content "isa letter needed"
     click_link "Edit"

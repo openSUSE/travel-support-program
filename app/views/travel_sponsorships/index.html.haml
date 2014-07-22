@@ -1,4 +1,4 @@
-- model_class = Request
+- model_class = TravelSponsorship
 = content_for :page_header do
   %h1= t('.title', :default => model_class.model_name.human(count: 2))
 
@@ -25,7 +25,7 @@
   %tbody
     - collection.each do |request|
       %tr{:id => "request-#{request.id}"}
-        %td.id= link_to "#{request.label}", request_path(request)
+        %td.id= link_to "#{request.label}", travel_sponsorship_path(request)
         %td.user= request.user.try(:title)
         %td.event= request.event.try(:name)
         %td.estimated= expenses_sum(request, :estimated)

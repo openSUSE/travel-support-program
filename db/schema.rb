@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707154828) do
+ActiveRecord::Schema.define(version: 20140718101718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -194,31 +194,22 @@ ActiveRecord::Schema.define(version: 20140707154828) do
 
   create_table "requests", force: true do |t|
     t.string   "state"
-    t.integer  "user_id",          null: false
-    t.integer  "event_id",         null: false
+    t.integer  "user_id",              null: false
+    t.integer  "event_id",             null: false
     t.text     "description"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.datetime "state_updated_at"
     t.boolean  "visa_letter"
+    t.integer  "postal_address_id"
+    t.string   "contact_phone_number"
+    t.string   "type"
   end
 
   add_index "requests", ["event_id"], name: "index_requests_on_event_id", using: :btree
+  add_index "requests", ["postal_address_id"], name: "index_requests_on_postal_address_id", using: :btree
+  add_index "requests", ["type"], name: "index_requests_on_type", using: :btree
   add_index "requests", ["user_id"], name: "index_requests_on_user_id", using: :btree
-
-  create_table "shipments", force: true do |t|
-    t.string   "state"
-    t.integer  "user_id"
-    t.integer  "event_id"
-    t.text     "description"
-    t.datetime "state_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "postal_address_id"
-    t.string   "contact_phone_number"
-  end
-
-  add_index "shipments", ["postal_address_id"], name: "index_shipments_on_postal_address_id", using: :btree
 
   create_table "state_changes", force: true do |t|
     t.integer  "machine_id",   null: false

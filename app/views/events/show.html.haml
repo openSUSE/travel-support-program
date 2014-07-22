@@ -10,7 +10,7 @@
       - if user_signed_in? && can?(:destroy, resource)
         = link_to t('.destroy', :default => t("helpers.links.destroy")), resource_path(resource), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn'
       - if resource.accepting_requests?
-        = link_to t(:new_travel), new_request_path(:event_id => resource), :class => 'btn btn-primary'
+        = link_to t(:new_travel), new_travel_sponsorship_path(:event_id => resource), :class => 'btn btn-primary'
       - if resource.accepting_shipments?
         = link_to t(:new_shipment), new_shipment_path(:event_id => resource), :class => 'btn btn-primary'
 

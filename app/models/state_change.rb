@@ -36,6 +36,15 @@ class StateChange < ActiveRecord::Base
     raise NotImplementedError
   end
 
+  # Sets the machine type when assigning the association.
+  #
+  # Needed in order to STI and polymorphic assotiations to work together
+  # according to
+  # http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html
+  def machine_type=(class_name)
+    super(class_name.constantize.base_class.to_s)
+  end
+
   protected
 
   def prevent_update

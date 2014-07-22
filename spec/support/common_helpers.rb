@@ -42,7 +42,7 @@ module CommonHelpers
   # @param [Hash]    opt      +password+: password used for authentication
   def find_request_as(user, request, opts = {})
     sign_in_as_user(user, opts)
-    visit requests_path
+    visit travel_sponsorships_path
     # Use the event filter
     show_bootstrap_multiselect_select("#q_event_id_in")
     select(request.event.name, :from => "q_event_id_in")

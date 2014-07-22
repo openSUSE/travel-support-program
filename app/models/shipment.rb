@@ -1,11 +1,7 @@
 #
 # Request from a user to receive a merchandising box for a designated event
 #
-class Shipment < ActiveRecord::Base
-  include HasState
-
-  # The event associated to the state machine
-  belongs_to :event
+class Shipment < Request
 
   # Comments used to discuss decisions (private) or communicate with the requester (public)
   has_many :comments, :as => :machine, :dependent => :destroy
@@ -13,13 +9,9 @@ class Shipment < ActiveRecord::Base
   # Postal address extracted to another model
   belongs_to :postal_address, :dependent => :destroy, :autosave => true
 
-  validates :event, :presence => true
-
   accepts_nested_attributes_for :postal_address, :allow_destroy => false
 
   before_validation :ensure_postal_address
-
-  auditable
 
   state_machine :state, :initial => :incomplete do |machine|
 
@@ -58,12 +50,7 @@ class Shipment < ActiveRecord::Base
   assign_state :approved, :to => :shipper
   assign_state :sent, :to => :requester
 
-  # Type of the shipment
-  #
-  # @return [String] type label, delegated to the associated event
-  def type
-    event.try(:shipment_type)
-  end
+  delegate :shipment_type, to: :event
 
   # Check is the shipment can still be canceled
   #

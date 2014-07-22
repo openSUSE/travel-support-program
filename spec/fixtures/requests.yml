@@ -2,23 +2,40 @@ wedge_for_yavin:
   state: "canceled"
   user: wedge
   event: yavin_hackaton
+  type: "TravelSponsorship"
 
 luke_for_yavin:
   state: "accepted"
   user: luke
   event: yavin_hackaton
+  type: "TravelSponsorship"
 
 wedge_for_party:
   state: "submitted"
   user: wedge
   event: party
+  type: "TravelSponsorship"
 
 luke_for_party:
   state: "incomplete"
   user: luke
   event: party
+  type: "TravelSponsorship"
 
 wedge_for_training:
   state: "accepted"
   user: wedge
   event: training
+  type: "TravelSponsorship"
+
+wedge_customes_for_party:
+  state: "requested"
+  user: wedge
+  event: party
+  type: "Shipment"
+
+luke_customes_for_party:
+  state: "incomplete"
+  user: luke
+  event: party
+  type: "Shipment"

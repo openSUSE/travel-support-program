@@ -177,19 +177,19 @@ describe "TSP" do
 
   context 'accessing shipments' do
     it{ should_not be_able_to(:create, Shipment.new) }
-    it{ should_not be_able_to(:read, shipments(:wedge_customes_for_party)) }
-    it{ should_not be_able_to(:update, shipments(:wedge_customes_for_party)) }
-    it{ should_not be_able_to(:destroy, shipments(:wedge_customes_for_party)) }
+    it{ should_not be_able_to(:read, requests(:wedge_customes_for_party)) }
+    it{ should_not be_able_to(:update, requests(:wedge_customes_for_party)) }
+    it{ should_not be_able_to(:destroy, requests(:wedge_customes_for_party)) }
   end
 
   context 'adding comments to shipments' do
-    it{ should_not be_able_to(:create, shipments(:luke_customes_for_party).comments.build) }
-    it{ should_not be_able_to(:create, shipments(:luke_customes_for_party).comments.build(:private => true)) }
+    it{ should_not be_able_to(:create, requests(:luke_customes_for_party).comments.build) }
+    it{ should_not be_able_to(:create, requests(:luke_customes_for_party).comments.build(:private => true)) }
   end
 
   context 'accessing public comments on shipments' do
     before(:each) do
-      @comment = shipments(:luke_customes_for_party).comments.create(:body => "whatever")
+      @comment = requests(:luke_customes_for_party).comments.create(:body => "whatever")
     end
 
     it{ should_not be_able_to(:read, @comment) }
@@ -199,7 +199,7 @@ describe "TSP" do
 
   context 'accessing private comments on shipments' do
     before(:each) do
-      @comment = shipments(:luke_customes_for_party).comments.create(:body => "whatever", :private => true)
+      @comment = requests(:luke_customes_for_party).comments.create(:body => "whatever", :private => true)
     end
 
     it{ should_not be_able_to(:read, @comment) }

@@ -21,7 +21,7 @@ class ExpensesApprovalsController < ApplicationController
   protected
 
   def load_request_and_authorize
-    @request = Request.includes(:expenses).find(params[:request_id])
+    @request = TravelSponsorship.includes(:expenses).find(params[:travel_sponsorship_id])
     authorize! :approve, @request
   end
 end

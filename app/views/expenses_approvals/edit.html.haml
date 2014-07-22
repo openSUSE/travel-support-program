@@ -17,9 +17,9 @@
     .span12
       = r.attribute :description
 
-  = form_tag request_expenses_approval_path(@request), :method => :patch do
+  = form_tag travel_sponsorship_expenses_approval_path(@request), :method => :patch do
 
-    %strong.label= Request.human_attribute_name(:expenses)
+    %strong.label= TravelSponsorship.human_attribute_name(:expenses)
     %table.table.table-condensed
       %thead
         %tr
@@ -38,5 +38,5 @@
               = select_tag "expenses_approval[currency_#{expense.id}]",  options_for_select(currencies_for_select(:approved, @request.event), expense.approved_currency), :class => 'input-mini'
 
     .form-actions
-      = submit_tag t("helpers.submit.update", :model => Request.model_name.human), :class => 'btn btn-primary'
+      = submit_tag t("helpers.submit.update", :model => TravelSponsorship.model_name.human), :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), @request, :class => 'btn'

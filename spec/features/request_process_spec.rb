@@ -11,11 +11,11 @@ feature "Requests", "" do
 
     # Request creation
     page.should have_content "New travel support request"
-    fill_in "request_description", :with => "I need to go because a ghost told me to do it"
-    select "Gas", :from => "request_expenses_attributes_0_subject"
-    fill_in "request_expenses_attributes_0_description", :with => "Gas"
-    fill_in "request_expenses_attributes_0_estimated_amount", :with => "100"
-    select "EUR", :from => "request_expenses_attributes_0_estimated_currency"
+    fill_in "travel_sponsorship_description", :with => "I need to go because a ghost told me to do it"
+    select "Gas", :from => "travel_sponsorship_expenses_attributes_0_subject"
+    fill_in "travel_sponsorship_expenses_attributes_0_description", :with => "Gas"
+    fill_in "travel_sponsorship_expenses_attributes_0_estimated_amount", :with => "100"
+    select "EUR", :from => "travel_sponsorship_expenses_attributes_0_estimated_currency"
     click_link "add expense"
     within(:xpath, "//tr[@class='nested-fields'][last()]") do
       find('select[name$="[subject]"]').set "Droid rental"
@@ -43,8 +43,8 @@ feature "Requests", "" do
     close_modal_dialog
     click_link "Edit"
     page.should have_content "Edit travel support request"
-    fill_in "request_expenses_attributes_1_estimated_amount", :with => "50"
-    select "EUR", :from => "request_expenses_attributes_1_estimated_currency"
+    fill_in "travel_sponsorship_expenses_attributes_1_estimated_amount", :with => "50"
+    select "EUR", :from => "travel_sponsorship_expenses_attributes_1_estimated_currency"
     click_button "Update travel support request"
     page.should have_content "request was successfully updated"
 
@@ -95,11 +95,11 @@ feature "Requests", "" do
 
     # Try to update
     page.should_not have_content "Edit"
-    visit edit_request_path(@request)
+    visit edit_travel_sponsorship_path(@request)
     page.status_code.should == 403
 
     # Not possible, so roll back
-    visit request_path(@request)
+    visit travel_sponsorship_path(@request)
     click_link "Action"
     click_link "Roll Back"
     fill_in "notes", :with => "No way."
@@ -111,7 +111,7 @@ feature "Requests", "" do
     # And now edit
     click_link "Edit"
     page.should have_content "Edit travel support request"
-    fill_in "request_expenses_attributes_1_estimated_amount", :with => "35"
+    fill_in "travel_sponsorship_expenses_attributes_1_estimated_amount", :with => "35"
     click_button "Update travel support request"
     page.should have_content "request was successfully updated"
 

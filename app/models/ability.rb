@@ -46,24 +46,24 @@ class Ability
         e.editable_by_requesters? && e.can_be_destroyed?
       end
 
-      # Requests
-      can :create, Request do |r|
+      # TravelSponsorships
+      can :create, TravelSponsorship do |r|
         r.event && r.event.accepting_requests?
       end
       can :create, RequestExpense do |e|
         e.request && e.request.editable? && e.request.user == user
       end
-      can :read, Request, :user_id => user.id
-      can :update, Request do |r|
+      can :read, TravelSponsorship, :user_id => user.id
+      can :update, TravelSponsorship do |r|
         r.user == user && r.editable?
       end
-      can :destroy, Request do |r|
+      can :destroy, TravelSponsorship do |r|
         r.user == user && r.can_be_destroyed?
       end
       # Requester can manage his own requests, but only in the way that
       # state_machine allows to do it
       [:accept, :submit, :roll_back, :cancel].each do |action|
-        can action, Request do |r|
+        can action, TravelSponsorship do |r|
           r.user == user && r.send("can_#{action}?")
         end
       end
@@ -150,15 +150,15 @@ class Ability
         e.can_be_destroyed?
       end
 
-      # Requests
-      can :read, Request
-      can :cancel, Request do |r|
+      # TravelSponsorships
+      can :read, TravelSponsorship
+      can :cancel, TravelSponsorship do |r|
         r.cancelable_by_tsp?
       end
       # TSP members can approve and roll back any request, but only when
       # state_machines allows to do it
       [:approve, :roll_back].each do |action|
-        can action, Request do |r|
+        can action, TravelSponsorship do |r|
           r.send("can_#{action}?")
         end
       end
@@ -209,7 +209,7 @@ class Ability
       end
 
       # Requests
-      can :read, Request
+      can :read, TravelSponsorship
 
       # Reimbursements
       can :read, Reimbursement
@@ -245,8 +245,8 @@ class Ability
       # User profiles
       can :read, UserProfile
 
-      # Requests
-      can :read, Request
+      # TravelSponsorships
+      can :read, TravelSponsorship
 
       # Reimbursements
       can :read, Reimbursement
@@ -285,14 +285,14 @@ class Ability
         e.can_be_destroyed?
       end
 
-      # Requests
-      can :read, Request
+      # TravelSponsorships
+      can :read, TravelSponsorship
       # Supervisors can cancel any request, if possible
-      can :cancel, Request do |r|
+      can :cancel, TravelSponsorship do |r|
         r.can_cancel?
       end
       # Or even create state adjustments
-      can :adjust_state, Request
+      can :adjust_state, TravelSponsorship
 
       # Reimbursements
       can :read, Reimbursement
@@ -310,7 +310,7 @@ class Ability
       # Reimbursement's payments
       can :read, Payment
 
-      # Requests
+      # Shipments
       can :read, Shipment
       # Supervisors can cancel any shipment, if possible
       can :cancel, Shipment do |s|

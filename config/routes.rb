@@ -16,8 +16,17 @@ TravelSupport::Application.routes.draw do
   resources :events
   resources :budgets
 
-  resources :requests, :concerns => [:state_machine, :commentable], :defaults => {:machine => 'request'} do
+  resources :travel_sponsorships,
+            :concerns => [:state_machine, :commentable],
+            :defaults => {:machine => 'travel_sponsorship'} do
     resource :expenses_approval, :only => [:edit, :update]
+  end
+
+  resources :shipments,
+            :concerns => [:state_machine, :commentable],
+            :defaults => {:machine => 'shipment'}
+
+  resources :requests, :only => [] do
     resource :reimbursement, :concerns => [:state_machine, :commentable], :defaults => {:machine => 'reimbursement'} do
       resources :attachments, :only => [:show], :controller => :reimbursement_attachments
       resource  :acceptance, :only => [:new, :create, :show], :controller => :reimbursement_acceptances
@@ -27,8 +36,6 @@ TravelSupport::Application.routes.draw do
       get :check_request, :on => :member, :defaults => { :format => 'pdf' }
     end
   end
-
-  resources :shipments, :concerns => [:state_machine, :commentable], :defaults => {:machine => 'shipment'}
 
   # A separate controller is needed because inherited_resources cannot manage
   # belongs_to resources associations that are both singleton and optional

@@ -22,25 +22,27 @@ class Comment < ActiveRecord::Base
   scope :newest_first, -> { order("created_at desc, id desc") }
   scope :public, -> {where(:private => false) }
   # For access control
-  # TODO: needs refactoring
+  # TODO: needs heavy refactoring https://progress.opensuse.org/issues/2810
   scope :for_role, lambda {|role|
     conds = []
     args = []
     ROLES.each do |k, v|
+      conds 
       if v[:private].include? role
-        conds << "(machine_type = ?)"
-        args << k.to_s.camelize
+        conds << "(requests.type = ? OR machine_type = ?)"
+        args += [k.to_s.camelize]*2
       elsif v[:public].include? role
-        conds << "(machine_type = ? AND public = ?)"
-        args += [k.to_s.camelize, true]
+        conds << "((requests.type = ? OR machine_type = ?) AND public = ?)"
+        args += [k.to_s.camelize]*2 + [true]
       end
     end
-    where([conds.join(" OR ")] + args) }
+    j = "LEFT JOIN requests on requests.id = comments.machine_id AND comments.machine_type = 'Request'"
+    joins(j).where([conds.join(" OR ")] + args) }
 
   ROLES = {
-    :request =>       {:public => [:administrative], :private => [:tsp, :assistant]},
-    :reimbursement => {:public => [:administrative], :private => [:tsp, :assistant]},
-    :shipment =>      {:public => [:shipper], :private => [:material]} }
+    :travel_sponsorship => {:public => [:administrative], :private => [:tsp, :assistant]},
+    :reimbursement      => {:public => [:administrative], :private => [:tsp, :assistant]},
+    :shipment           => {:public => [:shipper], :private => [:material]} }
 
   # List of roles with access to private comments
   #
@@ -79,7 +81,7 @@ class Comment < ActiveRecord::Base
   # @param [#to_s] role  role to check
   # @return [Boolean] true if readable by all users of the role
   def for_role?(role)
-    roles = ROLES[machine_type.underscore.to_sym]
+    roles = ROLES[machine.class.model_name.singular.to_sym]
     if roles[:private].include? role.to_sym
       true
     elsif roles[:public].include? role.to_sym
@@ -87,6 +89,15 @@ class Comment < ActiveRecord::Base
     else
       false
     end
+  end
+
+  # Sets the machine type when assigning the association.
+  #
+  # Needed in order to STI and polymorphic assotiations to work together
+  # according to
+  # http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html
+  def machine_type=(class_name)
+    super(class_name.constantize.base_class.to_s)
   end
 
   protected

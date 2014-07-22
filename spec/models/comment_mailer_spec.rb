@@ -30,11 +30,11 @@ describe CommentMailer do
     end
 
     it "should not include private note" do
-      @mails.last.body.encoded.should_not include Comment.private_hint(Request)
+      @mails.last.body.encoded.should_not include Comment.private_hint(TravelSponsorship)
     end
 
     it "should include request url in the mail body" do
-      @mails.first.body.encoded.should match "http.+/requests/#{@request.id}"
+      @mails.first.body.encoded.should match "http.+/travel_sponsorships/#{@request.id}"
     end
   end
 
@@ -51,7 +51,7 @@ describe CommentMailer do
     end
 
     it "should include private note" do
-      @mails.first.body.encoded.should include Comment.private_hint(Request)
+      @mails.first.body.encoded.should include Comment.private_hint(TravelSponsorship)
     end
 
     it "should mail tsp and assistant, but not requester" do
@@ -111,7 +111,7 @@ describe CommentMailer do
     before(:each) do
       @user = users(:wedge)
       @material = users(:material)
-      @shipment = shipments(:wedge_customes_for_party)
+      @shipment = requests(:wedge_customes_for_party)
       @body = "I'm planning to use one of the customes to dress Chewbacca up."
       @mcount = ActionMailer::Base.deliveries.size
       comment = @shipment.comments.build(:body => @body)

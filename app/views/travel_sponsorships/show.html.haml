@@ -1,4 +1,4 @@
-- model_class = Request
+- model_class = TravelSponsorship
 = content_for :page_header do
   .row-fluid
     .span7
@@ -7,11 +7,11 @@
       %br
       = state_change_links(@request)
       - if can? :edit, @request
-        = link_to t('.edit', :default => t("helpers.links.edit")), edit_request_path(@request), :class => 'btn'
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_travel_sponsorship_path(@request), :class => 'btn'
       - if can? :approve, @request
-        = link_to t(:set_approved), edit_request_expenses_approval_path(@request), :class => 'btn'
+        = link_to t(:set_approved), edit_travel_sponsorship_expenses_approval_path(@request), :class => 'btn'
       - if can? :destroy, @request
-        = link_to t('.destroy', :default => t("helpers.links.destroy")), request_path(@request), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn'
+        = link_to t('.destroy', :default => t("helpers.links.destroy")), travel_sponsorship_path(@request), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn'
       - if @request.lacks_reimbursement?
         -# Protect the rest of the template from the side effect of build_reimbursement
         - reimb = @request.reimbursement
@@ -45,7 +45,7 @@
     .span12
       = r.attribute :description
 
-  %strong.label= Request.human_attribute_name(:expenses)
+  %strong.label= TravelSponsorship.human_attribute_name(:expenses)
   %table.table.table-condensed
     %thead
       %tr

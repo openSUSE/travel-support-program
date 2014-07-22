@@ -16,7 +16,7 @@ en:
         invalid_event: "cannot run the transition when %{state}"
         invalid_transition: "cannot run the transition via %{event}"
       models:
-        request:
+        travel_sponsorship:
           attributes:
             event_id:
               only_one_active: "another request already exists for the same event and user"
@@ -67,7 +67,7 @@ en:
           subject: "subject"
           request: "request"
           expense: "expense (no grouping)"
-      request:
+      travel_sponsorship:
         one: "travel support request"
         other: "travel support requests"
         states:
@@ -255,7 +255,7 @@ en:
         reimbursement: "reimbursement"
         title: "title"
         url: "url"
-      request:
+      travel_sponsorship:
         approved_sum: "approved"
         authorized_sum: "authorized"
         description: "description"

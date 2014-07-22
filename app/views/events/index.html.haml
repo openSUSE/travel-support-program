@@ -33,7 +33,7 @@
         %td= r.shipment_type
         %td
           - if r.accepting_requests?
-            = link_to t(:new_travel), new_request_path(:event_id => r), :class => 'btn btn-mini'
+            = link_to t(:new_travel), new_travel_sponsorship_path(:event_id => r), :class => 'btn btn-mini'
           - if r.accepting_shipments?
             = link_to t(:new_shipment), new_shipment_path(:event_id => r), :class => 'btn btn-mini'
 

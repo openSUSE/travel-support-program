@@ -14,7 +14,7 @@ feature "Reimbursement deadline", "" do
     logout
 
     sign_in_as_user(users(:luke))
-    visit request_path(requests(:luke_for_yavin))
+    visit travel_sponsorship_path(requests(:luke_for_yavin))
     page.should_not have_button "Ask for reimbursement"
     page.should have_content "event is not open"
   end
