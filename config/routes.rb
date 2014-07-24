@@ -26,7 +26,8 @@ TravelSupport::Application.routes.draw do
             :concerns => [:state_machine, :commentable],
             :defaults => {:machine => 'shipment'}
 
-  resources :requests, :only => [] do
+  # Keep index and show as smart redirections for backwards compatibility
+  resources :requests, :only => [:index, :show] do
     resource :reimbursement, :concerns => [:state_machine, :commentable], :defaults => {:machine => 'reimbursement'} do
       resources :attachments, :only => [:show], :controller => :reimbursement_attachments
       resource  :acceptance, :only => [:new, :create, :show], :controller => :reimbursement_acceptances
