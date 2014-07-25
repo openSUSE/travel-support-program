@@ -33,6 +33,23 @@ class Ability
     can [:read, :create], Event
     role = user.find_profile.role_name
 
+    # For all roles, transitions are possible if the state machine allows them
+    # (can_foo?) and if the role is authorized (allow_foo?)
+    machines = [TravelSponsorship, Reimbursement, Shipment]
+    machines.each do |machine|
+      machine.transitions.each do |action|
+        can action, machine do |m|
+          # requesters must, in addition, own the state machine
+          if role == "requester"
+            m.user == user && m.send("can_#{action}?") && m.send("allow_#{action}?", role)
+          else
+            m.send("can_#{action}?") && m.send("allow_#{action}?", role)
+          end
+        end
+      end
+    end
+
+
     #
     # Requesters (regular users) permissions
     # --------------------------------------
@@ -60,13 +77,6 @@ class Ability
       can :destroy, TravelSponsorship do |r|
         r.user == user && r.can_be_destroyed?
       end
-      # Requester can manage his own requests, but only in the way that
-      # state_machine allows to do it
-      [:accept, :submit, :roll_back, :cancel].each do |action|
-        can action, TravelSponsorship do |r|
-          r.user == user && r.send("can_#{action}?")
-        end
-      end
 
       # Reimbursements
       can :create, Reimbursement do |r|
@@ -75,11 +85,6 @@ class Ability
       can :read, Reimbursement, :user_id => user.id
       can :update, Reimbursement do |r|
         r.user == user && r.editable?
-      end
-      [:submit, :roll_back, :cancel].each do |action|
-        can action, Reimbursement do |r|
-          r.user == user && r.send("can_#{action}?")
-        end
       end
 
       # Reimbursement's attachments
@@ -111,13 +116,6 @@ class Ability
       end
       can :destroy, Shipment do |s|
         s.user == user && s.can_be_destroyed?
-      end
-      # Requester can manage his own shipments, but only in the way that
-      # state_machine allows to do it
-      [:request, :roll_back, :confirm, :cancel].each do |action|
-        can action, Shipment do |s|
-          s.user == user && s.send("can_#{action}?")
-        end
       end
 
       # Comments
@@ -152,27 +150,9 @@ class Ability
 
       # TravelSponsorships
       can :read, TravelSponsorship
-      can :cancel, TravelSponsorship do |r|
-        r.cancelable_by_tsp?
-      end
-      # TSP members can approve and roll back any request, but only when
-      # state_machines allows to do it
-      [:approve, :roll_back].each do |action|
-        can action, TravelSponsorship do |r|
-          r.send("can_#{action}?")
-        end
-      end
 
       # Reimbursements
       can :read, Reimbursement
-      can :cancel, Reimbursement do |r|
-        r.cancelable_by_tsp?
-      end
-      [:approve, :roll_back].each do |action|
-        can action, Reimbursement do |r|
-          r.send("can_#{action}?")
-        end
-      end
 
       # Reimbursement's attachments
       can :read, ReimbursementAttachment
@@ -250,11 +230,6 @@ class Ability
 
       # Reimbursements
       can :read, Reimbursement
-      [:process, :roll_back, :confirm].each do |action|
-        can action, Reimbursement do |r|
-          r.send("can_#{action}?")
-        end
-      end
 
       # Reimbursement's attachments
       can :read, ReimbursementAttachment
@@ -287,20 +262,12 @@ class Ability
 
       # TravelSponsorships
       can :read, TravelSponsorship
-      # Supervisors can cancel any request, if possible
-      can :cancel, TravelSponsorship do |r|
-        r.can_cancel?
-      end
-      # Or even create state adjustments
+      # Can create state adjustments
       can :adjust_state, TravelSponsorship
 
       # Reimbursements
       can :read, Reimbursement
-      # Supervisors can cancel any reimbursement, if possible
-      can :cancel, Reimbursement do |r|
-        r.can_cancel?
-      end
-      # Or even create state adjustments
+      # Can create state adjustments
       can :adjust_state, Reimbursement
 
       # Reimbursement's attachments
@@ -312,10 +279,6 @@ class Ability
 
       # Shipments
       can :read, Shipment
-      # Supervisors can cancel any shipment, if possible
-      can :cancel, Shipment do |s|
-        s.can_cancel?
-      end
       # Or even create state adjustments
       can :adjust_state, Shipment
 
@@ -341,16 +304,6 @@ class Ability
 
       # Shipments
       can :read, Shipment
-      can :cancel, Shipment do |s|
-        s.can_cancel?
-      end
-      # Material managers can approve and roll back any shipment,
-      # but only when state_machines allows to do it
-      [:approve, :roll_back].each do |action|
-        can action, Shipment do |s|
-          s.send("can_#{action}?")
-        end
-      end
 
       # Comments
       can [:read, :create], Comment, Comment.for_role(role) do |c|
@@ -372,11 +325,6 @@ class Ability
 
       # Shipments
       can :read, Shipment
-      # Shippers can dispatch any shipment,
-      # but only when state_machines allows to do it
-      can :dispatch, Shipment do |s|
-        s.can_dispatch?
-      end
 
       # Comments
       can :read, Comment, Comment.for_role(role) do |c|

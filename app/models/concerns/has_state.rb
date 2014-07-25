@@ -225,6 +225,29 @@ module HasState
       true
     end
 
+    # Macro-style method to define which roles are allowed to trigger a
+    # transition.
+    #
+    # It works by defining a method called allow_xxx? (where xxx is the name of
+    # the transition). If more complex check is needed, the method can be
+    # explicity defined (not using allow_transition).
+    #
+    # @param [#to_sym] transition_name  one transition
+    # @param [Object] roles  can be the name of a role or an array of names
+    def allow_transition(transition_name, roles)
+      roles = [roles].flatten.map(&:to_sym)
+      define_method :"allow_#{transition_name}?" do |role_name|
+        roles.include? role_name.to_sym
+      end
+    end
+
+    # Defined transitions (including :cancel)
+    #
+    # @return [Array<Symbol>] transition names, as symbols
+    def transitions
+      state_machines[:state].events.map(&:name) + [:cancel]
+    end
+
     # Queries the state - role assignation performed via assign_state
     # @see #assign_state
     #

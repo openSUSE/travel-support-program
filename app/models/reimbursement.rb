@@ -78,6 +78,7 @@ class Reimbursement < ActiveRecord::Base
   end
 
   # @see HasState.assign_state
+  # @see HasState.notify_state
   assign_state :incomplete, :to => :requester
   notify_state :incomplete, :to => [:requester, :tsp, :assistant],
                             :remind_to => :requester,
@@ -101,6 +102,13 @@ class Reimbursement < ActiveRecord::Base
 
   notify_state :canceled, :to => [:administrative, :requester, :tsp, :assistant]
 
+  # @see HasState.allow_transition
+  allow_transition :submit, :requester
+  allow_transition :approve, :tsp
+  allow_transition :process, :administrative
+  allow_transition :confirm, :administrative
+  allow_transition :roll_back, [:requester, :administrative, :tsp]
+  allow_transition :cancel, [:requester, :tsp, :supervisor]
 
   # @see Request#expenses_sum
   def expenses_sum(*args)
@@ -115,15 +123,6 @@ class Reimbursement < ActiveRecord::Base
       r_ids = reimbursements.map(&:request_id)
     end
     ReimbursableRequest.expenses_sum(attr, r_ids)
-  end
-
-  # Checks whether a tsp user should be allowed to cancel
-  #
-  # No special case, simply call to #can_cancel?
-  #
-  # @return [Boolean] true if allowed
-  def cancelable_by_tsp?
-    can_cancel?
   end
 
   # Checks whether can have a transition to 'canceled' state

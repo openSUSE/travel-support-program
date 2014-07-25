@@ -65,6 +65,14 @@ class Shipment < Request
 
   notify_state :canceled, :to => [:requester, :material, :shipper]
 
+  # @see HasState.allow_transition
+  allow_transition :request, :requester
+  allow_transition :approve, :material
+  allow_transition :dispatch, :shipper
+  allow_transition :confirm, :requester
+  allow_transition :roll_back, [:requester, :material]
+  allow_transition :cancel, [:requester, :material, :supervisor]
+
   delegate :shipment_type, to: :event
 
   # Check is the shipment can still be canceled

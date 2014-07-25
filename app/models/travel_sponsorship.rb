@@ -62,21 +62,22 @@ class TravelSponsorship < ReimbursableRequest
 
   notify_state :canceled, :to => [:requester, :tsp, :assistant]
 
+  # @see HasState.allow_transition
+  allow_transition :submit, :requester
+  allow_transition :approve, :tsp
+  allow_transition :accept, :requester
+  allow_transition :roll_back, [:requester, :tsp]
+
+  def allow_cancel?(role_name)
+    r = role_name.to_sym
+    [:requester, :supervisor].include?(r) || (r == :tsp && !accepted?)
+  end
+
   # Checks whether the request is ready for reimbursement
   #
   # @return [Boolean] true if all conditions are met
   def can_have_reimbursement?
     accepted? && (!reimbursement.nil? || event.accepting_reimbursements?)
-  end
-
-  # Checks whether a tsp user should be allowed to cancel
-  #
-  # tsp users cannot cancel a request if it has already been accepted by the
-  # requester
-  #
-  # @return [Boolean] true if allowed
-  def cancelable_by_tsp?
-    can_cancel? and not accepted?
   end
 
   # Check wheter the visa_letter attribute can be used
