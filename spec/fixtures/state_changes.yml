@@ -50,7 +50,7 @@ wedge_for_party_submission:
   from: "incomplete"
   to: "submitted"
   user: wedge
-  created_at: <%= 2.days.ago %>
+  created_at: <%= 9.days.ago %>
 
 wedge_for_training_submission:
   type: "StateTransition"
@@ -85,5 +85,6 @@ wedge_customes_for_party_request:
   state_event: "request"
   from: "incomplete"
   to: "requested"
+  notes: "I'll take care"
   user: wedge
-  created_at: <%= 3.days.ago %>
+  created_at: <%= 11.days.ago %>

@@ -41,4 +41,53 @@ describe HasStateMailer do
       end
     end
   end
+
+  context "with never submitted travel sponsorship" do
+    before(:each) do
+      @deliveries_before = ActionMailer::Base.deliveries.count
+      TravelSponsorship.notify_inactive
+      @deliveries = ActionMailer::Base.deliveries
+    end
+
+    it "should remind requester" do
+      @deliveries.count.should == @deliveries_before + 1
+      @deliveries.last.to.should == [users(:luke).email]
+    end
+
+    it "should not include information about last transition" do
+      @deliveries.last.body.encoded.should_not match "with the following notes"
+    end
+  end
+
+  context "with submitted inactive shipment" do
+    before(:each) do
+      @deliveries_before = ActionMailer::Base.deliveries.count
+      Shipment.notify_inactive
+      @deliveries = ActionMailer::Base.deliveries
+    end
+
+    it "should remind requester and material manager" do
+      @deliveries.count.should == @deliveries_before + 2
+      @deliveries[-2..-1].map(&:to).should include [users(:wedge).email]
+      @deliveries[-2..-1].map(&:to).should include [users(:material).email]
+    end
+
+    it "should not include information about last transition" do
+      @deliveries.last.body.encoded.should match "with the following notes"
+      @deliveries.last.body.encoded.should match "I'll take care"
+    end
+  end
+
+  context "checking inactive requests (superclass) and reimbursements" do
+    before(:each) do
+      @deliveries_before = ActionMailer::Base.deliveries.count
+      Request.notify_inactive
+      Reimbursement.notify_inactive
+      @deliveries = ActionMailer::Base.deliveries
+    end
+
+    it "should remind everybody delegating to subclasses" do
+      @deliveries.count.should == @deliveries_before + 4
+    end
+  end
 end

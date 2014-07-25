@@ -42,13 +42,28 @@ class Shipment < Request
     end
   end
 
-  # @see HasState.responsible_roles
-  self.responsible_roles = [:material]
   # @see HasState.assign_state
+  # @see HasState.notify_to
   assign_state :incomplete, :to => :requester
+  notify_state :incomplete, :to => [:requester, :material],
+                            :remind_to => :requester,
+                            :remind_after => 5.days
+
   assign_state :requested, :to => :material
+  notify_state :requested, :to => [:requester, :material],
+                           :remind_after => 10.days
+
   assign_state :approved, :to => :shipper
+  notify_state :approved, :to => [:requester, :material, :shipper],
+                          :remind_after => 5.days
+
   assign_state :sent, :to => :requester
+  notify_state :sent, :to => [:requester, :material, :shipper],
+                          :remind_after => 15.days
+
+  notify_state :received, :to => [:requester, :material, :shipper]
+
+  notify_state :canceled, :to => [:requester, :material, :shipper]
 
   delegate :shipment_type, to: :event
 

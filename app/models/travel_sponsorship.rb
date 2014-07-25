@@ -42,12 +42,25 @@ class TravelSponsorship < ReimbursableRequest
     end
   end
 
-  # @see HasState.responsible_roles
-  self.responsible_roles = [:tsp, :assistant]
   # @see HasState.assign_state
+  # @see HasState.notify_state
   assign_state :incomplete, :to => :requester
+  notify_state :incomplete, :to => [:requester, :tsp, :assistant],
+                            :remind_to => :requester,
+                            :remind_after => 5.days
+
   assign_state :submitted, :to => :tsp
+  notify_state :submitted, :to => [:requester, :tsp, :assistant],
+                           :remind_after => 10.days
+
   assign_state :approved, :to => :requester
+  notify_state :approved, :to => [:requester, :tsp, :assistant],
+                          :remind_to => :requester,
+                          :remind_after => 5.days
+
+  notify_state :accepted, :to => [:requester, :tsp, :assistant]
+
+  notify_state :canceled, :to => [:requester, :tsp, :assistant]
 
   # Checks whether the request is ready for reimbursement
   #

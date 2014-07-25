@@ -77,12 +77,30 @@ class Reimbursement < ActiveRecord::Base
     end
   end
 
-  # @see HasState.responsible_roles
-  self.responsible_roles = [:tsp, :assistant]
   # @see HasState.assign_state
   assign_state :incomplete, :to => :requester
+  notify_state :incomplete, :to => [:requester, :tsp, :assistant],
+                            :remind_to => :requester,
+                            :remind_after => 5.days
+
   assign_state :submitted, :to => :tsp
+  notify_state :submitted, :to => [:requester, :tsp, :assistant],
+                           :remind_after => 10.days
+
   assign_state :approved, :to => :administrative
+  notify_state :approved, :to => [:administrative, :requester, :tsp, :assistant],
+                          :remind_to => :administrative,
+                          :remind_after => 10.days
+
+  assign_state :processed
+  notify_state :processed, :to => [:administrative, :requester, :tsp, :assistant],
+                           :remind_to => :administrative,
+                           :remind_after => 20.days
+
+  notify_state :payed, :to => [:administrative, :requester, :tsp, :assistant]
+
+  notify_state :canceled, :to => [:administrative, :requester, :tsp, :assistant]
+
 
   # @see Request#expenses_sum
   def expenses_sum(*args)
