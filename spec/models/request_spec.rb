@@ -201,4 +201,17 @@ describe Request do
       @request.reload.state.should == "submitted"
     end
   end
+
+  # a spec to ensure that a request without expenses cannot be submitted
+  describe "transition from incomplete to submitted" do
+    it "should not be allowed if expenses is empty" do
+      r=Request.new
+      r.user=users(:anakin)
+      r.event=events(:yavin_hackaton)
+      #r.submit.should be_false
+      r.submit
+      r.errors[:state].should include "expenses cannot be empty for submit event"
+    end
+  end
+
 end

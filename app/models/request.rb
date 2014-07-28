@@ -21,6 +21,7 @@ class Request < ActiveRecord::Base
   validates_associated :expenses
   validate :only_one_active_request, :if => :active?
   validate :dont_exceed_budget, :if => :approved?
+  validate :has_no_expenses, :if => :submitted?
 
   scope :in_conflict_with, lambda { |req|
     others = active.where(user_id: req.user_id, event_id: req.event_id)
@@ -31,58 +32,87 @@ class Request < ActiveRecord::Base
   auditable
 
 
-  # Current implementation for creating state_machine
-  #
-  # This method fetches the data from db(defined by admin) and implements the above code dynamically
-  #
-  # NOTE -  data regarding :unless conditions for transition_events is not taken care yet.
-  #         Particularly in request, ":unless => :has_no_expenses?" for submit event is missing
-  #
-  t_events = TransitionEvent.where(machine_type: 'request').includes(:source_states, :target_state)
-  init_state = State.find_by(machine_type: 'request', initial_state: true)
-
-  unless t_events.empty? || init_state.nil?
-    state_machine :state, :initial => init_state.name.to_sym do |machine|
-
-      t_events.each do |t_event|
-        event t_event.name.to_sym do
-          t_event.source_states.each do |s_state|
-            transition s_state.name.to_sym => t_event.target_state.name.to_sym
-          end
-        end
-      end
-
-      state :canceled do
-      end
-
-    end
-  end
-
   # @see HasState.responsible_roles
   self.responsible_roles = [:tsp, :assistant]
 
 
   # Current implementation for assigning states
-  #
-  # this method fetches the role assigned for a state from db(defined by admin)
-  machine_states=State.where(machine_type: 'request')
-  unless machine_states.empty?
-    machine_states.each do |s|
-      assign_state s.name.to_sym, :to => s.role.name.to_sym
+  # @see HasState.assign_state
+  assign_state :incomplete, :to => :requester
+  assign_state :submitted, :to => :tsp
+  assign_state :approved, :to => :requester
+
+
+
+  # Current implementation for creating state_machine from dynamic content
+
+  # defining method_missing to handle requests through machine class
+  def method_missing(method, *args, &block)
+    if machine.respond_to?(method)
+      machine.send(method, *args, &block)
+    else
+      super
     end
   end
 
 
-
-
-  # Checks is expenses.empty?
-  #
-  # This one line method is required in order to the Graphviz automatic
-  # documentation to work, because it doesn't work if a string is used in the
-  # :unless parameter of a event definition
-  def has_no_expenses?
-    expenses.empty?
+  # Building the state machine using the dynamic feature in state_machine
+  # Make sure the machine gets initialized so the initial state gets set properly
+  def initialize(*)
+    super
+    machine
   end
+
+  # Replace this with an external source (like a db)
+  def transitions
+    # [
+      # {:incomplete => :submitted, :on => :submit},
+      # {:submitted => :approved, :on => :approve},
+      # {:approved => :accepted, :on => :accept},
+      # {:submitted => :incomplete, :approved => :incomplete, :on => :roll_back}
+    # ]
+
+    t_array=[]
+
+    t_events=TransitionEvent.where(machine_type: 'request').includes(:source_states,:target_state)
+    unless t_events.empty?
+      t_events.each do |t_event|
+        t_hash={}
+        t_event.source_states.each do |s_state|
+          t_hash[s_state.name.to_sym]=t_event.target_state.name.to_sym
+        end
+        t_hash[:on]=t_event.name.to_sym
+        t_array<<t_hash
+      end
+    end
+
+    return t_array
+
+      # ...
+    
+  end
+
+  # Create a state machine for this request instance dynamically based on the
+  # transitions defined from the source above
+  def machine
+    request = self
+    @machine ||= Machine.new(request, :initial => :incomplete, :action => :save) do
+      request.transitions.each {|attrs| transition(attrs)}
+
+      state :canceled do
+      end
+    end
+  end
+
+  def save
+    # Save the state change...
+    true
+  end
+
+  # end of dynamic state_machine implementation
+
+
+
 
   # Checks whether a tsp user should be allowed to cancel
   #
@@ -193,5 +223,36 @@ class Request < ActiveRecord::Base
               expenses.to_a.sum(&:approved_amount)
       errors.add(:expenses, :budget_exceeded) if total > budget.amount
     end
+  end
+
+  # Validates that the request doesn't have empty expenses for a submission
+  
+  def has_no_expenses
+    if expenses.empty?
+      errors.add(:state, :empty_expenses_for_submission)
+    end
+  end
+end
+
+
+# Class from dynamic state_machine implementation
+#
+# Generic class for building machines
+class Machine
+  def self.new(object, *args, &block)
+    machine_class = Class.new
+    machine = machine_class.state_machine(*args, &block)
+    attribute = machine.attribute
+    action = machine.action
+
+    # Delegate attributes
+    machine_class.class_eval do
+      define_method(:definition) { machine }
+      define_method(attribute) { object.send(attribute) }
+      define_method("#{attribute}=") {|value| object.send("#{attribute}=", value) }
+      define_method(action) { object.send(action) } if action
+    end
+
+    machine_class.new
   end
 end

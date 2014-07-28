@@ -23,6 +23,8 @@ en:
               invalid: "are missing or invalid (some required field is probably blank in some of the expenses)"
               no_budget_found: "no budget defined for the event with the selected currency"
               budget_exceeded: "approved amount exceeds the budget for the event and the selected currency"
+            state:
+              empty_expenses_for_submission: "expenses cannot be empty for submit event"
         reimbursement:
           attributes:
             user:
