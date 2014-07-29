@@ -55,23 +55,25 @@ class Request < ActiveRecord::Base
     end
   end
 
+  # Defining seperate methods for the state attribute to prevent confusion between Request#state
+  # and Machine#state
+  def state=(state_name)
+    write_attribute(:state,state_name)
+  end
+
+  def state
+    read_attribute(:state)
+  end
+
 
   # Building the state machine using the dynamic feature in state_machine
-  # Make sure the machine gets initialized so the initial state gets set properly
   def initialize(*)
     super
     machine
   end
 
-  # Replace this with an external source (like a db)
-  def transitions
-    # [
-      # {:incomplete => :submitted, :on => :submit},
-      # {:submitted => :approved, :on => :approve},
-      # {:approved => :accepted, :on => :accept},
-      # {:submitted => :incomplete, :approved => :incomplete, :on => :roll_back}
-    # ]
-
+  # Class method to populate the transitions from db
+  def self.transitions
     t_array=[]
 
     t_events=TransitionEvent.where(machine_type: 'request').includes(:source_states,:target_state)
@@ -87,8 +89,6 @@ class Request < ActiveRecord::Base
     end
 
     return t_array
-
-      # ...
     
   end
 
@@ -96,18 +96,15 @@ class Request < ActiveRecord::Base
   # transitions defined from the source above
   def machine
     request = self
-    @machine ||= Machine.new(request, :initial => :incomplete, :action => :save) do
-      request.transitions.each {|attrs| transition(attrs)}
+    init_state = State.find_by(machine_type: 'request', initial_state: true)
+    @machine ||= Machine.new(request, :initial => init_state.name.to_sym, :action => :save) do
+      Request.transitions.each {|attrs| transition(attrs)}
 
       state :canceled do
       end
     end
   end
 
-  def save
-    # Save the state change...
-    true
-  end
 
   # end of dynamic state_machine implementation
 
