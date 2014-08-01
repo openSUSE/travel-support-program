@@ -208,9 +208,23 @@ describe Request do
       r=Request.new
       r.user=users(:anakin)
       r.event=events(:yavin_hackaton)
-      #r.submit.should be_false
       r.submit
       r.errors[:state].should include "expenses cannot be empty for submit event"
+    end
+  end
+
+  # a spec to ensure that a change in states or transition events reflects
+  # accordingly on the request model
+  describe "change in states or transitions" do
+    it " should reflect changes in Request model object" do
+
+      s=states(:submitted)
+      s.name="submitted_edit"
+      s.save
+
+      r=Request.new
+      r.state_paths.to_states.should include :submitted_edit
+      r.state_paths.to_states.should_not include :submitted
     end
   end
 
