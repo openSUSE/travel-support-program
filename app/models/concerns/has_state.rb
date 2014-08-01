@@ -149,6 +149,29 @@ module HasState
     "#{self.class.model_name} #{label}"
   end
 
+  #
+  # Methods for generic dynamic state_machines
+  #
+
+  # Building the state machine using the dynamic feature in state_machine
+  def initialize(*)
+    super
+    machine
+  end
+
+  # Create a state machine for this request instance dynamically based on the
+  # transitions defined from the source above
+  def machine
+    request = self
+    init_state = State.find_by(machine_type: 'request', initial_state: true)
+    @machine ||= Machine.new(request, :initial => init_state.name.to_sym, :action => :save) do
+      self.class.transitions.each {|attrs| transition(attrs)}
+
+      state :canceled do
+      end
+    end
+  end
+
   protected
 
   # User internally to set the state_updated_at attribute
@@ -221,5 +244,25 @@ module HasState
         HasStateMailer::notify_to(people, :state, m)
       end
     end
+
+    # Class method to populate the transitions from db
+    def transitions
+      t_array=[]
+
+      t_events=TransitionEvent.where(machine_type: 'request').includes(:source_states,:target_state)
+      unless t_events.empty?
+        t_events.each do |t_event|
+          t_hash={}
+          t_event.source_states.each do |s_state|
+            t_hash[s_state.name.to_sym]=t_event.target_state.name.to_sym
+          end
+          t_hash[:on]=t_event.name.to_sym
+          t_array<<t_hash
+        end
+      end
+
+      return t_array      
+    end
+
   end
 end
