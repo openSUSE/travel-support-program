@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140703164114) do
+ActiveRecord::Schema.define(version: 20140811161641) do
 
   create_table "audits", force: true do |t|
     t.integer  "auditable_id",                null: false
@@ -243,6 +243,7 @@ ActiveRecord::Schema.define(version: 20140703164114) do
     t.integer  "target_state_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "allowed_roles"
   end
 
   create_table "user_profiles", force: true do |t|

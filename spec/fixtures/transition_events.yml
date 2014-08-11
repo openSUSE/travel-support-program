@@ -1,23 +1,99 @@
-submit:
+submit_req:
   name: "submit"
   machine_type: "request"
-  source_states: [incomplete]
-  target_state: submitted
+  source_states: [incomplete_req]
+  target_state: submitted_req
+  allowed_roles: [1]
 
-roll_back:
+roll_back_req:
   name: "roll_back"
   machine_type: "request"
-  source_states: [submitted,approved]
-  target_state: incomplete
+  source_states: [submitted_req,approved_req]
+  target_state: incomplete_req
+  allowed_roles: [1,2]
 
-approve:
+approve_req:
   name: "approve"
   machine_type: "request"
-  source_states: [submitted]
-  target_state: approved
+  source_states: [submitted_req]
+  target_state: approved_req
+  allowed_roles: [2]
 
-accept:
+accept_req:
   name: "accept"
   machine_type: "request"
-  source_states: [approved]
-  target_state: accepted
+  source_states: [approved_req]
+  target_state: accepted_req
+  allowed_roles: [1]
+
+# transitions for reimbursement machine
+submit_reimb:
+  name: "submit"
+  machine_type: "reimbursement"
+  source_states: [incomplete_reimb]
+  target_state: submitted_reimb
+  allowed_roles: [1]
+
+roll_back_reimb:
+  name: "roll_back"
+  machine_type: "reimbursement"
+  source_states: [submitted_reimb,approved_reimb]
+  target_state: incomplete_reimb
+  allowed_roles: [1,2,4]
+
+approve_reimb:
+  name: "approve"
+  machine_type: "reimbursement"
+  source_states: [submitted_reimb]
+  target_state: approved_reimb
+  allowed_roles: [2]
+
+process_reimb:
+  name: "process"
+  machine_type: "reimbursement"
+  source_states: [approved_reimb]
+  target_state: processed_reimb
+  allowed_roles: [4]
+
+confirm_reimb:
+  name: "confirm"
+  machine_type: "reimbursement"
+  source_states: [processed_reimb]
+  target_state: payed_reimb
+  allowed_roles: [4]
+
+# transitions for shipment machine
+request_ship:
+  name: "request"
+  machine_type: "shipment"
+  source_states: [incomplete_ship]
+  target_state: requested_ship
+  allowed_roles: [1]
+
+roll_back_ship:
+  name: "roll_back"
+  machine_type: "shipment"
+  source_states: [requested_ship,approved_ship]
+  target_state: incomplete_ship
+  allowed_roles: [1,6]
+
+approve_ship:
+  name: "approve"
+  machine_type: "shipment"
+  source_states: [requested_ship]
+  target_state: approved_ship
+  allowed_roles: [6]
+
+dispatch_ship:
+  name: "dispatch"
+  machine_type: "shipment"
+  source_states: [approved_ship]
+  target_state: sent_ship
+  allowed_roles: [7]
+
+confirm_ship:
+  name: "confirm"
+  machine_type: "shipment"
+  source_states: [sent_ship]
+  target_state: received_ship
+  allowed_roles: [1]

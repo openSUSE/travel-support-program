@@ -65,54 +65,12 @@ class Request < ActiveRecord::Base
     read_attribute(:state)
   end
 
+  def cancel_role?(role)
+    [1..7].include?(role.id)
+  end
 
-# moved to has_state
+
 =begin
-  # Building the state machine using the dynamic feature in state_machine
-  def initialize(*)
-    super
-    machine
-  end
-
-  # Class method to populate the transitions from db
-  def self.transitions
-    t_array=[]
-
-    t_events=TransitionEvent.where(machine_type: 'request').includes(:source_states,:target_state)
-    unless t_events.empty?
-      t_events.each do |t_event|
-        t_hash={}
-        t_event.source_states.each do |s_state|
-          t_hash[s_state.name.to_sym]=t_event.target_state.name.to_sym
-        end
-        t_hash[:on]=t_event.name.to_sym
-        t_array<<t_hash
-      end
-    end
-
-    return t_array
-    
-  end
-
-  # Create a state machine for this request instance dynamically based on the
-  # transitions defined from the source above
-  def machine
-    request = self
-    init_state = State.find_by(machine_type: 'request', initial_state: true)
-    @machine ||= Machine.new(request, :initial => init_state.name.to_sym, :action => :save) do
-      Request.transitions.each {|attrs| transition(attrs)}
-
-      state :canceled do
-      end
-    end
-  end
-
-
-  # end of dynamic state_machine implementation
-=end
-
-
-
   # Checks whether a tsp user should be allowed to cancel
   #
   # tsp users cannot cancel a request if it has already been accepted by the
@@ -133,6 +91,7 @@ class Request < ActiveRecord::Base
   def can_cancel?
     not canceled? and (reimbursement.nil? or not reimbursement.active?)
   end
+=end
 
   # Checks whether the request is ready for reimbursement
   #

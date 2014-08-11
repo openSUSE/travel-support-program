@@ -49,7 +49,7 @@ module HasState
   #
   # @return [Boolean] true if the current state is the initial one
   def in_initial_state?
-    self.class.state_machines[:state].initial_state(self).name == state_name
+    machine.class.state_machines[:state].initial_state(self).name == state_name
   end
 
   # Notify the current state to all involved users
@@ -162,15 +162,25 @@ module HasState
   # Create a state machine for this request instance dynamically based on the
   # transitions defined from the source above
   def machine
-    request = self
-    init_state = State.find_by(machine_type: 'request', initial_state: true)
-    @machine ||= Machine.new(request, :initial => init_state.name.to_sym, :action => :save) do
-      self.class.transitions.each {|attrs| transition(attrs)}
+    machine_object=self
+    machine_name=machine_object.class.model_name
+    init_state = State.find_by(machine_type: machine_name.to_s.downcase, initial_state: true)
+    @machine ||= Machine.new(machine_object, :initial => init_state.name.to_sym, :action => :save) do
+      
+      machine_object.class.transitions(machine_name).each {|attrs| transition(attrs)}
 
       state :canceled do
       end
     end
   end
+
+  # method to check if user role is allowed to perform a transition
+  def allow_transition?(role,transition_name)
+    machine_name=self.class.model_name
+    t_event=TransitionEvent.find_by(name: transition_name,machine_type: machine_name.to_s.downcase)
+    t_event.allowed_roles.include?(role.id)
+  end
+
 
   protected
 
@@ -246,10 +256,10 @@ module HasState
     end
 
     # Class method to populate the transitions from db
-    def transitions
+    def transitions(machine_name)
       t_array=[]
 
-      t_events=TransitionEvent.where(machine_type: 'request').includes(:source_states,:target_state)
+      t_events=TransitionEvent.where(machine_type: machine_name.to_s.downcase).includes(:source_states,:target_state)
       unless t_events.empty?
         t_events.each do |t_event|
           t_hash={}
@@ -261,7 +271,16 @@ module HasState
         end
       end
 
-      return t_array      
+      return t_array
+    end
+
+    # method to return array of all transition names of the machine
+    def transition_names
+      t_names=[]
+      TransitionEvent.where(machine_type: self.model_name.to_s.downcase).pluck(:name).each do |name|
+        t_names<<name.to_sym
+      end
+      return t_names
     end
 
   end

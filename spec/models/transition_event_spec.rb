@@ -60,20 +60,20 @@ describe TransitionEvent do
   it "should verify with the current request workflow" do
 
     #submit transition : incomplete->submitted
-    transition_events(:submit).source_states.should == [states(:incomplete)]
-    transition_events(:submit).target_state.should == states(:submitted)
+    transition_events(:submit_req).source_states.should == [states(:incomplete_req)]
+    transition_events(:submit_req).target_state.should == states(:submitted_req)
 
     #roll_back transition : submitted,approved -> incomplete
-    transition_events(:roll_back).source_states.should == [states(:submitted),states(:approved)]
-    transition_events(:roll_back).target_state.should == states(:incomplete)
+    transition_events(:roll_back_req).source_states.should == [states(:submitted_req),states(:approved_req)]
+    transition_events(:roll_back_req).target_state.should == states(:incomplete_req)
 
     #approve transition : submitted -> approved
-    transition_events(:approve).source_states.should == [states(:submitted)]
-    transition_events(:approve).target_state.should == states(:approved)
+    transition_events(:approve_req).source_states.should == [states(:submitted_req)]
+    transition_events(:approve_req).target_state.should == states(:approved_req)
 
     #accept transition : approved -> accepted
-    transition_events(:accept).source_states.should == [states(:approved)]
-    transition_events(:accept).target_state.should == states(:accepted)
+    transition_events(:accept_req).source_states.should == [states(:approved_req)]
+    transition_events(:accept_req).target_state.should == states(:accepted_req)
 
 
   end

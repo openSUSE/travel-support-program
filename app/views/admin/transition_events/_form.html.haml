@@ -8,7 +8,7 @@
         = f.association :source_states, include_blank: false, label_method: lambda{|state| "#{state.name}(#{state.machine_type})"}
       .span6
         = f.association :target_state, include_blank: false, label_method: lambda{|state| "#{state.name}(#{state.machine_type})"}
-	  	
+    = f.input :allowed_roles, collection: UserRole.all, label_method: 'title', value_method: 'id',input_html: { multiple: true }, include_blank: false
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), collection_path, :class => 'btn'

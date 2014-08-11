@@ -1,4 +1,4 @@
-#States fixtures for testing validations
+ #States fixtures for testing validations
 
 state_one_request:
   name: "state_one"
@@ -33,28 +33,86 @@ target_state_for_reimbursement:
 #States fixtures for the request machine
 # roles- 1: requester 2:tsp 4:admin(default)
 
-incomplete:
+incomplete_req:
   name: "incomplete"
   machine_type: "request"
   role_id: 1
   initial_state: true
 
-submitted:
+submitted_req:
   name: "submitted"
   machine_type: "request"
   role_id: 2
 
-approved:
+approved_req:
   name: "approved"
   machine_type: "request"
   role_id: 1
 
-accepted:
+accepted_req:
   name: "accepted"
   machine_type: "request"
   role_id: 4
 
-cancelled:
+cancelled_req:
   name: "cancelled"
   machine_type: "request"
+  role_id: 4
+
+#States fixtures for the reimbursement machine
+# roles- 1: requester 2:tsp 4:admin(default)
+
+incomplete_reimb:
+  name: "incomplete"
+  machine_type: "reimbursement"
+  role_id: 1
+  initial_state: true
+
+submitted_reimb:
+  name: "submitted"
+  machine_type: "reimbursement"
+  role_id: 2
+
+approved_reimb:
+  name: "approved"
+  machine_type: "reimbursement"
+  role_id: 1
+
+processed_reimb:
+  name: "processed"
+  machine_type: "reimbursement"
+  role_id: 4
+
+payed_reimb:
+  name: "payed"
+  machine_type: "reimbursement"
+  role_id: 4
+
+#States fixtures for the shipment machine
+# roles- 1: requester 2:tsp 4:admin(default)
+
+incomplete_ship:
+  name: "incomplete"
+  machine_type: "shipment"
+  role_id: 1
+  initial_state: true
+
+requested_ship:
+  name: "requested"
+  machine_type: "shipment"
+  role_id: 2
+
+approved_ship:
+  name: "approved"
+  machine_type: "shipment"
+  role_id: 1
+
+sent_ship:
+  name: "sent"
+  machine_type: "shipment"
+  role_id: 4
+
+received_ship:
+  name: "received"
+  machine_type: "shipment"
   role_id: 4

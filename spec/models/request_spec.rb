@@ -218,7 +218,7 @@ describe Request do
   describe "change in states or transitions" do
     it " should reflect changes in Request model object" do
 
-      s=states(:submitted)
+      s=states(:submitted_req)
       s.name="submitted_edit"
       s.save
 
@@ -226,6 +226,23 @@ describe Request do
       r.state_paths.to_states.should include :submitted_edit
       r.state_paths.to_states.should_not include :submitted
     end
+  end
+
+  # spec to test that a change in the state machine of Request does not affect other machines 
+  # like Reimbursement and Shipment
+  describe "Request machine is independent of other machines" do
+    it "should not change the reimbursement machine if request machine is changed" do
+      t=transition_events(:submit_req)
+      t.name="submit_edit"
+      t.save
+
+      req=Request.new
+      req.state_paths.events.should include :submit_edit
+      reimb=Reimbursement.new
+      reimb.state_paths.events.should_not include :submit_edit
+
+    end
+
   end
 
 end

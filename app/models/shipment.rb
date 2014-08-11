@@ -14,34 +14,6 @@ class Shipment < ActiveRecord::Base
 
   auditable
 
-  state_machine :state, :initial => :incomplete do |machine|
-
-    event :request do
-      transition :incomplete => :requested
-    end
-
-    event :approve do
-      transition :requested => :approved
-    end
-
-    event :dispatch do
-      transition :approved => :sent
-    end
-
-    event :confirm do
-      transition :sent => :received
-    end
-
-    event :roll_back do
-      transition :requested => :incomplete
-      transition :approved => :incomplete
-    end
-
-    # The empty block for this state is needed to prevent yardoc's error
-    # during automatic documentation generation
-    state :canceled do
-    end
-  end
 
   # @see HasState.responsible_roles
   self.responsible_roles = [:material]
@@ -50,6 +22,31 @@ class Shipment < ActiveRecord::Base
   assign_state :requested, :to => :material
   assign_state :approved, :to => :shipper
   assign_state :sent, :to => :requester
+
+  # Current implementation for creating state_machine from dynamic content
+
+  # defining method_missing to handle requests through machine class
+  def method_missing(method, *args, &block)
+    if machine.respond_to?(method)
+      machine.send(method, *args, &block)
+    else
+      super
+    end
+  end
+
+  # Defining seperate methods for the state attribute to prevent confusion between Shipment#state
+  # and Machine#state
+  def state=(text)
+    write_attribute(:state,text)
+  end
+
+  def state
+    read_attribute(:state)
+  end
+
+  def cancel_role?(role)
+    [1,3,6].include?(role.id)
+  end
 
   # Type of the shipment
   #

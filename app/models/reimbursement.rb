@@ -45,35 +45,6 @@ class Reimbursement < ActiveRecord::Base
   before_validation :set_user_id
   before_validation :ensure_bank_account
 
-  #
-  state_machine :state, :initial => :incomplete do |machine|
-
-    event :submit do
-      transition :incomplete => :submitted
-    end
-
-    event :approve do
-      transition :submitted => :approved
-    end
-
-    event :process do
-      transition :approved => :processed
-    end
-
-    event :confirm do
-      transition :processed => :payed
-    end
-
-    event :roll_back do
-      transition :submitted => :incomplete
-      transition :approved => :incomplete
-    end
-
-    # The empty block for this state is needed to prevent yardoc's error
-    # during automatic documentation generation
-    state :canceled do
-    end
-  end
 
   # @see HasState.responsible_roles
   self.responsible_roles = [:tsp, :assistant]
@@ -81,6 +52,31 @@ class Reimbursement < ActiveRecord::Base
   assign_state :incomplete, :to => :requester
   assign_state :submitted, :to => :tsp
   assign_state :approved, :to => :administrative
+
+  # Current implementation for creating state_machine from dynamic content
+
+  # defining method_missing to handle requests through machine class
+  def method_missing(method, *args, &block)
+    if machine.respond_to?(method)
+      machine.send(method, *args, &block)
+    else
+      super
+    end
+  end
+
+  # Defining seperate methods for the state attribute to prevent confusion between Reimbursement#state
+  # and Machine#state
+  def state=(text)
+    write_attribute(:state,text)
+  end
+
+  def state
+    read_attribute(:state)
+  end
+
+  def cancel_role?(role)
+    [1,2,3].include?(role.id)
+  end
 
   # @see Request#expenses_sum
   def expenses_sum(*args)

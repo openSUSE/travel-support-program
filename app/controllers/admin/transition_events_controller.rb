@@ -1,6 +1,7 @@
 class Admin::TransitionEventsController < InheritedResources::Base
   respond_to :html, :json
   skip_load_resource :only => [:index, :new]
+  before_action :clean_allowed_roles, only: [:create,:update]
 	
   def create
     @transition_event ||= TransitionEvent.new(params[:transition_event])
@@ -18,6 +19,13 @@ class Admin::TransitionEventsController < InheritedResources::Base
 
   def permitted_params
     params.permit(:transition_event => [:name, :machine_type, :user_id, :description,
-                                        {:source_state_ids => []}, :target_state_id])
+                                        {:source_state_ids => []}, :target_state_id, {:allowed_roles => []}])
+  end
+
+  # a method to clean the content of params to suit table in db
+  def clean_allowed_roles
+    temp_arr=params[:transition_event][:allowed_roles].map(&:to_i)
+    temp_arr.delete(0)
+    params[:transition_event][:allowed_roles]=temp_arr
   end
 end

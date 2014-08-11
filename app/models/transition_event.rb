@@ -1,5 +1,6 @@
 class TransitionEvent < ActiveRecord::Base
 
+  serialize :allowed_roles,Array
   #The user creating this transition_event
   belongs_to :user
   #The unique target state of the transition_event 

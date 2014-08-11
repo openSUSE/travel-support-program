@@ -27,4 +27,9 @@
           = state.name
     .span6
       = r.association :target_state
+  .row-fluid
+    .span12
+      = r.attribute :allowed_roles do
+        - resource.allowed_roles.each do |role_id|
+          = UserRole.find(role_id).name + ','
 
