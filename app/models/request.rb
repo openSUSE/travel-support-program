@@ -66,11 +66,11 @@ class Request < ActiveRecord::Base
   end
 
   def cancel_role?(role)
-    [1..7].include?(role.id)
+    [1,2,3].include?(role.id)
   end
 
 
-=begin
+
   # Checks whether a tsp user should be allowed to cancel
   #
   # tsp users cannot cancel a request if it has already been accepted by the
@@ -91,7 +91,7 @@ class Request < ActiveRecord::Base
   def can_cancel?
     not canceled? and (reimbursement.nil? or not reimbursement.active?)
   end
-=end
+
 
   # Checks whether the request is ready for reimbursement
   #
