@@ -19,7 +19,7 @@ class ReimbursementsListsController < InheritedResources::Base
   end
 
   def reimbursement_states_collection
-    Reimbursement.state_machines[:state].states.map {|s| [ s.human_name, s.value] }
+    Reimbursement.new.machine.class.state_machines[:state].states.map {|s| [ s.human_name, s.value] }
   end
 end
 

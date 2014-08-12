@@ -33,7 +33,7 @@ class ShipmentsController < InheritedResources::Base
   end
 
   def set_states_collection
-    @states_collection = Shipment.state_machines[:state].states.map {|s| [ s.human_name, s.value] }
+    @states_collection = Shipment.new.machine.class.state_machines[:state].states.map {|s| [ s.human_name, s.value] }
   end
 
   def permitted_params

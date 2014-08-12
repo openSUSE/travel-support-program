@@ -20,6 +20,6 @@ class StateAdjustmentsController < ApplicationController
     authorize! :adjust_state, @parent
     attrs = params[:state_adjustment] ? params[:state_adjustment].permit(:notes, :to) : {}
     @state_adjustment = @parent.state_adjustments.build(attrs)
-    @state_names = @parent.class.state_machines[:state].states.map(&:name)
+    @state_names = @parent.machine.class.state_machines[:state].states.map(&:name)
   end
 end

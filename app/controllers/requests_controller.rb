@@ -40,7 +40,7 @@ class RequestsController < InheritedResources::Base
   end
 
   def request_states_collection
-    Request.state_machines[:state].states.map {|s| [ s.human_name, s.value] }
+    Request.new.machine.class.state_machines[:state].states.map {|s| [ s.human_name, s.value] }
   end
 
   def load_subjects 

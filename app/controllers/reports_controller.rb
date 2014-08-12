@@ -30,8 +30,8 @@ class ReportsController < ApplicationController
     @by_type_options = %w(estimated approved total authorized)
     @by_group_options = ExpenseReport.groups.map(&:to_s)
     #@events = Event.order(:name)
-    @request_states = Request.state_machines[:state].states.map {|s| [ s.value, s.human_name] }
-    @reimbursement_states = Reimbursement.state_machines[:state].states.map {|s| [ s.value, s.human_name] }
+    @request_states = Request.new.machine.class.state_machines[:state].states.map {|s| [ s.value, s.human_name] }
+    @reimbursement_states = Reimbursement.new.machine.class.state_machines[:state].states.map {|s| [ s.value, s.human_name] }
     @countries = I18n.t(:countries).map {|k,v| [k.to_s,v]}.sort_by(&:last)
   end
 
