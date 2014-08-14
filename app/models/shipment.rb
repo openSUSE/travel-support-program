@@ -23,27 +23,10 @@ class Shipment < ActiveRecord::Base
   assign_state :approved, :to => :shipper
   assign_state :sent, :to => :requester
 
-  # Current implementation for creating state_machine from dynamic content
-
-  # defining method_missing to handle requests through machine class
-  def method_missing(method, *args, &block)
-    if machine.respond_to?(method)
-      machine.send(method, *args, &block)
-    else
-      super
-    end
-  end
-
-  # Defining seperate methods for the state attribute to prevent confusion between Shipment#state
-  # and Machine#state
-  def state=(text)
-    write_attribute(:state,text)
-  end
-
-  def state
-    read_attribute(:state)
-  end
-
+  # Checks if user role can cancel the shipment
+  #
+  # @param [Role] user role to be checked
+  # @return [Boolean] true if role can cancel
   def cancel_role?(role)
     [1,3,6].include?(role.id)
   end

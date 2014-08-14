@@ -35,36 +35,16 @@ class Request < ActiveRecord::Base
   # @see HasState.responsible_roles
   self.responsible_roles = [:tsp, :assistant]
 
-
-  # Current implementation for assigning states
   # @see HasState.assign_state
   assign_state :incomplete, :to => :requester
   assign_state :submitted, :to => :tsp
   assign_state :approved, :to => :requester
 
 
-
-  # Current implementation for creating state_machine from dynamic content
-
-  # defining method_missing to handle requests through machine class
-  def method_missing(method, *args, &block)
-    if machine.respond_to?(method)
-      machine.send(method, *args, &block)
-    else
-      super
-    end
-  end
-
-  # Defining seperate methods for the state attribute to prevent confusion between Request#state
-  # and Machine#state
-  def state=(state_name)
-    write_attribute(:state,state_name)
-  end
-
-  def state
-    read_attribute(:state)
-  end
-
+  # Checks if user role can cancel the request
+  #
+  # @param [Role] user role to be checked
+  # @return [Boolean] true if role can cancel
   def cancel_role?(role)
     [1,2,3].include?(role.id)
   end
@@ -184,7 +164,6 @@ class Request < ActiveRecord::Base
   end
 
   # Validates that the request doesn't have empty expenses for a submission
-  
   def has_no_expenses
     if expenses.empty?
       errors.add(:state, :empty_expenses_for_submission)

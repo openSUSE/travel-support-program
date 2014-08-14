@@ -301,6 +301,31 @@ and destroy the event.</p>
       <li class="public ">
   <span class="summary_signature">
     
+      <a href="#shipment_type-instance_method" title="#shipment_type (instance method)">- (String) <strong>shipment_type</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#start_date-instance_method" title="#start_date (instance method)">- (Date) <strong>start_date</strong> </a>
     
 
@@ -459,6 +484,29 @@ and destroy the event.</p>
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shipments-instance_method" title="#shipments (instance method)">- (Object) <strong>shipments</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Shipment requests for merchandising.</p>
+</div></span>
+  
+</li>
+
+      
     </ul>
   
     <h2>
@@ -581,6 +629,29 @@ and destroy the event.</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#accepting_shipments%3F-instance_method" title="#accepting_shipments? (instance method)">- (Boolean) <strong>accepting_shipments?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Check if new shipment can be created based on shipment_type and start_date.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#can_be_destroyed%3F-instance_method" title="#can_be_destroyed? (instance method)">- (Boolean) <strong>can_be_destroyed?</strong> </a>
     
 
@@ -671,10 +742,10 @@ and destroy the event.</p>
       <pre class="lines">
 
 
-94</pre>
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 94</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 108</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>country_code</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -721,12 +792,12 @@ and destroy the event.</p>
       <pre class="lines">
 
 
-99</pre>
+113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 99</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 113</span>
 
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                      <span class='label'>null:</span> <span class='kw'>false</span></pre>
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
   </tr>
 </table>
@@ -771,10 +842,10 @@ and destroy the event.</p>
       <pre class="lines">
 
 
-93</pre>
+107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 93</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 107</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>description</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -821,10 +892,10 @@ and destroy the event.</p>
       <pre class="lines">
 
 
-97</pre>
+111</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 97</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 111</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_date'>date</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>end_date</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -871,10 +942,10 @@ and destroy the event.</p>
       <pre class="lines">
 
 
-92</pre>
+106</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 92</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 106</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                            <span class='label'>null:</span> <span class='kw'>false</span></pre>
     </td>
@@ -921,10 +992,10 @@ and destroy the event.</p>
       <pre class="lines">
 
 
-103</pre>
+117</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 103</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 117</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>reimbursement_creation_deadline</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -971,12 +1042,62 @@ and destroy the event.</p>
       <pre class="lines">
 
 
-102</pre>
+116</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 102</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 116</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>request_creation_deadline</span><span class='tstring_end'>&quot;</span></span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="shipment_type=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="shipment_type-instance_method">
+  
+    - (<tt>String</tt>) <strong>shipment_type</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+119</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 119</span>
+
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>shipment_type</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
   </tr>
 </table>
@@ -1021,10 +1142,10 @@ and destroy the event.</p>
       <pre class="lines">
 
 
-96</pre>
+110</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 96</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 110</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_date'>date</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>start_date</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1071,12 +1192,12 @@ and destroy the event.</p>
       <pre class="lines">
 
 
-100</pre>
+114</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 100</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 114</span>
 
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>updated_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                      <span class='label'>null:</span> <span class='kw'>false</span></pre>
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>updated_at</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
   </tr>
 </table>
@@ -1121,10 +1242,10 @@ and destroy the event.</p>
       <pre class="lines">
 
 
-95</pre>
+109</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 95</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 109</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>url</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1171,10 +1292,10 @@ and destroy the event.</p>
       <pre class="lines">
 
 
-98</pre>
+112</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 112</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_boolean'>boolean</span>  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>validated</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1221,10 +1342,10 @@ and destroy the event.</p>
       <pre class="lines">
 
 
-101</pre>
+115</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 101</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 115</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_boolean'>boolean</span>  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>visa_letters</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1282,15 +1403,15 @@ permissions on the event.</p>
       <pre class="lines">
 
 
-68
-69
-70</pre>
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_validation_attributes'>validation_attributes</span>
-  <span class='lbracket'>[</span><span class='symbol'>:validated</span><span class='comma'>,</span> <span class='symbol'>:visa_letters</span><span class='comma'>,</span> <span class='symbol'>:request_creation_deadline</span><span class='comma'>,</span> <span class='symbol'>:reimbursement_creation_deadline</span><span class='rbracket'>]</span>
+  <span class='lbracket'>[</span><span class='symbol'>:validated</span><span class='comma'>,</span> <span class='symbol'>:visa_letters</span><span class='comma'>,</span> <span class='symbol'>:request_creation_deadline</span><span class='comma'>,</span> <span class='symbol'>:reimbursement_creation_deadline</span><span class='comma'>,</span> <span class='symbol'>:shipment_type</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1345,16 +1466,16 @@ permissions on the event.</p>
       <pre class="lines">
 
 
+55
 56
 57
 58
 59
 60
-61
-62</pre>
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_accepting_reimbursements?'>accepting_reimbursements?</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_reimbursement_creation_deadline'>reimbursement_creation_deadline</span>
@@ -1411,16 +1532,16 @@ and start_date</p>
       <pre class="lines">
 
 
+44
 45
 46
 47
 48
 49
-50
-51</pre>
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_accepting_requests?'>accepting_requests?</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_request_creation_deadline'>request_creation_deadline</span>
@@ -1428,6 +1549,64 @@ and start_date</p>
   <span class='kw'>else</span>
     <span class='lparen'>(</span><span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_start_date'>start_date</span><span class='rparen'>)</span> <span class='kw'>rescue</span> <span class='kw'>false</span>
   <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="accepting_shipments?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>accepting_shipments?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Check if new shipment can be created based on shipment_type
+and start_date</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>true if accepting new shipments</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+67
+68
+69</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 67</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_accepting_shipments?'>accepting_shipments?</span>
+  <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_shipment_type'>shipment_type</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>&amp;&amp;</span> <span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_start_date'>start_date</span><span class='rparen'>)</span> <span class='kw'>rescue</span> <span class='kw'>false</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1459,10 +1638,10 @@ and start_date</p>
       <pre class="lines">
 
 
-17</pre>
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 16</span>
 
 <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:budget</span></pre>
     </td>
@@ -1512,15 +1691,15 @@ and start_date</p>
       <pre class="lines">
 
 
+36
 37
-38
-39</pre>
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_can_be_destroyed?'>can_be_destroyed?</span>
-  <span class='id identifier rubyid_requests'>requests</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+  <span class='id identifier rubyid_requests'>requests</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_shipments'>shipments</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1570,12 +1749,12 @@ authorized users can do it</p>
       <pre class="lines">
 
 
+29
 30
-31
-32</pre>
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_editable_by_requesters?'>editable_by_requesters?</span>
   <span class='kw'>not</span> <span class='id identifier rubyid_validated'>validated</span>
@@ -1610,12 +1789,48 @@ authorized users can do it</p>
       <pre class="lines">
 
 
-15</pre>
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 12</span>
 
 <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:requests</span><span class='comma'>,</span> <span class='symbol'>:inverse_of</span> <span class='op'>=&gt;</span> <span class='symbol'>:event</span><span class='comma'>,</span> <span class='symbol'>:dependent</span> <span class='op'>=&gt;</span> <span class='symbol'>:restrict_with_exception</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="shipments-instance_method">
+  
+    - (<tt>Object</tt>) <strong>shipments</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Shipment requests for merchandising</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/event.rb', line 14</span>
+
+<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:shipments</span><span class='comma'>,</span> <span class='symbol'>:inverse_of</span> <span class='op'>=&gt;</span> <span class='symbol'>:event</span><span class='comma'>,</span> <span class='symbol'>:dependent</span> <span class='op'>=&gt;</span> <span class='symbol'>:restrict_with_exception</span></pre>
     </td>
   </tr>
 </table>
@@ -1626,7 +1841,7 @@ authorized users can do it</p>
 </div>
 
     <div id="footer">
-  Generated on Sun Apr 27 06:31:11 2014 by
+  Generated on Thu Aug 14 15:21:51 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.3 (ruby-1.9.3).
 </div>

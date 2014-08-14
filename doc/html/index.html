@@ -63,6 +63,9 @@
 
     <div id="content"><div id='filecontents'><h1>Travel Support Program management application</h1>
 
+<p><a href="https://travis-ci.org/openSUSE/travel-support-program"><img src="https://travis-ci.org/openSUSE/travel-support-program.svg?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/r/openSUSE/travel-support-program?branch=master"><img src="https://coveralls.io/repos/openSUSE/travel-support-program/badge.png?branch=master" alt="Coverage Status"></a></p>
+
 <h2>About</h2>
 
 <p>This is a Ruby on Rails based application to manage the requests and
@@ -85,8 +88,8 @@ name).</p>
 <h2>Requirements</h2>
 
 <ul>
-<li>Ruby 1.9</li>
-<li>Any Rails supported database system: PosgreSQL, MariaDB, MySQL...</li>
+<li>Ruby &gt;= 1.9</li>
+<li>Any Rails supported database system: PosgreSQL, SQLite3, MariaDB, MySQL...</li>
 </ul>
 
 <h2>Getting Started</h2>
@@ -99,6 +102,7 @@ $ vi Gemfile # edit Gemfile to uncomment your favorite database driver
 $ bundle
 $ cp config/database.example.yml config/database.yml
 $ cp config/site.example.yml config/site.yml
+$ vi config/site.yml # edit configuration DON'T FORGET to set proper secrets
 $ rake db:create db:migrate db:seed
 $ rails s
 </code></pre>
@@ -110,6 +114,7 @@ Three initial users should be available with the following emails and passwords:
 <li><a href="mailto:tspmember@example.com">tspmember@example.com</a> / tspmember1</li>
 <li><a href="mailto:requester@example.com">requester@example.com</a> / requester1</li>
 <li><a href="mailto:administrative@example.com">administrative@example.com</a> / administrative1</li>
+<li><a href="mailto:assistant@example.com">assistant@example.com</a> / assistant1</li>
 </ul>
 
 <h2>Contact</h2>
@@ -128,7 +133,7 @@ Licence (AGPL). See the <a href="file.LICENSE.html" title="LICENSE">LICENSE</a> 
 </div></div>
 
     <div id="footer">
-  Generated on Sun Apr 27 06:31:10 2014 by
+  Generated on Thu Aug 14 15:21:50 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.3 (ruby-1.9.3).
 </div>

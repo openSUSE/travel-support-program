@@ -153,6 +153,25 @@ module HasState
   # Methods for generic dynamic state_machines
   #
 
+  # defining method_missing to handle requests through machine class
+  def method_missing(method, *args, &block)
+    if machine.respond_to?(method)
+      machine.send(method, *args, &block)
+    else
+      super
+    end
+  end
+
+  # Defining seperate methods for the state attribute to prevent 
+  # confusion between Model#state and Machine#state
+  def state=(state_name)
+    write_attribute(:state,state_name)
+  end
+
+  def state
+    read_attribute(:state)
+  end
+
   # Building the state machine using the dynamic feature in state_machine
   def initialize(*)
     super
@@ -161,6 +180,8 @@ module HasState
 
   # Create a state machine for this request instance dynamically based on the
   # transitions defined from the source above
+  #
+  # @see Machine.new
   def machine
     machine_object=self
     machine_name=machine_object.class.model_name
@@ -174,7 +195,9 @@ module HasState
     end
   end
 
-  # method to check if user role is allowed to perform a transition
+  # Checks if user role is allowed to perform a transition
+  #
+  # @return [Boolean] true if allowed
   def allow_transition?(role,transition_name)
     machine_name=self.class.model_name
     t_event=TransitionEvent.find_by(name: transition_name,machine_type: machine_name.to_s.downcase)
@@ -255,7 +278,10 @@ module HasState
       end
     end
 
-    # Class method to populate the transitions from db
+    # Populates the transitions from db
+    #
+    # @param [string] machine for query
+    # @return [Array] array of { :source_state => :target_state, :on => :transition}
     def transitions(machine_name)
       t_array=[]
 
@@ -274,7 +300,9 @@ module HasState
       return t_array
     end
 
-    # method to return array of all transition names of the machine
+    # Queries the db for all transition names of the machine
+    #
+    # @return [Array] array of transition_event names belonging to machine
     def transition_names
       t_names=[]
       TransitionEvent.where(machine_type: self.model_name.to_s.downcase).pluck(:name).each do |name|

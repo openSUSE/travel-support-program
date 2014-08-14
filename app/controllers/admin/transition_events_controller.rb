@@ -22,7 +22,7 @@ class Admin::TransitionEventsController < InheritedResources::Base
                                         {:source_state_ids => []}, :target_state_id, {:allowed_roles => []}])
   end
 
-  # a method to clean the content of params to suit table in db
+  # Cleans the content of params to suit table format in db
   def clean_allowed_roles
     temp_arr=params[:transition_event][:allowed_roles].map(&:to_i)
     temp_arr.delete(0)
