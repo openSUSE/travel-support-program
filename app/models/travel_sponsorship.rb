@@ -3,9 +3,6 @@
 #
 class TravelSponsorship < ReimbursableRequest
 
-  # Comments used to discuss decisions (private) or communicate with the requester (public)
-  has_many :comments, :as => :machine, :dependent => :destroy
-
   validate :only_one_active_request, :if => :active?
   validate :dont_exceed_budget, :if => :approved?
 
@@ -14,6 +11,11 @@ class TravelSponsorship < ReimbursableRequest
     others = others.where(["id <> ?", req.id]) if req.id
     others
   }
+
+  # @see HasComments.allow_all_comments_to
+  allow_all_comments_to [:tsp, :assistant]
+  # @see HasComments.allow_public_comments_to
+  allow_public_comments_to [:administrative, :requester]
 
   state_machine :state, :initial => :incomplete do |machine|
 

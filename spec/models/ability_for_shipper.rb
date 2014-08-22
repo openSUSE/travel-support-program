@@ -182,7 +182,7 @@ describe "Shipper" do
   end
 
   context 'adding comments to shipments' do
-    it{ should_not be_able_to(:create, requests(:luke_customes_for_party).comments.build) }
+    it{ should be_able_to(:create, requests(:luke_customes_for_party).comments.build) }
     it{ should_not be_able_to(:create, requests(:luke_customes_for_party).comments.build(:private => true)) }
   end
 

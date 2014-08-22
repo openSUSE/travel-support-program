@@ -33,10 +33,10 @@ class Ability
     can [:read, :create], Event
     role = user.find_profile.role_name
 
-    # For all roles, transitions are possible if the state machine allows them
-    # (can_foo?) and if the role is authorized (allow_foo?)
     machines = [TravelSponsorship, Reimbursement, Shipment]
     machines.each do |machine|
+      # For all roles, transitions are possible if the state machine allows them
+      # (can_foo?) and if the role is authorized (allow_foo?)
       machine.transitions.each do |action|
         can action, machine do |m|
           # requesters must, in addition, own the state machine
@@ -46,6 +46,18 @@ class Ability
             m.send("can_#{action}?") && m.send("allow_#{action}?", role)
           end
         end
+      end
+
+      # Comments
+      conds = {:machine_type => machine.base_class.to_s}
+      machine_conds = {}
+      machine_conds[:type] = machine.to_s if machine.superclass != ActiveRecord::Base
+      machine_conds[:user_id] = user.id if role == "requester"
+      conds[:machine] = machine_conds unless machine_conds.empty?
+      if machine.allow_private_comments?(role)
+        can [:read, :create], Comment, conds
+      elsif machine.allow_public_comments?(role)
+        can [:read, :create], Comment, conds.merge(:private => false)
       end
     end
 
@@ -118,14 +130,6 @@ class Ability
         s.user == user && s.can_be_destroyed?
       end
 
-      # Comments
-      # Allows fetching other user's comments, but is not a real problem with
-      # the current implementation (comments are always fetched in the scope
-      # of a request or reimbursement)
-      can [:read, :create], Comment, Comment.public do |c|
-        c.machine.user == user && c.public?
-      end
-
       # Expenses Reports
       can :read, ExpenseReport, ExpenseReport.related_to(user) do |e|
           e.related_to(user)
@@ -160,11 +164,6 @@ class Ability
       can :read, BankAccount
       # Reimbursement's payments
       can :read, Payment
-
-      # Comments
-      can [:read, :create], Comment, Comment.for_role(role) do |c|
-        c.for_role? role
-      end
 
       # Expenses Reports
       can :read, ExpenseReport
@@ -201,11 +200,6 @@ class Ability
       # Reimbursement's payments
       can :read, Payment
 
-      # Comments
-      can [:read, :create], Comment, Comment.for_role(role) do |c|
-        c.for_role? role
-      end
-
       # Expenses Reports
       can :read, ExpenseReport
 
@@ -237,11 +231,6 @@ class Ability
       can :read, BankAccount
       # Reimbursement's payments
       can [:read, :create, :update, :destroy], Payment
-
-      # Comments
-      can :read, Comment, Comment.for_role(role) do |c|
-        c.for_role? role
-      end
 
     #
     # Supervisors permissions
@@ -305,11 +294,6 @@ class Ability
       # Shipments
       can :read, Shipment
 
-      # Comments
-      can [:read, :create], Comment, Comment.for_role(role) do |c|
-        c.for_role? role
-      end
-
     #
     # Shipper permissions
     # -------------------
@@ -326,10 +310,6 @@ class Ability
       # Shipments
       can :read, Shipment
 
-      # Comments
-      can :read, Comment, Comment.for_role(role) do |c|
-        c.for_role? role
-      end
     end
   end
 end

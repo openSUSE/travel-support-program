@@ -3,15 +3,17 @@
 #
 class Shipment < Request
 
-  # Comments used to discuss decisions (private) or communicate with the requester (public)
-  has_many :comments, :as => :machine, :dependent => :destroy
-
   # Postal address extracted to another model
   belongs_to :postal_address, :dependent => :destroy, :autosave => true
 
   accepts_nested_attributes_for :postal_address, :allow_destroy => false
 
   before_validation :ensure_postal_address
+
+  # @see HasComments.allow_all_comments_to
+  allow_all_comments_to :material
+  # @see HasComments.allow_public_comments_to
+  allow_public_comments_to [:shipper, :requester]
 
   state_machine :state, :initial => :incomplete do |machine|
 

@@ -1,4 +1,7 @@
-- events = resource.state_changes.oldest_first + resource.comments.accessible_by(current_ability).oldest_first
+-# This is failing (too much magic for cancancan), so fallback to a more 'manual' approach
+-# events = resource.state_changes.oldest_first + resource.comments.accessible_by(current_ability).oldest_first
+- events = resource.state_changes.oldest_first
+- events += resource.comments.oldest_first.select {|c| can?(:read, c) }
 - events.sort_by! {|e| e.created_at }
 - if events.empty?
   %p= t(:no_history_yet)

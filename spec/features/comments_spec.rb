@@ -23,7 +23,7 @@ feature "Comments", "" do
     click_link "Add comment"
     page.should have_xpath("//div[@id='new_comment']")
     page.should_not have_field "private"
-    page.should_not have_content Comment.private_hint(:travel_sponsorship)
+    page.should_not have_content TravelSponsorship.private_comment_hint
     fill_in "comment_body", :with => "Luke always get all the money. That's unfair."
     click_button "Create comment"
 
@@ -45,7 +45,7 @@ feature "Comments", "" do
     click_link "Add comment"
     page.should have_xpath("//div[@id='new_comment']")
     page.should have_field "private" # Is checked by default
-    page.should have_content Comment.private_hint('TravelSponsorship')
+    page.should have_content TravelSponsorship.private_comment_hint
     fill_in "comment_body", :with => "I don't like this guy, but don't tell him."
     click_button "Create comment"
 

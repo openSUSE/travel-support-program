@@ -30,7 +30,7 @@ describe CommentMailer do
     end
 
     it "should not include private note" do
-      @mails.last.body.encoded.should_not include Comment.private_hint(TravelSponsorship)
+      @mails.last.body.encoded.should_not include TravelSponsorship.private_comment_hint
     end
 
     it "should include request url in the mail body" do
@@ -51,7 +51,7 @@ describe CommentMailer do
     end
 
     it "should include private note" do
-      @mails.first.body.encoded.should include Comment.private_hint(TravelSponsorship)
+      @mails.first.body.encoded.should include TravelSponsorship.private_comment_hint
     end
 
     it "should mail tsp and assistant, but not requester" do
@@ -127,7 +127,7 @@ describe CommentMailer do
     end
 
     it "should not include private note" do
-      @mails.last.body.encoded.should_not include Comment.private_hint(Shipment)
+      @mails.last.body.encoded.should_not include Shipment.private_comment_hint
     end
     
     context "adding a private comment to a shipment" do
@@ -146,7 +146,7 @@ describe CommentMailer do
       end
 
       it "should include private note" do
-        @mail.body.encoded.should include Comment.private_hint(Shipment)
+        @mail.body.encoded.should include Shipment.private_comment_hint
       end
     end
   end

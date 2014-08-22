@@ -3,6 +3,7 @@
 #
 class Reimbursement < ActiveRecord::Base
   include HasState
+  include HasComments
 
   # The associated request
   belongs_to :request, :inverse_of => :reimbursement,
@@ -46,6 +47,11 @@ class Reimbursement < ActiveRecord::Base
   # Synchronizes user_id and request_id
   before_validation :set_user_id
   before_validation :ensure_bank_account
+
+  # @see HasComments.allow_all_comments_to
+  allow_all_comments_to [:tsp, :assistant]
+  # @see HasComments.allow_public_comments_to
+  allow_public_comments_to [:administrative, :requester]
 
   #
   state_machine :state, :initial => :incomplete do |machine|

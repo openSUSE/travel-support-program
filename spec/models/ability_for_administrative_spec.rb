@@ -129,7 +129,7 @@ describe "Administrative" do
   end
 
   context 'adding comments to requests' do
-    it{ should_not be_able_to(:create, requests(:luke_for_party).comments.build) }
+    it{ should be_able_to(:create, requests(:luke_for_party).comments.build) }
     it{ should_not be_able_to(:create, requests(:luke_for_party).comments.build(:private => true)) }
   end
 
