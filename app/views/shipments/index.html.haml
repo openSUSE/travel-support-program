@@ -18,7 +18,7 @@
       %th= sort_link(@q, :id)
       %th= model_class.human_attribute_name(:user)
       %th= model_class.human_attribute_name(:event)
-      %th= model_class.human_attribute_name(:type)
+      %th= model_class.human_attribute_name(:shipment_type)
       %th= sort_link(@q, :state)
   %tbody
     - collection.each do |resource|
@@ -26,7 +26,7 @@
         %td.id= link_to "#{resource.label}", resource
         %td.user= resource.user.try(:title)
         %td.event= resource.event.try(:name)
-        %td.type= resource.type
+        %td.shipment_type= resource.shipment_type
         %td.state= timestamped_state(resource)
 
 = paginate collection

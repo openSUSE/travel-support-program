@@ -84,6 +84,25 @@ class Shipment < Request
     [:incomplete, :requested, :approved].include? state.to_sym
   end
 
+  # Populate some fields with information read from the event and the user
+  # profile, creating the associated PostalAddress object if it's missing
+  #
+  # @param [User] contact user to read the information from. By default, the one
+  #             associated to the request.
+  def populate_contact_info(contact = self.user)
+    self.build_postal_address if postal_address.nil?
+    postal_address.country_code ||= event.country_code unless event.nil?
+    if contact
+      profile = contact.profile
+      # Phone number
+      self.contact_phone_number ||= profile.phone_number
+      self.contact_phone_number = profile.second_phone_number if contact_phone_number.blank?
+      # Name
+      postal_address.name ||= profile.full_name
+      postal_address.name = contact.nickname if postal_address.name.blank?
+    end
+  end
+
   protected
 
   def ensure_postal_address

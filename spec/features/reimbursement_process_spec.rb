@@ -94,7 +94,7 @@ feature "Reimbursements", "" do
     fill_in "notes", :with => "Sorry Mr. Idestroyedthedeathstar: no invoices, no money"
     click_button "roll back"
     page.should have_content "Successfully rolled back."
-    page.should have_content "requester must update the reimbursement with all the relevant information"
+    page.should have_content "requester must review all the information to ensure it is present and correct"
     page.should_not have_link "Attach signed document"
 
     # Log in as requester

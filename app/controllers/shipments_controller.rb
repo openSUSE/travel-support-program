@@ -18,9 +18,8 @@ class ShipmentsController < InheritedResources::Base
   def new
     @shipment ||= Shipment.new(params[:shipment])
     @shipment.event = Event.find(params[:event_id])
-    @shipment.build_postal_address if @shipment.postal_address.nil?
-    @shipment.postal_address.country_code ||= @shipment.event.country_code
     @shipment.user = current_user
+    @shipment.populate_contact_info
     authorize! :create, @shipment
     new!
   end

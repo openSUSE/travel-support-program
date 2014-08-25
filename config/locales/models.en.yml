@@ -80,7 +80,7 @@ en:
           accepted: "The reimbursement process has started or can be started using the 'ask for reimbursement' button (if the reimbursement period is open)."
           approved: "Now the requester has to accept the conditions or roll the request back to propose different ones."
           canceled: "The request have been canceled and cannot be longer modified."
-          incomplete: "The requester must update the request with all the relevant information. Afterwards, the request must be explicitly submitted."
+          incomplete: "The requester must review all the information to ensure it is present and correct and then submit the request using the 'Action' button in the request page."
           submitted: "The request is being evaluated. The responsible people can adjust some values and approve it or can roll it back (again to incomplete state) if the requester needs to correct something."
       request_expense:
         one: "expense"
@@ -115,7 +115,7 @@ en:
         state_guides:
           approved: "The reimbursement will be now processed by the administrative to start the payment process."
           canceled: "The reimbursement has been canceled and cannot be longer modified."
-          incomplete: "The requester must update the reimbursement with all the relevant information. Afterwards, the reimbursement must be explicitly submitted."
+          incomplete: "The requester must review all the information to ensure it is present and correct and then submit the reimbursement using the 'Action' button in the reimbursement page."
           payed: "The process have ended succesfully."
           processed: "The reimbursement must be confirmed after completing the payment."
           submitted: "The reimbursement is being evaluated. It will be approved or rolled back (again to incomplete state) whether the requester needs to correct something."
@@ -141,7 +141,7 @@ en:
         state_guides:
           approved: "It will be now sent by the shipper."
           canceled: "The request has been canceled and cannot be longer modified."
-          incomplete: "The requester must update all the relevant information. Afterwards, the request must be explicitly submitted."
+          incomplete: "The requester must review all the information to ensure it is present and correct and then submit the request using the 'Action' button in the request page."
           requested: "The request is being evaluated. It will be approved or rolled back (again to incomplete state) whether the requester needs to correct something."
           received: "The requester has received the shipment. Final state."
           sent: "After actually receiving it, the requester must confirm the shipment in the application."
@@ -213,6 +213,7 @@ en:
         notes: "notes"
         file: "file"
       postal_address:
+        name: "name"
         line1: "line 1"
         line2: "line 2"
         city: "city"
@@ -337,13 +338,13 @@ en:
         zip_code: "ZIP code"
       shipment:
         contact_phone_number: "contact phone #"
-        description: "description"
+        description: "additional notes"
         postal_address: "delivery address"
         event: "event"
         event_id: "event"
         history: "history"
         state: "state"
-        type: "type"
+        shipment_type: "type"
 
     state_machines:
       events:

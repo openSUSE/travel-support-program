@@ -25,7 +25,7 @@ feature "Requests", "" do
     end
     click_button "Create travel support request"
     page.should have_content "request was successfully created"
-    page.should have_content "request must be explicitly submitted."
+    page.should have_content "then submit the request using the 'Action' button"
     @request = Request.order(:created_at, :id).last
 
     # Testing audits, just in case

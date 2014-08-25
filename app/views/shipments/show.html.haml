@@ -17,8 +17,12 @@
       = r.attribute :state do
         = state_info(r.object)
         %div.alert-info= resource.human_state_guide
+      = r.attribute :shipment_type
     .span6
-      = r.attribute :type
+      = r.association :event do
+        = render resource.event
+      = r.association :user do
+        = render resource.user
   .row-fluid
     .span12
       = r.attribute :description

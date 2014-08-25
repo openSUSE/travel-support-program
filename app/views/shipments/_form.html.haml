@@ -4,9 +4,9 @@
 - unless resource.errors[:event_id].empty?
   %div.alert.alert-error= resource.errors[:event_id].join("<br>")
 
-%strong.label= Shipment.human_attribute_name(:type)
+%strong.label= Shipment.human_attribute_name(:shipment_type)
 %br
-%strong= resource.type
+%strong= resource.shipment_type
 = simple_form_for resource do |f|
   %strong.label= t(:general_info)
   %br
@@ -19,8 +19,9 @@
   %br
   = f.simple_fields_for :postal_address do |a|
     .form-inputs.form-horizontal
+      = a.input :name
       = a.input :line1
-      = a.input :line2
+      = a.input :line2, :as => :text
       = a.input :city
       = a.input :county
       = a.input :postal_code

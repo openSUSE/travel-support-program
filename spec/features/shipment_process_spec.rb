@@ -15,7 +15,7 @@ feature "Shipment", "" do
     fill_in "shipment_postal_address_attributes_line1", :with => "Send it to the base."
     click_button "Create shipment request"
     page.should have_content "shipment request was successfully created"
-    page.should have_content "request must be explicitly submitted."
+    page.should have_content "then submit the request using the 'Action' button"
     @shipment = Shipment.order(:created_at, :id).last
 
     # Testing audits, just in case
@@ -45,7 +45,7 @@ feature "Shipment", "" do
     click_button "roll back"
     page.should have_content "Successfully rolled back"
     page.should have_content "from submitted to incomplete"
-    page.should have_content "requester must update all the relevant information"
+    page.should have_content "requester must review all the information to ensure it is present and correct"
 
     # Log in as requester
     click_link "Log out"
