@@ -184,8 +184,9 @@ class Reimbursement < ActiveRecord::Base
 
   # Validates the existance of a complete profile
   def user_profile_is_complete
-    unless user.profile.complete?
-      errors.add(:user, :incomplete)
+    fields = user.profile.missing_fields
+    unless fields.empty?
+      errors.add(:user, :incomplete, :fields => fields.values.to_sentence )
     end
   end
 

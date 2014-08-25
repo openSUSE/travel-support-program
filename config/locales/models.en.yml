@@ -27,7 +27,7 @@ en:
         reimbursement:
           attributes:
             user:
-              incomplete: "important information is missing in the user's profile"
+              incomplete: "the following fields are missing in the user's profile: %{fields}"
             expenses:
               invalid: "are missing or invalid (some required field is probably blank in some of the expenses)"
         state_adjustment:
