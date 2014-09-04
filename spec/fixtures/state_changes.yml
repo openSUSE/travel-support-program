@@ -82,9 +82,9 @@ wedge_for_training_acceptance:
 wedge_customes_for_party_request:
   type: "StateTransition"
   machine: wedge_customes_for_party (Request)
-  state_event: "request"
+  state_event: "submit"
   from: "incomplete"
-  to: "requested"
+  to: "submitted"
   notes: "I'll take care"
   user: wedge
   created_at: <%= 11.days.ago %>

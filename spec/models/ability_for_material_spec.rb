@@ -104,7 +104,7 @@ describe "Material" do
     it{ should be_able_to(:read, shipment) }
     it{ should be_able_to(:cancel, shipment) }
     it{ should_not be_able_to(:update, shipment) }
-    it{ should_not be_able_to(:request, shipment) }
+    it{ should_not be_able_to(:submit, shipment) }
     it{ should_not be_able_to(:approve, shipment) }
     it{ should_not be_able_to(:dispatch, shipment) }
     it{ should_not be_able_to(:confirm, shipment) }
@@ -112,15 +112,15 @@ describe "Material" do
     it{ should_not be_able_to(:destroy, shipment) }
     it{ should_not be_able_to(:adjust_state, shipment) }
 
-    context "already requested" do
+    context "already submitted" do
       before(:each) do
-        shipment.request!
+        shipment.submit!
       end
 
       it{ should be_able_to(:read, shipment) }
       it{ should be_able_to(:cancel, shipment) }
       it{ should_not be_able_to(:update, shipment) }
-      it{ should_not be_able_to(:request, shipment) }
+      it{ should_not be_able_to(:submit, shipment) }
       it{ should be_able_to(:approve, shipment) }
       it{ should_not be_able_to(:dispatch, shipment) }
       it{ should_not be_able_to(:confirm, shipment) }
@@ -136,7 +136,7 @@ describe "Material" do
         it{ should be_able_to(:read, shipment) }
         it{ should be_able_to(:cancel, shipment) }
         it{ should_not be_able_to(:update, shipment) }
-        it{ should_not be_able_to(:request, shipment) }
+        it{ should_not be_able_to(:submit, shipment) }
         it{ should_not be_able_to(:approve, shipment) }
         it{ should_not be_able_to(:dispatch, shipment) }
         it{ should_not be_able_to(:confirm, shipment) }
@@ -152,7 +152,7 @@ describe "Material" do
           it{ should be_able_to(:read, shipment) }
           it{ should_not be_able_to(:cancel, shipment) }
           it{ should_not be_able_to(:update, shipment) }
-          it{ should_not be_able_to(:request, shipment) }
+          it{ should_not be_able_to(:submit, shipment) }
           it{ should_not be_able_to(:approve, shipment) }
           it{ should_not be_able_to(:dispatch, shipment) }
           it{ should_not be_able_to(:confirm, shipment) }
@@ -168,7 +168,7 @@ describe "Material" do
             it{ should be_able_to(:read, shipment) }
             it{ should_not be_able_to(:cancel, shipment) }
             it{ should_not be_able_to(:update, shipment) }
-            it{ should_not be_able_to(:request, shipment) }
+            it{ should_not be_able_to(:submit, shipment) }
             it{ should_not be_able_to(:approve, shipment) }
             it{ should_not be_able_to(:dispatch, shipment) }
             it{ should_not be_able_to(:confirm, shipment) }

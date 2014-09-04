@@ -34,7 +34,7 @@ wedge_for_training:
   type: "TravelSponsorship"
 
 wedge_customes_for_party:
-  state: "requested"
+  state: "submitted"
   user: wedge
   event: party
   state_updated_at: <%= 11.days.ago %>

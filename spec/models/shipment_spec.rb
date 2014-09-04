@@ -23,9 +23,9 @@ describe Shipment do
       @shipment.state_updated_at.should be_nil
     end
 
-    it "should be updated for on state changes" do
-      transition(@shipment, :request, users(:wedge)) rescue nil
-      @shipment.reload.state.should == "requested"
+    it "should be updated on state changes" do
+      transition(@shipment, :submit, users(:wedge)) rescue nil
+      @shipment.reload.state.should == "submitted"
       @shipment.reload.state_updated_at.should_not be_nil
     end
   end
@@ -35,11 +35,11 @@ describe Shipment do
       @deliveries = ActionMailer::Base.deliveries.size
       @shipment = requests(:luke_customes_for_party)
       @audits = @shipment.audits
-      transition(@shipment, :request, users(:luke))
+      transition(@shipment, :submit, users(:luke))
     end
 
     it "should change the state" do
-      @shipment.reload.state.should == "requested"
+      @shipment.reload.state.should == "submitted"
     end
 
     it "should notify requester and material manager" do
@@ -53,15 +53,15 @@ describe Shipment do
     it "should create an state transition" do
       trans = @shipment.transitions.last
       trans.from.should == "incomplete"
-      trans.to.should == "requested"
-      trans.state_event.should == "request"
+      trans.to.should == "submitted"
+      trans.state_event.should == "submit"
     end
 
     it "should allow material managers to roll back" do
       transition(@shipment, :roll_back, users(:material))
       @shipment.state.should == "incomplete"
       trans = @shipment.transitions.last
-      trans.from.should == "requested"
+      trans.from.should == "submitted"
       trans.to.should == "incomplete"
       trans.state_event.should == "roll_back"
     end
@@ -70,7 +70,7 @@ describe Shipment do
       transition(@shipment, :approve, users(:material))
       @shipment.reload.state.should == "approved"
       trans = @shipment.transitions.newest_first.reload.first
-      trans.from.should == "requested"
+      trans.from.should == "submitted"
       trans.to.should == "approved"
       trans.state_event.should == "approve"
     end

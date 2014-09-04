@@ -17,12 +17,12 @@ class Shipment < Request
 
   state_machine :state, :initial => :incomplete do |machine|
 
-    event :request do
-      transition :incomplete => :requested
+    event :submit do
+      transition :incomplete => :submitted
     end
 
     event :approve do
-      transition :requested => :approved
+      transition :submitted => :approved
     end
 
     event :dispatch do
@@ -34,7 +34,7 @@ class Shipment < Request
     end
 
     event :roll_back do
-      transition :requested => :incomplete
+      transition :submitted => :incomplete
       transition :approved => :incomplete
     end
 
@@ -51,8 +51,8 @@ class Shipment < Request
                             :remind_to => :requester,
                             :remind_after => 5.days
 
-  assign_state :requested, :to => :material
-  notify_state :requested, :to => [:requester, :material],
+  assign_state :submitted, :to => :material
+  notify_state :submitted, :to => [:requester, :material],
                            :remind_after => 10.days
 
   assign_state :approved, :to => :shipper
@@ -68,7 +68,7 @@ class Shipment < Request
   notify_state :canceled, :to => [:requester, :material, :shipper]
 
   # @see HasState.allow_transition
-  allow_transition :request, :requester
+  allow_transition :submit, :requester
   allow_transition :approve, :material
   allow_transition :dispatch, :shipper
   allow_transition :confirm, :requester
@@ -81,7 +81,7 @@ class Shipment < Request
   #
   # @return [Boolean] true if it have not been sent yet
   def can_cancel?
-    [:incomplete, :requested, :approved].include? state.to_sym
+    [:incomplete, :submitted, :approved].include? state.to_sym
   end
 
   # Populate some fields with information read from the event and the user

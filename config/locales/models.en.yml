@@ -135,14 +135,14 @@ en:
           approved: "shipment authorized"
           canceled: "no more actions allowed"
           incomplete: "under modification, not requested"
-          requested: "waiting for approval"
+          submitted: "waiting for approval"
           received: "by requester"
           sent: "traveling"
         state_guides:
           approved: "It will be now sent by the shipper."
           canceled: "The request has been canceled and cannot be longer modified."
           incomplete: "The requester must review all the information to ensure it is present and correct and then submit the request using the 'Action' button in the request page."
-          requested: "The request is being evaluated. It will be approved or rolled back (again to incomplete state) whether the requester needs to correct something."
+          submitted: "The request is being evaluated. It will be approved or rolled back (again to incomplete state) whether the requester needs to correct something."
           received: "The requester has received the shipment. Final state."
           sent: "After actually receiving it, the requester must confirm the shipment in the application."
 
@@ -354,7 +354,6 @@ en:
         confirm: "confirm"
         process: "process"
         reject: "reject"
-        request: "submit"
         roll_back: "roll back"
         submit: "submit"
       states:
@@ -365,7 +364,6 @@ en:
         payed: "payed"
         processed: "processed"
         received: "received"
-        requested: "submitted"
         sent: "sent"
         submitted: "submitted"
       messages:
@@ -381,8 +379,6 @@ en:
         process_failure: "Something went wrong. Payment process failed."
         reject_success: "Successfully rejected."
         reject_failure: "Something went wrong. Not rejected."
-        request_success: "Successfully submitted."
-        request_failure: "Something went wrong. Not submitted."
         roll_back_success: "Successfully rolled back."
         roll_back_failure: "Something went wrong. Unable to roll back."
         submit_success: "Successfully submitted."
