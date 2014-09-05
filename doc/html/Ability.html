@@ -6,7 +6,7 @@
 <title>
   Class: Ability
   
-    &mdash; Documentation by YARD 0.8.7.3
+    &mdash; Documentation by YARD 0.8.7.4
   
 </title>
 
@@ -17,7 +17,7 @@
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
   relpath = '';
-  framesUrl = "frames.html#!" + escape(window.location.href);
+  framesUrl = "frames.html#!Ability.html";
 </script>
 
 
@@ -492,19 +492,7 @@
 311
 312
 313
-314
-315
-316
-317
-318
-319
-320
-321
-322
-323
-324
-325
-326</pre>
+314</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/ability.rb', line 7</span>
@@ -538,6 +526,35 @@
   <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:read</span><span class='comma'>,</span> <span class='symbol'>:create</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>Event</span>
   <span class='id identifier rubyid_role'>role</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_find_profile'>find_profile</span><span class='period'>.</span><span class='id identifier rubyid_role_name'>role_name</span>
 
+  <span class='id identifier rubyid_machines'>machines</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='const'>TravelSponsorship</span><span class='comma'>,</span> <span class='const'>Reimbursement</span><span class='comma'>,</span> <span class='const'>Shipment</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_machines'>machines</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_machine'>machine</span><span class='op'>|</span>
+    <span class='comment'># For all roles, transitions are possible if the state machine allows them
+</span>    <span class='comment'># (can_foo?) and if the role is authorized (allow_foo?)
+</span>    <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_transitions'>transitions</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_action'>action</span><span class='op'>|</span>
+      <span class='id identifier rubyid_can'>can</span> <span class='id identifier rubyid_action'>action</span><span class='comma'>,</span> <span class='id identifier rubyid_machine'>machine</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_m'>m</span><span class='op'>|</span>
+        <span class='comment'># requesters must, in addition, own the state machine
+</span>        <span class='kw'>if</span> <span class='id identifier rubyid_role'>role</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>requester</span><span class='tstring_end'>&quot;</span></span>
+          <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>can_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='rbrace'>}</span><span class='tstring_content'>?</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>allow_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='rbrace'>}</span><span class='tstring_content'>?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_role'>role</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>can_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='rbrace'>}</span><span class='tstring_content'>?</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>allow_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='rbrace'>}</span><span class='tstring_content'>?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_role'>role</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='comment'># Comments
+</span>    <span class='id identifier rubyid_conds'>conds</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='symbol'>:machine_type</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_base_class'>base_class</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbrace'>}</span>
+    <span class='id identifier rubyid_machine_conds'>machine_conds</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+    <span class='id identifier rubyid_machine_conds'>machine_conds</span><span class='lbracket'>[</span><span class='symbol'>:type</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='kw'>if</span> <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_superclass'>superclass</span> <span class='op'>!=</span> <span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>Base</span>
+    <span class='id identifier rubyid_machine_conds'>machine_conds</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='kw'>if</span> <span class='id identifier rubyid_role'>role</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>requester</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_conds'>conds</span><span class='lbracket'>[</span><span class='symbol'>:machine</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_machine_conds'>machine_conds</span> <span class='kw'>unless</span> <span class='id identifier rubyid_machine_conds'>machine_conds</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_allow_private_comments?'>allow_private_comments?</span><span class='lparen'>(</span><span class='id identifier rubyid_role'>role</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:read</span><span class='comma'>,</span> <span class='symbol'>:create</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>Comment</span><span class='comma'>,</span> <span class='id identifier rubyid_conds'>conds</span>
+    <span class='kw'>elsif</span> <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_allow_public_comments?'>allow_public_comments?</span><span class='lparen'>(</span><span class='id identifier rubyid_role'>role</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:read</span><span class='comma'>,</span> <span class='symbol'>:create</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>Comment</span><span class='comma'>,</span> <span class='id identifier rubyid_conds'>conds</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='symbol'>:private</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+
   <span class='comment'>#
 </span>  <span class='comment'># Requesters (regular users) permissions
 </span>  <span class='comment'># --------------------------------------
@@ -551,26 +568,19 @@
       <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_editable_by_requesters?'>editable_by_requesters?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_can_be_destroyed?'>can_be_destroyed?</span>
     <span class='kw'>end</span>
 
-    <span class='comment'># Requests
-</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:create</span><span class='comma'>,</span> <span class='const'>Request</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
+    <span class='comment'># TravelSponsorships
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:create</span><span class='comma'>,</span> <span class='const'>TravelSponsorship</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
       <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_event'>event</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_accepting_requests?'>accepting_requests?</span>
     <span class='kw'>end</span>
     <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:create</span><span class='comma'>,</span> <span class='const'>RequestExpense</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>
-      <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_editable_by_requester?'>editable_by_requester?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span>
+      <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_editable?'>editable?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span>
     <span class='kw'>end</span>
-    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Request</span><span class='comma'>,</span> <span class='symbol'>:user_id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
-    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:update</span><span class='comma'>,</span> <span class='const'>Request</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
-      <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_editable_by_requester?'>editable_by_requester?</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>TravelSponsorship</span><span class='comma'>,</span> <span class='symbol'>:user_id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:update</span><span class='comma'>,</span> <span class='const'>TravelSponsorship</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
+      <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_editable?'>editable?</span>
     <span class='kw'>end</span>
-    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:destroy</span><span class='comma'>,</span> <span class='const'>Request</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:destroy</span><span class='comma'>,</span> <span class='const'>TravelSponsorship</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
       <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_can_be_destroyed?'>can_be_destroyed?</span>
-    <span class='kw'>end</span>
-    <span class='comment'># Requester can manage his own requests, but only in the way that
-</span>    <span class='comment'># state_machine allows to do it
-</span>    <span class='lbracket'>[</span><span class='symbol'>:accept</span><span class='comma'>,</span> <span class='symbol'>:submit</span><span class='comma'>,</span> <span class='symbol'>:roll_back</span><span class='comma'>,</span> <span class='symbol'>:cancel</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_action'>action</span><span class='op'>|</span>
-      <span class='id identifier rubyid_can'>can</span> <span class='id identifier rubyid_action'>action</span><span class='comma'>,</span> <span class='const'>Request</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
-        <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>can_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='rbrace'>}</span><span class='tstring_content'>?</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-      <span class='kw'>end</span>
     <span class='kw'>end</span>
 
     <span class='comment'># Reimbursements
@@ -579,12 +589,7 @@
     <span class='kw'>end</span>
     <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Reimbursement</span><span class='comma'>,</span> <span class='symbol'>:user_id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
     <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:update</span><span class='comma'>,</span> <span class='const'>Reimbursement</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
-      <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_editable_by_requester?'>editable_by_requester?</span>
-    <span class='kw'>end</span>
-    <span class='lbracket'>[</span><span class='symbol'>:submit</span><span class='comma'>,</span> <span class='symbol'>:roll_back</span><span class='comma'>,</span> <span class='symbol'>:cancel</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_action'>action</span><span class='op'>|</span>
-      <span class='id identifier rubyid_can'>can</span> <span class='id identifier rubyid_action'>action</span><span class='comma'>,</span> <span class='const'>Reimbursement</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
-        <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>can_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='rbrace'>}</span><span class='tstring_content'>?</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-      <span class='kw'>end</span>
+      <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_editable?'>editable?</span>
     <span class='kw'>end</span>
 
     <span class='comment'># Reimbursement's attachments
@@ -592,7 +597,7 @@
       <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span>
     <span class='kw'>end</span>
     <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:create</span><span class='comma'>,</span> <span class='symbol'>:update</span><span class='comma'>,</span> <span class='symbol'>:destroy</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>ReimbursementAttachment</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='op'>|</span>
-      <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_editable_by_requester?'>editable_by_requester?</span>
+      <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_editable?'>editable?</span>
     <span class='kw'>end</span>
 
     <span class='comment'># Reimbursement's bank account
@@ -600,25 +605,22 @@
       <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span>
     <span class='kw'>end</span>
     <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:create</span><span class='comma'>,</span> <span class='symbol'>:update</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>BankAccount</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='op'>|</span>
-      <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_editable_by_requester?'>editable_by_requester?</span>
+      <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_editable?'>editable?</span>
     <span class='kw'>end</span>
 
     <span class='comment'># Reimbursement's payments
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Payment</span><span class='comma'>,</span> <span class='symbol'>:reimbursement</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:user_id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rbrace'>}</span>
 
-    <span class='comment'># Comments
-</span>    <span class='kw'>if</span> <span class='const'>Comment</span><span class='period'>.</span><span class='id identifier rubyid_private_role?'>private_role?</span><span class='lparen'>(</span><span class='id identifier rubyid_role'>role</span><span class='rparen'>)</span>
-      <span class='comment'># Not suitable for fetching
-</span>      <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:read</span><span class='comma'>,</span> <span class='symbol'>:create</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>Comment</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
-        <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span>
-      <span class='kw'>end</span>
-    <span class='kw'>else</span>
-      <span class='comment'># Allows fetching other user's comments, but is not a real problem with
-</span>      <span class='comment'># the current implementation (comments are always fetched in the scope
-</span>      <span class='comment'># of a request or reimbursement)
-</span>      <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:read</span><span class='comma'>,</span> <span class='symbol'>:create</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>Comment</span><span class='comma'>,</span> <span class='const'>Comment</span><span class='period'>.</span><span class='id identifier rubyid_public'>public</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
-        <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_public?'>public?</span>
-      <span class='kw'>end</span>
+    <span class='comment'># Shipments
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:create</span><span class='comma'>,</span> <span class='const'>Shipment</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span>
+      <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_event'>event</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_accepting_shipments?'>accepting_shipments?</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Shipment</span><span class='comma'>,</span> <span class='symbol'>:user_id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:update</span><span class='comma'>,</span> <span class='const'>Shipment</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span>
+      <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_editable?'>editable?</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:destroy</span><span class='comma'>,</span> <span class='const'>Shipment</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span>
+      <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_can_be_destroyed?'>can_be_destroyed?</span>
     <span class='kw'>end</span>
 
     <span class='comment'># Expenses Reports
@@ -643,35 +645,11 @@
       <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_can_be_destroyed?'>can_be_destroyed?</span>
     <span class='kw'>end</span>
 
-    <span class='comment'># Requests
-</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Request</span>
-    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:update</span><span class='comma'>,</span> <span class='const'>Request</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
-      <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_editable_by_tsp?'>editable_by_tsp?</span>
-    <span class='kw'>end</span>
-    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:cancel</span><span class='comma'>,</span> <span class='const'>Request</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
-      <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_cancelable_by_tsp?'>cancelable_by_tsp?</span>
-    <span class='kw'>end</span>
-    <span class='comment'># TSP members can approve and roll back any request, but only when
-</span>    <span class='comment'># state_machines allows to do it
-</span>    <span class='lbracket'>[</span><span class='symbol'>:approve</span><span class='comma'>,</span> <span class='symbol'>:roll_back</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_action'>action</span><span class='op'>|</span>
-      <span class='id identifier rubyid_can'>can</span> <span class='id identifier rubyid_action'>action</span><span class='comma'>,</span> <span class='const'>Request</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
-        <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>can_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='rbrace'>}</span><span class='tstring_content'>?</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-      <span class='kw'>end</span>
-    <span class='kw'>end</span>
+    <span class='comment'># TravelSponsorships
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>TravelSponsorship</span>
 
     <span class='comment'># Reimbursements
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Reimbursement</span>
-    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:update</span><span class='comma'>,</span> <span class='const'>Reimbursement</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
-      <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_editable_by_tsp?'>editable_by_tsp?</span>
-    <span class='kw'>end</span>
-    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:cancel</span><span class='comma'>,</span> <span class='const'>Reimbursement</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
-      <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_cancelable_by_tsp?'>cancelable_by_tsp?</span>
-    <span class='kw'>end</span>
-    <span class='lbracket'>[</span><span class='symbol'>:approve</span><span class='comma'>,</span> <span class='symbol'>:roll_back</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_action'>action</span><span class='op'>|</span>
-      <span class='id identifier rubyid_can'>can</span> <span class='id identifier rubyid_action'>action</span><span class='comma'>,</span> <span class='const'>Reimbursement</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
-        <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>can_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='rbrace'>}</span><span class='tstring_content'>?</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-      <span class='kw'>end</span>
-    <span class='kw'>end</span>
 
     <span class='comment'># Reimbursement's attachments
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>ReimbursementAttachment</span>
@@ -679,15 +657,6 @@
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>BankAccount</span>
     <span class='comment'># Reimbursement's payments
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Payment</span>
-
-    <span class='comment'># Comments
-</span>    <span class='kw'>if</span> <span class='const'>Comment</span><span class='period'>.</span><span class='id identifier rubyid_private_role?'>private_role?</span><span class='lparen'>(</span><span class='id identifier rubyid_role'>role</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:read</span><span class='comma'>,</span> <span class='symbol'>:create</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>Comment</span>
-    <span class='kw'>else</span>
-      <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:read</span><span class='comma'>,</span> <span class='symbol'>:create</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>Comment</span><span class='comma'>,</span> <span class='const'>Comment</span><span class='period'>.</span><span class='id identifier rubyid_public'>public</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
-        <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_public?'>public?</span>
-      <span class='kw'>end</span>
-    <span class='kw'>end</span>
 
     <span class='comment'># Expenses Reports
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>ExpenseReport</span>
@@ -712,7 +681,7 @@
     <span class='kw'>end</span>
 
     <span class='comment'># Requests
-</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Request</span>
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>TravelSponsorship</span>
 
     <span class='comment'># Reimbursements
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Reimbursement</span>
@@ -723,15 +692,6 @@
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>BankAccount</span>
     <span class='comment'># Reimbursement's payments
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Payment</span>
-
-    <span class='comment'># Comments
-</span>    <span class='kw'>if</span> <span class='const'>Comment</span><span class='period'>.</span><span class='id identifier rubyid_private_role?'>private_role?</span><span class='lparen'>(</span><span class='id identifier rubyid_role'>role</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:read</span><span class='comma'>,</span> <span class='symbol'>:create</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>Comment</span>
-    <span class='kw'>else</span>
-      <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:read</span><span class='comma'>,</span> <span class='symbol'>:create</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>Comment</span><span class='comma'>,</span> <span class='const'>Comment</span><span class='period'>.</span><span class='id identifier rubyid_public'>public</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
-        <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_public?'>public?</span>
-      <span class='kw'>end</span>
-    <span class='kw'>end</span>
 
     <span class='comment'># Expenses Reports
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>ExpenseReport</span>
@@ -752,16 +712,11 @@
     <span class='comment'># User profiles
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>UserProfile</span>
 
-    <span class='comment'># Requests
-</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Request</span>
+    <span class='comment'># TravelSponsorships
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>TravelSponsorship</span>
 
     <span class='comment'># Reimbursements
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Reimbursement</span>
-    <span class='lbracket'>[</span><span class='symbol'>:process</span><span class='comma'>,</span> <span class='symbol'>:roll_back</span><span class='comma'>,</span> <span class='symbol'>:confirm</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_action'>action</span><span class='op'>|</span>
-      <span class='id identifier rubyid_can'>can</span> <span class='id identifier rubyid_action'>action</span><span class='comma'>,</span> <span class='const'>Reimbursement</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
-        <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>can_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='rbrace'>}</span><span class='tstring_content'>?</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-      <span class='kw'>end</span>
-    <span class='kw'>end</span>
 
     <span class='comment'># Reimbursement's attachments
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>ReimbursementAttachment</span>
@@ -769,15 +724,6 @@
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>BankAccount</span>
     <span class='comment'># Reimbursement's payments
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:read</span><span class='comma'>,</span> <span class='symbol'>:create</span><span class='comma'>,</span> <span class='symbol'>:update</span><span class='comma'>,</span> <span class='symbol'>:destroy</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>Payment</span>
-
-    <span class='comment'># Comments
-</span>    <span class='kw'>if</span> <span class='const'>Comment</span><span class='period'>.</span><span class='id identifier rubyid_private_role?'>private_role?</span><span class='lparen'>(</span><span class='id identifier rubyid_role'>role</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Comment</span>
-    <span class='kw'>else</span>
-      <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Comment</span><span class='comma'>,</span> <span class='const'>Comment</span><span class='period'>.</span><span class='id identifier rubyid_public'>public</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
-        <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_public?'>public?</span>
-      <span class='kw'>end</span>
-    <span class='kw'>end</span>
 
   <span class='comment'>#
 </span>  <span class='comment'># Supervisors permissions
@@ -796,22 +742,14 @@
       <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_can_be_destroyed?'>can_be_destroyed?</span>
     <span class='kw'>end</span>
 
-    <span class='comment'># Requests
-</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Request</span>
-    <span class='comment'># Supervisors can cancel any request, if possible
-</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:cancel</span><span class='comma'>,</span> <span class='const'>Request</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
-      <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_can_cancel?'>can_cancel?</span>
-    <span class='kw'>end</span>
-    <span class='comment'># Or even create state adjustments
-</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:adjust_state</span><span class='comma'>,</span> <span class='const'>Request</span>
+    <span class='comment'># TravelSponsorships
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>TravelSponsorship</span>
+    <span class='comment'># Can create state adjustments
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:adjust_state</span><span class='comma'>,</span> <span class='const'>TravelSponsorship</span>
 
     <span class='comment'># Reimbursements
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Reimbursement</span>
-    <span class='comment'># Supervisors can cancel any reimbursement, if possible
-</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:cancel</span><span class='comma'>,</span> <span class='const'>Reimbursement</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
-      <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_can_cancel?'>can_cancel?</span>
-    <span class='kw'>end</span>
-    <span class='comment'># Or even create state adjustments
+    <span class='comment'># Can create state adjustments
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:adjust_state</span><span class='comma'>,</span> <span class='const'>Reimbursement</span>
 
     <span class='comment'># Reimbursement's attachments
@@ -821,11 +759,49 @@
     <span class='comment'># Reimbursement's payments
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Payment</span>
 
+    <span class='comment'># Shipments
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Shipment</span>
+    <span class='comment'># Or even create state adjustments
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:adjust_state</span><span class='comma'>,</span> <span class='const'>Shipment</span>
+
     <span class='comment'># Comments
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:read</span><span class='comma'>,</span> <span class='symbol'>:create</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>Comment</span>
 
     <span class='comment'># Expenses Reports
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>ExpenseReport</span>
+
+  <span class='comment'>#
+</span>  <span class='comment'># Material manager permissions
+</span>  <span class='comment'># ----------------------------
+</span>  <span class='comment'>#
+</span>  <span class='kw'>elsif</span> <span class='id identifier rubyid_role'>role</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>material</span><span class='tstring_end'>&quot;</span></span>
+    <span class='comment'># User profiles
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>UserProfile</span>
+
+    <span class='comment'># Events
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:update</span><span class='comma'>,</span> <span class='symbol'>:validate</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>Event</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:destroy</span><span class='comma'>,</span> <span class='const'>Event</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>
+      <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_can_be_destroyed?'>can_be_destroyed?</span>
+    <span class='kw'>end</span>
+
+    <span class='comment'># Shipments
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Shipment</span>
+
+  <span class='comment'>#
+</span>  <span class='comment'># Shipper permissions
+</span>  <span class='comment'># -------------------
+</span>  <span class='comment'>#
+</span>  <span class='kw'>elsif</span> <span class='id identifier rubyid_role'>role</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>shipper</span><span class='tstring_end'>&quot;</span></span>
+    <span class='comment'># Events
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:update</span><span class='comma'>,</span> <span class='const'>Event</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>
+      <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_editable_by_requesters?'>editable_by_requesters?</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:destroy</span><span class='comma'>,</span> <span class='const'>Event</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>
+      <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_editable_by_requesters?'>editable_by_requesters?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_can_be_destroyed?'>can_be_destroyed?</span>
+    <span class='kw'>end</span>
+
+    <span class='comment'># Shipments
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Shipment</span>
 
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -840,9 +816,9 @@
 </div>
 
     <div id="footer">
-  Generated on Sun Apr 27 06:31:11 2014 by
+  Generated on Fri Sep  5 10:35:02 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.3 (ruby-1.9.3).
+  0.8.7.4 (ruby-1.9.3).
 </div>
 
   </body>

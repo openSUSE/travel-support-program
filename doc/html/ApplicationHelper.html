@@ -6,7 +6,7 @@
 <title>
   Module: ApplicationHelper
   
-    &mdash; Documentation by YARD 0.8.7.3
+    &mdash; Documentation by YARD 0.8.7.4
   
 </title>
 
@@ -17,7 +17,7 @@
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
   relpath = '';
-  framesUrl = "frames.html#!" + escape(window.location.href);
+  framesUrl = "frames.html#!ApplicationHelper.html";
 </script>
 
 
@@ -1576,10 +1576,10 @@ definition.</p>
       <pre class="code"><span class="info file"># File 'app/helpers/application_helper.rb', line 177</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_machine_url'>machine_url</span><span class='lparen'>(</span><span class='id identifier rubyid_machine'>machine</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Request</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_request_url'>request_url</span><span class='lparen'>(</span><span class='id identifier rubyid_machine'>machine</span><span class='rparen'>)</span>
-  <span class='kw'>else</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Reimbursement</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_request_reimbursement_url'>request_reimbursement_url</span><span class='lparen'>(</span><span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:#{</span><span class='id identifier rubyid_machine'>machine</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_model_name'>model_name</span><span class='period'>.</span><span class='id identifier rubyid_element'>element</span><span class='rbrace'>}</span><span class='tstring_content'>_url</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_machine'>machine</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1645,10 +1645,10 @@ corresponding class.</p>
   <span class='id identifier rubyid_states'>states</span> <span class='op'>=</span> <span class='id identifier rubyid_machine_class'>machine_class</span><span class='period'>.</span><span class='id identifier rubyid_states_assigned_to'>states_assigned_to</span><span class='lparen'>(</span><span class='id identifier rubyid_role'>role</span><span class='rparen'>)</span>
   <span class='comment'># FIXME: requesters are also an special case nowadays. Let's look for a
 </span>  <span class='comment'># better solution afterward.
-</span>  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_current_role?'>current_role?</span><span class='lparen'>(</span><span class='symbol'>:requester</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_states'>states</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>==</span> <span class='int'>1</span>
-    <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_helper'>helper</span><span class='comma'>,</span> <span class='symbol'>:q</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:state_eq</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_states'>states</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='kw'>else</span>
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_current_role?'>current_role?</span><span class='lparen'>(</span><span class='symbol'>:requester</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_states'>states</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
     <span class='id identifier rubyid_send'>send</span> <span class='id identifier rubyid_helper'>helper</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_helper'>helper</span><span class='comma'>,</span> <span class='symbol'>:q</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:state_in</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_states'>states</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -2111,9 +2111,9 @@ css class and the associated date</p>
 </div>
 
     <div id="footer">
-  Generated on Sun Apr 27 06:31:10 2014 by
+  Generated on Fri Sep  5 10:35:01 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.3 (ruby-1.9.3).
+  0.8.7.4 (ruby-1.9.3).
 </div>
 
   </body>

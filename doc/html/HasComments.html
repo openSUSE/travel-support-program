@@ -4,9 +4,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
-  Class: RequestExpenseSubject
+  Module: HasComments
   
-    &mdash; Documentation by YARD 0.8.7.2
+    &mdash; Documentation by YARD 0.8.7.4
   
 </title>
 
@@ -17,7 +17,7 @@
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
   relpath = '';
-  framesUrl = "frames.html#!" + escape(window.location.href);
+  framesUrl = "frames.html#!HasComments.html";
 </script>
 
 
@@ -31,10 +31,10 @@
     <div id="header">
       <div id="menu">
   
-    <a href="_index.html">Index (R)</a> &raquo;
+    <a href="_index.html">Index (H)</a> &raquo;
     
     
-    <span class="title">RequestExpenseSubject</span>
+    <span class="title">HasComments</span>
   
 
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
@@ -63,7 +63,7 @@
 
     <iframe id="search_frame"></iframe>
 
-    <div id="content"><h1>Class: RequestExpenseSubject
+    <div id="content"><h1>Module: HasComments
   
   
   
@@ -71,36 +71,48 @@
 
 <dl class="box">
   
-    <dt class="r1">Inherits:</dt>
-    <dd class="r1">
-      <span class="inheritName">ActiveRecord::Base</span>
+  
+    
+      <dt class="r1">Extended by:</dt>
+      <dd class="r1">ActiveSupport::Concern</dd>
       
-        <ul class="fullTree">
-          <li>Object</li>
-          
-            <li class="next">ActiveRecord::Base</li>
-          
-            <li class="next">RequestExpenseSubject</li>
-          
-        </ul>
-        <a href="#" class="inheritanceTree">show all</a>
-      
-      </dd>
-    
-  
-  
     
   
     
   
   
+    <dt class="r2">Included in:</dt>
+    <dd class="r2"><span class='object_link'><a href="Reimbursement.html" title="Reimbursement (class)">Reimbursement</a></span>, <span class='object_link'><a href="Request.html" title="Request (class)">Request</a></span></dd>
+    
   
-    <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">app/models/request_expense_subject.rb</dd>
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">app/models/concerns/has_comments.rb</dd>
   
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Concern adding a &#39;comments&#39; association and some macro-style methods to define
+the permissions on public and private comments</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="HasComments/ClassMethods.html" title="HasComments::ClassMethods (module)">ClassMethods</a></span>
+    
+  
+    
+  
+</p>
 
 
 
@@ -114,9 +126,9 @@
 </div>
 
     <div id="footer">
-  Generated on Sat Oct  5 12:15:30 2013 by
+  Generated on Fri Sep  5 10:35:01 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.2 (ruby-1.9.3).
+  0.8.7.4 (ruby-1.9.3).
 </div>
 
   </body>

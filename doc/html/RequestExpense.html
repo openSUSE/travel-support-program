@@ -6,7 +6,7 @@
 <title>
   Class: RequestExpense
   
-    &mdash; Documentation by YARD 0.8.7.3
+    &mdash; Documentation by YARD 0.8.7.4
   
 </title>
 
@@ -17,7 +17,7 @@
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
   relpath = '';
-  framesUrl = "frames.html#!" + escape(window.location.href);
+  framesUrl = "frames.html#!RequestExpense.html";
 </script>
 
 
@@ -289,7 +289,7 @@ reimbursement process</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#request-instance_method" title="#request (instance method)">- (Request) <strong>request</strong> </a>
+      <a href="#request-instance_method" title="#request (instance method)">- (ReimbursableRequest) <strong>request</strong> </a>
     
 
     
@@ -429,6 +429,29 @@ reimbursement process</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#authorized_can_be_calculated%3F-instance_method" title="#authorized_can_be_calculated? (instance method)">- (Boolean) <strong>authorized_can_be_calculated?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks whether authorized_amount can be automatically calculated or needs to be manually set.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#authorized_currency-instance_method" title="#authorized_currency (instance method)">- (Object) <strong>authorized_currency</strong> </a>
     
 
@@ -519,10 +542,10 @@ reimbursement process</p>
       <pre class="lines">
 
 
-159</pre>
+189</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 159</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 189</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>approved_currency</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -569,10 +592,10 @@ reimbursement process</p>
       <pre class="lines">
 
 
-160</pre>
+190</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 160</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 190</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>         <span class='label'>null:</span> <span class='kw'>false</span></pre>
     </td>
@@ -619,10 +642,10 @@ reimbursement process</p>
       <pre class="lines">
 
 
-155</pre>
+185</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 155</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 185</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>description</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -669,10 +692,10 @@ reimbursement process</p>
       <pre class="lines">
 
 
-157</pre>
+187</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 157</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 187</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>estimated_currency</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -719,10 +742,10 @@ reimbursement process</p>
       <pre class="lines">
 
 
-154</pre>
+184</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 154</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 184</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>subject</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -769,10 +792,10 @@ reimbursement process</p>
       <pre class="lines">
 
 
-161</pre>
+191</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 161</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 191</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>updated_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>         <span class='label'>null:</span> <span class='kw'>false</span></pre>
     </td>
@@ -812,14 +835,14 @@ reimbursement process</p>
       <pre class="lines">
 
 
+28
+29
 30
 31
-32
-33
-34</pre>
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 28</span>
 
 <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:by_attr_for_requests</span><span class='comma'>,</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_attr'>attr</span><span class='comma'>,</span> <span class='id identifier rubyid_req_ids'>req_ids</span><span class='op'>|</span>
   <span class='id identifier rubyid_currency_field'>currency_field</span> <span class='op'>=</span> <span class='const'>RequestExpense</span><span class='period'>.</span><span class='id identifier rubyid_currency_field_for'>currency_field_for</span><span class='lparen'>(</span><span class='id identifier rubyid_attr'>attr</span><span class='rparen'>)</span>
@@ -846,6 +869,8 @@ reimbursement process</p>
       <pre class="lines">
 
 
+44
+45
 46
 47
 48
@@ -855,12 +880,10 @@ reimbursement process</p>
 52
 53
 54
-55
-56
-57</pre>
+55</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_currency_field_for'>currency_field_for</span><span class='lparen'>(</span><span class='id identifier rubyid_attr'>attr</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_attr'>attr</span>
@@ -886,7 +909,68 @@ reimbursement process</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="authorized_currency-instance_method">
+  <h3 class="signature first" id="authorized_can_be_calculated?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>authorized_can_be_calculated?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks whether authorized_amount can be automatically calculated or needs to
+be manually set.</p>
+
+<p>It can only be automated if the currency for both total and approved are the
+same, otherwise exchange rates and other rules may come into play</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>true whether automatic calculation is possible</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+64
+65
+66</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 64</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_authorized_can_be_calculated?'>authorized_can_be_calculated?</span>
+  <span class='op'>!</span><span class='id identifier rubyid_total_currency'>total_currency</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_approved_currency'>approved_currency</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_total_currency'>total_currency</span> <span class='op'>==</span> <span class='id identifier rubyid_approved_currency'>approved_currency</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="authorized_currency-instance_method">
   
     - (<tt>Object</tt>) <strong>authorized_currency</strong> 
   
@@ -911,12 +995,12 @@ cannot be changed after approval</p>
       <pre class="lines">
 
 
-42
-43
-44</pre>
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_authorized_currency'>authorized_currency</span>
   <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='const'>RequestExpense</span><span class='period'>.</span><span class='id identifier rubyid_currency_field_for'>currency_field_for</span><span class='lparen'>(</span><span class='symbol'>:authorized</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -975,10 +1059,10 @@ cannot be changed after approval</p>
       <pre class="lines">
 
 
-17</pre>
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 15</span>
 
 <span class='id identifier rubyid_delegate'>delegate</span> <span class='symbol'>:event</span><span class='comma'>,</span> <span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='symbol'>:request</span><span class='comma'>,</span> <span class='symbol'>:prefix</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -1035,10 +1119,10 @@ cannot be changed after approval</p>
       <pre class="lines">
 
 
-16</pre>
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 14</span>
 
 <span class='id identifier rubyid_delegate'>delegate</span> <span class='symbol'>:reimbursement</span><span class='comma'>,</span> <span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='symbol'>:request</span><span class='comma'>,</span> <span class='symbol'>:prefix</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -1049,7 +1133,7 @@ cannot be changed after approval</p>
       <div class="method_details ">
   <h3 class="signature " id="request-instance_method">
   
-    - (<tt><span class='object_link'><a href="Request.html" title="Request (class)">Request</a></span></tt>) <strong>request</strong> 
+    - (<tt><span class='object_link'><a href="ReimbursableRequest.html" title="ReimbursableRequest (class)">ReimbursableRequest</a></span></tt>) <strong>request</strong> 
   
 
   
@@ -1069,7 +1153,7 @@ cannot be changed after approval</p>
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Request.html" title="Request (class)">Request</a></span></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="ReimbursableRequest.html" title="ReimbursableRequest (class)">ReimbursableRequest</a></span></tt>)</span>
       
       
       
@@ -1090,12 +1174,16 @@ cannot be changed after approval</p>
       <pre class="lines">
 
 
-10</pre>
+10
+11
+12</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 10</span>
 
-<span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:request</span><span class='comma'>,</span> <span class='symbol'>:inverse_of</span> <span class='op'>=&gt;</span> <span class='symbol'>:expenses</span></pre>
+<span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:request</span><span class='comma'>,</span> <span class='symbol'>:inverse_of</span> <span class='op'>=&gt;</span> <span class='symbol'>:expenses</span><span class='comma'>,</span>
+<span class='symbol'>:class_name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ReimbursableRequest</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+<span class='symbol'>:foreign_key</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>request_id</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
   </tr>
 </table>
@@ -1127,12 +1215,12 @@ cannot be changed after approval</p>
       <pre class="lines">
 
 
-38
-39
-40</pre>
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'app/models/request_expense.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_total_currency'>total_currency</span>
   <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='const'>RequestExpense</span><span class='period'>.</span><span class='id identifier rubyid_currency_field_for'>currency_field_for</span><span class='lparen'>(</span><span class='symbol'>:total</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -1147,9 +1235,9 @@ cannot be changed after approval</p>
 </div>
 
     <div id="footer">
-  Generated on Sun Apr 27 06:31:14 2014 by
+  Generated on Fri Sep  5 10:35:07 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.3 (ruby-1.9.3).
+  0.8.7.4 (ruby-1.9.3).
 </div>
 
   </body>

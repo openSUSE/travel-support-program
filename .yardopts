@@ -6,6 +6,7 @@ app/helpers/*.rb
 app/inputs/*.rb
 lib/travel_support_program/*.rb
 app/models/*.rb
+app/models/concerns/*.rb
 db/schema.rb
 -
 doc/ABOUT.md

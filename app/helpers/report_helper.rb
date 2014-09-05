@@ -1,3 +1,6 @@
+#
+# Helpers for generating expenses reports
+#
 module ReportHelper
   # Outputs a dropdown for filtering the expenses report with a given scope
   def filter_select(name, collection, value_method = :id, text_method = :name)
