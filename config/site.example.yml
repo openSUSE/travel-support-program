@@ -8,7 +8,6 @@ common: &common
 
   budget_limits: true
 
-  days_for_reminder: 3
   reimbursement_reminder:
     days_after_event: 5
     days_before_deadline: 5
@@ -37,7 +36,7 @@ common: &common
       url: "http://opensuse.org/openSUSE:Travel_Support_Program"
     - title: "Application's Github"
       url: "https://github.com/openSUSE/travel-support-program"
-  request_expense_subjects:
+  travel_expense_subjects:
     - Plane
     - Train
     - Bus
@@ -56,6 +55,9 @@ common: &common
     - zip_code
     - postal_address
     - phone_number
+  shipment_types:
+    - Big booth box
+    - Small booth box
 
 production:
   <<: *common
@@ -84,7 +86,7 @@ test:
   currencies_for_approved:
     - EUR
     - USD
-  request_expense_subjects:
+  travel_expense_subjects:
     - Gas
     - Droid rental
     - Lodging
@@ -93,3 +95,6 @@ test:
     - full_name
     - location
     - zip_code
+  shipment_types:
+    - Wookiee customes box
+    - Death Star destruction kit

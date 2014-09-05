@@ -18,7 +18,8 @@ class StateAdjustmentsController < ApplicationController
   def load_adjustment_and_authorize
     prepare_for_nested_resource
     authorize! :adjust_state, @parent
-    @state_adjustment = @parent.state_adjustments.build(params[:state_adjustment])
+    attrs = params[:state_adjustment] ? params[:state_adjustment].permit(:notes, :to) : {}
+    @state_adjustment = @parent.state_adjustments.build(attrs)
     @state_names = @parent.class.state_machines[:state].states.map(&:name)
   end
 end

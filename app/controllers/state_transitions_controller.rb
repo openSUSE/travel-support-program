@@ -27,7 +27,8 @@ class StateTransitionsController < ApplicationController
 
   def load_transition_and_authorize
     prepare_for_nested_resource
-    @state_transition = @parent.transitions.build(params[:state_transition])
+    attrs = params.require(:state_transition).permit(:notes, :state_event)
+    @state_transition = @parent.transitions.build(attrs)
     authorize! @state_transition.state_event.to_sym, @parent
   end
 end

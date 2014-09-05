@@ -7,15 +7,15 @@ feature "Requests", "" do
   scenario "Full request process", :js => true do
     sign_in_as_user(users(:luke))
     visit event_path(events(:dagobah_camp))
-    click_link "Apply"
+    click_link "Travel support"
 
     # Request creation
-    page.should have_content "New request"
-    fill_in "request_description", :with => "I need to go because a ghost told me to do it"
-    select "Gas", :from => "request_expenses_attributes_0_subject"
-    fill_in "request_expenses_attributes_0_description", :with => "Gas"
-    fill_in "request_expenses_attributes_0_estimated_amount", :with => "100"
-    select "EUR", :from => "request_expenses_attributes_0_estimated_currency"
+    page.should have_content "New travel support request"
+    fill_in "travel_sponsorship_description", :with => "I need to go because a ghost told me to do it"
+    select "Gas", :from => "travel_sponsorship_expenses_attributes_0_subject"
+    fill_in "travel_sponsorship_expenses_attributes_0_description", :with => "Gas"
+    fill_in "travel_sponsorship_expenses_attributes_0_estimated_amount", :with => "100"
+    select "EUR", :from => "travel_sponsorship_expenses_attributes_0_estimated_currency"
     click_link "add expense"
     within(:xpath, "//tr[@class='nested-fields'][last()]") do
       find('select[name$="[subject]"]').set "Droid rental"
@@ -23,9 +23,9 @@ feature "Requests", "" do
       #find('input[name$="[estimated_amount]"]').set "50"
       #find('input[name$="[estimated_currency]"]').set "EUR"
     end
-    click_button "Create request"
+    click_button "Create travel support request"
     page.should have_content "request was successfully created"
-    page.should have_content "request must be explicitly submitted."
+    page.should have_content "then submit the request using the 'Action' button"
     @request = Request.order(:created_at, :id).last
 
     # Testing audits, just in case
@@ -42,10 +42,10 @@ feature "Requests", "" do
     # Correct the request
     close_modal_dialog
     click_link "Edit"
-    page.should have_content "Edit request"
-    fill_in "request_expenses_attributes_1_estimated_amount", :with => "50"
-    select "EUR", :from => "request_expenses_attributes_1_estimated_currency"
-    click_button "Update request"
+    page.should have_content "Edit travel support request"
+    fill_in "travel_sponsorship_expenses_attributes_1_estimated_amount", :with => "50"
+    select "EUR", :from => "travel_sponsorship_expenses_attributes_1_estimated_currency"
+    click_button "Update travel support request"
     page.should have_content "request was successfully updated"
 
     # Submit again
@@ -70,13 +70,14 @@ feature "Requests", "" do
 
     # Fulfill approval information
     close_modal_dialog
-    click_link "Edit"
-    page.should have_content "Edit request"
-    fill_in "request_expenses_attributes_0_approved_amount", :with => "60"
-    select "EUR", :from => "request_expenses_attributes_0_approved_currency"
-    fill_in "request_expenses_attributes_1_approved_amount", :with => "0"
-    select "EUR", :from => "request_expenses_attributes_1_approved_currency"
-    click_button "Update request"
+    click_link "Set amount"
+    page.should have_content "Set approved amount"
+    expenses = @request.expenses.to_a
+    fill_in "expenses_approval_amount_#{expenses.first.id}", :with => "60"
+    select "EUR", :from => "expenses_approval_currency_#{expenses.first.id}"
+    fill_in "expenses_approval_amount_#{expenses.last.id}", :with => "0"
+    select "EUR", :from => "expenses_approval_currency_#{expenses.last.id}"
+    click_button "Update travel support request"
     page.should have_content "request was successfully updated"
 
     # Approve again
@@ -94,11 +95,11 @@ feature "Requests", "" do
 
     # Try to update
     page.should_not have_content "Edit"
-    visit edit_request_path(@request)
+    visit edit_travel_sponsorship_path(@request)
     page.status_code.should == 403
 
     # Not possible, so roll back
-    visit request_path(@request)
+    visit travel_sponsorship_path(@request)
     click_link "Action"
     click_link "Roll Back"
     fill_in "notes", :with => "No way."
@@ -109,9 +110,9 @@ feature "Requests", "" do
 
     # And now edit
     click_link "Edit"
-    page.should have_content "Edit request"
-    fill_in "request_expenses_attributes_1_estimated_amount", :with => "35"
-    click_button "Update request"
+    page.should have_content "Edit travel support request"
+    fill_in "travel_sponsorship_expenses_attributes_1_estimated_amount", :with => "35"
+    click_button "Update travel support request"
     page.should have_content "request was successfully updated"
 
     # And submit again

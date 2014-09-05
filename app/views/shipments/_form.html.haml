@@ -1,0 +1,35 @@
+%strong.label= Shipment.human_attribute_name(:event)
+%br
+= render resource.event
+- unless resource.errors[:event_id].empty?
+  %div.alert.alert-error= resource.errors[:event_id].join("<br>")
+
+%strong.label= Shipment.human_attribute_name(:shipment_type)
+%br
+%strong= resource.shipment_type
+= simple_form_for resource do |f|
+  %strong.label= t(:general_info)
+  %br
+  .form-inputs.form-horizontal
+    = f.hidden_field :event_id
+    = f.input :description, :input_html => {:rows => 3}
+    = f.input :contact_phone_number
+
+  %strong.label= t("activerecord.attributes.shipment.postal_address")
+  %br
+  = f.simple_fields_for :postal_address do |a|
+    .form-inputs.form-horizontal
+      = a.input :name
+      = a.input :line1
+      = a.input :line2, :as => :text
+      = a.input :city
+      = a.input :county
+      = a.input :postal_code
+      = a.input :country_code, :as => :country, :input_html => {:autocomplete => "off"}
+
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    - if resource.new_record?
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), resource.event, :class => 'btn'
+    - else
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), resource, :class => 'btn'

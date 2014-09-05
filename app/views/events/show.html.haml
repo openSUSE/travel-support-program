@@ -10,7 +10,9 @@
       - if user_signed_in? && can?(:destroy, resource)
         = link_to t('.destroy', :default => t("helpers.links.destroy")), resource_path(resource), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn'
       - if resource.accepting_requests?
-        = link_to t(:apply), new_request_path(:event_id => resource), :class => 'btn btn-primary'
+        = link_to t(:new_travel), new_travel_sponsorship_path(:event_id => resource), :class => 'btn btn-primary'
+      - if resource.accepting_shipments?
+        = link_to t(:new_shipment), new_shipment_path(:event_id => resource), :class => 'btn btn-primary'
 
 = show_for resource do |r|
   .row-fluid
@@ -28,14 +30,17 @@
   .row-fluid
     .span12
       = r.attribute :description
-  - if user_signed_in? && can?(:validate, resource)
     .row-fluid
       .span6
+        = r.attribute :shipment_type
         = r.attribute :visa_letters
-        = r.attribute :validated
       .span6
         = r.attribute :request_creation_deadline
         = r.attribute :reimbursement_creation_deadline
+  - if user_signed_in? && can?(:validate, resource)
+    .row-fluid
+      .span12
+        = r.attribute :validated
   - if user_signed_in? && can?(:read, Budget)
     .row-fluid
       .span12

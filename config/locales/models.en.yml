@@ -6,6 +6,8 @@ en:
       supervisor: "Supervisor"
       administrative: "Administrative"
       assistant: "Assistant"
+      material: "Material manager"
+      shipper: "Shipper"
 
   activerecord:
     errors:
@@ -14,7 +16,7 @@ en:
         invalid_event: "cannot run the transition when %{state}"
         invalid_transition: "cannot run the transition via %{event}"
       models:
-        request:
+        travel_sponsorship:
           attributes:
             event_id:
               only_one_active: "another request already exists for the same event and user"
@@ -25,7 +27,7 @@ en:
         reimbursement:
           attributes:
             user:
-              incomplete: "important information is missing in the user's profile"
+              incomplete: "the following fields are missing in the user's profile: %{fields}"
             expenses:
               invalid: "are missing or invalid (some required field is probably blank in some of the expenses)"
         state_adjustment:
@@ -65,9 +67,9 @@ en:
           subject: "subject"
           request: "request"
           expense: "expense (no grouping)"
-      request:
-        one: "request"
-        other: "requests"
+      travel_sponsorship:
+        one: "travel support request"
+        other: "travel support requests"
         states:
           accepted: "by requester"
           approved: "ready for final requester's acceptance"
@@ -78,7 +80,7 @@ en:
           accepted: "The reimbursement process has started or can be started using the 'ask for reimbursement' button (if the reimbursement period is open)."
           approved: "Now the requester has to accept the conditions or roll the request back to propose different ones."
           canceled: "The request have been canceled and cannot be longer modified."
-          incomplete: "The requester must update the request with all the relevant information. Afterwards, the request must be explicitly submitted."
+          incomplete: "The requester must review all the information to ensure it is present and correct and then submit the request using the 'Action' button in the request page."
           submitted: "The request is being evaluated. The responsible people can adjust some values and approve it or can roll it back (again to incomplete state) if the requester needs to correct something."
       request_expense:
         one: "expense"
@@ -113,7 +115,7 @@ en:
         state_guides:
           approved: "The reimbursement will be now processed by the administrative to start the payment process."
           canceled: "The reimbursement has been canceled and cannot be longer modified."
-          incomplete: "The requester must update the reimbursement with all the relevant information. Afterwards, the reimbursement must be explicitly submitted."
+          incomplete: "The requester must review all the information to ensure it is present and correct and then submit the reimbursement using the 'Action' button in the reimbursement page."
           payed: "The process have ended succesfully."
           processed: "The reimbursement must be confirmed after completing the payment."
           submitted: "The reimbursement is being evaluated. It will be approved or rolled back (again to incomplete state) whether the requester needs to correct something."
@@ -126,6 +128,23 @@ en:
       payment:
         one: "payment"
         other: "payments"
+      shipment:
+        one: "shipment request"
+        other: "shipment requests"
+        states:
+          approved: "shipment authorized"
+          canceled: "no more actions allowed"
+          incomplete: "under modification, not requested"
+          submitted: "waiting for approval"
+          received: "by requester"
+          sent: "traveling"
+        state_guides:
+          approved: "It will be now sent by the shipper."
+          canceled: "The request has been canceled and cannot be longer modified."
+          incomplete: "The requester must review all the information to ensure it is present and correct and then submit the request using the 'Action' button in the request page."
+          submitted: "The request is being evaluated. It will be approved or rolled back (again to incomplete state) whether the requester needs to correct something."
+          received: "The requester has received the shipment. Final state."
+          sent: "After actually receiving it, the requester must confirm the shipment in the application."
 
     attributes:
       bank_account:
@@ -161,6 +180,7 @@ en:
         end_date: "ends at"
         reimbursement_creation_deadline: "accepting reimbursements until"
         request_creation_deadline: "accepting requests until"
+        shipment_type: "shipment type"
         budgets: "budgets"
       expense_report:
         event_country: "country"
@@ -192,6 +212,14 @@ en:
         subject: "subject"
         notes: "notes"
         file: "file"
+      postal_address:
+        name: "name"
+        line1: "line 1"
+        line2: "line 2"
+        city: "city"
+        county: "county/state"
+        postal_code: "postal code/zip"
+        country_code: "country"
       reimbursement:
         acceptance_file: "signed acceptance"
         approved_sum: "approved"
@@ -228,7 +256,7 @@ en:
         reimbursement: "reimbursement"
         title: "title"
         url: "url"
-      request:
+      travel_sponsorship:
         approved_sum: "approved"
         authorized_sum: "authorized"
         description: "description"
@@ -308,6 +336,15 @@ en:
         user_id: "user"
         website: "website"
         zip_code: "ZIP code"
+      shipment:
+        contact_phone_number: "contact phone #"
+        description: "additional notes"
+        postal_address: "delivery address"
+        event: "event"
+        event_id: "event"
+        history: "history"
+        state: "state"
+        shipment_type: "type"
 
     state_machines:
       events:
@@ -326,6 +363,8 @@ en:
         incomplete: "incomplete"
         payed: "payed"
         processed: "processed"
+        received: "received"
+        sent: "sent"
         submitted: "submitted"
       messages:
         accept_success: "Acceptance processed."
@@ -344,3 +383,5 @@ en:
         roll_back_failure: "Something went wrong. Unable to roll back."
         submit_success: "Successfully submitted."
         submit_failure: "Something went wrong. Unable to submit."
+        dispatch_success: "Succesfully dispatched."
+        dispatch_failure: "Something went wrong. Unable to dispatch."

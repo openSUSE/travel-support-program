@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: RequestsHelper
+  
+    &mdash; Documentation by YARD 0.8.7.4
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!RequestsHelper.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (R)</a> &raquo;
+    
+    
+    <span class="title">RequestsHelper</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: RequestsHelper
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">app/helpers/requests_helper.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Helpers for requests&#39; views</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reimbursement_link-instance_method" title="#reimbursement_link (instance method)">- (String) <strong>reimbursement_link</strong>(request) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Outputs the link to the reimbursement displayed in the requests list.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="reimbursement_link-instance_method">
+  
+    - (<tt>String</tt>) <strong>reimbursement_link</strong>(request) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Outputs the link to the reimbursement displayed in the requests list. If
+there is no reimbursement, it outputs the button for creating it (if
+possible).</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>request</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Request.html" title="Request (class)">Request</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>HTML output</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/requests_helper.rb', line 12</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_reimbursement_link'>reimbursement_link</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_reimbursement'>reimbursement</span>
+    <span class='id identifier rubyid_link_to'>link_to</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_label'>label</span><span class='comma'>,</span> <span class='id identifier rubyid_request_reimbursement_path'>request_reimbursement_path</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_can?'>can?</span><span class='lparen'>(</span><span class='symbol'>:create</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_build_reimbursement'>build_reimbursement</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_link_to'>link_to</span> <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='symbol'>:create_reimbursement_short</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_request_reimbursement_path'>request_reimbursement_path</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:post</span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>btn btn-mini</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>else</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>-</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Sep  5 10:35:01 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.4 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

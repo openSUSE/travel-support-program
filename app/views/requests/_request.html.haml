@@ -1,7 +1,0 @@
-= collapse_link "request_details", request.label
-%blockquote#request_details.collapse
-  = show_for request do |r|
-    = r.attribute :state do
-      = timestamped_state(request)
-    = r.attribute :description
-  .text-right= goto_link request

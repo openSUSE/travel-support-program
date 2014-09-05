@@ -42,12 +42,13 @@ module CommonHelpers
   # @param [Hash]    opt      +password+: password used for authentication
   def find_request_as(user, request, opts = {})
     sign_in_as_user(user, opts)
-    visit requests_path
+    visit travel_sponsorships_path
     # Use the event filter
-    select(request.event.name, :from => "q_event_id_eq")
+    show_bootstrap_multiselect_select("#q_event_id_in")
+    select(request.event.name, :from => "q_event_id_in")
     click_button "search"
     # Check the url to ensure that the form have been submitted
-    current_url.should match /event_id_eq/
+    current_url.should match /event_id_in/
     # If so, the request should be in the first page
     find(:xpath, "//table[contains(@class,'requests')]//tbody/tr/td[1]//a[text()='##{request.id}']").click
     page.should have_content "request"
@@ -55,6 +56,30 @@ module CommonHelpers
       page.should have_content e.subject
       page.should have_content e.description
     end
+  end
+
+  #
+  # Find a given shipment through the index view
+  #
+  # Logs in as a user, goes to the list of shipments and clicks on the given
+  # one. At the moment of calling, no user should be already signed in.
+  #
+  # @param [User]     user     User to authenticate
+  # @param [Shipment] shipemnt Shipment to look for
+  # @param [Hash]     opt      +password+: password used for authentication
+  def find_shipment_as(user, shipment, opts = {})
+    sign_in_as_user(user, opts)
+    visit shipments_path
+    # Use the event filter
+    show_bootstrap_multiselect_select("#q_event_id_in")
+    select(shipment.event.name, :from => "q_event_id_in")
+    click_button "search"
+    # Check the url to ensure that the form have been submitted
+    current_url.should match /event_id_in/
+    # If so, the shipment should be in the first page
+    find(:xpath, "//table[contains(@class,'shipments')]//tbody/tr/td[1]//a[text()='##{shipment.id}']").click
+    page.should have_content "shipment request ##{shipment.id}"
+    page.should have_content shipment.type
   end
 
   #
@@ -70,10 +95,11 @@ module CommonHelpers
     sign_in_as_user(user, opts)
     visit reimbursements_path
     # Use the event filter
-    select(reimbursement.event.name, :from => "q_request_event_id_eq")
+    show_bootstrap_multiselect_select("#q_request_event_id_in")
+    select(reimbursement.event.name, :from => "q_request_event_id_in")
     click_button "search"
     # Check the url to ensure that the form have been submitted
-    current_url.should match /request_event_id_eq/
+    current_url.should match /request_event_id_in/
     # If so, the reimbursement should be in the first page
     find(:xpath, "//table//tbody/tr/td[1]//a[text()='##{reimbursement.request.id}']").click
     page.should have_content "reimbursement"
@@ -94,6 +120,17 @@ module CommonHelpers
     page.execute_script(%Q{$("#{locator}").css('opacity', 1)})
     page.execute_script(%Q{$("#{locator}").css('transform', 'none')})
     page.execute_script(%Q{$("#{locator}").css('position', 'relative')})
+  end
+
+  #
+  # Reveals the hidden <select> bootstrap-multiselect
+  #
+  # Look for a hidden select with that match the locator and make it
+  # visible in order to be accessible to regular helpers like #select
+  #
+  # @param [String]    locator     CSS selector
+  def show_bootstrap_multiselect_select(locator)
+    page.execute_script(%Q{$("#{locator}").show()})
   end
 
   #

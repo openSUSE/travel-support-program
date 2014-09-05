@@ -3,8 +3,14 @@
 #
 class Reimbursement < ActiveRecord::Base
   include HasState
+  include HasComments
+
   # The associated request
-  belongs_to :request, :inverse_of => :reimbursement
+  belongs_to :request, :inverse_of => :reimbursement,
+                       :class_name => "ReimbursableRequest",
+                       :foreign_key => "request_id"
+  # Comments used to discuss decisions (private) or communicate with the requester (public)
+  has_many :comments, :as => :machine, :dependent => :destroy
   # The expenses of the associated request, total_amount and authorized_amount
   # will be updated during reimbursement process
   has_many :expenses, :through => :request, :autosave => false
@@ -13,8 +19,6 @@ class Reimbursement < ActiveRecord::Base
   # Links pointing to reports (ie., blog posts) regarding the requester
   # participation in the event
   has_many :links, :class_name => "ReimbursementLink", :inverse_of => :reimbursement, :dependent => :destroy
-  # Comments used to discuss decisions (private) or communicate with the requester (public)
-  has_many :comments, :as => :machine, :dependent => :destroy
   # Can have several payments, not related to the number of expenses
   has_many :payments, :inverse_of => :reimbursement, :dependent => :restrict_with_exception
   # Bank information goes to another model
@@ -31,9 +35,6 @@ class Reimbursement < ActiveRecord::Base
 
   accepts_nested_attributes_for :bank_account, :allow_destroy => false
 
-  attr_accessible :description, :request_attributes, :attachments_attributes,
-    :links_attributes, :bank_account_attributes
-
   validates :request, :presence => true
   validates_associated :expenses, :attachments, :links, :bank_account
   validates :acceptance_file, :presence => true, :if => "acceptance_file_required?"
@@ -46,6 +47,11 @@ class Reimbursement < ActiveRecord::Base
   # Synchronizes user_id and request_id
   before_validation :set_user_id
   before_validation :ensure_bank_account
+
+  # @see HasComments.allow_all_comments_to
+  allow_all_comments_to [:tsp, :assistant]
+  # @see HasComments.allow_public_comments_to
+  allow_public_comments_to [:administrative, :requester]
 
   #
   state_machine :state, :initial => :incomplete do |machine|
@@ -78,9 +84,37 @@ class Reimbursement < ActiveRecord::Base
   end
 
   # @see HasState.assign_state
+  # @see HasState.notify_state
   assign_state :incomplete, :to => :requester
+  notify_state :incomplete, :to => [:requester, :tsp, :assistant],
+                            :remind_to => :requester,
+                            :remind_after => 5.days
+
   assign_state :submitted, :to => :tsp
+  notify_state :submitted, :to => [:requester, :tsp, :assistant],
+                           :remind_after => 10.days
+
   assign_state :approved, :to => :administrative
+  notify_state :approved, :to => [:administrative, :requester, :tsp, :assistant],
+                          :remind_to => :administrative,
+                          :remind_after => 10.days
+
+  assign_state :processed
+  notify_state :processed, :to => [:administrative, :requester, :tsp, :assistant],
+                           :remind_to => :administrative,
+                           :remind_after => 20.days
+
+  notify_state :payed, :to => [:administrative, :requester, :tsp, :assistant]
+
+  notify_state :canceled, :to => [:administrative, :requester, :tsp, :assistant]
+
+  # @see HasState.allow_transition
+  allow_transition :submit, :requester
+  allow_transition :approve, :tsp
+  allow_transition :process, :administrative
+  allow_transition :confirm, :administrative
+  allow_transition :roll_back, [:requester, :administrative, :tsp]
+  allow_transition :cancel, [:requester, :tsp, :supervisor]
 
   # @see Request#expenses_sum
   def expenses_sum(*args)
@@ -94,30 +128,7 @@ class Reimbursement < ActiveRecord::Base
     else
       r_ids = reimbursements.map(&:request_id)
     end
-    Request.expenses_sum(attr, r_ids)
-  end
-
-  # Checks whether the requester should be allowed to do changes.
-  #
-  # @return [Boolean] true if allowed
-  def editable_by_requester?
-    state == 'incomplete'
-  end
-
-  # Checks whether a tsp user should be allowed to do changes.
-  #
-  # @return [Boolean] true if allowed
-  def editable_by_tsp?
-    false
-  end
-
-  # Checks whether a tsp user should be allowed to cancel
-  #
-  # No special case, simply call to #can_cancel?
-  #
-  # @return [Boolean] true if allowed
-  def cancelable_by_tsp?
-    can_cancel?
+    ReimbursableRequest.expenses_sum(attr, r_ids)
   end
 
   # Checks whether can have a transition to 'canceled' state
@@ -152,16 +163,12 @@ class Reimbursement < ActiveRecord::Base
 
   # Label to identify the reimbursement
   #
+  # Overrides the default method to use the request id instead of the internal
+  # reimbursement id.
+  #
   # @return [String] label based in the id of the associated request
   def label
     "##{request_id}"
-  end
-
-  # Title to show the request in the UI
-  #
-  # @return [String] Class name and label
-  def title
-    "#{self.class.model_name} #{label}"
   end
 
   protected
@@ -177,8 +184,9 @@ class Reimbursement < ActiveRecord::Base
 
   # Validates the existance of a complete profile
   def user_profile_is_complete
-    unless user.profile.complete?
-      errors.add(:user, :incomplete)
+    fields = user.profile.missing_fields
+    unless fields.empty?
+      errors.add(:user, :incomplete, :fields => fields.values.to_sentence )
     end
   end
 

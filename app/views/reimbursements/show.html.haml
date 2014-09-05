@@ -41,7 +41,7 @@
       = r.association :attachments do
         = reimbursement_attachments(resource)
 
-  %strong.label= Request.human_attribute_name(:expenses)
+  %strong.label= TravelSponsorship.human_attribute_name(:expenses)
   %table.table.table-condensed
     %thead#expenses_head
       %tr

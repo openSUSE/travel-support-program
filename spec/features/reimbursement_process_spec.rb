@@ -6,7 +6,7 @@ feature "Reimbursements", "" do
 
   scenario "Full reimbursement process", :js => true do
     sign_in_as_user(users(:luke))
-    visit request_path(requests(:luke_for_yavin))
+    visit travel_sponsorship_path(requests(:luke_for_yavin))
     page.should have_content "The reimbursement process has not started"
     click_link "Ask for reimbursement"
 
@@ -37,7 +37,7 @@ feature "Reimbursements", "" do
     click_button "submit"
     page.should have_content "Something went wrong. Unable to submit."
     page.should have_content "under modification, not submitted"
-    page.should have_content "Expenses are missing or invalid"
+    page.should have_content "expenses are missing or invalid"
 
     # Correct the request
     close_modal_dialog
@@ -94,7 +94,7 @@ feature "Reimbursements", "" do
     fill_in "notes", :with => "Sorry Mr. Idestroyedthedeathstar: no invoices, no money"
     click_button "roll back"
     page.should have_content "Successfully rolled back."
-    page.should have_content "requester must update the reimbursement with all the relevant information"
+    page.should have_content "requester must review all the information to ensure it is present and correct"
     page.should_not have_link "Attach signed document"
 
     # Log in as requester

@@ -1,0 +1,8 @@
+<p><%= t(:missing_reimbursement_text, :request => @request.title) %></p>
+
+<p><%= link_to(*[@url]*2) %></p>
+
+<p><%= t(:missing_reimbursement_advise) %></p>
+
+<p>--<br>
+<%= TravelSupport::Config.setting :email_footer %></p>

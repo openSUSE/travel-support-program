@@ -7,11 +7,9 @@
 # reimbursement process
 #
 class RequestExpense < ActiveRecord::Base
-  belongs_to :request, :inverse_of => :expenses
-
-  attr_accessible :request_id, :subject, :description, :estimated_amount,
-    :estimated_currency, :approved_amount, :approved_currency, :total_amount,
-    :authorized_amount
+  belongs_to :request, :inverse_of => :expenses,
+                       :class_name => "ReimbursableRequest",
+                       :foreign_key => "request_id"
 
   delegate :reimbursement, :to => :request, :prefix => false
   delegate :event, :to => :request, :prefix => false

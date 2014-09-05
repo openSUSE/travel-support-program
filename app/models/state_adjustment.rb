@@ -12,7 +12,6 @@
 # @see StateTransition
 #
 class StateAdjustment < StateChange
-  attr_accessible :to
 
   validate :state_is_changed
 

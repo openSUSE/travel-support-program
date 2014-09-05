@@ -11,7 +11,6 @@
 # @see StateAdjustment
 #
 class StateChange < ActiveRecord::Base
-  attr_accessible :machine_id, :machine_type, :notes
 
   before_validation :update_machine_state, :on => :create
   before_update :prevent_update
@@ -35,6 +34,15 @@ class StateChange < ActiveRecord::Base
   # @return [String]
   def human_action_name
     raise NotImplementedError
+  end
+
+  # Sets the machine type when assigning the association.
+  #
+  # Needed in order to STI and polymorphic assotiations to work together
+  # according to
+  # http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html
+  def machine_type=(class_name)
+    super(class_name.constantize.base_class.to_s)
   end
 
   protected

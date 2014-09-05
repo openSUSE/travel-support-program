@@ -1,0 +1,7 @@
+= collapse_link "request_details", travel_sponsorship.title
+%blockquote#request_details.collapse
+  = show_for travel_sponsorship do |r|
+    = r.attribute :state do
+      = timestamped_state(travel_sponsorship)
+    = r.attribute :description
+  %div= goto_link travel_sponsorship

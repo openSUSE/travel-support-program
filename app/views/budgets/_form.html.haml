@@ -4,7 +4,7 @@
     = f.input :description
     = f.input :amount
     = f.input :currency, :collection => currencies_for_select(:approved)
-    = f.association :events
+    = f.association :events, :input_html => {:data => {'enable-filtering' => true}}
 
   .form-actions
     = f.button :submit, :class => 'btn-primary'

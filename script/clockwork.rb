@@ -4,12 +4,8 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..', 'config', 'envi
 
 module Clockwork
   every(1.day, 'notify.pending') do
-    date = TravelSupport::Config.setting(:days_for_reminder)
-    unless date.blank?
-      date = date.to_i.days.ago
-      Request.notify_inactive_since date
-      Reimbursement.notify_inactive_since date
-    end
+    Request.notify_inactive
+    Reimbursement.notify_inactive
 
     end_threshold = TravelSupport::Config.setting(:reimbursement_reminder, :days_after_event)
     deadline_threshold = TravelSupport::Config.setting(:reimbursement_reminder, :days_before_deadline)

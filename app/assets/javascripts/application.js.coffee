@@ -33,8 +33,12 @@ window.init_page = ->
   $('.tab-trigger').click ->
     $(this).tab('show')
 
-  $('select[multiple]').multiselect
-    enableFiltering: true
+  $('select[multiple]').each ->
+    $(this).multiselect
+      enableCaseInsensitiveFiltering: $(this).data('enable-filtering')
+      numberDisplayed: $(this).data('number-displayed')
+      nonSelectedText: $(this).data('non-selected-text')
+      nSelectedText: $(this).data('n-selected-text')
 
 window.build_dialog = (selector, content) ->
   # Close it and remove content if it's already open

@@ -33,6 +33,35 @@ class Ability
     can [:read, :create], Event
     role = user.find_profile.role_name
 
+    machines = [TravelSponsorship, Reimbursement, Shipment]
+    machines.each do |machine|
+      # For all roles, transitions are possible if the state machine allows them
+      # (can_foo?) and if the role is authorized (allow_foo?)
+      machine.transitions.each do |action|
+        can action, machine do |m|
+          # requesters must, in addition, own the state machine
+          if role == "requester"
+            m.user == user && m.send("can_#{action}?") && m.send("allow_#{action}?", role)
+          else
+            m.send("can_#{action}?") && m.send("allow_#{action}?", role)
+          end
+        end
+      end
+
+      # Comments
+      conds = {:machine_type => machine.base_class.to_s}
+      machine_conds = {}
+      machine_conds[:type] = machine.to_s if machine.superclass != ActiveRecord::Base
+      machine_conds[:user_id] = user.id if role == "requester"
+      conds[:machine] = machine_conds unless machine_conds.empty?
+      if machine.allow_private_comments?(role)
+        can [:read, :create], Comment, conds
+      elsif machine.allow_public_comments?(role)
+        can [:read, :create], Comment, conds.merge(:private => false)
+      end
+    end
+
+
     #
     # Requesters (regular users) permissions
     # --------------------------------------
@@ -46,26 +75,19 @@ class Ability
         e.editable_by_requesters? && e.can_be_destroyed?
       end
 
-      # Requests
-      can :create, Request do |r|
+      # TravelSponsorships
+      can :create, TravelSponsorship do |r|
         r.event && r.event.accepting_requests?
       end
       can :create, RequestExpense do |e|
-        e.request && e.request.editable_by_requester? && e.request.user == user
+        e.request && e.request.editable? && e.request.user == user
       end
-      can :read, Request, :user_id => user.id
-      can :update, Request do |r|
-        r.user == user && r.editable_by_requester?
+      can :read, TravelSponsorship, :user_id => user.id
+      can :update, TravelSponsorship do |r|
+        r.user == user && r.editable?
       end
-      can :destroy, Request do |r|
+      can :destroy, TravelSponsorship do |r|
         r.user == user && r.can_be_destroyed?
-      end
-      # Requester can manage his own requests, but only in the way that
-      # state_machine allows to do it
-      [:accept, :submit, :roll_back, :cancel].each do |action|
-        can action, Request do |r|
-          r.user == user && r.send("can_#{action}?")
-        end
       end
 
       # Reimbursements
@@ -74,12 +96,7 @@ class Ability
       end
       can :read, Reimbursement, :user_id => user.id
       can :update, Reimbursement do |r|
-        r.user == user && r.editable_by_requester?
-      end
-      [:submit, :roll_back, :cancel].each do |action|
-        can action, Reimbursement do |r|
-          r.user == user && r.send("can_#{action}?")
-        end
+        r.user == user && r.editable?
       end
 
       # Reimbursement's attachments
@@ -87,7 +104,7 @@ class Ability
         a.reimbursement.user == user
       end
       can [:create, :update, :destroy], ReimbursementAttachment do |a|
-        a.reimbursement.user == user && a.reimbursement.editable_by_requester?
+        a.reimbursement.user == user && a.reimbursement.editable?
       end
 
       # Reimbursement's bank account
@@ -95,25 +112,22 @@ class Ability
         a.reimbursement.user == user
       end
       can [:create, :update], BankAccount do |a|
-        a.reimbursement.user == user && a.reimbursement.editable_by_requester?
+        a.reimbursement.user == user && a.reimbursement.editable?
       end
 
       # Reimbursement's payments
       can :read, Payment, :reimbursement => {:user_id => user.id}
 
-      # Comments
-      if Comment.private_role?(role)
-        # Not suitable for fetching
-        can [:read, :create], Comment do |c|
-          c.machine.user == user
-        end
-      else
-        # Allows fetching other user's comments, but is not a real problem with
-        # the current implementation (comments are always fetched in the scope
-        # of a request or reimbursement)
-        can [:read, :create], Comment, Comment.public do |c|
-          c.machine.user == user && c.public?
-        end
+      # Shipments
+      can :create, Shipment do |s|
+        s.event && s.event.accepting_shipments?
+      end
+      can :read, Shipment, :user_id => user.id
+      can :update, Shipment do |s|
+        s.user == user && s.editable?
+      end
+      can :destroy, Shipment do |s|
+        s.user == user && s.can_be_destroyed?
       end
 
       # Expenses Reports
@@ -138,35 +152,11 @@ class Ability
         e.can_be_destroyed?
       end
 
-      # Requests
-      can :read, Request
-      can :update, Request do |r|
-        r.editable_by_tsp?
-      end
-      can :cancel, Request do |r|
-        r.cancelable_by_tsp?
-      end
-      # TSP members can approve and roll back any request, but only when
-      # state_machines allows to do it
-      [:approve, :roll_back].each do |action|
-        can action, Request do |r|
-          r.send("can_#{action}?")
-        end
-      end
+      # TravelSponsorships
+      can :read, TravelSponsorship
 
       # Reimbursements
       can :read, Reimbursement
-      can :update, Reimbursement do |r|
-        r.editable_by_tsp?
-      end
-      can :cancel, Reimbursement do |r|
-        r.cancelable_by_tsp?
-      end
-      [:approve, :roll_back].each do |action|
-        can action, Reimbursement do |r|
-          r.send("can_#{action}?")
-        end
-      end
 
       # Reimbursement's attachments
       can :read, ReimbursementAttachment
@@ -174,15 +164,6 @@ class Ability
       can :read, BankAccount
       # Reimbursement's payments
       can :read, Payment
-
-      # Comments
-      if Comment.private_role?(role)
-        can [:read, :create], Comment
-      else
-        can [:read, :create], Comment, Comment.public do |c|
-          c.public?
-        end
-      end
 
       # Expenses Reports
       can :read, ExpenseReport
@@ -207,7 +188,7 @@ class Ability
       end
 
       # Requests
-      can :read, Request
+      can :read, TravelSponsorship
 
       # Reimbursements
       can :read, Reimbursement
@@ -218,15 +199,6 @@ class Ability
       can :read, BankAccount
       # Reimbursement's payments
       can :read, Payment
-
-      # Comments
-      if Comment.private_role?(role)
-        can [:read, :create], Comment
-      else
-        can [:read, :create], Comment, Comment.public do |c|
-          c.public?
-        end
-      end
 
       # Expenses Reports
       can :read, ExpenseReport
@@ -247,16 +219,11 @@ class Ability
       # User profiles
       can :read, UserProfile
 
-      # Requests
-      can :read, Request
+      # TravelSponsorships
+      can :read, TravelSponsorship
 
       # Reimbursements
       can :read, Reimbursement
-      [:process, :roll_back, :confirm].each do |action|
-        can action, Reimbursement do |r|
-          r.send("can_#{action}?")
-        end
-      end
 
       # Reimbursement's attachments
       can :read, ReimbursementAttachment
@@ -264,15 +231,6 @@ class Ability
       can :read, BankAccount
       # Reimbursement's payments
       can [:read, :create, :update, :destroy], Payment
-
-      # Comments
-      if Comment.private_role?(role)
-        can :read, Comment
-      else
-        can :read, Comment, Comment.public do |c|
-          c.public?
-        end
-      end
 
     #
     # Supervisors permissions
@@ -291,22 +249,14 @@ class Ability
         e.can_be_destroyed?
       end
 
-      # Requests
-      can :read, Request
-      # Supervisors can cancel any request, if possible
-      can :cancel, Request do |r|
-        r.can_cancel?
-      end
-      # Or even create state adjustments
-      can :adjust_state, Request
+      # TravelSponsorships
+      can :read, TravelSponsorship
+      # Can create state adjustments
+      can :adjust_state, TravelSponsorship
 
       # Reimbursements
       can :read, Reimbursement
-      # Supervisors can cancel any reimbursement, if possible
-      can :cancel, Reimbursement do |r|
-        r.can_cancel?
-      end
-      # Or even create state adjustments
+      # Can create state adjustments
       can :adjust_state, Reimbursement
 
       # Reimbursement's attachments
@@ -316,11 +266,49 @@ class Ability
       # Reimbursement's payments
       can :read, Payment
 
+      # Shipments
+      can :read, Shipment
+      # Or even create state adjustments
+      can :adjust_state, Shipment
+
       # Comments
       can [:read, :create], Comment
 
       # Expenses Reports
       can :read, ExpenseReport
+
+    #
+    # Material manager permissions
+    # ----------------------------
+    #
+    elsif role == "material"
+      # User profiles
+      can :read, UserProfile
+
+      # Events
+      can [:update, :validate], Event
+      can :destroy, Event do |e|
+        e.can_be_destroyed?
+      end
+
+      # Shipments
+      can :read, Shipment
+
+    #
+    # Shipper permissions
+    # -------------------
+    #
+    elsif role == "shipper"
+      # Events
+      can :update, Event do |e|
+        e.editable_by_requesters?
+      end
+      can :destroy, Event do |e|
+        e.editable_by_requesters? && e.can_be_destroyed?
+      end
+
+      # Shipments
+      can :read, Shipment
 
     end
   end

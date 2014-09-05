@@ -11,7 +11,7 @@ feature "Reimbursement authorized amount", "" do
 
     # Let's create the reimbursement...
     sign_in_as_user(users(:luke))
-    visit request_path(requests(:luke_for_yavin))
+    visit travel_sponsorship_path(requests(:luke_for_yavin))
     click_link "Ask for reimbursement"
 
     # ...and take a look to the form

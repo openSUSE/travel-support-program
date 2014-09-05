@@ -14,15 +14,11 @@ class User < ActiveRecord::Base
   if TravelSupport::Config.setting(:authentication, :database, :enabled)
     devise_modules += [:database_authenticatable, :registerable, :recoverable,
       :rememberable, :trackable, :validatable]
-
-    attr_accessible :password, :password_confirmation, :remember_me, :reset_password_token
   end
 
   devise *devise_modules
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email
-  attr_accessible :nickname, :locale
   # Associated object with all information not directly related to authentication
   has_one :profile, :class_name => "UserProfile"
   # Requests created by the user

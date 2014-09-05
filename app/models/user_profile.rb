@@ -17,11 +17,6 @@ class UserProfile < ActiveRecord::Base
     self.attributes = connect_attrib_values
   end
 
-  attr_accessible :country_code, :full_name, :location, :passport,
-    :alternate_id_document, :birthday, :phone_number, :second_phone_number,
-    :website, :blog, :description, :user_role_id,
-    :postal_address, :zip_code
-
   delegate :name, :to => :role, :prefix => true, :allow_nil => true
 
   validates :role_id, :presence => true
@@ -75,18 +70,16 @@ class UserProfile < ActiveRecord::Base
     not UserProfile::FROM_OPENSUSE_CONNECT.keys.include?(attrib.to_sym)
   end
 
-  # Checks whether all the fields that are required for processing
-  # reimbursements are present. The list of fields is set as a configuration
-  # parameter for the application.
+  # List of fields that are required for processing reimbursements but are
+  # not present. The list of fields is set as a configuration parameter for
+  # the application.
   #
-  # @return [Boolean] true unless some of the required attributes is missing
-  def complete?
+  # @return [Hash] hash with the name of the fields as keys and its
+  #             human-readable names as values
+  def missing_fields
     fields = TravelSupport::Config.setting(:relevant_profile_fields)
-    return true if fields.blank?
-    fields.each do |f|
-      return false if send(f.to_sym).blank?
-    end
-    true
+    fields = fields.select {|f| send(f.to_sym).blank? }
+    Hash[fields.map {|f| [f, self.class.human_attribute_name(f)] }]
   end
 
   protected

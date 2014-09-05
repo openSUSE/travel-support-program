@@ -1,0 +1,68 @@
+- model_class = TravelSponsorship
+= content_for :page_header do
+  .row-fluid
+    .span7
+      %h1= t('.title', :default => model_class.model_name.human) + " #{resource.label}"
+    .span5
+      %br
+      = state_change_links(@request)
+      - if can? :edit, @request
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_travel_sponsorship_path(@request), :class => 'btn'
+      - if can? :approve, @request
+        = link_to t(:set_approved), edit_travel_sponsorship_expenses_approval_path(@request), :class => 'btn'
+      - if can? :destroy, @request
+        = link_to t('.destroy', :default => t("helpers.links.destroy")), travel_sponsorship_path(@request), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn'
+      - if @request.lacks_reimbursement?
+        -# Protect the rest of the template from the side effect of build_reimbursement
+        - reimb = @request.reimbursement
+        - if can?(:create, @request.build_reimbursement)
+          = link_to t(:create_reimbursement), request_reimbursement_path(@request), :method => :post, :class => 'btn'
+        - @request.reimbursement = reimb
+
+= show_for @request do |r|
+  .row-fluid
+    .span6
+      = r.attribute :state do
+        = state_info(r.object)
+        %div.alert-info= @request.human_state_guide
+      = r.attribute :visa_letter if @request.visa_letter_allowed?
+    .span6
+      = r.association :event do
+        = render @request.event
+      = r.association :user do
+        = render @request.user
+      - if @request.reimbursement && !@request.reimbursement.new_record?
+        = r.association :reimbursement do
+          = render @request.reimbursement
+      - elsif @request.can_have_reimbursement?
+        = r.association :reimbursement do
+          = t(:no_reimbursement_yet)
+      - elsif !@request.event.accepting_reimbursements?
+        = r.association :reimbursement do
+          = t(:not_accepting_reimbursements)
+          = content_tag(:span, "!", :class => "badge badge-info")
+  .row-fluid
+    .span12
+      = r.attribute :description
+
+  %strong.label= TravelSponsorship.human_attribute_name(:expenses)
+  %table.table.table-condensed
+    %thead
+      %tr
+        %th= RequestExpense.human_attribute_name(:subject)
+        %th= RequestExpense.human_attribute_name(:description)
+        %th= RequestExpense.human_attribute_name(:estimated_amount)
+        %th= RequestExpense.human_attribute_name(:approved_amount)
+    %tbody#expenses
+      - @request.expenses.each do |expense|
+        %tr
+          %td= expense.subject
+          %td= expense.description
+          %td= number_to_currency(expense.estimated_amount, :unit => expense.estimated_currency)
+          %td= number_to_currency(expense.approved_amount, :unit => expense.approved_currency)
+
+  = r.attribute :history do
+    = render :partial => "history"
+    - if can?(:create, @request.comments.build)
+      = link_to(t(:create_comment), resource_path + "/comments/new.js", :remote => true, :class => 'btn btn-small')
+

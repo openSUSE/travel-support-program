@@ -37,7 +37,7 @@
           = b.input :bank_postal_address
 
   .form-inputs.form-inline
-    %strong.label= Request.human_attribute_name(:links)
+    %strong.label= TravelSponsorship.human_attribute_name(:links)
     - unless resource.errors[:links].empty?
       .alert.alert-inline.alert-error= resource.links.map {|e| e.errors.full_messages}.uniq.join("; ")
     %table.table.table-condensed
@@ -53,7 +53,7 @@
           %td= link_to_add_association t(:add_link), f, :links, "data-association-insertion-node" => "#links_links"
 
   .form-inputs.form-inline
-    %strong.label= Request.human_attribute_name(:attachments)
+    %strong.label= TravelSponsorship.human_attribute_name(:attachments)
     - unless resource.errors[:attachments].empty?
       .alert.alert-inline.alert-error= resource.attachments.map {|e| e.errors.full_messages}.uniq.join("; ")
     %table.table.table-condensed

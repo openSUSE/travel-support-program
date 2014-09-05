@@ -1,0 +1,32 @@
+- model_class = Shipment
+= content_for :page_header do
+  %h1= t('.title', :default => model_class.model_name.human(count: 2))
+
+.navbar
+  .navbar-inner
+    = search_form_for @q, :class => "navbar-form pull-right" do |f|
+      - s_opts = {'non-selected-text' => t(:events_any), 'number-displayed' => 2, 'n-selected-text' => t(:events_n) }
+      = f.collection_select :event_id_in, Event.all, :id, :name, {}, :multiple => true, :class => "input-large", :data => s_opts
+      - s_opts = {'non-selected-text' => t(:states_any), 'number-displayed' => 2, 'n-selected-text' => t(:states_n) }
+      = f.select :state_in, @states_collection, {}, :multiple => true, :class => "input-medium", :data => s_opts
+      = f.submit t(:search), :class => "btn"
+      = link_to t(:reset_search), collection_path, :class => "btn"
+
+%table.table.table-striped.shipments
+  %thead
+    %tr
+      %th= sort_link(@q, :id)
+      %th= model_class.human_attribute_name(:user)
+      %th= model_class.human_attribute_name(:event)
+      %th= model_class.human_attribute_name(:shipment_type)
+      %th= sort_link(@q, :state)
+  %tbody
+    - collection.each do |resource|
+      %tr{:id => "shipment-#{resource.id}"}
+        %td.id= link_to "#{resource.label}", resource
+        %td.user= resource.user.try(:title)
+        %td.event= resource.event.try(:name)
+        %td.shipment_type= resource.shipment_type
+        %td.state= timestamped_state(resource)
+
+= paginate collection

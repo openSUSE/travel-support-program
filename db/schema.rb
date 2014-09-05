@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140515105850) do
+ActiveRecord::Schema.define(version: 20140825120840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 20140515105850) do
     t.datetime "request_creation_deadline"
     t.datetime "reimbursement_creation_deadline"
     t.integer  "budget_id"
+    t.string   "shipment_type"
   end
 
   add_index "events", ["budget_id"], name: "index_events_on_budget_id", using: :btree
@@ -137,6 +138,18 @@ ActiveRecord::Schema.define(version: 20140515105850) do
     t.string   "file"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+  end
+
+  create_table "postal_addresses", force: true do |t|
+    t.string   "line1"
+    t.string   "line2"
+    t.string   "city"
+    t.string   "postal_code"
+    t.string   "county"
+    t.string   "country_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "reimbursement_attachments", force: true do |t|
@@ -182,16 +195,21 @@ ActiveRecord::Schema.define(version: 20140515105850) do
 
   create_table "requests", force: true do |t|
     t.string   "state"
-    t.integer  "user_id",          null: false
-    t.integer  "event_id",         null: false
+    t.integer  "user_id",              null: false
+    t.integer  "event_id",             null: false
     t.text     "description"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.datetime "state_updated_at"
     t.boolean  "visa_letter"
+    t.integer  "postal_address_id"
+    t.string   "contact_phone_number"
+    t.string   "type"
   end
 
   add_index "requests", ["event_id"], name: "index_requests_on_event_id", using: :btree
+  add_index "requests", ["postal_address_id"], name: "index_requests_on_postal_address_id", using: :btree
+  add_index "requests", ["type"], name: "index_requests_on_type", using: :btree
   add_index "requests", ["user_id"], name: "index_requests_on_user_id", using: :btree
 
   create_table "state_changes", force: true do |t|

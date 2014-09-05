@@ -2,23 +2,47 @@ wedge_for_yavin:
   state: "canceled"
   user: wedge
   event: yavin_hackaton
+  state_updated_at: <%= 30.days.ago + 12.hours %>
+  type: "TravelSponsorship"
 
 luke_for_yavin:
   state: "accepted"
   user: luke
   event: yavin_hackaton
+  state_updated_at: <%= 30.days.ago + 5.hours %>
+  type: "TravelSponsorship"
 
 wedge_for_party:
   state: "submitted"
   user: wedge
   event: party
+  state_updated_at: <%= 9.days.ago %>
+  type: "TravelSponsorship"
 
 luke_for_party:
   state: "incomplete"
   user: luke
   event: party
+  created_at: <%= 6.days.ago %>
+  type: "TravelSponsorship"
 
 wedge_for_training:
   state: "accepted"
   user: wedge
   event: training
+  state_updated_at: <%= 40.days.ago + 5.hours %>
+  type: "TravelSponsorship"
+
+wedge_customes_for_party:
+  state: "submitted"
+  user: wedge
+  event: party
+  state_updated_at: <%= 11.days.ago %>
+  type: "Shipment"
+
+luke_customes_for_party:
+  state: "incomplete"
+  user: luke
+  event: party
+  created_at: <%= 4.days.ago %>
+  type: "Shipment"

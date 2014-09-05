@@ -30,11 +30,11 @@ describe CommentMailer do
     end
 
     it "should not include private note" do
-      @mails.last.body.encoded.should_not include Comment.private_hint
+      @mails.last.body.encoded.should_not include TravelSponsorship.private_comment_hint
     end
 
     it "should include request url in the mail body" do
-      @mails.first.body.encoded.should match "http.+/requests/#{@request.id}"
+      @mails.first.body.encoded.should match "http.+/travel_sponsorships/#{@request.id}"
     end
   end
 
@@ -51,7 +51,7 @@ describe CommentMailer do
     end
 
     it "should include private note" do
-      @mails.first.body.encoded.should include Comment.private_hint
+      @mails.first.body.encoded.should include TravelSponsorship.private_comment_hint
     end
 
     it "should mail tsp and assistant, but not requester" do
@@ -103,6 +103,50 @@ describe CommentMailer do
           @mails.map(&:to).flatten.should include @user.email
           @mails.map(&:to).flatten.should_not include @wedge.email
         end
+      end
+    end
+  end
+
+  context "adding a public comment to a shipment" do
+    before(:each) do
+      @user = users(:wedge)
+      @material = users(:material)
+      @shipment = requests(:wedge_customes_for_party)
+      @body = "I'm planning to use one of the customes to dress Chewbacca up."
+      @mcount = ActionMailer::Base.deliveries.size
+      comment = @shipment.comments.build(:body => @body)
+      comment.user = @user
+      comment.save!
+      @mails = ActionMailer::Base.deliveries[-2..-1]
+    end
+
+    it "should mail requester and material manager" do
+      ActionMailer::Base.deliveries.size.should == @mcount + 2
+      @mails.map(&:to).flatten.should include @user.email
+      @mails.map(&:to).flatten.should include @material.email
+    end
+
+    it "should not include private note" do
+      @mails.last.body.encoded.should_not include Shipment.private_comment_hint
+    end
+    
+    context "adding a private comment to a shipment" do
+      before(:each) do
+        @body = "This guy is stupid."
+        comment = @shipment.comments.build(:body => @body, :private => true)
+        comment.user = @material
+        comment.save!
+        @mail = ActionMailer::Base.deliveries.last
+      end
+
+      it "should only mail material managers" do
+        ActionMailer::Base.deliveries.size.should == @mcount + 3
+        @mail.to.should_not include @user.email
+        @mail.to.should include @material.email
+      end
+
+      it "should include private note" do
+        @mail.body.encoded.should include Shipment.private_comment_hint
       end
     end
   end

@@ -6,7 +6,7 @@
 </p>
 
 <% if @comment.private %>
-  <p><b><%= t(:private_comment_label) %></b> <%= Comment.private_hint %></p>
+  <p><b><%= t(:private_comment_label) %></b> <%= @machine.class.private_comment_hint %></p>
 <% end %>
 
 <p><%= @comment.body %></p>

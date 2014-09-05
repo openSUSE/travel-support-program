@@ -26,3 +26,11 @@ assistant:
   email: "gial.ackbar@rebel-alliance.org"
   nickname: "acalamari"
   encrypted_password: "$2a$10$9avVKOmjbCWh0m5p/frG7uX3S0LbF8ZtRS/QocBkmXiiDbh9.bKsq"
+material:
+  email: "yos.kolina@rebel-alliance.org"
+  nickname: "moncala_ruler"
+  encrypted_password: "$2a$10$9avVKOmjbCWh0m5p/frG7uX3S0LbF8ZtRS/QocBkmXiiDbh9.bKsq"
+shipper:
+  email: "dd-19.a1@droids.com"
+  nickname: "DD-19.A1"
+  encrypted_password: "$2a$10$9avVKOmjbCWh0m5p/frG7uX3S0LbF8ZtRS/QocBkmXiiDbh9.bKsq"

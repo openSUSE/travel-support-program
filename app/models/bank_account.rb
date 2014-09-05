@@ -3,8 +3,6 @@
 # Defined as a separate model in the shake of cleanest.
 #
 class BankAccount < ActiveRecord::Base
-  attr_accessible :holder, :bank_name, :iban, :bic, :national_bank_code, :format,
-          :national_account_code, :country_code, :bank_postal_address
 
   # The associated reimbursement
   belongs_to :reimbursement, :inverse_of => :bank_account

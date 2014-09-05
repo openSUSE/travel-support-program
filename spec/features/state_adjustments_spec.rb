@@ -13,7 +13,7 @@ feature "State adjustments", "" do
     click_button "Create state adjustment"
 
     page.should have_content "The state has been changed"
-    within(".request_state") do
+    within(".travel_sponsorship_state") do
       page.should have_content "canceled"
     end
   end

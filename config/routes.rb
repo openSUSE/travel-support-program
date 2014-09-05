@@ -4,17 +4,31 @@ TravelSupport::Application.routes.draw do
                       :ichain_registrations => "ichain_registrations"},
     :failure_app => Devise::IchainFailureApp
 
+  concern :state_machine do
+    resources :state_transitions, :only => [:new, :create]
+    resources :state_adjustments, :only => [:new, :create]
+  end
+
+  concern :commentable do
+    resources :comments, :only => [:new, :create]
+  end
+
   resources :events
   resources :budgets
 
-  resources :requests do
-    resources :state_transitions, :only => [:new, :create]
-    resources :state_adjustments, :only => [:new, :create]
-    resources :comments, :only => [:new, :create]
-    resource :reimbursement do
-      resources :state_transitions, :only => [:new, :create]
-      resources :state_adjustments, :only => [:new, :create]
-      resources :comments, :only => [:new, :create]
+  resources :travel_sponsorships,
+            :concerns => [:state_machine, :commentable],
+            :defaults => {:machine => 'travel_sponsorship'} do
+    resource :expenses_approval, :only => [:edit, :update]
+  end
+
+  resources :shipments,
+            :concerns => [:state_machine, :commentable],
+            :defaults => {:machine => 'shipment'}
+
+  # Keep index and show as smart redirections for backwards compatibility
+  resources :requests, :only => [:index, :show] do
+    resource :reimbursement, :concerns => [:state_machine, :commentable], :defaults => {:machine => 'reimbursement'} do
       resources :attachments, :only => [:show], :controller => :reimbursement_attachments
       resource  :acceptance, :only => [:new, :create, :show], :controller => :reimbursement_acceptances
       resources :payments, :except => [:show, :index] do

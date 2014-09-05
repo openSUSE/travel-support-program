@@ -175,10 +175,10 @@ module ApplicationHelper
   # This helper deals with the singleton issues in the reimbursement routes
   # definition.
   def machine_url(machine)
-    if machine.kind_of?(Request)
-      request_url(machine)
-    else
+    if machine.kind_of?(Reimbursement)
       request_reimbursement_url(machine.request)
+    else
+      send(:"#{machine.class.model_name.element}_url", machine)
     end
   end
 
@@ -194,10 +194,10 @@ module ApplicationHelper
     states = machine_class.states_assigned_to(role)
     # FIXME: requesters are also an special case nowadays. Let's look for a
     # better solution afterward.
-    if !current_role?(:requester) && states.size == 1
-      send(helper, :q => {:state_eq => states.first})
-    else
+    if current_role?(:requester) || states.blank?
       send helper
+    else
+      send(helper, :q => {:state_in => states})
     end
   end
 

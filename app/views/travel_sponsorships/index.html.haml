@@ -1,0 +1,54 @@
+- model_class = TravelSponsorship
+= content_for :page_header do
+  %h1= t('.title', :default => model_class.model_name.human(count: 2))
+
+.navbar
+  .navbar-inner
+    = search_form_for @q, :class => "navbar-form pull-right" do |f|
+      - s_opts = {'non-selected-text' => t(:events_any), 'number-displayed' => 2, 'n-selected-text' => t(:events_n) }
+      = f.collection_select :event_id_in, Event.all, :id, :name, {}, :multiple => true, :class => "input-large", :data => s_opts
+      - s_opts = {'non-selected-text' => t(:states_any), 'number-displayed' => 2, 'n-selected-text' => t(:states_n) }
+      = f.select :state_in, request_states_collection, {}, :multiple => true, :class => "input-medium", :data => s_opts
+      = f.submit t(:search), :class => "btn"
+      = link_to t(:reset_search), collection_path, :class => "btn"
+
+%table.table.table-striped.requests
+  %thead
+    %tr
+      %th= sort_link(@q, :id)
+      %th= model_class.human_attribute_name(:user)
+      %th= model_class.human_attribute_name(:event)
+      %th= model_class.human_attribute_name(:estimated_sum)
+      %th= model_class.human_attribute_name(:approved_sum)
+      %th= sort_link(@q, :state)
+      %th= model_class.human_attribute_name(:reimbursement)
+  %tbody
+    - collection.each do |request|
+      %tr{:id => "request-#{request.id}"}
+        %td.id= link_to "#{request.label}", travel_sponsorship_path(request)
+        %td.user= request.user.try(:title)
+        %td.event= request.event.try(:name)
+        %td.estimated= expenses_sum(request, :estimated)
+        %td.approved= expenses_sum(request, :approved)
+        %td.state= timestamped_state(request)
+        %td.reimbursement= reimbursement_link(request)
+  %tfoot
+    - if @all_requests.size > @requests.size
+      %tr
+        %td
+        %td
+        %th.text-right= t(:page_total)
+        %td= expenses_sum(@all_requests, :estimated)
+        %td= expenses_sum(@all_requests, :approved)
+        %td
+        %td
+    %tr
+      %td
+      %td
+      %th.text-right= t(:full_total)
+      %td= expenses_sum(@requests, :estimated)
+      %td= expenses_sum(@requests, :approved)
+      %td
+      %td
+
+= paginate collection
