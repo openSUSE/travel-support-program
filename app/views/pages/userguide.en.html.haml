@@ -5,104 +5,132 @@
 
 %p
   The goal of this web based application is to offer a convenient way of managing
-  the requests and reimbursements from travel help programs of free software
-  organizations like the openSUSE Travel Support Program, the GNOME&#39;s Conference
-  Travel Subsidy Program or the KDE e.V. Travel Cost Reimbursement initiative.
+  the requests from travel sponsorship and marketing materials programs of free
+  software organizations. Although been developed initially for managing the
+  openSUSE Travel Support Program and the shipment of openSUSE's booth boxes,
+  the workflow of requests and reimbursements can be changed to fulfill the needs
+  of any organization. This document shows workflow diagrams automatically
+  generated from the current configuration.
+
+
+%h2 Personal information
 
 %p
-  Although been developed initially at the openSUSE Team at SUSE, the goal is to
-  write a generic application including all the common features so it can be extended
-  and adapted to fulfill the needs of any organization. As a result, the workflow
-  of requests and reimbursement processes can change. This document shows
-  workflow diagrams automatically generated from the current configuration.
-
-%h2 Applying for support
-
-%p
-  The whole process happens in the context of an event. In the
-  =link_to "events list", events_path
-  you can see open events accepting sponsorship requests. Depending of the permissions
-  configuration, you will be able to create new events or only to apply to
-  previously existing events. You can click in the event name to access to the
-  general view of the event, which includes an &#39;apply&#39; button/link. Clicking on it
-  creates a new &#39;request&#39;.
-
-%p
-  You should fulfill all the information in the request form. The most important
-  information is probably the &#39;expenses&#39; section, which describes how are you
-  planning to spend the money. You can add as many expenses as needed, specifying
-  the amount you are planning to spend on every one using the &#39;estimated
-  amount/currency&#39; column. Sometimes you will know the
-  exact amount in advance and sometimes you will have to do an estimation.
-  Once you get a reply from the Travel Support Program managers, you will see real
-  approved amount for every expense in the &#39;approved amount&#39; column. If you
-  finally accept the proposal,
-  %strong you will only get the approved amount, not the estimated one.
-  Keep this in mind.
-
-%p
-  You can save the request at any moment and edit it later, since it will be always
-  available in
-  = link_to "your requests list.", travel_sponsorships_path
-  One important note: creating, editing or saving your request DOES NOT send it to the
-  Travel Support Program managers. As long as the request state is &#39;incomplete&#39;,
-  it will be under your own control until you decide to change the state by using one
-  of the options in the &#39;action&#39; dropdown button.
-
-%p
-  Understanding the &#39;state&#39; field is the key for using the whole system since the
-  interaction between applicants, Travel Support Program members and other
-  individuals is performed by means of &#39;actions&#39; which
-  change the &#39;state&#39; of the request, always following the workflow diagram below.
-  = image_tag "Request_state.png", :alt => "Request workflow diagram"
-
-%p
-  Everytime somebody changes the state of a request, he/she can write a message
-  explaining the reason of the change. Both the applicant and the Travel Support
-  Program members will be notified by mail. As and applicant, your goal should be
-  to reach the &#39;accepted&#39; state. The state also determines who can modify the
-  request. For example, you will be able to change your request information while
-  it&#39;s on &#39;incomplete&#39; state, but only Travel Support Program members can change
-  requests in &#39;submited&#39; state.
-
-%h2 Asking for reimbursement
-
-%p
-  When the event is over, you can go to your accepted request and click the &#39;ask for
-  reimbursement&#39; button. It will create a new reimbursement, which is quite similar
-  to a request but includes more fields and have a slightly different workflow.
-  The new reimbursement will be added to
-  = link_to "your reimbursements list", reimbursements_path
-  at the left menu.
-
-%p
-  The main operation is almost identical to the requests, with fields for describing
-  your activities, for providing your bank information and the final real amount for
-  every expense, for attaching the corresponding invoices or any other relevant files
-  and for linking to your reports. Before submiting the reimbursement, make sure that
-  the personal information in
+  First of all, people responsible of the materials and the money need to
+  know who are supporting, so make sure that the personal information in
   - if user_signed_in?
     = link_to "your profile", profile_path
   - else
     your profile
-  is up to date by clicking on your username, in the top right corner of the page,
-  next to the &#39;log out&#39; link.
+  is up to date. Logged users can reach their profile by clicking in the
+  corresponding option in the main menu or in their own username at the
+  top right corner of the page, next to the &#39;log out&#39; link.
 
 - if TravelSupport::Config.setting :opensuse_connect, :enabled
-  %p
-    Some of the information in the profile cannot be entered directly in the
-    application. That information is read from
-    = link_to "openSUSE Connect", TravelSupport::Config.setting(:opensuse_connect, :base_url)
-    and should be updated in the Connect profile of the user.
+  Some of the information in the profile cannot be entered directly in the
+  application. That information is read from
+  = link_to "openSUSE Connect", TravelSupport::Config.setting(:opensuse_connect, :base_url)
+  and should be updated in the Connect profile of the user.
+
+%h2 Applying for travel sponsorship or requesting materials
 
 %p
-  The full workflow for a reimbursement is displayed below. The last states correspond to
-  administrative steps related to the payment.
-  There is an additional requirement for submitting reimbursements compared to submitting
-  requests. You need to upload a signed
-  version of the reimbursement. That means printing (click on &#39a;download printable
-  version&#39;), signing with a pen, scanning the result and uploading it (click on
-  &#39;attach signed document&#39;). If you already did it but your reimbursement was
-  rolled back and you are performing a second submission, make sure to update the signed file to
-  fit the current information in the application.
-  = image_tag "Reimbursement_state.png", :alt => "Reimbursement workflow diagram"
+  The whole process happens in the context of an event. In the
+  =link_to "events list", events_path
+  you can see events accepting sponsorship and shipment requests.
+  Depending of the permissions configuration, you will be able to create new
+  events or only to apply to previously existing events. For each event, in the
+  &#39;ask for&#39; column there can be up to two buttons: &#39;travel
+  support&#39;, which creates a new travel support request and
+  &#39;merchandising shipment&#39;, which creates a new shipment
+  request.
+
+%p
+  You can save the request at any moment and edit it later, since it will be always
+  available in your
+  = link_to "travel support requests", travel_sponsorships_path
+  or
+  = link_to "shipment requests", shipments_path
+  list.
+  One important note: creating, editing or saving your request DOES NOT send it to the
+  people in charge of taking the final decision. As long as the request state is
+  &#39;incomplete&#39;, it will be under your own control until you decide to change
+  the state by using one of the options in the &#39;action&#39; dropdown button.
+
+%p
+  Understanding the &#39;state&#39; field is the key for using the whole system since the
+  interaction between applicants and other individuals is performed by means of
+  &#39;actions&#39; which change the &#39;state&#39; of the request always following the
+  corresponding workflow. The state also determines who can modify the request in every
+  moment. For example, once the request is in &#39;submited&#39; state, the applicant
+  will not be able to modify the information unless he/she rolls the request back to
+  &#39;incomplete&#39; state first.
+
+%p
+  As and applicant, your goal should be to reach the final state. 
+
+#workflows.accordion
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{:href => "#collapseTravel", :data => {:toggle => "collapse", :parent=>"#workflows"}}
+        Travel support: details
+    #collapseTravel.accordion-body.collapse
+      .accordion-inner
+
+        %h3 Travel support requests
+
+        %p
+          The most important information in the travel support request form is probably
+          the &#39;expenses&#39; section, which describes how are you
+          planning to spend the money. You can add as many expenses as needed, specifying
+          the amount you are planning to spend on every one using the &#39;estimated
+          amount/currency&#39; column. Sometimes you will know the
+          exact amount in advance and sometimes you will have to do an estimation.
+          Once you get a reply from the Travel Support Program managers, you will see real
+          approved amount for every expense in the &#39;approved amount&#39; column. If you
+          finally accept the proposal,
+          %strong you will only get the approved amount, not the estimated one.
+          Keep this in mind.
+          = image_tag "TravelSponsorship_state.png", :alt => "Travel support request workflow diagram"
+
+        %h3 Reimbursement of travel sponsorship
+
+        %p
+          When the event is over, you can go to your accepted request and click the &#39;ask for
+          reimbursement&#39; button. It will create a new reimbursement, which is quite similar
+          to a request but includes more fields and have a slightly different workflow.
+          The new reimbursement will be added to
+          = link_to "your reimbursements list", reimbursements_path
+          at the left menu.
+
+        %p
+          The main operation is almost identical to the requests, with fields for describing
+          your activities and the amount finally spent and with fields for providing your bank
+          information and the expenses receipts. You also need to upload a signed
+          version of the reimbursement. That means printing (click on &#39a;download printable
+          version&#39;), signing with a pen, scanning the result and uploading it (click on
+          &#39;attach signed document&#39;). If you already did it but your reimbursement was
+          rolled back and you are performing a second submission, make sure to update the
+          signed file to fit the current information in the application.
+
+        %p
+          The full workflow for a reimbursement is displayed below. The last states correspond to
+          administrative steps related to the payment.
+          = image_tag "Reimbursement_state.png", :alt => "Reimbursement workflow diagram"
+
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{:href => "#collapseShipment", :data => {:toggle => "collapse", :parent=>"#workflows"}}
+        Merchandising shipment: details
+    #collapseShipment.accordion-body.collapse
+      .accordion-inner
+
+        %h3 Shipment requests
+
+        %p
+          Only some events are eligible for merchandising shipment and the type
+          of shipment (for example &#39;small booth box&#39;) is set in advance
+          for every event. As a consequence, the shipment request form only
+          contains contact information and a field for additional notes.
+          The full workflow for a shipment request is displayed below.
+          = image_tag "Shipment_state.png", :alt => "Shipment request workflow diagram"
