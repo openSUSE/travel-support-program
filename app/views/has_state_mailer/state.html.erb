@@ -10,7 +10,7 @@
 
 <% if @change %>
   <p>
-  <%= t(:state_change_title_line, :date => l(@change.created_at, :format => :short), :event => @change.human_action_name, :user => @change.user.nickname) %>
+  <%= t(:state_change_title_line, :date => l(@change.created_at, :format => :long), :event => @change.human_action_name, :user => @change.user.nickname) %>
   <%= t(:with_notes_below) %>
   </p>
 

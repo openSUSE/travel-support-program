@@ -1,6 +1,6 @@
 - if comment.private
   %strong.label= "private"
-- date = content_tag(:b, time_ago_in_words(comment.created_at), :class => "text-info", :title => l(comment.created_at, :format => :short))
+- date = content_tag(:b, time_ago_in_words(comment.created_at), :class => "text-info", :title => l(comment.created_at, :format => :long))
 = t(:comment_line, :date => date, :user => comment.user.nickname).html_safe
 %blockquote
   = simple_format(comment.body)
