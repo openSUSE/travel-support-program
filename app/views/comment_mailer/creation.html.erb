@@ -1,6 +1,6 @@
 <p>
 <%= t(:new_comment_title_line,
-          :date => l(@comment.created_at, :format => :short),
+          :date => l(@comment.created_at, :format => :long),
           :machine => @machine.title,
           :user => @comment.user.nickname) %>
 </p>
