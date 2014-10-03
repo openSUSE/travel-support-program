@@ -84,7 +84,7 @@ module ReimbursementsHelper
 
       req = reimbursement.request
       rows = payments.map do |payment|
-        p = content_tag(:td, l(payment.date, :format => :short))
+        p = content_tag(:td, l(payment.date, :format => :long))
         p << content_tag(:td, payment.method)
         p << content_tag(:td, payment.subject)
         p << content_tag(:td, number_to_currency(payment.amount, :unit => payment.currency), :class => "text-right")

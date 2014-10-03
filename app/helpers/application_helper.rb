@@ -33,7 +33,7 @@ module ApplicationHelper
   # @return [String] HTML output
   def timestamped_state(r)
     msg = content_tag(:span, r.human_state_name, :class => r.state)
-    msg += " " +  t(:since, :date => l(r.state_updated_at, :format => :short)) unless r.state_updated_at.blank?
+    msg += " " +  t(:since, :date => l(r.state_updated_at, :format => :long)) unless r.state_updated_at.blank?
     raw(msg)
   end 
 

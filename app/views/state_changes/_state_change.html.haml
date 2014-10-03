@@ -1,4 +1,4 @@
-- date = content_tag(:b, time_ago_in_words(state_change.created_at), :class => "text-info", :title => l(state_change.created_at, :format => :short))
+- date = content_tag(:b, time_ago_in_words(state_change.created_at), :class => "text-info", :title => l(state_change.created_at, :format => :long))
 = t(:state_change_li, :date => date, :user => state_change.user.nickname, :from => t("activerecord.state_machines.states.#{state_change.from}"), :to => t("activerecord.state_machines.states.#{state_change.to}")).html_safe
 
 %blockquote
