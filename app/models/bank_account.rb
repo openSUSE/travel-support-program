@@ -48,6 +48,6 @@ class BankAccount < ActiveRecord::Base
   protected
 
   def set_default_attrs
-    self.format = "iban"
+    self.format ||= "iban"
   end
 end
