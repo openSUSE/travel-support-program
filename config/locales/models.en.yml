@@ -51,9 +51,9 @@ en:
       event:
         one: "event"
         other: "events"
-      expense_report:
-        one: "expenses report"
-        other: "expenses reports"
+      travel_expense_report:
+        one: "travel expenses report"
+        other: "travel expenses reports"
         type:
           estimated: "estimated"
           approved: "approved"

@@ -23,11 +23,11 @@ module ReportHelper
     text_field_tag "filter[#{name}]", value
   end
 
-  # Outputs the html representation of the field for a given ExpenseReport
-  # instance.
+  # Outputs the html representation of the field for a given
+  # TravelExpenseReport instance.
   #
   # @param [#to_sym] field name of the field
-  # @param [ExpenseReport] expense the instance
+  # @param [TravelExpenseReport] expense the instance
   # @return HTML output
   def html_value_for(field, expense)
     if respond_to? :"html_value_for_#{field}"
@@ -39,11 +39,11 @@ module ReportHelper
     end
   end
 
-  # Return the value of a field for a given ExpenseReport
+  # Return the value of a field for a given TravelExpenseReport
   # instance, in a format useful to the axlsx template.
   #
   # @param [#to_sym] field name of the field
-  # @param [ExpenseReport] expense the instance
+  # @param [TravelExpenseReport] expense the instance
   # @return [Object] value for the template
   def xlsx_value_for(field, expense)
     if respond_to? :"xlsx_value_for_#{field}"
@@ -59,7 +59,7 @@ module ReportHelper
   # @see #html_value_for
   # @see #xlsx_value_for
   def value_for_request_state(expense)
-    Request.human_state_name expense.value_for(:request_state)
+    TravelSponsorship.human_state_name expense.value_for(:request_state)
   end
 
   # Called from html_value_for and xlsx_value_for

@@ -131,7 +131,7 @@ class Ability
       end
 
       # Expenses Reports
-      can :read, ExpenseReport, ExpenseReport.related_to(user) do |e|
+      can :read, TravelExpenseReport, TravelExpenseReport.related_to(user) do |e|
           e.related_to(user)
       end
 
@@ -166,7 +166,7 @@ class Ability
       can :read, Payment
 
       # Expenses Reports
-      can :read, ExpenseReport
+      can :read, TravelExpenseReport
 
     #
     # TSP assistants permissions
@@ -201,7 +201,7 @@ class Ability
       can :read, Payment
 
       # Expenses Reports
-      can :read, ExpenseReport
+      can :read, TravelExpenseReport
 
     #
     # Administratives permissions
@@ -275,7 +275,7 @@ class Ability
       can [:read, :create], Comment
 
       # Expenses Reports
-      can :read, ExpenseReport
+      can :read, TravelExpenseReport
 
     #
     # Material manager permissions

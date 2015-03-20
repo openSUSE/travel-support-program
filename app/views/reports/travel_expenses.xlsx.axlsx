@@ -1,6 +1,6 @@
-fields = ExpenseReport.fields_for(@group)
+fields = TravelExpenseReport.fields_for(@group)
 wb = xlsx_package.workbook
-wb.add_worksheet(:name => ExpenseReport.model_name.human) do |sheet|
+wb.add_worksheet(:name => TravelExpenseReport.model_name.human) do |sheet|
   bold_style = wb.styles.add_style(:b => true)
   row = fields.map {|f| t("activerecord.attributes.expense_report.#{f}") }
   sheet.add_row row, :style => bold_style

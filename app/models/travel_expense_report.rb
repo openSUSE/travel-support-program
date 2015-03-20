@@ -6,10 +6,10 @@
 # model for that purpose.
 # @see RequestExpense
 #
-class ExpenseReport < ActiveRecord::Base
+class TravelExpenseReport < ActiveRecord::Base
   self.table_name = "request_expenses"
 
-  belongs_to :request
+  belongs_to :request, ->(req) { where "requests.type" => "TravelSponsorship" }
   delegate :reimbursement, :to => :request, :prefix => false
   delegate :user, :to => :request, :prefix => false
   delegate :event, :to => :request, :prefix => false
@@ -65,8 +65,8 @@ class ExpenseReport < ActiveRecord::Base
   # @param [#to_sym] type Type of expense to summarize: :estimated, :approved,
   #                       :total or :authorized
   # @param [#to_sym] g  Grouping option. For a list of all the available
-  #                     options, use ExpenseReport.groups
-  # @see .groups                       
+  #                     options, use TravelExpenseReport.groups
+  # @see .groups
   scope :by, lambda {|type, g|
     currency = RequestExpense.currency_field_for(type.to_sym)
     r = joins(:request => [{:user => :profile}, :event])

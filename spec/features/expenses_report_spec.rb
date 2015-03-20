@@ -6,7 +6,7 @@ feature "ExpenseRequest", "" do
 
   scenario "Approved report" do
     sign_in_as_user(users(:tspmember))
-    visit expenses_report_path
+    visit travel_expenses_report_path
     page.should have_content "expenses report"
     select "approved", :from => "by_type"
     select "user", :from => "by_group"
@@ -26,7 +26,7 @@ feature "ExpenseRequest", "" do
 
   scenario "Restricted estimated report" do
     sign_in_as_user(users(:luke))
-    visit expenses_report_path
+    visit travel_expenses_report_path
     select "estimated", :from => "by_type"
     select "event", :from => "by_group"
     click_button "html"
