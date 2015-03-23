@@ -54,4 +54,4 @@
           - fields.each do |field|
             %td= html_value_for(field, expense)
 
-  = paginate @expenses
+  = paginate @expenses, num_pages: @num_pages

@@ -12,6 +12,7 @@ class ReportsController < ApplicationController
       respond_to do |format|
         format.html {
           init_form
+          @num_pages = (TravelExpenseReport.count(@expenses) / 20.0).ceil
           @expenses = @expenses.page(params[:page] || 1).per(20)
         }
         format.xlsx { render :xlsx => "travel_expenses",

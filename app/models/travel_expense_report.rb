@@ -71,11 +71,7 @@ class TravelExpenseReport < ActiveRecord::Base
     currency = RequestExpense.currency_field_for(type.to_sym)
     r = joins(:request => [{:user => :profile}, :event])
     r = r.joins("LEFT JOIN reimbursements ON reimbursements.request_id = requests.id")
-    # FIXME:
-    # DISTINCT is used to force kaminari to use the "right" length calculation,
-    # which is quite inefficient. It would be better to find a way to pass the
-    # total_count to kaminari
-    r = r.select("DISTINCT sum(#{type}_amount) AS sum_amount, #{currency} AS sum_currency, #{@by[g.to_sym].map{|f| "#{f[:sql]} AS #{f[:field]}"}.join(', ')}")
+    r = r.select("sum(#{type}_amount) AS sum_amount, #{currency} AS sum_currency, #{@by[g.to_sym].map{|f| "#{f[:sql]} AS #{f[:field]}"}.join(', ')}")
     r = r.where("#{type}_amount IS NOT NULL")
     r = r.group("#{currency}, #{@by[g.to_sym].map{|f| f[:sql]}.join(', ')}")
   }
@@ -178,4 +174,12 @@ class TravelExpenseReport < ActiveRecord::Base
       request.user == user
   end
 
+  # Total number of records for a given report
+  #
+  # @param [ActiveRecord::Relation] exp
+  # @return [Integer] number of records
+  def self.count(exp)
+    count = self.connection.execute("select count(*) as c from (#{exp.except(:limit, :offset, :order).to_sql})")
+    count.first["c"].to_i
+  end
 end
