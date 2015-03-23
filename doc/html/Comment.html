@@ -246,6 +246,33 @@ with the requester-.</p>
 </li>
 
     
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#user_id-instance_method" title="#user_id (instance method)">- (Object) <strong>user_id</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
   </ul>
 
 
@@ -262,7 +289,7 @@ with the requester-.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#machine-instance_method" title="#machine (instance method)">- (Object) <strong>machine</strong> </a>
+      <a href="#machine-instance_method" title="#machine (instance method)">- (Machine) <strong>machine</strong> </a>
     
 
     
@@ -285,7 +312,7 @@ with the requester-.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#user-instance_method" title="#user (instance method)">- (Object) <strong>user</strong> </a>
+      <a href="#user-instance_method" title="#user (instance method)">- (User) <strong>user</strong> </a>
     
 
     
@@ -340,7 +367,7 @@ with the requester-.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#oldest_first-class_method" title="oldest_first (class method)">+ (Object) <strong>oldest_first</strong> </a>
+      <a href="#oldest_first-class_method" title="oldest_first (class method)">+ (Array&lt;Comment&gt;) <strong>oldest_first</strong> </a>
     
 
     
@@ -354,30 +381,7 @@ with the requester-.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>The precision of &#39;created_at&#39; is one second.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#public-class_method" title="public (class method)">+ (Array&lt;Comment&gt;) <strong>public</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>An array of Comments that are public.</p>
+    <span class="summary_desc"><div class='inline'><p>An array of Comments that are oldest first.</p>
 </div></span>
   
 </li>
@@ -456,18 +460,31 @@ with the requester-.</p>
   
 </ul>
 
-</div><table class="source_code">
+</div><p class="tag_title">Validations:</p>
+<ul class="validations">
+  
+    
+      <li>
+        
+            <a href="http://edgeguides.rubyonrails.org/active_record_validations.html#presence" target="_parent" title="Presence">Presence</a>
+        
+        
+      </li>
+    
+  
+</ul>
+<table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-66</pre>
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 66</span>
+      <pre class="code"><span class="info file"># File 'app/models/comment.rb', line 13</span>
 
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>body</span><span class='tstring_end'>&quot;</span></span></pre>
+<span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:body</span><span class='comma'>,</span> <span class='symbol'>:user_id</span><span class='comma'>,</span> <span class='symbol'>:machine</span><span class='comma'>,</span> <span class='symbol'>:presence</span> <span class='op'>=&gt;</span> <span class='kw'>true</span></pre>
     </td>
   </tr>
 </table>
@@ -673,6 +690,34 @@ with the requester-.</p>
 </table>
 </div>
     
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="user_id-instance_method">
+  
+    - (<tt>Object</tt>) <strong>user_id</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+13</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/comment.rb', line 13</span>
+
+<span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:body</span><span class='comma'>,</span> <span class='symbol'>:user_id</span><span class='comma'>,</span> <span class='symbol'>:machine</span><span class='comma'>,</span> <span class='symbol'>:presence</span> <span class='op'>=&gt;</span> <span class='kw'>true</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 
@@ -715,7 +760,7 @@ with the requester-.</p>
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http://api.rubyonrails.org/classes/ActiveRecord/NamedScope/ClassMethods.html</li>
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Scoping/Named/ClassMethods.html" target="_parent" title="ActiveRecord::Scoping">ActiveRecord::Scoping</a></li>
     
   </ul>
 
@@ -739,7 +784,7 @@ with the requester-.</p>
       <div class="method_details ">
   <h3 class="signature " id="oldest_first-class_method">
   
-    + (<tt>Object</tt>) <strong>oldest_first</strong> 
+    + (<tt>Array&lt;<span class='object_link'><a href="" title="Comment (class)">Comment</a></span>&gt;</tt>) <strong>oldest_first</strong> 
   
 
   
@@ -747,44 +792,7 @@ with the requester-.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>The precision of &#39;created_at&#39; is one second. For comments in the same second
-we must use the id for fine-tuning</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-21</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/models/comment.rb', line 21</span>
-
-<span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:oldest_first</span><span class='comma'>,</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at asc, id asc</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="public-class_method">
-  
-    + (<tt>Array&lt;<span class='object_link'><a href="" title="Comment (class)">Comment</a></span>&gt;</tt>) <strong>public</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>An array of Comments that are public. <strong>Active Record Scope</strong></p>
+    <p>An array of Comments that are oldest first. <strong>Active Record Scope</strong></p>
 
 
   </div>
@@ -808,7 +816,7 @@ we must use the id for fine-tuning</p>
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http://api.rubyonrails.org/classes/ActiveRecord/NamedScope/ClassMethods.html</li>
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Scoping/Named/ClassMethods.html" target="_parent" title="ActiveRecord::Scoping">ActiveRecord::Scoping</a></li>
     
   </ul>
 
@@ -818,12 +826,12 @@ we must use the id for fine-tuning</p>
       <pre class="lines">
 
 
-23</pre>
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/comment.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'app/models/comment.rb', line 21</span>
 
-<span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:public</span><span class='comma'>,</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='symbol'>:private</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='rparen'>)</span> <span class='rbrace'>}</span></pre>
+<span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:oldest_first</span><span class='comma'>,</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at asc, id asc</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span></pre>
     </td>
   </tr>
 </table>
@@ -838,7 +846,7 @@ we must use the id for fine-tuning</p>
       <div class="method_details first">
   <h3 class="signature first" id="machine-instance_method">
   
-    - (<tt>Object</tt>) <strong>machine</strong> 
+    - (<tt>Machine</tt>) <strong>machine</strong> 
   
 
   
@@ -853,8 +861,41 @@ we must use the id for fine-tuning</p>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Machine</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
-</div><table class="source_code">
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
+    
+  </ul>
+
+</div><p class="tag_title">Validations:</p>
+<ul class="validations">
+  
+    
+      <li>
+        
+            <a href="http://edgeguides.rubyonrails.org/active_record_validations.html#presence" target="_parent" title="Presence">Presence</a>
+        
+        
+      </li>
+    
+  
+</ul>
+<table class="source_code">
   <tr>
     <td>
       <pre class="lines">
@@ -913,12 +954,12 @@ we must use the id for fine-tuning</p>
       <pre class="lines">
 
 
+27
 28
-29
-30</pre>
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/comment.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'app/models/comment.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_public?'>public?</span>
   <span class='op'>!</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_private'>private</span>
@@ -931,7 +972,7 @@ we must use the id for fine-tuning</p>
       <div class="method_details ">
   <h3 class="signature " id="user-instance_method">
   
-    - (<tt>Object</tt>) <strong>user</strong> 
+    - (<tt><span class='object_link'><a href="User.html" title="User (class)">User</a></span></tt>) <strong>user</strong> 
   
 
   
@@ -946,6 +987,26 @@ we must use the id for fine-tuning</p>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="User.html" title="User (class)">User</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
+    
+  </ul>
 
 </div><table class="source_code">
   <tr>
@@ -969,7 +1030,7 @@ we must use the id for fine-tuning</p>
 </div>
 
     <div id="footer">
-  Generated on Fri Sep  5 10:35:02 2014 by
+  Generated on Mon Mar 23 13:04:15 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.4 (ruby-1.9.3).
 </div>

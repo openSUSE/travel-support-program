@@ -120,12 +120,12 @@
 This class contains 1 state machine(s).
 
 
-  <h3>state</h3>
-  <p></p>
-  
-  
-  <img alt="State machine diagram for state" src="Reimbursement_state.png" />
-  
+    <h3>state</h3>
+    <p></p>
+
+    
+        <img alt="State machine diagram for state" src="Reimbursement_state.png"/>
+    
 
 
 
@@ -326,7 +326,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#request-instance_method" title="#request (instance method)">- (Object) <strong>request</strong> </a>
+      <a href="#request-instance_method" title="#request (instance method)">- (ReimbursableRequest) <strong>request</strong> </a>
     
 
     
@@ -358,7 +358,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#attachments-instance_method" title="#attachments (instance method)">- (Object) <strong>attachments</strong> </a>
+      <a href="#attachments-instance_method" title="#attachments (instance method)">- (Array&lt;ReimbursementAttachment&gt;) <strong>attachments</strong> </a>
     
 
     
@@ -381,7 +381,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#comments-instance_method" title="#comments (instance method)">- (Object) <strong>comments</strong> </a>
+      <a href="#comments-instance_method" title="#comments (instance method)">- (Array&lt;Comment&gt;) <strong>comments</strong> </a>
     
 
     
@@ -404,7 +404,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#expenses-instance_method" title="#expenses (instance method)">- (Object) <strong>expenses</strong> </a>
+      <a href="#expenses-instance_method" title="#expenses (instance method)">- (Array&lt;Expense&gt;) <strong>expenses</strong> </a>
     
 
     
@@ -427,7 +427,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#links-instance_method" title="#links (instance method)">- (Object) <strong>links</strong> </a>
+      <a href="#links-instance_method" title="#links (instance method)">- (Array&lt;ReimbursementLink&gt;) <strong>links</strong> </a>
     
 
     
@@ -450,7 +450,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#payments-instance_method" title="#payments (instance method)">- (Object) <strong>payments</strong> </a>
+      <a href="#payments-instance_method" title="#payments (instance method)">- (Array&lt;Payment&gt;) <strong>payments</strong> </a>
     
 
     
@@ -482,7 +482,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#bank_account-instance_method" title="#bank_account (instance method)">- (Object) <strong>bank_account</strong> </a>
+      <a href="#bank_account-instance_method" title="#bank_account (instance method)">- (BankAccount) <strong>bank_account</strong> </a>
     
 
     
@@ -514,7 +514,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#event-instance_method" title="#event (instance method)">- (Object) <strong>event</strong> </a>
+      <a href="#prefix+%3D%3E+false_event-instance_method" title="#prefix =&gt; false_event (instance method)">- (Object) <strong>prefix =&gt; false_event</strong> </a>
     
 
     
@@ -528,7 +528,7 @@ This class contains 1 state machine(s).
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Alias for =&gt; false#event.</p>
+    <span class="summary_desc"><div class='inline'><p>Alias for Request#event.</p>
 </div></span>
   
 </li>
@@ -692,7 +692,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#approve_transition-instance_method" title="#approve_transition (instance method)">- (StateMachine::Transition) <strong>approve_transition</strong>(requirements = {}) </a>
+      <a href="#approve_transition-instance_method" title="#approve_transition (instance method)">- (StateMachines::Transition) <strong>approve_transition</strong>(requirements = {}) </a>
     
 
     
@@ -968,7 +968,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#confirm_transition-instance_method" title="#confirm_transition (instance method)">- (StateMachine::Transition) <strong>confirm_transition</strong>(requirements = {}) </a>
+      <a href="#confirm_transition-instance_method" title="#confirm_transition (instance method)">- (StateMachines::Transition) <strong>confirm_transition</strong>(requirements = {}) </a>
     
 
     
@@ -1174,7 +1174,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#process_transition-instance_method" title="#process_transition (instance method)">- (StateMachine::Transition) <strong>process_transition</strong>(requirements = {}) </a>
+      <a href="#process_transition-instance_method" title="#process_transition (instance method)">- (StateMachines::Transition) <strong>process_transition</strong>(requirements = {}) </a>
     
 
     
@@ -1266,7 +1266,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#roll_back_transition-instance_method" title="#roll_back_transition (instance method)">- (StateMachine::Transition) <strong>roll_back_transition</strong>(requirements = {}) </a>
+      <a href="#roll_back_transition-instance_method" title="#roll_back_transition (instance method)">- (StateMachines::Transition) <strong>roll_back_transition</strong>(requirements = {}) </a>
     
 
     
@@ -1358,7 +1358,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#state_paths-instance_method" title="#state_paths (instance method)">- (StateMachine::PathCollection) <strong>state_paths</strong>(requirements = {}) </a>
+      <a href="#state_paths-instance_method" title="#state_paths (instance method)">- (StateMachines::PathCollection) <strong>state_paths</strong>(requirements = {}) </a>
     
 
     
@@ -1381,7 +1381,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#state_transitions-instance_method" title="#state_transitions (instance method)">- (Array&lt;StateMachine::Transition&gt;) <strong>state_transitions</strong>(requirements = {}) </a>
+      <a href="#state_transitions-instance_method" title="#state_transitions (instance method)">- (Array&lt;StateMachines::Transition&gt;) <strong>state_transitions</strong>(requirements = {}) </a>
     
 
     
@@ -1450,7 +1450,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#submit_transition-instance_method" title="#submit_transition (instance method)">- (StateMachine::Transition) <strong>submit_transition</strong>(requirements = {}) </a>
+      <a href="#submit_transition-instance_method" title="#submit_transition (instance method)">- (StateMachines::Transition) <strong>submit_transition</strong>(requirements = {}) </a>
     
 
     
@@ -1553,18 +1553,31 @@ This class contains 1 state machine(s).
   
 </ul>
 
-</div><table class="source_code">
+</div><p class="tag_title">Validations (<i>if => "acceptance_file_required?"</i> ):</p>
+<ul class="validations">
+  
+    
+      <li>
+        
+            <a href="http://edgeguides.rubyonrails.org/active_record_validations.html#presence" target="_parent" title="Presence">Presence</a>
+        
+        
+      </li>
+    
+  
+</ul>
+<table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-179</pre>
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 179</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 40</span>
 
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>acceptance_file</span><span class='tstring_end'>&quot;</span></span></pre>
+<span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:acceptance_file</span><span class='comma'>,</span> <span class='symbol'>:presence</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:if</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>acceptance_file_required?</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
   </tr>
 </table>
@@ -2494,7 +2507,7 @@ reimbursement</p>
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::InvalidTransition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::InvalidTransition</tt>)</span>
       
       
       
@@ -2580,7 +2593,7 @@ reimbursement</p>
       <div class="method_details ">
   <h3 class="signature " id="approve_transition-instance_method">
   
-    - (<tt>StateMachine::Transition</tt>) <strong>approve_transition</strong>(requirements = {}) 
+    - (<tt>StateMachines::Transition</tt>) <strong>approve_transition</strong>(requirements = {}) 
   
 
   
@@ -2670,7 +2683,7 @@ reimbursement</p>
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::Transition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::Transition</tt>)</span>
       
       
       
@@ -2863,7 +2876,7 @@ reimbursement</p>
       <div class="method_details ">
   <h3 class="signature " id="attachments-instance_method">
   
-    - (<tt>Object</tt>) <strong>attachments</strong> 
+    - (<tt>Array&lt;<span class='object_link'><a href="ReimbursementAttachment.html" title="ReimbursementAttachment (class)">ReimbursementAttachment</a></span>&gt;</tt>) <strong>attachments</strong> 
   
 
   
@@ -2878,6 +2891,26 @@ reimbursement</p>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="ReimbursementAttachment.html" title="ReimbursementAttachment (class)">ReimbursementAttachment</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
+    
+  </ul>
 
 </div><table class="source_code">
   <tr>
@@ -2899,7 +2932,7 @@ reimbursement</p>
       <div class="method_details ">
   <h3 class="signature " id="bank_account-instance_method">
   
-    - (<tt>Object</tt>) <strong>bank_account</strong> 
+    - (<tt><span class='object_link'><a href="BankAccount.html" title="BankAccount (class)">BankAccount</a></span></tt>) <strong>bank_account</strong> 
   
 
   
@@ -2914,6 +2947,26 @@ reimbursement</p>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="BankAccount.html" title="BankAccount (class)">BankAccount</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
+    
+  </ul>
 
 </div><table class="source_code">
   <tr>
@@ -3986,7 +4039,7 @@ return [Boolean] true if #cancel can be called</p>
       <div class="method_details ">
   <h3 class="signature " id="comments-instance_method">
   
-    - (<tt>Object</tt>) <strong>comments</strong> 
+    - (<tt>Array&lt;<span class='object_link'><a href="Comment.html" title="Comment (class)">Comment</a></span>&gt;</tt>) <strong>comments</strong> 
   
 
   
@@ -4001,6 +4054,26 @@ return [Boolean] true if #cancel can be called</p>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Comment.html" title="Comment (class)">Comment</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
+    
+  </ul>
 
 </div><table class="source_code">
   <tr>
@@ -4267,7 +4340,7 @@ when trying to go further into the workflow.</p>
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::InvalidTransition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::InvalidTransition</tt>)</span>
       
       
       
@@ -4353,7 +4426,7 @@ when trying to go further into the workflow.</p>
       <div class="method_details ">
   <h3 class="signature " id="confirm_transition-instance_method">
   
-    - (<tt>StateMachine::Transition</tt>) <strong>confirm_transition</strong>(requirements = {}) 
+    - (<tt>StateMachines::Transition</tt>) <strong>confirm_transition</strong>(requirements = {}) 
   
 
   
@@ -4443,7 +4516,7 @@ when trying to go further into the workflow.</p>
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::Transition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::Transition</tt>)</span>
       
       
       
@@ -4527,69 +4600,9 @@ when trying to go further into the workflow.</p>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="event-instance_method">
-  
-    - (<tt>Object</tt>) <strong>event</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>Alias for =&gt; false#event</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Object</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>=&gt; false#event</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-  <p class="tag_title">See Also:</p>
-  <ul class="see">
-    
-      <li>http://api.rubyonrails.org/classes/Module.html#method-i-delegate</li>
-    
-  </ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-27</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 27</span>
-
-<span class='id identifier rubyid_delegate'>delegate</span> <span class='symbol'>:event</span><span class='comma'>,</span> <span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='symbol'>:request</span><span class='comma'>,</span> <span class='symbol'>:prefix</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
   <h3 class="signature " id="expenses-instance_method">
   
-    - (<tt>Object</tt>) <strong>expenses</strong> 
+    - (<tt>Array&lt;Expense&gt;</tt>) <strong>expenses</strong> 
   
 
   
@@ -4605,6 +4618,26 @@ will be updated during reimbursement process</p>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;Expense&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
+    
+  </ul>
 
 </div><table class="source_code">
   <tr>
@@ -5087,7 +5120,7 @@ reimbursement id.</p>
       <div class="method_details ">
   <h3 class="signature " id="links-instance_method">
   
-    - (<tt>Object</tt>) <strong>links</strong> 
+    - (<tt>Array&lt;<span class='object_link'><a href="ReimbursementLink.html" title="ReimbursementLink (class)">ReimbursementLink</a></span>&gt;</tt>) <strong>links</strong> 
   
 
   
@@ -5103,6 +5136,26 @@ participation in the event</p>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="ReimbursementLink.html" title="ReimbursementLink (class)">ReimbursementLink</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
+    
+  </ul>
 
 </div><table class="source_code">
   <tr>
@@ -5231,7 +5284,7 @@ participation in the event</p>
       <div class="method_details ">
   <h3 class="signature " id="payments-instance_method">
   
-    - (<tt>Object</tt>) <strong>payments</strong> 
+    - (<tt>Array&lt;<span class='object_link'><a href="Payment.html" title="Payment (class)">Payment</a></span>&gt;</tt>) <strong>payments</strong> 
   
 
   
@@ -5246,6 +5299,26 @@ participation in the event</p>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Payment.html" title="Payment (class)">Payment</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
+    
+  </ul>
 
 </div><table class="source_code">
   <tr>
@@ -5259,6 +5332,66 @@ participation in the event</p>
       <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 23</span>
 
 <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:payments</span><span class='comma'>,</span> <span class='symbol'>:inverse_of</span> <span class='op'>=&gt;</span> <span class='symbol'>:reimbursement</span><span class='comma'>,</span> <span class='symbol'>:dependent</span> <span class='op'>=&gt;</span> <span class='symbol'>:restrict_with_exception</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="prefix => false_event-instance_method">
+  
+    - (<tt>Object</tt>) <strong>prefix =&gt; false_event</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Alias for Request#event</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Request#prefix =&gt; false_event</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://api.rubyonrails.org/classes/Module.html#method-i-delegate" target="_parent" title="Module#delegate">Module#delegate</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursement.rb', line 27</span>
+
+<span class='id identifier rubyid_delegate'>delegate</span> <span class='symbol'>:event</span><span class='comma'>,</span> <span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='symbol'>:request</span><span class='comma'>,</span> <span class='symbol'>:prefix</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
   </tr>
 </table>
@@ -5450,7 +5583,7 @@ participation in the event</p>
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::InvalidTransition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::InvalidTransition</tt>)</span>
       
       
       
@@ -5536,7 +5669,7 @@ participation in the event</p>
       <div class="method_details ">
   <h3 class="signature " id="process_transition-instance_method">
   
-    - (<tt>StateMachine::Transition</tt>) <strong>process_transition</strong>(requirements = {}) 
+    - (<tt>StateMachines::Transition</tt>) <strong>process_transition</strong>(requirements = {}) 
   
 
   
@@ -5626,7 +5759,7 @@ participation in the event</p>
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::Transition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::Transition</tt>)</span>
       
       
       
@@ -5819,7 +5952,7 @@ participation in the event</p>
       <div class="method_details ">
   <h3 class="signature " id="request-instance_method">
   
-    - (<tt>Object</tt>) <strong>request</strong> 
+    - (<tt><span class='object_link'><a href="ReimbursableRequest.html" title="ReimbursableRequest (class)">ReimbursableRequest</a></span></tt>) <strong>request</strong> 
   
 
   
@@ -5834,8 +5967,41 @@ participation in the event</p>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="ReimbursableRequest.html" title="ReimbursableRequest (class)">ReimbursableRequest</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
-</div><table class="source_code">
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
+    
+  </ul>
+
+</div><p class="tag_title">Validations:</p>
+<ul class="validations">
+  
+    
+      <li>
+        
+            <a href="http://edgeguides.rubyonrails.org/active_record_validations.html#presence" target="_parent" title="Presence">Presence</a>
+        
+        
+      </li>
+    
+  
+</ul>
+<table class="source_code">
   <tr>
     <td>
       <pre class="lines">
@@ -6042,7 +6208,7 @@ participation in the event</p>
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::InvalidTransition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::InvalidTransition</tt>)</span>
       
       
       
@@ -6128,7 +6294,7 @@ participation in the event</p>
       <div class="method_details ">
   <h3 class="signature " id="roll_back_transition-instance_method">
   
-    - (<tt>StateMachine::Transition</tt>) <strong>roll_back_transition</strong>(requirements = {}) 
+    - (<tt>StateMachines::Transition</tt>) <strong>roll_back_transition</strong>(requirements = {}) 
   
 
   
@@ -6218,7 +6384,7 @@ participation in the event</p>
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::Transition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::Transition</tt>)</span>
       
       
       
@@ -6742,7 +6908,7 @@ participation in the event</p>
       <div class="method_details ">
   <h3 class="signature " id="state_paths-instance_method">
   
-    - (<tt>StateMachine::PathCollection</tt>) <strong>state_paths</strong>(requirements = {}) 
+    - (<tt>StateMachines::PathCollection</tt>) <strong>state_paths</strong>(requirements = {}) 
   
 
   
@@ -6844,7 +7010,7 @@ participation in the event</p>
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::PathCollection</tt>)</span>
+        <span class='type'>(<tt>StateMachines::PathCollection</tt>)</span>
       
       
       
@@ -6930,7 +7096,7 @@ participation in the event</p>
       <div class="method_details ">
   <h3 class="signature " id="state_transitions-instance_method">
   
-    - (<tt>Array&lt;StateMachine::Transition&gt;</tt>) <strong>state_transitions</strong>(requirements = {}) 
+    - (<tt>Array&lt;StateMachines::Transition&gt;</tt>) <strong>state_transitions</strong>(requirements = {}) 
   
 
   
@@ -7032,7 +7198,7 @@ participation in the event</p>
     <li>
       
       
-        <span class='type'>(<tt>Array&lt;StateMachine::Transition&gt;</tt>)</span>
+        <span class='type'>(<tt>Array&lt;StateMachines::Transition&gt;</tt>)</span>
       
       
       
@@ -7301,7 +7467,7 @@ participation in the event</p>
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::InvalidTransition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::InvalidTransition</tt>)</span>
       
       
       
@@ -7387,7 +7553,7 @@ participation in the event</p>
       <div class="method_details ">
   <h3 class="signature " id="submit_transition-instance_method">
   
-    - (<tt>StateMachine::Transition</tt>) <strong>submit_transition</strong>(requirements = {}) 
+    - (<tt>StateMachines::Transition</tt>) <strong>submit_transition</strong>(requirements = {}) 
   
 
   
@@ -7477,7 +7643,7 @@ participation in the event</p>
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::Transition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::Transition</tt>)</span>
       
       
       
@@ -7672,7 +7838,7 @@ participation in the event</p>
 </div>
 
     <div id="footer">
-  Generated on Fri Sep  5 10:35:06 2014 by
+  Generated on Mon Mar 23 13:04:19 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.4 (ruby-1.9.3).
 </div>

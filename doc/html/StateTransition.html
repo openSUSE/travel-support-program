@@ -119,12 +119,44 @@ database will correctly update the associated state machine automatically.</p>
 
 
 
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#state_event-instance_method" title="#state_event (instance method)">- (Object) <strong>state_event</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+  </ul>
 
 
-  <h2>Instance Attribute Summary</h2>
+
+  
   
   <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="StateChange.html" title="StateChange (class)">StateChange</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="StateChange.html#created_at-instance_method" title="StateChange#created_at (method)">#created_at</a></span>, <span class='object_link'><a href="StateChange.html#from-instance_method" title="StateChange#from (method)">#from</a></span>, <span class='object_link'><a href="StateChange.html#machine_type-instance_method" title="StateChange#machine_type (method)">#machine_type</a></span>, <span class='object_link'><a href="StateChange.html#notes-instance_method" title="StateChange#notes (method)">#notes</a></span>, <span class='object_link'><a href="StateChange.html#state_event-instance_method" title="StateChange#state_event (method)">#state_event</a></span>, <span class='object_link'><a href="StateChange.html#to-instance_method" title="StateChange#to (method)">#to</a></span>, <span class='object_link'><a href="StateChange.html#type-instance_method" title="StateChange#type (method)">#type</a></span>, <span class='object_link'><a href="StateChange.html#updated_at-instance_method" title="StateChange#updated_at (method)">#updated_at</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="StateChange.html#created_at-instance_method" title="StateChange#created_at (method)">#created_at</a></span>, <span class='object_link'><a href="StateChange.html#from-instance_method" title="StateChange#from (method)">#from</a></span>, <span class='object_link'><a href="StateChange.html#machine_type-instance_method" title="StateChange#machine_type (method)">#machine_type</a></span>, <span class='object_link'><a href="StateChange.html#notes-instance_method" title="StateChange#notes (method)">#notes</a></span>, <span class='object_link'><a href="StateChange.html#to-instance_method" title="StateChange#to (method)">#to</a></span>, <span class='object_link'><a href="StateChange.html#type-instance_method" title="StateChange#type (method)">#type</a></span>, <span class='object_link'><a href="StateChange.html#updated_at-instance_method" title="StateChange#updated_at (method)">#updated_at</a></span></p>
 
 
   
@@ -173,6 +205,39 @@ database will correctly update the associated state machine automatically.</p>
   <p class="inherited"><span class='object_link'><a href="StateChange.html#machine-instance_method" title="StateChange#machine (method)">#machine</a></span>, <span class='object_link'><a href="StateChange.html#newest_first-class_method" title="StateChange.newest_first (method)">newest_first</a></span>, <span class='object_link'><a href="StateChange.html#oldest_first-class_method" title="StateChange.oldest_first (method)">oldest_first</a></span>, <span class='object_link'><a href="StateChange.html#user-instance_method" title="StateChange#user (method)">#user</a></span></p>
 
   
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="state_event-instance_method">
+  
+    - (<tt>Object</tt>) <strong>state_event</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+8</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/state_transition.rb', line 8</span>
+
+<span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:state_event</span><span class='comma'>,</span> <span class='symbol'>:presence</span> <span class='op'>=&gt;</span> <span class='kw'>true</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
@@ -229,7 +294,7 @@ database will correctly update the associated state machine automatically.</p>
 </div>
 
     <div id="footer">
-  Generated on Fri Sep  5 10:35:07 2014 by
+  Generated on Mon Mar 23 13:04:20 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.4 (ruby-1.9.3).
 </div>

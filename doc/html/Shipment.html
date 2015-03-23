@@ -118,12 +118,12 @@
 This class contains 1 state machine(s).
 
 
-  <h3>state</h3>
-  <p></p>
-  
-  
-  <img alt="State machine diagram for state" src="Shipment_state.png" />
-  
+    <h3>state</h3>
+    <p></p>
+
+    
+        <img alt="State machine diagram for state" src="Shipment_state.png"/>
+    
 
 
 
@@ -179,7 +179,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#postal_address-instance_method" title="#postal_address (instance method)">- (Object) <strong>postal_address</strong> </a>
+      <a href="#postal_address-instance_method" title="#postal_address (instance method)">- (PostalAddress) <strong>postal_address</strong> </a>
     
 
     
@@ -225,7 +225,7 @@ This class contains 1 state machine(s).
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Alias for <span class='object_link'><a href="Event.html#shipment_type-instance_method" title="Event#shipment_type (method)">Event#shipment_type</a></span>.</p>
+    <span class="summary_desc"><div class='inline'><p>Alias for Event#shipment_type.</p>
 </div></span>
   
 </li>
@@ -344,7 +344,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#approve_transition-instance_method" title="#approve_transition (instance method)">- (StateMachine::Transition) <strong>approve_transition</strong>(requirements = {}) </a>
+      <a href="#approve_transition-instance_method" title="#approve_transition (instance method)">- (StateMachines::Transition) <strong>approve_transition</strong>(requirements = {}) </a>
     
 
     
@@ -597,7 +597,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#confirm_transition-instance_method" title="#confirm_transition (instance method)">- (StateMachine::Transition) <strong>confirm_transition</strong>(requirements = {}) </a>
+      <a href="#confirm_transition-instance_method" title="#confirm_transition (instance method)">- (StateMachines::Transition) <strong>confirm_transition</strong>(requirements = {}) </a>
     
 
     
@@ -666,7 +666,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#dispatch_transition-instance_method" title="#dispatch_transition (instance method)">- (StateMachine::Transition) <strong>dispatch_transition</strong>(requirements = {}) </a>
+      <a href="#dispatch_transition-instance_method" title="#dispatch_transition (instance method)">- (StateMachines::Transition) <strong>dispatch_transition</strong>(requirements = {}) </a>
     
 
     
@@ -850,7 +850,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#roll_back_transition-instance_method" title="#roll_back_transition (instance method)">- (StateMachine::Transition) <strong>roll_back_transition</strong>(requirements = {}) </a>
+      <a href="#roll_back_transition-instance_method" title="#roll_back_transition (instance method)">- (StateMachines::Transition) <strong>roll_back_transition</strong>(requirements = {}) </a>
     
 
     
@@ -965,7 +965,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#state_paths-instance_method" title="#state_paths (instance method)">- (StateMachine::PathCollection) <strong>state_paths</strong>(requirements = {}) </a>
+      <a href="#state_paths-instance_method" title="#state_paths (instance method)">- (StateMachines::PathCollection) <strong>state_paths</strong>(requirements = {}) </a>
     
 
     
@@ -988,7 +988,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#state_transitions-instance_method" title="#state_transitions (instance method)">- (Array&lt;StateMachine::Transition&gt;) <strong>state_transitions</strong>(requirements = {}) </a>
+      <a href="#state_transitions-instance_method" title="#state_transitions (instance method)">- (Array&lt;StateMachines::Transition&gt;) <strong>state_transitions</strong>(requirements = {}) </a>
     
 
     
@@ -1057,7 +1057,7 @@ This class contains 1 state machine(s).
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#submit_transition-instance_method" title="#submit_transition (instance method)">- (StateMachine::Transition) <strong>submit_transition</strong>(requirements = {}) </a>
+      <a href="#submit_transition-instance_method" title="#submit_transition (instance method)">- (StateMachines::Transition) <strong>submit_transition</strong>(requirements = {}) </a>
     
 
     
@@ -1698,7 +1698,7 @@ This class contains 1 state machine(s).
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::InvalidTransition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::InvalidTransition</tt>)</span>
       
       
       
@@ -1784,7 +1784,7 @@ This class contains 1 state machine(s).
       <div class="method_details ">
   <h3 class="signature " id="approve_transition-instance_method">
   
-    - (<tt>StateMachine::Transition</tt>) <strong>approve_transition</strong>(requirements = {}) 
+    - (<tt>StateMachines::Transition</tt>) <strong>approve_transition</strong>(requirements = {}) 
   
 
   
@@ -1874,7 +1874,7 @@ This class contains 1 state machine(s).
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::Transition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::Transition</tt>)</span>
       
       
       
@@ -3294,7 +3294,7 @@ This class contains 1 state machine(s).
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::InvalidTransition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::InvalidTransition</tt>)</span>
       
       
       
@@ -3380,7 +3380,7 @@ This class contains 1 state machine(s).
       <div class="method_details ">
   <h3 class="signature " id="confirm_transition-instance_method">
   
-    - (<tt>StateMachine::Transition</tt>) <strong>confirm_transition</strong>(requirements = {}) 
+    - (<tt>StateMachines::Transition</tt>) <strong>confirm_transition</strong>(requirements = {}) 
   
 
   
@@ -3470,7 +3470,7 @@ This class contains 1 state machine(s).
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::Transition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::Transition</tt>)</span>
       
       
       
@@ -3739,7 +3739,7 @@ This class contains 1 state machine(s).
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::InvalidTransition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::InvalidTransition</tt>)</span>
       
       
       
@@ -3825,7 +3825,7 @@ This class contains 1 state machine(s).
       <div class="method_details ">
   <h3 class="signature " id="dispatch_transition-instance_method">
   
-    - (<tt>StateMachine::Transition</tt>) <strong>dispatch_transition</strong>(requirements = {}) 
+    - (<tt>StateMachines::Transition</tt>) <strong>dispatch_transition</strong>(requirements = {}) 
   
 
   
@@ -3915,7 +3915,7 @@ This class contains 1 state machine(s).
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::Transition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::Transition</tt>)</span>
       
       
       
@@ -4439,7 +4439,7 @@ associated to the request.</p>
       <div class="method_details ">
   <h3 class="signature " id="postal_address-instance_method">
   
-    - (<tt>Object</tt>) <strong>postal_address</strong> 
+    - (<tt><span class='object_link'><a href="PostalAddress.html" title="PostalAddress (class)">PostalAddress</a></span></tt>) <strong>postal_address</strong> 
   
 
   
@@ -4454,6 +4454,26 @@ associated to the request.</p>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="PostalAddress.html" title="PostalAddress (class)">PostalAddress</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
+    
+  </ul>
 
 </div><table class="source_code">
   <tr>
@@ -4765,7 +4785,7 @@ associated to the request.</p>
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::InvalidTransition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::InvalidTransition</tt>)</span>
       
       
       
@@ -4851,7 +4871,7 @@ associated to the request.</p>
       <div class="method_details ">
   <h3 class="signature " id="roll_back_transition-instance_method">
   
-    - (<tt>StateMachine::Transition</tt>) <strong>roll_back_transition</strong>(requirements = {}) 
+    - (<tt>StateMachines::Transition</tt>) <strong>roll_back_transition</strong>(requirements = {}) 
   
 
   
@@ -4941,7 +4961,7 @@ associated to the request.</p>
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::Transition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::Transition</tt>)</span>
       
       
       
@@ -5142,7 +5162,7 @@ associated to the request.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Alias for <span class='object_link'><a href="Event.html#shipment_type-instance_method" title="Event#shipment_type (method)">Event#shipment_type</a></span></p>
+    <p>Alias for Event#shipment_type</p>
 
 
   </div>
@@ -5160,7 +5180,7 @@ associated to the request.</p>
       
       
         &mdash;
-        <div class='inline'><p><span class='object_link'><a href="Event.html#shipment_type-instance_method" title="Event#shipment_type (method)">Event#shipment_type</a></span></p>
+        <div class='inline'><p>Event#shipment_type</p>
 </div>
       
     </li>
@@ -5170,7 +5190,7 @@ associated to the request.</p>
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http://api.rubyonrails.org/classes/Module.html#method-i-delegate</li>
+      <li><a href="http://api.rubyonrails.org/classes/Module.html#method-i-delegate" target="_parent" title="Module#delegate">Module#delegate</a></li>
     
   </ul>
 
@@ -5632,7 +5652,7 @@ associated to the request.</p>
       <div class="method_details ">
   <h3 class="signature " id="state_paths-instance_method">
   
-    - (<tt>StateMachine::PathCollection</tt>) <strong>state_paths</strong>(requirements = {}) 
+    - (<tt>StateMachines::PathCollection</tt>) <strong>state_paths</strong>(requirements = {}) 
   
 
   
@@ -5734,7 +5754,7 @@ associated to the request.</p>
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::PathCollection</tt>)</span>
+        <span class='type'>(<tt>StateMachines::PathCollection</tt>)</span>
       
       
       
@@ -5820,7 +5840,7 @@ associated to the request.</p>
       <div class="method_details ">
   <h3 class="signature " id="state_transitions-instance_method">
   
-    - (<tt>Array&lt;StateMachine::Transition&gt;</tt>) <strong>state_transitions</strong>(requirements = {}) 
+    - (<tt>Array&lt;StateMachines::Transition&gt;</tt>) <strong>state_transitions</strong>(requirements = {}) 
   
 
   
@@ -5922,7 +5942,7 @@ associated to the request.</p>
     <li>
       
       
-        <span class='type'>(<tt>Array&lt;StateMachine::Transition&gt;</tt>)</span>
+        <span class='type'>(<tt>Array&lt;StateMachines::Transition&gt;</tt>)</span>
       
       
       
@@ -6191,7 +6211,7 @@ associated to the request.</p>
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::InvalidTransition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::InvalidTransition</tt>)</span>
       
       
       
@@ -6277,7 +6297,7 @@ associated to the request.</p>
       <div class="method_details ">
   <h3 class="signature " id="submit_transition-instance_method">
   
-    - (<tt>StateMachine::Transition</tt>) <strong>submit_transition</strong>(requirements = {}) 
+    - (<tt>StateMachines::Transition</tt>) <strong>submit_transition</strong>(requirements = {}) 
   
 
   
@@ -6367,7 +6387,7 @@ associated to the request.</p>
     <li>
       
       
-        <span class='type'>(<tt>StateMachine::Transition</tt>)</span>
+        <span class='type'>(<tt>StateMachines::Transition</tt>)</span>
       
       
       
@@ -6562,7 +6582,7 @@ associated to the request.</p>
 </div>
 
     <div id="footer">
-  Generated on Fri Sep  5 10:35:04 2014 by
+  Generated on Mon Mar 23 13:04:17 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.4 (ruby-1.9.3).
 </div>
