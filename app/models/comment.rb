@@ -20,7 +20,6 @@ class Comment < ActiveRecord::Base
   # we must use the id for fine-tuning
   scope :oldest_first, -> { order("created_at asc, id asc") }
   scope :newest_first, -> { order("created_at desc, id desc") }
-  scope :public, -> {where(:private => false) }
 
   # Checks if the comment is public
   #

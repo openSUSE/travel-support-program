@@ -84,7 +84,7 @@ describe Reimbursement do
 
       it "should success" do
         transition(@reimbursement, :submit, users(:luke))
-        @reimbursement.submitted?.should be_true
+        @reimbursement.submitted?.should eq true
       end
     end
   end

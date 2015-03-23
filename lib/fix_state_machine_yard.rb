@@ -1,10 +1,8 @@
-require "yard"
-require "state_machine"
-require "yard-state_machine"
+require "state_machines/graphviz"
 
 class StateMachine::YARD::Handlers::Transition
   def process
-    if [StateMachine::Machine, StateMachine::Event, StateMachine::State].include?(owner.class)
+    if [StateMachines::Machine, StateMachines::Event, StateMachines::State].include?(owner.class)
       options = {}
 
       # Extract requirements
@@ -18,5 +16,11 @@ class StateMachine::YARD::Handlers::Transition
 
       owner.transition(options)
     end
+  end
+end
+
+class StateMachine::YARD::Handlers::Machine
+  def integration
+    @integration ||= StateMachines::Integrations.match_ancestors(namespace.inheritance_tree(true).map { |ancestor| ancestor.path })
   end
 end

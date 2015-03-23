@@ -5,7 +5,7 @@
 #
 class FileuploadInput < SimpleForm::Inputs::StringInput
 
-  def input
+  def input(wrapper_options={})
     if object.send("#{attribute_name}?")
       preview = object.send(attribute_name).file.filename
       css = "exists"

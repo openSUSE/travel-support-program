@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.2'
+gem 'rails', '4.1.10'
 
 # Choose your weapon
 gem 'sqlite3'
@@ -28,7 +28,7 @@ end
 # less support
 gem 'therubyracer', platforms: :ruby
 gem "less-rails"
-gem "twitter-bootstrap-rails"
+gem "twitter-bootstrap-rails", '~> 2.2.8'
 
 gem 'devise'
 gem 'devise_ichain_authenticatable', '>= 0.3.0'
@@ -45,13 +45,11 @@ gem 'carrierwave'
 gem 'daemons'
 gem 'date_validator'
 gem 'espinita'
+gem 'prawn', '~> 0.13.0'
 gem 'prawn_rails'
 gem 'axlsx_rails'
 gem 'clockwork'
-gem "state_machine"
-# Added to avoid an error in every rake execution caused by lib/tasks/doc.rake
-# (at least until we figure out a cleaner solution)
-gem "yard"
+gem 'state_machines-activerecord'
 # delayed_job must appear after protected_attributes
 gem 'delayed_job_active_record'
 
@@ -60,7 +58,9 @@ gem 'exception_notification', group: :production
 gem 'coveralls', require: false
 
 group :development do
+  gem "yard", "0.8.7.4"
   gem "yard-activerecord"
+  gem 'state_machines-yard'
   gem 'ruby-graphviz'
   gem "redcarpet", :require => false
 end

@@ -45,12 +45,12 @@ describe TravelSponsorship do
 
     it "should fail trying to save a new request" do
       @request.event = events(:party)
-      @request.save.should be_false
+      @request.save.should eq false
     end
 
     it "should allow saving if it's a new event" do
       @request.event = events(:dagobah_camp)
-      @request.save.should be_true
+      @request.save.should eq true
     end
   end
 
