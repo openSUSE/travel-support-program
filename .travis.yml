@@ -5,5 +5,5 @@ rvm:
 before_script:
   - cp config/database.travis.yml config/database.yml
   - cp config/site.example.yml config/site.yml
-  - rake db:create
+  - bundle exec rake db:migrate RAILS_ENV=test
 script: xvfb-run bundle exec rake
