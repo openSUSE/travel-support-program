@@ -61,7 +61,7 @@ TravelSupport::Application.routes.draw do
   get 'profile' => 'user_profiles#edit', :as => :profile
   get 'profile/password' => 'user_profiles#password', :as => :profile_password
   get 'pages/:action', :controller => 'pages'
-  get 'reports/expenses' => "reports#expenses", :as => :expenses_report
+  get 'reports/travel_expenses' => "reports#travel_expenses", :as => :travel_expenses_report
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

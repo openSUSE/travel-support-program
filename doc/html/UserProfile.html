@@ -409,6 +409,33 @@ related to authentication.</p>
       <li class="public ">
   <span class="summary_signature">
     
+      <a href="#role_id-instance_method" title="#role_id (instance method)">- (Object) <strong>role_id</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#second_phone_number-instance_method" title="#second_phone_number (instance method)">- (String) <strong>second_phone_number</strong> </a>
     
 
@@ -522,7 +549,7 @@ related to authentication.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#user-instance_method" title="#user (instance method)">- (Object) <strong>user</strong> </a>
+      <a href="#user-instance_method" title="#user (instance method)">- (User) <strong>user</strong> </a>
     
 
     
@@ -554,7 +581,7 @@ related to authentication.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#name-instance_method" title="#name (instance method)">- (Object) <strong>name</strong> </a>
+      <a href="#prefix+%3D%3E+true_name-instance_method" title="#prefix =&gt; true_name (instance method)">- (Object) <strong>prefix =&gt; true_name</strong> </a>
     
 
     
@@ -568,7 +595,7 @@ related to authentication.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Alias for =&gt; true#name.</p>
+    <span class="summary_desc"><div class='inline'><p>Alias for Role#name.</p>
 </div></span>
   
 </li>
@@ -1216,6 +1243,34 @@ related to authentication.</p>
 </div>
     
       
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="role_id-instance_method">
+  
+    - (<tt>Object</tt>) <strong>role_id</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user_profile.rb', line 22</span>
+
+<span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:role_id</span><span class='comma'>,</span> <span class='symbol'>:presence</span> <span class='op'>=&gt;</span> <span class='kw'>true</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
       <span id="second_phone_number=-instance_method"></span>
       <div class="method_details ">
   <h3 class="signature " id="second_phone_number-instance_method">
@@ -1457,7 +1512,7 @@ related to authentication.</p>
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http://api.rubyonrails.org/classes/ActiveRecord/NamedScope/ClassMethods.html</li>
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Scoping/Named/ClassMethods.html" target="_parent" title="ActiveRecord::Scoping">ActiveRecord::Scoping</a></li>
     
   </ul>
 
@@ -1640,9 +1695,9 @@ human-readable names as values</p>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="name-instance_method">
+  <h3 class="signature " id="prefix => true_name-instance_method">
   
-    - (<tt>Object</tt>) <strong>name</strong> 
+    - (<tt>Object</tt>) <strong>prefix =&gt; true_name</strong> 
   
 
   
@@ -1650,7 +1705,7 @@ human-readable names as values</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Alias for =&gt; true#name</p>
+    <p>Alias for Role#name</p>
 
 
   </div>
@@ -1668,7 +1723,7 @@ human-readable names as values</p>
       
       
         &mdash;
-        <div class='inline'><p>=&gt; true#name</p>
+        <div class='inline'><p>Role#prefix =&gt; true_name</p>
 </div>
       
     </li>
@@ -1678,7 +1733,7 @@ human-readable names as values</p>
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http://api.rubyonrails.org/classes/Module.html#method-i-delegate</li>
+      <li><a href="http://api.rubyonrails.org/classes/Module.html#method-i-delegate" target="_parent" title="Module#delegate">Module#delegate</a></li>
     
   </ul>
 
@@ -1800,7 +1855,7 @@ this moment) and updates the database.</p>
       <div class="method_details ">
   <h3 class="signature " id="user-instance_method">
   
-    - (<tt>Object</tt>) <strong>user</strong> 
+    - (<tt><span class='object_link'><a href="User.html" title="User (class)">User</a></span></tt>) <strong>user</strong> 
   
 
   
@@ -1815,6 +1870,26 @@ this moment) and updates the database.</p>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="User.html" title="User (class)">User</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
+    
+  </ul>
 
 </div><table class="source_code">
   <tr>
@@ -1838,7 +1913,7 @@ this moment) and updates the database.</p>
 </div>
 
     <div id="footer">
-  Generated on Fri Sep  5 10:35:04 2014 by
+  Generated on Mon Mar 23 13:04:17 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.4 (ruby-1.9.3).
 </div>

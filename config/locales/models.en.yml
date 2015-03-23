@@ -51,9 +51,9 @@ en:
       event:
         one: "event"
         other: "events"
-      expense_report:
-        one: "expenses report"
-        other: "expenses reports"
+      travel_expense_report:
+        one: "travel expenses report"
+        other: "travel expenses reports"
         type:
           estimated: "estimated"
           approved: "approved"
@@ -328,10 +328,10 @@ en:
         description: "brief description"
         full_name: "full name"
         passport: "passport number"
-        phone_number: "phone"
+        phone_number: "mobile phone"
         postal_address: "address"
         location: "city"
-        second_phone_number: "other phone"
+        second_phone_number: "telephone"
         user: "user"
         user_id: "user"
         website: "website"

@@ -1,14 +1,14 @@
 = content_for :page_header do
-  %h1= ExpenseReport.model_name.human
+  %h1= TravelExpenseReport.model_name.human
 
 .navbar
   .navbar-inner
-    = form_tag expenses_report_path, :method => :get, :class => "navbar-form form-inline"  do
+    = form_tag travel_expenses_report_path, :method => :get, :class => "navbar-form form-inline"  do
       .row
         .control-group.pull-right
-          - options = @by_type_options.map {|i| [t("activerecord.models.expense_report.type.#{i}"), i] }
+          - options = @by_type_options.map {|i| [t("activerecord.models.travel_expense_report.type.#{i}"), i] }
           - type_select = select_tag(:by_type, options_for_select(options, @type))
-          - options = @by_group_options.map {|i| [t("activerecord.models.expense_report.group.#{i}"), i] }
+          - options = @by_group_options.map {|i| [t("activerecord.models.travel_expense_report.group.#{i}"), i] }
           - group_select = select_tag :by_group, options_for_select(options, @group)
           = t(:expenses_report_intro, :type => type_select, :group => group_select).html_safe
       .row
@@ -42,16 +42,16 @@
           = submit_tag "xlsx", :name => "format", :class => "btn"
 
 - if @group
-  - fields = ExpenseReport.fields_for(@group)
+  - fields = TravelExpenseReport.fields_for(@group)
   %table.table.table-striped.expense-reports
     %thead
       %tr
         - fields.each do |field|
-          %th= t("activerecord.attributes.expense_report.#{field}")
+          %th= t("activerecord.attributes.travel_expense_report.#{field}")
     %tbody
       - @expenses.each do |expense|
         %tr
           - fields.each do |field|
             %td= html_value_for(field, expense)
 
-  = paginate @expenses
+  = paginate @expenses, num_pages: @num_pages

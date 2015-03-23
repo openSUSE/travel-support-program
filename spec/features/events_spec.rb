@@ -7,9 +7,10 @@ feature "Events", "" do
   scenario "Create event as requester", :js => true do
     sign_in_as_user(users(:luke))
     visit events_path
-    page.driver.accept_js_confirms!
-    click_link "New"
-    page.driver.confirm_messages.first.should include "ake sure that the event is not currently included in the list"
+    confirm_msg = accept_confirm do
+      click_link "New"
+    end
+    confirm_msg.should include "ake sure that the event is not currently included in the list"
     
     # Protected attributes should not be displayed
     page.should_not have_field 'event[visa_letters]'
@@ -30,8 +31,9 @@ feature "Events", "" do
   scenario "Create event as tsp member", :js => true do
     sign_in_as_user(users(:tspmember))
     visit events_path
-    page.driver.accept_js_confirms!
-    click_link "New"
+    accept_confirm do
+      click_link "New"
+    end
     
     # Fill in the information
     fill_in 'name', :with => 'Battle of Endor'

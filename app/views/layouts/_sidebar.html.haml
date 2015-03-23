@@ -7,4 +7,4 @@
   %li= link_to Shipment.model_name.human(count: 2).humanize, menu_path_to(Shipment)
   - if can? :read, Budget
     %li= link_to Budget.model_name.human(count: 2).humanize, budgets_path
-  %li= link_to ExpenseReport.model_name.human.humanize, expenses_report_path
+  %li= link_to TravelExpenseReport.model_name.human.humanize, travel_expenses_report_path

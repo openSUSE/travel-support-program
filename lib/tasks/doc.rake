@@ -1,4 +1,4 @@
-require "fix_state_machine_yard"
+require "fix_state_machine_yard" if Rails.env.development?
 
 namespace :doc do
   desc "Technical documentation"

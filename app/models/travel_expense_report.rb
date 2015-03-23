@@ -6,10 +6,10 @@
 # model for that purpose.
 # @see RequestExpense
 #
-class ExpenseReport < ActiveRecord::Base
+class TravelExpenseReport < ActiveRecord::Base
   self.table_name = "request_expenses"
 
-  belongs_to :request
+  belongs_to :request, ->(req) { where "requests.type" => "TravelSponsorship" }
   delegate :reimbursement, :to => :request, :prefix => false
   delegate :user, :to => :request, :prefix => false
   delegate :event, :to => :request, :prefix => false
@@ -37,7 +37,6 @@ class ExpenseReport < ActiveRecord::Base
     :request => [
           { :field => :request_id, :sql => "requests.id" },
           { :field => :request_state, :sql => "requests.state" },
-          { :field => :reimbursement_id, :sql => "reimbursements.id" },
           { :field => :reimbursement_state, :sql => "reimbursements.state" },
           { :field => :user_id, :sql => "requests.user_id", :hidden => true },
           { :field => :user_nickname, :sql => "users.nickname" },
@@ -49,7 +48,6 @@ class ExpenseReport < ActiveRecord::Base
           { :field => :expense_id, :sql => "request_expenses.id", :hidden => true}, 
           { :field => :request_id, :sql => "requests.id" },
           { :field => :request_state, :sql => "requests.state" },
-          { :field => :reimbursement_id, :sql => "reimbursements.id" },
           { :field => :reimbursement_state, :sql => "reimbursements.state" },
           { :field => :user_id, :sql => "requests.user_id", :hidden => true },
           { :field => :user_nickname, :sql => "users.nickname" },
@@ -65,17 +63,13 @@ class ExpenseReport < ActiveRecord::Base
   # @param [#to_sym] type Type of expense to summarize: :estimated, :approved,
   #                       :total or :authorized
   # @param [#to_sym] g  Grouping option. For a list of all the available
-  #                     options, use ExpenseReport.groups
-  # @see .groups                       
+  #                     options, use TravelExpenseReport.groups
+  # @see .groups
   scope :by, lambda {|type, g|
     currency = RequestExpense.currency_field_for(type.to_sym)
     r = joins(:request => [{:user => :profile}, :event])
     r = r.joins("LEFT JOIN reimbursements ON reimbursements.request_id = requests.id")
-    # FIXME:
-    # DISTINCT is used to force kaminari to use the "right" length calculation,
-    # which is quite inefficient. It would be better to find a way to pass the
-    # total_count to kaminari
-    r = r.select("DISTINCT sum(#{type}_amount) AS sum_amount, #{currency} AS sum_currency, #{@by[g.to_sym].map{|f| "#{f[:sql]} AS #{f[:field]}"}.join(', ')}")
+    r = r.select("sum(#{type}_amount) AS sum_amount, #{currency} AS sum_currency, #{@by[g.to_sym].map{|f| "#{f[:sql]} AS #{f[:field]}"}.join(', ')}")
     r = r.where("#{type}_amount IS NOT NULL")
     r = r.group("#{currency}, #{@by[g.to_sym].map{|f| f[:sql]}.join(', ')}")
   }
@@ -178,4 +172,12 @@ class ExpenseReport < ActiveRecord::Base
       request.user == user
   end
 
+  # Total number of records for a given report
+  #
+  # @param [ActiveRecord::Relation] exp
+  # @return [Integer] number of records
+  def self.count(exp)
+    count = self.connection.execute("select count(*) as c from (#{exp.except(:limit, :offset, :order).to_sql})")
+    count.first["c"].to_i
+  end
 end
