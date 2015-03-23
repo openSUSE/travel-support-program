@@ -13,7 +13,7 @@ feature "Edit my account", "" do
   scenario "Edit profile data" do
     click_link "Profile"
     fill_in "user[phone_number]", :with => "+99 555 343 3433"
-    fill_in "other phone", :with => "+99 555 343 3433"
+    fill_in "telephone", :with => "+99 555 343 3433"
     fill_in "description", :with => "I was an interesting character in the REAL trilogy. Now I'm CR7."
     fill_in "website", :with => "http://www.starwars.com/anakin/"
     click_button "Update profile"
