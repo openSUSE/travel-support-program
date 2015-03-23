@@ -37,7 +37,6 @@ class TravelExpenseReport < ActiveRecord::Base
     :request => [
           { :field => :request_id, :sql => "requests.id" },
           { :field => :request_state, :sql => "requests.state" },
-          { :field => :reimbursement_id, :sql => "reimbursements.id" },
           { :field => :reimbursement_state, :sql => "reimbursements.state" },
           { :field => :user_id, :sql => "requests.user_id", :hidden => true },
           { :field => :user_nickname, :sql => "users.nickname" },
@@ -49,7 +48,6 @@ class TravelExpenseReport < ActiveRecord::Base
           { :field => :expense_id, :sql => "request_expenses.id", :hidden => true}, 
           { :field => :request_id, :sql => "requests.id" },
           { :field => :request_state, :sql => "requests.state" },
-          { :field => :reimbursement_id, :sql => "reimbursements.id" },
           { :field => :reimbursement_state, :sql => "reimbursements.state" },
           { :field => :user_id, :sql => "requests.user_id", :hidden => true },
           { :field => :user_nickname, :sql => "users.nickname" },

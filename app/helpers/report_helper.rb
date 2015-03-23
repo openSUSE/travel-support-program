@@ -62,10 +62,21 @@ module ReportHelper
     TravelSponsorship.human_state_name expense.value_for(:request_state)
   end
 
-  # Called from html_value_for and xlsx_value_for
+  # Called from html_value_for
   # @see #html_value_for
+  def html_value_for_reimbursement_state(expense)
+    state = expense.value_for(:reimbursement_state)
+    if state.blank?
+      ""
+    else
+      state = Reimbursement.human_state_name(state)
+      link_to(state, request_reimbursement_path(expense[:request_id]))
+    end
+  end
+
+  # Called from xlsx_value_for
   # @see #xlsx_value_for
-  def value_for_reimbursement_state(expense)
+  def xslx_value_for_reimbursement_state(expense)
     state = expense.value_for(:reimbursement_state)
     state.blank? ? "" : Reimbursement.human_state_name(state)
   end
@@ -80,13 +91,6 @@ module ReportHelper
   # @see #html_value_for
   def html_value_for_request_id(expense)
     link_to "##{expense[:request_id]}", request_path(expense[:request_id])
-  end
-
-  # Called from html_value_for
-  # @see #html_value_for
-  def html_value_for_reimbursement_id(expense)
-    id = expense[:reimbursement_id]
-    id.blank? ? "" : link_to("##{id}", request_reimbursement_path(expense[:request_id]))
   end
 
   # Called from html_value_for
