@@ -57,8 +57,11 @@ gem "rspec-rails", group: [:development, :test]
 gem 'exception_notification', group: :production
 gem 'coveralls', require: false
 
+# Moved out of the development group to avoid an error in every rake execution
+# caused by lib/tasks/doc.rake (at least until we figure out a cleaner
+# solution)
+gem "yard", "0.8.7.4"
 group :development do
-  gem "yard", "0.8.7.4"
   gem "yard-activerecord"
   gem 'state_machines-yard'
   gem 'ruby-graphviz'
