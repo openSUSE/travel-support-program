@@ -44,7 +44,7 @@ $ rails s
 ```
 
 You can access the application pointing your browser to <http://localhost:3000/>
-Three initial users should be available with the following emails and passwords:
+Four initial users should be available with the following emails and passwords:
 
 * tspmember@example.com / tspmember1
 * requester@example.com / requester1
