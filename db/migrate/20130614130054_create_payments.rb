@@ -3,9 +3,9 @@ class CreatePayments < ActiveRecord::Migration
     create_table :payments do |t|
       t.references  :reimbursement
       t.date        :date
-      t.decimal     :amount
+      t.decimal     :amount,      precision: 10, scale: 2
       t.string      :currency
-      t.decimal     :cost_amount
+      t.decimal     :cost_amount,      precision: 10, scale: 2
       t.string      :cost_currency
       t.string      :method
       t.string      :code
