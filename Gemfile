@@ -5,7 +5,7 @@ gem 'rails', '4.1.10'
 # Choose your weapon
 gem 'sqlite3'
 #gem 'pg'
-#gem 'mysql2'
+#gem 'mysql2', '~> 0.3.13'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -73,7 +73,7 @@ group :test do
   gem "capybara-email"
   gem "capybara-webkit"
   gem "shoulda-matchers"
-  gem "database_cleaner"
+  gem "database_cleaner", "~> 1.3.0"
   gem "pdf-reader"
 #  gem "delorean"
 end
