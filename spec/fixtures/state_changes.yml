@@ -5,7 +5,7 @@ luke_for_yavin_submission:
   from: "incomplete"
   to: "submitted"
   user: luke
-  created_at: <%= 30.days.ago + 1.hour %>
+  created_at: <%= (30.days.ago + 1.hour).to_s(:db) %>
 
 luke_for_yavin_approval:
   type: "StateTransition"
@@ -14,7 +14,7 @@ luke_for_yavin_approval:
   from: "submitted"
   to: "approved"
   user: tspmember
-  created_at: <%= 30.days.ago + 3.hours %>
+  created_at: <%= (30.days.ago + 3.hours).to_s(:db) %>
 
 luke_for_yavin_acceptance:
   type: "StateTransition"
@@ -23,7 +23,7 @@ luke_for_yavin_acceptance:
   from: "approved"
   to: "accepted"
   user: luke
-  created_at: <%= 30.days.ago + 5.hours %>
+  created_at: <%= (30.days.ago + 5.hours).to_s(:db) %>
 
 wedge_for_yavin_submission:
   type: "StateTransition"
@@ -32,7 +32,7 @@ wedge_for_yavin_submission:
   from: "incomplete"
   to: "submitted"
   user: wedge
-  created_at: <%= 30.days.ago + 6.hour %>
+  created_at: <%= (30.days.ago + 6.hour).to_s(:db) %>
 
 wedge_for_yavin_cancelation:
   type: "StateTransition"
@@ -41,7 +41,7 @@ wedge_for_yavin_cancelation:
   from: "submitted"
   to: "canceled"
   user: tspmember
-  created_at: <%= 30.days.ago + 12.hours %>
+  created_at: <%= (30.days.ago + 12.hours).to_s(:db) %>
 
 wedge_for_party_submission:
   type: "StateTransition"
@@ -50,7 +50,7 @@ wedge_for_party_submission:
   from: "incomplete"
   to: "submitted"
   user: wedge
-  created_at: <%= 9.days.ago %>
+  created_at: <%= 9.days.ago.to_s(:db) %>
 
 wedge_for_training_submission:
   type: "StateTransition"
@@ -59,7 +59,7 @@ wedge_for_training_submission:
   from: "incomplete"
   to: "submitted"
   user: wedge
-  created_at: <%= 40.days.ago + 1.hour %>
+  created_at: <%= (40.days.ago + 1.hour).to_s(:db) %>
 
 wedge_for_training_approval:
   type: "StateTransition"
@@ -68,7 +68,7 @@ wedge_for_training_approval:
   from: "submitted"
   to: "approved"
   user: tspmember
-  created_at: <%= 40.days.ago + 3.hours %>
+  created_at: <%= (40.days.ago + 3.hours).to_s(:db) %>
 
 wedge_for_training_acceptance:
   type: "StateTransition"
@@ -77,7 +77,7 @@ wedge_for_training_acceptance:
   from: "approved"
   to: "accepted"
   user: wedge
-  created_at: <%= 40.days.ago + 5.hours %>
+  created_at: <%= (40.days.ago + 5.hours).to_s(:db) %>
 
 wedge_customes_for_party_request:
   type: "StateTransition"
@@ -87,4 +87,4 @@ wedge_customes_for_party_request:
   to: "submitted"
   notes: "I'll take care"
   user: wedge
-  created_at: <%= 11.days.ago %>
+  created_at: <%= 11.days.ago.to_s(:db) %>

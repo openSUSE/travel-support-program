@@ -177,7 +177,13 @@ class TravelExpenseReport < ActiveRecord::Base
   # @param [ActiveRecord::Relation] exp
   # @return [Integer] number of records
   def self.count(exp)
-    count = self.connection.execute("select count(*) as c from (#{exp.except(:limit, :offset, :order).to_sql})")
-    count.first["c"].to_i
+    count = self.connection.execute("select count(*) as c from (#{exp.except(:limit, :offset, :order).to_sql}) query")
+    result = count.first
+    # Most adapters return a hash, but the MySQL one returns an array
+    if result.is_a?(Array)
+      result.first.to_i
+    else
+      result["c"].to_i
+    end
   end
 end

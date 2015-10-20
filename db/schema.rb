@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140825120840) do
+ActiveRecord::Schema.define(version: 20151019160107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,17 +45,17 @@ ActiveRecord::Schema.define(version: 20140825120840) do
     t.string   "country_code"
     t.string   "bank_postal_address"
     t.integer  "reimbursement_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "budgets", force: true do |t|
     t.string   "name"
     t.string   "description"
-    t.decimal  "amount"
+    t.decimal  "amount",      precision: 10, scale: 2
     t.string   "currency"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "budgets", ["currency"], name: "index_budgets_on_currency", using: :btree
@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(version: 20140825120840) do
     t.string   "machine_type"
     t.text     "body"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "private"
   end
 
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 20140825120840) do
     t.datetime "failed_at"
     t.string   "locked_by"
     t.string   "queue"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
@@ -113,8 +113,8 @@ ActiveRecord::Schema.define(version: 20140825120840) do
     t.date     "start_date"
     t.date     "end_date"
     t.boolean  "validated"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "visa_letters"
     t.datetime "request_creation_deadline"
     t.datetime "reimbursement_creation_deadline"
@@ -127,17 +127,17 @@ ActiveRecord::Schema.define(version: 20140825120840) do
   create_table "payments", force: true do |t|
     t.integer  "reimbursement_id"
     t.date     "date"
-    t.decimal  "amount"
+    t.decimal  "amount",           precision: 10, scale: 2
     t.string   "currency"
-    t.decimal  "cost_amount"
+    t.decimal  "cost_amount",      precision: 10, scale: 2
     t.string   "cost_currency"
     t.string   "method"
     t.string   "code"
     t.string   "subject"
     t.text     "notes"
     t.string   "file"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "postal_addresses", force: true do |t|
@@ -156,16 +156,16 @@ ActiveRecord::Schema.define(version: 20140825120840) do
     t.integer  "reimbursement_id"
     t.string   "title",            null: false
     t.string   "file",             null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "reimbursement_links", force: true do |t|
     t.integer  "reimbursement_id"
     t.string   "title",            null: false
     t.string   "url",              null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "reimbursements", force: true do |t|
@@ -173,24 +173,24 @@ ActiveRecord::Schema.define(version: 20140825120840) do
     t.integer  "user_id",          null: false
     t.integer  "request_id",       null: false
     t.text     "description"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.datetime "state_updated_at"
     t.string   "acceptance_file"
   end
 
   create_table "request_expenses", force: true do |t|
-    t.integer  "request_id",         null: false
+    t.integer  "request_id",                                  null: false
     t.string   "subject"
     t.string   "description"
-    t.decimal  "estimated_amount"
+    t.decimal  "estimated_amount",   precision: 10, scale: 2
     t.string   "estimated_currency"
-    t.decimal  "approved_amount"
+    t.decimal  "approved_amount",    precision: 10, scale: 2
     t.string   "approved_currency"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.decimal  "total_amount"
-    t.decimal  "authorized_amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "total_amount",       precision: 10, scale: 2
+    t.decimal  "authorized_amount",  precision: 10, scale: 2
   end
 
   create_table "requests", force: true do |t|
@@ -198,8 +198,8 @@ ActiveRecord::Schema.define(version: 20140825120840) do
     t.integer  "user_id",              null: false
     t.integer  "event_id",             null: false
     t.text     "description"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.datetime "state_updated_at"
     t.boolean  "visa_letter"
     t.integer  "postal_address_id"
@@ -220,8 +220,8 @@ ActiveRecord::Schema.define(version: 20140825120840) do
     t.string   "to",           null: false
     t.integer  "user_id"
     t.string   "notes"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "type"
   end
 
@@ -233,8 +233,8 @@ ActiveRecord::Schema.define(version: 20140825120840) do
     t.string   "full_name"
     t.string   "phone_number"
     t.string   "country_code"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "second_phone_number"
     t.string   "description"
     t.string   "location"
@@ -260,8 +260,8 @@ ActiveRecord::Schema.define(version: 20140825120840) do
     t.string   "last_sign_in_ip"
     t.string   "nickname",                              null: false
     t.string   "locale",                 default: "en", null: false
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

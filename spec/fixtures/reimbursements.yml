@@ -1,5 +1,5 @@
 wedge_for_training_reim:
   state: "incomplete"
   user: wedge
-  created_at: <%= 6.days.ago %>
+  created_at: <%= 6.days.ago.to_s(:db) %>
   request: wedge_for_training
