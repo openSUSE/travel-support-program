@@ -44,6 +44,7 @@ en:
   comment_failed: "Some error prevented the comment to be added."
   comment_line: "%{date} ago %{user} wrote a comment."
   comment_private_hint: "Only visible to users with roles %{roles}"
+  comment_private_hint_requester: "Only visible to the requester and to users with roles %{roles}"
   create_comment: "Add comment"
   create_reimbursement: "Ask for reimbursement"
   create_reimbursement_short: "Create"

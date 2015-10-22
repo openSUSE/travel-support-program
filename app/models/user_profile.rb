@@ -32,7 +32,7 @@ class UserProfile < ActiveRecord::Base
   }
 
   def set_default_attrs
-    self.role_name ||= "requester"
+    self.role_name ||= "none"
     self.attributes = connect_attrib_values
   end
 
