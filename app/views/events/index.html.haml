@@ -21,7 +21,8 @@
       %th= sort_link(@q, :country_code)
       %th= sort_link(@q, :start_date)
       %th= sort_link(@q, :end_date)
-      %th= sort_link(@q, :shipment_type)
+      - if enabled? :shipments
+        %th= sort_link(@q, :shipment_type)
       %th= t(:ask_for)
   %tbody
     - collection.each do |r|
@@ -30,7 +31,8 @@
         %td= country_label(r.country_code)
         %td= l(r.start_date)
         %td= l(r.end_date)
-        %td= r.shipment_type
+        - if enabled? :shipments
+          %td= r.shipment_type
         %td
           - if r.accepting_requests?
             = link_to t(:new_travel), new_travel_sponsorship_path(:event_id => r), :class => 'btn btn-mini'

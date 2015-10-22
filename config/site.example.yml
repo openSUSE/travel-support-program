@@ -36,12 +36,7 @@ common: &common
       url: "http://opensuse.org/openSUSE:Travel_Support_Program"
     - title: "Application's Github"
       url: "https://github.com/openSUSE/travel-support-program"
-  travel_expense_subjects:
-    - Plane
-    - Train
-    - Bus
-    - Lodging
-    - Other
+
   currencies_for_approved:
     - EUR
     - USD
@@ -55,9 +50,21 @@ common: &common
     - zip_code
     - postal_address
     - phone_number
-  shipment_types:
-    - Big booth box
-    - Small booth box
+
+  travel_sponsorships:
+    enabled: true
+    expenses_subjects:
+      - Plane
+      - Train
+      - Bus
+      - Lodging
+      - Other
+
+  shipments:
+    enabled: true
+    types:
+      - Big booth box
+      - Small booth box
 
 production:
   <<: *common
@@ -86,15 +93,21 @@ test:
   currencies_for_approved:
     - EUR
     - USD
-  travel_expense_subjects:
-    - Gas
-    - Droid rental
-    - Lodging
-    - Other
   relevant_profile_fields:
     - full_name
     - location
     - zip_code
-  shipment_types:
-    - Wookiee customes box
-    - Death Star destruction kit
+
+  travel_sponsorships:
+    enabled: true
+    expenses_subjects:
+      - Gas
+      - Droid rental
+      - Lodging
+      - Other
+
+  shipments:
+    enabled: true
+    types:
+      - Wookiee customes box
+      - Death Star destruction kit

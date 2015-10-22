@@ -295,4 +295,12 @@ module ApplicationHelper
     crumbs = crumbs.join(" " + content_tag(:span, ">", :class => "divider") + " ")
     content_tag(:ul, crumbs.html_safe, :class => "breadcrumb")
   end
+
+  # Checks whether a concrete setting is enabled in the config file
+  #
+  # @return [Boolean] value of the :enabled key for the provided path in the
+  #         configuration file
+  def enabled?(*setting_path)
+    TravelSupport::Config.setting(*setting_path, :enabled)
+  end
 end

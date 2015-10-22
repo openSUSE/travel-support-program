@@ -26,31 +26,40 @@
   corresponding option in the main menu or in their own username at the
   top right corner of the page, next to the &#39;log out&#39; link.
 
-- if TravelSupport::Config.setting :opensuse_connect, :enabled
+- if enabled? :opensuse_connect
   Some of the information in the profile cannot be entered directly in the
   application. That information is read from
   = link_to "openSUSE Connect", TravelSupport::Config.setting(:opensuse_connect, :base_url)
   and should be updated in the Connect profile of the user.
 
-%h2 Applying for travel sponsorship or requesting materials
+- if enabled? :travel_sponsorships
+  - if enabled? :shipments
+    %h2 Applying for travel sponsorship or requesting materials
+  - else
+    %h2 Applying for travel sponsorship
+- else
+  - if enabled? :shipments
+    %h2 Requesting materials
 
 %p
   The whole process happens in the context of an event. In the
   =link_to "events list", events_path
-  you can see events accepting sponsorship and shipment requests.
+  you can see events accepting requests.
   Depending of the permissions configuration, you will be able to create new
-  events or only to apply to previously existing events. For each event, in the
-  &#39;ask for&#39; column there can be up to two buttons: &#39;travel
-  support&#39;, which creates a new travel support request and
-  &#39;merchandising shipment&#39;, which creates a new shipment
-  request.
+  events or only to apply to previously existing events.
+  For each event, in the &#39;ask for&#39; column there can be one or several
+  buttons, depending on the event itself and the system configuration,
+  allowing to create new requests in the system.
 
+- links = []
+- if enabled? :travel_sponsorships
+  - links << link_to("travel support requests", travel_sponsorships_path)
+- if enabled? :shipments
+  - links << link_to("shipment requests", shipments_path)
 %p
-  You can save the request at any moment and edit it later, since it will be always
+  You can save the request at any moment and edit it later. It will be always
   available in your
-  = link_to "travel support requests", travel_sponsorships_path
-  or
-  = link_to "shipment requests", shipments_path
+  = links.join(" or ").html_safe
   list.
   One important note: creating, editing or saving your request DOES NOT send it to the
   people in charge of taking the final decision. As long as the request state is
@@ -70,67 +79,69 @@
   As applicant, your goal should be to reach the final state.
 
 #workflows.accordion
-  .accordion-group
-    .accordion-heading
-      %a.accordion-toggle{:href => "#collapseTravel", :data => {:toggle => "collapse", :parent=>"#workflows"}}
-        Travel support: details
-    #collapseTravel.accordion-body.collapse
-      .accordion-inner
+  - if enabled? :travel_sponsorships
+    .accordion-group
+      .accordion-heading
+        %a.accordion-toggle{:href => "#collapseTravel", :data => {:toggle => "collapse", :parent=>"#workflows"}}
+          Travel support: details
+      #collapseTravel.accordion-body.collapse
+        .accordion-inner
 
-        %h3 Travel support requests
+          %h3 Travel support requests
 
-        %p
-          The most important information in the travel support request form is probably
-          the &#39;expenses&#39; section, which describes how are you
-          planning to spend the money. You can add as many expenses as needed, specifying
-          the amount you are planning to spend on every one using the &#39;estimated
-          amount/currency&#39; column. Sometimes you will know the
-          exact amount in advance and sometimes you will have to do an estimation.
-          Once you get a reply from the Travel Support Program managers, you will see real
-          approved amount for every expense in the &#39;approved amount&#39; column. If you
-          finally accept the proposal,
-          %strong you will only get the approved amount, not the estimated one.
-          Keep this in mind.
-          = image_tag "TravelSponsorship_state.png", :alt => "Travel support request workflow diagram"
+          %p
+            The most important information in the travel support request form is probably
+            the &#39;expenses&#39; section, which describes how are you
+            planning to spend the money. You can add as many expenses as needed, specifying
+            the amount you are planning to spend on every one using the &#39;estimated
+            amount/currency&#39; column. Sometimes you will know the
+            exact amount in advance and sometimes you will have to do an estimation.
+            Once you get a reply from the Travel Support Program managers, you will see real
+            approved amount for every expense in the &#39;approved amount&#39; column. If you
+            finally accept the proposal,
+            %strong you will only get the approved amount, not the estimated one.
+            Keep this in mind.
+            = image_tag "TravelSponsorship_state.png", :alt => "Travel support request workflow diagram"
 
-        %h3 Reimbursement of travel sponsorship
+          %h3 Reimbursement of travel sponsorship
 
-        %p
-          When the event is over, you can go to your accepted request and click the &#39;ask for
-          reimbursement&#39; button. It will create a new reimbursement, which is quite similar
-          to a request but includes more fields and have a slightly different workflow.
-          The new reimbursement will be added to
-          = link_to "your reimbursements list", reimbursements_path
-          at the left menu.
+          %p
+            When the event is over, you can go to your accepted request and click the &#39;ask for
+            reimbursement&#39; button. It will create a new reimbursement, which is quite similar
+            to a request but includes more fields and have a slightly different workflow.
+            The new reimbursement will be added to
+            = link_to "your reimbursements list", reimbursements_path
+            at the left menu.
 
-        %p
-          The main operation is almost identical to the requests, with fields for describing
-          your activities and the amount finally spent and with fields for providing your bank
-          information and the expenses receipts. You also need to upload a signed
-          version of the reimbursement. That means printing (click on &#39;download printable
-          version&#39;), signing with a pen, scanning the result and uploading it (click on
-          &#39;attach signed document&#39;). If you already did it but your reimbursement was
-          rolled back and you are performing a second submission, make sure to update the
-          signed file to fit the current information in the application.
+          %p
+            The main operation is almost identical to the requests, with fields for describing
+            your activities and the amount finally spent and with fields for providing your bank
+            information and the expenses receipts. You also need to upload a signed
+            version of the reimbursement. That means printing (click on &#39;download printable
+            version&#39;), signing with a pen, scanning the result and uploading it (click on
+            &#39;attach signed document&#39;). If you already did it but your reimbursement was
+            rolled back and you are performing a second submission, make sure to update the
+            signed file to fit the current information in the application.
 
-        %p
-          The full workflow for a reimbursement is displayed below. The last states correspond to
-          administrative steps related to the payment.
-          = image_tag "Reimbursement_state.png", :alt => "Reimbursement workflow diagram"
+          %p
+            The full workflow for a reimbursement is displayed below. The last states correspond to
+            administrative steps related to the payment.
+            = image_tag "Reimbursement_state.png", :alt => "Reimbursement workflow diagram"
 
-  .accordion-group
-    .accordion-heading
-      %a.accordion-toggle{:href => "#collapseShipment", :data => {:toggle => "collapse", :parent=>"#workflows"}}
-        Merchandising shipment: details
-    #collapseShipment.accordion-body.collapse
-      .accordion-inner
+  - if enabled?(:shipments)
+    .accordion-group
+      .accordion-heading
+        %a.accordion-toggle{:href => "#collapseShipment", :data => {:toggle => "collapse", :parent=>"#workflows"}}
+          Merchandising shipment: details
+      #collapseShipment.accordion-body.collapse
+        .accordion-inner
 
-        %h3 Shipment requests
+          %h3 Shipment requests
 
-        %p
-          Only some events are eligible for merchandising shipment and the type
-          of shipment (for example &#39;small booth box&#39;) is set in advance
-          for every event. As a consequence, the shipment request form only
-          contains contact information and a field for additional notes.
-          The full workflow for a shipment request is displayed below.
-          = image_tag "Shipment_state.png", :alt => "Shipment request workflow diagram"
+          %p
+            Only some events are eligible for merchandising shipment and the type
+            of shipment (for example &#39;small booth box&#39;) is set in advance
+            for every event. As a consequence, the shipment request form only
+            contains contact information and a field for additional notes.
+            The full workflow for a shipment request is displayed below.
+            = image_tag "Shipment_state.png", :alt => "Shipment request workflow diagram"

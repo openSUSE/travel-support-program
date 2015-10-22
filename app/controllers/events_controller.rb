@@ -17,7 +17,7 @@ class EventsController < InheritedResources::Base
   end
 
   def set_types
-    @shipment_types = TravelSupport::Config.setting('shipment_types')
+    @shipment_types = TravelSupport::Config.setting(:shipments, :types)
   end
 
   def permitted_params
