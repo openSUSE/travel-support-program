@@ -165,11 +165,9 @@ class Ability
       end
 
       # TravelSponsorships
-      cannot :create, TravelSponsorship
       can :read, TravelSponsorship
 
       # Reimbursements
-      cannot :create, Reimbursement
       can :read, Reimbursement
       can :read, ReimbursementAttachment
       can :read, BankAccount
@@ -192,11 +190,9 @@ class Ability
       can :read, Budget
 
       # Requests
-      cannot :create, TravelSponsorship
       can :read, TravelSponsorship
 
       # Reimbursements
-      cannot :create, Reimbursement
       can :read, Reimbursement
       can :read, ReimbursementAttachment
       can :read, BankAccount
@@ -216,11 +212,9 @@ class Ability
       can :read, UserProfile
 
       # TravelSponsorships
-      cannot :create, TravelSponsorship
       can :read, TravelSponsorship
 
       # Reimbursements
-      cannot :create, Reimbursement
       can :read, Reimbursement
       can :read, ReimbursementAttachment
       can :read, BankAccount
@@ -245,13 +239,11 @@ class Ability
       end
 
       # TravelSponsorships
-      cannot :create, TravelSponsorship
       can :read, TravelSponsorship
       # Can create state adjustments
       can :adjust_state, TravelSponsorship
 
       # Reimbursements
-      cannot :create, Reimbursement
       can :read, Reimbursement
       can :read, ReimbursementAttachment
       can :read, BankAccount
@@ -260,7 +252,6 @@ class Ability
       can :adjust_state, Reimbursement
 
       # Shipments
-      cannot :create, Shipment
       can :read, Shipment
       # Or even create state adjustments
       can :adjust_state, Shipment
@@ -288,13 +279,7 @@ class Ability
       end
 
       # Shipments
-      cannot :create, Shipment
       can :read, Shipment
-
-      # TravelSponsorships
-      cannot :create, TravelSponsorship
-      # Reimbursements
-      cannot :create, Reimbursement
     end
 
     #
@@ -305,13 +290,7 @@ class Ability
       cannot :create, TravelSponsorship
 
       # Shipments
-      cannot :create, Shipment
       can :read, Shipment
-
-      # TravelSponsorships
-      cannot :create, TravelSponsorship
-      # Reimbursements
-      cannot :create, Reimbursement
     end
 
     # FIXME: workaround

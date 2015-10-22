@@ -23,8 +23,23 @@ describe "Assistant" do
     it{ should_not be_able_to(:destroy, events(:party)) }
   end
 
-  context 'managing requests' do
-    it{ should_not be_able_to(:create, Request.new) }
+  context 'managing his own requests' do
+    it{ should_not be_able_to(:create, TravelSponsorship.new) }
+    it{ should be_able_to(:create, TravelSponsorship.new(:event_id => events(:dagobah_camp).id)) }
+    it{ should_not be_able_to(:create, TravelSponsorship.new(:event_id => events(:hoth_hackaton).id)) }
+    it{ should be_able_to(:read, requests(:assistant_for_party)) }
+    it{ should be_able_to(:read, requests(:assistant_for_yavin)) }
+    it{ should be_able_to(:update, requests(:assistant_for_party)) }
+    it{ should_not be_able_to(:update, requests(:assistant_for_yavin)) }
+    it{ should be_able_to(:destroy, requests(:assistant_for_party)) }
+    it{ should_not be_able_to(:destroy, requests(:assistant_for_yavin)) }
+    it{ should be_able_to(:cancel, requests(:assistant_for_party)) }
+    it{ should be_able_to(:cancel, requests(:assistant_for_yavin)) }
+    it{ should_not be_able_to(:adjust_state, requests(:assistant_for_yavin)) }
+    it{ should_not be_able_to(:adjust_state, requests(:assistant_for_party)) }
+  end
+
+  context "managing other's requests" do
     it{ should be_able_to(:read, requests(:wedge_for_party)) }
     it{ should be_able_to(:read, requests(:luke_for_yavin)) }
     it{ should_not be_able_to(:update, requests(:wedge_for_party)) }
@@ -41,7 +56,96 @@ describe "Assistant" do
     it{ should_not be_able_to(:adjust_state, requests(:luke_for_yavin)) }
   end
 
-  context "managing reimbursements" do
+  context "asking for reimbursement" do
+    it{ should be_able_to(:create, requests(:assistant_for_yavin).build_reimbursement) }
+    it{ should_not be_able_to(:create, requests(:luke_for_yavin).build_reimbursement) }
+  end
+
+  context "managing his own reimbursement" do
+    before(:each) do
+      @reimbursement = requests(:assistant_for_yavin).create_reimbursement
+      @reimbursement.request.expenses.each do |e|
+        e.total_amount = e.estimated_amount + 5
+      end
+      set_acceptance_file @reimbursement
+      @reimbursement.create_bank_account(:holder => "Assistant", :bank_name => "Bank",
+                                         :format => "iban", :iban => "IBAN", :bic => "BIC")
+    end
+
+    it{ should be_able_to(:submit, @reimbursement) }
+    it{ should be_able_to(:update, @reimbursement) }
+    it{ should be_able_to(:cancel, @reimbursement) }
+    it{ should_not be_able_to(:approve, @reimbursement) }
+    it{ should_not be_able_to(:process, @reimbursement) }
+    it{ should_not be_able_to(:confirm, @reimbursement) }
+    it{ should_not be_able_to(:adjust_state, @reimbursement) }
+
+    context "already submitted" do
+      before(:each) do
+        @reimbursement.submit!
+      end
+
+      it{ should be_able_to(:read, @reimbursement) }
+      it{ should be_able_to(:roll_back, @reimbursement) }
+      it{ should be_able_to(:cancel, @reimbursement) }
+      it{ should_not be_able_to(:update, @reimbursement) }
+      it{ should_not be_able_to(:approve, @reimbursement) }
+      it{ should_not be_able_to(:process, @reimbursement) }
+      it{ should_not be_able_to(:confirm, @reimbursement) }
+      it{ should_not be_able_to(:destroy, @reimbursement) }
+      it{ should_not be_able_to(:adjust_state, @reimbursement) }
+
+      context "and approved" do
+        before(:each) do
+          @reimbursement.approve!
+        end
+
+        it{ should be_able_to(:read, @reimbursement) }
+        it{ should be_able_to(:cancel, @reimbursement) }
+        it{ should be_able_to(:roll_back, @reimbursement) }
+        it{ should_not be_able_to(:update, @reimbursement) }
+        it{ should_not be_able_to(:destroy, @reimbursement) }
+        it{ should_not be_able_to(:approve, @reimbursement) }
+        it{ should_not be_able_to(:process, @reimbursement) }
+        it{ should_not be_able_to(:confirm, @reimbursement) }
+        it{ should_not be_able_to(:adjust_state, @reimbursement) }
+
+        context "and processed" do
+          before(:each) do
+            @reimbursement.process!
+          end
+
+          it{ should be_able_to(:read, @reimbursement) }
+          it{ should_not be_able_to(:update, @reimbursement) }
+          it{ should_not be_able_to(:destroy, @reimbursement) }
+          it{ should_not be_able_to(:cancel, @reimbursement) }
+          it{ should_not be_able_to(:approve, @reimbursement) }
+          it{ should_not be_able_to(:roll_back, @reimbursement) }
+          it{ should_not be_able_to(:process, @reimbursement) }
+          it{ should_not be_able_to(:confirm, @reimbursement) }
+          it{ should_not be_able_to(:adjust_state, @reimbursement) }
+
+          context "and payed" do
+            before(:each) do
+              @reimbursement.confirm!
+            end
+
+            it{ should be_able_to(:read, @reimbursement) }
+            it{ should_not be_able_to(:update, @reimbursement) }
+            it{ should_not be_able_to(:destroy, @reimbursement) }
+            it{ should_not be_able_to(:cancel, @reimbursement) }
+            it{ should_not be_able_to(:approve, @reimbursement) }
+            it{ should_not be_able_to(:roll_back, @reimbursement) }
+            it{ should_not be_able_to(:process, @reimbursement) }
+            it{ should_not be_able_to(:confirm, @reimbursement) }
+            it{ should_not be_able_to(:adjust_state, @reimbursement) }
+          end
+        end
+      end
+    end
+  end
+
+  context "managing other's reimbursements" do
     before(:each) do
       @reimbursement = requests(:luke_for_yavin).create_reimbursement
       @reimbursement.request.expenses.each do |e|
@@ -52,7 +156,6 @@ describe "Assistant" do
                                          :format => "iban", :iban => "IBAN", :bic => "BIC")
     end
 
-    it{ should_not be_able_to(:create, Reimbursement.new) }
     it{ should be_able_to(:read, @reimbursement) }
     it{ should_not be_able_to(:update, @reimbursement) }
     it{ should_not be_able_to(:approve, @reimbursement) }
@@ -89,21 +192,66 @@ describe "Assistant" do
     it{ should_not be_able_to(:update, @comment) }
   end
 
-  context 'accessing attachments in a reimbursement' do
+  context 'managing attachments to his own reimbursements' do
+    before(:each) do
+      @reimbursement = reimbursements(:assistant_for_training_reim)
+      set_acceptance_file @reimbursement
+    end
+
+    it{ should be_able_to(:read, @reimbursement.attachments.first) }
+    it{ should be_able_to(:destroy, @reimbursement.attachments.first) }
+    it{ should be_able_to(:update, @reimbursement.attachments.first) }
+    it{ should be_able_to(:create, @reimbursement.attachments.build) }
+
+    context 'after submitting it' do
+      before(:each) do
+        transition(@reimbursement, :submit, users(:assistant))
+      end
+
+      it{ should be_able_to(:read, @reimbursement.attachments.first) }
+      it{ should_not be_able_to(:destroy, @reimbursement.attachments.first) }
+      it{ should_not be_able_to(:update, @reimbursement.attachments.first) }
+      it{ should_not be_able_to(:create, @reimbursement.attachments.build) }
+    end
+  end
+
+  context "accessing attachments in other's reimbursements" do
     before(:each) do
       @reimbursement = reimbursements(:wedge_for_training_reim)
+      set_acceptance_file @reimbursement
     end
 
     it{ should be_able_to(:read, @reimbursement.attachments.first) }
     it{ should_not be_able_to(:destroy, @reimbursement.attachments.first) }
     it{ should_not be_able_to(:update, @reimbursement.attachments.first) }
     it{ should_not be_able_to(:create, @reimbursement.attachments.build) }
+
+    context 'after submitting it' do
+      before(:each) do
+        transition(@reimbursement, :submit, users(:wedge))
+      end
+
+      it{ should be_able_to(:read, @reimbursement.attachments.first) }
+      it{ should_not be_able_to(:destroy, @reimbursement.attachments.first) }
+      it{ should_not be_able_to(:update, @reimbursement.attachments.first) }
+      it{ should_not be_able_to(:create, @reimbursement.attachments.build) }
+    end
   end
 
-  context 'accessing shipments' do
+  context 'managing his own shipments' do
     it{ should_not be_able_to(:create, Shipment.new) }
+    it{ should be_able_to(:create, Shipment.new(:event_id => events(:hoth_hackaton).id)) }
+    it{ should_not be_able_to(:create, Shipment.new(:event_id => events(:dagobah_camp).id)) }
+    it{ should be_able_to(:read, requests(:assistant_customes_for_party)) }
+    it{ should be_able_to(:update, requests(:assistant_customes_for_party)) }
+    it{ should be_able_to(:destroy, requests(:assistant_customes_for_party)) }
+    it{ should be_able_to(:cancel, requests(:assistant_customes_for_party)) }
+    it{ should_not be_able_to(:adjust_state, requests(:assistant_customes_for_party)) }
+  end
+
+  context "trying to look into other's requests" do
     it{ should_not be_able_to(:read, requests(:wedge_customes_for_party)) }
     it{ should_not be_able_to(:update, requests(:wedge_customes_for_party)) }
-    it{ should_not be_able_to(:destroy, requests(:wedge_customes_for_party)) }
+    it{ should_not be_able_to(:adjust_state, requests(:wedge_customes_for_party)) }
   end
 end

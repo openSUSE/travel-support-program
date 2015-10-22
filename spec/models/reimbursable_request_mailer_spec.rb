@@ -4,6 +4,13 @@ require 'spec_helper'
 describe ReimbursableRequestMailer do
   fixtures :all
 
+  before(:each) do
+    # Delete all affected requests but Luke's one, to keep tests simple
+    [:administrative, :assistant, :tspmember].each do |user|
+      requests(:"#{user}_for_yavin").destroy
+    end
+  end
+
   context "notifying missing reimbursements with a narrow threshold" do
     before(:each) do
       @mcount = ActionMailer::Base.deliveries.size

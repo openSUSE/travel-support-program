@@ -3,3 +3,21 @@ wedge_for_training_reim:
   user: wedge
   created_at: <%= 6.days.ago.to_s(:db) %>
   request: wedge_for_training
+
+administrative_for_training_reim:
+  state: "incomplete"
+  user: administrative
+  created_at: <%= 6.days.ago.to_s(:db) %>
+  request: administrative_for_training
+
+assistant_for_training_reim:
+  state: "incomplete"
+  user: assistant
+  created_at: <%= 6.days.ago.to_s(:db) %>
+  request: assistant_for_training
+
+tspmember_for_training_reim:
+  state: "incomplete"
+  user: tspmember
+  created_at: <%= 6.days.ago.to_s(:db) %>
+  request: tspmember_for_training

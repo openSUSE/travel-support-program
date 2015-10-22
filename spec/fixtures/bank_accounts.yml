@@ -5,3 +5,27 @@ wedge_for_training_bank:
   format: "iban"
   iban: "AT611904300234573201"
   bic: "BNPAFRPP"
+
+administrative_for_training_bank:
+  reimbursement: administrative_for_training_reim
+  holder: "C3PO"
+  bank_name: "Droids Bank"
+  format: "iban"
+  iban: "AT611904300234577666"
+  bic: "DRDSvrwhr"
+
+assistant_for_training_bank:
+  reimbursement: assistant_for_training_reim
+  holder: "Gial Ackbar"
+  bank_name: "Intergalactic Mortage Bank"
+  format: "iban"
+  iban: "AT6119043002345123454"
+  bic: "BNPAFRPP"
+
+tspmember_for_training_bank:
+  reimbursement: tspmember_for_training_reim
+  holder: "Good old Evran"
+  bank_name: "Intergalactic Mortage Bank"
+  format: "iban"
+  iban: "AT6119000000000001"
+  bic: "BNPAFRPP"

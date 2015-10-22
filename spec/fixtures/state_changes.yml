@@ -25,6 +25,87 @@ luke_for_yavin_acceptance:
   user: luke
   created_at: <%= (30.days.ago + 5.hours).to_s(:db) %>
 
+administrative_for_yavin_submission:
+  type: "StateTransition"
+  machine: administrative_for_yavin (Request)
+  state_event: "submit"
+  from: "incomplete"
+  to: "submitted"
+  user: administrative
+  created_at: <%= (30.days.ago + 1.hour).to_s(:db) %>
+
+administrative_for_yavin_approval:
+  type: "StateTransition"
+  machine: administrative_for_yavin (Request)
+  state_event: "approve"
+  from: "submitted"
+  to: "approved"
+  user: tspmember
+  created_at: <%= (30.days.ago + 3.hours).to_s(:db) %>
+
+administrative_for_yavin_acceptance:
+  type: "StateTransition"
+  machine: administrative_for_yavin (Request)
+  state_event: "accept"
+  from: "approved"
+  to: "accepted"
+  user: administrative
+  created_at: <%= (30.days.ago + 5.hours).to_s(:db) %>
+
+assistant_for_yavin_submission:
+  type: "StateTransition"
+  machine: assistant_for_yavin (Request)
+  state_event: "submit"
+  from: "incomplete"
+  to: "submitted"
+  user: assistant
+  created_at: <%= (30.days.ago + 1.hour).to_s(:db) %>
+
+assistant_for_yavin_approval:
+  type: "StateTransition"
+  machine: assistant_for_yavin (Request)
+  state_event: "approve"
+  from: "submitted"
+  to: "approved"
+  user: tspmember
+  created_at: <%= (30.days.ago + 3.hours).to_s(:db) %>
+
+assistant_for_yavin_acceptance:
+  type: "StateTransition"
+  machine: assistant_for_yavin (Request)
+  state_event: "accept"
+  from: "approved"
+  to: "accepted"
+  user: assistant
+  created_at: <%= (30.days.ago + 5.hours).to_s(:db) %>
+
+tspmember_for_yavin_submission:
+  type: "StateTransition"
+  machine: tspmember_for_yavin (Request)
+  state_event: "submit"
+  from: "incomplete"
+  to: "submitted"
+  user: tspmember
+  created_at: <%= (30.days.ago + 1.hour).to_s(:db) %>
+
+tspmember_for_yavin_approval:
+  type: "StateTransition"
+  machine: tspmember_for_yavin (Request)
+  state_event: "approve"
+  from: "submitted"
+  to: "approved"
+  user: tspmember
+  created_at: <%= (30.days.ago + 3.hours).to_s(:db) %>
+
+tspmember_for_yavin_acceptance:
+  type: "StateTransition"
+  machine: tspmember_for_yavin (Request)
+  state_event: "accept"
+  from: "approved"
+  to: "accepted"
+  user: tspmember
+  created_at: <%= (30.days.ago + 5.hours).to_s(:db) %>
+
 wedge_for_yavin_submission:
   type: "StateTransition"
   machine: wedge_for_yavin (Request)
@@ -77,6 +158,87 @@ wedge_for_training_acceptance:
   from: "approved"
   to: "accepted"
   user: wedge
+  created_at: <%= (40.days.ago + 5.hours).to_s(:db) %>
+
+administrative_for_training_submission:
+  type: "StateTransition"
+  machine: administrative_for_training (Request)
+  state_event: "submit"
+  from: "incomplete"
+  to: "submitted"
+  user: administrative
+  created_at: <%= (40.days.ago + 1.hour).to_s(:db) %>
+
+administrative_for_training_approval:
+  type: "StateTransition"
+  machine: administrative_for_training (Request)
+  state_event: "approve"
+  from: "submitted"
+  to: "approved"
+  user: tspmember
+  created_at: <%= (40.days.ago + 3.hours).to_s(:db) %>
+
+administrative_for_training_acceptance:
+  type: "StateTransition"
+  machine: administrative_for_training (Request)
+  state_event: "accept"
+  from: "approved"
+  to: "accepted"
+  user: administrative
+  created_at: <%= (40.days.ago + 5.hours).to_s(:db) %>
+
+assistant_for_training_submission:
+  type: "StateTransition"
+  machine: assistant_for_training (Request)
+  state_event: "submit"
+  from: "incomplete"
+  to: "submitted"
+  user: assistant
+  created_at: <%= (40.days.ago + 1.hour).to_s(:db) %>
+
+assistant_for_training_approval:
+  type: "StateTransition"
+  machine: assistant_for_training (Request)
+  state_event: "approve"
+  from: "submitted"
+  to: "approved"
+  user: tspmember
+  created_at: <%= (40.days.ago + 3.hours).to_s(:db) %>
+
+assistant_for_training_acceptance:
+  type: "StateTransition"
+  machine: assistant_for_training (Request)
+  state_event: "accept"
+  from: "approved"
+  to: "accepted"
+  user: assistant
+  created_at: <%= (40.days.ago + 5.hours).to_s(:db) %>
+
+tspmember_for_training_submission:
+  type: "StateTransition"
+  machine: tspmember_for_training (Request)
+  state_event: "submit"
+  from: "incomplete"
+  to: "submitted"
+  user: tspmember
+  created_at: <%= (40.days.ago + 1.hour).to_s(:db) %>
+
+tspmember_for_training_approval:
+  type: "StateTransition"
+  machine: tspmember_for_training (Request)
+  state_event: "approve"
+  from: "submitted"
+  to: "approved"
+  user: tspmember
+  created_at: <%= (40.days.ago + 3.hours).to_s(:db) %>
+
+tspmember_for_training_acceptance:
+  type: "StateTransition"
+  machine: tspmember_for_training (Request)
+  state_event: "accept"
+  from: "approved"
+  to: "accepted"
+  user: tspmember
   created_at: <%= (40.days.ago + 5.hours).to_s(:db) %>
 
 wedge_customes_for_party_request:
