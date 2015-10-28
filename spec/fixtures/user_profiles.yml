@@ -16,19 +16,34 @@ wedge_profile:
   zip_code: "C21"
 tspmember_profile:
   user: tspmember
+  full_name: "Evram Lajaie"
+  location: "Yavin 4"
+  zip_code: "Yav4"
   role_id: 2
 supervisor_profile:
   user: supervisor
   role_id: 3
 administrative_profile:
   user: administrative
+  full_name: "C3PO"
+  zip_code: "XX"
+  location: "Always in the road"
   role_id: 4
 assistant_profile:
   user: assistant
+  full_name: "Gial Ackbard"
+  zip_code: "Cala07"
+  location: "In a trap"
   role_id: 5
 material_profile:
   user: material
+  full_name: "Yos Kolina"
+  zip_code: "Cala01"
+  location: "Mon Cala Palace"
   role_id: 6
 shipper_profile:
   user: shipper
+  full_name: "DD-19.a1"
+  zip_code: "XX"
+  location: "It's a secret"
   role_id: 7

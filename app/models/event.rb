@@ -42,6 +42,7 @@ class Event < ActiveRecord::Base
   #
   # @return [Boolean] true if accepting new requests
   def accepting_requests?
+    return false unless TravelSupport::Config.setting(:travel_sponsorships, :enabled)
     if request_creation_deadline
       Time.zone.now < request_creation_deadline
     else
@@ -65,6 +66,7 @@ class Event < ActiveRecord::Base
   #
   # @return [Boolean] true if accepting new shipments
   def accepting_shipments?
+    return false unless TravelSupport::Config.setting(:shipments, :enabled)
     (!shipment_type.blank? && Date.today < start_date) rescue false
   end
 

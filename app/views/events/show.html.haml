@@ -32,11 +32,14 @@
       = r.attribute :description
     .row-fluid
       .span6
-        = r.attribute :shipment_type
-        = r.attribute :visa_letters
+        - if enabled? :shipments
+          = r.attribute :shipment_type
+        - if enabled? :travel_sponsorships
+          = r.attribute :visa_letters
       .span6
-        = r.attribute :request_creation_deadline
-        = r.attribute :reimbursement_creation_deadline
+        - if enabled? :travel_sponsorships
+          = r.attribute :request_creation_deadline
+          = r.attribute :reimbursement_creation_deadline
   - if user_signed_in? && can?(:validate, resource)
     .row-fluid
       .span12

@@ -49,7 +49,6 @@ describe "Supervisor" do
       end
     end
 
-    it{ should_not be_able_to(:create, Reimbursement.new) }
     it{ should be_able_to(:read, @reimbursement) }
     it{ should be_able_to(:adjust_state, @reimbursement) }
     it{ should be_able_to(:cancel, @reimbursement) }

@@ -2,3 +2,13 @@ wedge_for_training_attch1:
   reimbursement: wedge_for_training_reim
   title: "Gas invoice"
   file: "scan001.pdf"
+
+admin_for_training_attch1:
+  reimbursement: administrative_for_training_reim
+  title: "Gas invoice"
+  file: "scan001.pdf"
+
+assistant_for_training_attch1:
+  reimbursement: assistant_for_training_reim
+  title: "Gas invoice"
+  file: "scan001.pdf"

@@ -12,6 +12,27 @@ luke_for_yavin:
   state_updated_at: <%= (30.days.ago + 5.hours).to_s(:db) %>
   type: "TravelSponsorship"
 
+administrative_for_yavin:
+  state: "accepted"
+  user: administrative
+  event: yavin_hackaton
+  state_updated_at: <%= (30.days.ago + 5.hours).to_s(:db) %>
+  type: "TravelSponsorship"
+
+assistant_for_yavin:
+  state: "accepted"
+  user: assistant
+  event: yavin_hackaton
+  state_updated_at: <%= (30.days.ago + 5.hours).to_s(:db) %>
+  type: "TravelSponsorship"
+
+tspmember_for_yavin:
+  state: "accepted"
+  user: tspmember
+  event: yavin_hackaton
+  state_updated_at: <%= (30.days.ago + 5.hours).to_s(:db) %>
+  type: "TravelSponsorship"
+
 wedge_for_party:
   state: "submitted"
   user: wedge
@@ -26,9 +47,51 @@ luke_for_party:
   created_at: <%= 6.days.ago.to_s(:db) %>
   type: "TravelSponsorship"
 
+administrative_for_party:
+  state: "incomplete"
+  user: administrative
+  event: party
+  created_at: <%= 6.days.ago.to_s(:db) %>
+  type: "TravelSponsorship"
+
+assistant_for_party:
+  state: "incomplete"
+  user: assistant
+  event: party
+  created_at: <%= 6.days.ago.to_s(:db) %>
+  type: "TravelSponsorship"
+
+tspmember_for_party:
+  state: "incomplete"
+  user: tspmember
+  event: party
+  created_at: <%= 6.days.ago.to_s(:db) %>
+  type: "TravelSponsorship"
+
 wedge_for_training:
   state: "accepted"
   user: wedge
+  event: training
+  state_updated_at: <%= (40.days.ago + 5.hours).to_s(:db) %>
+  type: "TravelSponsorship"
+
+administrative_for_training:
+  state: "accepted"
+  user: administrative
+  event: training
+  state_updated_at: <%= (40.days.ago + 5.hours).to_s(:db) %>
+  type: "TravelSponsorship"
+
+assistant_for_training:
+  state: "accepted"
+  user: assistant
+  event: training
+  state_updated_at: <%= (40.days.ago + 5.hours).to_s(:db) %>
+  type: "TravelSponsorship"
+
+tspmember_for_training:
+  state: "accepted"
+  user: tspmember
   event: training
   state_updated_at: <%= (40.days.ago + 5.hours).to_s(:db) %>
   type: "TravelSponsorship"
@@ -43,6 +106,27 @@ wedge_customes_for_party:
 luke_customes_for_party:
   state: "incomplete"
   user: luke
+  event: party
+  created_at: <%= 4.days.ago.to_s(:db) %>
+  type: "Shipment"
+
+administrative_customes_for_party:
+  state: "incomplete"
+  user: administrative
+  event: party
+  created_at: <%= 4.days.ago.to_s(:db) %>
+  type: "Shipment"
+
+assistant_customes_for_party:
+  state: "incomplete"
+  user: assistant
+  event: party
+  created_at: <%= 4.days.ago.to_s(:db) %>
+  type: "Shipment"
+
+tspmember_customes_for_party:
+  state: "incomplete"
+  user: tspmember
   event: party
   created_at: <%= 4.days.ago.to_s(:db) %>
   type: "Shipment"

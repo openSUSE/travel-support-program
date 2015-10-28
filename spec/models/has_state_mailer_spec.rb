@@ -44,6 +44,11 @@ describe HasStateMailer do
 
   context "with never submitted travel sponsorship" do
     before(:each) do
+      # Delete some irrelevant requests, to keep tests simple
+      [:administrative, :assistant, :tspmember].each do |user|
+        requests(:"#{user}_for_party").destroy
+      end
+
       @deliveries_before = ActionMailer::Base.deliveries.count
       TravelSponsorship.notify_inactive
       @deliveries = ActionMailer::Base.deliveries
@@ -80,6 +85,12 @@ describe HasStateMailer do
 
   context "checking inactive requests (superclass) and reimbursements" do
     before(:each) do
+      # Delete some irrelevant requests, to keep tests simple
+      [:administrative, :assistant, :tspmember].each do |user|
+        requests(:"#{user}_for_party").destroy
+        reimbursements(:"#{user}_for_training_reim").destroy
+      end
+
       @deliveries_before = ActionMailer::Base.deliveries.count
       Request.notify_inactive
       Reimbursement.notify_inactive

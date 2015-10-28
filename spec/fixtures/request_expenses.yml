@@ -51,3 +51,30 @@ wedge_for_training_gas:
   approved_amount: 30
   approved_currency: "EUR"
   total_amount: 40
+
+admin_for_training_gas:
+  request: administrative_for_training
+  subject: "Gas"
+  estimated_amount: 0
+  estimated_currency: "EUR"
+  approved_amount: 0
+  approved_currency: "EUR"
+  total_amount: 0
+
+assistant_for_training_gas:
+  request: assistant_for_training
+  subject: "Gas"
+  estimated_amount: 0
+  estimated_currency: "EUR"
+  approved_amount: 0
+  approved_currency: "EUR"
+  total_amount: 0
+
+tspmember_for_training_gas:
+  request: tspmember_for_training
+  subject: "Gas"
+  estimated_amount: 0
+  estimated_currency: "EUR"
+  approved_amount: 0
+  approved_currency: "EUR"
+  total_amount: 0

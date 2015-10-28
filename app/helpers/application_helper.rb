@@ -194,7 +194,7 @@ module ApplicationHelper
     states = machine_class.states_assigned_to(role)
     # FIXME: requesters are also an special case nowadays. Let's look for a
     # better solution afterward.
-    if current_role?(:requester) || states.blank?
+    if current_role?(:none) || states.blank?
       send helper
     else
       send(helper, :q => {:state_in => states})
@@ -294,5 +294,13 @@ module ApplicationHelper
 
     crumbs = crumbs.join(" " + content_tag(:span, ">", :class => "divider") + " ")
     content_tag(:ul, crumbs.html_safe, :class => "breadcrumb")
+  end
+
+  # Checks whether a concrete setting is enabled in the config file
+  #
+  # @return [Boolean] value of the :enabled key for the provided path in the
+  #         configuration file
+  def enabled?(*setting_path)
+    TravelSupport::Config.setting(*setting_path, :enabled)
   end
 end

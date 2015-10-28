@@ -48,7 +48,6 @@ describe "Material" do
                                          :format => "iban", :iban => "IBAN", :bic => "BIC")
     end
 
-    it{ should_not be_able_to(:create, Reimbursement.new) }
     it{ should_not be_able_to(:read, @reimbursement) }
     it{ should_not be_able_to(:cancel, @reimbursement) }
     it{ should_not be_able_to(:update, @reimbursement) }

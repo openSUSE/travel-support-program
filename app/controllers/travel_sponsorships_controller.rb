@@ -47,7 +47,7 @@ class TravelSponsorshipsController < InheritedResources::Base
   end
 
   def load_subjects 
-    @subjects = TravelSupport::Config.setting :travel_expense_subjects
+    @subjects = TravelSupport::Config.setting(:travel_sponsorships, :expenses_subjects)
   end
 
   def permitted_params

@@ -5,32 +5,13 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    # Define abilities for the passed in user here. For example:
+    # Define abilities for the passed in user here.
     #
-    #   user ||= User.new # guest user (not logged in)
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
-    #     can :read, :all
-    #   end
-    #
-    # The first argument to `can` is the action you are giving the user permission to do.
-    # If you pass :manage it will apply to every action. Other common actions here are
-    # :read, :create, :update and :destroy.
-    #
-    # The second argument is the resource the user can perform the action on. If you pass
-    # :all it will apply to every resource. Otherwise pass a Ruby class of the resource.
-    #
-    # The third argument is an optional hash of conditions to further filter the objects.
-    # For example, here the user can only update published articles.
-    #
-    #   can :update, Article, :published => true
-    #
-    # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
+    # See the wiki for details:
+    # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
     can :manage, User, :id => user.id
     can :manage, UserProfile, :user_id => user.id
-    can [:read, :create], Event
     role = user.find_profile.role_name
 
     machines = [TravelSponsorship, Reimbursement, Shipment]
@@ -39,107 +20,120 @@ class Ability
       # (can_foo?) and if the role is authorized (allow_foo?)
       machine.transitions.each do |action|
         can action, machine do |m|
-          # requesters must, in addition, own the state machine
-          if role == "requester"
-            m.user == user && m.send("can_#{action}?") && m.send("allow_#{action}?", role)
+          # For own machines, the :requester permissions are applied
+          if m.user == user
+            m.send("can_#{action}?") && m.send("allow_#{action}?", :requester)
+          # For machines belonging to other users, use the role
           else
-            m.send("can_#{action}?") && m.send("allow_#{action}?", role)
+            # :requester is not longer a valid role
+            if role == "requester"
+              false
+            else
+              m.send("can_#{action}?") && m.send("allow_#{action}?", role)
+            end
           end
         end
       end
 
       # Comments
       conds = {:machine_type => machine.base_class.to_s}
-      machine_conds = {}
-      machine_conds[:type] = machine.to_s if machine.superclass != ActiveRecord::Base
-      machine_conds[:user_id] = user.id if role == "requester"
-      conds[:machine] = machine_conds unless machine_conds.empty?
+      if machine.superclass != ActiveRecord::Base
+        conds[:machine] = { type: machine.to_s}
+      end
+
       if machine.allow_private_comments?(role)
         can [:read, :create], Comment, conds
       elsif machine.allow_public_comments?(role)
         can [:read, :create], Comment, conds.merge(:private => false)
       end
+
+      requester_conds = conds.deep_dup
+      requester_conds[:machine] = {} unless requester_conds[:machine]
+      requester_conds[:machine][:user_id] = user.id
+      if machine.private_comments_for_requester?
+        can [:read, :create], Comment, requester_conds
+      elsif machine.public_comments_for_requester?
+        can [:read, :create], Comment, requester_conds.merge(:private => false)
+      end
     end
 
-
     #
-    # Requesters (regular users) permissions
-    # --------------------------------------
+    # Regular users permissions
+    # -------------------------
     #
-    if role == "requester"
-      # Events
-      can :update, Event do |e|
-        e.editable_by_requesters?
-      end
-      can :destroy, Event do |e|
-        e.editable_by_requesters? && e.can_be_destroyed?
-      end
 
-      # TravelSponsorships
-      can :create, TravelSponsorship do |r|
-        r.event && r.event.accepting_requests?
-      end
-      can :create, RequestExpense do |e|
-        e.request && e.request.editable? && e.request.user == user
-      end
-      can :read, TravelSponsorship, :user_id => user.id
-      can :update, TravelSponsorship do |r|
-        r.user == user && r.editable?
-      end
-      can :destroy, TravelSponsorship do |r|
-        r.user == user && r.can_be_destroyed?
-      end
+    # Events
+    can [:read, :create], Event
+    can :update, Event do |e|
+      e.editable_by_requesters?
+    end
+    can :destroy, Event do |e|
+      e.editable_by_requesters? && e.can_be_destroyed?
+    end
 
-      # Reimbursements
-      can :create, Reimbursement do |r|
-        r.request.user == user && r.request.can_have_reimbursement?
-      end
-      can :read, Reimbursement, :user_id => user.id
-      can :update, Reimbursement do |r|
-        r.user == user && r.editable?
-      end
+    # TravelSponsorships
+    can :create, TravelSponsorship do |r|
+      r.event && r.event.accepting_requests?
+    end
+    can :create, RequestExpense do |e|
+      e.request && e.request.editable? && e.request.user == user
+    end
+    can :read, TravelSponsorship, :user_id => user.id
+    can :update, TravelSponsorship do |r|
+      r.user == user && r.editable?
+    end
+    can :destroy, TravelSponsorship do |r|
+      r.user == user && r.can_be_destroyed?
+    end
 
-      # Reimbursement's attachments
-      can :read, ReimbursementAttachment do |a|
-        a.reimbursement.user == user
-      end
-      can [:create, :update, :destroy], ReimbursementAttachment do |a|
-        a.reimbursement.user == user && a.reimbursement.editable?
-      end
+    # Reimbursements
+    can :create, Reimbursement do |r|
+      r.request.user == user && r.request.can_have_reimbursement?
+    end
+    can :read, Reimbursement, :user_id => user.id
+    can :update, Reimbursement do |r|
+      r.user == user && r.editable?
+    end
 
-      # Reimbursement's bank account
-      can :read, BankAccount do |a|
-        a.reimbursement.user == user
-      end
-      can [:create, :update], BankAccount do |a|
-        a.reimbursement.user == user && a.reimbursement.editable?
-      end
+    # Reimbursement's attachments
+    can :read, ReimbursementAttachment do |a|
+      a.reimbursement.user == user
+    end
+    can [:create, :update, :destroy], ReimbursementAttachment do |a|
+      a.reimbursement.user == user && a.reimbursement.editable?
+    end
 
-      # Reimbursement's payments
-      can :read, Payment, :reimbursement => {:user_id => user.id}
+    # Reimbursement's bank account
+    can :read, BankAccount do |a|
+      a.reimbursement.user == user
+    end
+    can [:create, :update], BankAccount do |a|
+      a.reimbursement.user == user && a.reimbursement.editable?
+    end
 
-      # Shipments
-      can :create, Shipment do |s|
-        s.event && s.event.accepting_shipments?
-      end
-      can :read, Shipment, :user_id => user.id
-      can :update, Shipment do |s|
-        s.user == user && s.editable?
-      end
-      can :destroy, Shipment do |s|
-        s.user == user && s.can_be_destroyed?
-      end
+    # Reimbursement's payments
+    can :read, Payment, :reimbursement => {:user_id => user.id}
 
-      # Expenses Reports
-      can :read, TravelExpenseReport, TravelExpenseReport.related_to(user) do |e|
-          e.related_to(user)
-      end
+    # Shipments
+    can :create, Shipment do |s|
+      s.event && s.event.accepting_shipments?
+    end
+    can :read, Shipment, :user_id => user.id
+    can :update, Shipment do |s|
+      s.user == user && s.editable?
+    end
+    can :destroy, Shipment do |s|
+      s.user == user && s.can_be_destroyed?
+    end
+
+    # FIXME: workaround (see below)
+    report_full_access = false
 
     #
     # TSP members permissions
     # -----------------------
     #
-    elsif role == "tsp"
+    if role == "tsp"
       # User profiles
       can :read, UserProfile
 
@@ -157,65 +151,45 @@ class Ability
 
       # Reimbursements
       can :read, Reimbursement
-
-      # Reimbursement's attachments
       can :read, ReimbursementAttachment
-      # Reimbursement's bank account
       can :read, BankAccount
-      # Reimbursement's payments
       can :read, Payment
 
       # Expenses Reports
       can :read, TravelExpenseReport
+      report_full_access = true
+    end
 
     #
     # TSP assistants permissions
     # --------------------------
     #
-    elsif role == "assistant"
+    if role == "assistant"
       # User profiles
       can :read, UserProfile
 
       # Budgets
       can :read, Budget
 
-      # Events (same permissions as requesters)
-      can :update, Event do |e|
-        e.editable_by_requesters?
-      end
-      can :destroy, Event do |e|
-        e.editable_by_requesters? && e.can_be_destroyed?
-      end
-
       # Requests
       can :read, TravelSponsorship
 
       # Reimbursements
       can :read, Reimbursement
-
-      # Reimbursement's attachments
       can :read, ReimbursementAttachment
-      # Reimbursement's bank account
       can :read, BankAccount
-      # Reimbursement's payments
       can :read, Payment
 
       # Expenses Reports
       can :read, TravelExpenseReport
+      report_full_access = true
+    end
 
     #
     # Administratives permissions
     # -----------------------
     #
-    elsif role == "administrative"
-      # Events
-      can :update, Event do |e|
-        e.editable_by_requesters?
-      end
-      can :destroy, Event do |e|
-        e.editable_by_requesters? && e.can_be_destroyed?
-      end
-
+    if role == "administrative"
       # User profiles
       can :read, UserProfile
 
@@ -224,19 +198,16 @@ class Ability
 
       # Reimbursements
       can :read, Reimbursement
-
-      # Reimbursement's attachments
       can :read, ReimbursementAttachment
-      # Reimbursement's bank account
       can :read, BankAccount
-      # Reimbursement's payments
       can [:read, :create, :update, :destroy], Payment
+    end
 
     #
     # Supervisors permissions
     # --------------------------------------
     #
-    elsif role == "supervisor"
+    if role == "supervisor"
       # User profiles
       can :read, UserProfile
 
@@ -256,15 +227,11 @@ class Ability
 
       # Reimbursements
       can :read, Reimbursement
+      can :read, ReimbursementAttachment
+      can :read, BankAccount
+      can :read, Payment
       # Can create state adjustments
       can :adjust_state, Reimbursement
-
-      # Reimbursement's attachments
-      can :read, ReimbursementAttachment
-      # Reimbursement's bank account
-      can :read, BankAccount
-      # Reimbursement's payments
-      can :read, Payment
 
       # Shipments
       can :read, Shipment
@@ -276,12 +243,14 @@ class Ability
 
       # Expenses Reports
       can :read, TravelExpenseReport
+      report_full_access = true
+    end
 
     #
     # Material manager permissions
     # ----------------------------
     #
-    elsif role == "material"
+    if role == "material"
       # User profiles
       can :read, UserProfile
 
@@ -293,23 +262,25 @@ class Ability
 
       # Shipments
       can :read, Shipment
+    end
 
     #
     # Shipper permissions
     # -------------------
     #
-    elsif role == "shipper"
-      # Events
-      can :update, Event do |e|
-        e.editable_by_requesters?
-      end
-      can :destroy, Event do |e|
-        e.editable_by_requesters? && e.can_be_destroyed?
-      end
+    if role == "shipper"
+      cannot :create, TravelSponsorship
 
       # Shipments
       can :read, Shipment
+    end
 
+    # FIXME: workaround
+    # CanCanCan cannot merge Active Record scope with other conditions
+    unless report_full_access
+      can :read, TravelExpenseReport, TravelExpenseReport.related_to(user) do |e|
+        e.related_to(user)
+      end
     end
   end
 end

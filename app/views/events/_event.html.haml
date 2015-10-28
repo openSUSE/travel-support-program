@@ -14,8 +14,12 @@
       .span12
         = e.attribute :description
     .row-fluid
-      .span6= e.attribute :shipment_type
-      .span6= e.attribute :visa_letters
+      .span6
+        - if enabled? :shipments
+          = e.attribute :shipment_type
+      .span6
+        - if enabled? :travel_sponsorships
+          = e.attribute :visa_letters
     - if user_signed_in? && can?(:validate, event)
       .row-fluid
         .span12= e.attribute :validated

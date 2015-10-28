@@ -52,9 +52,12 @@ class Comment < ActiveRecord::Base
     if private
       people += machine.comments.includes(:user).map(&:user).select {|u| u.profile.role_name == "supervisor"}.uniq
     else
-      people += [machine.user] + machine.assigned_roles - [:requester]
+      people += [:requester] if machine.class.roles_for_public_comments.include?(:requester)
+      people += machine.assigned_roles
       people += machine.comments.includes(:user).map(&:user).uniq
     end
+    # Substitute :requester by the corresponding user
+    people.map! { |p| p == :requester ? machine.user : p }
     CommentMailer.notify_to people.uniq, :creation, self
   end
 

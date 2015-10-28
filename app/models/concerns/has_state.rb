@@ -7,7 +7,7 @@ module HasState
   extend ActiveSupport::Concern
 
   included do
-    # Requester, that is, the user asking for help.
+    # Requester, that is, the user asking for support
     belongs_to :user
     # State changes are logged as StateChange records
     has_many :state_changes, :as => :machine, :dependent => :destroy
@@ -186,7 +186,8 @@ module HasState
     # Understands 3 different options, all of them optional
     #
     # :to            Role or array of roles. Who should be notified when the
-    #                machine enters the state
+    #                machine enters the state. The special value :requester
+    #                represent the requester user, despite the user's role.
     #
     # :remind_after  Threshold in seconds. If the machine has been in the same
     #                state for a period of time longer than the threshold, a
@@ -237,7 +238,8 @@ module HasState
     # explicity defined (not using allow_transition).
     #
     # @param [#to_sym] transition_name  one transition
-    # @param [Object] roles  can be the name of a role or an array of names
+    # @param [Object] roles  can be the name of a role (or the special value
+    #       :requester) or an array of names (also supporting :requester)
     def allow_transition(transition_name, roles)
       roles = [roles].flatten.map(&:to_sym)
       define_method :"allow_#{transition_name}?" do |role_name|

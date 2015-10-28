@@ -14,7 +14,7 @@ class ApplicationMailer < ActionMailer::Base
           mailed << email
         end
       else
-        # Just in case, I can't think in a reason for mailing all requesters
+        # :requester is not longer a valid role
         next if target == :requester
         User.with_role(target).each do |u|
           unless mailed.include?(email = u.email)

@@ -28,7 +28,7 @@
           - lte = filter_datepicker(:event_start_lte)
           - gte = filter_datepicker(:event_start_gte)
           = t(:expenses_report_event_date, :lte => lte, :gte => gte).html_safe
-      - unless current_role? :requester
+      - unless current_role? :none
         .row
           .control-group.pull-right
             %label= t(:expenses_report_user_name)
