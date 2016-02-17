@@ -6,6 +6,7 @@ class CommentMailer < ApplicationMailer
     mail(:to => to,
          :subject => t(:mailer_subject_new_comment,
                        :machine => @machine.title,
-                       :user => @machine.user.nickname ))
+                       :owner => @machine.user.nickname,
+                       :user => @comment.user.nickname ))
   end
 end
