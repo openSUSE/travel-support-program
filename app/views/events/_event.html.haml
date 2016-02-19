@@ -9,7 +9,7 @@
       .span6
         = e.attribute :end_date
         = e.attribute :url do
-          = link_to event.url
+          = link_to *([event.url]*2)
     .row-fluid
       .span12
         = e.attribute :description
