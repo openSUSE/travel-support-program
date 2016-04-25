@@ -46,6 +46,13 @@ prawn_document :page_size => "A4", :force_download => true do |pdf|
     end
   end
 
+  # Validation warning message
+  error_messages = resource.potential_error_full_messages(except: :acceptance_file)
+  warning_text = error_messages.map {|m| " - #{m}" }.join("\n")
+  unless warning_text.empty?
+    warning_text =  I18n.t(:reimbursement_acceptance_warning) + "\n" + warning_text
+  end
+
   # And now, the real layout and formating information
   pdf.font "Helvetica", :size => 9
   pdf.image pdf_header_image, :height => 50, :align => :left
@@ -58,8 +65,26 @@ prawn_document :page_size => "A4", :force_download => true do |pdf|
     pdf.text TravelSupport::Config.setting(:program_name), :size => 16, :style => :bold
     pdf.move_down(10)
     pdf.text "#{resource.title} - #{profile.full_name}", :size => 14, :style => :bold
+    # Warning
+    pdf.move_down(8)
+    unless warning_text.empty?
+      warning_height = 6
+      pdf.indent 10, 50 do
+        warning_height += pdf.height_of_formatted [:text => warning_text]
+      end
+      pdf.stroke_color "ff0000"
+      pdf.stroke do
+        pdf.rounded_rectangle [pdf.bounds.left, pdf.cursor], 510, warning_height, 5
+      end
+      pdf.move_down(4)
+      pdf.indent 10, 50 do
+        pdf.formatted_text [:text => warning_text]
+      end
+      pdf.move_down(2)
+    end
+
     # Requester
-    pdf.move_down(20)
+    pdf.move_down(12)
     pdf.text Reimbursement.human_attribute_name(:user).titleize, :style => :bold, :size => 12
     top = pdf.cursor
     pdf.bounding_box [ pdf.bounds.left, top ], :width => 250 do
@@ -114,6 +139,7 @@ prawn_document :page_size => "A4", :force_download => true do |pdf|
         t.columns(2).align = :right
         t.row(-1).columns(1).align = :right
       end
+
       # Bank account
       unless bank.nil? # Should not happen with sane data, anyway
         pdf.move_down(25)
@@ -125,6 +151,7 @@ prawn_document :page_size => "A4", :force_download => true do |pdf|
           t.columns(0).style :font_style => :bold
         end
       end
+
       pdf.move_down(25)
       pdf.text I18n.t(:reimbursement_acceptance_title), :style => :bold, :size => 12
       pdf.move_down(5)

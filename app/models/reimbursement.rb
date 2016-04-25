@@ -171,6 +171,39 @@ class Reimbursement < ActiveRecord::Base
     "##{request_id}"
   end
 
+  # Full error messages that would be caused by the next state transition
+  #
+  # It returns the empty set if there are more than one possible transition
+  #
+  # @param [Hash] opts Options to filter the message:
+  #     :except [Array<Symbol>] fields for which the errors will be ignored
+  # @return [Array<String>] list of messages
+  def potential_error_full_messages(opts = {})
+    if state_events.size != 1
+      # The next step is not obvious, so we cannot calculate the messages
+      return []
+    end
+
+    except = Array(opts[:except])
+    original_state = state
+    event = state_events.first
+
+    # Aggregate all the messages
+    send(event)
+    error_msgs = errors.messages
+    error_msgs.delete_if { |key, _v| except.include?(key) }
+    full_messages = []
+    error_msgs.each_pair do |attrib, err|
+      err.each { |msg| full_messages << errors.full_message(attrib, msg) }
+    end
+
+    # Reset state and errors
+    self.state = original_state
+    valid?
+
+    full_messages
+  end
+
   protected
 
   # Used internally to synchronize request_id and user_id
