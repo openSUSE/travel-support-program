@@ -87,6 +87,7 @@ en:
   reimbursement_acceptance_update: 'The requester will be able to update this document (whether needed) if the reimbursement is in incomplete state, before submitting it again.'
   reimbursement_acceptance_success: "Signed acceptance attached."
   reimbursement_acceptance_failure: "Some error prevented the file to be attached. Please retry."
+  reimbursement_acceptance_warning: "Some important information is missing or invalid. The requester should probably complete the information before printing and signing the document."
   reimbursement_expenses_help: "'Total' is the amount finally spent (according to the attached invoices). The authorized amount for every expense will be automatically calculated as the minimum among 'approved' and 'total'."
   reimbursement_manual_expenses_help: "In those cases in which different currencies are used, the authorized amount must be explicitly set to that minimum."
   report_view_as: "View as"
