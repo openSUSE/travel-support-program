@@ -44,7 +44,7 @@ module ReimbursementsHelper
     end
 
     links = []
-    if can_read_pdf_for? resource
+    if can_read_pdf_for?(resource) && resource.editable?
       links << link_to(t(:pdf_format), request_reimbursement_path(reimbursement.request, :format => :pdf))
     end
     if can? :submit, reimbursement
@@ -60,7 +60,9 @@ module ReimbursementsHelper
         info = t(:reimbursement_acceptance_update).html_safe
       end
     end
-    info << content_tag(:p, links.join(" | ").html_safe, :class => "text-right")
+    unless links.empty?
+      info << content_tag(:p, links.join(" | ").html_safe, :class => "text-right")
+    end
     unless info.empty?
       out << content_tag(:div, info, :class => "alert-info")
     end
