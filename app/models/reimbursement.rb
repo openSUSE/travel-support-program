@@ -175,15 +175,16 @@ class Reimbursement < ActiveRecord::Base
   #
   # It returns the empty set if there are more than one possible transition
   #
-  # @param except [Array<Symbol>] fields for which the errors will be ignored
+  # @param [Hash] opts Options to filter the message:
+  #     :except [Array<Symbol>] fields for which the errors will be ignored
   # @return [Array<String>] list of messages
-  def potential_error_full_messages(except: [])
+  def potential_error_full_messages(opts = {})
     if state_events.size != 1
       # The next step is not obvious, so we cannot calculate the messages
       return []
     end
 
-    except = Array(except)
+    except = Array(opts[:except])
     original_state = state
     event = state_events.first
 
