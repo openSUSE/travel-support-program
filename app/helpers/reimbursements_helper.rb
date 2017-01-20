@@ -135,6 +135,16 @@ module ReimbursementsHelper
   # @param [#to_sym]  field  the name of one of the fields defined in check requests
   # @return [String] value to show in the resulting pdf
   def check_request_value(reimb, field)
+    if field.to_s.start_with?("bank_")
+      account = reimb.bank_account
+      field = field[5..-1].to_sym
+      check_request_bank_value(account, field)
+    else
+      check_request_reimb_value(reimb, field)
+    end
+  end
+
+  def check_request_reimb_value(reimb, field)
     case field.to_sym
     when :amount
       expenses_sum(reimb, :authorized)
@@ -152,6 +162,33 @@ module ReimbursementsHelper
       reimb.user.profile.zip_code
     when :phone_number
       reimb.user.profile.phone_number
+    when :label
+      reimb.label
+    when :email
+      reimb.user.email
+    end
+  end
+
+  def check_request_bank_value(account, field)
+    is_iban = account.format == "iban"
+
+    case field.to_s.to_sym
+    when :name
+      account.bank_name
+    when :holder
+      account.holder
+    when :iban
+      is_iban ? account.iban : ""
+    when :bic
+      is_iban ? account.bic : ""
+    when :national_code
+      is_iban ? "" : account.national_bank_code
+    when :national_account
+      is_iban ? "" : account.national_account_code
+    when :country
+      is_iban ? "" : country_label(account.country_code)
+    when :postal_address
+      is_iban ? "" : account.bank_postal_address
     end
   end
 

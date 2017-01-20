@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
 
   def self.for_ichain_username(username, attributes)
     if user = find_by_nickname(username)
-      update_all({:email => attributes[:email]}, {:id => user.id}) if user.email != attributes[:email]
+      where(id: user.id).update_all(email: attributes[:email]) if user.email != attributes[:email]
     else
       user = create(nickname: username, email: attributes[:email])
     end

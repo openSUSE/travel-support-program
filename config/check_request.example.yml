@@ -1,35 +1,98 @@
-amount:
-  left: 58
-  top: 629
-  width: 130
-date:
-  - left: 215
-    top: 629
-    width: 130
-  - left: 50
-    top: 340
-    width: 130
-full_name:
-  left: 82
-  top: 604
-  width: 400
-postal_address:
-  left: 60
-  top: 580
-  width: 400
-city:
-  left: 42
-  top: 554.5
-  width: 100
-country:
-  left: 177
-  top: 554.5
-  width: 100
-zip_code:
-  left: 323
-  top: 554.5
-  width: 75
-phone_number:
-  left: 423
-  top: 554.5
-  width: 100
+pages:
+  - text_size: 10
+    fields:
+      - name: amount
+        location:
+          left: 58
+          top: 629
+          width: 130
+      - name: date
+        location:
+          - left: 215
+            top: 629
+            width: 130
+          - left: 150
+            top: 371
+            width: 130
+            text_size: 13
+      - name: full_name
+        location:
+          left: 82
+          top: 604
+          width: 400
+      - name: postal_address
+        location:
+          left: 60
+          top: 580
+          width: 210
+          line_space: 4
+      - name: city
+        location:
+          left: 42
+          top: 545
+          width: 100
+      - name: country
+        location:
+          left: 177
+          top: 545
+          width: 100
+      - name: zip_code
+        location:
+          left: 323
+          top: 545
+          width: 75
+      - name: phone_number
+        location:
+          left: 423
+          top: 545
+          width: 100
+      - name: email
+        location:
+          left: 310
+          top: 580
+          width: 200
+  - text_size: 10
+    line_space: 1
+    upcase: true
+    fields:
+      - name: bank_name
+        location:
+          left: 74
+          top: 628
+          width: 110
+      - name: bank_postal_address
+        location:
+          upcase: false
+          left: 255
+          top: 628
+          width: 110
+      - name: bank_country
+        location:
+          left: 432
+          top: 628
+          width: 80
+      - name: bank_holder
+        location:
+          left: 115
+          top: 583
+          width: 400
+      - name: bank_bic
+        location:
+          left: 210
+          top: 550
+          width: 100
+      - name: bank_iban
+        location:
+          left: 50
+          top: 550
+          width: 130
+      - name: bank_national_code
+        location:
+          - left: 110
+            top: 517
+            width: 140
+      - name: bank_national_account
+        location:
+          left: 305
+          top: 517
+          width: 140
