@@ -22,7 +22,7 @@
       %th= model_class.human_attribute_name(:approved_sum)
       %th= model_class.human_attribute_name(:total_sum)
       %th= model_class.human_attribute_name(:authorized_sum)
-      %th= sort_link(@q, :state)
+      %th= sort_link(@q, :state, [:state, "state_updated_at desc"])
   %tbody
     - collection.each do |reimb|
       %tr{:id => "request-#{reimb.id}"}

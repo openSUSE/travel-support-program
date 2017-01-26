@@ -43,7 +43,8 @@
           = content_tag(:span, "!", :class => "badge badge-info")
   .row-fluid
     .span12
-      = r.attribute :description
+      = r.attribute :description do
+        = simple_format(@request.description)
 
   %strong.label= TravelSponsorship.human_attribute_name(:expenses)
   %table.table.table-condensed

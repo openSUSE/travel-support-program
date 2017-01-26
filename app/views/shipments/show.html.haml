@@ -25,7 +25,8 @@
         = render resource.user
   .row-fluid
     .span12
-      = r.attribute :description
+      = r.attribute :description do
+        = simple_format(resource.description)
   .row-fluid
     .span6
       = r.association :postal_address do
