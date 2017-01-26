@@ -33,7 +33,8 @@
         = render resource.bank_account
   .row-fluid
     .span12
-      = r.attribute :description
+      = r.attribute :description do
+        = simple_format(resource.description)
 
       = r.association :links do
         = reimbursement_links(resource)
