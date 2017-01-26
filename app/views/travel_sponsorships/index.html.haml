@@ -20,7 +20,7 @@
       %th= model_class.human_attribute_name(:event)
       %th= model_class.human_attribute_name(:estimated_sum)
       %th= model_class.human_attribute_name(:approved_sum)
-      %th= sort_link(@q, :state)
+      %th= sort_link(@q, :state, [:state, "state_updated_at desc"])
       %th= model_class.human_attribute_name(:reimbursement)
   %tbody
     - collection.each do |request|
