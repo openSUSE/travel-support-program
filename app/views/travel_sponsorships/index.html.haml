@@ -9,6 +9,7 @@
       = f.collection_select :event_id_in, Event.all, :id, :name, {}, :multiple => true, :class => "input-large", :data => s_opts
       - s_opts = {'non-selected-text' => t(:states_any), 'number-displayed' => 2, 'n-selected-text' => t(:states_n) }
       = f.select :state_in, request_states_collection, {}, :multiple => true, :class => "input-medium", :data => s_opts
+      = f.text_field(:user_nickname_eq, :class => "input-small")
       = f.submit t(:search), :class => "btn"
       = link_to t(:reset_search), collection_path, :class => "btn"
 
