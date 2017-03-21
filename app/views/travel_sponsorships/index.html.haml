@@ -5,7 +5,7 @@
 .navbar
   .navbar-inner
     = search_form_for @q, :class => "navbar-form pull-right" do |f|
-      = f.text_field(:user_nickname_or_event_name_or_user_profile_full_name_cont, :placeholder => "Nickname or Conference Title or Full Name", :class=>"input-xlarge")
+      = f.text_field(:user_nickname_or_event_name_or_user_profile_full_name_cont, :placeholder => t('placeholder.full_name_or_nickname_or_event_name'), :class=>"input-xlarge")
       - s_opts = {'non-selected-text' => t(:events_any), 'number-displayed' => 2, 'n-selected-text' => t(:events_n) }
       = f.collection_select :event_id_in, Event.all, :id, :name, {}, :multiple => true, :class => "input-large", :data => s_opts
       - s_opts = {'non-selected-text' => t(:states_any), 'number-displayed' => 2, 'n-selected-text' => t(:states_n) }
