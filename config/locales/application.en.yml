@@ -91,6 +91,7 @@ en:
   reimbursement_expenses_help: "'Total' is the amount finally spent (according to the attached invoices). The authorized amount for every expense will be automatically calculated as the minimum among 'approved' and 'total'."
   reimbursement_manual_expenses_help: "In those cases in which different currencies are used, the authorized amount must be explicitly set to that minimum."
   report_view_as: "View as"
+  requests_search_placeholder: "Full Name or Nickname or Event Name"
   reset_search: "all"
   search: "search"
   send_reimbursement_acceptance: "Attach signed document"

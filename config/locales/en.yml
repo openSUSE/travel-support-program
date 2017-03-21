@@ -196,8 +196,6 @@ en:
       long: ! '%B %d, %Y %H:%M'
       short: ! '%d %b %H:%M'
     pm: pm
-  placeholder:
-    full_name_or_nickname_or_event_name: "Full Name or Nickname or Event Name"
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
   activemodel:
     errors:
