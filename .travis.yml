@@ -2,6 +2,10 @@ language: ruby
 rvm:
   - "1.9.3"
 #  - "2.1.0"
+addons:
+  apt:
+    packages:
+      - libqtwebkit-dev
 before_script:
   - cp config/database.travis.yml config/database.yml
   - cp config/site.example.yml config/site.yml
