@@ -3,7 +3,7 @@ class CreateBudgets < ActiveRecord::Migration
     create_table :budgets do |t|
       t.string :name
       t.string :description
-      t.decimal :amount
+      t.decimal :amount,      precision: 10, scale: 2
       t.string :currency
 
       t.timestamps

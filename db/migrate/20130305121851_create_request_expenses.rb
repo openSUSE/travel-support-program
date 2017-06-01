@@ -4,9 +4,9 @@ class CreateRequestExpenses < ActiveRecord::Migration
       t.references :request, :null => false
       t.string :subject
       t.string :description
-      t.decimal :total_amount
+      t.decimal :total_amount, precision: 10, scale: 2
       t.string :total_currency
-      t.decimal :approved_amount
+      t.decimal :approved_amount, precision: 10, scale: 2
       t.string :approved_currency
 
       t.timestamps
