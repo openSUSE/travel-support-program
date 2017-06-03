@@ -1,20 +1,20 @@
-%strong.label= TravelSponsorship.human_attribute_name(:event)
+%strong.label.label-default= TravelSponsorship.human_attribute_name(:event)
 %br
 = render resource.event
 - unless resource.errors[:event_id].empty?
-  %div.alert.alert-error= resource.errors[:event_id].join("<br>")
-
-%strong.label= t(:general_info)
+  %div.alert.alert-danger= resource.errors[:event_id].join("<br>")
 %br
-= simple_form_for resource do |f|
-  .form-inputs.form-horizontal
+%strong.label.label-default= t(:general_info)
+%br
+= simple_form_for(resource, html: { class: "form-horizontal"}, wrapper: :horizontal_form) do |f|
+  .col-md-4
     = f.hidden_field :event_id
     = f.input :visa_letter if resource.visa_letter_allowed?
     = f.input :description, :input_html => {:rows => 3}
-  .form-inputs.form-inline
-    %strong.label= TravelSponsorship.human_attribute_name(:expenses)
+  .form-inline.col-md-12
+    %strong.label.label-default= TravelSponsorship.human_attribute_name(:expenses)
     - if !resource.errors[:expenses].empty?
-      .alert.alert-inline.alert-error= resource.expenses.map {|e| e.errors.full_messages}.uniq.join("; ")
+      .alert.alert-inline.alert-danger= resource.expenses.map {|e| e.errors.full_messages}.uniq.join("; ")
     - delete_me = resource.expenses.build
     - can_create_expense = can?(:create, delete_me)
     - resource.expenses.delete(delete_me)
@@ -33,9 +33,9 @@
         %tr#expenses_links
           %td= link_to_add_association t(:add_expense), f, :expenses, "data-association-insertion-node" => "#expenses_links"
 
-  .form-actions
-    = f.button :submit, :class => 'btn-primary'
+  .well.col-md-12
+    = f.button :submit, :class => 'btn btn-primary'
     - if resource.new_record?
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), travel_sponsorships_path, :class => 'btn'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), travel_sponsorships_path, :class => 'btn btn-default'
     - else
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), resource, :class => 'btn'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), resource, :class => 'btn btn-default'

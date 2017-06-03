@@ -46,7 +46,7 @@ module ApplicationHelper
     msg += " (#{r.human_state_description})"
     if r.state_updated_at.blank?
       msg += " "
-      msg += content_tag(:span, "!", :title => t(:state_help), :class => "badge badge-warning with-tooltip")
+      msg += content_tag(:span, "!", :title => t(:state_help), :class => "badge with-tooltip")
     end
     raw(msg)
   end 
@@ -211,8 +211,8 @@ module ApplicationHelper
       next if message.blank?
 
       type = "success" if type == "notice"
-      type = "error" if type == "alert"
-      next unless %w(error info success warning).include?(type)
+      type = "danger" if type == "error" || type == "alert"
+      next unless %w(danger info success warning).include?(type)
 
       Array(message).each do |msg|
         text = content_tag(:div,
