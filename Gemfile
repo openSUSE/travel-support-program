@@ -6,7 +6,7 @@ gem 'rails', '4.1.10'
 gem 'sqlite3'
 #gem 'pg'
 #gem 'mysql2', '~> 0.3.13'
-
+gem 'rake', '< 11.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -28,7 +28,7 @@ end
 # less support
 gem 'therubyracer', platforms: :ruby
 gem "less-rails"
-gem "twitter-bootstrap-rails", '~> 2.2.8'
+gem "twitter-bootstrap-rails"
 
 gem 'devise'
 gem 'devise_ichain_authenticatable', '>= 0.3.0'

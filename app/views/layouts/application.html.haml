@@ -13,28 +13,31 @@
 
   %body
     #full-page-wrap
-      .navbar.navbar-fluid-top
-        .navbar-inner
-          .container-fluid
-            %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
+      %nav.navbar.navbar-default
+        .container-fluid
+          .navbar-header
+            %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+              %span.sr-only Toggle navigation
               %span.icon-bar
               %span.icon-bar
-            = render "layouts/navbar_top"
+              %span.icon-bar
+            =link_to TravelSupport::Config.setting(:program_name), root_path, :class => "navbar-brand"
+          = render "layouts/navbar_top"
 
       .container-fluid
 
         = render "layouts/subheader"
 
-        .row-fluid
-          .span3
+        .row
+          .col-md-3
             .well.sidebar-nav
-              %ul#options.nav.nav-list
-                %li.nav-header= t(:sidebar)
+              %ul#options.nav
+                %li= t(:sidebar)
                 = render "layouts/sidebar"
 
             = render "layouts/external_links"
 
-          .span9#main
+          .col-md-9#main
             = render "layouts/main_content_header"
             = bootstrap_flash_messages
             .page-header

@@ -9,7 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require bootstrap
+ *= require bootstrap_and_overrides
  *= require datetimepicker
  *= require bootstrap-fileupload
  *= require bootstrap-multiselect
@@ -20,7 +20,9 @@
   .wrapper {
     margin-bottom: 10px;
   }
-
+  .label{
+        background: #999;
+  }
   .request_state, .reimbursement_state {
     span {
       font-weight: bold;

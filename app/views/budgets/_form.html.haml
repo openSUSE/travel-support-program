@@ -1,11 +1,10 @@
-= simple_form_for resource do |f|
-  .form-inputs.form-horizontal
-    = f.input :name
-    = f.input :description
-    = f.input :amount
-    = f.input :currency, :collection => currencies_for_select(:approved)
-    = f.association :events, :input_html => {:data => {'enable-filtering' => true}}
+= simple_form_for(resource, html: { class: 'form-horizontal form-inputs col-md-6' }, wrapper: :horizontal_form) do |f|
+  = f.input :name
+  = f.input :description
+  = f.input :amount
+  = f.input :currency, :collection => currencies_for_select(:approved)
+  = f.association :events, :input_html => {:data => {'enable-filtering' => true}}
 
-  .form-actions
-    = f.button :submit, :class => 'btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), collection_path, :class => 'btn'
+  .well
+    = f.button :submit, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), collection_path, :class => 'btn btn-default'
