@@ -2,18 +2,19 @@
 = content_for :page_header do
   %h1= t('.title', :default => model_class.model_name.human(count: 2))
 
-.navbar
-  .navbar-inner
-    = link_to t('.new', :default => t("helpers.links.new")), new_resource_path, :class => 'btn btn-primary', :data => { :confirm => t(:new_event_warning) }
-
-    = search_form_for @q, :builder => SimpleForm::FormBuilder, :class => "navbar-form pull-right" do |f|
-      - t_start = f.input_field :end_date_gteq, :as => :dpicker, :class => "input-small"
-      - t_end = f.input_field :start_date_lteq, :as => :dpicker, :class => "input-small"
-      - t_text = f.text_field :name_or_description_cont, :class => "input-small"
-      = raw(t(:events_search, :start => t_start, :end => t_end, :text => t_text))
-      = f.submit t(:search), :class => "btn"
-      = link_to t(:reset_search), collection_path(:q => {:end_date_gteq => '0'}), :class => "btn"
-
+%nav.navbar.navbar-default.nav-tsp
+  .container-fluid
+    .navbar-header
+      = link_to t('.new', :default => t("helpers.links.new")), new_resource_path, :class => 'navbar-btn btn btn-primary', :data => { :confirm => t(:new_event_warning) }
+    .nav.navbar-right
+      = search_form_for @q, :builder => SimpleForm::FormBuilder, :class => "navbar-form" do |f|
+        - t_start = f.input_field :end_date_gteq, :as => :dpicker, class:'form-control input-sm inpt-w'
+        - t_end = f.input_field :start_date_lteq, :as => :dpicker, class:'form-control input-sm inpt-w'
+        - t_text = f.text_field :name_or_description_cont, class:'form-control input-sm inpt-w'
+        = raw(t(:events_search, :start => t_start, :end => t_end, :text => t_text))
+        = f.submit t(:search), :class => "btn btn-default"
+        = link_to t(:reset_search), collection_path(:q => {:end_date_gteq => '0'}), :class => "btn btn-default"
+   
 %table.table.table-striped.events
   %thead
     %tr
@@ -35,8 +36,8 @@
           %td= r.shipment_type
         %td
           - if r.accepting_requests?
-            = link_to t(:new_travel), new_travel_sponsorship_path(:event_id => r), :class => 'btn btn-mini'
+            = link_to t(:new_travel), new_travel_sponsorship_path(:event_id => r), :class => 'btn btn-default btn-xs'
           - if r.accepting_shipments?
-            = link_to t(:new_shipment), new_shipment_path(:event_id => r), :class => 'btn btn-mini'
+            = link_to t(:new_shipment), new_shipment_path(:event_id => r), :class => 'btn btn-default btn-xs'
 
 = paginate collection

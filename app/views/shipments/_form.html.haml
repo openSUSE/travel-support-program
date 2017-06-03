@@ -1,24 +1,23 @@
-%strong.label= Shipment.human_attribute_name(:event)
+%strong.label.label-default= Shipment.human_attribute_name(:event)
 %br
 = render resource.event
 - unless resource.errors[:event_id].empty?
-  %div.alert.alert-error= resource.errors[:event_id].join("<br>")
+  %div.alert.alert-danger= resource.errors[:event_id].join("<br>")
 
-%strong.label= Shipment.human_attribute_name(:shipment_type)
+%strong.label.label-default= Shipment.human_attribute_name(:shipment_type)
 %br
 %strong= resource.shipment_type
-= simple_form_for resource do |f|
-  %strong.label= t(:general_info)
+= simple_form_for(resource, html: { class: 'form-horizontal form-inputs' }, wrapper: :horizontal_form) do |f|
+  %strong.label.label-default= t(:general_info)
   %br
-  .form-inputs.form-horizontal
-    = f.hidden_field :event_id
-    = f.input :description, :input_html => {:rows => 3}
-    = f.input :contact_phone_number
+  = f.hidden_field :event_id
+  = f.input :description, :input_html => {:rows => 3}
+  = f.input :contact_phone_number
 
-  %strong.label= t("activerecord.attributes.shipment.postal_address")
+  %strong.label.label-default= t("activerecord.attributes.shipment.postal_address")
   %br
   = f.simple_fields_for :postal_address do |a|
-    .form-inputs.form-horizontal
+    .col-md-6
       = a.input :name
       = a.input :line1
       = a.input :line2, :as => :text
@@ -27,9 +26,9 @@
       = a.input :postal_code
       = a.input :country_code, :as => :country, :input_html => {:autocomplete => "off"}
 
-  .form-actions
-    = f.button :submit, :class => 'btn-primary'
+  .well.col-md-12
+    = f.button :submit, :class => 'btn btn-primary'
     - if resource.new_record?
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), resource.event, :class => 'btn'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), resource.event, :class => 'btn btn-default'
     - else
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), resource, :class => 'btn'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), resource, :class => 'btn btn-default'

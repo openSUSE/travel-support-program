@@ -2,15 +2,15 @@
 = content_for :page_header do
   %h1= t('.title', :default => model_class.model_name.human(count: 2))
 
-.navbar
-  .navbar-inner
+%nav.navbar.navbar-default.nav-tsp
+  .container-fluid
     = search_form_for @q, :class => "navbar-form pull-right" do |f|
       - s_opts = {'non-selected-text' => t(:events_any), 'number-displayed' => 2, 'n-selected-text' => t(:events_n) }
-      = f.collection_select :event_id_in, Event.all, :id, :name, {}, :multiple => true, :class => "input-large", :data => s_opts
+      = f.collection_select :event_id_in, Event.all, :id, :name, {}, :multiple => true, :data => s_opts
       - s_opts = {'non-selected-text' => t(:states_any), 'number-displayed' => 2, 'n-selected-text' => t(:states_n) }
-      = f.select :state_in, @states_collection, {}, :multiple => true, :class => "input-medium", :data => s_opts
-      = f.submit t(:search), :class => "btn"
-      = link_to t(:reset_search), collection_path, :class => "btn"
+      = f.select :state_in, @states_collection, {}, :multiple => true, :data => s_opts
+      = f.submit t(:search), :class => "btn btn-default"
+      = link_to t(:reset_search), collection_path, :class => "btn btn-default"
 
 %table.table.table-striped.shipments
   %thead

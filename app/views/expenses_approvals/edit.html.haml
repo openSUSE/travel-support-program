@@ -2,24 +2,24 @@
   %h1= t(:set_approved_header)
 
 = show_for @request do |r|
-  .row-fluid
-    .span6
+  .row
+    .col-md-6
       = r.attribute :state do
         = state_info(r.object)
         %div.alert-info= @request.human_state_guide
       = r.attribute :visa_letter if @request.visa_letter_allowed?
-    .span6
+    .col-md-6
       = r.association :event do
         = render @request.event
       = r.association :user do
         = render @request.user
-  .row-fluid
-    .span12
+  .row
+    .col-md-12
       = r.attribute :description
 
   = form_tag travel_sponsorship_expenses_approval_path(@request), :method => :patch do
 
-    %strong.label= TravelSponsorship.human_attribute_name(:expenses)
+    %strong.label.label-default= TravelSponsorship.human_attribute_name(:expenses)
     %table.table.table-condensed
       %thead
         %tr
@@ -34,9 +34,9 @@
             %td= expense.description
             %td= number_to_currency(expense.estimated_amount, :unit => expense.estimated_currency)
             %td
-              = text_field_tag "expenses_approval[amount_#{expense.id}]", expense.approved_amount, :class => 'input-mini'
-              = select_tag "expenses_approval[currency_#{expense.id}]",  options_for_select(currencies_for_select(:approved, @request.event), expense.approved_currency), :class => 'input-mini'
+              = text_field_tag "expenses_approval[amount_#{expense.id}]", expense.approved_amount
+              = select_tag "expenses_approval[currency_#{expense.id}]",  options_for_select(currencies_for_select(:approved, @request.event), expense.approved_currency)
 
-    .form-actions
+    .well
       = submit_tag t("helpers.submit.update", :model => TravelSponsorship.model_name.human), :class => 'btn btn-primary'
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), @request, :class => 'btn'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), @request, :class => 'btn btn-default'

@@ -1,8 +1,8 @@
 = content_for :page_header do
   %h1= t(:forgot_password)
 
-= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => 'form-horizontal' }) do |f|
+= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => 'form-horizontal col-md-4' }, wrapper: :horizontal_form) do |f|
   = f.error_notification
   = f.input :email, :required => true
-  .form-actions
-    = f.button :submit, t(:send_reset_password), :class => 'btn-primary'
+  .well
+    = f.button :submit, t(:send_reset_password), :class => 'btn btn-primary'
