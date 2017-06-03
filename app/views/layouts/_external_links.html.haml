@@ -1,7 +1,7 @@
 - elinks = TravelSupport::Config.setting :external_links
 - if elinks && !elinks.empty?
   .well.sidebar-nav
-    %ul.nav.nav-list
-      %li.nav-header= t(:external_links)
+    %ul.nav
+      %li= t(:external_links)
       - elinks.each do |lnk|
         %li= link_to lnk["title"], lnk["url"]

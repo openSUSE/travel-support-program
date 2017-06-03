@@ -78,14 +78,14 @@
 %p
   As applicant, your goal should be to reach the final state.
 
-#workflows.accordion
+#workflows.panel-group
   - if enabled? :travel_sponsorships
-    .accordion-group
-      .accordion-heading
-        %a.accordion-toggle{:href => "#collapseTravel", :data => {:toggle => "collapse", :parent=>"#workflows"}}
+    .panel.panel-default
+      .panel-heading
+        %a{:href => "#collapseTravel", :data => {:toggle => "collapse", :parent=>"#workflows"}}
           Travel support: details
-      #collapseTravel.accordion-body.collapse
-        .accordion-inner
+      #collapseTravel.panel-collapse.collapse
+        .panel-body
 
           %h3 Travel support requests
 
@@ -129,12 +129,12 @@
             = image_tag "Reimbursement_state.png", :alt => "Reimbursement workflow diagram"
 
   - if enabled?(:shipments)
-    .accordion-group
-      .accordion-heading
-        %a.accordion-toggle{:href => "#collapseShipment", :data => {:toggle => "collapse", :parent=>"#workflows"}}
+    .panel.panel-default
+      .panel-heading
+        %a{:href => "#collapseShipment", :data => {:toggle => "collapse", :parent=>"#workflows"}}
           Merchandising shipment: details
-      #collapseShipment.accordion-body.collapse
-        .accordion-inner
+      #collapseShipment.panel-collpase.collapse
+        .panel-body
 
           %h3 Shipment requests
 
