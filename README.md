@@ -17,7 +17,7 @@ widely used and flexible components like [Bootstrap](http://github.com/twitter/b
 for the frontend layout or [Devise](https://github.com/plataformatec/devise)
 for user authentication.
 
-For a more detailed explanation you can refer to the {file:doc/ABOUT.md} file, in
+For a more detailed explanation you can refer to the [ABOUT](doc/ABOUT.md) file, in
 which 'the 6 Ws' are developed. That is: who, what, when, where, why and how (yes,
 we already know that 'how' does not start with 'W', but we didn't invented the
 name).
@@ -61,4 +61,4 @@ Ancor González Sosa
 ## License
 
 This application is released under the terms of the GNU Affero General Public
-Licence (AGPL). See the {file:LICENSE} file for more info
+Licence (AGPL). See the [LICENSE](LICENSE) file for more info
