@@ -11,13 +11,13 @@
 // There were 18 tones of grey (20 including pure black and white) in the original bento theme
 // Let's group them this way:
 @black:                 #000;
-@grayDarkest:           #222; // Also #111 in original bento
-@grayDarker:            #333; // Also #2e2e2e and #444 in original bento
-@grayDark:              #555; // Also #4e4e4e and #666 in original bento
+@gray-darkest:           #222; // Also #111 in original bento
+@gray-darker:            #333; // Also #2e2e2e and #444 in original bento
+@gray-dark:              #555; // Also #4e4e4e and #666 in original bento
 @gray:                  #999; // Also #888 and #aaa in original bento
-@grayLight:             #bbb; // Also #ccc in original bento
-@grayLighter:           #e6e6e6; // Also #ddd and #eee in original bento
-@grayLightest:          #f6f6f6; // Also #fefefe in original bento
+@gray-light:             #bbb; // Also #ccc in original bento
+@gray-lighter:           #e6e6e6; // Also #ddd and #eee in original bento
+@gray-lightest:          #f6f6f6; // Also #fefefe in original bento
 @white:                 #fff;
 
 // Other colors
@@ -30,55 +30,57 @@
 
 // Typography
 // -------------------------
-@sansFontFamily:        "Lucida Grande", Arial, "DejaVu Sans", Verdana, sans-serif;
+@font-family-sans-serif:        "Lucida Grande", Arial, "DejaVu Sans", Verdana, sans-serif;
 // @serifFontFamily:       ;
 // @monoFontFamily:        ;
 
-@baseFontSize:          13px;
-@baseFontFamily:        @sansFontFamily;
-@baseLineHeight:        16px;
-@altFontFamily:         @sansFontFamily;
+@font-size-base:          13px;
+@font-family-base:        @font-family-sans-serif;
 
-@headingsFontFamily:    inherit; // empty to use BS default, @baseFontFamily
-@headingsFontWeight:    bold;    // instead of browser default, bold
-@headingsColor:         @bentoGreen; // empty to use BS default, @textColor
+@headings-font-family:    inherit; // empty to use BS default, @baseFontFamily
+@headings-font-weight:    bold;    // instead of browser default, bold
+@headings-color:         @bentoGreen; // empty to use BS default, @textColor
 
 
 // Scaffolding
 // -------------------------
-@bodyBackground:        @grayLightest;
-@textColor:             @grayDarker;
+@body-bg:        @gray-lightest;
+@text-color:             @gray-darker;
 
 
 // Links
 // -------------------------
-@linkColor:             @bentoGreen;
-@linkColorHover:        @blue;
+@link-color:             @bentoGreen;
+@link-hover-color:        @blue;
 
+//Buttons
+// -------------------------
+@btn-primary-bg:         @green;
 
 // Wells
 // -------------------------
-@wellBackground:        @white;
+@well-bg:        @white;
 @bentoWellPadding:      10px;
-@bentoWellBorderColor:  darken(@grayLighter, 10%);
+@bentoWellBorderColor:  darken(@gray-lighter, 10%);
 
 
 // Component sizing
 // -------------------------
-@baseBorderRadius:      5px;
-@borderRadiusLarge:     7px;
+@border-radius-base:      5px;
+@border-radius-large:     7px;
 
 
 // Navbar
 // -------------------------
 @navbarCollapseWidth:             600px;
+@navbar-height:            32px;
 
 
 // Dropdowns
 // -------------------------
-@dropdownLinkBackgroundActive:  @grayLighter;
+@dropdown-link-active-bg:  @gray-lighter;
 
 // Misc
 // -------------------------
-@bentoShadowColor:  @grayLight;
+@bentoShadowColor:  @gray-light;
 

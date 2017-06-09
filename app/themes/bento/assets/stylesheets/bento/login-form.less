@@ -6,12 +6,12 @@
   top:31px;
   right:0;
   padding-bottom:10px;
-  color:@grayLightest;
-  background:@grayDarker image-url('bento/gradient-darker.png') repeat-x scroll bottom left;
-  .border-radius(@baseBorderRadius);
+  color:@gray-lightest;
+  background:@gray-darker image-url('bento/gradient-darker.png') repeat-x scroll bottom left;
+  border-radius:@border-radius-base;
   border-width:1px;
   border-style:solid;
-  border-color:transparent @grayDarker @grayDarkest;
+  border-color:transparent @gray-darker @gray-darkest;
   opacity:0.95;
   -moz-opacity:0.95;
   -webkit-box-shadow:0 1px 3px @gray;
@@ -21,7 +21,7 @@
   input {
     width:208px;
     font-size:1.5em;
-    border:3px solid @grayDarkest;
+    border:3px solid @gray-darkest;
     -moz-border-radius:5px;
     -webkit-border-radius:5px;
     -khtml-border-radius:5px;
@@ -30,21 +30,21 @@
     &:focus {
       color: @blue;
       border-color: @blue;
-      -webkit-box-shadow:0 1px 3px @grayDarkest;
-      -moz-box-shadow:0 1px 3px @grayDarkest;
-      box-shadow:0 1px 3px @grayDarkest;
+      -webkit-box-shadow:0 1px 3px @gray-darkest;
+      -moz-box-shadow:0 1px 3px @gray-darkest;
+      box-shadow:0 1px 3px @gray-darkest;
     }
 
     &[type="submit"] {
-      border-color:@grayLightest;
+      border-color:@gray-lightest;
       -webkit-box-shadow:0 0px 2px #000;
-      -moz-box-shadow:0 1px 1px @grayDarkest;
-      box-shadow:0 1px 1px @grayDarkest;
-      color:@grayLighter;
+      -moz-box-shadow:0 1px 1px @gray-darkest;
+      box-shadow:0 1px 1px @gray-darkest;
+      color:@gray-lighter;
       cursor:pointer;
       background: @bentoGreenLight image-url('bento/gradient-dark-nav.png') repeat-x scroll 0 -15px;
       font-weight:bold;
-      text-shadow:0 0px 3px @grayDarker;
+      text-shadow:0 0px 3px @gray-darker;
       width:220px;
       
       &:hover { border-color: @blue; }
@@ -73,7 +73,7 @@
     
     a {
       text-decoration:none;
-      color:@grayLighter;
+      color:@gray-lighter;
       font-weight:bold;
 
       &:hover { text-decoration:underline; }
