@@ -1,7 +1,7 @@
-.row-fluid#subheader
-  .span6
+.row#subheader
+  .col-md-6
     = breadcrumbs
-  .span6.text-right
+  .col-md-6.text-right
     - if user_signed_in?
       = link_to t(:signed_in_as, :nickname => current_user.nickname), profile_path
       |
