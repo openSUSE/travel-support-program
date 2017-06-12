@@ -13,7 +13,9 @@ TravelSupport::Application.routes.draw do
     resources :comments, :only => [:new, :create]
   end
 
-  resources :events
+  resources :events do
+    get :email, :on => :member    
+  end
   resources :budgets
 
   resources :travel_sponsorships,
