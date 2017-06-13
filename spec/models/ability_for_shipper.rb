@@ -21,6 +21,8 @@ describe "Shipper" do
     it{ should be_able_to(:update, events(:party)) }
     it{ should_not be_able_to(:destroy, events(:yavin_hackaton)) }
     it{ should_not be_able_to(:destroy, events(:party)) }
+    it{ should_not be_able_to(:email, events(:yavin_hackaton))}
+    it{ should_not be_able_to(:email, events(:party))}
   end
 
   context 'managing requests' do
