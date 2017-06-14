@@ -13,20 +13,16 @@
 
   %body
     #full-page-wrap
-      .navbar.navbar-fluid-top
-        .navbar-inner
-          .container-fluid
-            %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-              %span.icon-bar
-              %span.icon-bar
-            = render "layouts/navbar_top"
+      %nav.navbar.navbar-default.nav-main.navbar-fluid-top
+        .container-fluid
+          = render "layouts/navbar_top"
 
       .container-fluid
 
         = render "layouts/subheader"
 
-        .row-fluid
-          .span3
+        .row
+          .col-md-3
             .well.sidebar-nav
               %ul#options.nav.nav-list
                 %li.nav-header= t(:sidebar)
@@ -34,14 +30,13 @@
 
             = render "layouts/external_links"
 
-          .span9#main
+          .col-md-9#main
             = render "layouts/main_content_header"
             = bootstrap_flash_messages
             .page-header
               =yield :page_header
             = yield
 
-      #push-footer
 
     = render "layouts/footer"
     /

@@ -64,7 +64,7 @@ module ReimbursementsHelper
       info << content_tag(:p, links.join(" | ").html_safe, :class => "text-right")
     end
     unless info.empty?
-      out << content_tag(:div, info, :class => "alert-info")
+      out << content_tag(:div, info, :class => "alert alert-info")
     end
     out
   end
@@ -125,7 +125,7 @@ module ReimbursementsHelper
     return "" if TravelSupport::Config.setting(:check_request_layout).blank?
     return "" if TravelSupport::Config.setting(:check_request_template).blank?
     url = check_request_request_reimbursement_path(reimbursement.request)
-    link_to t(:check_request), url, :class => "btn"
+    link_to t(:check_request), url, :class => "btn btn-default"
   end
 
   # Outputs the value for the given reimbursement of one of the check request's

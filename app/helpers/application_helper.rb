@@ -46,7 +46,7 @@ module ApplicationHelper
     msg += " (#{r.human_state_description})"
     if r.state_updated_at.blank?
       msg += " "
-      msg += content_tag(:span, "!", :title => t(:state_help), :class => "badge badge-warning with-tooltip")
+      msg += content_tag(:span, "!", :title => t(:state_help), :class => "badge with-tooltip")
     end
     raw(msg)
   end 

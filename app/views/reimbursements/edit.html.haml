@@ -1,45 +1,45 @@
 = content_for :page_header do
   %h1= t('.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Reimbursement.model_name.human)
 
-%strong.label= Reimbursement.human_attribute_name(:event)
+%strong.label.labe.label-defaultl-defaul.label-defaultt= Reimbursement.human_attribute_name(:event)
 %br
 = render resource.event
 
-%strong.label= Reimbursement.human_attribute_name(:request)
+%strong.label.label-default= Reimbursement.human_attribute_name(:request)
 %br
 = render parent
 
-= simple_form_for resource, :url => request_reimbursement_path(parent), :method => :put do |f|
-  %strong.label= t(:general_info)
+= simple_form_for(resource, :url => request_reimbursement_path(parent),html: { class: 'form-horizontal form-inputs' }, wrapper: :horizontal_form, :method => :put) do |f|
+  %strong.label.label-default= t(:general_info)
   %br
-  .form-inputs.form-horizontal
+  .col-md-6
     = f.input :description, :input_html => {:rows => 3}
 
-  %strong.label= t(:transfer_bank_info)
-  %br
-  = f.simple_fields_for :bank_account do |b|
-    .form-inputs.form-horizontal
-      = b.input :holder
-      = b.input :bank_name
-      = b.input :format do
-        = b.radio_button :format, "iban", :data => {:target => "#iban-tab"}, :class => "tab-trigger"
-        = BankAccount.human_format_name("iban")
-        = b.radio_button :format, "national", :data => {:target => "#national-tab"}, :class => "tab-trigger"
-        = BankAccount.human_format_name("national")
-      .tab-content
-        #iban-tab{:class => b.object.iban? ? "tab-pane fade in active" : "tab-pane fade" }
+    %strong.label.label-default= t(:transfer_bank_info)
+    %br
+    = f.simple_fields_for :bank_account do |b|
+      .form-horizontal
+        = b.input :holder
+        = b.input :bank_name
+        = b.input :format do
+          = b.radio_button :format, "iban", :data => {:target => "#iban-tab"}, :class => "tab-trigger"
+          = BankAccount.human_format_name("iban")
+          = b.radio_button :format, "national", :data => {:target => "#national-tab"}, :class => "tab-trigger"
+          = BankAccount.human_format_name("national")
+        .tab-content
+          #iban-tab{:class => b.object.iban? ? "tab-pane fade in active" : "tab-pane fade" }
           = b.input :iban
           = b.input :bic
-        #national-tab{:class => b.object.national? ? "tab-pane fade in active" : "tab-pane fade" }
-          = b.input :national_bank_code
-          = b.input :national_account_code
-          = b.input :country_code, :as => :country, :input_html => {:autocomplete => "off"}
-          = b.input :bank_postal_address
+          #national-tab{:class => b.object.national? ? "tab-pane fade in active" : "tab-pane fade" }
+            = b.input :national_bank_code
+            = b.input :national_account_code
+            = b.input :country_code, :as => :country, :input_html => {:autocomplete => "off"}
+            = b.input :bank_postal_address
 
-  .form-inputs.form-inline
-    %strong.label= TravelSponsorship.human_attribute_name(:links)
+  .form-inline.col-md-10
+    %strong.label.label-default= TravelSponsorship.human_attribute_name(:links)
     - unless resource.errors[:links].empty?
-      .alert.alert-inline.alert-error= resource.links.map {|e| e.errors.full_messages}.uniq.join("; ")
+      .alert.alert-inline.alert-danger= resource.links.map {|e| e.errors.full_messages}.uniq.join("; ")
     %table.table.table-condensed
       %thead
         %tr
@@ -52,8 +52,8 @@
         %tr#links_links
           %td= link_to_add_association t(:add_link), f, :links, "data-association-insertion-node" => "#links_links"
 
-  .form-inputs.form-inline
-    %strong.label= TravelSponsorship.human_attribute_name(:attachments)
+  .form-inline.col-md-10
+    %strong.label.label-default= TravelSponsorship.human_attribute_name(:attachments)
     - unless resource.errors[:attachments].empty?
       .alert.alert-inline.alert-error= resource.attachments.map {|e| e.errors.full_messages}.uniq.join("; ")
     %table.table.table-condensed
@@ -68,8 +68,8 @@
         %tr#attachments_links
           %td= link_to_add_association t(:add_attachment), f, :attachments, "data-association-insertion-node" => "#attachments_links"
 
-  .form-inputs.form-inline
-    %strong.label= Reimbursement.human_attribute_name(:expenses)
+  .form-inline.col-md-10
+    %strong.label.label-default= Reimbursement.human_attribute_name(:expenses)
     .alert.alert-inline.alert-info
       = t(:reimbursement_expenses_help)
       - if manual_authorized_amount_is_needed_for? resource
@@ -103,6 +103,6 @@
                 - else
                   %td.authorized= number_to_currency(e.text_field(:authorized_amount, :class => 'input-mini'), :unit => expense.authorized_currency)
 
-  .form-actions
-    = f.button :submit, :class => 'btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), request_reimbursement_path(resource.request), :class => 'btn'
+  .well.col-md-12
+    = f.button :submit, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), request_reimbursement_path(resource.request), :class => 'btn btn-default'
