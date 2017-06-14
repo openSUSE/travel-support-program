@@ -1,27 +1,27 @@
 = collapse_link "event_details", event_title_line(event)
 %blockquote#event_details.collapse
   = show_for event do |e|
-    .row
-      .col-md-6
+    .row-fluid
+      .span6
         = e.attribute :start_date
         = e.attribute :country do
           = country_label(event.country_code)
-      .col-md-6
+      .span6
         = e.attribute :end_date
         = e.attribute :url do
           = link_to *([event.url]*2)
-    .row
-      .col-md-12
+    .row-fluid
+      .span12
         = e.attribute :description
-    .row
-      .col-md-6
+    .row-fluid
+      .span6
         - if enabled? :shipments
           = e.attribute :shipment_type
-      .col-md-6
+      .span6
         - if enabled? :travel_sponsorships
           = e.attribute :visa_letters
     - if user_signed_in? && can?(:validate, event)
-      .row
-        .col-md-12= e.attribute :validated
-    .row
-      .col-md-12= goto_link event
+      .row-fluid
+        .span12= e.attribute :validated
+    .row-fluid
+      .span12= goto_link event

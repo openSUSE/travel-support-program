@@ -1,32 +1,32 @@
 - model_class = TravelSponsorship
 = content_for :page_header do
-  .row
-    .col-md-7
+  .row-fluid
+    .span7
       %h1= t('.title', :default => model_class.model_name.human) + " #{resource.label}"
-    .col-md-5
+    .span5
       %br
       = state_change_links(@request)
       - if can? :edit, @request
-        = link_to t('.edit', :default => t("helpers.links.edit")), edit_travel_sponsorship_path(@request), :class => 'btn btn-default'
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_travel_sponsorship_path(@request), :class => 'btn'
       - if can? :approve, @request
-        = link_to t(:set_approved), edit_travel_sponsorship_expenses_approval_path(@request), :class => 'btn btn-default'
+        = link_to t(:set_approved), edit_travel_sponsorship_expenses_approval_path(@request), :class => 'btn'
       - if can? :destroy, @request
-        = link_to t('.destroy', :default => t("helpers.links.destroy")), travel_sponsorship_path(@request), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-default'
+        = link_to t('.destroy', :default => t("helpers.links.destroy")), travel_sponsorship_path(@request), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn'
       - if @request.lacks_reimbursement?
         -# Protect the rest of the template from the side effect of build_reimbursement
         - reimb = @request.reimbursement
         - if can?(:create, @request.build_reimbursement)
-          = link_to t(:create_reimbursement), request_reimbursement_path(@request), :method => :post, :class => 'btn btn-default'
+          = link_to t(:create_reimbursement), request_reimbursement_path(@request), :method => :post, :class => 'btn'
         - @request.reimbursement = reimb
 
 = show_for @request do |r|
-  .row
-    .col-md-6
+  .row-fluid
+    .span6
       = r.attribute :state do
         = state_info(r.object)
-        %div.alert.alert-info= @request.human_state_guide
+        %div.alert-info= @request.human_state_guide
       = r.attribute :visa_letter if @request.visa_letter_allowed?
-    .col-md-6
+    .span6
       = r.association :event do
         = render @request.event
       = r.association :user do
@@ -40,9 +40,9 @@
       - elsif !@request.event.accepting_reimbursements?
         = r.association :reimbursement do
           = t(:not_accepting_reimbursements)
-          = content_tag(:span, "!", :class => "badge")
-  .row
-    .col-md-12
+          = content_tag(:span, "!", :class => "badge badge-info")
+  .row-fluid
+    .span12
       = r.attribute :description do
         = simple_format(@request.description)
 
@@ -65,5 +65,5 @@
   = r.attribute :history do
     = render :partial => "history"
     - if can?(:create, @request.comments.build)
-      = link_to(t(:create_comment), resource_path + "/comments/new.js", :remote => true, :class => 'btn btn-default btn-sm')
+      = link_to(t(:create_comment), resource_path + "/comments/new.js", :remote => true, :class => 'btn btn-small')
 

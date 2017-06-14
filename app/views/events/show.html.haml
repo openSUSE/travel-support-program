@@ -1,51 +1,51 @@
 - model_class = Event
 = content_for :page_header do
-  .row
-    .col-md-7
+  .row-fluid
+    .span7
       %h1= t('.title', :default => model_class.model_name.human)
-    .col-md-5
+    .span5
       %br
       - if user_signed_in? && can?(:update, resource)
-        = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path(resource), :class => 'btn btn-default'
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path(resource), :class => 'btn'
       - if user_signed_in? && can?(:destroy, resource)
-        = link_to t('.destroy', :default => t("helpers.links.destroy")), resource_path(resource), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-default'
+        = link_to t('.destroy', :default => t("helpers.links.destroy")), resource_path(resource), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn'
       - if resource.accepting_requests?
         = link_to t(:new_travel), new_travel_sponsorship_path(:event_id => resource), :class => 'btn btn-primary'
       - if resource.accepting_shipments?
         = link_to t(:new_shipment), new_shipment_path(:event_id => resource), :class => 'btn btn-primary'
 
 = show_for resource do |r|
-  .row
-    .col-md-12
+  .row-fluid
+    .span12
       = r.attribute :name
-  .row
-    .col-md-6
+  .row-fluid
+    .span6
       = r.attribute :start_date
       = r.attribute :end_date
-    .col-md-6
+    .span6
       = r.attribute :country do
         = country_label(resource.country_code)
       = r.attribute :url do
         = link_to *([resource.url]*2)
-  .row
-    .col-md-12
+  .row-fluid
+    .span12
       = r.attribute :description do
         = simple_format(resource.description)
-  .row
-    .col-md-6
-      - if enabled? :shipments
-        = r.attribute :shipment_type
-      - if enabled? :travel_sponsorships
-        = r.attribute :visa_letters
-    .col-md-6
-      - if enabled? :travel_sponsorships
-        = r.attribute :request_creation_deadline
-        = r.attribute :reimbursement_creation_deadline
+    .row-fluid
+      .span6
+        - if enabled? :shipments
+          = r.attribute :shipment_type
+        - if enabled? :travel_sponsorships
+          = r.attribute :visa_letters
+      .span6
+        - if enabled? :travel_sponsorships
+          = r.attribute :request_creation_deadline
+          = r.attribute :reimbursement_creation_deadline
   - if user_signed_in? && can?(:validate, resource)
-    .row
-      .col-md-12
+    .row-fluid
+      .span12
         = r.attribute :validated
   - if user_signed_in? && can?(:read, Budget)
-    .row
-      .col-md-12
+    .row-fluid
+      .span12
         = r.association :budget

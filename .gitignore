@@ -17,7 +17,6 @@
 config/database.yml
 config/site.yml
 .yardoc/*
-coverage/*
 *.swp
 .ruby-version
 public/upload*

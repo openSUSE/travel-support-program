@@ -7,16 +7,16 @@
       = hidden_field_tag :context, @context
       = hidden_field_tag :proxypath, @proxypath
       .inputs
-        .form-group.username.required
+        .control-group.username.required
           = label_tag :username, t("activerecord.attributes.user.nickname"), :class => "control-label required"
           .controls
             = text_field_tag :username, "", :autofocus => true, :class => "string username required"
-        .form-group.password.required
+        .control-group.password.required
           = label_tag :password, t("activerecord.attributes.user.password"), :class => "control-label required"
           .controls
             = password_field_tag :password, "", :class => "password required"
       .actions
-        = submit_tag t(:sign_in), :class => "btn btn-default"
+        = submit_tag t(:sign_in), :class => "btn"
       .links
         - if devise_mapping.ichain_registerable?
           = link_to t(:sign_up)

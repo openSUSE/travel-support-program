@@ -1,8 +1,8 @@
 blockquote.collapse, .history blockquote {
   margin-bottom: 0px;
   p {
-    font-size: @font-size-base;
-    line-height: @line-height-base;
+    font-size: @baseFontSize;
+    line-height: @baseLineHeight;
   }
 }
 
@@ -33,102 +33,16 @@ body {
   height: auto !important;
   height: 100%;
   /* Negative indent footer by it's height */
-  margin: 0 auto -@font-size-base*1.5;
+  margin: 0 auto -@baseFontSize*1.5;
 }
 
-.page-header{
-  margin: 20px 0 30px;
-}
-
-.form-report{ 
-  .input-sm {
-    width: 220px;
-   }
-
-   label{
-    font-weight: normal;
-   } 
-}
-
-.navbar
-{
-  padding-left: 5px;
-  padding-right: 20px;
-  background-color: #fafafa;
-  background-repeat: repeat-x;
-  border: 1px solid #d4d4d4;
-  border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-  background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
-  min-height: 42px;
-}
-
-.navbar-brand{
-  padding: 12px 20px 10px;
-  font-size: 20px;
-}
-
-.navbar-nav li a{
-  padding: 12px 20px 10px;
-}
-
-.navbar-btn{
-  margin-top: 3px;
-}
-
-.navbar-form{
-  margin-top: 4px;
-}
-
-.nav-list{
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-bottom: 0;
-}
-
-.nav-header{
-  margin-left: -15px;
-  margin-right: -15px;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  display: block;
-  padding: 3px 15px;
-  font-size: 11px;
-  font-weight: bold;
-  line-height: 20px;
-  color: #999999;
-  text-transform: uppercase;
-}
-
-.nav-list > li > a {
-    padding: 3px 15px;
-}
-
-.nav-list > li > a{
-    margin-left: -15px;
-    margin-right: -15px;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-}
-
-@media (min-width: @screen-lg-min) { 
-  .nav-tsp {
-    height:42px;
-  }
-
-  .navbar-form .inpt-w{
-  width: 90px;
-  }
-
-  .nav-main{
-    height: 42px;
-  }
-}
 /* Set the fixed height of the footer here */
 #push-footer, #footer {
-  height: @font-size-base*1.5;
+  height: @baseFontSize*1.5;
 }
 #footer {
-  background-color: @navbar-default-bg;
+  background-color: @navbarBackground;
   div {
-    font-size: @font-size-small;
+    font-size: @fontSizeSmall;
   }
 }

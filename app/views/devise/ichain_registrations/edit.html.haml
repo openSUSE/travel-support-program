@@ -1,7 +1,7 @@
 = content_for :page_header do
   %h1= current_user.nickname
 = render 'user_profiles/profile_menu'
-= simple_form_for(resource, :as => resource_name, :url => ichain_registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }, wrapper: :horizontal_form) do |f|
+= simple_form_for(resource, :as => resource_name, :url => ichain_registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f|
   = f.input :locale, :collection => I18n.available_locales, :required => true, :include_blank => false
-  .well
-    = f.button :submit, :class => 'btn btn-primary'
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'

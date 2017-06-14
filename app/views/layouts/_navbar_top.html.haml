@@ -1,12 +1,6 @@
-.navbar-header
-  %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-    %span.sr-only Toggle navigation
-    %span.icon-bar
-    %span.icon-bar
-    %span.icon-bar
-  =link_to TravelSupport::Config.setting(:program_name), root_path, :class => "navbar-brand"
-#bs-example-navbar-collapse-1.collapse.navbar-collapse
-  %ul.nav.navbar-nav
+=link_to TravelSupport::Config.setting(:program_name), root_path, :class => "brand"
+.container.nav-collapse
+  %ul.nav
     - if user_signed_in?
       %li= link_to t(:signed_in_as, :nickname => current_user.nickname), profile_path
       - if user_signed_in_by_ichain?

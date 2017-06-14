@@ -7,20 +7,20 @@ module ReportHelper
     value = @filter && @filter[name]
     options = content_tag(:option, t(:expenses_report_all), :value => "")
     options << options_from_collection_for_select(collection, value_method, text_method, value)
-    select_tag "filter[#{name}]", options, class: 'form-control input-sm'
+    select_tag "filter[#{name}]", options
   end
 
   # Outputs a date picker for filtering the expenses report with a given scope
   def filter_datepicker(name)
      value = @filter && @filter[name]
      data = {"date-autoclose" => true, "date-format" => "yyyy-mm-dd", "date-language" => I18n.locale.to_s}
-     text_field_tag "filter[#{name}]", value, :class => "date-without-time dpicker form-control input-sm", :data => data
+     text_field_tag "filter[#{name}]", value, :class => "date-without-time dpicker", :data => data
   end
 
   # Outputs a text input for filtering the expenses report with a given scope
   def filter_text_field(name)
     value = @filter && @filter[name]
-    text_field_tag "filter[#{name}]", value, class: "form-control input-sm"
+    text_field_tag "filter[#{name}]", value
   end
 
   # Outputs the html representation of the field for a given
