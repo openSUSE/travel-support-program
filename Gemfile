@@ -28,7 +28,7 @@ end
 # less support
 gem 'therubyracer', platforms: :ruby
 gem "less-rails"
-gem "twitter-bootstrap-rails"
+gem "twitter-bootstrap-rails", '~> 2.2.8'
 
 gem 'devise'
 gem 'devise_ichain_authenticatable', '>= 0.3.0'

@@ -1,25 +1,25 @@
 - model_class = Reimbursement
 = content_for :page_header do
-  .row
-    .col-md-7
+  .row-fluid
+    .span7
       %h1= t('.title', :default => model_class.model_name.human) + " #{resource.label}"
-    .col-md-5
+    .span5
       %br
       = state_change_links(resource)
       - if can? :create, resource.payments.build
         = check_request_link(resource)
       - if can? :edit, resource
-        = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path, :class => 'btn btn-default' 
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path, :class => 'btn' 
 
 = show_for resource do |r|
-  .row
-    .col-md-6
+  .row-fluid
+    .span6
       = r.attribute :state do
         = state_info(r.object)
         %div.alert-info= resource.human_state_guide
       = r.attribute :acceptance_file do
         = reimbursement_acceptance_file(resource)
-    .col-md-6
+    .span6
       = r.association :event do
         = render resource.event
       = r.association :user do
@@ -31,8 +31,8 @@
           = t("show_for.blank")
         - else
         = render resource.bank_account
-  .row
-    .col-md-12
+  .row-fluid
+    .span12
       = r.attribute :description do
         = simple_format(resource.description)
 
@@ -42,7 +42,7 @@
       = r.association :attachments do
         = reimbursement_attachments(resource)
 
-  %strong.label.label-default= TravelSponsorship.human_attribute_name(:expenses)
+  %strong.label= TravelSponsorship.human_attribute_name(:expenses)
   %table.table.table-condensed
     %thead#expenses_head
       %tr
@@ -65,9 +65,9 @@
   = r.association :payments do
     = reimbursement_payments(resource)
     - if can? :create, resource.payments.build
-      = link_to t(:new_payment), new_request_reimbursement_payment_path(resource.request), :class => 'btn btn-default btn-sm'
+      = link_to t(:new_payment), new_request_reimbursement_payment_path(resource.request), :class => 'btn btn-small'
 
   = r.attribute :history do
     = render :partial => "history"
     - if can?(:create, resource.comments.build)
-      = link_to(t(:create_comment), resource_path + "/comments/new.js", :remote => true, :class => 'btn btn-default btn-sm')
+      = link_to(t(:create_comment), resource_path + "/comments/new.js", :remote => true, :class => 'btn btn-small')

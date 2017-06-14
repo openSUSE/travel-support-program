@@ -2,15 +2,14 @@
 = content_for :page_header do
   %h1= t('.title', :default => model_class.model_name.human(count: 2))
 
-%nav.navbar.navbar-default.nav-tsp
-  .container-fluid
-    .navbar-header
-      = link_to t('.new', :default => t("helpers.links.new")), new_resource_path, :class => 'navbar-btn btn btn-primary'
+.navbar
+  .navbar-inner
+    = link_to t('.new', :default => t("helpers.links.new")), new_resource_path, :class => 'btn btn-primary'
 
     = search_form_for @q, :builder => SimpleForm::FormBuilder, :class => "navbar-form pull-right" do |f|
-      = f.text_field :name_or_description_cont, class: 'form-control inpt-w'
-      = f.submit t(:search), :class => "btn btn-default"
-      = link_to t(:reset_search), collection_path, :class => "btn btn-default"
+      = f.text_field :name_or_description_cont, :class => "input-small"
+      = f.submit t(:search), :class => "btn"
+      = link_to t(:reset_search), collection_path, :class => "btn"
 
 %table.table.table-striped.events
   %thead

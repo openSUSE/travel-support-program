@@ -1,18 +1,18 @@
 - model_class = Budget
 = content_for :page_header do
-  .row
-    .col-md-7
+  .row-fluid
+    .span7
       %h1= t('.title', :default => model_class.model_name.human)
-    .col-md-5
+    .span5
       %br
       - if can?(:update, resource)
-        = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path(resource), :class => 'btn btn-default'
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path(resource), :class => 'btn'
       - if can?(:destroy, resource)
-        = link_to t('.destroy', :default => t("helpers.links.destroy")), resource_path(resource), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-danger'
+        = link_to t('.destroy', :default => t("helpers.links.destroy")), resource_path(resource), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn'
 
 = show_for resource do |r|
-  .row
-    .col-md-12
+  .row-fluid
+    .span12
       = r.attribute :name
       = r.attribute :description
       = r.attribute :amount do
