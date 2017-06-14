@@ -52,4 +52,46 @@ feature "Events", "" do
     end
     page.should have_content 'Budget'
   end
+
+  scenario "When a user is not logged in" do
+    visit events_path 
+    click_link "Death Star's destruction celebration"
+    page.should_not have_link('Email') 
+  end
+
+  scenario "User logged in is not a tsp member" do
+    sign_in_as_user(users(:luke))
+    visit events_path 
+    click_link "Death Star's destruction celebration"
+    page.should_not have_link('Email') 
+  end
+
+  scenario "Email the event participants", :js => true do
+    sign_in_as_user(users(:tspmember))
+    visit events_path 
+    click_link "Death Star's destruction celebration"
+    
+    click_link "Email"
+    page.should have_content "Email the participants of Death Star's destruction celebration"
+    
+    # To check that users_for_event method is working properly
+    click_button("Select recipients")
+    find('a', :text => "All").click
+    page.should have_field('To', with: 'gial.ackbar@rebel-alliance.org,luke.skywalker@rebel-alliance.org,wedge.antilles@rebel-alliance.org,evram.lajaie@rebel-alliance.org,c3po@droids.com')
+    click_button("Select recipients")
+    find('a', :text => "Submitted").click
+    page.should have_field('To', with: 'wedge.antilles@rebel-alliance.org')
+    click_button("Select recipients")
+    find('a', :text => "Incomplete").click
+    page.should have_field('To', with: 'gial.ackbar@rebel-alliance.org,luke.skywalker@rebel-alliance.org,evram.lajaie@rebel-alliance.org,c3po@droids.com')
+    click_button("Select recipients")
+    find('a', :text => "Approved").click
+    page.should have_field('To', with: '')
+    click_button("Select recipients")
+    find('a', :text => "Accepted").click
+    page.should have_field('To', with: '')
+
+    click_link "Cancel"
+    current_path.should == event_path(events(:party))
+  end
 end
