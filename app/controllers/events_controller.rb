@@ -4,6 +4,20 @@ class EventsController < InheritedResources::Base
   skip_load_and_authorize_resource :only => [:index, :show]
   before_filter :set_types
 
+  def email
+  end
+
+  # Send email to the event participants
+  def email_event
+    @email = params[:email]
+    @email[:to].split(',').each do |e|
+      user = User.find_by(email: e)
+      EventMailer.notify_to(user, :event_info, @email)
+    end
+    flash[:notice] = "Email Delivered"
+    redirect_to events_path
+  end
+
   protected
 
   def collection
@@ -31,9 +45,5 @@ class EventsController < InheritedResources::Base
     end
     attrs.delete(:budget_id) if cannot? :read, Budget
     params.permit(:event => attrs)
-  end
-
-  def email
-    @event = Event.find(params[:id])
   end
 end
