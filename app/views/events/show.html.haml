@@ -13,6 +13,8 @@
         = link_to t(:new_travel), new_travel_sponsorship_path(:event_id => resource), :class => 'btn btn-primary'
       - if resource.accepting_shipments?
         = link_to t(:new_shipment), new_shipment_path(:event_id => resource), :class => 'btn btn-primary'
+      - if user_signed_in? && can?(:email, resource)
+        = link_to "Email", email_event_path, class: "btn btn-info"
 
 = show_for resource do |r|
   .row-fluid

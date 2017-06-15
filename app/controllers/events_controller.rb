@@ -32,4 +32,8 @@ class EventsController < InheritedResources::Base
     attrs.delete(:budget_id) if cannot? :read, Budget
     params.permit(:event => attrs)
   end
+
+  def email
+    @event = Event.find(params[:id])
+  end
 end
