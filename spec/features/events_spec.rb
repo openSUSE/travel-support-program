@@ -66,18 +66,23 @@ feature "Events", "" do
     page.should_not have_link('Email') 
   end
 
-  scenario "Email the event participants", :js => true do
+   scenario "User logged in is a tsp member" do
     sign_in_as_user(users(:tspmember))
     visit events_path 
-    click_link "Death Star's destruction celebration"
     
+    click_link "Death Star's destruction celebration"
+    page.should have_link('Email') 
+
     click_link "Email"
     page.should have_content "Email the participants of Death Star's destruction celebration"
+  end
+
+  scenario "Email the event participants", :js => true do
+    sign_in_as_user(users(:tspmember))
+    visit email_event_path(events(:party))
+    @deliveries = ActionMailer::Base.deliveries.size
     
     # To check that users_for_event method is working properly
-    click_button("Select recipients")
-    find('a', :text => "All").click
-    page.should have_field('To', with: 'gial.ackbar@rebel-alliance.org,luke.skywalker@rebel-alliance.org,wedge.antilles@rebel-alliance.org,evram.lajaie@rebel-alliance.org,c3po@droids.com')
     click_button("Select recipients")
     find('a', :text => "Submitted").click
     page.should have_field('To', with: 'wedge.antilles@rebel-alliance.org')
@@ -90,8 +95,22 @@ feature "Events", "" do
     click_button("Select recipients")
     find('a', :text => "Accepted").click
     page.should have_field('To', with: '')
+    click_button("Select recipients")
+    find('a', :text => "All").click
+    page.should have_field('To', with: 'gial.ackbar@rebel-alliance.org,luke.skywalker@rebel-alliance.org,wedge.antilles@rebel-alliance.org,evram.lajaie@rebel-alliance.org,c3po@droids.com')
 
+    click_button("Send")
+    page.should have_content "Email Delivered"
+    ActionMailer::Base.deliveries.size.should == @deliveries + 5
+  end
+
+  scenario "Cancel the email", :js => true do
+    sign_in_as_user(users(:tspmember))
+    visit email_event_path(events(:party))
+    @deliveries = ActionMailer::Base.deliveries.size
+  
     click_link "Cancel"
     current_path.should == event_path(events(:party))
+    ActionMailer::Base.deliveries.size.should == @deliveries
   end
 end
