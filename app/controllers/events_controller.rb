@@ -5,6 +5,8 @@ class EventsController < InheritedResources::Base
   before_filter :set_types
 
   def email
+    @breadcrumbs << {:label => resource, :url => resource_path}
+    @breadcrumbs << {:label => 'email'}
   end
 
   # Send email to the event participants
