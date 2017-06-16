@@ -2,24 +2,27 @@
   %h1= current_user.nickname
 = render 'profile_menu'
 = profile_info
+%br
 = simple_form_for @profile, :url => user_profile_path, :as => :user do |f|
-  .row-fluid
-    .span6
-      = profile_input f, :full_name
-      = profile_input f, :birthday, :as => :dpicker
-      = profile_input f, :country_code, :as => :country, :input_html => {:autocomplete => "off"}
-      = profile_input f, :location
-      = profile_input f, :postal_address
-      = profile_input f, :zip_code
-      = profile_input f, :description, :as => :text, :input_html => {:rows => 2, :class => "input-xlarge"}
-    .span6
-      = profile_input f, :phone_number, :as => :string
-      = profile_input f, :second_phone_number, :as => :string
-      = profile_input f, :passport
-      = profile_input f, :alternate_id_document
-      = profile_input f, :website, :as => :url
-      = profile_input f, :blog, :as => :url
-  .row-fluid
-    .span12
-      .form-actions
-        = f.button :submit, :class => 'btn-primary'
+  .row
+    .col-md-6
+      .col-md-4
+        = profile_input f, :full_name
+        = profile_input f, :birthday, :as => :dpicker, :input_html => {class: 'form-control'}
+        = profile_input f, :country_code, :as => :country, :input_html => {:autocomplete => "off"}
+        = profile_input f, :location
+        = profile_input f, :postal_address
+        = profile_input f, :zip_code
+        = profile_input f, :description, :as => :text, :input_html => {:rows => 2}
+    .col-md-6
+      .col-md-4
+        = profile_input f, :phone_number, :as => :string
+        = profile_input f, :second_phone_number, :as => :string
+        = profile_input f, :passport
+        = profile_input f, :alternate_id_document
+        = profile_input f, :website, :as => :url
+        = profile_input f, :blog, :as => :url
+  .row
+    .col-md-12
+      .well
+        = f.button :submit, :class => 'btn btn-primary'

@@ -1,6 +1,12 @@
-=link_to image_tag("bento/header-logo.png"), root_path, :class => "brand"
-.container.nav-collapse
-  %ul.nav#global-navigation
+.navbar-header
+  %button.navbar-toggle.collapsed.btn-navbar{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+    %span.sr-only Toggle navigation
+    %span.icon-bar
+    %span.icon-bar
+    %span.icon-bar
+  =link_to image_tag("bento/header-logo.png"), root_path, :class => "brand navbar-brand"
+#bs-example-navbar-collapse-1.collapse.navbar-collapse
+  %ul.nav.navbar-nav#global-navigation
     %li#item-downloads= link_to t(:downloads, :scope => :bento), "http://en.opensuse.org/openSUSE:Browse#Downloads"
     %li#item-support= link_to t(:support, :scope => :bento), "http://en.opensuse.org/openSUSE:Browse#Support"
     %li#item-community= link_to t(:community, :scope => :bento), "http://en.opensuse.org/openSUSE:Browse#Community"

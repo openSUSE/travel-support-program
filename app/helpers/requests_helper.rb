@@ -13,7 +13,7 @@ module RequestsHelper
     if request.reimbursement
       link_to request.reimbursement.label, request_reimbursement_path(request)
     elsif can?(:create, request.build_reimbursement)
-      link_to t(:create_reimbursement_short), request_reimbursement_path(request), :method => :post, :class => 'btn btn-mini'
+      link_to t(:create_reimbursement_short), request_reimbursement_path(request), :method => :post, :class => 'btn btn-default btn-sm'
     else
       "-"
     end

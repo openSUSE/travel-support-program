@@ -1,34 +1,38 @@
 // Headings
 // --------------------------
-h1 { font-size: @baseFontSize * 2; }
-h2 { font-size: @baseFontSize * 1.75; }
-h3 { font-size: @baseFontSize * 1.50; }
-h4 { font-size: @baseFontSize * 1.25; }
+h1 { font-size: @font-size-base * 2; }
+h2 { font-size: @font-size-base * 1.75; }
+h3 { font-size: @font-size-base * 1.50; }
+h4 { font-size: @font-size-base * 1.25; }
 
-h1 small { font-size: @baseFontSize * 1.50; }
-h2 small { font-size: @baseFontSize * 1.20; }
+h1 small { font-size: @font-size-base * 1.50; }
+h2 small { font-size: @font-size-base * 1.20; }
 
 
 // Page header
 // -------------------------
 
 .page-header {
-    padding-bottom: (@baseLineHeight / 2) - 1;
-      margin: @baseLineHeight 0 (@baseLineHeight * 1.5);
-        border-bottom: 1px solid @grayLighter;
+    padding-bottom: (@line-height-base / 2) - 1;
+      margin: @line-height-base 0 (@line-height-base * 1.5);
+        border-bottom: 1px solid @gray-lighter;
 }
 
+.navbar.navbar-fluid-top{
+  min-height: 32px;
+  max-height: 100%;
+}
 
 // openSUSE top bar
 // -------------------------
 .navbar-fixed-top, .navbar-static-top, .navbar-fluid-top {
   margin-bottom: 10px;
 
-  .navbar-inner {
+  .container-fluid {
     min-height: 30px;
-    background-color: @grayDark;
-    #gradient > .vertical(@grayDark, @grayDarkest);
-    .border-radius(0);
+    background-color: @gray-dark;
+    #gradient > .vertical(@gray-dark, @gray-darkest);
+    border-radius:0;
     box-shadow: none;
 
     li {
@@ -45,7 +49,7 @@ h2 small { font-size: @baseFontSize * 1.20; }
       }
     }
 
-    .brand {
+    .navbar-brand {
       padding-top: 1px;
       padding-bottom: 0px;
     }
@@ -55,11 +59,11 @@ h2 small { font-size: @baseFontSize * 1.20; }
 // Boxes
 // --------------------------
 #main, .well {
-  background-color: @wellBackground;
+  background-color: @well-bg;
   padding: @bentoWellPadding;
   padding-top: 0px;
   border: 1px solid @bentoWellBorderColor;
-  .border-radius(@baseBorderRadius);
+  border-radius:@border-radius-base;
   box-shadow: 0px 1px 3px @bentoShadowColor;
   
   a {
@@ -70,7 +74,7 @@ h2 small { font-size: @baseFontSize * 1.20; }
     }
 
     // Avoid overwriting good bootstrap defaults
-    &.btn { color: @grayDark; }
+    &.btn { color: @gray-dark; }
     &.btn-primary, &.btn-warning, &.btn-danger, &.btn-success,
     &.btn-info, &.btn-inverse {
       color: @white
@@ -83,14 +87,24 @@ h2 small { font-size: @baseFontSize * 1.20; }
 
     .nav-header {
       background:@white image-url('bento/gradient-light.png') repeat-x scroll 0 -25px;
-      color: @grayDarker;
+      color: @gray-darker;
       margin-bottom: 5px;
       text-transform: none;
-      font-size: @baseFontSize;
+      font-size: @font-size-base;
       font-weight: bold;
       margin: 1px -14px 5px;
       border-bottom: 1px solid @bentoWellBorderColor;
     }
+  }
+}
+
+.simple_form .well .btn{
+  margin-top: 10px;
+}
+
+@media (min-width: @screen-md-min) { 
+  #main {
+    width: 74%;
   }
 }
 
@@ -113,7 +127,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-  color: @grayDarker;
+  color: @gray-darker;
 }
 
 // Breadcrumbs
@@ -124,16 +138,16 @@ input[type="color"],
   padding: 0px 0px 0px 20px;
 
   li {
-    color: @grayDarker;
+    color: @gray-darker;
 
     text-shadow: none;
 
     &.active {
-      color: @grayDarker;
+      color: @gray-darker;
     }
 
     a {
-      color: @grayDark;
+      color: @gray-dark;
     }
   }
 }
