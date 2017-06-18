@@ -66,6 +66,8 @@ group :development do
   gem 'state_machines-yard'
   gem 'ruby-graphviz'
   gem "redcarpet", :require => false
+  # for static code analisys
+  gem 'rubocop', '~> 0.49.1', require: false
 end
 
 group :test do
