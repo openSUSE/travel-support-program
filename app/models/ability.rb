@@ -141,7 +141,7 @@ class Ability
       can :manage, Budget
 
       # Events
-      can [:update, :validate, :email], Event
+      can [:update, :validate, :email, :email_event], Event
       can :destroy, Event do |e|
         e.can_be_destroyed?
       end

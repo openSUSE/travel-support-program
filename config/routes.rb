@@ -14,7 +14,8 @@ TravelSupport::Application.routes.draw do
   end
 
   resources :events do
-    get :email, :on => :member    
+    get :email, :on => :member 
+    post :email_event, :on => :collection   
   end
   resources :budgets
 

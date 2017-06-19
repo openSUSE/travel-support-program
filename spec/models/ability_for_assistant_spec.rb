@@ -23,6 +23,8 @@ describe "Assistant" do
     it{ should_not be_able_to(:destroy, events(:party)) }
     it{ should_not be_able_to(:email, events(:yavin_hackaton))}
     it{ should_not be_able_to(:email, events(:party))}
+    it{ should_not be_able_to(:email_event, events(:yavin_hackaton))}
+    it{ should_not be_able_to(:email_event, events(:party))}
   end
 
   context 'managing his own requests' do
