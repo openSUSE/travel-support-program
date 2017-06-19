@@ -58,6 +58,23 @@ module CommonHelpers
     end
   end
 
+  def find_request_by_search(user, request, opts = {}, phrase)
+    sign_in_as_user(user, opts)
+    visit travel_sponsorships_path
+    # Use the event filter
+    fill_in 'q_user_nickname_or_event_name_or_user_profile_full_name_cont', :with => phrase
+    click_button "search"
+    # Check the url to ensure that the form have been submitted
+    current_url.should match /event_id_in/
+    # If so, the request should be in the first page
+    find(:xpath, "//table[contains(@class,'requests')]//tbody/tr/td[1]//a[text()='##{request.id}']").click
+    page.should have_content "request"
+    request.expenses.each do |e|
+      page.should have_content e.subject
+      page.should have_content e.description
+    end
+  end
+
   #
   # Find a given shipment through the index view
   #

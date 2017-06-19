@@ -5,6 +5,7 @@
 %nav.navbar.navbar-default.nav-tsp
   .container-fluid
     = search_form_for @q, :class => "navbar-form pull-right" do |f|
+      = f.text_field(:user_nickname_or_event_name_or_user_profile_full_name_cont, :placeholder => t(:requests_search_placeholder), :class=>"input-xlarge")
       - s_opts = {'non-selected-text' => t(:events_any), 'number-displayed' => 2, 'n-selected-text' => t(:events_n) }
       = f.collection_select :event_id_in, Event.all, :id, :name, {}, :multiple => true, :data => s_opts
       - s_opts = {'non-selected-text' => t(:states_any), 'number-displayed' => 2, 'n-selected-text' => t(:states_n) }

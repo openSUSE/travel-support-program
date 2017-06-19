@@ -148,5 +148,17 @@ feature "Requests", "" do
     page.should have_content "Acceptance processed"
     page.should have_content "from approved to accepted"
     page.should have_content "reimbursement process has started or can be started"
+
+    # Searching requests by full name 
+    click_link "Log out"
+    find_request_by_search(users(:tspmember), @request, users(:luke).profile.full_name.split(" ").first.downcase)
+    
+    # Searching requests by nickname 
+    click_link "Log out"
+    find_request_by_search(users(:tspmember), @request, users(:luke).nickname.upcase)
+    
+    # Searching requests by event name 
+    click_link "Log out"
+    find_request_by_search(users(:tspmember), @request, events(:dagobah_camp).name.split(" ").first.upcase)
   end
 end
