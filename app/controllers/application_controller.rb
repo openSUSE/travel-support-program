@@ -1,17 +1,16 @@
 class ApplicationController < ActionController::Base
-
-  force_ssl :unless => Proc.new { Rails.env.test? || Rails.env.development? }
-  before_filter :authenticate_and_audit_user, :unless => :devise_controller?
-  load_and_authorize_resource :unless => :devise_controller?
+  force_ssl unless: proc { Rails.env.test? || Rails.env.development? }
+  before_filter :authenticate_and_audit_user, unless: :devise_controller?
+  load_and_authorize_resource unless: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  before_filter :mailer_set_url_for_test, if: "devise_controller? && Rails.env.test?"
+  before_filter :mailer_set_url_for_test, if: 'devise_controller? && Rails.env.test?'
   before_filter :set_breadcrumbs
 
   protect_from_forgery
 
-  rescue_from CanCan::AccessDenied do |exception|
+  rescue_from CanCan::AccessDenied do |_exception|
     flash[:alert] = nil
-    render :file => "#{Rails.root}/public/403.html", :status => 403
+    render file: "#{Rails.root}/public/403.html", status: 403
   end
 
   protected
@@ -38,18 +37,18 @@ class ApplicationController < ActionController::Base
   def set_breadcrumbs
     # For user related controllers
     if users_controller?
-      @breadcrumbs = [{:label => :breadcrumb_user}]
+      @breadcrumbs = [{ label: :breadcrumb_user }]
     # For inherited_resources controllers (the respond_to alternative looks
     # cleaner, but it's not working despite the method existing)
     # elsif respond_to? :association_chain
-    elsif kind_of? InheritedResources::Base
-      @breadcrumbs = [ {:label => resource_class.model_name.human(:count => 2),
-                      :url => collection_path} ]
-      if %w(show edit update).include? action_name
-        @breadcrumbs << {:label => resource, :url => resource_path}
+    elsif is_a? InheritedResources::Base
+      @breadcrumbs = [{ label: resource_class.model_name.human(count: 2),
+                        url: collection_path }]
+      if %w[show edit update].include? action_name
+        @breadcrumbs << { label: resource, url: resource_path }
       end
     else
-      @breadcrumbs = [{:label => ""}]
+      @breadcrumbs = [{ label: '' }]
     end
   end
 

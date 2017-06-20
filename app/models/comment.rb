@@ -6,26 +6,26 @@
 #
 class Comment < ActiveRecord::Base
   # The associated state machine (request, reimbursement...)
-  belongs_to :machine, :polymorphic => true, :inverse_of => :comments
+  belongs_to :machine, polymorphic: true, inverse_of: :comments
   # The author of the note
   belongs_to :user
 
-  validates :body, :user_id, :machine, :presence => true
-  validates_inclusion_of :private, :in => [true, false]
+  validates :body, :user_id, :machine, presence: true
+  validates_inclusion_of :private, in: [true, false]
 
   after_create :notify_creation
-  after_initialize :set_default_attrs, :if => :new_record?
+  after_initialize :set_default_attrs, if: :new_record?
 
   # The precision of 'created_at' is one second. For comments in the same second
   # we must use the id for fine-tuning
-  scope :oldest_first, -> { order("created_at asc, id asc") }
-  scope :newest_first, -> { order("created_at desc, id desc") }
+  scope :oldest_first, -> { order('created_at asc, id asc') }
+  scope :newest_first, -> { order('created_at desc, id desc') }
 
   # Checks if the comment is public
   #
   # @return [Boolean] true is private is false (pretty obvious)
   def public?
-    !self.private
+    !private
   end
 
   # Sets the machine type when assigning the association.
@@ -50,7 +50,7 @@ class Comment < ActiveRecord::Base
   def notify_creation
     people = machine.class.roles_for_private_comments
     if private
-      people += machine.comments.includes(:user).map(&:user).select {|u| u.profile.role_name == "supervisor"}.uniq
+      people += machine.comments.includes(:user).map(&:user).select { |u| u.profile.role_name == 'supervisor' }.uniq
     else
       people += [:requester] if machine.class.roles_for_public_comments.include?(:requester)
       people += machine.assigned_roles
@@ -62,6 +62,6 @@ class Comment < ActiveRecord::Base
   end
 
   def set_default_attrs
-    self.private = false if self.private.nil?
+    self.private = false if private.nil?
   end
 end

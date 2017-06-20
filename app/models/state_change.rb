@@ -11,22 +11,21 @@
 # @see StateAdjustment
 #
 class StateChange < ActiveRecord::Base
-
-  before_validation :update_machine_state, :on => :create
+  before_validation :update_machine_state, on: :create
   before_update :prevent_update
   after_create :notify_state
 
   # The associated state machine (request, reimbursement...)
-  belongs_to :machine, :polymorphic => true, :inverse_of => :state_changes
+  belongs_to :machine, polymorphic: true, inverse_of: :state_changes
   # The user creating the change
-  belongs_to :user, :inverse_of => :state_changes
+  belongs_to :user, inverse_of: :state_changes
 
-  validates :from, :to, :user, :machine, :presence => true
+  validates :from, :to, :user, :machine, presence: true
 
   # The precision of 'created_at' is one second. For changes in the same second
   # we must use the id for fine-tuning
-  scope :oldest_first, -> { order("created_at asc, id asc") }
-  scope :newest_first, -> { order("created_at desc, id desc") }
+  scope :oldest_first, -> { order('created_at asc, id asc') }
+  scope :newest_first, -> { order('created_at desc, id desc') }
 
   # Short and human readable explanation of the change. To be implemented by
   # subclasses.

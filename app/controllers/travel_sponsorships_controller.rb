@@ -1,7 +1,7 @@
 class TravelSponsorshipsController < InheritedResources::Base
   respond_to :html, :js, :json
 
-  skip_load_resource :only => [:index, :new]
+  skip_load_resource only: [:index, :new]
   helper_method :request_states_collection
   before_filter :load_subjects
 
@@ -27,7 +27,11 @@ class TravelSponsorshipsController < InheritedResources::Base
 
   def show
     # We don't want to break the normal process if something goes wrong
-    resource.user.profile.refresh rescue nil
+    begin
+      resource.user.profile.refresh
+    rescue
+      nil
+    end
     @request = resource
     show!
   end
@@ -36,24 +40,23 @@ class TravelSponsorshipsController < InheritedResources::Base
 
   def collection
     @q ||= end_of_association_chain.accessible_by(current_ability).includes(:expenses).search(params[:q])
-    @q.sorts = "id asc" if @q.sorts.empty?
-    @all_requests ||= @q.result(:distinct => true)
+    @q.sorts = 'id asc' if @q.sorts.empty?
+    @all_requests ||= @q.result(distinct: true)
     @travel_sponsorships ||= @all_requests.page(params[:page]).per(20)
     @requests = @travel_sponsorships
   end
 
   def request_states_collection
-    TravelSponsorship.state_machines[:state].states.map {|s| [ s.human_name, s.value] }
+    TravelSponsorship.state_machines[:state].states.map { |s| [s.human_name, s.value] }
   end
 
-  def load_subjects 
+  def load_subjects
     @subjects = TravelSupport::Config.setting(:travel_sponsorships, :expenses_subjects)
   end
 
   def permitted_params
-    params.permit(:travel_sponsorship => [ :event_id, :description, :visa_letter,
-                                {:expenses_attributes => [:id, :subject, :description, :estimated_amount,
-                                                          :estimated_currency, :_destroy]}])
+    params.permit(travel_sponsorship: [:event_id, :description, :visa_letter,
+                                       { expenses_attributes: [:id, :subject, :description, :estimated_amount,
+                                                               :estimated_currency, :_destroy] }])
   end
-
 end

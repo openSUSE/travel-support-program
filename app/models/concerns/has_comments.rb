@@ -3,20 +3,18 @@
 # the permissions on public and private comments
 #
 module HasComments
-
   extend ActiveSupport::Concern
 
   included do
     # Comments used to discuss decisions (private) or communicate
     # with the requester (public)
-    has_many :comments, :as => :machine, :dependent => :destroy
+    has_many :comments, as: :machine, dependent: :destroy
   end
 
   #
   # Class methods
   #
   module ClassMethods
-
     # Macro-style method to define which roles are allowed to access to public
     # comments.
     #

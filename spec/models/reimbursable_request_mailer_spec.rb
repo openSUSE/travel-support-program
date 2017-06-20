@@ -1,5 +1,5 @@
 require 'spec_helper'
-#require 'ruby-debug'
+# require 'ruby-debug'
 
 describe ReimbursableRequestMailer do
   fixtures :all
@@ -11,7 +11,7 @@ describe ReimbursableRequestMailer do
     end
   end
 
-  context "notifying missing reimbursements with a narrow threshold" do
+  context 'notifying missing reimbursements with a narrow threshold' do
     before(:each) do
       @mcount = ActionMailer::Base.deliveries.size
       TravelSponsorship.notify_missing_reimbursement 1.day, 10.days
@@ -19,32 +19,32 @@ describe ReimbursableRequestMailer do
       @mail = ActionMailer::Base.deliveries.last
     end
 
-    it "should mail requester" do
+    it 'should mail requester' do
       ActionMailer::Base.deliveries.size.should == @mcount + 1
       @mail.to.should == [@request.user.email]
     end
 
-    it "should have the correct subject" do
+    it 'should have the correct subject' do
       @mail.subject.should == "Missing reimbursement for #{@request.title}"
     end
 
-    it "should include request url in the mail body" do
+    it 'should include request url in the mail body' do
       @mail.body.encoded.should match "http.+/travel_sponsorships/#{@request.id}"
     end
   end
 
-  context "notifying missing reimbursements with a big threshold" do
+  context 'notifying missing reimbursements with a big threshold' do
     before(:each) do
       @mcount = ActionMailer::Base.deliveries.size
       TravelSponsorship.notify_missing_reimbursement 10.days, 11.days
     end
 
-    it "should mail nobody" do
+    it 'should mail nobody' do
       ActionMailer::Base.deliveries.size.should == @mcount
     end
   end
 
-  context "notifying missing reimbursements based on reimbursement deadline" do
+  context 'notifying missing reimbursements based on reimbursement deadline' do
     before(:each) do
       @mcount = ActionMailer::Base.deliveries.size
       event = events(:yavin_hackaton)
@@ -52,7 +52,7 @@ describe ReimbursableRequestMailer do
       TravelSponsorship.notify_missing_reimbursement 10.days, 11.days
     end
 
-    it "should mail requester" do
+    it 'should mail requester' do
       ActionMailer::Base.deliveries.size.should == @mcount + 1
     end
   end

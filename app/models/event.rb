@@ -7,16 +7,15 @@
 # and destroy the event.
 #
 class Event < ActiveRecord::Base
-
   # Requests for attending the event
-  has_many :requests, :inverse_of => :event, :dependent => :restrict_with_exception
+  has_many :requests, inverse_of: :event, dependent: :restrict_with_exception
   # Shipment requests for merchandising
-  has_many :shipments, :inverse_of => :event, :dependent => :restrict_with_exception
+  has_many :shipments, inverse_of: :event, dependent: :restrict_with_exception
   # Budget to use as a limit for approved amounts
   belongs_to :budget
 
-  validates :name, :start_date, :end_date, :country_code, :presence => true
-  validates :end_date, :date => {:after_or_equal_to => :start_date }
+  validates :name, :start_date, :end_date, :country_code, presence: true
+  validates :end_date, date: { after_or_equal_to: :start_date }
 
   auditable
 
@@ -27,7 +26,7 @@ class Event < ActiveRecord::Base
   # @return [Boolean] true if any user can modify the object, false if only
   #     authorized users can do it
   def editable_by_requesters?
-    not validated
+    !validated
   end
 
   # Checks whether a user should be allowed to completely delete the event.
@@ -46,7 +45,11 @@ class Event < ActiveRecord::Base
     if request_creation_deadline
       Time.zone.now < request_creation_deadline
     else
-      (Date.today < start_date) rescue false
+      begin
+        (Date.today < start_date)
+      rescue
+        false
+      end
     end
   end
 
@@ -67,7 +70,11 @@ class Event < ActiveRecord::Base
   # @return [Boolean] true if accepting new shipments
   def accepting_shipments?
     return false unless TravelSupport::Config.setting(:shipments, :enabled)
-    (!shipment_type.blank? && Date.today < start_date) rescue false
+    begin
+      (!shipment_type.blank? && Date.today < start_date)
+    rescue
+      false
+    end
   end
 
   # List of attributed that can only by accessed by users who have validation

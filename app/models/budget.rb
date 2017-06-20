@@ -11,7 +11,7 @@ class Budget < ActiveRecord::Base
   # Events that are covered by the budget
   has_many :events
 
-  validates :name, :amount, :currency, :presence => true
+  validates :name, :amount, :currency, presence: true
 
   auditable
 end

@@ -5,7 +5,7 @@ class DropRequestExpenseSubjects < ActiveRecord::Migration
 
   def down
     create_table :request_expense_subjects do |t|
-      t.string :name, :null => false
+      t.string :name, null: false
 
       t.timestamps
     end

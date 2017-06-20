@@ -6,23 +6,25 @@ class ReportsController < ApplicationController
     if (@type = params[:by_type]) && (@group = params[:by_group])
       @expenses = TravelExpenseReport.by(@type, @group).accessible_by(current_ability)
       if @filter
-        @filter.each { |k,v| @expenses = @expenses.send(k, v) unless v.blank? }
+        @filter.each { |k, v| @expenses = @expenses.send(k, v) unless v.blank? }
       end
-      @expenses = @expenses.order("sum_amount desc")
+      @expenses = @expenses.order('sum_amount desc')
       respond_to do |format|
-        format.html {
+        format.html do
           init_form
           @num_pages = (TravelExpenseReport.count(@expenses) / 20.0).ceil
           @expenses = @expenses.page(params[:page] || 1).per(20)
-        }
-        format.xlsx { render :xlsx => "travel_expenses",
-                      :disposition => "attachment",
-                      :filename => "travel_expenses.xlsx" }
+        end
+        format.xlsx do
+          render xlsx: 'travel_expenses',
+                 disposition: 'attachment',
+                 filename: 'travel_expenses.xlsx'
+        end
       end
     else
       respond_to do |format|
         format.html { init_form }
-        format.xlsx { redirect_to travel_expenses_report_path(:format => :html) }
+        format.xlsx { redirect_to travel_expenses_report_path(format: :html) }
       end
     end
   end
@@ -30,15 +32,15 @@ class ReportsController < ApplicationController
   protected
 
   def init_form
-    @by_type_options = %w(estimated approved total authorized)
+    @by_type_options = %w[estimated approved total authorized]
     @by_group_options = TravelExpenseReport.groups.map(&:to_s)
-    #@events = Event.order(:name)
-    @request_states = TravelSponsorship.state_machines[:state].states.map {|s| [ s.value, s.human_name] }
-    @reimbursement_states = Reimbursement.state_machines[:state].states.map {|s| [ s.value, s.human_name] }
-    @countries = I18n.t(:countries).map {|k,v| [k.to_s,v]}.sort_by(&:last)
+    # @events = Event.order(:name)
+    @request_states = TravelSponsorship.state_machines[:state].states.map { |s| [s.value, s.human_name] }
+    @reimbursement_states = Reimbursement.state_machines[:state].states.map { |s| [s.value, s.human_name] }
+    @countries = I18n.t(:countries).map { |k, v| [k.to_s, v] }.sort_by(&:last)
   end
 
   def set_breadcrumbs
-    @breadcrumbs = [{:label => :breadcrumb_reports}]
+    @breadcrumbs = [{ label: :breadcrumb_reports }]
   end
 end

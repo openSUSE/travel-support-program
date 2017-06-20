@@ -4,8 +4,8 @@ gem 'rails', '4.1.10'
 
 # Choose your weapon
 gem 'sqlite3'
-#gem 'pg'
-#gem 'mysql2', '~> 0.3.13'
+# gem 'pg'
+# gem 'mysql2', '~> 0.3.13'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -26,56 +26,58 @@ group :doc do
 end
 
 # less support
+gem 'less-rails'
 gem 'therubyracer', platforms: :ruby
-gem "less-rails"
-gem "twitter-bootstrap-rails"
+gem 'twitter-bootstrap-rails'
 
-gem 'devise'
-gem 'devise_ichain_authenticatable', '>= 0.3.0'
+gem 'active_hash'
+gem 'axlsx_rails'
 gem 'cancancan', '~> 1.7'
-gem 'simple_form'
-gem 'show_for'
-gem 'inherited_resources'
-gem 'localized_country_select'
-gem "active_hash"
-gem 'cocoon'
-gem 'ransack'
-gem 'kaminari'
 gem 'carrierwave'
+gem 'clockwork'
+gem 'cocoon'
 gem 'daemons'
 gem 'date_validator'
+gem 'devise'
+gem 'devise_ichain_authenticatable', '>= 0.3.0'
 gem 'espinita'
+gem 'inherited_resources'
+gem 'kaminari'
+gem 'localized_country_select'
 gem 'prawn', '~> 0.13.0'
 gem 'prawn_rails'
-gem 'axlsx_rails'
-gem 'clockwork'
+gem 'ransack'
+gem 'show_for'
+gem 'simple_form'
 gem 'state_machines-activerecord'
 # delayed_job must appear after protected_attributes
 gem 'delayed_job_active_record'
 
-gem "rspec-rails", group: [:development, :test]
-gem 'exception_notification', group: :production
 gem 'coveralls', require: false
+gem 'exception_notification', group: :production
+gem 'rspec-rails', group: [:development, :test]
 
 # Moved out of the development group to avoid an error in every rake execution
 # caused by lib/tasks/doc.rake (at least until we figure out a cleaner
 # solution)
-gem "yard", "0.8.7.4"
+gem 'yard', '0.8.7.4'
 group :development do
-  gem "yard-activerecord"
-  gem 'state_machines-yard'
+  gem 'redcarpet', require: false
   gem 'ruby-graphviz'
-  gem "redcarpet", :require => false
+  gem 'state_machines-yard'
+  gem 'yard-activerecord'
+  # for static code analisys
+  gem 'rubocop', '~> 0.49.1', require: false
 end
 
 group :test do
-  gem "capybara"
-  gem "capybara-email"
-  gem "capybara-webkit"
-  gem "shoulda-matchers"
-  gem "database_cleaner", "~> 1.3.0"
-  gem "pdf-reader"
-#  gem "delorean"
+  gem 'capybara'
+  gem 'capybara-email'
+  gem 'capybara-webkit'
+  gem 'database_cleaner', '~> 1.3.0'
+  gem 'pdf-reader'
+  gem 'shoulda-matchers'
+  #  gem "delorean"
 end
 
 # To use ActiveModel has_secure_password

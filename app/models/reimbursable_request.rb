@@ -4,21 +4,20 @@
 # Subclasses must implement the can_have_reimbursement method.
 #
 class ReimbursableRequest < Request
-
   # Estimated expenses, including (for every expense) the estimated amount,
   # the amount of the help that the corresponding committee aproves, the
   # amount finally expended and the amount that is going to be reimbursed
-  has_many :expenses, :class_name => "RequestExpense",
-                      :foreign_key => "request_id",
-                      :inverse_of => :request,
-                      :dependent => :destroy
+  has_many :expenses, class_name: 'RequestExpense',
+                      foreign_key: 'request_id',
+                      inverse_of: :request,
+                      dependent: :destroy
 
   # Every accepted request is followed by a reimbursement process
-  has_one :reimbursement, :inverse_of => :request,
-                          :foreign_key => "request_id",
-                          :dependent => :restrict_with_exception
+  has_one :reimbursement, inverse_of: :request,
+                          foreign_key: 'request_id',
+                          dependent: :restrict_with_exception
 
-  accepts_nested_attributes_for :expenses, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :expenses, reject_if: :all_blank, allow_destroy: true
 
   validates_associated :expenses
 
@@ -39,7 +38,7 @@ class ReimbursableRequest < Request
   #
   # return [Boolean] true if #cancel can be called
   def can_cancel?
-    not canceled? and (reimbursement.nil? or not reimbursement.active?)
+    !canceled? && (reimbursement.nil? || !reimbursement.active?)
   end
 
   # Checks whether a request is ready for reimbursement but the process have not
@@ -47,7 +46,7 @@ class ReimbursableRequest < Request
   #
   # @return [Boolean] if there is no associated reimbursement
   def lacks_reimbursement?
-    can_have_reimbursement? and (reimbursement.nil? || reimbursement.new_record?)
+    can_have_reimbursement? && (reimbursement.nil? || reimbursement.new_record?)
   end
 
   # Summarizes one of the xxx_amount attributes from the request's expenses grouping
@@ -66,18 +65,18 @@ class ReimbursableRequest < Request
   #     ordered by currencies' alphabetic order
   def expenses_sum(attr = :total)
     grouped = expenses.group_by(&:"#{attr}_currency")
-    nonils = grouped.each {|k,v| v.delete_if {|i| i.send(:"#{attr}_amount").nil?}}.delete_if {|k,v| v.empty?}
-    unordered = nonils.map {|k,v| [k, v.sum(&:"#{attr}_amount")] }
-    ActiveSupport::OrderedHash[ unordered.sort_by(&:first) ]
+    nonils = grouped.each { |_k, v| v.delete_if { |i| i.send(:"#{attr}_amount").nil? } }.delete_if { |_k, v| v.empty? }
+    unordered = nonils.map { |k, v| [k, v.sum(&:"#{attr}_amount")] }
+    ActiveSupport::OrderedHash[unordered.sort_by(&:first)]
   end
 
   def self.expenses_sum(attr = :total, requests)
     amount_field = :"#{attr}_amount"
-    if requests.kind_of?(ActiveRecord::Relation)
-      r_ids = requests.reorder("").pluck("requests.id")
-    else
-      r_ids = requests.map {|i| i.kind_of?(Integer) ? i : i.id }
-    end
+    r_ids = if requests.is_a?(ActiveRecord::Relation)
+              requests.reorder('').pluck('requests.id')
+            else
+              requests.map { |i| i.is_a?(Integer) ? i : i.id }
+            end
     RequestExpense.by_attr_for_requests(attr, r_ids).sum(amount_field)
   end
 end

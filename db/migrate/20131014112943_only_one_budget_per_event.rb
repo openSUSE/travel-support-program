@@ -8,7 +8,7 @@ class OnlyOneBudgetPerEvent < ActiveRecord::Migration
   def down
     remove_column :events, :budget_id
 
-    create_table :budgets_events, :id => false do |t|
+    create_table :budgets_events, id: false do |t|
       t.belongs_to :event
       t.belongs_to :budget
     end

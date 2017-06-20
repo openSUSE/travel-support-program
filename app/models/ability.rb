@@ -10,8 +10,8 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
-    can :manage, User, :id => user.id
-    can :manage, UserProfile, :user_id => user.id
+    can :manage, User, id: user.id
+    can :manage, UserProfile, user_id: user.id
     role = user.find_profile.role_name
 
     machines = [TravelSponsorship, Reimbursement, Shipment]
@@ -26,7 +26,7 @@ class Ability
           # For machines belonging to other users, use the role
           else
             # :requester is not longer a valid role
-            if role == "requester"
+            if role == 'requester'
               false
             else
               m.send("can_#{action}?") && m.send("allow_#{action}?", role)
@@ -36,15 +36,15 @@ class Ability
       end
 
       # Comments
-      conds = {:machine_type => machine.base_class.to_s}
+      conds = { machine_type: machine.base_class.to_s }
       if machine.superclass != ActiveRecord::Base
-        conds[:machine] = { type: machine.to_s}
+        conds[:machine] = { type: machine.to_s }
       end
 
       if machine.allow_private_comments?(role)
         can [:read, :create], Comment, conds
       elsif machine.allow_public_comments?(role)
-        can [:read, :create], Comment, conds.merge(:private => false)
+        can [:read, :create], Comment, conds.merge(private: false)
       end
 
       requester_conds = conds.deep_dup
@@ -53,7 +53,7 @@ class Ability
       if machine.private_comments_for_requester?
         can [:read, :create], Comment, requester_conds
       elsif machine.public_comments_for_requester?
-        can [:read, :create], Comment, requester_conds.merge(:private => false)
+        can [:read, :create], Comment, requester_conds.merge(private: false)
       end
     end
 
@@ -64,9 +64,7 @@ class Ability
 
     # Events
     can [:read, :create], Event
-    can :update, Event do |e|
-      e.editable_by_requesters?
-    end
+    can :update, Event, &:editable_by_requesters?
     can :destroy, Event do |e|
       e.editable_by_requesters? && e.can_be_destroyed?
     end
@@ -78,7 +76,7 @@ class Ability
     can :create, RequestExpense do |e|
       e.request && e.request.editable? && e.request.user == user
     end
-    can :read, TravelSponsorship, :user_id => user.id
+    can :read, TravelSponsorship, user_id: user.id
     can :update, TravelSponsorship do |r|
       r.user == user && r.editable?
     end
@@ -90,7 +88,7 @@ class Ability
     can :create, Reimbursement do |r|
       r.request.user == user && r.request.can_have_reimbursement?
     end
-    can :read, Reimbursement, :user_id => user.id
+    can :read, Reimbursement, user_id: user.id
     can :update, Reimbursement do |r|
       r.user == user && r.editable?
     end
@@ -112,13 +110,13 @@ class Ability
     end
 
     # Reimbursement's payments
-    can :read, Payment, :reimbursement => {:user_id => user.id}
+    can :read, Payment, reimbursement: { user_id: user.id }
 
     # Shipments
     can :create, Shipment do |s|
       s.event && s.event.accepting_shipments?
     end
-    can :read, Shipment, :user_id => user.id
+    can :read, Shipment, user_id: user.id
     can :update, Shipment do |s|
       s.user == user && s.editable?
     end
@@ -133,7 +131,7 @@ class Ability
     # TSP members permissions
     # -----------------------
     #
-    if role == "tsp"
+    if role == 'tsp'
       # User profiles
       can :read, UserProfile
 
@@ -142,9 +140,7 @@ class Ability
 
       # Events
       can [:update, :validate, :email, :email_event], Event
-      can :destroy, Event do |e|
-        e.can_be_destroyed?
-      end
+      can :destroy, Event, &:can_be_destroyed?
 
       # TravelSponsorships
       can :read, TravelSponsorship
@@ -164,7 +160,7 @@ class Ability
     # TSP assistants permissions
     # --------------------------
     #
-    if role == "assistant"
+    if role == 'assistant'
       # User profiles
       can :read, UserProfile
 
@@ -189,7 +185,7 @@ class Ability
     # Administratives permissions
     # -----------------------
     #
-    if role == "administrative"
+    if role == 'administrative'
       # User profiles
       can :read, UserProfile
 
@@ -207,7 +203,7 @@ class Ability
     # Supervisors permissions
     # --------------------------------------
     #
-    if role == "supervisor"
+    if role == 'supervisor'
       # User profiles
       can :read, UserProfile
 
@@ -216,9 +212,7 @@ class Ability
 
       # Events
       can [:update, :validate], Event
-      can :destroy, Event do |e|
-        e.can_be_destroyed?
-      end
+      can :destroy, Event, &:can_be_destroyed?
 
       # TravelSponsorships
       can :read, TravelSponsorship
@@ -250,15 +244,13 @@ class Ability
     # Material manager permissions
     # ----------------------------
     #
-    if role == "material"
+    if role == 'material'
       # User profiles
       can :read, UserProfile
 
       # Events
       can [:update, :validate], Event
-      can :destroy, Event do |e|
-        e.can_be_destroyed?
-      end
+      can :destroy, Event, &:can_be_destroyed?
 
       # Shipments
       can :read, Shipment
@@ -268,7 +260,7 @@ class Ability
     # Shipper permissions
     # -------------------
     #
-    if role == "shipper"
+    if role == 'shipper'
       cannot :create, TravelSponsorship
 
       # Shipments
