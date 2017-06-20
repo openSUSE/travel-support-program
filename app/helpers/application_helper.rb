@@ -9,8 +9,8 @@ module ApplicationHelper
   # param [String] path  Target URL
   # return [String] HTML output
   def nav_tab(label, path)
-    css = current_page?(path) ? "active" : nil
-    content_tag(:li, link_to(t(label), path), :class => css)
+    css = current_page?(path) ? 'active' : nil
+    content_tag(:li, link_to(t(label), path), class: css)
   end
 
   # Outputs country code in a human readable and localized way, using the locale
@@ -20,9 +20,9 @@ module ApplicationHelper
   # return [String] HTML output
   def country_label(country_code)
     if country_code.blank?
-      t("show_for.blank")
+      t('show_for.blank')
     else
-      country_code + " - " + t("countries.#{country_code}")
+      country_code + ' - ' + t("countries.#{country_code}")
     end
   end
 
@@ -32,24 +32,24 @@ module ApplicationHelper
   # @param [#state] r  the request, reimbursement or any other object with state
   # @return [String] HTML output
   def timestamped_state(r)
-    msg = content_tag(:span, r.human_state_name, :class => r.state)
-    msg += " " +  t(:since, :date => l(r.state_updated_at, :format => :long)) unless r.state_updated_at.blank?
+    msg = content_tag(:span, r.human_state_name, class: r.state)
+    msg += ' ' +  t(:since, date: l(r.state_updated_at, format: :long)) unless r.state_updated_at.blank?
     raw(msg)
-  end 
+  end
 
   # Outputs the state of a model instance with a help tooltip if needed
   #
   # @param [#state] r  the request, reimbursement or any other object with state
   # @return [String] HTML output
   def state_info(r)
-    msg = content_tag(:span, r.human_state_name, :class => r.state)
+    msg = content_tag(:span, r.human_state_name, class: r.state)
     msg += " (#{r.human_state_description})"
     if r.state_updated_at.blank?
-      msg += " "
-      msg += content_tag(:span, "!", :title => t(:state_help), :class => "badge with-tooltip")
+      msg += ' '
+      msg += content_tag(:span, '!', title: t(:state_help), class: 'badge with-tooltip')
     end
     raw(msg)
-  end 
+  end
 
   # Outputs a link with an icon inside (and visible no text)
   #
@@ -58,7 +58,7 @@ module ApplicationHelper
   # @param [Hash] options  options for #url_for. A :title option is highly recommended
   # @return [String] HTML output
   def icon_to(name, path, options = {})
-    link_to(content_tag(:i, "", :class => "icon-#{name}"), path, options)
+    link_to(content_tag(:i, '', class: "icon-#{name}"), path, options)
   end
 
   # Outputs a trigger for (un)collapsing a target element
@@ -66,10 +66,10 @@ module ApplicationHelper
   # @param [String] target  id of the HTML element to (un)collapse
   # @param [String] label  additional text to prepend to the icon
   # @return [String] HTML output
-  def collapse_link(target, label='')
-    label << " " unless label.empty?
-    link_to(label.html_safe + content_tag(:i, "", :class => "icon-resize-vertical"),
-            "\##{target}", :title => t(:collapse), :data => {:toggle => :collapse})
+  def collapse_link(target, label = '')
+    label << ' ' unless label.empty?
+    link_to(label.html_safe + content_tag(:i, '', class: 'icon-resize-vertical'),
+            "\##{target}", title: t(:collapse), data: { toggle: :collapse })
   end
 
   # Outputs a link with the "go to" label and an icon
@@ -77,8 +77,8 @@ module ApplicationHelper
   # @param [String] path  url for the link
   # @return [String] HTML output
   def goto_link(path)
-    link_to("#{t(:goto)} ".html_safe + content_tag(:i, "", :class => "icon-share-alt"),
-            path, :title => t(:goto))
+    link_to("#{t(:goto)} ".html_safe + content_tag(:i, '', class: 'icon-share-alt'),
+            path, title: t(:goto))
   end
 
   # Outputs the sum of the expenses of a request or a reimbursement
@@ -91,16 +91,16 @@ module ApplicationHelper
   # @param [Symbol] attr can be :estimated, :approved, :total or :authorized
   # @return [String] HTML output
   def expenses_sum(r, attr)
-    if r.respond_to?(:size)
-      if first = r.first
-        sum = first.class.expenses_sum(attr, r)
-      else
-        sum = []
-      end
-    else
-      sum = r.expenses_sum(attr)
-    end
-    sum.map {|k,v| number_to_currency(v, :unit => (k || "?"))}.join(", ")
+    sum = if r.respond_to?(:size)
+            if first = r.first
+              first.class.expenses_sum(attr, r)
+            else
+              []
+            end
+          else
+            r.expenses_sum(attr)
+          end
+    sum.map { |k, v| number_to_currency(v, unit: (k || '?')) }.join(', ')
   end
 
   # Outputs the role of the current user. Useful, for example, for deciding which partial
@@ -126,22 +126,22 @@ module ApplicationHelper
   #                                  object including the HasState mixin)
   # @return [String] a bootstrap-based button dropdown menu
   def state_change_links(machine)
-    trans_path = resource_path + "/state_transitions/new.js?state_transition[state_event]="
+    trans_path = resource_path + '/state_transitions/new.js?state_transition[state_event]='
     links = machine.state_events.map do |event|
       next unless can? event, machine
-      link_to(t("activerecord.state_machines.events.#{event}").titleize, trans_path + event.to_s, :remote => true)
+      link_to(t("activerecord.state_machines.events.#{event}").titleize, trans_path + event.to_s, remote: true)
     end.compact
     # Add cancel link
     if can? :cancel, machine
-      links << ""
-      links << link_to(t("helpers.links.cancel"), "#{trans_path}cancel", :remote => true)
+      links << ''
+      links << link_to(t('helpers.links.cancel'), "#{trans_path}cancel", remote: true)
     end
     # Add adjust_state link
     if can? :adjust_state, machine
-      links << ""
-      links << link_to(t("helpers.links.adjust_state"), resource_path + "/state_adjustments/new.js", :remote => true)
+      links << ''
+      links << link_to(t('helpers.links.adjust_state'), resource_path + '/state_adjustments/new.js', remote: true)
     end
-    dropdown t("helpers.workflow_actions"), links
+    dropdown t('helpers.workflow_actions'), links
   end
 
   # Outputs a Bootstrap's button dropdown menu
@@ -152,21 +152,21 @@ module ApplicationHelper
   # @return [String] a btn-group div
   def dropdown(label, links)
     if links.empty?
-      ""
+      ''
     else
       li_tags = links.map do |l|
         if l.empty?
-          content_tag(:li, "", :class => "divider")
+          content_tag(:li, '', class: 'divider')
         else
           content_tag(:li, l)
         end
       end
       content_tag(:div,
-        link_to(label.html_safe + " " + content_tag(:span, "", class: "caret"),
-          "#",
-          class: "btn dropdown-toggle", data: {toggle: "dropdown"}) +
-        content_tag(:ul, li_tags.join("\n").html_safe, class: "dropdown-menu"),
-        class: "btn-group")
+                  link_to(label.html_safe + ' ' + content_tag(:span, '', class: 'caret'),
+                          '#',
+                          class: 'btn dropdown-toggle', data: { toggle: 'dropdown' }) +
+                  content_tag(:ul, li_tags.join("\n").html_safe, class: 'dropdown-menu'),
+                  class: 'btn-group')
     end
   end
 
@@ -175,7 +175,7 @@ module ApplicationHelper
   # This helper deals with the singleton issues in the reimbursement routes
   # definition.
   def machine_url(machine)
-    if machine.kind_of?(Reimbursement)
+    if machine.is_a?(Reimbursement)
       request_reimbursement_url(machine.request)
     else
       send(:"#{machine.class.model_name.element}_url", machine)
@@ -188,16 +188,16 @@ module ApplicationHelper
   #
   # @see HasState.assign_state
   def menu_path_to(machine_class)
-    helper = machine_class.model_name.to_s.tableize + "_path"
+    helper = machine_class.model_name.to_s.tableize + '_path'
     # Assistants are a special case, they should have the same default filters than tsp
-    role = current_role.to_s == "assistant" ? :tsp : current_role
+    role = current_role.to_s == 'assistant' ? :tsp : current_role
     states = machine_class.states_assigned_to(role)
     # FIXME: requesters are also an special case nowadays. Let's look for a
     # better solution afterward.
     if current_role?(:none) || states.blank?
       send helper
     else
-      send(helper, :q => {:state_in => states})
+      send(helper, q: { state_in: states })
     end
   end
 
@@ -210,14 +210,14 @@ module ApplicationHelper
       # Skip empty messages, e.g. for devise messages set to nothing in a locale file.
       next if message.blank?
 
-      type = "success" if type == "notice"
-      type = "danger" if type == "error" || type == "alert"
-      next unless %w(danger info success warning).include?(type)
+      type = 'success' if type == 'notice'
+      type = 'danger' if type == 'error' || type == 'alert'
+      next unless %w[danger info success warning].include?(type)
 
       Array(message).each do |msg|
         text = content_tag(:div,
-                           content_tag(:button, raw("&times;"), :class => "close", "data-dismiss" => "alert") +
-                           msg.html_safe, :class => "alert fade in alert-#{type}")
+                           content_tag(:button, raw('&times;'), :class => 'close', 'data-dismiss' => 'alert') +
+                           msg.html_safe, class: "alert fade in alert-#{type}")
         flash_messages << text if message
       end
     end
@@ -233,8 +233,8 @@ module ApplicationHelper
   # @return [Array]  Array with the currency codes
   def currencies_for_select(field, event = nil)
     if TravelSupport::Config.setting(:budget_limits) &&
-          event && event.budget && event.budget.currency &&
-          %w(approved authorized).include?(field.to_s)
+       event && event.budget && event.budget.currency &&
+       %w[approved authorized].include?(field.to_s)
       currencies = [event.budget.currency]
     end
     currencies ||= TravelSupport::Config.setting("currencies_for_#{field}")
@@ -247,7 +247,7 @@ module ApplicationHelper
   def pdf_header_image
     if theme = TravelSupport::Config.setting(:theme)
       path = File.join(Rails.root.to_s, 'app', 'themes', theme, 'assets', 'images', 'pdf', 'header.png')
-      return path if File.exists?(path)
+      return path if File.exist?(path)
     end
     File.join(Rails.root.to_s, 'app', 'assets', 'images', 'pdf', 'header.png')
   end
@@ -264,36 +264,36 @@ module ApplicationHelper
   #
   # @return [String] unordered list containing the breadcrumbs
   def breadcrumbs
-    return "" unless @breadcrumbs and @breadcrumbs.respond_to?(:map)
+    return '' unless @breadcrumbs && @breadcrumbs.respond_to?(:map)
     crumbs = @breadcrumbs.map do |b|
       # First of all, adjust the label,...
       label = b[:label]
       # ...that can be a string, but...
-      unless label.kind_of? String
+      unless label.is_a? String
         # ...also a symbol...
-        if label.kind_of? Symbol
-          label = I18n.t(label)
-        # ...or a more complex object.
-        # In that case, some methods are tried before
-        # falling back to 'classname #id'
-        elsif label.respond_to? :name
-          label = label.name
-        elsif label.respond_to? :title
-          label = label.title
-        else
-          label = "#{label.class.model_name.human} ##{label.id}"
-        end
+        label = if label.is_a? Symbol
+                  I18n.t(label)
+                # ...or a more complex object.
+                # In that case, some methods are tried before
+                # falling back to 'classname #id'
+                elsif label.respond_to? :name
+                  label.name
+                elsif label.respond_to? :title
+                  label.title
+                else
+                  "#{label.class.model_name.human} ##{label.id}"
+                end
       end
 
       if b[:url].blank? || current_page?(b[:url])
-        content_tag(:li, label, :class => "active")
+        content_tag(:li, label, class: 'active')
       else
         content_tag(:li, link_to(label, b[:url]))
       end
     end
 
-    crumbs = crumbs.join(" " + content_tag(:span, ">", :class => "divider") + " ")
-    content_tag(:ul, crumbs.html_safe, :class => "breadcrumb")
+    crumbs = crumbs.join(' ' + content_tag(:span, '>', class: 'divider') + ' ')
+    content_tag(:ul, crumbs.html_safe, class: 'breadcrumb')
   end
 
   # Checks whether a concrete setting is enabled in the config file

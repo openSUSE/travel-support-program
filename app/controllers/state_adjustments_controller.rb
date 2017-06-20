@@ -5,11 +5,9 @@ class StateAdjustmentsController < ApplicationController
 
   def create
     @state_adjustment.user = current_user
-    if @state_adjustment.save
-      flash[:notice] = t(:state_adjustment_done)
-    end
-    respond_with(@state_adjustment, :location => @back_path) do |format|
-      format.js { @state_adjustment.valid? ? render : render(:action => "new") }
+    flash[:notice] = t(:state_adjustment_done) if @state_adjustment.save
+    respond_with(@state_adjustment, location: @back_path) do |format|
+      format.js { @state_adjustment.valid? ? render : render(action: 'new') }
     end
   end
 

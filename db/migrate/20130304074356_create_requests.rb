@@ -2,8 +2,8 @@ class CreateRequests < ActiveRecord::Migration
   def change
     create_table :requests do |t|
       t.string :state
-      t.references :user, :null => false
-      t.references :event, :null => false
+      t.references :user, null: false
+      t.references :event, null: false
       t.text :description
       t.text :requester_notes
       t.text :tsp_notes

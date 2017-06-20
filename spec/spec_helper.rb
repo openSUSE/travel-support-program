@@ -5,14 +5,14 @@ require 'simplecov'
 require 'coveralls'
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter ]
+  Coveralls::SimpleCov::Formatter]
 SimpleCov.start 'rails' do
   # Not covered because they are overriden in spec/support/carrierwave.rb
   add_filter 'app/uploaders/'
 end
 
-ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../../config/environment", __FILE__)
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rspec'
@@ -25,7 +25,7 @@ ActiveRecord::Migration.maintain_test_schema!
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   Capybara.javascript_driver = :webkit
@@ -56,13 +56,13 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
-  config.order = "random"
+  config.order = 'random'
 
   config.before(:each) do
     DatabaseCleaner.strategy = :transaction
   end
 
-  config.before(:each, :js => true) do
+  config.before(:each, js: true) do
     DatabaseCleaner.strategy = :deletion
   end
 
@@ -75,9 +75,9 @@ RSpec.configure do |config|
   end
 
   config.before(:all) do
-    FileUtils.rm_rf("public/spec")
-    FileUtils.mkdir("public/spec")
-    FileUtils.cp_r("spec/support/uploads", "public/spec")
+    FileUtils.rm_rf('public/spec')
+    FileUtils.mkdir('public/spec')
+    FileUtils.cp_r('spec/support/uploads', 'public/spec')
     DatabaseCleaner.clean_with(:deletion) # Just in case
   end
 

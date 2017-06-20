@@ -3,9 +3,9 @@
 #
 class ReimbursementLink < ActiveRecord::Base
   # The associated reimbursement
-  belongs_to :reimbursement, :inverse_of => :links
+  belongs_to :reimbursement, inverse_of: :links
 
-  validates :reimbursement, :title, :url, :presence => true
+  validates :reimbursement, :title, :url, presence: true
 
   auditable
 end

@@ -3,24 +3,23 @@
 # capabilities and macro-style methods to define permissions
 #
 module HasState
-
   extend ActiveSupport::Concern
 
   included do
     # Requester, that is, the user asking for support
     belongs_to :user
     # State changes are logged as StateChange records
-    has_many :state_changes, :as => :machine, :dependent => :destroy
+    has_many :state_changes, as: :machine, dependent: :destroy
     # Transitions are logged as StateTransition records
-    has_many :transitions, :as => :machine, :class_name => "StateTransition"
+    has_many :transitions, as: :machine, class_name: 'StateTransition'
     # Manual adjustments in the state are logged as StateAdjustment records
-    has_many :state_adjustments, :as => :machine, :class_name => "StateAdjustment"
+    has_many :state_adjustments, as: :machine, class_name: 'StateAdjustment'
 
-    validates :user, :presence => true
+    validates :user, presence: true
 
     before_save :set_state_updated_at
 
-    scope :active, -> { where(["state <> ?", 'canceled']) }
+    scope :active, -> { where(['state <> ?', 'canceled']) }
   end
 
   # Checks whether the object has changed its state at least once in the past, no
@@ -28,14 +27,14 @@ module HasState
   #
   # @return [Boolean] true if it has have some transition
   def with_transitions?
-    not transitions.empty?
+    !transitions.empty?
   end
 
   # Checks if the object have reached a final state
   #
   # @return [Boolean] true if no possible transitions left
   def in_final_state?
-    state_events(:guard => false).empty?
+    state_events(guard: false).empty?
   end
 
   # Checks if the object is in the initial state
@@ -50,8 +49,8 @@ module HasState
   # @see HasState.notify_to
   def notify_state
     people = self.class.roles_notified_when(state)
-    people.map! {|i| i.to_sym == :requester ? self.user : i }
-    HasStateMailer::notify_to(people, :state, self)
+    people.map! { |i| i.to_sym == :requester ? user : i }
+    HasStateMailer.notify_to(people, :state, self)
   end
 
   # Sets the state to 'canceled'
@@ -64,7 +63,7 @@ module HasState
   #
   # return [Boolean] true if the state is updated
   def cancel
-    return false if not can_cancel?
+    return false unless can_cancel?
     self.state = 'canceled'
     save
   end
@@ -75,7 +74,7 @@ module HasState
   #
   # @return [Boolean] if is active (not canceled)
   def active?
-    not canceled?
+    !canceled?
   end
 
   # Checks whether can have a transition to 'canceled' state
@@ -104,14 +103,14 @@ module HasState
   #
   # return [String] localized description of the current state
   def human_state_description
-    I18n.t(self.state, :scope => "activerecord.models.#{self.class.model_name.singular}.states")
+    I18n.t(state, scope: "activerecord.models.#{self.class.model_name.singular}.states")
   end
 
   # Localized guide of the next step, based in current state
   #
   # return [String] localized guide text
   def human_state_guide
-    I18n.t(self.state, :scope => "activerecord.models.#{self.class.model_name.singular}.state_guides")
+    I18n.t(state, scope: "activerecord.models.#{self.class.model_name.singular}.state_guides")
   end
 
   # Checks whether the requester should be allowed to do changes.
@@ -146,9 +145,7 @@ module HasState
 
   # User internally to set the state_updated_at attribute
   def set_state_updated_at
-    if state_changed? && !state_was.nil?
-      self.state_updated_at = Time.current
-    end
+    self.state_updated_at = Time.current if state_changed? && !state_was.nil?
     true
   end
 
@@ -156,7 +153,6 @@ module HasState
   # Class methods
   #
   module ClassMethods
-
     # Macro-style method to define the role which is responsible of the next
     # action for a given state. Currently, this definition is only used to
     # set default filters on lists.
@@ -213,13 +209,13 @@ module HasState
 
       st = state_name.to_sym
       to = opts[:to]
-      if to.blank?
-        @notified_roles[st] = []
-      else
-        @notified_roles[st] = [to].flatten.map(&:to_sym)
-      end
+      @notified_roles[st] = if to.blank?
+                              []
+                            else
+                              [to].flatten.map(&:to_sym)
+                            end
 
-      remind = opts.has_key?(:remind_to) ? opts[:remind_to] : to
+      remind = opts.key?(:remind_to) ? opts[:remind_to] : to
       if remind.blank?
         @reminder_roles[st] = []
         @reminder_timeouts[st] = nil
@@ -260,11 +256,11 @@ module HasState
     # @param [Role,#to_sym]  role  role to query
     # @return [Array]  array of states assigned to the given role
     def states_assigned_to(role)
-      if role.kind_of?(UserRole)
-        name = role.name
-      else
-        name = role.to_sym
-      end
+      name = if role.is_a?(UserRole)
+               role.name
+             else
+               role.to_sym
+             end
       @assigned_states[name] ? @assigned_states[name].dup : []
     end
 
@@ -298,14 +294,14 @@ module HasState
         machines = joins(:user)
         @reminder_timeouts.each do |state, time|
           next unless time
-          machines.where(:state => state).where(["COALESCE(state_updated_at, #{table_name}.created_at) < ?", time.ago]).each do |m|
-            people = @reminder_roles[state].map {|i| i.to_sym == :requester ? m.user : i }
-            HasStateMailer::notify_to(people, :state, m)
+          machines.where(state: state).where(["COALESCE(state_updated_at, #{table_name}.created_at) < ?", time.ago]).each do |m|
+            people = @reminder_roles[state].map { |i| i.to_sym == :requester ? m.user : i }
+            HasStateMailer.notify_to(people, :state, m)
           end
         end
       # But 'abstract' subclasses delegate to subclasses
       else
-        subclasses.each {|d| d.notify_inactive }
+        subclasses.each(&:notify_inactive)
         true
       end
     end

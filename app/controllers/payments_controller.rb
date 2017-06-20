@@ -1,14 +1,14 @@
 class PaymentsController < InheritedResources::Base
   respond_to :html, :json
   load_and_authorize_resource :request
-  load_and_authorize_resource :reimbursement, :through => :request, :singleton => true
-  load_and_authorize_resource :through => :request
-  skip_authorize_resource :only => :file
+  load_and_authorize_resource :reimbursement, through: :request, singleton: true
+  load_and_authorize_resource through: :request
+  skip_authorize_resource only: :file
 
-  before_filter :load_methods, :except => :file
+  before_filter :load_methods, except: :file
 
   belongs_to :request
-  belongs_to :reimbursement, :singleton => true
+  belongs_to :reimbursement, singleton: true
 
   def create
     create! { parent_url }
@@ -34,14 +34,14 @@ class PaymentsController < InheritedResources::Base
   end
 
   def set_breadcrumbs
-    @breadcrumbs = [ :label => parent.request, :url => parent.request ]
-    @breadcrumbs << { :label => Reimbursement.model_name.human,
-                      :url => request_reimbursement_path(parent.request)}
-    @breadcrumbs << {:label => Payment.model_name.human(:count => 2) }
+    @breadcrumbs = [label: parent.request, url: parent.request]
+    @breadcrumbs << { label: Reimbursement.model_name.human,
+                      url: request_reimbursement_path(parent.request) }
+    @breadcrumbs << { label: Payment.model_name.human(count: 2) }
   end
 
   def permitted_params
-    params.permit(:payment => [:date, :amount, :currency, :cost_amount, :cost_currency,
-                               :method, :code, :subject, :notes, :file, :file_cache])
+    params.permit(payment: [:date, :amount, :currency, :cost_amount, :cost_currency,
+                            :method, :code, :subject, :notes, :file, :file_cache])
   end
 end

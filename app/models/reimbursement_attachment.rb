@@ -5,11 +5,11 @@ class ReimbursementAttachment < ActiveRecord::Base
   # The associated reimbursement
   belongs_to :reimbursement
 
-  validates :reimbursement, :title, :file, :presence => true
+  validates :reimbursement, :title, :file, presence: true
 
   mount_uploader :file, AttachmentUploader
 
-  auditable :except => [:file]
+  auditable except: [:file]
 
   # Changed is ovewritten to avoid losing the already uploaded file when
   # saving the reimbursement fails in some very specific situations

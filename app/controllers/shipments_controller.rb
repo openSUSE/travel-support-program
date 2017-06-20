@@ -1,11 +1,15 @@
 class ShipmentsController < InheritedResources::Base
   respond_to :html, :js, :json
-  skip_load_resource :only => [:index, :new]
-  before_filter :set_states_collection, :only => [:index]
+  skip_load_resource only: [:index, :new]
+  before_filter :set_states_collection, only: [:index]
 
   def show
     # We don't want to break the normal process if something goes wrong
-    resource.user.profile.refresh rescue nil
+    begin
+      resource.user.profile.refresh
+    rescue
+      nil
+    end
     show!
   end
 
@@ -28,18 +32,18 @@ class ShipmentsController < InheritedResources::Base
 
   def collection
     @q ||= end_of_association_chain.accessible_by(current_ability).search(params[:q])
-    @q.sorts = "id asc" if @q.sorts.empty?
-    @all_shipments ||= @q.result(:distinct => true)
+    @q.sorts = 'id asc' if @q.sorts.empty?
+    @all_shipments ||= @q.result(distinct: true)
     @shipments ||= @all_shipments.page(params[:page]).per(20)
   end
 
   def set_states_collection
-    @states_collection = Shipment.state_machines[:state].states.map {|s| [ s.human_name, s.value] }
+    @states_collection = Shipment.state_machines[:state].states.map { |s| [s.human_name, s.value] }
   end
 
   def permitted_params
-    params.permit(:shipment => [:event_id, :description, :contact_phone_number,
-                                :postal_address_attributes => [:line1, :line2, :city, :county,
-                                                               :postal_code, :country_code]])
+    params.permit(shipment: [:event_id, :description, :contact_phone_number,
+                             postal_address_attributes: [:line1, :line2, :city, :county,
+                                                         :postal_code, :country_code]])
   end
 end

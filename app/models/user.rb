@@ -13,26 +13,28 @@ class User < ActiveRecord::Base
   end
   if TravelSupport::Config.setting(:authentication, :database, :enabled)
     devise_modules += [:database_authenticatable, :registerable, :recoverable,
-      :rememberable, :trackable, :validatable]
+                       :rememberable, :trackable, :validatable]
   end
 
   devise *devise_modules
 
   # Setup accessible (or protected) attributes for your model
   # Associated object with all information not directly related to authentication
-  has_one :profile, :class_name => "UserProfile"
+  has_one :profile, class_name: 'UserProfile'
   # Requests created by the user
-  has_many :requests, :inverse_of => :user
+  has_many :requests, inverse_of: :user
   # Reimbursements created by the user
-  has_many :reimbursements, :inverse_of => :user
+  has_many :reimbursements, inverse_of: :user
   # State changes (transitions or manual adjustments) performed by the user
-  has_many :state_changes, :inverse_of => :user
+  has_many :state_changes, inverse_of: :user
 
   after_create :create_profile
 
-  validates :nickname, :presence => true
+  validates :nickname, presence: true
 
-  def title; nickname; end
+  def title
+    nickname
+  end
 
   def find_profile
     profile || create_profile

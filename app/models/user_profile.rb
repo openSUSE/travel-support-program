@@ -10,47 +10,48 @@ class UserProfile < ActiveRecord::Base
   # The associated user (one to one association)
   belongs_to :user
   # The role of the user in the application (mainly used for permissions)
-  belongs_to_active_hash :role, :class_name => "UserRole", :shortcuts => [:name]
+  belongs_to_active_hash :role, class_name: 'UserRole', shortcuts: [:name]
 
-  after_initialize :set_default_attrs, :if => :new_record?
+  after_initialize :set_default_attrs, if: :new_record?
   before_validation do
     self.attributes = connect_attrib_values
   end
 
-  delegate :name, :to => :role, :prefix => true, :allow_nil => true
+  delegate :name, to: :role, prefix: true, allow_nil: true
 
-  validates :role_id, :presence => true
+  validates :role_id, presence: true
 
   auditable
 
   scope :with_role, lambda { |role|
-    if role.kind_of?(UserRole)
-      where(:role_id => role.id)
+    if role.is_a?(UserRole)
+      where(role_id: role.id)
     else
-      where(:role_id => UserRole.find_by_name(role.to_s).id)
+      where(role_id: UserRole.find_by_name(role.to_s).id)
     end
   }
 
   def set_default_attrs
-    self.role_name ||= "none"
+    self.role_name ||= 'none'
     self.attributes = connect_attrib_values
   end
 
   # Attributed that are fetched from openSUSE Connect
   FROM_OPENSUSE_CONNECT = {
-    :country_code => Proc.new { |c| c.country.split(":").last.upcase},
-    :full_name => :name,
-    :location => :location,
-    :birthday => Proc.new { |c| Date.parse(c.birthday) },
-    :phone_number => :mobile,
-    :second_phone_number => :phone,
-    :website => :website,
-    :blog => :blog,
-    :description => :briefdescription }
+    country_code: proc { |c| c.country.split(':').last.upcase },
+    full_name: :name,
+    location: :location,
+    birthday: proc { |c| Date.parse(c.birthday) },
+    phone_number: :mobile,
+    second_phone_number: :phone,
+    website: :website,
+    blog: :blog,
+    description: :briefdescription
+  }.freeze
 
   # Fetchs fresh information from an external source (only openSUSE Connect at
   # this moment) and updates the database.
-  # 
+  #
   # @return [Boolean] true if the information is correctly updated
   def refresh
     if TravelSupport::Config.setting :opensuse_connect, :enabled
@@ -67,7 +68,7 @@ class UserProfile < ActiveRecord::Base
   #       external source (openSUSE Connect at this moment)
   def have_editable?(attrib)
     return true unless TravelSupport::Config.setting :opensuse_connect, :enabled
-    not UserProfile::FROM_OPENSUSE_CONNECT.keys.include?(attrib.to_sym)
+    !UserProfile::FROM_OPENSUSE_CONNECT.keys.include?(attrib.to_sym)
   end
 
   # List of fields that are required for processing reimbursements but are
@@ -78,8 +79,8 @@ class UserProfile < ActiveRecord::Base
   #             human-readable names as values
   def missing_fields
     fields = TravelSupport::Config.setting(:relevant_profile_fields)
-    fields = fields.select {|f| send(f.to_sym).blank? }
-    Hash[fields.map {|f| [f, self.class.human_attribute_name(f)] }]
+    fields = fields.select { |f| send(f.to_sym).blank? }
+    Hash[fields.map { |f| [f, self.class.human_attribute_name(f)] }]
   end
 
   protected
@@ -88,15 +89,15 @@ class UserProfile < ActiveRecord::Base
     return {} unless TravelSupport::Config.setting :opensuse_connect, :enabled
     new_values = {}
     connect = ConnectUser.new(user.nickname)
-    UserProfile::FROM_OPENSUSE_CONNECT.each_pair do |k,v|
+    UserProfile::FROM_OPENSUSE_CONNECT.each_pair do |k, v|
       begin
-        if v.is_a? Symbol
-          new_values[k] = connect.send(v)
-        elsif v.is_a? Proc
-          new_values[k] = v.call(connect)
-        else
-          new_values[k] = v
-        end
+        new_values[k] = if v.is_a? Symbol
+                          connect.send(v)
+                        elsif v.is_a? Proc
+                          v.call(connect)
+                        else
+                          v
+                        end
       rescue
         # Do nothing, just keep the current attribute value
         true
@@ -104,5 +105,4 @@ class UserProfile < ActiveRecord::Base
     end
     new_values
   end
-
 end

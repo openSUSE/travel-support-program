@@ -12,9 +12,11 @@ class ExpensesApprovalsController < ApplicationController
       end
     end
     respond_to do |format|
-      format.html { redirect_to @request,
-                        :notice => I18n.t(:"flash.actions.update.notice", :resource_name => 'request')  }
-      format.json { render :json => {:request => @request} }
+      format.html do
+        redirect_to @request,
+                    notice: I18n.t(:"flash.actions.update.notice", resource_name: 'request')
+      end
+      format.json { render json: { request: @request } }
     end
   end
 

@@ -11,14 +11,14 @@ class StateTransitionsController < ApplicationController
       if @state_transition.save
         flash[:notice] = t("activerecord.state_machines.messages.#{@state_transition.state_event}_success")
         format.js { render }
-        format.json { render :json => @state_transition, :status => :created, :location => @back_path }
+        format.json { render json: @state_transition, status: :created, location: @back_path }
       else
         flash[:error] = t("activerecord.state_machines.messages.#{@state_transition.state_event}_failure")
-        flash[:error] << "\n<br/>" + @state_transition.machine.errors.full_messages.map {|i| i.humanize + "."}.join(" ")
+        flash[:error] << "\n<br/>" + @state_transition.machine.errors.full_messages.map { |i| i.humanize + '.' }.join(' ')
         # flash messages are kept by default after javascript requests
         flash.discard
-        format.js { render :action => "new" }
-        format.json { render :json => @state_transition.errors, :status => :unprocessable_entity }
+        format.js { render action: 'new' }
+        format.json { render json: @state_transition.errors, status: :unprocessable_entity }
       end
     end
   end

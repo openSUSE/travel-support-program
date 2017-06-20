@@ -1,14 +1,14 @@
 class ApplicationMailer < ActionMailer::Base
   helper ApplicationHelper
-  default :from => Proc.new { TravelSupport::Config.setting(:email_from) }
+  default from: proc { TravelSupport::Config.setting(:email_from) }
 
   # This method assumes that the first parameter of the mailer method is the
   # recipient address (:to)
   def self.notify_to(targets, method, *args)
-    targets = [targets] unless targets.kind_of?(Array)
+    targets = [targets] unless targets.is_a?(Array)
     mailed = [] # To avoid mailing the same address more than once
     targets.each do |target|
-      if target.kind_of?(User)
+      if target.is_a?(User)
         unless mailed.include?(email = target.email)
           notify(method, email, *args)
           mailed << email
@@ -27,11 +27,10 @@ class ApplicationMailer < ActionMailer::Base
   end
 
   def self.notify(method, *args)
-   if TravelSupport::Config.setting(:async_emails)
+    if TravelSupport::Config.setting(:async_emails)
       delay.send(method, *args)
     else
       send(method, *args).deliver
     end
   end
-
 end

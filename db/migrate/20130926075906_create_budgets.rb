@@ -9,7 +9,7 @@ class CreateBudgets < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :budgets_events, :id => false do |t|
+    create_table :budgets_events, id: false do |t|
       t.belongs_to :event
       t.belongs_to :budget
     end

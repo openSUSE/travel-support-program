@@ -3,31 +3,30 @@
 # Defined as a separate model in the shake of cleanest.
 #
 class BankAccount < ActiveRecord::Base
-
   # The associated reimbursement
-  belongs_to :reimbursement, :inverse_of => :bank_account
+  belongs_to :reimbursement, inverse_of: :bank_account
 
-  validates :reimbursement, :presence => true
-  validates :holder, :presence => true, :unless => "reimbursement.nil? || reimbursement.incomplete? || reimbursement.canceled?"
-  validates :bank_name, :presence => true, :unless => "reimbursement.nil? || reimbursement.incomplete? || reimbursement.canceled?"
-  validates :format, :presence => true, :inclusion => {:in => %w(iban national)}
-  validates :iban, :bic, :presence => true, :unless => "reimbursement.nil? || reimbursement.incomplete? || reimbursement.canceled? || !iban?"
-  validates :national_account_code, :country_code, :presence => true, :unless => "reimbursement.nil? || reimbursement.incomplete? || reimbursement.canceled? || iban?"
+  validates :reimbursement, presence: true
+  validates :holder, presence: true, unless: 'reimbursement.nil? || reimbursement.incomplete? || reimbursement.canceled?'
+  validates :bank_name, presence: true, unless: 'reimbursement.nil? || reimbursement.incomplete? || reimbursement.canceled?'
+  validates :format, presence: true, inclusion: { in: %w[iban national] }
+  validates :iban, :bic, presence: true, unless: 'reimbursement.nil? || reimbursement.incomplete? || reimbursement.canceled? || !iban?'
+  validates :national_account_code, :country_code, presence: true, unless: 'reimbursement.nil? || reimbursement.incomplete? || reimbursement.canceled? || iban?'
 
-  after_initialize :set_default_attrs, :if => :new_record?
+  after_initialize :set_default_attrs, if: :new_record?
 
   # Checks if the 'iban' format is selected
   #
   # @return [Boolean] true if format is set to 'iban'
   def iban?
-    format == "iban"
+    format == 'iban'
   end
 
   # Checks if the 'national' format is selected
   #
   # @return [Boolean] true if format is set to 'national'
   def national?
-    format == "national"
+    format == 'national'
   end
 
   # Internationalized version of an account format
@@ -48,6 +47,6 @@ class BankAccount < ActiveRecord::Base
   protected
 
   def set_default_attrs
-    self.format ||= "iban"
+    self.format ||= 'iban'
   end
 end

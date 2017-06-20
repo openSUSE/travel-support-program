@@ -7,25 +7,25 @@
 # reimbursement process
 #
 class RequestExpense < ActiveRecord::Base
-  belongs_to :request, :inverse_of => :expenses,
-                       :class_name => "ReimbursableRequest",
-                       :foreign_key => "request_id"
+  belongs_to :request, inverse_of: :expenses,
+                       class_name: 'ReimbursableRequest',
+                       foreign_key: 'request_id'
 
-  delegate :reimbursement, :to => :request, :prefix => false
-  delegate :event, :to => :request, :prefix => false
+  delegate :reimbursement, to: :request, prefix: false
+  delegate :event, to: :request, prefix: false
 
-  validates :request, :subject, :presence => true
-  validates :estimated_amount, :estimated_currency, :presence => true, :if => "request && request.submitted?"
-  validates :approved_amount, :approved_currency, :presence => true, :if => "request && request.approved?"
-  validates :total_amount, :presence => true, :if => "request && request.reimbursement && request.reimbursement.submitted?"
-  validates :authorized_amount, :presence => true, :if => "request && request.reimbursement && request.reimbursement.submitted?"
+  validates :request, :subject, presence: true
+  validates :estimated_amount, :estimated_currency, presence: true, if: 'request && request.submitted?'
+  validates :approved_amount, :approved_currency, presence: true, if: 'request && request.approved?'
+  validates :total_amount, presence: true, if: 'request && request.reimbursement && request.reimbursement.submitted?'
+  validates :authorized_amount, presence: true, if: 'request && request.reimbursement && request.reimbursement.submitted?'
 
   before_validation :set_authorized_amount
 
   auditable
 
   # Scope needed by Request.expenses_sum
-  scope :by_attr_for_requests, lambda {|attr, req_ids|
+  scope :by_attr_for_requests, lambda { |attr, req_ids|
     currency_field = RequestExpense.currency_field_for(attr)
     amount_field = :"#{attr}_amount"
     group(currency_field).where(["#{amount_field} is not null and request_id in (?)", req_ids]).order(currency_field)
@@ -36,6 +36,7 @@ class RequestExpense < ActiveRecord::Base
   def total_currency
     send(RequestExpense.currency_field_for(:total))
   end
+
   # (see #total_currency)
   def authorized_currency
     send(RequestExpense.currency_field_for(:authorized))
@@ -80,5 +81,4 @@ class RequestExpense < ActiveRecord::Base
       self.authorized_amount = [approved_amount, total_amount].min
     end
   end
-
 end

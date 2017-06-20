@@ -12,12 +12,11 @@
 # @see StateTransition
 #
 class StateAdjustment < StateChange
-
   validate :state_is_changed
 
   # @see StateChange
   def human_action_name
-    I18n.t("activerecord.models.state_change.action_name")
+    I18n.t('activerecord.models.state_change.action_name')
   end
 
   protected
@@ -35,5 +34,4 @@ class StateAdjustment < StateChange
   def state_is_changed
     errors.add(:to, :state_not_changed) if from.to_s == to.to_s
   end
-
 end

@@ -1,6 +1,6 @@
 class RenameFinalNotes < ActiveRecord::Migration
   class DummyComment < ActiveRecord::Base
-    self.table_name = "comments"
+    self.table_name = 'comments'
   end
 
   def up
@@ -8,7 +8,7 @@ class RenameFinalNotes < ActiveRecord::Migration
     add_column :comments, :private, :boolean
     add_index :comments, :private
 
-    DummyComment.update_all :private => false
+    DummyComment.update_all private: false
   end
 
   def down

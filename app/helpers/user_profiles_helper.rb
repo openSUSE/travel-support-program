@@ -2,7 +2,6 @@
 # Helpers for user profile form
 #
 module UserProfilesHelper
-
   # Outputs a block with information to show to the user while editing his/her
   # own profile. Explains why some inputs are disabled when opensuse_auth_proxy
   # is enabled.
@@ -11,10 +10,10 @@ module UserProfilesHelper
   def profile_info
     if TravelSupport::Config.setting :opensuse_connect, :enabled
       content_tag(:div,
-          t(:opensuse_profile_info, :url => ConnectUser.profile_url_for(current_user.nickname)).html_safe,
-          :class => "alert alert-info")
+                  t(:opensuse_profile_info, url: ConnectUser.profile_url_for(current_user.nickname)).html_safe,
+                  class: 'alert alert-info')
     else
-      ""
+      ''
     end
   end
 

@@ -4,22 +4,21 @@
 #
 class ReimbursementsListsController < InheritedResources::Base
   respond_to :html, :js, :json
-  defaults :resource_class => Reimbursement, :collection_name => 'reimbursements',
-    :route_collection_name => 'reimbursements'
+  defaults resource_class: Reimbursement, collection_name: 'reimbursements',
+           route_collection_name: 'reimbursements'
   skip_load_and_authorize_resource
   helper_method :reimbursement_states_collection
 
   protected
 
   def collection
-    @q ||= end_of_association_chain.accessible_by(current_ability).includes(:request => :expenses).search(params[:q])
-    @q.sorts = "id asc" if @q.sorts.empty?
-    @all_reimbursements ||= @q.result(:distinct => true)
+    @q ||= end_of_association_chain.accessible_by(current_ability).includes(request: :expenses).search(params[:q])
+    @q.sorts = 'id asc' if @q.sorts.empty?
+    @all_reimbursements ||= @q.result(distinct: true)
     @reimbursements ||= @all_reimbursements.page(params[:page]).per(20)
   end
 
   def reimbursement_states_collection
-    Reimbursement.state_machines[:state].states.map {|s| [ s.human_name, s.value] }
+    Reimbursement.state_machines[:state].states.map { |s| [s.human_name, s.value] }
   end
 end
-

@@ -1,10 +1,10 @@
 # encoding: utf-8
+
 #
 # Helpers for testing the application
 #
 
 module CommonHelpers
-
   #
   # User authentication
   #
@@ -14,13 +14,13 @@ module CommonHelpers
   # @param [User]  user  User to authenticate.
   # @param [Hash]  opts  +password+: password used for authentication.
   def sign_in_as_user(user, opts = {})
-    options = { :context => "#new_user", :path => new_user_session_path, :password => 'password' }
+    options = { context: '#new_user', path: new_user_session_path, password: 'password' }
     options.merge!(opts)
     visit options[:path] if options[:path]
     within(options[:context]) do
-      fill_in "email", :with => user.email
-      fill_in "password", :with => options[:password]
-      click_button "Sign in"
+      fill_in 'email', with: user.email
+      fill_in 'password', with: options[:password]
+      click_button 'Sign in'
     end
   end
 
@@ -28,7 +28,7 @@ module CommonHelpers
   # Destroys current user session
   #
   def logout
-    click_link "Log out"
+    click_link 'Log out'
   end
 
   #
@@ -44,14 +44,14 @@ module CommonHelpers
     sign_in_as_user(user, opts)
     visit travel_sponsorships_path
     # Use the event filter
-    show_bootstrap_multiselect_select("#q_event_id_in")
-    select(request.event.name, :from => "q_event_id_in")
-    click_button "search"
+    show_bootstrap_multiselect_select('#q_event_id_in')
+    select(request.event.name, from: 'q_event_id_in')
+    click_button 'search'
     # Check the url to ensure that the form have been submitted
     current_url.should match /event_id_in/
     # If so, the request should be in the first page
     find(:xpath, "//table[contains(@class,'requests')]//tbody/tr/td[1]//a[text()='##{request.id}']").click
-    page.should have_content "request"
+    page.should have_content 'request'
     request.expenses.each do |e|
       page.should have_content e.subject
       page.should have_content e.description
@@ -71,9 +71,9 @@ module CommonHelpers
     sign_in_as_user(user, opts)
     visit shipments_path
     # Use the event filter
-    show_bootstrap_multiselect_select("#q_event_id_in")
-    select(shipment.event.name, :from => "q_event_id_in")
-    click_button "search"
+    show_bootstrap_multiselect_select('#q_event_id_in')
+    select(shipment.event.name, from: 'q_event_id_in')
+    click_button 'search'
     # Check the url to ensure that the form have been submitted
     current_url.should match /event_id_in/
     # If so, the shipment should be in the first page
@@ -95,14 +95,14 @@ module CommonHelpers
     sign_in_as_user(user, opts)
     visit reimbursements_path
     # Use the event filter
-    show_bootstrap_multiselect_select("#q_request_event_id_in")
-    select(reimbursement.event.name, :from => "q_request_event_id_in")
-    click_button "search"
+    show_bootstrap_multiselect_select('#q_request_event_id_in')
+    select(reimbursement.event.name, from: 'q_request_event_id_in')
+    click_button 'search'
     # Check the url to ensure that the form have been submitted
     current_url.should match /request_event_id_in/
     # If so, the reimbursement should be in the first page
     find(:xpath, "//table//tbody/tr/td[1]//a[text()='##{reimbursement.request.id}']").click
-    page.should have_content "reimbursement"
+    page.should have_content 'reimbursement'
     reimbursement.expenses.each do |e|
       page.should have_content e.subject
       page.should have_content e.description
@@ -117,9 +117,9 @@ module CommonHelpers
   #
   # @param [String]    locator     CSS selector
   def show_jasny_file_inputs(locator)
-    page.execute_script(%Q{$("#{locator}").css('opacity', 1)})
-    page.execute_script(%Q{$("#{locator}").css('transform', 'none')})
-    page.execute_script(%Q{$("#{locator}").css('position', 'relative')})
+    page.execute_script(%{$("#{locator}").css('opacity', 1)})
+    page.execute_script(%{$("#{locator}").css('transform', 'none')})
+    page.execute_script(%{$("#{locator}").css('position', 'relative')})
   end
 
   #
@@ -130,7 +130,7 @@ module CommonHelpers
   #
   # @param [String]    locator     CSS selector
   def show_bootstrap_multiselect_select(locator)
-    page.execute_script(%Q{$("#{locator}").show()})
+    page.execute_script(%{$("#{locator}").show()})
   end
 
   #
@@ -140,20 +140,20 @@ module CommonHelpers
   # @param [Symbol]  state_event  Event to trigger on the event machine
   # @param [User]    user         Obvious
   def transition(machine, state_event, user)
-      submission = StateTransition.new(:state_event => state_event.to_s)
-      submission.machine = machine
-      submission.user = user
-      submission.save!
+    submission = StateTransition.new(state_event: state_event.to_s)
+    submission.machine = machine
+    submission.user = user
+    submission.save!
   end
 
   #
   # Closes a modal dialog and waits until it's really closed
   #
   def close_modal_dialog
-    within(".modal") do
-      click_link "Back"
+    within('.modal') do
+      click_link 'Back'
     end
-    page.should_not have_css(".modal-backdrop", :wait => 15)
+    page.should_not have_css('.modal-backdrop', wait: 15)
   end
 
   #
@@ -162,16 +162,16 @@ module CommonHelpers
   # @param [#state] machine      Request or Reimbursement
   # @param [#to_s]  state        Target state
   def adjust_state(machine, state)
-    if machine.kind_of? Reimbursement
+    if machine.is_a? Reimbursement
       find_reimbursement_as users(:supervisor), machine
     else
       find_request_as users(:supervisor), machine
     end
-    click_link "Action"
-    click_link "Adjust state"
-    select state.to_s, :from => :state_adjustment_to
-    click_button "Create state adjustment"
-    page.should have_content "state has been changed"
+    click_link 'Action'
+    click_link 'Adjust state'
+    select state.to_s, from: :state_adjustment_to
+    click_button 'Create state adjustment'
+    page.should have_content 'state has been changed'
     logout
   end
 
@@ -180,9 +180,9 @@ module CommonHelpers
   #
   # param [Reimbursement] reimbursement Reimbursement object to assign the file
   # param [String]        filename      Name of the file located in support/files
-  def set_acceptance_file(reimbursement, filename = "scan001.pdf")
-    file = Rails.root.join("spec", "support", "files", filename)
-    reimbursement.acceptance_file = File.open(file, "rb")
+  def set_acceptance_file(reimbursement, filename = 'scan001.pdf')
+    file = Rails.root.join('spec', 'support', 'files', filename)
+    reimbursement.acceptance_file = File.open(file, 'rb')
   end
 
   #

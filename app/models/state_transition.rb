@@ -4,8 +4,7 @@
 # database will correctly update the associated state machine automatically.
 #
 class StateTransition < StateChange
-
-  validates :state_event, :presence => true
+  validates :state_event, presence: true
 
   # @see StateChange
   def human_action_name
@@ -16,13 +15,12 @@ class StateTransition < StateChange
 
   def update_machine_state
     self.from = machine.state
-    if state_event.to_sym == :cancel
-      result = machine.cancel
-    else
-      result = machine.fire_state_event(state_event.to_sym)
-    end
+    result = if state_event.to_sym == :cancel
+               machine.cancel
+             else
+               machine.fire_state_event(state_event.to_sym)
+             end
     self.to = machine.state
     result
   end
-
 end

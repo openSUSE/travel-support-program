@@ -3,5 +3,5 @@
 #
 module TravelSupport
   # Current version of the application
-  VERSION = "1.1.7"
+  VERSION = '1.1.7'.freeze
 end

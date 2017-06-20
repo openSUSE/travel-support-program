@@ -7,7 +7,7 @@ describe RequestExpense do
 
   # Decimals has been reported to fail with mysql
   # https://github.com/openSUSE/travel-support-program/issues/18
-  it "stores and reads decimal values" do
+  it 'stores and reads decimal values' do
     expense = request_expenses(:luke_for_yavin_gas)
     expense.estimated_amount = 100.53
     expense.approved_amount = 58.89

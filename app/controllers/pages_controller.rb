@@ -6,6 +6,6 @@ class PagesController < ApplicationController
   protected
 
   def set_breadcrumbs
-    @breadcrumbs = [{:label => :breadcrumb_userguide}]
+    @breadcrumbs = [{ label: :breadcrumb_userguide }]
   end
 end

@@ -15,5 +15,4 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     redirect_to @request
   end
-
 end

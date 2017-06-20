@@ -8,7 +8,7 @@ class Request < ActiveRecord::Base
   # The event associated to the state machine
   belongs_to :event
 
-  validates :event, :presence => true
+  validates :event, presence: true
 
   auditable
 end

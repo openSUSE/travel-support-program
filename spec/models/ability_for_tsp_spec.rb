@@ -1,148 +1,148 @@
 require 'spec_helper'
 require 'cancan/matchers'
-#require 'ruby-debug'
+# require 'ruby-debug'
 
-describe "TSP" do
+describe 'TSP' do
   fixtures :all
 
   subject { Ability.new(user) }
-  let(:user){ users(:tspmember) }
+  let(:user) { users(:tspmember) }
 
   context 'managing budgets' do
-    it{ should be_able_to(:create, Budget.new) }
-    it{ should be_able_to(:read, budgets(:general_budget)) }
-    it{ should be_able_to(:update, budgets(:general_budget)) }
-    it{ should be_able_to(:destroy, budgets(:general_budget)) }
+    it { should be_able_to(:create, Budget.new) }
+    it { should be_able_to(:read, budgets(:general_budget)) }
+    it { should be_able_to(:update, budgets(:general_budget)) }
+    it { should be_able_to(:destroy, budgets(:general_budget)) }
   end
 
   context 'managing events' do
-    it{ should be_able_to(:create, Event.new) }
-    it{ should be_able_to(:update, events(:yavin_hackaton)) }
-    it{ should be_able_to(:update, events(:party)) }
-    it{ should_not be_able_to(:destroy, events(:yavin_hackaton)) }
-    it{ should_not be_able_to(:destroy, events(:party)) }
-    it{ should be_able_to(:email, events(:yavin_hackaton))}
-    it{ should be_able_to(:email, events(:party))}
-    it{ should be_able_to(:email_event, events(:yavin_hackaton))}
-    it{ should be_able_to(:email_event, events(:party))}
+    it { should be_able_to(:create, Event.new) }
+    it { should be_able_to(:update, events(:yavin_hackaton)) }
+    it { should be_able_to(:update, events(:party)) }
+    it { should_not be_able_to(:destroy, events(:yavin_hackaton)) }
+    it { should_not be_able_to(:destroy, events(:party)) }
+    it { should be_able_to(:email, events(:yavin_hackaton)) }
+    it { should be_able_to(:email, events(:party)) }
+    it { should be_able_to(:email_event, events(:yavin_hackaton)) }
+    it { should be_able_to(:email_event, events(:party)) }
   end
 
   context 'managing his own requests' do
-    it{ should_not be_able_to(:create, TravelSponsorship.new) }
-    it{ should be_able_to(:create, TravelSponsorship.new(:event_id => events(:dagobah_camp).id)) }
-    it{ should_not be_able_to(:create, TravelSponsorship.new(:event_id => events(:hoth_hackaton).id)) }
-    it{ should be_able_to(:read, requests(:tspmember_for_party)) }
-    it{ should be_able_to(:read, requests(:tspmember_for_yavin)) }
-    it{ should be_able_to(:update, requests(:tspmember_for_party)) }
-    it{ should_not be_able_to(:update, requests(:tspmember_for_yavin)) }
-    it{ should be_able_to(:destroy, requests(:tspmember_for_party)) }
-    it{ should_not be_able_to(:destroy, requests(:tspmember_for_yavin)) }
-    it{ should be_able_to(:cancel, requests(:tspmember_for_party)) }
-    it{ should be_able_to(:cancel, requests(:tspmember_for_yavin)) }
-    it{ should_not be_able_to(:adjust_state, requests(:tspmember_for_yavin)) }
-    it{ should_not be_able_to(:adjust_state, requests(:tspmember_for_party)) }
+    it { should_not be_able_to(:create, TravelSponsorship.new) }
+    it { should be_able_to(:create, TravelSponsorship.new(event_id: events(:dagobah_camp).id)) }
+    it { should_not be_able_to(:create, TravelSponsorship.new(event_id: events(:hoth_hackaton).id)) }
+    it { should be_able_to(:read, requests(:tspmember_for_party)) }
+    it { should be_able_to(:read, requests(:tspmember_for_yavin)) }
+    it { should be_able_to(:update, requests(:tspmember_for_party)) }
+    it { should_not be_able_to(:update, requests(:tspmember_for_yavin)) }
+    it { should be_able_to(:destroy, requests(:tspmember_for_party)) }
+    it { should_not be_able_to(:destroy, requests(:tspmember_for_yavin)) }
+    it { should be_able_to(:cancel, requests(:tspmember_for_party)) }
+    it { should be_able_to(:cancel, requests(:tspmember_for_yavin)) }
+    it { should_not be_able_to(:adjust_state, requests(:tspmember_for_yavin)) }
+    it { should_not be_able_to(:adjust_state, requests(:tspmember_for_party)) }
   end
 
   context "managing other's requests" do
-    it{ should be_able_to(:read, requests(:wedge_for_party)) }
-    it{ should be_able_to(:read, requests(:luke_for_yavin)) }
-    it{ should_not be_able_to(:update, requests(:wedge_for_party)) }
-    it{ should be_able_to(:approve, requests(:wedge_for_party)) }
-    it{ should be_able_to(:roll_back, requests(:wedge_for_party)) }
-    it{ should_not be_able_to(:update, requests(:luke_for_yavin)) }
-    it{ should_not be_able_to(:destroy, requests(:luke_for_party)) }
-    it{ should_not be_able_to(:destroy, requests(:luke_for_yavin)) }
-    it{ should be_able_to(:cancel, requests(:luke_for_party)) }
-    it{ should be_able_to(:cancel, requests(:wedge_for_party)) }
-    it{ should_not be_able_to(:cancel, requests(:luke_for_yavin)) }
-    it{ should_not be_able_to(:adjust_state, requests(:luke_for_yavin)) }
-    it{ should_not be_able_to(:adjust_state, requests(:wedge_for_party)) }
+    it { should be_able_to(:read, requests(:wedge_for_party)) }
+    it { should be_able_to(:read, requests(:luke_for_yavin)) }
+    it { should_not be_able_to(:update, requests(:wedge_for_party)) }
+    it { should be_able_to(:approve, requests(:wedge_for_party)) }
+    it { should be_able_to(:roll_back, requests(:wedge_for_party)) }
+    it { should_not be_able_to(:update, requests(:luke_for_yavin)) }
+    it { should_not be_able_to(:destroy, requests(:luke_for_party)) }
+    it { should_not be_able_to(:destroy, requests(:luke_for_yavin)) }
+    it { should be_able_to(:cancel, requests(:luke_for_party)) }
+    it { should be_able_to(:cancel, requests(:wedge_for_party)) }
+    it { should_not be_able_to(:cancel, requests(:luke_for_yavin)) }
+    it { should_not be_able_to(:adjust_state, requests(:luke_for_yavin)) }
+    it { should_not be_able_to(:adjust_state, requests(:wedge_for_party)) }
   end
 
-  context "asking for reimbursement" do
-    it{ should be_able_to(:create, requests(:tspmember_for_yavin).build_reimbursement) }
-    it{ should_not be_able_to(:create, requests(:assistant_for_yavin).build_reimbursement) }
-    it{ should_not be_able_to(:create, requests(:luke_for_yavin).build_reimbursement) }
+  context 'asking for reimbursement' do
+    it { should be_able_to(:create, requests(:tspmember_for_yavin).build_reimbursement) }
+    it { should_not be_able_to(:create, requests(:assistant_for_yavin).build_reimbursement) }
+    it { should_not be_able_to(:create, requests(:luke_for_yavin).build_reimbursement) }
   end
 
-  context "managing his own reimbursement" do
+  context 'managing his own reimbursement' do
     before(:each) do
       @reimbursement = requests(:tspmember_for_yavin).create_reimbursement
       @reimbursement.request.expenses.each do |e|
         e.total_amount = e.estimated_amount + 5
       end
       set_acceptance_file @reimbursement
-      @reimbursement.create_bank_account(:holder => "The TSP member", :bank_name => "Bank",
-                                         :format => "iban", :iban => "IBAN", :bic => "BIC")
+      @reimbursement.create_bank_account(holder: 'The TSP member', bank_name: 'Bank',
+                                         format: 'iban', iban: 'IBAN', bic: 'BIC')
     end
 
-    it{ should be_able_to(:submit, @reimbursement) }
-    it{ should be_able_to(:update, @reimbursement) }
-    it{ should be_able_to(:cancel, @reimbursement) }
-    it{ should_not be_able_to(:approve, @reimbursement) }
-    it{ should_not be_able_to(:process, @reimbursement) }
-    it{ should_not be_able_to(:confirm, @reimbursement) }
-    it{ should_not be_able_to(:adjust_state, @reimbursement) }
+    it { should be_able_to(:submit, @reimbursement) }
+    it { should be_able_to(:update, @reimbursement) }
+    it { should be_able_to(:cancel, @reimbursement) }
+    it { should_not be_able_to(:approve, @reimbursement) }
+    it { should_not be_able_to(:process, @reimbursement) }
+    it { should_not be_able_to(:confirm, @reimbursement) }
+    it { should_not be_able_to(:adjust_state, @reimbursement) }
 
-    context "already submitted" do
+    context 'already submitted' do
       before(:each) do
         @reimbursement.submit!
       end
 
-      it{ should be_able_to(:read, @reimbursement) }
-      it{ should be_able_to(:roll_back, @reimbursement) }
-      it{ should be_able_to(:cancel, @reimbursement) }
-      it{ should_not be_able_to(:update, @reimbursement) }
-      it{ should_not be_able_to(:approve, @reimbursement) }
-      it{ should_not be_able_to(:process, @reimbursement) }
-      it{ should_not be_able_to(:confirm, @reimbursement) }
-      it{ should_not be_able_to(:destroy, @reimbursement) }
-      it{ should_not be_able_to(:adjust_state, @reimbursement) }
+      it { should be_able_to(:read, @reimbursement) }
+      it { should be_able_to(:roll_back, @reimbursement) }
+      it { should be_able_to(:cancel, @reimbursement) }
+      it { should_not be_able_to(:update, @reimbursement) }
+      it { should_not be_able_to(:approve, @reimbursement) }
+      it { should_not be_able_to(:process, @reimbursement) }
+      it { should_not be_able_to(:confirm, @reimbursement) }
+      it { should_not be_able_to(:destroy, @reimbursement) }
+      it { should_not be_able_to(:adjust_state, @reimbursement) }
 
-      context "and approved" do
+      context 'and approved' do
         before(:each) do
           @reimbursement.approve!
         end
 
-        it{ should be_able_to(:read, @reimbursement) }
-        it{ should be_able_to(:cancel, @reimbursement) }
-        it{ should be_able_to(:roll_back, @reimbursement) }
-        it{ should_not be_able_to(:update, @reimbursement) }
-        it{ should_not be_able_to(:destroy, @reimbursement) }
-        it{ should_not be_able_to(:approve, @reimbursement) }
-        it{ should_not be_able_to(:process, @reimbursement) }
-        it{ should_not be_able_to(:confirm, @reimbursement) }
-        it{ should_not be_able_to(:adjust_state, @reimbursement) }
+        it { should be_able_to(:read, @reimbursement) }
+        it { should be_able_to(:cancel, @reimbursement) }
+        it { should be_able_to(:roll_back, @reimbursement) }
+        it { should_not be_able_to(:update, @reimbursement) }
+        it { should_not be_able_to(:destroy, @reimbursement) }
+        it { should_not be_able_to(:approve, @reimbursement) }
+        it { should_not be_able_to(:process, @reimbursement) }
+        it { should_not be_able_to(:confirm, @reimbursement) }
+        it { should_not be_able_to(:adjust_state, @reimbursement) }
 
-        context "and processed" do
+        context 'and processed' do
           before(:each) do
             @reimbursement.process!
           end
 
-          it{ should be_able_to(:read, @reimbursement) }
-          it{ should_not be_able_to(:update, @reimbursement) }
-          it{ should_not be_able_to(:destroy, @reimbursement) }
-          it{ should_not be_able_to(:cancel, @reimbursement) }
-          it{ should_not be_able_to(:approve, @reimbursement) }
-          it{ should_not be_able_to(:roll_back, @reimbursement) }
-          it{ should_not be_able_to(:process, @reimbursement) }
-          it{ should_not be_able_to(:confirm, @reimbursement) }
-          it{ should_not be_able_to(:adjust_state, @reimbursement) }
+          it { should be_able_to(:read, @reimbursement) }
+          it { should_not be_able_to(:update, @reimbursement) }
+          it { should_not be_able_to(:destroy, @reimbursement) }
+          it { should_not be_able_to(:cancel, @reimbursement) }
+          it { should_not be_able_to(:approve, @reimbursement) }
+          it { should_not be_able_to(:roll_back, @reimbursement) }
+          it { should_not be_able_to(:process, @reimbursement) }
+          it { should_not be_able_to(:confirm, @reimbursement) }
+          it { should_not be_able_to(:adjust_state, @reimbursement) }
 
-          context "and payed" do
+          context 'and payed' do
             before(:each) do
               @reimbursement.confirm!
             end
 
-            it{ should be_able_to(:read, @reimbursement) }
-            it{ should_not be_able_to(:update, @reimbursement) }
-            it{ should_not be_able_to(:destroy, @reimbursement) }
-            it{ should_not be_able_to(:cancel, @reimbursement) }
-            it{ should_not be_able_to(:approve, @reimbursement) }
-            it{ should_not be_able_to(:roll_back, @reimbursement) }
-            it{ should_not be_able_to(:process, @reimbursement) }
-            it{ should_not be_able_to(:confirm, @reimbursement) }
-            it{ should_not be_able_to(:adjust_state, @reimbursement) }
+            it { should be_able_to(:read, @reimbursement) }
+            it { should_not be_able_to(:update, @reimbursement) }
+            it { should_not be_able_to(:destroy, @reimbursement) }
+            it { should_not be_able_to(:cancel, @reimbursement) }
+            it { should_not be_able_to(:approve, @reimbursement) }
+            it { should_not be_able_to(:roll_back, @reimbursement) }
+            it { should_not be_able_to(:process, @reimbursement) }
+            it { should_not be_able_to(:confirm, @reimbursement) }
+            it { should_not be_able_to(:adjust_state, @reimbursement) }
           end
         end
       end
@@ -156,79 +156,79 @@ describe "TSP" do
         e.total_amount = e.estimated_amount + 5
       end
       set_acceptance_file @reimbursement
-      @reimbursement.create_bank_account(:holder => "Luke", :bank_name => "Bank",
-                                         :format => "iban", :iban => "IBAN", :bic => "BIC")
+      @reimbursement.create_bank_account(holder: 'Luke', bank_name: 'Bank',
+                                         format: 'iban', iban: 'IBAN', bic: 'BIC')
     end
 
-    it{ should be_able_to(:read, @reimbursement) }
-    it{ should be_able_to(:cancel, @reimbursement) }
-    it{ should_not be_able_to(:update, @reimbursement) }
-    it{ should_not be_able_to(:approve, @reimbursement) }
-    it{ should_not be_able_to(:process, @reimbursement) }
-    it{ should_not be_able_to(:confirm, @reimbursement) }
-    it{ should_not be_able_to(:roll_back, @reimbursement) }
-    it{ should_not be_able_to(:destroy, @reimbursement) }
-    it{ should_not be_able_to(:adjust_state, @reimbursement) }
+    it { should be_able_to(:read, @reimbursement) }
+    it { should be_able_to(:cancel, @reimbursement) }
+    it { should_not be_able_to(:update, @reimbursement) }
+    it { should_not be_able_to(:approve, @reimbursement) }
+    it { should_not be_able_to(:process, @reimbursement) }
+    it { should_not be_able_to(:confirm, @reimbursement) }
+    it { should_not be_able_to(:roll_back, @reimbursement) }
+    it { should_not be_able_to(:destroy, @reimbursement) }
+    it { should_not be_able_to(:adjust_state, @reimbursement) }
 
-    context "already submitted" do
+    context 'already submitted' do
       before(:each) do
         @reimbursement.submit!
       end
 
-      it{ should be_able_to(:read, @reimbursement) }
-      it{ should_not be_able_to(:update, @reimbursement) }
-      it{ should be_able_to(:approve, @reimbursement) }
-      it{ should be_able_to(:roll_back, @reimbursement) }
-      it{ should be_able_to(:cancel, @reimbursement) }
-      it{ should_not be_able_to(:process, @reimbursement) }
-      it{ should_not be_able_to(:confirm, @reimbursement) }
-      it{ should_not be_able_to(:destroy, @reimbursement) }
-      it{ should_not be_able_to(:adjust_state, @reimbursement) }
+      it { should be_able_to(:read, @reimbursement) }
+      it { should_not be_able_to(:update, @reimbursement) }
+      it { should be_able_to(:approve, @reimbursement) }
+      it { should be_able_to(:roll_back, @reimbursement) }
+      it { should be_able_to(:cancel, @reimbursement) }
+      it { should_not be_able_to(:process, @reimbursement) }
+      it { should_not be_able_to(:confirm, @reimbursement) }
+      it { should_not be_able_to(:destroy, @reimbursement) }
+      it { should_not be_able_to(:adjust_state, @reimbursement) }
 
-      context "and approved" do
+      context 'and approved' do
         before(:each) do
           @reimbursement.approve!
         end
 
-        it{ should be_able_to(:read, @reimbursement) }
-        it{ should be_able_to(:cancel, @reimbursement) }
-        it{ should be_able_to(:roll_back, @reimbursement) }
-        it{ should_not be_able_to(:update, @reimbursement) }
-        it{ should_not be_able_to(:destroy, @reimbursement) }
-        it{ should_not be_able_to(:approve, @reimbursement) }
-        it{ should_not be_able_to(:process, @reimbursement) }
-        it{ should_not be_able_to(:confirm, @reimbursement) }
-        it{ should_not be_able_to(:adjust_state, @reimbursement) }
+        it { should be_able_to(:read, @reimbursement) }
+        it { should be_able_to(:cancel, @reimbursement) }
+        it { should be_able_to(:roll_back, @reimbursement) }
+        it { should_not be_able_to(:update, @reimbursement) }
+        it { should_not be_able_to(:destroy, @reimbursement) }
+        it { should_not be_able_to(:approve, @reimbursement) }
+        it { should_not be_able_to(:process, @reimbursement) }
+        it { should_not be_able_to(:confirm, @reimbursement) }
+        it { should_not be_able_to(:adjust_state, @reimbursement) }
 
-        context "and processed" do
+        context 'and processed' do
           before(:each) do
             @reimbursement.process!
           end
 
-          it{ should be_able_to(:read, @reimbursement) }
-          it{ should_not be_able_to(:update, @reimbursement) }
-          it{ should_not be_able_to(:destroy, @reimbursement) }
-          it{ should_not be_able_to(:cancel, @reimbursement) }
-          it{ should_not be_able_to(:approve, @reimbursement) }
-          it{ should_not be_able_to(:roll_back, @reimbursement) }
-          it{ should_not be_able_to(:process, @reimbursement) }
-          it{ should_not be_able_to(:confirm, @reimbursement) }
-          it{ should_not be_able_to(:adjust_state, @reimbursement) }
+          it { should be_able_to(:read, @reimbursement) }
+          it { should_not be_able_to(:update, @reimbursement) }
+          it { should_not be_able_to(:destroy, @reimbursement) }
+          it { should_not be_able_to(:cancel, @reimbursement) }
+          it { should_not be_able_to(:approve, @reimbursement) }
+          it { should_not be_able_to(:roll_back, @reimbursement) }
+          it { should_not be_able_to(:process, @reimbursement) }
+          it { should_not be_able_to(:confirm, @reimbursement) }
+          it { should_not be_able_to(:adjust_state, @reimbursement) }
 
-          context "and payed" do
+          context 'and payed' do
             before(:each) do
               @reimbursement.confirm!
             end
 
-            it{ should be_able_to(:read, @reimbursement) }
-            it{ should_not be_able_to(:update, @reimbursement) }
-            it{ should_not be_able_to(:destroy, @reimbursement) }
-            it{ should_not be_able_to(:cancel, @reimbursement) }
-            it{ should_not be_able_to(:approve, @reimbursement) }
-            it{ should_not be_able_to(:roll_back, @reimbursement) }
-            it{ should_not be_able_to(:process, @reimbursement) }
-            it{ should_not be_able_to(:confirm, @reimbursement) }
-            it{ should_not be_able_to(:adjust_state, @reimbursement) }
+            it { should be_able_to(:read, @reimbursement) }
+            it { should_not be_able_to(:update, @reimbursement) }
+            it { should_not be_able_to(:destroy, @reimbursement) }
+            it { should_not be_able_to(:cancel, @reimbursement) }
+            it { should_not be_able_to(:approve, @reimbursement) }
+            it { should_not be_able_to(:roll_back, @reimbursement) }
+            it { should_not be_able_to(:process, @reimbursement) }
+            it { should_not be_able_to(:confirm, @reimbursement) }
+            it { should_not be_able_to(:adjust_state, @reimbursement) }
           end
         end
       end
@@ -236,28 +236,28 @@ describe "TSP" do
   end
 
   context 'adding comments to requests' do
-    it{ should be_able_to(:create, requests(:luke_for_yavin).comments.build) }
-    it{ should be_able_to(:create, requests(:luke_for_yavin).comments.build(:private => true)) }
+    it { should be_able_to(:create, requests(:luke_for_yavin).comments.build) }
+    it { should be_able_to(:create, requests(:luke_for_yavin).comments.build(private: true)) }
   end
 
   context 'accessing public comments on requests' do
     before(:each) do
-      @comment = requests(:luke_for_yavin).comments.create(:body => "whatever")
+      @comment = requests(:luke_for_yavin).comments.create(body: 'whatever')
     end
 
-    it{ should be_able_to(:read, @comment) }
-    it{ should_not be_able_to(:destroy, @comment) }
-    it{ should_not be_able_to(:update, @comment) }
+    it { should be_able_to(:read, @comment) }
+    it { should_not be_able_to(:destroy, @comment) }
+    it { should_not be_able_to(:update, @comment) }
   end
 
   context 'accessing private comments on requests' do
     before(:each) do
-      @comment = requests(:luke_for_yavin).comments.create(:body => "whatever", :private => true)
+      @comment = requests(:luke_for_yavin).comments.create(body: 'whatever', private: true)
     end
 
-    it{ should be_able_to(:read, @comment) }
-    it{ should_not be_able_to(:destroy, @comment) }
-    it{ should_not be_able_to(:update, @comment) }
+    it { should be_able_to(:read, @comment) }
+    it { should_not be_able_to(:destroy, @comment) }
+    it { should_not be_able_to(:update, @comment) }
   end
 
   context 'accessing attachments in a reimbursement' do
@@ -266,52 +266,52 @@ describe "TSP" do
       set_acceptance_file @reimbursement
     end
 
-    it{ should be_able_to(:read, @reimbursement.attachments.first) }
-    it{ should_not be_able_to(:destroy, @reimbursement.attachments.first) }
-    it{ should_not be_able_to(:update, @reimbursement.attachments.first) }
-    it{ should_not be_able_to(:create, @reimbursement.attachments.build) }
+    it { should be_able_to(:read, @reimbursement.attachments.first) }
+    it { should_not be_able_to(:destroy, @reimbursement.attachments.first) }
+    it { should_not be_able_to(:update, @reimbursement.attachments.first) }
+    it { should_not be_able_to(:create, @reimbursement.attachments.build) }
 
     context 'after submitting it' do
       before(:each) do
         transition(@reimbursement, :submit, users(:wedge))
       end
 
-      it{ should be_able_to(:read, @reimbursement.attachments.first) }
-      it{ should_not be_able_to(:destroy, @reimbursement.attachments.first) }
-      it{ should_not be_able_to(:update, @reimbursement.attachments.first) }
-      it{ should_not be_able_to(:create, @reimbursement.attachments.build) }
+      it { should be_able_to(:read, @reimbursement.attachments.first) }
+      it { should_not be_able_to(:destroy, @reimbursement.attachments.first) }
+      it { should_not be_able_to(:update, @reimbursement.attachments.first) }
+      it { should_not be_able_to(:create, @reimbursement.attachments.build) }
     end
   end
 
   context 'accessing shipments' do
-    it{ should_not be_able_to(:create, Shipment.new) }
-    it{ should_not be_able_to(:read, requests(:wedge_customes_for_party)) }
-    it{ should_not be_able_to(:update, requests(:wedge_customes_for_party)) }
-    it{ should_not be_able_to(:destroy, requests(:wedge_customes_for_party)) }
+    it { should_not be_able_to(:create, Shipment.new) }
+    it { should_not be_able_to(:read, requests(:wedge_customes_for_party)) }
+    it { should_not be_able_to(:update, requests(:wedge_customes_for_party)) }
+    it { should_not be_able_to(:destroy, requests(:wedge_customes_for_party)) }
   end
 
   context 'adding comments to shipments' do
-    it{ should_not be_able_to(:create, requests(:luke_customes_for_party).comments.build) }
-    it{ should_not be_able_to(:create, requests(:luke_customes_for_party).comments.build(:private => true)) }
+    it { should_not be_able_to(:create, requests(:luke_customes_for_party).comments.build) }
+    it { should_not be_able_to(:create, requests(:luke_customes_for_party).comments.build(private: true)) }
   end
 
   context 'accessing public comments on shipments' do
     before(:each) do
-      @comment = requests(:luke_customes_for_party).comments.create(:body => "whatever")
+      @comment = requests(:luke_customes_for_party).comments.create(body: 'whatever')
     end
 
-    it{ should_not be_able_to(:read, @comment) }
-    it{ should_not be_able_to(:destroy, @comment) }
-    it{ should_not be_able_to(:update, @comment) }
+    it { should_not be_able_to(:read, @comment) }
+    it { should_not be_able_to(:destroy, @comment) }
+    it { should_not be_able_to(:update, @comment) }
   end
 
   context 'accessing private comments on shipments' do
     before(:each) do
-      @comment = requests(:luke_customes_for_party).comments.create(:body => "whatever", :private => true)
+      @comment = requests(:luke_customes_for_party).comments.create(body: 'whatever', private: true)
     end
 
-    it{ should_not be_able_to(:read, @comment) }
-    it{ should_not be_able_to(:destroy, @comment) }
-    it{ should_not be_able_to(:update, @comment) }
+    it { should_not be_able_to(:read, @comment) }
+    it { should_not be_able_to(:destroy, @comment) }
+    it { should_not be_able_to(:update, @comment) }
   end
 end

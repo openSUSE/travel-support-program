@@ -5,22 +5,22 @@ module ReportHelper
   # Outputs a dropdown for filtering the expenses report with a given scope
   def filter_select(name, collection, value_method = :id, text_method = :name)
     value = @filter && @filter[name]
-    options = content_tag(:option, t(:expenses_report_all), :value => "")
+    options = content_tag(:option, t(:expenses_report_all), value: '')
     options << options_from_collection_for_select(collection, value_method, text_method, value)
     select_tag "filter[#{name}]", options, class: 'form-control input-sm'
   end
 
   # Outputs a date picker for filtering the expenses report with a given scope
   def filter_datepicker(name)
-     value = @filter && @filter[name]
-     data = {"date-autoclose" => true, "date-format" => "yyyy-mm-dd", "date-language" => I18n.locale.to_s}
-     text_field_tag "filter[#{name}]", value, :class => "date-without-time dpicker form-control input-sm", :data => data
+    value = @filter && @filter[name]
+    data = { 'date-autoclose' => true, 'date-format' => 'yyyy-mm-dd', 'date-language' => I18n.locale.to_s }
+    text_field_tag "filter[#{name}]", value, class: 'date-without-time dpicker form-control input-sm', data: data
   end
 
   # Outputs a text input for filtering the expenses report with a given scope
   def filter_text_field(name)
     value = @filter && @filter[name]
-    text_field_tag "filter[#{name}]", value, class: "form-control input-sm"
+    text_field_tag "filter[#{name}]", value, class: 'form-control input-sm'
   end
 
   # Outputs the html representation of the field for a given
@@ -67,7 +67,7 @@ module ReportHelper
   def html_value_for_reimbursement_state(expense)
     state = expense.value_for(:reimbursement_state)
     if state.blank?
-      ""
+      ''
     else
       state = Reimbursement.human_state_name(state)
       link_to(state, request_reimbursement_path(expense[:request_id]))
@@ -78,7 +78,7 @@ module ReportHelper
   # @see #xlsx_value_for
   def xslx_value_for_reimbursement_state(expense)
     state = expense.value_for(:reimbursement_state)
-    state.blank? ? "" : Reimbursement.human_state_name(state)
+    state.blank? ? '' : Reimbursement.human_state_name(state)
   end
 
   # Called from html_value_for
@@ -96,19 +96,19 @@ module ReportHelper
   # Called from html_value_for
   # @see #html_value_for
   def html_value_for_sum_amount(expense)
-    number_to_currency(expense.value_for(:sum_amount) || 0, :unit => "")
+    number_to_currency(expense.value_for(:sum_amount) || 0, unit: '')
   end
 
   # Called from html_value_for
   # @see #html_value_for
   def html_value_for_event_country(expense)
-    content_tag(:span, expense[:event_country], :title => t("countries.#{expense[:event_country]}"))
+    content_tag(:span, expense[:event_country], title: t("countries.#{expense[:event_country]}"))
   end
 
   # Called from html_value_for
   # @see #html_value_for
   def html_value_for_user_country(expense)
-    content_tag(:span, expense[:user_country], :title => t("countries.#{expense[:user_country]}"))
+    content_tag(:span, expense[:user_country], title: t("countries.#{expense[:user_country]}"))
   end
 
   # Called from html_value_for
@@ -140,16 +140,12 @@ module ReportHelper
   # @param [#to_sym] field name of the field
   # @return [Hash] Style definition, nil if no special style is defined
   def xlsx_style_for(field)
-    if respond_to? :"xlsx_style_for_#{field}"
-      send(:"xlsx_style_for_#{field}")
-    else
-      nil
-    end
+    send(:"xlsx_style_for_#{field}") if respond_to? :"xlsx_style_for_#{field}"
   end
 
   # Called from xlsx_style_for
   # @see #xlsx_style_for
   def xlsx_style_for_sum_amount
-    {:num_fmt => 2}
+    { num_fmt: 2 }
   end
 end
