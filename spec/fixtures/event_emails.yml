@@ -1,0 +1,13 @@
+party_info:
+  to: "test@example.com"
+  subject: "Testing mail"
+  body: "This is a test mail"
+  event: party
+  user: tspmember
+
+hackathon_dates:
+  to: "test@example.com,test1@example.com,test2@example.com"
+  subject: "Testing mail for multiple recipients"
+  body: "This is a test mail with multiple recipients"
+  event: party
+  user: tspmember
