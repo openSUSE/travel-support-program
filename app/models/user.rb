@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
   has_many :reimbursements, inverse_of: :user
   # State changes (transitions or manual adjustments) performed by the user
   has_many :state_changes, inverse_of: :user
+  # Event Emails send by a user
+  has_many :event_emails
 
   after_create :create_profile
 
