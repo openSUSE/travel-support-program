@@ -1,0 +1,9 @@
+.col-md-11.event_email_show
+  %h3 To:
+  .email_to
+    - @event_email.to.split(',').each do |t|
+      %span.label.label-info #{t}
+  %h3 Subject:
+  .well.well-sm #{@event_email.subject}
+  %h3 Body:
+  .well #{@event_email.body}
