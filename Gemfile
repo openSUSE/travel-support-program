@@ -55,6 +55,7 @@ gem 'delayed_job_active_record'
 
 gem 'coveralls', require: false
 gem 'exception_notification', group: :production
+gem 'redcarpet'
 gem 'rspec-rails', group: [:development, :test]
 
 # Moved out of the development group to avoid an error in every rake execution
@@ -62,7 +63,6 @@ gem 'rspec-rails', group: [:development, :test]
 # solution)
 gem 'yard', '0.8.7.4'
 group :development do
-  gem 'redcarpet', require: false
   gem 'ruby-graphviz'
   gem 'state_machines-yard'
   gem 'yard-activerecord'

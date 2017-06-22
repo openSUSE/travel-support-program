@@ -51,6 +51,13 @@ module ApplicationHelper
     raw(msg)
   end
 
+  # Output the text in a markdown manner
+  def markdown(text)
+    renderer = Redcarpet::Render::HTML.new(hard_wrap: true)
+    markdown = Redcarpet::Markdown.new(renderer, autolink: true)
+    markdown.render(text).html_safe
+  end
+
   # Outputs a link with an icon inside (and visible no text)
   #
   # @param [String] name   a icon name from http://twitter.github.com/bootstrap/base-css.html#icons
