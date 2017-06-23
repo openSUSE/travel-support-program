@@ -1,17 +1,17 @@
 require 'spec_helper'
 
 describe Event, type: :mailer do
+  fixtures :all
   describe 'Event Info' do
-    email = { to: 'luke.skywalker@rebel-alliance.org', subject: 'Event email test', body: 'This is a mail to test the Event Mailer' }
-    let(:mail) { EventMailer.event_info(email[:to], email).deliver }
+    let(:mail) { EventMailer.event_info(event_emails(:party_info).to, event_emails(:party_info)).deliver }
 
     it 'renders the headers' do
-      expect(mail.subject).to eq('Event email test')
-      expect(mail.to).to eq(['luke.skywalker@rebel-alliance.org'])
+      expect(mail.subject).to eq('Testing mail')
+      expect(mail.to).to eq(['test@example.com'])
     end
 
     it 'renders the body' do
-      expect(mail.body.encoded).to match('This is a mail to test the Event Mailer')
+      expect(mail.body.encoded).to match('This is a test mail')
     end
   end
 end
