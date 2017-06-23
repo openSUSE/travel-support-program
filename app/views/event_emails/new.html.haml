@@ -18,16 +18,16 @@
       %li
         %a{:onclick => "user_email(#{users_for_event('canceled')})"} Cancel
   %br
-  = simple_form_for :email, url: email_event_events_path, :method => :post do |f|
-    = f.input :to, as: :text, input_html: {rows: 1}
+  = simple_form_for(resource, url: event_event_emails_path) do |f|
+    = f.input :to, as: :text,readonly: true, input_html: {rows: 1}
     = f.input :subject
     = f.input :body, as: :text, input_html: {rows: 12}
     .pull-right
       = f.button :submit, 'Send', class: 'btn btn-primary'
-      = link_to 'Cancel', event_path(@event), class: 'btn btn-default'
+      = link_to 'Cancel', event_event_emails_path(@event) , class: 'btn btn-default'
 
 :javascript
   function user_email(users){
-    var recip = document.getElementById('email_to');
+    var recip = document.getElementById('event_email_to');
     recip.value = users
   }

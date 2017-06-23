@@ -21,10 +21,11 @@ describe 'Administrative' do
     it { should be_able_to(:update, events(:party)) }
     it { should_not be_able_to(:destroy, events(:yavin_hackaton)) }
     it { should_not be_able_to(:destroy, events(:party)) }
-    it { should_not be_able_to(:email, events(:yavin_hackaton)) }
-    it { should_not be_able_to(:email, events(:party)) }
-    it { should_not be_able_to(:email_event, events(:yavin_hackaton)) }
-    it { should_not be_able_to(:email_event, events(:party)) }
+  end
+
+  context 'managing event emails' do
+    it { should_not be_able_to(:create, EventEmail.new) }
+    it { should_not be_able_to(:read, event_emails(:party_info)) }
   end
 
   context 'managing his own requests' do

@@ -4,10 +4,11 @@
 class Ability
   include CanCan::Ability
 
+  # rubocop:disable MethodLength,AbcSize
   def initialize(user)
     # Define abilities for the passed in user here.
     #
-    # See the wiki for details:
+    # See the wiki for details:key => "value",
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
     can :manage, User, id: user.id
@@ -139,8 +140,11 @@ class Ability
       can :manage, Budget
 
       # Events
-      can [:update, :validate, :email, :email_event], Event
+      can [:update, :validate], Event
       can :destroy, Event, &:can_be_destroyed?
+
+      # Email Events
+      can :manage, EventEmail
 
       # TravelSponsorships
       can :read, TravelSponsorship
@@ -275,4 +279,5 @@ class Ability
       end
     end
   end
+  # rubocop:enable MethodLength,AbcSize
 end
