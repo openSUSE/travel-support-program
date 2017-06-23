@@ -6,4 +6,4 @@
   %h3 Subject:
   .well.well-sm #{@event_email.subject}
   %h3 Body:
-  .well #{@event_email.body}
+  .well #{markdown(@event_email.body)}
