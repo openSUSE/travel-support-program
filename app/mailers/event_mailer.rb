@@ -1,7 +1,8 @@
 class EventMailer < ApplicationMailer
   def event_info(to, email)
     @email = email
-    mail(to: to,
+    mail(from: @email.user.email,
+         to: to,
          subject: @email[:subject])
   end
 end
