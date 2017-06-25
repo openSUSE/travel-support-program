@@ -5,6 +5,10 @@ ClassLength:
   Exclude:
     - app/models/ability.rb
 
+ModuleLength:
+  Exclude:
+    - app/helpers/application_helper.rb
+
 # Apply rule to all cops
 AllCops:
   TargetRubyVersion: 1.9
