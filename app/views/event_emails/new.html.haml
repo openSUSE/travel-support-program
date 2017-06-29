@@ -29,7 +29,12 @@
       = link_to 'Cancel', event_event_emails_path(@event) , class: 'btn btn-default'
 
 :javascript
+  document.addEventListener("DOMContentLoaded", function(event) {
+    if(#{users_for_event('all')}.length == 0 ) { 
+      $('#select_recp').prop("disabled", true);
+    }
+  });
+
   function user_email(users){
-    var recip = document.getElementById('event_email_to');
-    recip.value = users
+    $('#event_email_to').val(users)
   }
