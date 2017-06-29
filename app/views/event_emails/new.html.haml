@@ -1,22 +1,13 @@
 .col-md-10
   %h2 Email the participants of #{@event.name}
   .dropdown.pull-right
-    %button#select_recp.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+    %button#select_recp.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button", "data-users" => "#{users_for_event('all').empty?}"}
       Select recipients
       %span.caret
     %ul.dropdown-menu{"aria-labelledby" => "select_recp"}
-      %li
-        %a{:onclick => "user_email(#{users_for_event('all')})"} All
-      %li
-        %a{:onclick => "user_email(#{users_for_event('accepted')})"} Accepted
-      %li
-        %a{:onclick => "user_email(#{users_for_event('incomplete')})"} Incomplete
-      %li
-        %a{:onclick => "user_email(#{users_for_event('submitted')})"} Submitted
-      %li
-        %a{:onclick => "user_email(#{users_for_event('approved')})"} Approved
-      %li
-        %a{:onclick => "user_email(#{users_for_event('canceled')})"} Cancel
+      - %w[All Accepted Incomplete Submitted Approved Cancel].each do |s|
+        %li
+          %a{id: 'state' + s, "data-users" => users_for_event(s.downcase) } #{s}
   %br
   = simple_form_for(resource, url: event_event_emails_path) do |f|
     = f.input :to, as: :text,readonly: true, input_html: {rows: 1}
@@ -25,19 +16,3 @@
     .pull-right
       = f.button :submit, 'Send', class: 'btn btn-primary'
       = link_to 'Cancel', event_event_emails_path(@event) , class: 'btn btn-default'
-
-:javascript
-  document.addEventListener("DOMContentLoaded", function(event) {
-    if(#{users_for_event('all')}.length == 0 ) { 
-      $('#select_recp').prop("disabled", true);
-      $('.col-md-10').prepend('#{error_message}');
-    }
-  });
-
-  function user_email(users){
-    $('.alert').remove();
-    $('#event_email_to').val(users)
-    if(users.length == 0 ) {
-      $('.col-md-10').prepend('#{error_message}');
-    }
-  }

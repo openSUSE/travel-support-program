@@ -16,8 +16,4 @@ module EventsHelper
     req = req.where(state: state) if state != 'all'
     user_email = req.map { |e| e.user.email }.uniq
   end
-
-  def error_message
-    content_tag(:div, 'There are no participants present', class: ['alert', 'alert-warning'])
-  end
 end

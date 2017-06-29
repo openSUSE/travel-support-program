@@ -15,6 +15,7 @@
 #= require bootstrap
 #= require cocoon
 #= require additional
+#= require event_emails
 #
 
 window.init_page = ->
