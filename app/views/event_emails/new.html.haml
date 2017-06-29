@@ -27,7 +27,17 @@
       = link_to 'Cancel', event_event_emails_path(@event) , class: 'btn btn-default'
 
 :javascript
+  document.addEventListener("DOMContentLoaded", function(event) {
+    if(#{users_for_event('all')}.length == 0 ) { 
+      $('#select_recp').prop("disabled", true);
+      $('.col-md-10').prepend('#{error_message}');
+    }
+  });
+
   function user_email(users){
-    var recip = document.getElementById('event_email_to');
-    recip.value = users
+    $('.alert').remove();
+    $('#event_email_to').val(users)
+    if(users.length == 0 ) {
+      $('.col-md-10').prepend('#{error_message}');
+    }
   }
