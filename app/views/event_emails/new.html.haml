@@ -23,7 +23,7 @@
     = f.input :subject
     = f.input :body, as: :text, input_html: {rows: 12}
     .pull-right
-      = f.button :submit, 'Send', class: 'btn btn-primary'
+      = f.button :submit, 'Send', class: 'btn btn-primary', data: { disable_with: "Please wait..." }
       = link_to 'Cancel', event_event_emails_path(@event) , class: 'btn btn-default'
 
 :javascript
