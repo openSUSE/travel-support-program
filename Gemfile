@@ -19,6 +19,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # HAML as default
 gem 'haml-rails'
+# To test email with letter opener set the 'async_emails' option in site.yml to false
+gem 'letter_opener_web'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
