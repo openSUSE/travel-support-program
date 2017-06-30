@@ -1,4 +1,6 @@
 TravelSupport::Application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener"
+
   devise_for :users,
     :controllers => { :registrations => 'registrations',
                       :ichain_registrations => "ichain_registrations"},
