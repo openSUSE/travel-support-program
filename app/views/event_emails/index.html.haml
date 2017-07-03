@@ -15,7 +15,7 @@
         %td
           = link_to truncate(e.subject, length: 50), event_event_email_path(@event,e)
         %td 
-          = truncate(e.body, length: 50)
+          = markdown(truncate(e.body, length: 50))
         %td 
           = e.user.email
         %td #{time_tag(e.created_at)}
