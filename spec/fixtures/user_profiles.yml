@@ -47,3 +47,9 @@ shipper_profile:
   zip_code: "XX"
   location: "It's a secret"
   role_id: 7
+josh_profile:
+  user: josh
+  full_name: "Josh Skywalker"
+  zip_code: "T19"
+  location: "Tatooine"
+  role_id: 8
