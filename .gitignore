@@ -15,7 +15,6 @@
 /tmp
 
 config/database.yml
-config/site.yml
 .yardoc/*
 coverage/*
 *.swp
