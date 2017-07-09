@@ -1,11 +1,6 @@
 common: &common
   program_name: "Demo Travel Support Program"
 
-  secret:
-    devise: 'CHANGEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    token: 'CHANGEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    key_base: 'CHANGEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-
   budget_limits: true
 
   reimbursement_reminder:
@@ -28,7 +23,6 @@ common: &common
 
   opensuse_connect:
     enabled: false
-    api_key: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     base_url: "https://connect.opensuse.org"
 
   external_links:
