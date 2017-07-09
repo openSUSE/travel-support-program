@@ -21,6 +21,8 @@ gem 'turbolinks'
 gem 'haml-rails'
 # To test email with letter opener set the 'async_emails' option in site.yml to false
 gem 'letter_opener_web'
+# For configuration using ENV
+gem 'figaro'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

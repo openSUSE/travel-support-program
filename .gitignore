@@ -22,3 +22,6 @@ coverage/*
 .ruby-version
 public/upload*
 upload*
+
+# Ignore application configuration
+/config/application.yml
