@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.10'
 
 # Choose your weapon
-gem 'sqlite3'
+gem 'sqlite3', group: [:development, :test, :production]
 # gem 'pg'
 # gem 'mysql2', '~> 0.3.13'
 
@@ -80,6 +80,14 @@ group :test do
   gem 'pdf-reader'
   gem 'shoulda-matchers'
   #  gem "delorean"
+end
+
+# To precompile assets on heroku
+gem 'rails_12factor'
+
+# Gems used by heroku
+group :heroku do
+  gem 'pg'
 end
 
 # To use ActiveModel has_secure_password
