@@ -10,7 +10,7 @@
           %a{id: 'state' + s, "data-users" => users_for_event(s.downcase) } #{s}
   %br
   = simple_form_for(resource, url: event_event_emails_path) do |f|
-    = f.input :to, as: :text,readonly: true, input_html: {rows: 1}
+    = f.input :to, as: :text,readonly: true,placeholder: 'Select the recipients', input_html: {rows: 1}
     = f.input :subject
     = f.input :body, as: :text, hint: 'This field supports markdown', input_html: {rows: 12}
     %a{:href => "https://daringfireball.net/projects/markdown/syntax"}
