@@ -56,6 +56,7 @@ feature 'Events', '' do
   scenario 'When a user is not logged in' do
     visit events_path
     click_link "Death Star's destruction celebration"
+    page.should_not have_link('Participants')
     page.should_not have_link('Email')
   end
 
@@ -63,6 +64,7 @@ feature 'Events', '' do
     sign_in_as_user(users(:luke))
     visit events_path
     click_link "Death Star's destruction celebration"
+    page.should_not have_link('Participants')
     page.should_not have_link('Email')
   end
 
@@ -72,8 +74,21 @@ feature 'Events', '' do
 
     click_link "Death Star's destruction celebration"
     page.should have_link('Email')
+    page.should have_link('Participants')
 
     click_link 'Email'
     page.should have_content "Emails for Death Star's destruction celebration"
+
+    visit event_path(events(:party))
+    click_link 'Participants'
+    page.should have_content "Participants of Death Star's destruction celebration"
+    page.all('.table tr').count.should == 6
+
+    page.should_not have_content 'john.skywalker@rebel-alliance.org' # User with a shipment request
+
+    within(:xpath, "(//table[contains(@class, 'table')]//tr)[2]") do
+      page.should have_content 'acalamari'
+      page.should have_content 'gial.ackbar@rebel-alliance.org'
+    end
   end
 end

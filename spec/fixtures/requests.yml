@@ -130,3 +130,10 @@ tspmember_customes_for_party:
   event: party
   created_at: <%= 4.days.ago.to_s(:db) %>
   type: "Shipment"
+
+john_customes_for_party:
+  state: "incomplete"
+  user: john
+  event: party
+  created_at: <%= 4.days.ago.to_s(:db) %>
+  type: "Shipment"

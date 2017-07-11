@@ -32,17 +32,19 @@ feature 'Email Events', '' do
 
     page.check('Submitted')
     page.check('Incomplete')
-    page.should have_field('To', with: 'gial.ackbar@rebel-alliance.org,luke.skywalker@rebel-alliance.org,evram.lajaie@rebel-alliance.org,c3po@droids.com,wedge.antilles@rebel-alliance.org')
+    page.should have_field('To', with: 'gial.ackbar@rebel-alliance.org,luke.skywalker@rebel-alliance.org,evram.lajaie@rebel-alliance.org,'\
+        'john.skywalker@rebel-alliance.org,c3po@droids.com,wedge.antilles@rebel-alliance.org')
 
     page.check('All')
-    page.should have_field('To', with: 'gial.ackbar@rebel-alliance.org,luke.skywalker@rebel-alliance.org,evram.lajaie@rebel-alliance.org,c3po@droids.com,wedge.antilles@rebel-alliance.org')
+    page.should have_field('To', with: 'gial.ackbar@rebel-alliance.org,luke.skywalker@rebel-alliance.org,evram.lajaie@rebel-alliance.org,'\
+        'john.skywalker@rebel-alliance.org,c3po@droids.com,wedge.antilles@rebel-alliance.org')
 
     fill_in 'Subject', with: "Death Star's destruction celebration"
     fill_in 'event_email_body', with: "Event Death Star's destruction celebration to be conducted soon. Be ready."
 
     page.find('.btn-primary').trigger('click')
     page.should have_content 'Email Delivered'
-    ActionMailer::Base.deliveries.size.should == @deliveries + 5
+    ActionMailer::Base.deliveries.size.should == @deliveries + 6
   end
 
   scenario 'Sending mail without a body and a subject', js: true do
