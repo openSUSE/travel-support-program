@@ -1,9 +1,9 @@
 - model_class = Event
 = content_for :page_header do
   .row
-    .col-md-7
+    .col-md-6
       %h1= t('.title', :default => model_class.model_name.human)
-    .col-md-5
+    .col-md-6
       %br
       - if user_signed_in? && can?(:update, resource)
         = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path(resource), :class => 'btn btn-default'
@@ -13,6 +13,8 @@
         = link_to t(:new_travel), new_travel_sponsorship_path(:event_id => resource), :class => 'btn btn-primary'
       - if resource.accepting_shipments?
         = link_to t(:new_shipment), new_shipment_path(:event_id => resource), :class => 'btn btn-primary'
+      - if user_signed_in? && can?(:participants, resource)
+        = link_to "Participants", participants_event_path, class: "btn btn-success"  
       - if user_signed_in? && can?(:index, EventEmail)
         = link_to "Email", event_event_emails_path(@event), class: "btn btn-info"
 

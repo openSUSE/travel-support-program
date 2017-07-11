@@ -1,0 +1,15 @@
+.col-md-12
+  %h3 Participants of #{@event.name}
+  %br
+  %table.table
+    %tr
+      %th #
+      %th Nickname
+      %th Email
+    - @requests.each.with_index(1) do |request,index|
+      %tr
+        %td #{index}
+        %td
+          = request.user.nickname
+        %td
+          = request.user.email
