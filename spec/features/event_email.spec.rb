@@ -3,6 +3,14 @@ require 'spec_helper'
 feature 'Email Events', '' do
   fixtures :all
 
+  scenario 'When there are no participants present', js: true do
+    sign_in_as_user(users(:tspmember))
+    visit event_event_emails_path(events(:hoth_hackaton))
+    click_link 'Compose'
+
+    page.should have_button('Select recipients', disabled: true)
+  end
+
   scenario 'Email the event participants', js: true do
     sign_in_as_user(users(:tspmember))
     visit event_event_emails_path(events(:party))
