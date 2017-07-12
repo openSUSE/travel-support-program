@@ -45,7 +45,7 @@ describe HasStateMailer do
   context 'with never submitted travel sponsorship' do
     before(:each) do
       # Delete some irrelevant requests, to keep tests simple
-      [:administrative, :assistant, :tspmember].each do |user|
+      [:administrative, :assistant, :tspmember, :josh].each do |user|
         requests(:"#{user}_for_party").destroy
       end
 
@@ -98,7 +98,7 @@ describe HasStateMailer do
     end
 
     it 'should remind everybody delegating to subclasses' do
-      @deliveries.count.should == @deliveries_before + 4
+      @deliveries.count.should == @deliveries_before + 5
     end
   end
 end
