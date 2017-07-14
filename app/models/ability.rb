@@ -4,7 +4,7 @@
 class Ability
   include CanCan::Ability
 
-  # rubocop:disable MethodLength,AbcSize
+  # rubocop:disable MethodLength,AbcSize,CyclomaticComplexity,PerceivedComplexity
   def initialize(user)
     # Define abilities for the passed in user here.
     #
@@ -289,5 +289,5 @@ class Ability
       end
     end
   end
-  # rubocop:enable MethodLength,AbcSize
+  # rubocop:enable MethodLength,AbcSize,CyclomaticComplexity,PerceivedComplexity
 end
