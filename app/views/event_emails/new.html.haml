@@ -4,10 +4,11 @@
     %button#select_recp.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button", "data-users" => "#{users_for_event('all').empty?}"}
       Select recipients
       %span.caret
-    %ul.dropdown-menu{"aria-labelledby" => "select_recp"}
+    %ul#state-menu.dropdown-menu{"aria-labelledby" => "select_recp"}
       - %w[All Accepted Incomplete Submitted Approved Cancel].each do |s|
         %li
-          %a{id: 'state' + s, "data-users" => users_for_event(s.downcase) } #{s}
+          %input{id: 'state' + s, "type" => 'checkbox', "data-users" => users_for_event(s.downcase) }
+          %label{'for' => 'state' + s} #{s}
   %br
   = simple_form_for(resource, url: event_event_emails_path) do |f|
     = f.input :to, as: :text,readonly: true,placeholder: 'Select the recipients', input_html: {rows: 1}

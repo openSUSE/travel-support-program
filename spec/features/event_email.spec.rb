@@ -20,25 +20,27 @@ feature 'Email Events', '' do
 
     # To check that users_for_event method is working properly
     click_button('Select recipients')
-    find('a', text: 'Submitted').click
+    page.check('Accepted')
+    page.should have_field('To', with: 'No recipients')
+
+    page.check('Submitted')
     page.should have_field('To', with: 'wedge.antilles@rebel-alliance.org')
-    click_button('Select recipients')
-    find('a', text: 'Incomplete').click
-    page.should have_field('To', with: 'gial.ackbar@rebel-alliance.org,luke.skywalker@rebel-alliance.org,evram.lajaie@rebel-alliance.org,c3po@droids.com')
-    click_button('Select recipients')
-    find('a', text: 'Approved').click
-    page.should have_field('To', with: '')
-    click_button('Select recipients')
-    find('a', text: 'Accepted').click
-    page.should have_field('To', with: '')
-    click_button('Select recipients')
-    find('a', text: 'All').click
+
+    page.uncheck('Submitted')
+    page.check('Approved')
+    page.should have_field('To', with: 'No recipients')
+
+    page.check('Submitted')
+    page.check('Incomplete')
+    page.should have_field('To', with: 'gial.ackbar@rebel-alliance.org,luke.skywalker@rebel-alliance.org,evram.lajaie@rebel-alliance.org,c3po@droids.com,wedge.antilles@rebel-alliance.org')
+
+    page.check('All')
     page.should have_field('To', with: 'gial.ackbar@rebel-alliance.org,luke.skywalker@rebel-alliance.org,wedge.antilles@rebel-alliance.org,evram.lajaie@rebel-alliance.org,c3po@droids.com')
 
     fill_in 'Subject', with: "Death Star's destruction celebration"
     fill_in 'Body', with: "Event Death Star's destruction celebration to be conducted soon. Be ready."
 
-    click_button('Send')
+    page.find('.btn-primary').trigger('click')
     page.should have_content 'Email Delivered'
     ActionMailer::Base.deliveries.size.should == @deliveries + 5
   end
@@ -49,10 +51,10 @@ feature 'Email Events', '' do
     @deliveries = ActionMailer::Base.deliveries.size
 
     click_button('Select recipients')
-    find('a', text: 'Submitted').click
+    page.check('Submitted')
     page.should have_field('To', with: 'wedge.antilles@rebel-alliance.org')
 
-    click_button('Send')
+    page.find('.btn-primary').trigger('click')
     page.should have_content "can't be blank"
     ActionMailer::Base.deliveries.size.should == @deliveries
   end
