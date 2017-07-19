@@ -13,6 +13,8 @@ class Event < ActiveRecord::Base
   has_many :shipments, inverse_of: :event, dependent: :restrict_with_exception
   # Mails for an event
   has_many :event_emails
+  # Users for an event
+  has_many :users, through: :requests
 
   # Budget to use as a limit for approved amounts
   belongs_to :budget

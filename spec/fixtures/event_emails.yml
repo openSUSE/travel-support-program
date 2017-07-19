@@ -11,3 +11,10 @@ hackathon_dates:
   body: "This is a test mail with multiple recipients"
   event: party
   user: tspmember
+
+hackweek:
+  to: "test@example.com,test1@example.com"
+  subject: "Testing mail for Event organizer"
+  body: "This is a test mail"
+  event: training
+  user: tspmember
