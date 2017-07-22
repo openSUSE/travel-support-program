@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
   has_many :state_changes, inverse_of: :user
   # Event Emails send by a user
   has_many :event_emails
+  # Event organizer for events
+  has_many :event_organizers
+  # Events for which the user is an event organizer
+  has_many :events, through: :event_organizers
 
   after_create :create_profile
 

@@ -15,7 +15,9 @@
         = link_to t(:new_shipment), new_shipment_path(:event_id => resource), :class => 'btn btn-primary'
       - if user_signed_in? && can?(:participants, resource)
         = link_to "Participants", participants_event_path, class: "btn btn-success"  
-      - if user_signed_in? && can?(:index, EventEmail)
+      - if user_signed_in? && can?(:index, EventOrganizer)
+        = link_to "Organizers", event_event_organizers_path(@event), class: "btn btn-primary"  
+      - if user_signed_in? && can?(:create, @event => EventEmail)
         = link_to "Email", event_event_emails_path(@event), class: "btn btn-info"
 
 = show_for resource do |r|

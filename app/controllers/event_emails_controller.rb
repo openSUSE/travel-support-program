@@ -1,6 +1,8 @@
 class EventEmailsController < InheritedResources::Base
   actions :all, except: [:edit, :update, :destroy]
   belongs_to :event
+  load_and_authorize_resource :event
+  load_and_authorize_resource :event_email, through: :event
 
   def preview
     @content = params[:content]

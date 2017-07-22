@@ -12,10 +12,12 @@
 #
 #= require jquery
 #= require jquery_ujs
+#= require jquery-ui
 #= require bootstrap
 #= require cocoon
 #= require additional
 #= require event_emails
+#= require autocomplete-rails
 #
 
 window.init_page = ->
