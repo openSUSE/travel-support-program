@@ -3,6 +3,26 @@ require 'spec_helper'
 feature 'Email Events', '' do
   fixtures :all
 
+  scenario 'When logged in as a requester' do
+    sign_in_as_user(users(:wedge))
+
+    visit event_event_emails_path(events(:party))
+    page.should have_content 'You are not allowed to access this page'
+
+    visit event_event_emails_path(events(:hoth_hackaton))
+    page.should have_content 'You are not allowed to access this page'
+  end
+
+  scenario 'When logged in as an event organizer' do
+    sign_in_as_user(users(:luke))
+
+    visit event_event_emails_path(events(:party))
+    page.should have_content "Event email Emails for Death Star's destruction celebration"
+
+    visit event_event_emails_path(events(:hoth_hackaton))
+    page.should have_content 'You are not allowed to access this page'
+  end
+
   scenario 'When there are no participants present', js: true do
     sign_in_as_user(users(:tspmember))
     visit event_event_emails_path(events(:hoth_hackaton))
