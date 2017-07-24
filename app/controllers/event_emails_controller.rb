@@ -2,6 +2,10 @@ class EventEmailsController < InheritedResources::Base
   actions :all, except: [:edit, :update, :destroy]
   belongs_to :event
 
+  def preview
+    @content = params[:content]
+  end
+
   def create
     @event_email.user = current_user
     create!(notice: 'Email Delivered')
