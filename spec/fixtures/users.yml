@@ -34,7 +34,3 @@ shipper:
   email: "dd-19.a1@droids.com"
   nickname: "DD-19.A1"
   encrypted_password: "$2a$10$9avVKOmjbCWh0m5p/frG7uX3S0LbF8ZtRS/QocBkmXiiDbh9.bKsq"
-josh:
-  email: "josh.skywalker@rebel-alliance.org"
-  nickname: "josh27"
-  encrypted_password: "$2a$10$9avVKOmjbCWh0m5p/frG7uX3S0LbF8ZtRS/QocBkmXiiDbh9.bKsq"

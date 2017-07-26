@@ -11,8 +11,7 @@ class UserRole < ActiveHash::Base
     { id: 4, name: 'administrative' },
     { id: 5, name: 'assistant' },
     { id: 6, name: 'material' },
-    { id: 7, name: 'shipper' },
-    { id: 8, name: 'event_organizer' }
+    { id: 7, name: 'shipper' }
   ]
 
   enum_accessor :name

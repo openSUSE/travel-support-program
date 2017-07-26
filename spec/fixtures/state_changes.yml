@@ -25,33 +25,6 @@ luke_for_yavin_acceptance:
   user: luke
   created_at: <%= (30.days.ago + 5.hours).to_s(:db) %>
 
-josh_for_yavin_submission:
-  type: "StateTransition"
-  machine: josh_for_yavin (Request)
-  state_event: "submit"
-  from: "incomplete"
-  to: "submitted"
-  user: josh
-  created_at: <%= (30.days.ago + 1.hour).to_s(:db) %>
-
-josh_for_yavin_approval:
-  type: "StateTransition"
-  machine: josh_for_yavin (Request)
-  state_event: "approve"
-  from: "submitted"
-  to: "approved"
-  user: tspmember
-  created_at: <%= (30.days.ago + 3.hours).to_s(:db) %>
-
-josh_for_yavin_acceptance:
-  type: "StateTransition"
-  machine: josh_for_yavin (Request)
-  state_event: "accept"
-  from: "approved"
-  to: "accepted"
-  user: josh
-  created_at: <%= (30.days.ago + 5.hours).to_s(:db) %>
-
 administrative_for_yavin_submission:
   type: "StateTransition"
   machine: administrative_for_yavin (Request)
