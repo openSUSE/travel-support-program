@@ -33,7 +33,7 @@ requester asks for support detailing the total estimated cost of every involved
 expense and the TSP Committee can approve a given amount for every expense.
 Finally, the explicit requester's acceptance is required.
 
-![Request workflow diagram](Request_state.png)
+![Request workflow diagram](html/TravelSponsorship_state.png)
 
 Once the requester have attended to the event, he/she must provide some reports
 in order to get access to the reimbursement, including digitized copies of
@@ -41,7 +41,7 @@ invoices for every expense. Once again, this reports are validated and approved
 by the Committee. After this validation, the reimbursement must be verified by
 the accounting responsible before the payment order can be issued.
 
-![Reimbursement workflow diagram](Reimbursement_state.png)
+![Reimbursement workflow diagram](html/Reimbursement_state.png)
 
 ## When
 
