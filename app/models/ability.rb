@@ -4,7 +4,7 @@
 class Ability
   include CanCan::Ability
 
-  # rubocop:disable MethodLength,AbcSize,CyclomaticComplexity,PerceivedComplexity
+  # rubocop:disable MethodLength,AbcSize
   def initialize(user)
     # Define abilities for the passed in user here.
     #
@@ -271,16 +271,6 @@ class Ability
       can :read, Shipment
     end
 
-    #
-    # Event Organizer permissions
-    # -------------------
-    #
-    if role == 'event_organizer'
-      can :manage, EventEmail do |r|
-        r.event.users.exists?(user)
-      end
-    end
-
     # FIXME: workaround
     # CanCanCan cannot merge Active Record scope with other conditions
     unless report_full_access
@@ -289,5 +279,5 @@ class Ability
       end
     end
   end
-  # rubocop:enable MethodLength,AbcSize,CyclomaticComplexity,PerceivedComplexity
+  # rubocop:enable MethodLength,AbcSize
 end

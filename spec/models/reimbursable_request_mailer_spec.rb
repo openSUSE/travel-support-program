@@ -6,7 +6,7 @@ describe ReimbursableRequestMailer do
 
   before(:each) do
     # Delete all affected requests but Luke's one, to keep tests simple
-    [:administrative, :assistant, :tspmember, :josh].each do |user|
+    [:administrative, :assistant, :tspmember].each do |user|
       requests(:"#{user}_for_yavin").destroy
     end
   end

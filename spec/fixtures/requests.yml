@@ -12,13 +12,6 @@ luke_for_yavin:
   state_updated_at: <%= (30.days.ago + 5.hours).to_s(:db) %>
   type: "TravelSponsorship"
 
-josh_for_yavin:
-  state: "accepted"
-  user: josh
-  event: yavin_hackaton
-  state_updated_at: <%= (30.days.ago + 5.hours).to_s(:db) %>
-  type: "TravelSponsorship"
-
 administrative_for_yavin:
   state: "accepted"
   user: administrative
@@ -50,13 +43,6 @@ wedge_for_party:
 luke_for_party:
   state: "incomplete"
   user: luke
-  event: party
-  created_at: <%= 6.days.ago.to_s(:db) %>
-  type: "TravelSponsorship"
-
-josh_for_party:
-  state: "incomplete"
-  user: josh
   event: party
   created_at: <%= 6.days.ago.to_s(:db) %>
   type: "TravelSponsorship"
@@ -120,13 +106,6 @@ wedge_customes_for_party:
 luke_customes_for_party:
   state: "incomplete"
   user: luke
-  event: party
-  created_at: <%= 4.days.ago.to_s(:db) %>
-  type: "Shipment"
-
-josh_customes_for_party:
-  state: "incomplete"
-  user: josh
   event: party
   created_at: <%= 4.days.ago.to_s(:db) %>
   type: "Shipment"
