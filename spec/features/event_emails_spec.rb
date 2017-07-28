@@ -38,7 +38,7 @@ feature 'Email Events', '' do
     page.should have_field('To', with: 'gial.ackbar@rebel-alliance.org,luke.skywalker@rebel-alliance.org,wedge.antilles@rebel-alliance.org,evram.lajaie@rebel-alliance.org,c3po@droids.com')
 
     fill_in 'Subject', with: "Death Star's destruction celebration"
-    fill_in 'Body', with: "Event Death Star's destruction celebration to be conducted soon. Be ready."
+    fill_in 'event_email_body', with: "Event Death Star's destruction celebration to be conducted soon. Be ready."
 
     page.find('.btn-primary').trigger('click')
     page.should have_content 'Email Delivered'
@@ -57,6 +57,17 @@ feature 'Email Events', '' do
     page.find('.btn-primary').trigger('click')
     page.should have_content "can't be blank"
     ActionMailer::Base.deliveries.size.should == @deliveries
+  end
+
+  scenario 'Viewing the markdown preview', js: true do
+    sign_in_as_user(users(:tspmember))
+    visit new_event_event_email_path(events(:party))
+
+    fill_in 'event_email_body', with: "# Death Star's destruction celebration"
+    click_link 'Preview'
+    within(:xpath, '//*[@id="preview_screen"]') do
+      page.should have_css('h1', text: "Death Star's destruction celebration")
+    end
   end
 
   scenario 'View an event email and go back with breadcrumb link' do
