@@ -16,7 +16,9 @@ TravelSupport::Application.routes.draw do
   end
 
   resources :events do
-    resources :event_emails, except: [:edit, :update, :destroy]
+    resources :event_emails, except: [:edit, :update, :destroy] do
+      post :preview, on: :collection
+    end
   end
   resources :budgets
 
