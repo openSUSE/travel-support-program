@@ -5,10 +5,10 @@
       Select recipients
       %span.caret
     %ul#state-menu.dropdown-menu{"aria-labelledby" => "select_recp"}
-      - %w[All Accepted Incomplete Submitted Approved Cancel].each do |s|
+      - %w[Incomplete Submitted Approved Accepted Canceled All].each do |state|
         %li
-          %input{id: 'state' + s, "type" => 'checkbox', "data-users" => users_for_event(s.downcase) }
-          %label{'for' => 'state' + s} #{s}
+          %input{id: 'state' + state, "type" => 'checkbox', "data-users" => users_for_event(state.downcase) }
+          %label{'for' => 'state' + state} #{state}
   %br
   = simple_form_for(resource, url: event_event_emails_path) do |f|
     = f.input :to, as: :text,readonly: true,placeholder: 'Select the recipients', input_html: {rows: 1}

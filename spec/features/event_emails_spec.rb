@@ -35,7 +35,7 @@ feature 'Email Events', '' do
     page.should have_field('To', with: 'gial.ackbar@rebel-alliance.org,luke.skywalker@rebel-alliance.org,evram.lajaie@rebel-alliance.org,c3po@droids.com,wedge.antilles@rebel-alliance.org')
 
     page.check('All')
-    page.should have_field('To', with: 'gial.ackbar@rebel-alliance.org,luke.skywalker@rebel-alliance.org,wedge.antilles@rebel-alliance.org,evram.lajaie@rebel-alliance.org,c3po@droids.com')
+    page.should have_field('To', with: 'gial.ackbar@rebel-alliance.org,luke.skywalker@rebel-alliance.org,evram.lajaie@rebel-alliance.org,c3po@droids.com,wedge.antilles@rebel-alliance.org')
 
     fill_in 'Subject', with: "Death Star's destruction celebration"
     fill_in 'event_email_body', with: "Event Death Star's destruction celebration to be conducted soon. Be ready."
