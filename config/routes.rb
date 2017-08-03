@@ -19,6 +19,7 @@ TravelSupport::Application.routes.draw do
     resources :event_emails, except: [:edit, :update, :destroy] do
       post :preview, on: :collection
     end
+    get :participants, on: :member
   end
   resources :budgets
 

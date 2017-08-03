@@ -4,6 +4,15 @@ class EventsController < InheritedResources::Base
   skip_load_and_authorize_resource only: [:index, :show]
   before_filter :set_types
 
+  def participants
+    @breadcrumbs = [
+      { label: 'events', url: events_path },
+      { label: @event.name, url: event_path(@event) },
+      { label: 'participants' }
+    ]
+    @requests = @event.travel_sponsorships.includes(:user).select(:user_id).distinct.accessible_by(current_ability)
+  end
+
   protected
 
   def collection

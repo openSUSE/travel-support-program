@@ -140,7 +140,7 @@ class Ability
       can :manage, Budget
 
       # Events
-      can [:update, :validate], Event
+      can [:update, :validate, :participants], Event
       can :destroy, Event, &:can_be_destroyed?
 
       # Email Events
