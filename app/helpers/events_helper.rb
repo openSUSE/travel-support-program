@@ -12,8 +12,8 @@ module EventsHelper
   end
 
   def users_for_event(state)
-    req = @event.requests
-    req = req.where(state: state) if state != 'all'
-    user_email = req.map { |e| e.user.email }.uniq
+    requests = @event.travel_sponsorships.includes(:user).accessible_by(current_ability)
+    requests = requests.where(state: state) if state != 'all'
+    requests.distinct.pluck('users.email')
   end
 end
