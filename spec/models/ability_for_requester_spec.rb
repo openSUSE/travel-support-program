@@ -24,8 +24,22 @@ describe 'Requester' do
   end
 
   context 'managing event emails' do
-    it { should_not be_able_to(:create, EventEmail.new) }
-    it { should_not be_able_to(:read, event_emails(:party_info)) }
+    context 'is an event organizer' do
+      it { should_not be_able_to(:create, EventEmail.new(event_id: events(:dagobah_camp).id)) }
+      it { should be_able_to(:create, EventEmail.new(event_id: events(:party).id)) }
+      it { should be_able_to(:read, event_emails(:party_info)) }
+    end
+
+    context 'is not a event organizer' do
+      let(:user) { users(:wedge) }
+      it { should_not be_able_to(:create, EventEmail.new) }
+      it { should_not be_able_to(:read, event_emails(:party_info)) }
+    end
+  end
+
+  context 'managing event organizers' do
+    it { should_not be_able_to(:create, EventOrganizer.new) }
+    it { should_not be_able_to(:read, event_organizers(:event_org_luke)) }
   end
 
   context 'managing his own requests' do

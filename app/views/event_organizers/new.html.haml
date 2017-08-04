@@ -1,0 +1,7 @@
+%h3 Add an event organizer for #{@event.name}
+.col-md-3
+  = simple_form_for(resource, url: event_event_organizers_path) do |f|
+    = f.error :user_id
+    = f.input :user_email, url: autocomplete_user_email_event_event_organizers_path, as: :autocomplete, label: false, :input_html => {class: 'form-control', placeholder: 'Search by email'}
+    .form-group  
+      = f.submit "Add", class: 'btn btn-primary btn-sm'

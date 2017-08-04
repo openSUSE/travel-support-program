@@ -115,6 +115,11 @@ ActiveRecord::Schema.define(version: 20170721103402) do
     t.datetime "updated_at"
   end
 
+  create_table "event_organizers", force: true do |t|
+    t.integer "event_id"
+    t.integer "user_id"
+  end
+
   create_table "events", force: true do |t|
     t.string   "name",                            null: false
     t.text     "description"

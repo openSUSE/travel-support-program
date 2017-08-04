@@ -2,6 +2,7 @@ require 'spec_helper'
 require 'cancan/matchers'
 # require 'ruby-debug'
 
+# rubocop:disable BlockLength
 describe 'Administrative' do
   fixtures :all
 
@@ -26,6 +27,11 @@ describe 'Administrative' do
   context 'managing event emails' do
     it { should_not be_able_to(:create, EventEmail.new) }
     it { should_not be_able_to(:read, event_emails(:party_info)) }
+  end
+
+  context 'managing event organizers' do
+    it { should_not be_able_to(:create, EventOrganizer.new) }
+    it { should_not be_able_to(:read, event_organizers(:event_org_luke)) }
   end
 
   context 'managing his own requests' do
@@ -324,3 +330,4 @@ describe 'Administrative' do
     it { should_not be_able_to(:adjust_state, requests(:wedge_customes_for_party)) }
   end
 end
+# rubocop:enable BlockLength

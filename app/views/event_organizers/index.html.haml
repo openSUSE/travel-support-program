@@ -1,0 +1,17 @@
+= link_to 'Add Event Organizer', new_event_event_organizer_path, class: 'btn btn-primary btn-sm'
+%h3 Event Organizers of #{@event.name}
+%table.table
+  %tr
+    %th #
+    %th Nickname
+    %th Email
+    %th 
+  - @event.event_organizers.includes(:user).each.with_index(1) do |organizer, index|
+    %tr
+      %td #{index}
+      %td
+        = organizer.user.nickname
+      %td
+        = organizer.user.email
+      %td
+        = link_to 'Remove', event_event_organizer_path(@event.id,organizer.id), method: :delete, class: 'btn btn-danger btn-xs'

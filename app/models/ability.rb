@@ -70,6 +70,10 @@ class Ability
       e.editable_by_requesters? && e.can_be_destroyed?
     end
 
+    user.events.each do |e|
+      can :manage, EventEmail, event: { id: e.id }
+    end
+
     # TravelSponsorships
     can :create, TravelSponsorship do |r|
       r.event && r.event.accepting_requests?
@@ -145,6 +149,9 @@ class Ability
 
       # Email Events
       can :manage, EventEmail
+
+      # Event Organizers
+      can :manage, EventOrganizer
 
       # TravelSponsorships
       can :read, TravelSponsorship

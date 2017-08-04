@@ -28,6 +28,11 @@ describe 'TSP' do
     it { should be_able_to(:read, event_emails(:party_info)) }
   end
 
+  context 'managing event organizers' do
+    it { should be_able_to(:create, EventOrganizer.new) }
+    it { should be_able_to(:read, event_organizers(:event_org_luke)) }
+  end
+
   context 'managing his own requests' do
     it { should_not be_able_to(:create, TravelSponsorship.new) }
     it { should be_able_to(:create, TravelSponsorship.new(event_id: events(:dagobah_camp).id)) }

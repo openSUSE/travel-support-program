@@ -28,6 +28,11 @@ describe 'Material' do
     it { should_not be_able_to(:read, event_emails(:party_info)) }
   end
 
+  context 'managing event organizers' do
+    it { should_not be_able_to(:create, EventOrganizer.new) }
+    it { should_not be_able_to(:read, event_organizers(:event_org_luke)) }
+  end
+
   context 'managing requests' do
     it { should_not be_able_to(:create, Request.new) }
     it { should_not be_able_to(:read, requests(:wedge_for_party)) }

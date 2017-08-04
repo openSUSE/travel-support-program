@@ -15,6 +15,8 @@ class Event < ActiveRecord::Base
   has_many :travel_sponsorships, inverse_of: :event, dependent: :restrict_with_exception
   # Mails for an event
   has_many :event_emails
+  # Event Organizers for the event
+  has_many :event_organizers
   # Budget to use as a limit for approved amounts
   belongs_to :budget
 
