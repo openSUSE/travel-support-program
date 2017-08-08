@@ -30,4 +30,22 @@ describe EventsHelper, type: :helper do
       expect(users_for_event('accepted')) .to eq([])
     end
   end
+
+  describe '#state_label' do
+    it 'should return primary-label' do
+      expect(state_label('submitted')). to eq 'label-primary'
+    end
+    it 'should return danger-label' do
+      expect(state_label('canceled')). to eq 'label-danger'
+    end
+    it 'should return warning-label' do
+      expect(state_label('incomplete')). to eq 'label-warning'
+    end
+    it 'should return success-label' do
+      expect(state_label('accepted')). to eq 'label-success'
+    end
+    it 'should return success-label' do
+      expect(state_label('approved')). to eq 'label-success'
+    end
+  end
 end

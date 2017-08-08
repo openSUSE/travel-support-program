@@ -10,7 +10,7 @@ class EventsController < InheritedResources::Base
       { label: @event.name, url: event_path(@event) },
       { label: 'participants' }
     ]
-    @requests = @event.travel_sponsorships.includes(:user).select(:user_id).distinct.accessible_by(current_ability)
+    @requests = @event.travel_sponsorships.includes(:user).group(:user_id).accessible_by(current_ability)
   end
 
   protected

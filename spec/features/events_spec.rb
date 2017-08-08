@@ -101,6 +101,7 @@ feature 'Events', '' do
     within(:xpath, "(//table[contains(@class, 'table')]//tr)[2]") do
       page.should have_content 'acalamari'
       page.should have_content 'gial.ackbar@rebel-alliance.org'
+      page.should have_content 'incomplete'
     end
   end
 end
