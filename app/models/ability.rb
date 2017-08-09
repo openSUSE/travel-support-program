@@ -65,6 +65,9 @@ class Ability
 
     # Events
     can [:read, :create], Event
+    can [:participants], Event do |e|
+      user.organizing_events.exists?(e.id)
+    end
     can :update, Event, &:editable_by_requesters?
     can :destroy, Event do |e|
       e.editable_by_requesters? && e.can_be_destroyed?
@@ -73,6 +76,7 @@ class Ability
     # Abilities for an event organizer
     user.organizing_events.each do |e|
       can :manage, EventEmail, event: { id: e.id }
+      can :read, TravelSponsorship, event_id: e.id
     end
 
     # TravelSponsorships

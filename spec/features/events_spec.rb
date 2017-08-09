@@ -74,9 +74,13 @@ feature 'Events', '' do
     sign_in_as_user(users(:luke))
     visit events_path
     click_link "Death Star's destruction celebration"
-    page.should_not have_link('Participants')
+    page.should have_link('Participants')
     page.should have_link('Email')
     page.should_not have_link('Organizer')
+
+    click_link 'Participants'
+    page.should have_content "Participants of Death Star's destruction celebration"
+    page.all('.table tr').count.should == 6
   end
 
   scenario 'User logged in is a tsp member' do
