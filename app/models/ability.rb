@@ -70,7 +70,8 @@ class Ability
       e.editable_by_requesters? && e.can_be_destroyed?
     end
 
-    user.events.each do |e|
+    # Abilities for an event organizer
+    user.organizing_events.each do |e|
       can :manage, EventEmail, event: { id: e.id }
     end
 
