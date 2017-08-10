@@ -23,4 +23,14 @@ class EventEmailsController < InheritedResources::Base
   def permitted_params
     params.permit(event_email: [:to, :subject, :body])
   end
+
+  def set_breadcrumbs
+    @breadcrumbs = [
+      { label: 'events', url: events_path },
+      { label: @event.name, url: event_path(@event) },
+      { label: resource_class.model_name.human(count: 2), url: collection_path }
+    ]
+    @breadcrumbs << { label: 'new' } if action_name == 'new'
+    @breadcrumbs << { label: resource, url: resource_path } if %w[show edit update].include? action_name
+  end
 end
