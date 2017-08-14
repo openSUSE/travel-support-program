@@ -59,8 +59,17 @@ describe 'Requester' do
   end
 
   context "trying to look into other's requests" do
-    it { should_not be_able_to(:read, requests(:wedge_for_yavin)) }
-    it { should_not be_able_to(:read, requests(:wedge_for_party)) }
+    context 'is an event organizer' do
+      it { should_not be_able_to(:read, requests(:wedge_for_yavin)) }
+      it { should be_able_to(:read, requests(:wedge_for_party)) }
+    end
+
+    context 'is not an event organizer' do
+      let(:user) { users(:anakin) }
+      it { should_not be_able_to(:read, requests(:wedge_for_yavin)) }
+      it { should_not be_able_to(:read, requests(:wedge_for_party)) }
+    end
+
     it { should_not be_able_to(:update, requests(:wedge_for_party)) }
     it { should_not be_able_to(:adjust_state, requests(:wedge_for_party)) }
   end

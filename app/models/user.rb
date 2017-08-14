@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   # Event organizer for events
   has_many :event_organizers
   # Events for which the user is an event organizer
-  has_many :events, through: :event_organizers
+  has_many :organizing_events, through: :event_organizers, source: :event
 
   after_create :create_profile
 
