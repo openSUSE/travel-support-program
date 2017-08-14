@@ -11,4 +11,13 @@ class EventOrganizersController < InheritedResources::Base
   def permitted_params
     params.permit(event_organizer: [:user_email])
   end
+
+  def set_breadcrumbs
+    @breadcrumbs = [
+      { label: 'events', url: events_path },
+      { label: @event.name, url: event_path(@event) },
+      { label: resource_class.model_name.human(count: 2), url: collection_path }
+    ]
+    @breadcrumbs << { label: 'Add' } if action_name == 'new'
+  end
 end
