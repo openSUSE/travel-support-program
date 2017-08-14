@@ -6,6 +6,7 @@
       %th #
       %th Nickname
       %th Email
+      %th State
     - @requests.each.with_index(1) do |request,index|
       %tr
         %td #{index}
@@ -13,3 +14,5 @@
           = request.user.nickname
         %td
           = request.user.email
+        %td
+          = content_tag(:span, request.state, class: "label #{state_label(request.state)}")

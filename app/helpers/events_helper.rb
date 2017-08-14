@@ -16,4 +16,19 @@ module EventsHelper
     requests = requests.where(state: state) if state != 'all'
     requests.distinct.pluck('users.email')
   end
+
+  def state_label(state)
+    case state
+    when 'submitted'
+      'label-primary'
+    when 'canceled'
+      'label-danger'
+    when 'incomplete'
+      'label-warning'
+    when 'accepted'
+      'label-success'
+    when 'approved'
+      'label-success'
+    end
+  end
 end
