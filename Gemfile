@@ -28,6 +28,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# Debugger
+gem 'byebug', group: [:development, :test]
+
 # less support
 gem 'less-rails'
 gem 'therubyracer', platforms: :ruby
