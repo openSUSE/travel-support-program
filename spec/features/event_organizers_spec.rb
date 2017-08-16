@@ -24,9 +24,11 @@ feature 'Email Events', '' do
     click_link 'Add Event Organizer'
     page.should have_content "Add an event organizer for Death Star's destruction celebration"
 
-    fill_in 'event_organizer_user_email', with: users(:wedge).email
-    click_button 'Add'
+    fill_in 'event_organizer_user_email', with: 'acala'
+    find('#ui-id-2').click # Click the first item in the autocomplete dropdown
+    page.should have_field('event_organizer_user_email', with: 'gial.ackbar@rebel-alliance.org')
 
+    click_button 'Add'
     page.should have_content 'Event Organizer Added'
   end
 end

@@ -30,7 +30,6 @@ end
 
 # less support
 gem 'less-rails'
-gem 'rails4-autocomplete'
 gem 'therubyracer', platforms: :ruby
 gem 'twitter-bootstrap-rails'
 

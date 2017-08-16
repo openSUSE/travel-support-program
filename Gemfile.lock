@@ -201,8 +201,6 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.10)
       sprockets-rails (~> 2.0)
-    rails4-autocomplete (1.1.1)
-      rails (>= 3.0)
     railties (4.1.10)
       actionpack (= 4.1.10)
       activesupport (= 4.1.10)
@@ -369,7 +367,6 @@ DEPENDENCIES
   prawn (~> 0.13.0)
   prawn_rails
   rails (= 4.1.10)
-  rails4-autocomplete
   ransack
   redcarpet
   rspec-rails

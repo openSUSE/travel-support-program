@@ -17,7 +17,7 @@
 #= require cocoon
 #= require additional
 #= require event_emails
-#= require autocomplete-rails
+#= require event_organizers
 #
 
 window.init_page = ->
