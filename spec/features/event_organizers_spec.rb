@@ -31,4 +31,14 @@ feature 'Email Events', '' do
     click_button 'Add'
     page.should have_content 'Event Organizer Added'
   end
+
+  scenario 'When entered user does not exist', js: true do
+    sign_in_as_user(users(:tspmember))
+    visit new_event_event_organizer_path(events(:party))
+
+    fill_in 'event_organizer_user_email', with: 'random_user'
+    click_button 'Add'
+
+    page.should have_content 'No such user exist'
+  end
 end
