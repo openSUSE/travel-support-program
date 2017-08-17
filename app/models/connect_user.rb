@@ -11,7 +11,7 @@ class ConnectUser
   # @return [ConnectUser]
   def initialize(login)
     api_conf = TravelSupport::Config.setting(:opensuse_connect)
-    api_key = api_conf['api_key']
+    api_key = ENV['opensuse_connect_api_key']
     url = api_conf['base_url'] + '/services/api/rest/json'
     method = 'connect.user.attribute.get'
     elgg = Elgg.new(url, api_key)

@@ -15,10 +15,12 @@
 /tmp
 
 config/database.yml
-config/site.yml
 .yardoc/*
 coverage/*
 *.swp
 .ruby-version
 public/upload*
 upload*
+
+# Ignore application configuration
+/config/application.yml

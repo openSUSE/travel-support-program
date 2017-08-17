@@ -10,7 +10,6 @@ addons:
       - libqtwebkit-dev
 before_script:
   - cp config/database.travis.yml config/database.yml
-  - cp config/site.example.yml config/site.yml
   - bundle exec rake db:migrate RAILS_ENV=test
 script: 
   - bundle exec rubocop
