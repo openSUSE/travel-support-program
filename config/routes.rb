@@ -21,7 +21,7 @@ TravelSupport::Application.routes.draw do
     end
     get :participants, on: :member
     resources :event_organizers, except: [:edit, :update, :show] do
-      get :autocomplete_user_email, :on => :collection
+      get :autocomplete_user, :on => :collection
     end
   end
   resources :budgets
