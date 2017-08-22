@@ -1,0 +1,28 @@
+states: &states
+
+  travel_sponsorships:
+    assign_states:
+      - incomplete: 'requester'
+      - submitted: 'tsp'
+      - approved: 'requester'
+    notify_states:
+      - incomplete:
+          - to: ['requester', 'tsp', 'assistant']
+          - remind_to: 'requester'
+          - remind_after: 5
+      - submitted:
+          - to: ['requester', 'tsp', 'assistant']
+          - remind_to: ''
+          - remind_after: 0
+      - approved:
+          - to: ['requester', 'tsp', 'assistant']
+          - remind_to: 'requester'
+          - remind_after: 5
+      - accepted:
+          - to: ['requester', 'tsp', 'assistant']
+          - remind_to: ''
+          - remind_after: 0
+      - canceled:
+          - to: ['requester', 'tsp', 'assistant']
+          - remind_to: ''
+          - remind_after: 0

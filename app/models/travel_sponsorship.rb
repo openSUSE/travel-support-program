@@ -44,23 +44,16 @@ class TravelSponsorship < ReimbursableRequest
 
   # @see HasState.assign_state
   # @see HasState.notify_state
-  assign_state :incomplete, to: :requester
-  notify_state :incomplete, to: [:requester, :tsp, :assistant],
-                            remind_to: :requester,
-                            remind_after: 5.days
+  STATES['travel_sponsorships']['assign_states'].each do |state|
+    assign_state state.keys[0].to_sym, to: state.values.first.to_sym
+  end
 
-  assign_state :submitted, to: :tsp
-  notify_state :submitted, to: [:requester, :tsp, :assistant],
-                           remind_after: 10.days
-
-  assign_state :approved, to: :requester
-  notify_state :approved, to: [:requester, :tsp, :assistant],
-                          remind_to: :requester,
-                          remind_after: 5.days
-
-  notify_state :accepted, to: [:requester, :tsp, :assistant]
-
-  notify_state :canceled, to: [:requester, :tsp, :assistant]
+  STATES['travel_sponsorships']['notify_states'].each do |state|
+    key =  state.keys[0]
+    notify_state key.to_sym, to: state[key].first['to'].map(&:to_sym),
+                             remind_to: state[key].second['remind_to'].to_sym,
+                             remind_after: state[key].third['remind_after'].days
+  end
 
   # @see HasState.allow_transition
   allow_transition :submit, :requester
