@@ -44,6 +44,7 @@ GEM
       rails (>= 3.1)
     bcrypt (3.1.10)
     builder (3.2.3)
+    byebug (9.0.6)
     cancancan (1.10.1)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -338,6 +339,7 @@ PLATFORMS
 DEPENDENCIES
   active_hash
   axlsx_rails
+  byebug
   cancancan (~> 1.7)
   capybara
   capybara-email
