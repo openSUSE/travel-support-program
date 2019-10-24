@@ -3,9 +3,9 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.10'
 
 # Choose your weapon
-gem 'sqlite3'
-# gem 'pg'
-# gem 'mysql2', '~> 0.3.13'
+gem 'sqlite3', '~> 1.3.13'
+#gem 'pg', '~> 0.21'
+#gem 'mysql2', '~> 0.3.13'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
