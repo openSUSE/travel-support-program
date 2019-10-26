@@ -30,7 +30,7 @@ class ApplicationMailer < ActionMailer::Base
     if TravelSupport::Config.setting(:async_emails)
       delay.send(method, *args)
     else
-      send(method, *args).deliver
+      send(method, *args).deliver_now
     end
   end
 end

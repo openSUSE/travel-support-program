@@ -19,7 +19,7 @@
 #
 class DpickerInput < SimpleForm::Inputs::StringInput
   def input(_wrapper_options = {})
-    input_html_options[:size]      ||= [limit, SimpleForm.default_input_size].compact.min
+    input_html_options[:size]      ||= limit if limit
     input_html_options[:maxlength] ||= limit if limit
     input_html_options[:type]      ||= 'text'
     input_html_options['data-date-autoclose'] = true

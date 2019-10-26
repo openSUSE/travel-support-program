@@ -58,7 +58,7 @@ class ApplicationController < ActionController::Base
 
   # Needed by devise in Rails 4
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :nickname
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
   end
 
   # To generate proper urls when testing the mailers ignoring the

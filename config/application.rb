@@ -49,5 +49,8 @@ module TravelSupport
 
     # Enable the asset pipeline
     config.assets.enabled = true
+
+    # Remove warning about new Rails behavior
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end
