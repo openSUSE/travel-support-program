@@ -3,9 +3,9 @@
 # First of all, coveralls
 require 'simplecov'
 require 'coveralls'
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-  SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter]
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
+  [SimpleCov::Formatter::HTMLFormatter, Coveralls::SimpleCov::Formatter]
+)
 SimpleCov.start 'rails' do
   # Not covered because they are overriden in spec/support/carrierwave.rb
   add_filter 'app/uploaders/'
@@ -14,7 +14,6 @@ end
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara/email/rspec'
@@ -28,6 +27,10 @@ ActiveRecord::Migration.maintain_test_schema!
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
+  config.include(Shoulda::Matchers::ActiveModel)
+  config.include(Shoulda::Matchers::ActiveRecord)
+  config.expect_with(:rspec) { |expectations| expectations.syntax = [:should, :expect] }
+
   Capybara.javascript_driver = :webkit
 
   # ## Mock Framework

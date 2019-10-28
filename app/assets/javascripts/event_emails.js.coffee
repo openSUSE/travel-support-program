@@ -28,7 +28,7 @@ $("input[type='checkbox']").each ->
 $('#state-menu').click (event) ->
   event.stopPropagation()
 
-$('a[href=#preview]').click ->
+$('a[href="#preview"]').click ->
   $("#preview_screen").html("<h3>Loading...</h3>")
   $.ajax
    url: '/events/' + $(this).data('event-id') + '/event_emails/preview'

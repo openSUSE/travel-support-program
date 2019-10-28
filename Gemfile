@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.10'
+gem 'rails', '4.2.11.1'
+gem 'responders', '~> 2.0'
 
 # Choose your weapon
 gem 'sqlite3', '~> 1.3.13'
-#gem 'pg', '~> 0.21'
-#gem 'mysql2', '~> 0.3.13'
+# gem 'pg', '~> 0.21'
+# gem 'mysql2', '~> 0.3.13'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -52,6 +53,7 @@ gem 'kaminari'
 gem 'localized_country_select'
 gem 'prawn', '~> 0.13.0'
 gem 'prawn_rails'
+gem 'puma'
 gem 'ransack'
 gem 'show_for'
 gem 'simple_form'
@@ -74,10 +76,11 @@ group :development do
   gem 'yard-activerecord'
   # for static code analisys
   gem 'rubocop', '~> 0.49.1', require: false
+  gem 'web-console', '~> 2.0'
 end
 
 group :test do
-  gem 'capybara'
+  gem 'capybara', '~> 2.0'
   gem 'capybara-email'
   gem 'capybara-webkit'
   gem 'database_cleaner', '~> 1.3.0'

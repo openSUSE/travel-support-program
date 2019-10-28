@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Event, type: :mailer do
   fixtures :all
   describe 'Event Info' do
-    let(:mail) { EventMailer.event_info(event_emails(:party_info).to, event_emails(:party_info)).deliver }
+    let(:mail) { EventMailer.event_info(event_emails(:party_info).to, event_emails(:party_info)).deliver_now }
 
     it 'renders the headers' do
       expect(mail.subject).to eq('Testing mail')

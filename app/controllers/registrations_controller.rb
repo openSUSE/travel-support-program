@@ -12,7 +12,7 @@ class RegistrationsController < Devise::RegistrationsController
       # Sign in the user bypassing validation in case his password changed
       # set_flash_key :notice, :updated
       flash[:notice] = 'Dreamland'
-      sign_in @user, bypass: true
+      bypass_sign_in @user
       set_flash_message :notice, :updated
       redirect_to edit_user_registration_path
     else
