@@ -5,16 +5,12 @@ services:
     build: .
     volumes:
       - .:/app
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      - ~/.Xauthority:/root/.Xauthority
     ports:
       - "3000:3000"
     depends_on:
       - db
-    environment:
-      DISPLAY: "${DISPLAY}"
   db:
-    image: mysql:5.6
+    image: mariadb:10.2
     restart: always
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"

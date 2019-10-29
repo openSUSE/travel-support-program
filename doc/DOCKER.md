@@ -27,7 +27,7 @@ straighforward.
 
 5. (Optional) Run the testsuite to find out whether the application works.
 
-        docker-compose run --rm web rake spec
+        docker-compose run --rm web xvfb-run -a rake spec
 
 6. And, now, you can start the application:
 

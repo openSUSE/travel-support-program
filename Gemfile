@@ -6,7 +6,7 @@ gem 'responders', '~> 2.0'
 # Choose your weapon
 gem 'sqlite3', '~> 1.3.13'
 # gem 'pg', '~> 0.21'
-# gem 'mysql2', '~> 0.3.13'
+# gem 'mysql2', '~> 0.4.10'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
