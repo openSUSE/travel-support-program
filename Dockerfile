@@ -1,5 +1,8 @@
 FROM opensuse/leap:15.1
 
+# This includes several packages (like WebKit, xvfb or liberation-fonts)
+# That are only needed to run the automated tests and wouldn't be relevant
+# in a production environment.
 RUN zypper --gpg-auto-import-keys --non-interactive in --no-recommends \
   ruby ruby-devel ruby2.5-rubygem-bundler libxml2-devel libxslt-devel \
   postgresql-devel sqlite3-devel libmariadb-devel \

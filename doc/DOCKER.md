@@ -9,7 +9,7 @@ straighforward.
 1. Select a `docker-compose` configuration file from the `docker/` directory and copy it as
    `docker-compose.yml`. For instance, to run the application using a PostgreSQL database:
 
-        cp docker/docker-compose.postgresql docker-compose.yml
+        cp docker/docker-compose.development.postgresql docker-compose.yml
 
 2. Uncomment the gem for your favorite database driver from the `Gemfile`.
 3. Copy the database configuration from `docker/` for your database. For instance,
