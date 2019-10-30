@@ -10,15 +10,19 @@ describe EventsHelper, type: :helper do
 
   describe '#users_for_event' do
     it 'returns email of all the participants of the event' do
-      expect(users_for_event('all')).to eq(['gial.ackbar@rebel-alliance.org', 'luke.skywalker@rebel-alliance.org', 'wedge.antilles@rebel-alliance.org',
-                                            'evram.lajaie@rebel-alliance.org', 'c3po@droids.com'])
+      expect(users_for_event('all')).to eq(
+        ['c3po@droids.com', 'evram.lajaie@rebel-alliance.org', 'gial.ackbar@rebel-alliance.org',
+         'luke.skywalker@rebel-alliance.org', 'wedge.antilles@rebel-alliance.org']
+      )
     end
     it 'returns emails of participants with their request in submitted state' do
       expect(users_for_event('submitted')).to eq(['wedge.antilles@rebel-alliance.org'])
     end
     it 'returns emails of participants with their request in incomplete state' do
-      expect(users_for_event('incomplete')).to eq(['gial.ackbar@rebel-alliance.org', 'luke.skywalker@rebel-alliance.org', 'evram.lajaie@rebel-alliance.org',
-                                                   'c3po@droids.com'])
+      expect(users_for_event('incomplete')).to eq(
+        ['c3po@droids.com', 'evram.lajaie@rebel-alliance.org',
+         'gial.ackbar@rebel-alliance.org', 'luke.skywalker@rebel-alliance.org']
+      )
     end
     it 'returns emails of participants with their request in canceled state' do
       expect(users_for_event('canceled')) .to eq([])

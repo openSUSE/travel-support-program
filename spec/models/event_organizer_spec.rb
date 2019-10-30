@@ -13,6 +13,6 @@ describe EventOrganizer do
 
   it 'nickname and email of the user' do
     expect(EventOrganizer.autocomplete_users('john')).to eq [['johnsnow', 'john.skywalker@rebel-alliance.org']]
-    expect(EventOrganizer.autocomplete_users('co')).to eq [['C3PO', 'c3po@droids.com'], ['DD-19.A1', 'dd-19.a1@droids.com'], ['commanderlajaier', 'evram.lajaie@rebel-alliance.org']]
+    expect(EventOrganizer.autocomplete_users('co')).to eq [['C3PO', 'c3po@droids.com'], ['commanderlajaier', 'evram.lajaie@rebel-alliance.org'], ['DD-19.A1', 'dd-19.a1@droids.com']]
   end
 end
