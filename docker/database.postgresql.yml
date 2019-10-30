@@ -1,8 +1,12 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
+# Ensure the PostgreSQL connector gem is defined in your Gemfile
+# gem 'pg'
+
+# Warning: this proposes the usage of the postgres superuser with no password.
+# That's done for simplicity because this docker manifest is only meant for
+# development purposes and, for that, a user with privileges to create and
+# destroy databases is very convenient.
+# NEVER use such setup in a production system.
+
 development:
   adapter: postgresql
   encoding: unicode
@@ -22,13 +26,4 @@ test:
   pool: 5
   host: db
   username: postgres
-  password:
-
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: tsp_production
-  pool: 5
-  host: db
-  username: rails
   password:
