@@ -1,5 +1,21 @@
 require 'state_machines/graphviz'
 
+class StateMachine::YARD::Handlers::Base
+  alias tsp_extract_node_name extract_node_name
+
+  def extract_node_name(ast)
+    # Introduce support for syntax like:
+    #   state_machine :state, initial: :incomplete
+    # Without this patch, only this syntax would be recognized
+    #   state_machine :state, :initial => :incomplete
+    if ast.type == :label
+      ast[0].to_sym
+    else
+      tsp_extract_node_name(ast)
+    end
+  end
+end
+
 class StateMachine::YARD::Handlers::Transition
   def process
     if [StateMachines::Machine, StateMachines::Event, StateMachines::State].include?(owner.class)
@@ -15,6 +31,20 @@ class StateMachine::YARD::Handlers::Transition
       end
 
       owner.transition(options)
+    end
+  end
+
+  alias tsp_extract_requirement extract_requirement
+
+  def extract_requirement(ast)
+    # Introduce support for syntax like:
+    #   transition incomplete: :submitted
+    # Without this patch, only this syntax would be recognized
+    #   transition :incomplete => :submitted
+    if ast.type == :label
+      extract_node_name(ast)
+    else
+      tsp_extract_requirement(ast)
     end
   end
 end
