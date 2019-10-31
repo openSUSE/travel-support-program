@@ -24,11 +24,16 @@ name).
 
 ## Requirements
 
-* Ruby >= 1.9
+* Ruby >= 2.4
 * Any Rails supported database system: PosgreSQL, SQLite3, MariaDB, MySQL...
 
 ## Installation
 Please refer to [INSTALL](doc/INSTALL.md) documentation file
+
+## Development
+To simplify the process of setting up a development environment, this repository
+includes some `docker-compose` configuration examples. Check the
+[DOCKER](doc/DOCKER.md) documentation file.
 
 ## Contact
 

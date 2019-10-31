@@ -1,0 +1,14 @@
+version: '3'
+services:
+  web:
+    image: tsp:latest
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+  db:
+    image: postgres:9.6
+    restart: always

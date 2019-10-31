@@ -14,7 +14,7 @@ module EventsHelper
   def users_for_event(state)
     requests = @event.travel_sponsorships.includes(:user).accessible_by(current_ability)
     requests = requests.where(state: state) if state != 'all'
-    requests.distinct.pluck('users.email')
+    requests.distinct.order('users.email').pluck('users.email')
   end
 
   def state_label(state)
