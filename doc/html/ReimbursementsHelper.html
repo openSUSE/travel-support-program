@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
   Module: ReimbursementsHelper
   
-    &mdash; Documentation by YARD 0.8.7.4
+    &mdash; Documentation by YARD 0.9.20
   
 </title>
 
@@ -15,9 +15,8 @@
   <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  hasFrames = window.top.frames.main ? true : false;
+  pathId = "ReimbursementsHelper";
   relpath = '';
-  framesUrl = "frames.html#!ReimbursementsHelper.html";
 </script>
 
 
@@ -28,61 +27,61 @@
 
   </head>
   <body>
-    <div id="header">
-      <div id="menu">
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
   
     <a href="_index.html">Index (R)</a> &raquo;
     
     
     <span class="title">ReimbursementsHelper</span>
   
-
-  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
-      <div id="search">
+        <div id="search">
   
     <a class="full_list_link" id="class_list_link"
         href="class_list.html">
-      Class List
-    </a>
-  
-    <a class="full_list_link" id="method_list_link"
-        href="method_list.html">
-      Method List
-    </a>
-  
-    <a class="full_list_link" id="file_list_link"
-        href="file_list.html">
-      File List
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
     </a>
   
 </div>
-      <div class="clear"></div>
-    </div>
+        <div class="clear"></div>
+      </div>
 
-    <iframe id="search_frame"></iframe>
-
-    <div id="content"><h1>Module: ReimbursementsHelper
+      <div id="content"><h1>Module: ReimbursementsHelper
   
   
   
 </h1>
+<div class="box_info">
+  
 
-<dl class="box">
-  
-  
-    
-  
-    
   
   
   
-    <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">app/helpers/reimbursements_helper.rb</dd>
   
-</dl>
-<div class="clear"></div>
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>app/helpers/reimbursements_helper.rb</dd>
+  </dl>
+  
+</div>
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
@@ -104,7 +103,7 @@
   
     <h2>
       Instance Method Summary
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+      <small><a href="#" class="summary_toggle">collapse</a></small>
     </h2>
 
     <ul class="summary">
@@ -112,7 +111,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#can_read_pdf_for%3F-instance_method" title="#can_read_pdf_for? (instance method)">- (Boolean) <strong>can_read_pdf_for?</strong>(reimb) </a>
+      <a href="#can_read_pdf_for%3F-instance_method" title="#can_read_pdf_for? (instance method)">#<strong>can_read_pdf_for?</strong>(reimb)  &#x21d2; Boolean </a>
     
 
     
@@ -135,7 +134,29 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#check_request_link-instance_method" title="#check_request_link (instance method)">- (String) <strong>check_request_link</strong>(reimbursement) </a>
+      <a href="#check_request_bank_value-instance_method" title="#check_request_bank_value (instance method)">#<strong>check_request_bank_value</strong>(account, field)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#check_request_link-instance_method" title="#check_request_link (instance method)">#<strong>check_request_link</strong>(reimbursement)  &#x21d2; String </a>
     
 
     
@@ -158,7 +179,29 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#check_request_value-instance_method" title="#check_request_value (instance method)">- (String) <strong>check_request_value</strong>(reimb, field) </a>
+      <a href="#check_request_reimb_value-instance_method" title="#check_request_reimb_value (instance method)">#<strong>check_request_reimb_value</strong>(reimb, field)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#check_request_value-instance_method" title="#check_request_value (instance method)">#<strong>check_request_value</strong>(reimb, field)  &#x21d2; String </a>
     
 
     
@@ -181,7 +224,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#manual_authorized_amount_is_needed_for%3F-instance_method" title="#manual_authorized_amount_is_needed_for? (instance method)">- (Boolean) <strong>manual_authorized_amount_is_needed_for?</strong>(reimb) </a>
+      <a href="#manual_authorized_amount_is_needed_for%3F-instance_method" title="#manual_authorized_amount_is_needed_for? (instance method)">#<strong>manual_authorized_amount_is_needed_for?</strong>(reimb)  &#x21d2; Boolean </a>
     
 
     
@@ -204,7 +247,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#reimbursement_acceptance_file-instance_method" title="#reimbursement_acceptance_file (instance method)">- (String) <strong>reimbursement_acceptance_file</strong>(reimbursement) </a>
+      <a href="#reimbursement_acceptance_file-instance_method" title="#reimbursement_acceptance_file (instance method)">#<strong>reimbursement_acceptance_file</strong>(reimbursement)  &#x21d2; String </a>
     
 
     
@@ -227,7 +270,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#reimbursement_attachments-instance_method" title="#reimbursement_attachments (instance method)">- (String) <strong>reimbursement_attachments</strong>(reimbursement) </a>
+      <a href="#reimbursement_attachments-instance_method" title="#reimbursement_attachments (instance method)">#<strong>reimbursement_attachments</strong>(reimbursement)  &#x21d2; String </a>
     
 
     
@@ -250,7 +293,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#reimbursement_links-instance_method" title="#reimbursement_links (instance method)">- (String) <strong>reimbursement_links</strong>(reimbursement) </a>
+      <a href="#reimbursement_links-instance_method" title="#reimbursement_links (instance method)">#<strong>reimbursement_links</strong>(reimbursement)  &#x21d2; String </a>
     
 
     
@@ -273,7 +316,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#reimbursement_payments-instance_method" title="#reimbursement_payments (instance method)">- (String) <strong>reimbursement_payments</strong>(reimbursement) </a>
+      <a href="#reimbursement_payments-instance_method" title="#reimbursement_payments (instance method)">#<strong>reimbursement_payments</strong>(reimbursement)  &#x21d2; String </a>
     
 
     
@@ -305,7 +348,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="can_read_pdf_for?-instance_method">
   
-    - (<tt>Boolean</tt>) <strong>can_read_pdf_for?</strong>(reimb) 
+    #<strong>can_read_pdf_for?</strong>(reimb)  &#x21d2; <tt>Boolean</tt> 
   
 
   
@@ -364,12 +407,12 @@ pdf version includes information about the user profile and bank information.</p
       <pre class="lines">
 
 
-161
-162
-163</pre>
+197
+198
+199</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/reimbursements_helper.rb', line 161</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/reimbursements_helper.rb', line 197</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_can_read_pdf_for?'>can_read_pdf_for?</span><span class='lparen'>(</span><span class='id identifier rubyid_reimb'>reimb</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_can?'>can?</span><span class='lparen'>(</span><span class='symbol'>:read</span><span class='comma'>,</span> <span class='id identifier rubyid_reimb'>reimb</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_can?'>can?</span><span class='lparen'>(</span><span class='symbol'>:read</span><span class='comma'>,</span> <span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_profile'>profile</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_bank_account'>bank_account</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_can?'>can?</span><span class='lparen'>(</span><span class='symbol'>:read</span><span class='comma'>,</span> <span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_bank_account'>bank_account</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -380,9 +423,77 @@ pdf version includes information about the user profile and bank information.</p
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="check_request_bank_value-instance_method">
+  
+    #<strong>check_request_bank_value</strong>(account, field)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/reimbursements_helper.rb', line 169</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_check_request_bank_value'>check_request_bank_value</span><span class='lparen'>(</span><span class='id identifier rubyid_account'>account</span><span class='comma'>,</span> <span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_is_iban'>is_iban</span> <span class='op'>=</span> <span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_format'>format</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>iban</span><span class='tstring_end'>&#39;</span></span>
+
+  <span class='kw'>case</span> <span class='id identifier rubyid_field'>field</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
+  <span class='kw'>when</span> <span class='symbol'>:name</span>
+    <span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_bank_name'>bank_name</span>
+  <span class='kw'>when</span> <span class='symbol'>:holder</span>
+    <span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_holder'>holder</span>
+  <span class='kw'>when</span> <span class='symbol'>:iban</span>
+    <span class='id identifier rubyid_is_iban'>is_iban</span> <span class='op'>?</span> <span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_iban'>iban</span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>when</span> <span class='symbol'>:bic</span>
+    <span class='id identifier rubyid_is_iban'>is_iban</span> <span class='op'>?</span> <span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_bic'>bic</span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>when</span> <span class='symbol'>:national_code</span>
+    <span class='id identifier rubyid_is_iban'>is_iban</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_national_bank_code'>national_bank_code</span>
+  <span class='kw'>when</span> <span class='symbol'>:national_account</span>
+    <span class='id identifier rubyid_is_iban'>is_iban</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_national_account_code'>national_account_code</span>
+  <span class='kw'>when</span> <span class='symbol'>:country</span>
+    <span class='id identifier rubyid_is_iban'>is_iban</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='id identifier rubyid_country_label'>country_label</span><span class='lparen'>(</span><span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_country_code'>country_code</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='symbol'>:postal_address</span>
+    <span class='id identifier rubyid_is_iban'>is_iban</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_bank_postal_address'>bank_postal_address</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="check_request_link-instance_method">
   
-    - (<tt>String</tt>) <strong>check_request_link</strong>(reimbursement) 
+    #<strong>check_request_link</strong>(reimbursement)  &#x21d2; <tt>String</tt> 
   
 
   
@@ -437,21 +548,93 @@ related to check requests is configured</p>
       <pre class="lines">
 
 
+121
 122
 123
 124
 125
-126
-127</pre>
+126</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/reimbursements_helper.rb', line 122</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/reimbursements_helper.rb', line 121</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_check_request_link'>check_request_link</span><span class='lparen'>(</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='const'>TravelSupport</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='symbol'>:check_request_layout</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
-  <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='const'>TravelSupport</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='symbol'>:check_request_template</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+  <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='const'>TravelSupport</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='symbol'>:check_request_layout</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+  <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='const'>TravelSupport</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='symbol'>:check_request_template</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
   <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='id identifier rubyid_check_request_request_reimbursement_path'>check_request_request_reimbursement_path</span><span class='lparen'>(</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_link_to'>link_to</span> <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='symbol'>:check_request</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>btn</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_link_to'>link_to</span> <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='symbol'>:check_request</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>btn btn-default</span><span class='tstring_end'>&#39;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="check_request_reimb_value-instance_method">
+  
+    #<strong>check_request_reimb_value</strong>(reimb, field)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/reimbursements_helper.rb', line 144</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_check_request_reimb_value'>check_request_reimb_value</span><span class='lparen'>(</span><span class='id identifier rubyid_reimb'>reimb</span><span class='comma'>,</span> <span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_field'>field</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
+  <span class='kw'>when</span> <span class='symbol'>:amount</span>
+    <span class='id identifier rubyid_expenses_sum'>expenses_sum</span><span class='lparen'>(</span><span class='id identifier rubyid_reimb'>reimb</span><span class='comma'>,</span> <span class='symbol'>:authorized</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='symbol'>:full_name</span>
+    <span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_profile'>profile</span><span class='period'>.</span><span class='id identifier rubyid_full_name'>full_name</span>
+  <span class='kw'>when</span> <span class='symbol'>:date</span>
+    <span class='id identifier rubyid_l'>l</span><span class='lparen'>(</span><span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='symbol'>:postal_address</span>
+    <span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_profile'>profile</span><span class='period'>.</span><span class='id identifier rubyid_postal_address'>postal_address</span>
+  <span class='kw'>when</span> <span class='symbol'>:city</span>
+    <span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_profile'>profile</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span>
+  <span class='kw'>when</span> <span class='symbol'>:country</span>
+    <span class='id identifier rubyid_country_label'>country_label</span><span class='lparen'>(</span><span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_profile'>profile</span><span class='period'>.</span><span class='id identifier rubyid_country_code'>country_code</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='symbol'>:zip_code</span>
+    <span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_profile'>profile</span><span class='period'>.</span><span class='id identifier rubyid_zip_code'>zip_code</span>
+  <span class='kw'>when</span> <span class='symbol'>:phone_number</span>
+    <span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_profile'>profile</span><span class='period'>.</span><span class='id identifier rubyid_phone_number'>phone_number</span>
+  <span class='kw'>when</span> <span class='symbol'>:label</span>
+    <span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_label'>label</span>
+  <span class='kw'>when</span> <span class='symbol'>:email</span>
+    <span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -461,7 +644,7 @@ related to check requests is configured</p>
       <div class="method_details ">
   <h3 class="signature " id="check_request_value-instance_method">
   
-    - (<tt>String</tt>) <strong>check_request_value</strong>(reimb, field) 
+    #<strong>check_request_value</strong>(reimb, field)  &#x21d2; <tt>String</tt> 
   
 
   
@@ -535,6 +718,7 @@ fields</p>
       <pre class="lines">
 
 
+134
 135
 136
 137
@@ -542,41 +726,18 @@ fields</p>
 139
 140
 141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154</pre>
+142</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/reimbursements_helper.rb', line 135</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/reimbursements_helper.rb', line 134</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_check_request_value'>check_request_value</span><span class='lparen'>(</span><span class='id identifier rubyid_reimb'>reimb</span><span class='comma'>,</span> <span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span>
-  <span class='kw'>case</span> <span class='id identifier rubyid_field'>field</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
-  <span class='kw'>when</span> <span class='symbol'>:amount</span>
-    <span class='id identifier rubyid_expenses_sum'>expenses_sum</span><span class='lparen'>(</span><span class='id identifier rubyid_reimb'>reimb</span><span class='comma'>,</span> <span class='symbol'>:authorized</span><span class='rparen'>)</span>
-  <span class='kw'>when</span> <span class='symbol'>:full_name</span>
-    <span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_profile'>profile</span><span class='period'>.</span><span class='id identifier rubyid_full_name'>full_name</span>
-  <span class='kw'>when</span> <span class='symbol'>:date</span>
-    <span class='id identifier rubyid_l'>l</span><span class='lparen'>(</span><span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span><span class='rparen'>)</span>
-  <span class='kw'>when</span> <span class='symbol'>:postal_address</span>
-    <span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_profile'>profile</span><span class='period'>.</span><span class='id identifier rubyid_postal_address'>postal_address</span>
-  <span class='kw'>when</span> <span class='symbol'>:city</span>
-    <span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_profile'>profile</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span>
-  <span class='kw'>when</span> <span class='symbol'>:country</span>
-    <span class='id identifier rubyid_country_label'>country_label</span><span class='lparen'>(</span><span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_profile'>profile</span><span class='period'>.</span><span class='id identifier rubyid_country_code'>country_code</span><span class='rparen'>)</span>
-  <span class='kw'>when</span> <span class='symbol'>:zip_code</span>
-    <span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_profile'>profile</span><span class='period'>.</span><span class='id identifier rubyid_zip_code'>zip_code</span>
-  <span class='kw'>when</span> <span class='symbol'>:phone_number</span>
-    <span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_profile'>profile</span><span class='period'>.</span><span class='id identifier rubyid_phone_number'>phone_number</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_field'>field</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_start_with?'>start_with?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bank_</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_account'>account</span> <span class='op'>=</span> <span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_bank_account'>bank_account</span>
+    <span class='id identifier rubyid_field'>field</span> <span class='op'>=</span> <span class='id identifier rubyid_field'>field</span><span class='lbracket'>[</span><span class='int'>5</span><span class='op'>..</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
+    <span class='id identifier rubyid_check_request_bank_value'>check_request_bank_value</span><span class='lparen'>(</span><span class='id identifier rubyid_account'>account</span><span class='comma'>,</span> <span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_check_request_reimb_value'>check_request_reimb_value</span><span class='lparen'>(</span><span class='id identifier rubyid_reimb'>reimb</span><span class='comma'>,</span> <span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -587,7 +748,7 @@ fields</p>
       <div class="method_details ">
   <h3 class="signature " id="manual_authorized_amount_is_needed_for?-instance_method">
   
-    - (<tt>Boolean</tt>) <strong>manual_authorized_amount_is_needed_for?</strong>(reimb) 
+    #<strong>manual_authorized_amount_is_needed_for?</strong>(reimb)  &#x21d2; <tt>Boolean</tt> 
   
 
   
@@ -645,15 +806,15 @@ fields</p>
       <pre class="lines">
 
 
-169
-170
-171</pre>
+205
+206
+207</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/reimbursements_helper.rb', line 169</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/reimbursements_helper.rb', line 205</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_manual_authorized_amount_is_needed_for?'>manual_authorized_amount_is_needed_for?</span><span class='lparen'>(</span><span class='id identifier rubyid_reimb'>reimb</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_expenses'>expenses</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span> <span class='op'>!</span><span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_authorized_can_be_calculated?'>authorized_can_be_calculated?</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_reimb'>reimb</span><span class='period'>.</span><span class='id identifier rubyid_expenses'>expenses</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span> <span class='op'>!</span><span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_authorized_can_be_calculated?'>authorized_can_be_calculated?</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -663,7 +824,7 @@ fields</p>
       <div class="method_details ">
   <h3 class="signature " id="reimbursement_acceptance_file-instance_method">
   
-    - (<tt>String</tt>) <strong>reimbursement_acceptance_file</strong>(reimbursement) 
+    #<strong>reimbursement_acceptance_file</strong>(reimbursement)  &#x21d2; <tt>String</tt> 
   
 
   
@@ -718,6 +879,7 @@ attach it if needed</p>
       <pre class="lines">
 
 
+37
 38
 39
 40
@@ -747,41 +909,40 @@ attach it if needed</p>
 64
 65
 66
-67
-68</pre>
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/reimbursements_helper.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/reimbursements_helper.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reimbursement_acceptance_file'>reimbursement_acceptance_file</span><span class='lparen'>(</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_acceptance_file'>acceptance_file</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
-    <span class='id identifier rubyid_out'>out</span> <span class='op'>=</span> <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>show_for.blank</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_out'>out</span> <span class='op'>=</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_acceptance_file'>acceptance_file</span><span class='period'>.</span><span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span>
+  <span class='id identifier rubyid_out'>out</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_acceptance_file'>acceptance_file</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+          <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>show_for.blank</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_acceptance_file'>acceptance_file</span><span class='period'>.</span><span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span>
                   <span class='id identifier rubyid_request_reimbursement_acceptance_path'>request_reimbursement_acceptance_path</span><span class='lparen'>(</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+        <span class='kw'>end</span>
 
   <span class='id identifier rubyid_links'>links</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_can_read_pdf_for?'>can_read_pdf_for?</span> <span class='id identifier rubyid_resource'>resource</span>
-    <span class='id identifier rubyid_links'>links</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='symbol'>:pdf_format</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_request_reimbursement_path'>request_reimbursement_path</span><span class='lparen'>(</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='symbol'>:format</span> <span class='op'>=&gt;</span> <span class='symbol'>:pdf</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_can_read_pdf_for?'>can_read_pdf_for?</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_editable?'>editable?</span>
+    <span class='id identifier rubyid_links'>links</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='symbol'>:pdf_format</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_request_reimbursement_path'>request_reimbursement_path</span><span class='lparen'>(</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='label'>format:</span> <span class='symbol'>:pdf</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_can?'>can?</span> <span class='symbol'>:submit</span><span class='comma'>,</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span>
-    <span class='id identifier rubyid_links'>links</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='symbol'>:send_reimbursement_acceptance</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_new_request_reimbursement_acceptance_path'>new_request_reimbursement_acceptance_path</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='symbol'>:remote</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_links'>links</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='symbol'>:send_reimbursement_acceptance</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_new_request_reimbursement_acceptance_path'>new_request_reimbursement_acceptance_path</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>remote:</span> <span class='kw'>true</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
-  <span class='kw'>if</span> <span class='id identifier rubyid_can?'>can?</span> <span class='symbol'>:submit</span><span class='comma'>,</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span>
-    <span class='id identifier rubyid_info'>info</span> <span class='op'>=</span> <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='symbol'>:reimbursement_acceptance_intro</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
-  <span class='kw'>else</span>
-    <span class='kw'>if</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_acceptance_file'>acceptance_file</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
-      <span class='id identifier rubyid_info'>info</span> <span class='op'>=</span> <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='symbol'>:reimbursement_acceptance_blank</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
-    <span class='kw'>else</span>
-      <span class='id identifier rubyid_info'>info</span> <span class='op'>=</span> <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='symbol'>:reimbursement_acceptance_update</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
-    <span class='kw'>end</span>
+  <span class='id identifier rubyid_info'>info</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_can?'>can?</span> <span class='symbol'>:submit</span><span class='comma'>,</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span>
+           <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='symbol'>:reimbursement_acceptance_intro</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
+         <span class='kw'>else</span>
+           <span class='id identifier rubyid_info'>info</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_acceptance_file'>acceptance_file</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+                    <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='symbol'>:reimbursement_acceptance_blank</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
+                  <span class='kw'>else</span>
+                    <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='symbol'>:reimbursement_acceptance_update</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
+                  <span class='kw'>end</span>
+         <span class='kw'>end</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_links'>links</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='id identifier rubyid_info'>info</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:p</span><span class='comma'>,</span> <span class='id identifier rubyid_links'>links</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> | </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>text-right</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
-  <span class='id identifier rubyid_info'>info</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:p</span><span class='comma'>,</span> <span class='id identifier rubyid_links'>links</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> | </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>text-right</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='kw'>unless</span> <span class='id identifier rubyid_info'>info</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-    <span class='id identifier rubyid_out'>out</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:div</span><span class='comma'>,</span> <span class='id identifier rubyid_info'>info</span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>alert-info</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_out'>out</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:div</span><span class='comma'>,</span> <span class='id identifier rubyid_info'>info</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>alert alert-info</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_info'>info</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
   <span class='id identifier rubyid_out'>out</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -792,7 +953,7 @@ attach it if needed</p>
       <div class="method_details ">
   <h3 class="signature " id="reimbursement_attachments-instance_method">
   
-    - (<tt>String</tt>) <strong>reimbursement_attachments</strong>(reimbursement) 
+    #<strong>reimbursement_attachments</strong>(reimbursement)  &#x21d2; <tt>String</tt> 
   
 
   
@@ -847,6 +1008,7 @@ including the download link</p>
       <pre class="lines">
 
 
+10
 11
 12
 13
@@ -854,19 +1016,18 @@ including the download link</p>
 15
 16
 17
-18
-19</pre>
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/reimbursements_helper.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/reimbursements_helper.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reimbursement_attachments'>reimbursement_attachments</span><span class='lparen'>(</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_attachments'>attachments</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-    <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>show_for.blank</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>show_for.blank</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_req'>req</span> <span class='op'>=</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span>
-    <span class='id identifier rubyid_links'>links</span> <span class='op'>=</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_attachments'>attachments</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='op'>|</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span><span class='comma'>,</span> <span class='id identifier rubyid_request_reimbursement_attachment_path'>request_reimbursement_attachment_path</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='comma'>,</span> <span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rbrace'>}</span>
-    <span class='id identifier rubyid_links'>links</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
+    <span class='id identifier rubyid_links'>links</span> <span class='op'>=</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_attachments'>attachments</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='op'>|</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span><span class='comma'>,</span> <span class='id identifier rubyid_request_reimbursement_attachment_path'>request_reimbursement_attachment_path</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='comma'>,</span> <span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_links'>links</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>, </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -877,7 +1038,7 @@ including the download link</p>
       <div class="method_details ">
   <h3 class="signature " id="reimbursement_links-instance_method">
   
-    - (<tt>String</tt>) <strong>reimbursement_links</strong>(reimbursement) 
+    #<strong>reimbursement_links</strong>(reimbursement)  &#x21d2; <tt>String</tt> 
   
 
   
@@ -931,22 +1092,22 @@ including the download link</p>
       <pre class="lines">
 
 
+24
 25
 26
 27
 28
 29
-30
-31</pre>
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/reimbursements_helper.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/reimbursements_helper.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reimbursement_links'>reimbursement_links</span><span class='lparen'>(</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_links'>links</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-    <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>show_for.blank</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>show_for.blank</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_links'>links</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='op'>|</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span><span class='comma'>,</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
+    <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_links'>links</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='op'>|</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span><span class='comma'>,</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>, </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -957,7 +1118,7 @@ including the download link</p>
       <div class="method_details ">
   <h3 class="signature " id="reimbursement_payments-instance_method">
   
-    - (<tt>String</tt>) <strong>reimbursement_payments</strong>(reimbursement) 
+    #<strong>reimbursement_payments</strong>(reimbursement)  &#x21d2; <tt>String</tt> 
   
 
   
@@ -1011,6 +1172,7 @@ including the download link</p>
       <pre class="lines">
 
 
+73
 74
 75
 76
@@ -1051,52 +1213,51 @@ including the download link</p>
 111
 112
 113
-114
-115</pre>
+114</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/reimbursements_helper.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/reimbursements_helper.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reimbursement_payments'>reimbursement_payments</span><span class='lparen'>(</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_payments'>payments</span> <span class='op'>=</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_payments'>payments</span><span class='period'>.</span><span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='symbol'>:date</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_accessible_by'>accessible_by</span><span class='lparen'>(</span><span class='id identifier rubyid_current_ability'>current_ability</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_payments'>payments</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-    <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:p</span><span class='comma'>,</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>show_for.blank</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:p</span><span class='comma'>,</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>show_for.blank</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_header'>header</span> <span class='op'>=</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:th</span><span class='comma'>,</span> <span class='const'>Payment</span><span class='period'>.</span><span class='id identifier rubyid_human_attribute_name'>human_attribute_name</span><span class='lparen'>(</span><span class='symbol'>:date</span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_header'>header</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:th</span><span class='comma'>,</span> <span class='const'>Payment</span><span class='period'>.</span><span class='id identifier rubyid_human_attribute_name'>human_attribute_name</span><span class='lparen'>(</span><span class='symbol'>:method</span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_header'>header</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:th</span><span class='comma'>,</span> <span class='const'>Payment</span><span class='period'>.</span><span class='id identifier rubyid_human_attribute_name'>human_attribute_name</span><span class='lparen'>(</span><span class='symbol'>:subject</span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_header'>header</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:th</span><span class='comma'>,</span> <span class='const'>Payment</span><span class='period'>.</span><span class='id identifier rubyid_human_attribute_name'>human_attribute_name</span><span class='lparen'>(</span><span class='symbol'>:amount</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>text-right</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_header'>header</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:th</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_header'>header</span> <span class='op'>=</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:th</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Payment.html" title="Payment (class)">Payment</a></span></span><span class='period'>.</span><span class='id identifier rubyid_human_attribute_name'>human_attribute_name</span><span class='lparen'>(</span><span class='symbol'>:date</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_header'>header</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:th</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Payment.html" title="Payment (class)">Payment</a></span></span><span class='period'>.</span><span class='id identifier rubyid_human_attribute_name'>human_attribute_name</span><span class='lparen'>(</span><span class='symbol'>:method</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_header'>header</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:th</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Payment.html" title="Payment (class)">Payment</a></span></span><span class='period'>.</span><span class='id identifier rubyid_human_attribute_name'>human_attribute_name</span><span class='lparen'>(</span><span class='symbol'>:subject</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_header'>header</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:th</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Payment.html" title="Payment (class)">Payment</a></span></span><span class='period'>.</span><span class='id identifier rubyid_human_attribute_name'>human_attribute_name</span><span class='lparen'>(</span><span class='symbol'>:amount</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>text-right</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_header'>header</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:th</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 
     <span class='id identifier rubyid_req'>req</span> <span class='op'>=</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span>
     <span class='id identifier rubyid_rows'>rows</span> <span class='op'>=</span> <span class='id identifier rubyid_payments'>payments</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_payment'>payment</span><span class='op'>|</span>
-      <span class='id identifier rubyid_p'>p</span> <span class='op'>=</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:td</span><span class='comma'>,</span> <span class='id identifier rubyid_l'>l</span><span class='lparen'>(</span><span class='id identifier rubyid_payment'>payment</span><span class='period'>.</span><span class='id identifier rubyid_date'>date</span><span class='comma'>,</span> <span class='symbol'>:format</span> <span class='op'>=&gt;</span> <span class='symbol'>:long</span><span class='rparen'>)</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_p'>p</span> <span class='op'>=</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:td</span><span class='comma'>,</span> <span class='id identifier rubyid_l'>l</span><span class='lparen'>(</span><span class='id identifier rubyid_payment'>payment</span><span class='period'>.</span><span class='id identifier rubyid_date'>date</span><span class='comma'>,</span> <span class='label'>format:</span> <span class='symbol'>:long</span><span class='rparen'>)</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_p'>p</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:td</span><span class='comma'>,</span> <span class='id identifier rubyid_payment'>payment</span><span class='period'>.</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_p'>p</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:td</span><span class='comma'>,</span> <span class='id identifier rubyid_payment'>payment</span><span class='period'>.</span><span class='id identifier rubyid_subject'>subject</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_p'>p</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:td</span><span class='comma'>,</span> <span class='id identifier rubyid_number_to_currency'>number_to_currency</span><span class='lparen'>(</span><span class='id identifier rubyid_payment'>payment</span><span class='period'>.</span><span class='id identifier rubyid_amount'>amount</span><span class='comma'>,</span> <span class='symbol'>:unit</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_payment'>payment</span><span class='period'>.</span><span class='id identifier rubyid_currency'>currency</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>text-right</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_p'>p</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:td</span><span class='comma'>,</span> <span class='id identifier rubyid_number_to_currency'>number_to_currency</span><span class='lparen'>(</span><span class='id identifier rubyid_payment'>payment</span><span class='period'>.</span><span class='id identifier rubyid_amount'>amount</span><span class='comma'>,</span> <span class='label'>unit:</span> <span class='id identifier rubyid_payment'>payment</span><span class='period'>.</span><span class='id identifier rubyid_currency'>currency</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>text-right</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
       <span class='id identifier rubyid_links'>links</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
       <span class='kw'>if</span> <span class='id identifier rubyid_can?'>can?</span> <span class='symbol'>:update</span><span class='comma'>,</span> <span class='id identifier rubyid_payment'>payment</span>
-        <span class='id identifier rubyid_links'>links</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>helpers.links.edit</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_edit_request_reimbursement_payment_path'>edit_request_reimbursement_payment_path</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='comma'>,</span> <span class='id identifier rubyid_payment'>payment</span><span class='rparen'>)</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_links'>links</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>helpers.links.edit</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_edit_request_reimbursement_payment_path'>edit_request_reimbursement_payment_path</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='comma'>,</span> <span class='id identifier rubyid_payment'>payment</span><span class='rparen'>)</span><span class='rparen'>)</span>
       <span class='kw'>end</span>
       <span class='kw'>if</span> <span class='id identifier rubyid_can?'>can?</span> <span class='symbol'>:destroy</span><span class='comma'>,</span> <span class='id identifier rubyid_payment'>payment</span>
-        <span class='id identifier rubyid_links'>links</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>helpers.links.destroy</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
-                               <span class='id identifier rubyid_request_reimbursement_payment_path'>request_reimbursement_payment_path</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='comma'>,</span> <span class='id identifier rubyid_payment'>payment</span><span class='rparen'>)</span><span class='comma'>,</span>
-                               <span class='symbol'>:data</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:confirm</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>helpers.links.confirm</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:delete</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_links'>links</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>helpers.links.destroy</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+                         <span class='id identifier rubyid_request_reimbursement_payment_path'>request_reimbursement_payment_path</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='comma'>,</span> <span class='id identifier rubyid_payment'>payment</span><span class='rparen'>)</span><span class='comma'>,</span>
+                         <span class='label'>data:</span> <span class='lbrace'>{</span> <span class='label'>confirm:</span> <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>helpers.links.confirm</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>method:</span> <span class='symbol'>:delete</span><span class='rparen'>)</span>
       <span class='kw'>end</span>
       <span class='kw'>if</span> <span class='id identifier rubyid_can?'>can?</span><span class='lparen'>(</span><span class='symbol'>:update</span><span class='comma'>,</span> <span class='id identifier rubyid_payment'>payment</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_payment'>payment</span><span class='period'>.</span><span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
-        <span class='id identifier rubyid_links'>links</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='const'>Payment</span><span class='period'>.</span><span class='id identifier rubyid_human_attribute_name'>human_attribute_name</span><span class='lparen'>(</span><span class='symbol'>:file</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_file_request_reimbursement_payment_path'>file_request_reimbursement_payment_path</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='comma'>,</span> <span class='id identifier rubyid_payment'>payment</span><span class='rparen'>)</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_links'>links</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Payment.html" title="Payment (class)">Payment</a></span></span><span class='period'>.</span><span class='id identifier rubyid_human_attribute_name'>human_attribute_name</span><span class='lparen'>(</span><span class='symbol'>:file</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_file_request_reimbursement_payment_path'>file_request_reimbursement_payment_path</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='comma'>,</span> <span class='id identifier rubyid_payment'>payment</span><span class='rparen'>)</span><span class='rparen'>)</span>
       <span class='kw'>end</span>
-      <span class='kw'>if</span> <span class='id identifier rubyid_links'>links</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-        <span class='id identifier rubyid_p'>p</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:td</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-      <span class='kw'>else</span>
-        <span class='id identifier rubyid_p'>p</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:td</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_payment'>payment</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span><span class='rbrace'>}</span><span class='tstring_content'> (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_links'>links</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'> | </span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span><span class='rparen'>)</span>
-      <span class='kw'>end</span>
+      <span class='id identifier rubyid_p'>p</span> <span class='op'>&lt;&lt;</span> <span class='kw'>if</span> <span class='id identifier rubyid_links'>links</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+             <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:td</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+           <span class='kw'>else</span>
+             <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:td</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_payment'>payment</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span><span class='embexpr_end'>}</span><span class='tstring_content'> (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_links'>links</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> | </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span><span class='rparen'>)</span>
+           <span class='kw'>end</span>
       <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:tr</span><span class='comma'>,</span> <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
 
     <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:table</span><span class='comma'>,</span>
-                <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:thead</span><span class='comma'>,</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:tr</span><span class='comma'>,</span> <span class='id identifier rubyid_header'>header</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:tbody</span><span class='comma'>,</span> <span class='id identifier rubyid_rows'>rows</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span><span class='rparen'>)</span><span class='comma'>,</span>
-               <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>table table-condensed</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>reimbursement-payments</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+                <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:thead</span><span class='comma'>,</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:tr</span><span class='comma'>,</span> <span class='id identifier rubyid_header'>header</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:tbody</span><span class='comma'>,</span> <span class='id identifier rubyid_rows'>rows</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span><span class='rparen'>)</span><span class='comma'>,</span>
+                <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>table table-condensed</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>id:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>reimbursement-payments</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1108,11 +1269,12 @@ including the download link</p>
 
 </div>
 
-    <div id="footer">
-  Generated on Mon Mar 23 13:04:14 2015 by
+      <div id="footer">
+  Generated on Thu Oct 31 16:40:26 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.4 (ruby-1.9.3).
+  0.9.20 (ruby-2.5.5).
 </div>
 
+    </div>
   </body>
 </html>

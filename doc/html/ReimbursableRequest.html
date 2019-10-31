@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
   Class: ReimbursableRequest
   
-    &mdash; Documentation by YARD 0.8.7.4
+    &mdash; Documentation by YARD 0.9.20
   
 </title>
 
@@ -15,9 +15,8 @@
   <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  hasFrames = window.top.frames.main ? true : false;
+  pathId = "ReimbursableRequest";
   relpath = '';
-  framesUrl = "frames.html#!ReimbursableRequest.html";
 </script>
 
 
@@ -28,51 +27,48 @@
 
   </head>
   <body>
-    <div id="header">
-      <div id="menu">
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
   
     <a href="_index.html">Index (R)</a> &raquo;
     
     
     <span class="title">ReimbursableRequest</span>
   
-
-  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
-      <div id="search">
+        <div id="search">
   
     <a class="full_list_link" id="class_list_link"
         href="class_list.html">
-      Class List
-    </a>
-  
-    <a class="full_list_link" id="method_list_link"
-        href="method_list.html">
-      Method List
-    </a>
-  
-    <a class="full_list_link" id="file_list_link"
-        href="file_list.html">
-      File List
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
     </a>
   
 </div>
-      <div class="clear"></div>
-    </div>
+        <div class="clear"></div>
+      </div>
 
-    <iframe id="search_frame"></iframe>
-
-    <div id="content"><h1>Class: ReimbursableRequest
+      <div id="content"><h1>Class: ReimbursableRequest
   
   
   
 </h1>
-
-<dl class="box">
+<div class="box_info">
   
-    <dt class="r1">Inherits:</dt>
-    <dd class="r1">
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
       <span class="inheritName"><span class='object_link'><a href="Request.html" title="Request (class)">Request</a></span></span>
       
         <ul class="fullTree">
@@ -87,21 +83,25 @@
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
       
-      </dd>
-    
+    </dd>
+  </dl>
   
-  
-    
-  
-    
+
   
   
   
-    <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">app/models/reimbursable_request.rb</dd>
   
-</dl>
-<div class="clear"></div>
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>app/models/reimbursable_request.rb</dd>
+  </dl>
+  
+</div>
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
@@ -134,7 +134,7 @@
   
     <h2>
       Has many
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+      <small><a href="#" class="summary_toggle">collapse</a></small>
     </h2>
 
     <ul class="summary">
@@ -142,7 +142,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#expenses-instance_method" title="#expenses (instance method)">- (Array&lt;RequestExpense&gt;) <strong>expenses</strong> </a>
+      <a href="#expenses-instance_method" title="#expenses (instance method)">#<strong>expenses</strong>  &#x21d2; ActiveRecord::Relation&lt;RequestExpense&gt; </a>
     
 
     
@@ -166,7 +166,7 @@
   
     <h2>
       Has one
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+      <small><a href="#" class="summary_toggle">collapse</a></small>
     </h2>
 
     <ul class="summary">
@@ -174,7 +174,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#reimbursement-instance_method" title="#reimbursement (instance method)">- (Reimbursement) <strong>reimbursement</strong> </a>
+      <a href="#reimbursement-instance_method" title="#reimbursement (instance method)">#<strong>reimbursement</strong>  &#x21d2; Reimbursement </a>
     
 
     
@@ -198,7 +198,7 @@
   
     <h2>
       Class Method Summary
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+      <small><a href="#" class="summary_toggle">collapse</a></small>
     </h2>
 
     <ul class="summary">
@@ -206,7 +206,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#expenses_sum-class_method" title="expenses_sum (class method)">+ (Object) <strong>expenses_sum</strong>(attr = :total, requests) </a>
+      <a href="#expenses_sum-class_method" title="expenses_sum (class method)">.<strong>expenses_sum</strong>(attr = :total, requests)  &#x21d2; Object </a>
     
 
     
@@ -229,7 +229,7 @@
   
     <h2>
       Instance Method Summary
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+      <small><a href="#" class="summary_toggle">collapse</a></small>
     </h2>
 
     <ul class="summary">
@@ -237,7 +237,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#can_cancel%3F-instance_method" title="#can_cancel? (instance method)">- (Boolean) <strong>can_cancel?</strong> </a>
+      <a href="#can_cancel%3F-instance_method" title="#can_cancel? (instance method)">#<strong>can_cancel?</strong>  &#x21d2; Boolean </a>
     
 
     
@@ -260,7 +260,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#expenses_sum-instance_method" title="#expenses_sum (instance method)">- (ActiveSupport::OrderedHash) <strong>expenses_sum</strong>(attr = :total) </a>
+      <a href="#expenses_sum-instance_method" title="#expenses_sum (instance method)">#<strong>expenses_sum</strong>(attr = :total)  &#x21d2; ActiveSupport::OrderedHash </a>
     
 
     
@@ -283,7 +283,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#has_no_expenses%3F-instance_method" title="#has_no_expenses? (instance method)">- (Boolean) <strong>has_no_expenses?</strong> </a>
+      <a href="#has_no_expenses%3F-instance_method" title="#has_no_expenses? (instance method)">#<strong>has_no_expenses?</strong>  &#x21d2; Boolean </a>
     
 
     
@@ -306,7 +306,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#lacks_reimbursement%3F-instance_method" title="#lacks_reimbursement? (instance method)">- (Boolean) <strong>lacks_reimbursement?</strong> </a>
+      <a href="#lacks_reimbursement%3F-instance_method" title="#lacks_reimbursement? (instance method)">#<strong>lacks_reimbursement?</strong>  &#x21d2; Boolean </a>
     
 
     
@@ -369,7 +369,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="expenses_sum-class_method">
   
-    + (<tt>Object</tt>) <strong>expenses_sum</strong>(attr = :total, requests) 
+    .<strong>expenses_sum</strong>(attr = :total, requests)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -381,6 +381,7 @@
       <pre class="lines">
 
 
+73
 74
 75
 76
@@ -388,20 +389,19 @@
 78
 79
 80
-81
-82</pre>
+81</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursable_request.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursable_request.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_expenses_sum'>expenses_sum</span><span class='lparen'>(</span><span class='id identifier rubyid_attr'>attr</span> <span class='op'>=</span> <span class='symbol'>:total</span><span class='comma'>,</span> <span class='id identifier rubyid_requests'>requests</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_amount_field'>amount_field</span> <span class='op'>=</span> <span class='symbol'>:#{</span><span class='id identifier rubyid_attr'>attr</span><span class='rbrace'>}</span><span class='tstring_content'>_amount</span><span class='tstring_end'>&quot;</span></span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_requests'>requests</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>Relation</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_r_ids'>r_ids</span> <span class='op'>=</span> <span class='id identifier rubyid_requests'>requests</span><span class='period'>.</span><span class='id identifier rubyid_reorder'>reorder</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_pluck'>pluck</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>requests.id</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_r_ids'>r_ids</span> <span class='op'>=</span> <span class='id identifier rubyid_requests'>requests</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_i'>i</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Integer</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>:</span> <span class='id identifier rubyid_i'>i</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='rbrace'>}</span>
-  <span class='kw'>end</span>
-  <span class='const'>RequestExpense</span><span class='period'>.</span><span class='id identifier rubyid_by_attr_for_requests'>by_attr_for_requests</span><span class='lparen'>(</span><span class='id identifier rubyid_attr'>attr</span><span class='comma'>,</span> <span class='id identifier rubyid_r_ids'>r_ids</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_sum'>sum</span><span class='lparen'>(</span><span class='id identifier rubyid_amount_field'>amount_field</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_amount_field'>amount_field</span> <span class='op'>=</span> <span class='symbol'>:&quot;#{</span><span class='id identifier rubyid_attr'>attr</span><span class='embexpr_end'>}</span><span class='tstring_content'>_amount</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_r_ids'>r_ids</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_requests'>requests</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>Relation</span><span class='rparen'>)</span>
+            <span class='id identifier rubyid_requests'>requests</span><span class='period'>.</span><span class='id identifier rubyid_reorder'>reorder</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_pluck'>pluck</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>requests.id</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+          <span class='kw'>else</span>
+            <span class='id identifier rubyid_requests'>requests</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_i'>i</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Integer</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>:</span> <span class='id identifier rubyid_i'>i</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='rbrace'>}</span>
+          <span class='kw'>end</span>
+  <span class='const'><span class='object_link'><a href="RequestExpense.html" title="RequestExpense (class)">RequestExpense</a></span></span><span class='period'>.</span><span class='id identifier rubyid_by_attr_for_requests'><span class='object_link'><a href="RequestExpense.html#by_attr_for_requests-class_method" title="RequestExpense.by_attr_for_requests (method)">by_attr_for_requests</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_attr'>attr</span><span class='comma'>,</span> <span class='id identifier rubyid_r_ids'>r_ids</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_sum'>sum</span><span class='lparen'>(</span><span class='id identifier rubyid_amount_field'>amount_field</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -417,7 +417,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="can_cancel?-instance_method">
   
-    - (<tt>Boolean</tt>) <strong>can_cancel?</strong> 
+    #<strong>can_cancel?</strong>  &#x21d2; <tt>Boolean</tt> 
   
 
   
@@ -453,7 +453,7 @@ return [Boolean] true if #cancel can be called</p>
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>HasState.can_cancel?</li>
+      <li><span class='object_link'><a href="HasState.html#can_cancel%3F-instance_method" title="HasState#can_cancel? (method)">HasState#can_cancel?</a></span></li>
     
   </ul>
 
@@ -463,15 +463,15 @@ return [Boolean] true if #cancel can be called</p>
       <pre class="lines">
 
 
+40
 41
-42
-43</pre>
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursable_request.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursable_request.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_can_cancel?'>can_cancel?</span>
-  <span class='kw'>not</span> <span class='id identifier rubyid_canceled?'>canceled?</span> <span class='kw'>and</span> <span class='lparen'>(</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='kw'>or</span> <span class='kw'>not</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_active?'>active?</span><span class='rparen'>)</span>
+  <span class='op'>!</span><span class='id identifier rubyid_canceled?'>canceled?</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='op'>!</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_active?'>active?</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -481,7 +481,7 @@ return [Boolean] true if #cancel can be called</p>
       <div class="method_details ">
   <h3 class="signature " id="expenses-instance_method">
   
-    - (<tt>Array&lt;<span class='object_link'><a href="RequestExpense.html" title="RequestExpense (class)">RequestExpense</a></span>&gt;</tt>) <strong>expenses</strong> 
+    #<strong>expenses</strong>  &#x21d2; <tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="RequestExpense.html" title="RequestExpense (class)">RequestExpense</a></span>&gt;</tt> 
   
 
   
@@ -504,7 +504,7 @@ amount finally expended and the amount that is going to be reimbursed</p>
     <li>
       
       
-        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="RequestExpense.html" title="RequestExpense (class)">RequestExpense</a></span>&gt;</tt>)</span>
+        <span class='type'>(<tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="RequestExpense.html" title="RequestExpense (class)">RequestExpense</a></span>&gt;</tt>)</span>
       
       
       
@@ -525,18 +525,18 @@ amount finally expended and the amount that is going to be reimbursed</p>
       <pre class="lines">
 
 
+10
 11
 12
-13
-14</pre>
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursable_request.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursable_request.rb', line 10</span>
 
-<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:expenses</span><span class='comma'>,</span> <span class='symbol'>:class_name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>RequestExpense</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
-<span class='symbol'>:foreign_key</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>request_id</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
-<span class='symbol'>:inverse_of</span> <span class='op'>=&gt;</span> <span class='symbol'>:request</span><span class='comma'>,</span>
-<span class='symbol'>:dependent</span> <span class='op'>=&gt;</span> <span class='symbol'>:destroy</span></pre>
+<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:expenses</span><span class='comma'>,</span> <span class='label'>class_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>RequestExpense</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+<span class='label'>foreign_key:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>request_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+<span class='label'>inverse_of:</span> <span class='symbol'>:request</span><span class='comma'>,</span>
+<span class='label'>dependent:</span> <span class='symbol'>:destroy</span></pre>
     </td>
   </tr>
 </table>
@@ -545,7 +545,7 @@ amount finally expended and the amount that is going to be reimbursed</p>
       <div class="method_details ">
   <h3 class="signature " id="expenses_sum-instance_method">
   
-    - (<tt>ActiveSupport::OrderedHash</tt>) <strong>expenses_sum</strong>(attr = :total) 
+    #<strong>expenses_sum</strong>(attr = :total)  &#x21d2; <tt>ActiveSupport::OrderedHash</tt> 
   
 
   
@@ -615,21 +615,21 @@ ordered by currencies&#39; alphabetic order</p>
       <pre class="lines">
 
 
+66
 67
 68
 69
 70
-71
-72</pre>
+71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursable_request.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursable_request.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_expenses_sum'>expenses_sum</span><span class='lparen'>(</span><span class='id identifier rubyid_attr'>attr</span> <span class='op'>=</span> <span class='symbol'>:total</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_grouped'>grouped</span> <span class='op'>=</span> <span class='id identifier rubyid_expenses'>expenses</span><span class='period'>.</span><span class='id identifier rubyid_group_by'>group_by</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:#{</span><span class='id identifier rubyid_attr'>attr</span><span class='rbrace'>}</span><span class='tstring_content'>_currency</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_nonils'>nonils</span> <span class='op'>=</span> <span class='id identifier rubyid_grouped'>grouped</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_delete_if'>delete_if</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_i'>i</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:#{</span><span class='id identifier rubyid_attr'>attr</span><span class='rbrace'>}</span><span class='tstring_content'>_amount</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span><span class='rbrace'>}</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_delete_if'>delete_if</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span><span class='rbrace'>}</span>
-  <span class='id identifier rubyid_unordered'>unordered</span> <span class='op'>=</span> <span class='id identifier rubyid_nonils'>nonils</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_sum'>sum</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:#{</span><span class='id identifier rubyid_attr'>attr</span><span class='rbrace'>}</span><span class='tstring_content'>_amount</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
-  <span class='const'>ActiveSupport</span><span class='op'>::</span><span class='const'>OrderedHash</span><span class='lbracket'>[</span> <span class='id identifier rubyid_unordered'>unordered</span><span class='period'>.</span><span class='id identifier rubyid_sort_by'>sort_by</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:first</span><span class='rparen'>)</span> <span class='rbracket'>]</span>
+  <span class='id identifier rubyid_grouped'>grouped</span> <span class='op'>=</span> <span class='id identifier rubyid_expenses'>expenses</span><span class='period'>.</span><span class='id identifier rubyid_group_by'>group_by</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:&quot;#{</span><span class='id identifier rubyid_attr'>attr</span><span class='embexpr_end'>}</span><span class='tstring_content'>_currency</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_nonils'>nonils</span> <span class='op'>=</span> <span class='id identifier rubyid_grouped'>grouped</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid__k'>_k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_delete_if'>delete_if</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_i'>i</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:&quot;#{</span><span class='id identifier rubyid_attr'>attr</span><span class='embexpr_end'>}</span><span class='tstring_content'>_amount</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='rbrace'>}</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_delete_if'>delete_if</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid__k'>_k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_unordered'>unordered</span> <span class='op'>=</span> <span class='id identifier rubyid_nonils'>nonils</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_sum'>sum</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:&quot;#{</span><span class='id identifier rubyid_attr'>attr</span><span class='embexpr_end'>}</span><span class='tstring_content'>_amount</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+  <span class='const'>ActiveSupport</span><span class='op'>::</span><span class='const'>OrderedHash</span><span class='lbracket'>[</span><span class='id identifier rubyid_unordered'>unordered</span><span class='period'>.</span><span class='id identifier rubyid_sort_by'>sort_by</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:first</span><span class='rparen'>)</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -639,7 +639,7 @@ ordered by currencies&#39; alphabetic order</p>
       <div class="method_details ">
   <h3 class="signature " id="has_no_expenses?-instance_method">
   
-    - (<tt>Boolean</tt>) <strong>has_no_expenses?</strong> 
+    #<strong>has_no_expenses?</strong>  &#x21d2; <tt>Boolean</tt> 
   
 
   
@@ -678,12 +678,12 @@ documentation to work, because it doesn&#39;t work if a string is used in the
       <pre class="lines">
 
 
+29
 30
-31
-32</pre>
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursable_request.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursable_request.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_has_no_expenses?'>has_no_expenses?</span>
   <span class='id identifier rubyid_expenses'>expenses</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -696,7 +696,7 @@ documentation to work, because it doesn&#39;t work if a string is used in the
       <div class="method_details ">
   <h3 class="signature " id="lacks_reimbursement?-instance_method">
   
-    - (<tt>Boolean</tt>) <strong>lacks_reimbursement?</strong> 
+    #<strong>lacks_reimbursement?</strong>  &#x21d2; <tt>Boolean</tt> 
   
 
   
@@ -736,15 +736,15 @@ yet started</p>
       <pre class="lines">
 
 
+48
 49
-50
-51</pre>
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursable_request.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursable_request.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_lacks_reimbursement?'>lacks_reimbursement?</span>
-  <span class='id identifier rubyid_can_have_reimbursement?'>can_have_reimbursement?</span> <span class='kw'>and</span> <span class='lparen'>(</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_new_record?'>new_record?</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_can_have_reimbursement?'>can_have_reimbursement?</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_reimbursement'>reimbursement</span><span class='period'>.</span><span class='id identifier rubyid_new_record?'>new_record?</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -754,7 +754,7 @@ yet started</p>
       <div class="method_details ">
   <h3 class="signature " id="reimbursement-instance_method">
   
-    - (<tt><span class='object_link'><a href="Reimbursement.html" title="Reimbursement (class)">Reimbursement</a></span></tt>) <strong>reimbursement</strong> 
+    #<strong>reimbursement</strong>  &#x21d2; <tt><span class='object_link'><a href="Reimbursement.html" title="Reimbursement (class)">Reimbursement</a></span></tt> 
   
 
   
@@ -796,16 +796,16 @@ yet started</p>
       <pre class="lines">
 
 
+16
 17
-18
-19</pre>
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/reimbursable_request.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'app/models/reimbursable_request.rb', line 16</span>
 
-<span class='id identifier rubyid_has_one'>has_one</span> <span class='symbol'>:reimbursement</span><span class='comma'>,</span> <span class='symbol'>:inverse_of</span> <span class='op'>=&gt;</span> <span class='symbol'>:request</span><span class='comma'>,</span>
-<span class='symbol'>:foreign_key</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>request_id</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
-<span class='symbol'>:dependent</span> <span class='op'>=&gt;</span> <span class='symbol'>:restrict_with_exception</span></pre>
+<span class='id identifier rubyid_has_one'>has_one</span> <span class='symbol'>:reimbursement</span><span class='comma'>,</span> <span class='label'>inverse_of:</span> <span class='symbol'>:request</span><span class='comma'>,</span>
+<span class='label'>foreign_key:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>request_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+<span class='label'>dependent:</span> <span class='symbol'>:restrict_with_exception</span></pre>
     </td>
   </tr>
 </table>
@@ -815,11 +815,12 @@ yet started</p>
 
 </div>
 
-    <div id="footer">
-  Generated on Mon Mar 23 13:04:22 2015 by
+      <div id="footer">
+  Generated on Thu Oct 31 16:40:32 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.4 (ruby-1.9.3).
+  0.9.20 (ruby-2.5.5).
 </div>
 
+    </div>
   </body>
 </html>
