@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
   Class: User
   
-    &mdash; Documentation by YARD 0.8.7.4
+    &mdash; Documentation by YARD 0.9.20
   
 </title>
 
@@ -15,9 +15,8 @@
   <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  hasFrames = window.top.frames.main ? true : false;
+  pathId = "User";
   relpath = '';
-  framesUrl = "frames.html#!User.html";
 </script>
 
 
@@ -28,51 +27,48 @@
 
   </head>
   <body>
-    <div id="header">
-      <div id="menu">
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
   
     <a href="_index.html">Index (U)</a> &raquo;
     
     
     <span class="title">User</span>
   
-
-  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
-      <div id="search">
+        <div id="search">
   
     <a class="full_list_link" id="class_list_link"
         href="class_list.html">
-      Class List
-    </a>
-  
-    <a class="full_list_link" id="method_list_link"
-        href="method_list.html">
-      Method List
-    </a>
-  
-    <a class="full_list_link" id="file_list_link"
-        href="file_list.html">
-      File List
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
     </a>
   
 </div>
-      <div class="clear"></div>
-    </div>
+        <div class="clear"></div>
+      </div>
 
-    <iframe id="search_frame"></iframe>
-
-    <div id="content"><h1>Class: User
+      <div id="content"><h1>Class: User
   
   
   
 </h1>
-
-<dl class="box">
+<div class="box_info">
   
-    <dt class="r1">Inherits:</dt>
-    <dd class="r1">
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
       <span class="inheritName">ActiveRecord::Base</span>
       
         <ul class="fullTree">
@@ -85,25 +81,30 @@
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
       
-      </dd>
-    
+    </dd>
+  </dl>
+  
+
   
   
-    
-      <dt class="r2">Extended by:</dt>
-      <dd class="r2">ActiveHash::Associations::ActiveRecordExtensions</dd>
-      
-    
-  
-    
+  <dl>
+      <dt>Extended by:</dt>
+      <dd>ActiveHash::Associations::ActiveRecordExtensions</dd>
+  </dl>
   
   
   
-    <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">app/models/user.rb</dd>
   
-</dl>
-<div class="clear"></div>
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>app/models/user.rb</dd>
+  </dl>
+  
+</div>
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
@@ -122,13 +123,13 @@ For user information or role, use UserProfile</p>
 
 
 
-  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
   <ul class="summary">
     
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#created_at-instance_method" title="#created_at (instance method)">- (DateTime) <strong>created_at</strong> </a>
+      <a href="#created_at-instance_method" title="#created_at (instance method)">#<strong>created_at</strong>  &#x21d2; DateTime </a>
     
 
     
@@ -153,7 +154,7 @@ For user information or role, use UserProfile</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#current_sign_in_at-instance_method" title="#current_sign_in_at (instance method)">- (DateTime) <strong>current_sign_in_at</strong> </a>
+      <a href="#current_sign_in_at-instance_method" title="#current_sign_in_at (instance method)">#<strong>current_sign_in_at</strong>  &#x21d2; DateTime </a>
     
 
     
@@ -178,7 +179,7 @@ For user information or role, use UserProfile</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#current_sign_in_ip-instance_method" title="#current_sign_in_ip (instance method)">- (String) <strong>current_sign_in_ip</strong> </a>
+      <a href="#current_sign_in_ip-instance_method" title="#current_sign_in_ip (instance method)">#<strong>current_sign_in_ip</strong>  &#x21d2; String </a>
     
 
     
@@ -203,7 +204,7 @@ For user information or role, use UserProfile</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#email-instance_method" title="#email (instance method)">- (String) <strong>email</strong> </a>
+      <a href="#email-instance_method" title="#email (instance method)">#<strong>email</strong>  &#x21d2; String </a>
     
 
     
@@ -228,7 +229,7 @@ For user information or role, use UserProfile</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#encrypted_password-instance_method" title="#encrypted_password (instance method)">- (String) <strong>encrypted_password</strong> </a>
+      <a href="#encrypted_password-instance_method" title="#encrypted_password (instance method)">#<strong>encrypted_password</strong>  &#x21d2; String </a>
     
 
     
@@ -253,7 +254,7 @@ For user information or role, use UserProfile</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#last_sign_in_at-instance_method" title="#last_sign_in_at (instance method)">- (DateTime) <strong>last_sign_in_at</strong> </a>
+      <a href="#last_sign_in_at-instance_method" title="#last_sign_in_at (instance method)">#<strong>last_sign_in_at</strong>  &#x21d2; DateTime </a>
     
 
     
@@ -278,7 +279,7 @@ For user information or role, use UserProfile</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#last_sign_in_ip-instance_method" title="#last_sign_in_ip (instance method)">- (String) <strong>last_sign_in_ip</strong> </a>
+      <a href="#last_sign_in_ip-instance_method" title="#last_sign_in_ip (instance method)">#<strong>last_sign_in_ip</strong>  &#x21d2; String </a>
     
 
     
@@ -303,7 +304,7 @@ For user information or role, use UserProfile</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#locale-instance_method" title="#locale (instance method)">- (String) <strong>locale</strong> </a>
+      <a href="#locale-instance_method" title="#locale (instance method)">#<strong>locale</strong>  &#x21d2; String </a>
     
 
     
@@ -328,7 +329,7 @@ For user information or role, use UserProfile</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#nickname-instance_method" title="#nickname (instance method)">- (String) <strong>nickname</strong> </a>
+      <a href="#nickname-instance_method" title="#nickname (instance method)">#<strong>nickname</strong>  &#x21d2; String </a>
     
 
     
@@ -353,7 +354,7 @@ For user information or role, use UserProfile</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#remember_created_at-instance_method" title="#remember_created_at (instance method)">- (DateTime) <strong>remember_created_at</strong> </a>
+      <a href="#remember_created_at-instance_method" title="#remember_created_at (instance method)">#<strong>remember_created_at</strong>  &#x21d2; DateTime </a>
     
 
     
@@ -378,7 +379,7 @@ For user information or role, use UserProfile</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#reset_password_sent_at-instance_method" title="#reset_password_sent_at (instance method)">- (DateTime) <strong>reset_password_sent_at</strong> </a>
+      <a href="#reset_password_sent_at-instance_method" title="#reset_password_sent_at (instance method)">#<strong>reset_password_sent_at</strong>  &#x21d2; DateTime </a>
     
 
     
@@ -403,7 +404,7 @@ For user information or role, use UserProfile</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#reset_password_token-instance_method" title="#reset_password_token (instance method)">- (String) <strong>reset_password_token</strong> </a>
+      <a href="#reset_password_token-instance_method" title="#reset_password_token (instance method)">#<strong>reset_password_token</strong>  &#x21d2; String </a>
     
 
     
@@ -428,7 +429,7 @@ For user information or role, use UserProfile</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#sign_in_count-instance_method" title="#sign_in_count (instance method)">- (Integer) <strong>sign_in_count</strong> </a>
+      <a href="#sign_in_count-instance_method" title="#sign_in_count (instance method)">#<strong>sign_in_count</strong>  &#x21d2; Integer </a>
     
 
     
@@ -453,7 +454,7 @@ For user information or role, use UserProfile</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#updated_at-instance_method" title="#updated_at (instance method)">- (DateTime) <strong>updated_at</strong> </a>
+      <a href="#updated_at-instance_method" title="#updated_at (instance method)">#<strong>updated_at</strong>  &#x21d2; DateTime </a>
     
 
     
@@ -483,7 +484,7 @@ For user information or role, use UserProfile</p>
   
     <h2>
       Has one
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+      <small><a href="#" class="summary_toggle">collapse</a></small>
     </h2>
 
     <ul class="summary">
@@ -491,7 +492,7 @@ For user information or role, use UserProfile</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#profile-instance_method" title="#profile (instance method)">- (UserProfile) <strong>profile</strong> </a>
+      <a href="#profile-instance_method" title="#profile (instance method)">#<strong>profile</strong>  &#x21d2; UserProfile </a>
     
 
     
@@ -515,7 +516,7 @@ For user information or role, use UserProfile</p>
   
     <h2>
       Has many
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+      <small><a href="#" class="summary_toggle">collapse</a></small>
     </h2>
 
     <ul class="summary">
@@ -523,7 +524,76 @@ For user information or role, use UserProfile</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#reimbursements-instance_method" title="#reimbursements (instance method)">- (Array&lt;Reimbursement&gt;) <strong>reimbursements</strong> </a>
+      <a href="#event_emails-instance_method" title="#event_emails (instance method)">#<strong>event_emails</strong>  &#x21d2; ActiveRecord::Relation&lt;EventEmail&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Event Emails send by a user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#event_organizers-instance_method" title="#event_organizers (instance method)">#<strong>event_organizers</strong>  &#x21d2; ActiveRecord::Relation&lt;EventOrganizer&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Event organizer for events.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#organizing_events-instance_method" title="#organizing_events (instance method)">#<strong>organizing_events</strong>  &#x21d2; ActiveRecord::Relation&lt;OrganizingEvent&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Events for which the user is an event organizer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reimbursements-instance_method" title="#reimbursements (instance method)">#<strong>reimbursements</strong>  &#x21d2; ActiveRecord::Relation&lt;Reimbursement&gt; </a>
     
 
     
@@ -546,7 +616,7 @@ For user information or role, use UserProfile</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#requests-instance_method" title="#requests (instance method)">- (Array&lt;Request&gt;) <strong>requests</strong> </a>
+      <a href="#requests-instance_method" title="#requests (instance method)">#<strong>requests</strong>  &#x21d2; ActiveRecord::Relation&lt;Request&gt; </a>
     
 
     
@@ -569,7 +639,7 @@ For user information or role, use UserProfile</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#state_changes-instance_method" title="#state_changes (instance method)">- (Array&lt;StateChange&gt;) <strong>state_changes</strong> </a>
+      <a href="#state_changes-instance_method" title="#state_changes (instance method)">#<strong>state_changes</strong>  &#x21d2; ActiveRecord::Relation&lt;StateChange&gt; </a>
     
 
     
@@ -593,7 +663,7 @@ For user information or role, use UserProfile</p>
   
     <h2>
       Class Method Summary
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+      <small><a href="#" class="summary_toggle">collapse</a></small>
     </h2>
 
     <ul class="summary">
@@ -601,7 +671,7 @@ For user information or role, use UserProfile</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#for_ichain_username-class_method" title="for_ichain_username (class method)">+ (Object) <strong>for_ichain_username</strong>(username, attributes) </a>
+      <a href="#for_ichain_username-class_method" title="for_ichain_username (class method)">.<strong>for_ichain_username</strong>(username, attributes)  &#x21d2; Object </a>
     
 
     
@@ -623,7 +693,7 @@ For user information or role, use UserProfile</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#with_role-class_method" title="with_role (class method)">+ (Object) <strong>with_role</strong>(role) </a>
+      <a href="#with_role-class_method" title="with_role (class method)">.<strong>with_role</strong>(role)  &#x21d2; Object </a>
     
 
     
@@ -646,7 +716,7 @@ For user information or role, use UserProfile</p>
   
     <h2>
       Instance Method Summary
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+      <small><a href="#" class="summary_toggle">collapse</a></small>
     </h2>
 
     <ul class="summary">
@@ -654,7 +724,7 @@ For user information or role, use UserProfile</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#find_profile-instance_method" title="#find_profile (instance method)">- (Object) <strong>find_profile</strong> </a>
+      <a href="#find_profile-instance_method" title="#find_profile (instance method)">#<strong>find_profile</strong>  &#x21d2; Object </a>
     
 
     
@@ -676,7 +746,7 @@ For user information or role, use UserProfile</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#title-instance_method" title="#title (instance method)">- (Object) <strong>title</strong> </a>
+      <a href="#title-instance_method" title="#title (instance method)">#<strong>title</strong>  &#x21d2; Object </a>
     
 
     
@@ -709,7 +779,7 @@ For user information or role, use UserProfile</p>
       <div class="method_details first">
   <h3 class="signature first" id="created_at-instance_method">
   
-    - (<tt>DateTime</tt>) <strong>created_at</strong> 
+    #<strong>created_at</strong>  &#x21d2; <tt>DateTime</tt> 
   
 
   
@@ -743,12 +813,12 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-263</pre>
+278</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 263</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 278</span>
 
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                            <span class='label'>null:</span> <span class='kw'>false</span></pre>
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
   </tr>
 </table>
@@ -759,7 +829,7 @@ For user information or role, use UserProfile</p>
       <div class="method_details ">
   <h3 class="signature " id="current_sign_in_at-instance_method">
   
-    - (<tt>DateTime</tt>) <strong>current_sign_in_at</strong> 
+    #<strong>current_sign_in_at</strong>  &#x21d2; <tt>DateTime</tt> 
   
 
   
@@ -793,10 +863,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-257</pre>
+272</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 257</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 272</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>current_sign_in_at</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -809,7 +879,7 @@ For user information or role, use UserProfile</p>
       <div class="method_details ">
   <h3 class="signature " id="current_sign_in_ip-instance_method">
   
-    - (<tt>String</tt>) <strong>current_sign_in_ip</strong> 
+    #<strong>current_sign_in_ip</strong>  &#x21d2; <tt>String</tt> 
   
 
   
@@ -843,10 +913,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-259</pre>
+274</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 259</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 274</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>current_sign_in_ip</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -859,7 +929,7 @@ For user information or role, use UserProfile</p>
       <div class="method_details ">
   <h3 class="signature " id="email-instance_method">
   
-    - (<tt>String</tt>) <strong>email</strong> 
+    #<strong>email</strong>  &#x21d2; <tt>String</tt> 
   
 
   
@@ -893,10 +963,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-251</pre>
+266</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 251</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 266</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>email</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                  <span class='label'>default:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>   <span class='label'>null:</span> <span class='kw'>false</span></pre>
     </td>
@@ -909,7 +979,7 @@ For user information or role, use UserProfile</p>
       <div class="method_details ">
   <h3 class="signature " id="encrypted_password-instance_method">
   
-    - (<tt>String</tt>) <strong>encrypted_password</strong> 
+    #<strong>encrypted_password</strong>  &#x21d2; <tt>String</tt> 
   
 
   
@@ -943,10 +1013,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-252</pre>
+267</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 252</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 267</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>encrypted_password</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>     <span class='label'>default:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>   <span class='label'>null:</span> <span class='kw'>false</span></pre>
     </td>
@@ -959,7 +1029,7 @@ For user information or role, use UserProfile</p>
       <div class="method_details ">
   <h3 class="signature " id="last_sign_in_at-instance_method">
   
-    - (<tt>DateTime</tt>) <strong>last_sign_in_at</strong> 
+    #<strong>last_sign_in_at</strong>  &#x21d2; <tt>DateTime</tt> 
   
 
   
@@ -993,10 +1063,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-258</pre>
+273</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 258</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 273</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>last_sign_in_at</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1009,7 +1079,7 @@ For user information or role, use UserProfile</p>
       <div class="method_details ">
   <h3 class="signature " id="last_sign_in_ip-instance_method">
   
-    - (<tt>String</tt>) <strong>last_sign_in_ip</strong> 
+    #<strong>last_sign_in_ip</strong>  &#x21d2; <tt>String</tt> 
   
 
   
@@ -1043,10 +1113,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-260</pre>
+275</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 260</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 275</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>last_sign_in_ip</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1059,7 +1129,7 @@ For user information or role, use UserProfile</p>
       <div class="method_details ">
   <h3 class="signature " id="locale-instance_method">
   
-    - (<tt>String</tt>) <strong>locale</strong> 
+    #<strong>locale</strong>  &#x21d2; <tt>String</tt> 
   
 
   
@@ -1093,10 +1163,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-262</pre>
+277</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 262</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 277</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>locale</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                 <span class='label'>default:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>en</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>null:</span> <span class='kw'>false</span></pre>
     </td>
@@ -1109,7 +1179,7 @@ For user information or role, use UserProfile</p>
       <div class="method_details ">
   <h3 class="signature " id="nickname-instance_method">
   
-    - (<tt>String</tt>) <strong>nickname</strong> 
+    #<strong>nickname</strong>  &#x21d2; <tt>String</tt> 
   
 
   
@@ -1156,12 +1226,12 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-33</pre>
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 39</span>
 
-<span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:nickname</span><span class='comma'>,</span> <span class='symbol'>:presence</span> <span class='op'>=&gt;</span> <span class='kw'>true</span></pre>
+<span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:nickname</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span></pre>
     </td>
   </tr>
 </table>
@@ -1172,7 +1242,7 @@ For user information or role, use UserProfile</p>
       <div class="method_details ">
   <h3 class="signature " id="remember_created_at-instance_method">
   
-    - (<tt>DateTime</tt>) <strong>remember_created_at</strong> 
+    #<strong>remember_created_at</strong>  &#x21d2; <tt>DateTime</tt> 
   
 
   
@@ -1206,10 +1276,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-255</pre>
+270</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 255</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 270</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>remember_created_at</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1222,7 +1292,7 @@ For user information or role, use UserProfile</p>
       <div class="method_details ">
   <h3 class="signature " id="reset_password_sent_at-instance_method">
   
-    - (<tt>DateTime</tt>) <strong>reset_password_sent_at</strong> 
+    #<strong>reset_password_sent_at</strong>  &#x21d2; <tt>DateTime</tt> 
   
 
   
@@ -1256,10 +1326,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-254</pre>
+269</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 254</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 269</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>reset_password_sent_at</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1272,7 +1342,7 @@ For user information or role, use UserProfile</p>
       <div class="method_details ">
   <h3 class="signature " id="reset_password_token-instance_method">
   
-    - (<tt>String</tt>) <strong>reset_password_token</strong> 
+    #<strong>reset_password_token</strong>  &#x21d2; <tt>String</tt> 
   
 
   
@@ -1306,10 +1376,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-253</pre>
+268</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 253</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 268</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>reset_password_token</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
@@ -1322,7 +1392,7 @@ For user information or role, use UserProfile</p>
       <div class="method_details ">
   <h3 class="signature " id="sign_in_count-instance_method">
   
-    - (<tt>Integer</tt>) <strong>sign_in_count</strong> 
+    #<strong>sign_in_count</strong>  &#x21d2; <tt>Integer</tt> 
   
 
   
@@ -1356,10 +1426,10 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-256</pre>
+271</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 256</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 271</span>
 
 <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_integer'>integer</span>  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sign_in_count</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>          <span class='label'>default:</span> <span class='int'>0</span></pre>
     </td>
@@ -1372,7 +1442,7 @@ For user information or role, use UserProfile</p>
       <div class="method_details ">
   <h3 class="signature " id="updated_at-instance_method">
   
-    - (<tt>DateTime</tt>) <strong>updated_at</strong> 
+    #<strong>updated_at</strong>  &#x21d2; <tt>DateTime</tt> 
   
 
   
@@ -1406,12 +1476,12 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-264</pre>
+279</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 264</span>
+      <pre class="code"><span class="info file"># File 'db/schema.rb', line 279</span>
 
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>updated_at</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>                            <span class='label'>null:</span> <span class='kw'>false</span></pre>
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>updated_at</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
   </tr>
 </table>
@@ -1427,7 +1497,7 @@ For user information or role, use UserProfile</p>
       <div class="method_details first">
   <h3 class="signature first" id="for_ichain_username-class_method">
   
-    + (<tt>Object</tt>) <strong>for_ichain_username</strong>(username, attributes) 
+    .<strong>for_ichain_username</strong>(username, attributes)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1439,21 +1509,21 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-45
-46
-47
-48
-49
-50
-51
-52</pre>
+53
+54
+55
+56
+57
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_for_ichain_username'>for_ichain_username</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_find_by_nickname'>find_by_nickname</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_update_all'>update_all</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='symbol'>:email</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='symbol'>:email</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span> <span class='op'>!=</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='symbol'>:email</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>id:</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_update_all'>update_all</span><span class='lparen'>(</span><span class='label'>email:</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='symbol'>:email</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span> <span class='op'>!=</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='symbol'>:email</span><span class='rbracket'>]</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='label'>nickname:</span> <span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='label'>email:</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='symbol'>:email</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -1467,7 +1537,7 @@ For user information or role, use UserProfile</p>
       <div class="method_details ">
   <h3 class="signature " id="with_role-class_method">
   
-    + (<tt>Object</tt>) <strong>with_role</strong>(role) 
+    .<strong>with_role</strong>(role)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1479,15 +1549,15 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-41
-42
-43</pre>
+49
+50
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_with_role'>with_role</span><span class='lparen'>(</span><span class='id identifier rubyid_role'>role</span><span class='rparen'>)</span>
-  <span class='const'>UserProfile</span><span class='period'>.</span><span class='id identifier rubyid_with_role'>with_role</span><span class='lparen'>(</span><span class='id identifier rubyid_role'>role</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:user</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="UserProfile.html" title="UserProfile (class)">UserProfile</a></span></span><span class='period'>.</span><span class='id identifier rubyid_with_role'><span class='object_link'><a href="UserProfile.html#with_role-class_method" title="UserProfile.with_role (method)">with_role</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_role'>role</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:user</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1501,9 +1571,121 @@ For user information or role, use UserProfile</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="find_profile-instance_method">
+  <h3 class="signature first" id="event_emails-instance_method">
   
-    - (<tt>Object</tt>) <strong>find_profile</strong> 
+    #<strong>event_emails</strong>  &#x21d2; <tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="EventEmail.html" title="EventEmail (class)">EventEmail</a></span>&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Event Emails send by a user</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="EventEmail.html" title="EventEmail (class)">EventEmail</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 31</span>
+
+<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:event_emails</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="event_organizers-instance_method">
+  
+    #<strong>event_organizers</strong>  &#x21d2; <tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="EventOrganizer.html" title="EventOrganizer (class)">EventOrganizer</a></span>&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Event organizer for events</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="EventOrganizer.html" title="EventOrganizer (class)">EventOrganizer</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 33</span>
+
+<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:event_organizers</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="find_profile-instance_method">
+  
+    #<strong>find_profile</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1515,12 +1697,12 @@ For user information or role, use UserProfile</p>
       <pre class="lines">
 
 
-37
-38
-39</pre>
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_profile'>find_profile</span>
   <span class='id identifier rubyid_profile'>profile</span> <span class='op'>||</span> <span class='id identifier rubyid_create_profile'>create_profile</span>
@@ -1531,9 +1713,65 @@ For user information or role, use UserProfile</p>
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="organizing_events-instance_method">
+  
+    #<strong>organizing_events</strong>  &#x21d2; <tt>ActiveRecord::Relation&lt;OrganizingEvent&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Events for which the user is an event organizer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ActiveRecord::Relation&lt;OrganizingEvent&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 35</span>
+
+<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:organizing_events</span><span class='comma'>,</span> <span class='label'>through:</span> <span class='symbol'>:event_organizers</span><span class='comma'>,</span> <span class='label'>source:</span> <span class='symbol'>:event</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="profile-instance_method">
   
-    - (<tt><span class='object_link'><a href="UserProfile.html" title="UserProfile (class)">UserProfile</a></span></tt>) <strong>profile</strong> 
+    #<strong>profile</strong>  &#x21d2; <tt><span class='object_link'><a href="UserProfile.html" title="UserProfile (class)">UserProfile</a></span></tt> 
   
 
   
@@ -1581,7 +1819,7 @@ Associated object with all information not directly related to authentication</p
     <td>
       <pre class="code"><span class="info file"># File 'app/models/user.rb', line 23</span>
 
-<span class='id identifier rubyid_has_one'>has_one</span> <span class='symbol'>:profile</span><span class='comma'>,</span> <span class='symbol'>:class_name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>UserProfile</span><span class='tstring_end'>&quot;</span></span></pre>
+<span class='id identifier rubyid_has_one'>has_one</span> <span class='symbol'>:profile</span><span class='comma'>,</span> <span class='label'>class_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>UserProfile</span><span class='tstring_end'>&#39;</span></span></pre>
     </td>
   </tr>
 </table>
@@ -1590,7 +1828,7 @@ Associated object with all information not directly related to authentication</p
       <div class="method_details ">
   <h3 class="signature " id="reimbursements-instance_method">
   
-    - (<tt>Array&lt;<span class='object_link'><a href="Reimbursement.html" title="Reimbursement (class)">Reimbursement</a></span>&gt;</tt>) <strong>reimbursements</strong> 
+    #<strong>reimbursements</strong>  &#x21d2; <tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="Reimbursement.html" title="Reimbursement (class)">Reimbursement</a></span>&gt;</tt> 
   
 
   
@@ -1611,7 +1849,7 @@ Associated object with all information not directly related to authentication</p
     <li>
       
       
-        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Reimbursement.html" title="Reimbursement (class)">Reimbursement</a></span>&gt;</tt>)</span>
+        <span class='type'>(<tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="Reimbursement.html" title="Reimbursement (class)">Reimbursement</a></span>&gt;</tt>)</span>
       
       
       
@@ -1637,7 +1875,7 @@ Associated object with all information not directly related to authentication</p
     <td>
       <pre class="code"><span class="info file"># File 'app/models/user.rb', line 27</span>
 
-<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:reimbursements</span><span class='comma'>,</span> <span class='symbol'>:inverse_of</span> <span class='op'>=&gt;</span> <span class='symbol'>:user</span></pre>
+<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:reimbursements</span><span class='comma'>,</span> <span class='label'>inverse_of:</span> <span class='symbol'>:user</span></pre>
     </td>
   </tr>
 </table>
@@ -1646,7 +1884,7 @@ Associated object with all information not directly related to authentication</p
       <div class="method_details ">
   <h3 class="signature " id="requests-instance_method">
   
-    - (<tt>Array&lt;<span class='object_link'><a href="Request.html" title="Request (class)">Request</a></span>&gt;</tt>) <strong>requests</strong> 
+    #<strong>requests</strong>  &#x21d2; <tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="Request.html" title="Request (class)">Request</a></span>&gt;</tt> 
   
 
   
@@ -1667,7 +1905,7 @@ Associated object with all information not directly related to authentication</p
     <li>
       
       
-        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Request.html" title="Request (class)">Request</a></span>&gt;</tt>)</span>
+        <span class='type'>(<tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="Request.html" title="Request (class)">Request</a></span>&gt;</tt>)</span>
       
       
       
@@ -1693,7 +1931,7 @@ Associated object with all information not directly related to authentication</p
     <td>
       <pre class="code"><span class="info file"># File 'app/models/user.rb', line 25</span>
 
-<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:requests</span><span class='comma'>,</span> <span class='symbol'>:inverse_of</span> <span class='op'>=&gt;</span> <span class='symbol'>:user</span></pre>
+<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:requests</span><span class='comma'>,</span> <span class='label'>inverse_of:</span> <span class='symbol'>:user</span></pre>
     </td>
   </tr>
 </table>
@@ -1702,7 +1940,7 @@ Associated object with all information not directly related to authentication</p
       <div class="method_details ">
   <h3 class="signature " id="state_changes-instance_method">
   
-    - (<tt>Array&lt;<span class='object_link'><a href="StateChange.html" title="StateChange (class)">StateChange</a></span>&gt;</tt>) <strong>state_changes</strong> 
+    #<strong>state_changes</strong>  &#x21d2; <tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="StateChange.html" title="StateChange (class)">StateChange</a></span>&gt;</tt> 
   
 
   
@@ -1723,7 +1961,7 @@ Associated object with all information not directly related to authentication</p
     <li>
       
       
-        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="StateChange.html" title="StateChange (class)">StateChange</a></span>&gt;</tt>)</span>
+        <span class='type'>(<tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="StateChange.html" title="StateChange (class)">StateChange</a></span>&gt;</tt>)</span>
       
       
       
@@ -1749,7 +1987,7 @@ Associated object with all information not directly related to authentication</p
     <td>
       <pre class="code"><span class="info file"># File 'app/models/user.rb', line 29</span>
 
-<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:state_changes</span><span class='comma'>,</span> <span class='symbol'>:inverse_of</span> <span class='op'>=&gt;</span> <span class='symbol'>:user</span></pre>
+<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:state_changes</span><span class='comma'>,</span> <span class='label'>inverse_of:</span> <span class='symbol'>:user</span></pre>
     </td>
   </tr>
 </table>
@@ -1758,7 +1996,7 @@ Associated object with all information not directly related to authentication</p
       <div class="method_details ">
   <h3 class="signature " id="title-instance_method">
   
-    - (<tt>Object</tt>) <strong>title</strong> 
+    #<strong>title</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1770,12 +2008,16 @@ Associated object with all information not directly related to authentication</p
       <pre class="lines">
 
 
-35</pre>
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 41</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_title'>title</span><span class='semicolon'>;</span> <span class='id identifier rubyid_nickname'>nickname</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_title'>title</span>
+  <span class='id identifier rubyid_nickname'>nickname</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1785,11 +2027,12 @@ Associated object with all information not directly related to authentication</p
 
 </div>
 
-    <div id="footer">
-  Generated on Mon Mar 23 13:04:15 2015 by
+      <div id="footer">
+  Generated on Thu Oct 31 16:40:27 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.4 (ruby-1.9.3).
+  0.9.20 (ruby-2.5.5).
 </div>
 
+    </div>
   </body>
 </html>
