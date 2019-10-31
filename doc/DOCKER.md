@@ -17,19 +17,25 @@ straighforward.
 
         cp docker/database.postgresql.yml config/database.yml
 
-3. Build the image:
+4. Build the image:
 
         docker-compose build
 
-4. Now you should be able to set up the database:
+5. Now you should be able to set up the database:
 
         docker-compose run --rm web rake db:setup
 
-5. (Optional) Run the testsuite to find out whether the application works.
+   When using the mysql container, this fifth step may require that you have
+   started the database container some seconds in advance, since the official
+   mysql and mariadb containers need some time to initialize the system.
+
+        docker-compose up --detach db
+
+6. (Optional) Run the testsuite to find out whether the application works.
 
         docker-compose run --rm web xvfb-run -a rake spec
 
-6. And, now, you can start the application:
+7. And, now, you can start the application:
 
         docker-compose up
 
