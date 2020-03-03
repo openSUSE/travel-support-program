@@ -223,7 +223,7 @@ GEM
       prawn (>= 0.11.1)
       railties (>= 3.0.0)
     public_suffix (4.0.1)
-    puma (4.2.1)
+    puma (4.3.3)
       nio4r (~> 2.0)
     rack (1.6.11)
     rack-test (0.6.3)
