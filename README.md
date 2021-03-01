@@ -24,7 +24,7 @@ name).
 
 ## Requirements
 
-* Ruby >= 2.4
+* Ruby >= 2.5
 * Any Rails supported database system: PosgreSQL, SQLite3, MariaDB, MySQL...
 
 ## Installation

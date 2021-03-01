@@ -442,6 +442,3 @@ DEPENDENCIES
   web-console (~> 2.0)
   yard (~> 0.9.0)
   yard-activerecord
-
-BUNDLED WITH
-   1.17.3
