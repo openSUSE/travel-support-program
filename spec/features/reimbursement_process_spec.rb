@@ -177,7 +177,7 @@ feature 'Reimbursements', '' do
     fill_in 'subject', with: 'This is the payment subject'
     select 'Transfer', from: 'payment_method'
     click_button 'Create payment'
-    page.should have_content 'Payment was successfully created'
+    page.should have_content 'ayment was successfully created'
     page.should have_content 'This is the payment subject'
 
     # And mark it as payed
