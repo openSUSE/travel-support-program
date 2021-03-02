@@ -275,6 +275,6 @@ describe 'Requester' do
     it { should_not be_able_to(:update, requests(:wedge_costumes_for_party)) }
     it { should_not be_able_to(:destroy, requests(:wedge_costumes_for_party)) }
     it { should be_able_to(:cancel, requests(:wedge_costumes_for_party)) }
-    it { should_not be_able_to(:adjust_state, requests(:wedge_customes_for_party)) }
+    it { should_not be_able_to(:adjust_state, requests(:wedge_costumes_for_party)) }
   end
 end
