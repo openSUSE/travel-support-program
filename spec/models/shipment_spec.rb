@@ -6,7 +6,7 @@ describe Shipment do
 
   describe '#shipment_type' do
     it 'should be delegated to the event' do
-      requests(:wedge_customes_for_party).shipment_type.should == 'Wookiee customes box'
+      requests(:wedge_costumes_for_party).shipment_type.should == 'Wookiee costumes box'
     end
   end
 
@@ -37,7 +37,7 @@ describe Shipment do
   context 'during initial request' do
     before(:each) do
       @deliveries = ActionMailer::Base.deliveries.size
-      @shipment = requests(:luke_customes_for_party)
+      @shipment = requests(:luke_costumes_for_party)
       @audits = @shipment.audits
       transition(@shipment, :submit, users(:luke))
     end

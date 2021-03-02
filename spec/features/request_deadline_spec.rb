@@ -12,7 +12,7 @@ feature 'Request deadline', '' do
     end
   end
 
-  scenario 'Trying to apply to an closed event' do
+  scenario 'Trying to apply to a closed event' do
     sign_in_as_user(users(:wedge))
     visit event_path(events(:hoth_hackaton))
     within('.page-header') do

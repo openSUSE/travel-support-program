@@ -13,7 +13,7 @@ party:
   end_date: <%= 33.days.since.to_s(:db) %>
   validated: false
   budget: general_budget
-  shipment_type: "Wookiee customes box"
+  shipment_type: "Wookiee costumes box"
 
 dagobah_camp:
   name: "Dagobah Camp"

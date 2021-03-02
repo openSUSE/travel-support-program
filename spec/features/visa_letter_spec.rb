@@ -8,11 +8,11 @@ feature 'Visa letter', '' do
     sign_in_as_user(users(:luke))
     visit travel_sponsorship_path(requests(:luke_for_party))
     # request show
-    page.should_not have_content 'isa letter needed'
+    page.should_not have_content 'Visa letter needed'
     click_link 'Edit'
     # edit_request form
     page.should have_content 'Edit travel support request'
-    page.should_not have_content 'isa letter needed'
+    page.should_not have_content 'Visa letter needed'
   end
 
   scenario 'Applying to a visa enabled event' do
@@ -22,10 +22,10 @@ feature 'Visa letter', '' do
 
     # new_request form
     page.should have_content 'New travel support request'
-    page.should have_content 'isa letter needed'
+    page.should have_content 'Visa letter needed'
     click_button 'Create travel support request'
     # request show
     page.should have_content 'request was successfully created'
-    page.should have_content 'isa letter needed'
+    page.should have_content 'Visa letter needed'
   end
 end

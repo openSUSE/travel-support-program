@@ -33,7 +33,7 @@ describe 'Assistant' do
     it { should_not be_able_to(:read, event_organizers(:event_org_luke)) }
   end
 
-  context 'managing his own requests' do
+  context 'managing their own requests' do
     it { should_not be_able_to(:create, TravelSponsorship.new) }
     it { should be_able_to(:create, TravelSponsorship.new(event_id: events(:dagobah_camp).id)) }
     it { should_not be_able_to(:create, TravelSponsorship.new(event_id: events(:hoth_hackaton).id)) }
@@ -71,7 +71,7 @@ describe 'Assistant' do
     it { should_not be_able_to(:create, requests(:luke_for_yavin).build_reimbursement) }
   end
 
-  context 'managing his own reimbursement' do
+  context 'managing their own reimbursement' do
     before(:each) do
       @reimbursement = requests(:assistant_for_yavin).create_reimbursement
       @reimbursement.request.expenses.each do |e|
@@ -202,7 +202,7 @@ describe 'Assistant' do
     it { should_not be_able_to(:update, @comment) }
   end
 
-  context 'managing attachments to his own reimbursements' do
+  context 'managing attachments to their own reimbursements' do
     before(:each) do
       @reimbursement = reimbursements(:assistant_for_training_reim)
       set_acceptance_file @reimbursement
@@ -248,20 +248,20 @@ describe 'Assistant' do
     end
   end
 
-  context 'managing his own shipments' do
+  context 'managing their own shipments' do
     it { should_not be_able_to(:create, Shipment.new) }
     it { should be_able_to(:create, Shipment.new(event_id: events(:hoth_hackaton).id)) }
     it { should_not be_able_to(:create, Shipment.new(event_id: events(:dagobah_camp).id)) }
-    it { should be_able_to(:read, requests(:assistant_customes_for_party)) }
-    it { should be_able_to(:update, requests(:assistant_customes_for_party)) }
-    it { should be_able_to(:destroy, requests(:assistant_customes_for_party)) }
-    it { should be_able_to(:cancel, requests(:assistant_customes_for_party)) }
-    it { should_not be_able_to(:adjust_state, requests(:assistant_customes_for_party)) }
+    it { should be_able_to(:read, requests(:assistant_costumes_for_party)) }
+    it { should be_able_to(:update, requests(:assistant_costumes_for_party)) }
+    it { should be_able_to(:destroy, requests(:assistant_costumes_for_party)) }
+    it { should be_able_to(:cancel, requests(:assistant_costumes_for_party)) }
+    it { should_not be_able_to(:adjust_state, requests(:assistant_costumes_for_party)) }
   end
 
   context "trying to look into other's requests" do
-    it { should_not be_able_to(:read, requests(:wedge_customes_for_party)) }
-    it { should_not be_able_to(:update, requests(:wedge_customes_for_party)) }
-    it { should_not be_able_to(:adjust_state, requests(:wedge_customes_for_party)) }
+    it { should_not be_able_to(:read, requests(:wedge_costumes_for_party)) }
+    it { should_not be_able_to(:update, requests(:wedge_costumes_for_party)) }
+    it { should_not be_able_to(:adjust_state, requests(:wedge_costumes_for_party)) }
   end
 end

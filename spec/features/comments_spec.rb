@@ -46,7 +46,7 @@ feature 'Comments', '' do
     page.should have_xpath("//div[@id='new_comment']")
     page.should have_field 'private' # Is checked by default
     page.should have_content TravelSponsorship.private_comment_hint
-    fill_in 'comment_body', with: "I don't like this guy, but don't tell him."
+    fill_in 'comment_body', with: "I don't like this person, but don't tell them."
     click_button 'Create comment'
 
     current_path.should == travel_sponsorship_path(requests(:wedge_for_yavin))
@@ -55,7 +55,7 @@ feature 'Comments', '' do
     page.should have_content 'Comment added'
     page.should have_content 'history'
     page.should have_content 'private'
-    page.should have_content "I don't like this guy"
+    page.should have_content "I don't like this person"
     ActionMailer::Base.deliveries.size.should == @deliveries + 2
 
     # Check that it's not visible for the requester
@@ -63,6 +63,6 @@ feature 'Comments', '' do
     sign_in_as_user(users(:wedge))
     visit travel_sponsorship_path(requests(:wedge_for_yavin))
     page.should have_content 'history'
-    page.should_not have_content "I don't like this guy"
+    page.should_not have_content "I don't like this person"
   end
 end

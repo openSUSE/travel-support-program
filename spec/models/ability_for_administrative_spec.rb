@@ -317,17 +317,17 @@ describe 'Administrative' do
     it { should_not be_able_to(:create, Shipment.new) }
     it { should be_able_to(:create, Shipment.new(event_id: events(:hoth_hackaton).id)) }
     it { should_not be_able_to(:create, Shipment.new(event_id: events(:dagobah_camp).id)) }
-    it { should be_able_to(:read, requests(:administrative_customes_for_party)) }
-    it { should be_able_to(:update, requests(:administrative_customes_for_party)) }
-    it { should be_able_to(:destroy, requests(:administrative_customes_for_party)) }
-    it { should be_able_to(:cancel, requests(:administrative_customes_for_party)) }
-    it { should_not be_able_to(:adjust_state, requests(:administrative_customes_for_party)) }
+    it { should be_able_to(:read, requests(:administrative_costumes_for_party)) }
+    it { should be_able_to(:update, requests(:administrative_costumes_for_party)) }
+    it { should be_able_to(:destroy, requests(:administrative_costumes_for_party)) }
+    it { should be_able_to(:cancel, requests(:administrative_costumes_for_party)) }
+    it { should_not be_able_to(:adjust_state, requests(:administrative_costumes_for_party)) }
   end
 
   context "trying to look into other's requests" do
-    it { should_not be_able_to(:read, requests(:wedge_customes_for_party)) }
-    it { should_not be_able_to(:update, requests(:wedge_customes_for_party)) }
-    it { should_not be_able_to(:adjust_state, requests(:wedge_customes_for_party)) }
+    it { should_not be_able_to(:read, requests(:wedge_costumes_for_party)) }
+    it { should_not be_able_to(:update, requests(:wedge_costumes_for_party)) }
+    it { should_not be_able_to(:adjust_state, requests(:wedge_costumes_for_party)) }
   end
 end
 # rubocop:enable BlockLength

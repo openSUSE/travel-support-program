@@ -56,7 +56,7 @@ feature 'Reimbursements', '' do
     # ..but our hero decides to ignore it
     click_link 'Action'
     click_link 'Submit'
-    fill_in 'notes', with: "I don't sign autograph for free."
+    fill_in 'notes', with: "I don't sign autographs for free."
     click_button 'submit'
     page.should have_content 'Unable to submit.'
     page.should have_content "Signed acceptance can't be blank"
@@ -91,7 +91,7 @@ feature 'Reimbursements', '' do
     # Rolling back
     click_link 'Action'
     click_link 'Roll Back'
-    fill_in 'notes', with: 'Sorry Mr. Idestroyedthedeathstar: no invoices, no money'
+    fill_in 'notes', with: 'Sorry Idestroyedthedeathstar: no invoices, no money'
     click_button 'roll back'
     page.should have_content 'Successfully rolled back.'
     page.should have_content 'requester must review all the information to ensure it is present and correct'
@@ -128,7 +128,7 @@ feature 'Reimbursements', '' do
     # And submit again
     click_link 'Action'
     click_link 'Submit'
-    fill_in 'notes', with: 'Here you are the invoices. Make sure you also watch the video.'
+    fill_in 'notes', with: 'Here are the invoices. Make sure you also watch the video.'
     click_button 'submit'
     page.should have_content 'Successfully submitted.'
 
@@ -142,7 +142,7 @@ feature 'Reimbursements', '' do
     page.should have_content 'Gas receipt'
     click_link 'Action'
     click_link 'Approve'
-    fill_in 'notes', with: 'Everything ok know.'
+    fill_in 'notes', with: 'Everything is ok now.'
     click_button 'approve'
     page.should have_content 'Successfully approved.'
     page.should have_content 'will be now processed by the administrative'
@@ -165,7 +165,7 @@ feature 'Reimbursements', '' do
     visit request_reimbursement_path(@reimbursement.request)
     click_link 'Action'
     click_link 'Process'
-    fill_in 'notes', with: 'Every ok. Sending to accounting dept.'
+    fill_in 'notes', with: 'Every is ok. Sending to accounting dept.'
     click_button 'process'
     page.should have_content 'Payment processed'
     page.should have_content 'payment is ongoing'
@@ -177,7 +177,7 @@ feature 'Reimbursements', '' do
     fill_in 'subject', with: 'This is the payment subject'
     select 'Transfer', from: 'payment_method'
     click_button 'Create payment'
-    page.should have_content 'ayment was successfully created'
+    page.should have_content 'Payment was successfully created'
     page.should have_content 'This is the payment subject'
 
     # And mark it as payed

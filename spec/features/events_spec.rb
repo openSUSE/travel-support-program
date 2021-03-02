@@ -10,7 +10,7 @@ feature 'Events', '' do
     confirm_msg = accept_confirm do
       click_link 'New'
     end
-    confirm_msg.should include 'ake sure that the event is not currently included in the list'
+    confirm_msg.should include 'Make sure that the event is not currently included in the list'
 
     # Protected attributes should not be displayed
     page.should_not have_field 'event[visa_letters]'
@@ -24,7 +24,7 @@ feature 'Events', '' do
     select 'United States', from: 'country'
 
     click_button 'Create event'
-    page.should have_content 'vent was successfully created'
+    page.should have_content 'Event was successfully created'
     page.should_not have_content 'validated'
   end
 
@@ -43,7 +43,7 @@ feature 'Events', '' do
     check 'validated'
 
     click_button 'Create event'
-    page.should have_content 'vent was successfully created'
+    page.should have_content 'Event was successfully created'
     within('.wrapper.event_visa_letters') do
       page.should have_content 'No'
     end

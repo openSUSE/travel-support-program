@@ -130,7 +130,7 @@ feature 'Requests', '' do
     # Approval
     click_link 'Action'
     click_link 'Approve'
-    fill_in 'notes', with: 'We do not pay droids anyway, not a matter of price.'
+    fill_in 'notes', with: "We do not pay droids anyway, it's not a matter of price."
     click_button 'approve'
     page.should have_content 'Successfully approved'
     page.should have_content 'from submitted to approved'
@@ -143,7 +143,7 @@ feature 'Requests', '' do
     # And finally accept
     click_link 'Action'
     click_link 'Accept'
-    fill_in 'notes', with: "Ok, just give the gas, then. But don't expect me to clean the droid properly... and we are going to a swamp."
+    fill_in 'notes', with: "Ok, just give them gas, then. But don't expect me to clean the droid properly... and we are going to a swamp."
     click_button 'accept'
     page.should have_content 'Acceptance processed'
     page.should have_content 'from approved to accepted'
