@@ -109,5 +109,5 @@ test:
   shipments:
     enabled: true
     types:
-      - Wookiee customes box
+      - Wookiee costumes box
       - Death Star destruction kit
