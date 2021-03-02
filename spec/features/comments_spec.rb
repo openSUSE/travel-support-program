@@ -63,6 +63,6 @@ feature 'Comments', '' do
     sign_in_as_user(users(:wedge))
     visit travel_sponsorship_path(requests(:wedge_for_yavin))
     page.should have_content 'history'
-    page.should_not have_content "I don't like this person"
+    page.should_not have_content "I don't like this person."
   end
 end
