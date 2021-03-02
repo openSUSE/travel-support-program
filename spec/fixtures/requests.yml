@@ -96,42 +96,42 @@ tspmember_for_training:
   state_updated_at: <%= (40.days.ago + 5.hours).to_s(:db) %>
   type: "TravelSponsorship"
 
-wedge_customes_for_party:
+wedge_costumes_for_party:
   state: "submitted"
   user: wedge
   event: party
   state_updated_at: <%= 11.days.ago.to_s(:db) %>
   type: "Shipment"
 
-luke_customes_for_party:
+luke_costumes_for_party:
   state: "incomplete"
   user: luke
   event: party
   created_at: <%= 4.days.ago.to_s(:db) %>
   type: "Shipment"
 
-administrative_customes_for_party:
+administrative_costumes_for_party:
   state: "incomplete"
   user: administrative
   event: party
   created_at: <%= 4.days.ago.to_s(:db) %>
   type: "Shipment"
 
-assistant_customes_for_party:
+assistant_costumes_for_party:
   state: "incomplete"
   user: assistant
   event: party
   created_at: <%= 4.days.ago.to_s(:db) %>
   type: "Shipment"
 
-tspmember_customes_for_party:
+tspmember_costumes_for_party:
   state: "incomplete"
   user: tspmember
   event: party
   created_at: <%= 4.days.ago.to_s(:db) %>
   type: "Shipment"
 
-john_customes_for_party:
+john_costumes_for_party:
   state: "incomplete"
   user: john
   event: party
