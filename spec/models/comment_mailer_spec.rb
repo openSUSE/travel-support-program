@@ -84,14 +84,14 @@ describe CommentMailer do
         @mails = ActionMailer::Base.deliveries[-4..-1]
       end
 
-      it 'should mail tsp, assistant, requester and supervisor (due to his previous comment)' do
+      it 'should mail tsp, assistant, requester and supervisor (due to their previous comment)' do
         ActionMailer::Base.deliveries.size.should == @mcount + 8
         @mails.map(&:to).flatten.should include @user.email
       end
 
       context 'and adding a subsequent private comment' do
         before(:each) do
-          @body = "I still don't like this guy."
+          @body = "I still don't like this person."
           comment = @reimbursement.comments.build(body: @body, private: true)
           comment.user = users(:tspmember)
           comment.save!

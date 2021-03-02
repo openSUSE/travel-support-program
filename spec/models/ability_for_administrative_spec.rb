@@ -34,7 +34,7 @@ describe 'Administrative' do
     it { should_not be_able_to(:read, event_organizers(:event_org_luke)) }
   end
 
-  context 'managing his own requests' do
+  context 'managing their own requests' do
     it { should_not be_able_to(:create, TravelSponsorship.new) }
     it { should be_able_to(:create, TravelSponsorship.new(event_id: events(:dagobah_camp).id)) }
     it { should_not be_able_to(:create, TravelSponsorship.new(event_id: events(:hoth_hackaton).id)) }
@@ -72,7 +72,7 @@ describe 'Administrative' do
     it { should_not be_able_to(:create, requests(:luke_for_yavin).build_reimbursement) }
   end
 
-  context 'managing his own reimbursement' do
+  context 'managing their own reimbursement' do
     before(:each) do
       @reimbursement = requests(:administrative_for_yavin).create_reimbursement
       @reimbursement.request.expenses.each do |e|
@@ -267,7 +267,7 @@ describe 'Administrative' do
     it { should_not be_able_to(:update, @comment) }
   end
 
-  context 'managing attachments to his own reimbursements' do
+  context 'managing attachments to their own reimbursements' do
     before(:each) do
       @reimbursement = reimbursements(:administrative_for_training_reim)
       set_acceptance_file @reimbursement
@@ -313,7 +313,7 @@ describe 'Administrative' do
     end
   end
 
-  context 'managing his own shipments' do
+  context 'managing their own shipments' do
     it { should_not be_able_to(:create, Shipment.new) }
     it { should be_able_to(:create, Shipment.new(event_id: events(:hoth_hackaton).id)) }
     it { should_not be_able_to(:create, Shipment.new(event_id: events(:dagobah_camp).id)) }
