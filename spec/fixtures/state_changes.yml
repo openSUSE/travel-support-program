@@ -241,9 +241,9 @@ tspmember_for_training_acceptance:
   user: tspmember
   created_at: <%= (40.days.ago + 5.hours).to_s(:db) %>
 
-wedge_customes_for_party_request:
+wedge_costumes_for_party_request:
   type: "StateTransition"
-  machine: wedge_customes_for_party (Request)
+  machine: wedge_costumes_for_party (Request)
   state_event: "submit"
   from: "incomplete"
   to: "submitted"

@@ -33,7 +33,7 @@ describe 'TSP' do
     it { should be_able_to(:read, event_organizers(:event_org_luke)) }
   end
 
-  context 'managing his own requests' do
+  context 'managing their own requests' do
     it { should_not be_able_to(:create, TravelSponsorship.new) }
     it { should be_able_to(:create, TravelSponsorship.new(event_id: events(:dagobah_camp).id)) }
     it { should_not be_able_to(:create, TravelSponsorship.new(event_id: events(:hoth_hackaton).id)) }
@@ -71,7 +71,7 @@ describe 'TSP' do
     it { should_not be_able_to(:create, requests(:luke_for_yavin).build_reimbursement) }
   end
 
-  context 'managing his own reimbursement' do
+  context 'managing their own reimbursement' do
     before(:each) do
       @reimbursement = requests(:tspmember_for_yavin).create_reimbursement
       @reimbursement.request.expenses.each do |e|
@@ -291,19 +291,19 @@ describe 'TSP' do
 
   context 'accessing shipments' do
     it { should_not be_able_to(:create, Shipment.new) }
-    it { should_not be_able_to(:read, requests(:wedge_customes_for_party)) }
-    it { should_not be_able_to(:update, requests(:wedge_customes_for_party)) }
-    it { should_not be_able_to(:destroy, requests(:wedge_customes_for_party)) }
+    it { should_not be_able_to(:read, requests(:wedge_costumes_for_party)) }
+    it { should_not be_able_to(:update, requests(:wedge_costumes_for_party)) }
+    it { should_not be_able_to(:destroy, requests(:wedge_costumes_for_party)) }
   end
 
   context 'adding comments to shipments' do
-    it { should_not be_able_to(:create, requests(:luke_customes_for_party).comments.build) }
-    it { should_not be_able_to(:create, requests(:luke_customes_for_party).comments.build(private: true)) }
+    it { should_not be_able_to(:create, requests(:luke_costumes_for_party).comments.build) }
+    it { should_not be_able_to(:create, requests(:luke_costumes_for_party).comments.build(private: true)) }
   end
 
   context 'accessing public comments on shipments' do
     before(:each) do
-      @comment = requests(:luke_customes_for_party).comments.create(body: 'whatever')
+      @comment = requests(:luke_costumes_for_party).comments.create(body: 'whatever')
     end
 
     it { should_not be_able_to(:read, @comment) }
@@ -313,7 +313,7 @@ describe 'TSP' do
 
   context 'accessing private comments on shipments' do
     before(:each) do
-      @comment = requests(:luke_customes_for_party).comments.create(body: 'whatever', private: true)
+      @comment = requests(:luke_costumes_for_party).comments.create(body: 'whatever', private: true)
     end
 
     it { should_not be_able_to(:read, @comment) }

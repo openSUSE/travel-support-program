@@ -42,7 +42,7 @@ describe CommentMailer do
     before(:each) do
       @user = users(:tspmember)
       @request = requests(:wedge_for_yavin)
-      @body = "I don't like this guy."
+      @body = "I don't like this person."
       @mcount = ActionMailer::Base.deliveries.size
       comment = @request.comments.build(body: @body, private: true)
       comment.user = @user
@@ -84,14 +84,14 @@ describe CommentMailer do
         @mails = ActionMailer::Base.deliveries[-4..-1]
       end
 
-      it 'should mail tsp, assistant, requester and supervisor (due to his previous comment)' do
+      it 'should mail tsp, assistant, requester and supervisor (due to their previous comment)' do
         ActionMailer::Base.deliveries.size.should == @mcount + 8
         @mails.map(&:to).flatten.should include @user.email
       end
 
       context 'and adding a subsequent private comment' do
         before(:each) do
-          @body = "I still don't like this guy."
+          @body = "I still don't like this person."
           comment = @reimbursement.comments.build(body: @body, private: true)
           comment.user = users(:tspmember)
           comment.save!
@@ -111,8 +111,8 @@ describe CommentMailer do
     before(:each) do
       @user = users(:wedge)
       @material = users(:material)
-      @shipment = requests(:wedge_customes_for_party)
-      @body = "I'm planning to use one of the customes to dress Chewbacca up."
+      @shipment = requests(:wedge_costumes_for_party)
+      @body = "I'm planning to use one of the costumes to dress Chewbacca up."
       @mcount = ActionMailer::Base.deliveries.size
       comment = @shipment.comments.build(body: @body)
       comment.user = @user
@@ -132,7 +132,7 @@ describe CommentMailer do
 
     context 'adding a private comment to a shipment' do
       before(:each) do
-        @body = 'This guy is stupid.'
+        @body = 'This person is stupid.'
         comment = @shipment.comments.build(body: @body, private: true)
         comment.user = @material
         comment.save!

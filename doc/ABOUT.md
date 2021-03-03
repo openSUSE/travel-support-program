@@ -35,7 +35,7 @@ Finally, the explicit requester's acceptance is required.
 
 ![Request workflow diagram](html/TravelSponsorship_state.png)
 
-Once the requester have attended to the event, he/she must provide some reports
+Once the requester have attended to the event, they must provide some reports
 in order to get access to the reimbursement, including digitized copies of
 invoices for every expense. Once again, this reports are validated and approved
 by the Committee. After this validation, the reimbursement must be verified by

@@ -42,7 +42,7 @@ describe 'Requester' do
     it { should_not be_able_to(:read, event_organizers(:event_org_luke)) }
   end
 
-  context 'managing his own requests' do
+  context 'managing their own requests' do
     it { should_not be_able_to(:create, TravelSponsorship.new) }
     it { should be_able_to(:create, TravelSponsorship.new(event_id: events(:dagobah_camp).id)) }
     it { should_not be_able_to(:create, TravelSponsorship.new(event_id: events(:hoth_hackaton).id)) }
@@ -180,12 +180,12 @@ describe 'Requester' do
     end
   end
 
-  context 'adding comments to his own requests' do
+  context 'adding comments to their own requests' do
     it { should be_able_to(:create, requests(:luke_for_yavin).comments.build) }
     it { should_not be_able_to(:create, requests(:luke_for_yavin).comments.build(private: true)) }
   end
 
-  context 'accessing public comments on his own requests' do
+  context 'accessing public comments on their own requests' do
     before(:each) do
       @comment = requests(:luke_for_yavin).comments.create(body: 'whatever')
     end
@@ -195,7 +195,7 @@ describe 'Requester' do
     it { should_not be_able_to(:update, @comment) }
   end
 
-  context 'accessing private comments on his own requests' do
+  context 'accessing private comments on their own requests' do
     before(:each) do
       @comment = requests(:luke_for_yavin).comments.create(body: 'whatever', private: true)
     end
@@ -219,7 +219,7 @@ describe 'Requester' do
     it { should_not be_able_to(:update, @comment) }
   end
 
-  context 'manage attachments to his own reimbursements' do
+  context 'manage attachments to their own reimbursements' do
     before(:each) do
       @reimbursement = reimbursements(:wedge_for_training_reim)
       set_acceptance_file @reimbursement
@@ -251,30 +251,30 @@ describe 'Requester' do
     end
   end
 
-  context 'managing his own shipments' do
+  context 'managing their own shipments' do
     it { should_not be_able_to(:create, Shipment.new) }
     it { should be_able_to(:create, Shipment.new(event_id: events(:hoth_hackaton).id)) }
     it { should_not be_able_to(:create, Shipment.new(event_id: events(:dagobah_camp).id)) }
-    it { should be_able_to(:read, requests(:luke_customes_for_party)) }
-    it { should be_able_to(:update, requests(:luke_customes_for_party)) }
-    it { should be_able_to(:destroy, requests(:luke_customes_for_party)) }
-    it { should be_able_to(:cancel, requests(:luke_customes_for_party)) }
-    it { should_not be_able_to(:adjust_state, requests(:luke_customes_for_party)) }
+    it { should be_able_to(:read, requests(:luke_costumes_for_party)) }
+    it { should be_able_to(:update, requests(:luke_costumes_for_party)) }
+    it { should be_able_to(:destroy, requests(:luke_costumes_for_party)) }
+    it { should be_able_to(:cancel, requests(:luke_costumes_for_party)) }
+    it { should_not be_able_to(:adjust_state, requests(:luke_costumes_for_party)) }
   end
 
   context "trying to look into other's requests" do
-    it { should_not be_able_to(:read, requests(:wedge_customes_for_party)) }
-    it { should_not be_able_to(:update, requests(:wedge_customes_for_party)) }
-    it { should_not be_able_to(:adjust_state, requests(:wedge_customes_for_party)) }
+    it { should_not be_able_to(:read, requests(:wedge_costumes_for_party)) }
+    it { should_not be_able_to(:update, requests(:wedge_costumes_for_party)) }
+    it { should_not be_able_to(:adjust_state, requests(:wedge_costumes_for_party)) }
   end
 
-  context 'managing his own requested shipments' do
+  context 'managing their own requested shipments' do
     let(:user) { users(:wedge) }
 
-    it { should be_able_to(:read, requests(:wedge_customes_for_party)) }
-    it { should_not be_able_to(:update, requests(:wedge_customes_for_party)) }
-    it { should_not be_able_to(:destroy, requests(:wedge_customes_for_party)) }
-    it { should be_able_to(:cancel, requests(:wedge_customes_for_party)) }
-    it { should_not be_able_to(:adjust_state, requests(:wedge_customes_for_party)) }
+    it { should be_able_to(:read, requests(:wedge_costumes_for_party)) }
+    it { should_not be_able_to(:update, requests(:wedge_costumes_for_party)) }
+    it { should_not be_able_to(:destroy, requests(:wedge_costumes_for_party)) }
+    it { should be_able_to(:cancel, requests(:wedge_costumes_for_party)) }
+    it { should_not be_able_to(:adjust_state, requests(:wedge_costumes_for_party)) }
   end
 end

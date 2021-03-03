@@ -108,7 +108,7 @@ describe 'Shipper' do
   end
 
   context 'managing shipments' do
-    let(:shipment) { requests(:luke_customes_for_party) }
+    let(:shipment) { requests(:luke_costumes_for_party) }
 
     it { should_not be_able_to(:create, Shipment.new) }
     it { should be_able_to(:read, shipment) }
@@ -192,13 +192,13 @@ describe 'Shipper' do
   end
 
   context 'adding comments to shipments' do
-    it { should be_able_to(:create, requests(:luke_customes_for_party).comments.build) }
-    it { should_not be_able_to(:create, requests(:luke_customes_for_party).comments.build(private: true)) }
+    it { should be_able_to(:create, requests(:luke_costumes_for_party).comments.build) }
+    it { should_not be_able_to(:create, requests(:luke_costumes_for_party).comments.build(private: true)) }
   end
 
   context 'accessing public comments on shipments' do
     before(:each) do
-      @comment = requests(:luke_customes_for_party).comments.create(body: 'whatever')
+      @comment = requests(:luke_costumes_for_party).comments.create(body: 'whatever')
     end
 
     it { should be_able_to(:read, @comment) }
@@ -208,7 +208,7 @@ describe 'Shipper' do
 
   context 'accessing private comments on shipments' do
     before(:each) do
-      @comment = requests(:luke_customes_for_party).comments.create(body: 'whatever', private: true)
+      @comment = requests(:luke_costumes_for_party).comments.create(body: 'whatever', private: true)
     end
 
     it { should_not be_able_to(:read, @comment) }

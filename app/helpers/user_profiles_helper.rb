@@ -2,7 +2,7 @@
 # Helpers for user profile form
 #
 module UserProfilesHelper
-  # Outputs a block with information to show to the user while editing his/her
+  # Outputs a block with information to show to the user while editing their
   # own profile. Explains why some inputs are disabled when opensuse_auth_proxy
   # is enabled.
   #

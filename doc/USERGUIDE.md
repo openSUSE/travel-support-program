@@ -47,7 +47,7 @@ individuals is performed by means of 'actions' which
 change the 'state' of the request, always following the workflow diagram below.
 ![Request workflow diagram](Request_state.png)
 
-Every time somebody changes the state of a request, he/she can write a message
+Every time somebody changes the state of a request, they can write a message
 explaining the reason of the change. Both the applicant and the Travel Support
 Program members will be notified by mail. As and applicant, your goal should be
 to reach the 'accepted' state. The state also determines who can modify the
