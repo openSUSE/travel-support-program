@@ -1,4 +1,4 @@
-class CreateReimbursementAttachments < ActiveRecord::Migration
+class CreateReimbursementAttachments < ActiveRecord::Migration[4.2]
   def change
     create_table :reimbursement_attachments do |t|
       t.references :reimbursement

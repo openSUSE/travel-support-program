@@ -1,7 +1,7 @@
 class ShipmentsController < InheritedResources::Base
   respond_to :html, :js, :json
   skip_load_resource only: [:index, :new]
-  before_filter :set_states_collection, only: [:index]
+  before_action :set_states_collection, only: [:index]
 
   def show
     # We don't want to break the normal process if something goes wrong

@@ -1,4 +1,4 @@
-class CreateReimbursementLinks < ActiveRecord::Migration
+class CreateReimbursementLinks < ActiveRecord::Migration[4.2]
   def change
     create_table :reimbursement_links do |t|
       t.references :reimbursement

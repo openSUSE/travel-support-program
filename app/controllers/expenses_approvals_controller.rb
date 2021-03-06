@@ -1,7 +1,7 @@
 class ExpensesApprovalsController < ApplicationController
   respond_to :html, :json
   skip_load_and_authorize_resource
-  before_filter :load_request_and_authorize
+  before_action :load_request_and_authorize
 
   def update
     if p = params[:expenses_approval]

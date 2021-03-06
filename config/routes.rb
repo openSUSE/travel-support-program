@@ -1,4 +1,4 @@
-TravelSupport::Application.routes.draw do
+Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
 
   devise_for :users,

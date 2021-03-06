@@ -1,4 +1,4 @@
-class MergeShipmentAndRequest < ActiveRecord::Migration
+class MergeShipmentAndRequest < ActiveRecord::Migration[4.2]
   class DummyRequest < ActiveRecord::Base
     self.inheritance_column = :foo
     self.table_name = 'requests'

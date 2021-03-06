@@ -1,4 +1,4 @@
-class AddNameToPostalAddress < ActiveRecord::Migration
+class AddNameToPostalAddress < ActiveRecord::Migration[4.2]
   def change
     add_column :postal_addresses, :name, :string
   end

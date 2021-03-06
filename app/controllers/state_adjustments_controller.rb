@@ -1,7 +1,7 @@
 class StateAdjustmentsController < ApplicationController
   respond_to :json, :js
   skip_load_and_authorize_resource
-  before_filter :load_adjustment_and_authorize
+  before_action :load_adjustment_and_authorize
 
   def create
     @state_adjustment.user = current_user

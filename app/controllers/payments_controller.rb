@@ -5,7 +5,7 @@ class PaymentsController < InheritedResources::Base
   load_and_authorize_resource through: :request
   skip_authorize_resource only: :file
 
-  before_filter :load_methods, except: :file
+  before_action :load_methods, except: :file
 
   belongs_to :request
   belongs_to :reimbursement, singleton: true

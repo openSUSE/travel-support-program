@@ -3,7 +3,7 @@ class TravelSponsorshipsController < InheritedResources::Base
 
   skip_load_resource only: [:index, :new]
   helper_method :request_states_collection
-  before_filter :load_subjects
+  before_action :load_subjects
 
   def create
     @travel_sponsorship ||= TravelSponsorship.new(params[:request])

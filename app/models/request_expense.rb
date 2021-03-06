@@ -15,10 +15,10 @@ class RequestExpense < ActiveRecord::Base
   delegate :event, to: :request, prefix: false
 
   validates :request, :subject, presence: true
-  validates :estimated_amount, :estimated_currency, presence: true, if: 'request && request.submitted?'
-  validates :approved_amount, :approved_currency, presence: true, if: 'request && request.approved?'
-  validates :total_amount, presence: true, if: 'request && request.reimbursement && request.reimbursement.submitted?'
-  validates :authorized_amount, presence: true, if: 'request && request.reimbursement && request.reimbursement.submitted?'
+  validates :estimated_amount, :estimated_currency, presence: true, if: -> { request && request.submitted? }
+  validates :approved_amount, :approved_currency, presence: true, if: -> { request && request.approved? }
+  validates :total_amount, presence: true, if: -> { request && request.reimbursement && request.reimbursement.submitted? }
+  validates :authorized_amount, presence: true, if: -> { request && request.reimbursement && request.reimbursement.submitted? }
 
   before_validation :set_authorized_amount
 
