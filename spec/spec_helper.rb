@@ -17,21 +17,25 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara/email/rspec'
-require 'capybara-webkit'
 require 'database_cleaner'
 
-ActiveRecord::Migration.maintain_test_schema!
+begin
+  ActiveRecord::Migration.maintain_test_schema!
+rescue ActiveRecord::PendingMigrationError => e
+  puts e.to_s.strip
+  exit 1
+end
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
+Capybara.javascript_driver = :selenium_headless
+
 RSpec.configure do |config|
   config.include(Shoulda::Matchers::ActiveModel)
   config.include(Shoulda::Matchers::ActiveRecord)
   config.expect_with(:rspec) { |expectations| expectations.syntax = [:should, :expect] }
-
-  Capybara.javascript_driver = :webkit
 
   # ## Mock Framework
   #
@@ -59,7 +63,7 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
-  config.order = 'random'
+  config.order = :random
 
   config.before(:each) do
     DatabaseCleaner.strategy = :transaction

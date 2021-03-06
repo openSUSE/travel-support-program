@@ -1,8 +1,8 @@
 class EventsController < InheritedResources::Base
   respond_to :html, :js, :json
-  skip_before_filter :authenticate_and_audit_user, only: [:index, :show]
+  skip_before_action :authenticate_and_audit_user, only: [:index, :show]
   skip_load_and_authorize_resource only: [:index, :show]
-  before_filter :set_types
+  before_action :set_types
 
   def participants
     @breadcrumbs = [

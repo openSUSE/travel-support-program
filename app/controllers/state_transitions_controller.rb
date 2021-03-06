@@ -1,7 +1,7 @@
 class StateTransitionsController < ApplicationController
   respond_to :json, :js
   skip_load_and_authorize_resource
-  before_filter :load_transition_and_authorize
+  before_action :load_transition_and_authorize
 
   # Not using respond_with because it relies on #valid?, but validations
   # are not the main reason for #save to return false. Callbacks are.

@@ -1,19 +1,19 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.11.1'
-gem 'responders', '~> 2.0'
+gem 'rails', '6.1.2'
+gem 'responders', '~> 3.0'
 
 # Choose your weapon
-gem 'sqlite3', '~> 1.3.13'
+gem 'sqlite3', '~> 1.4'
 # gem 'pg', '~> 0.21'
 # gem 'mysql2', '~> 0.4.10'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 6.0.0'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '>= 4.2.0'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 5.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -23,6 +23,8 @@ gem 'turbolinks'
 gem 'haml-rails'
 # To test email with letter opener set the 'async_emails' option in site.yml to false
 gem 'letter_opener_web'
+
+gem 'rails-i18n'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -38,8 +40,8 @@ gem 'therubyracer', platforms: :ruby
 gem 'twitter-bootstrap-rails'
 
 gem 'active_hash'
-gem 'axlsx_rails'
-gem 'cancancan', '~> 1.7'
+gem 'caxlsx_rails'
+gem 'cancancan', '~> 3.2'
 gem 'carrierwave'
 gem 'clockwork'
 gem 'cocoon'
@@ -47,11 +49,12 @@ gem 'daemons'
 gem 'date_validator'
 gem 'devise'
 gem 'devise_ichain_authenticatable', '>= 0.3.0'
-gem 'espinita'
+# using the git version since it fixes incompatibility with rails > 5.1
+gem 'espinita', git: 'https://github.com/michelson/espinita.git'
 gem 'inherited_resources'
 gem 'kaminari'
 gem 'localized_country_select'
-gem 'prawn', '~> 0.13.0'
+gem 'prawn', '>= 2.4'
 gem 'prawn_rails'
 gem 'puma'
 gem 'ransack'
@@ -75,16 +78,17 @@ group :development do
   gem 'state_machines-yard'
   gem 'yard-activerecord'
   # for static code analisys
-  gem 'rubocop', '~> 0.49.1', require: false
-  gem 'web-console', '~> 2.0'
+  gem 'rubocop', '~> 1.11', require: false
+  gem 'web-console', '~> 4.1'
 end
 
 group :test do
-  gem 'capybara', '~> 2.0'
+  gem 'capybara', '>= 3.0'
   gem 'capybara-email'
-  gem 'capybara-webkit'
-  gem 'database_cleaner', '~> 1.3.0'
-  gem 'pdf-reader'
+  gem 'webdrivers'
+  gem 'capybara-selenium'
+  gem 'database_cleaner', '~> 2.0'
+  gem 'pdf-reader', '~> 2.4'
   gem 'shoulda-matchers'
   #  gem "delorean"
 end

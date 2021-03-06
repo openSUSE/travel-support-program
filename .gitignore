@@ -16,6 +16,7 @@
 
 config/database.yml
 config/site.yml
+config/secrets.yml
 .yardoc/*
 coverage/*
 *.swp

@@ -1,0 +1,30 @@
+name: rspec
+
+on:
+  push:
+    branches: [ rails6 ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['2.6', '2.7', '3.0']
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true
+    - name: Copy the config
+      run: cp config/database.sqlite.yml config/database.yml && cp config/site.example.yml config/site.yml
+    - name: Run migrations
+      run: bundle exec rails db:migrate RAILS_ENV=test
+    - name: Run tests
+      run: bundle exec rake spec
+

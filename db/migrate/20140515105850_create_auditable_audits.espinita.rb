@@ -1,5 +1,5 @@
 # This migration comes from espinita (originally 20131029200927)
-class CreateAuditableAudits < ActiveRecord::Migration
+class CreateAuditableAudits < ActiveRecord::Migration[4.2]
   def change
     create_table :espinita_audits do |t|
       t.references :auditable, polymorphic: true, index: true

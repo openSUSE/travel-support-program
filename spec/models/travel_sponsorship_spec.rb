@@ -152,7 +152,7 @@ describe TravelSponsorship do
       end
 
       it 'should allow TSP to approve' do
-        @request.expenses.each { |e| e.update_attributes(approved_amount: 40, approved_currency: 'EUR') }
+        @request.expenses.each { |e| e.update(approved_amount: 40, approved_currency: 'EUR') }
         transition(@request, :approve, users(:tspmember))
         @request.reload.state.should == 'approved'
         trans = @request.transitions.newest_first.reload.first
@@ -166,18 +166,18 @@ describe TravelSponsorship do
   describe '#dont_exceed_budget' do
     before(:each) do
       @request = requests(:wedge_for_party)
-      @request.expenses.first.update_attributes(approved_currency: 'EUR', approved_amount: '70')
+      @request.expenses.first.update(approved_currency: 'EUR', approved_amount: '70')
       @expense = @request.expenses.create(subject: 'Lodging', estimated_amount: 100, estimated_currency: 'EUR')
     end
 
     it 'should allow approval of a proper amount' do
-      @expense.update_attributes(approved_amount: 40, approved_currency: 'EUR')
+      @expense.update(approved_amount: 40, approved_currency: 'EUR')
       transition(@request, :approve, users(:tspmember))
       @request.reload.state.should == 'approved'
     end
 
     it 'should not allow approval of too large amount' do
-      @expense.update_attributes(approved_amount: 50, approved_currency: 'eur')
+      @expense.update(approved_amount: 50, approved_currency: 'eur')
       begin
         transition(@request, :approve, users(:tspmember))
       rescue
@@ -189,7 +189,7 @@ describe TravelSponsorship do
     it 'should use authorized instead of approved amount if available' do
       reimb = reimbursements(:wedge_for_training_reim)
       reimb.expenses.first.update_attribute(:authorized_amount, 20) # 10 EUR less than the approved amount
-      @expense.update_attributes(approved_amount: 50, approved_currency: 'EUR')
+      @expense.update(approved_amount: 50, approved_currency: 'EUR')
       begin
         transition(@request, :approve, users(:tspmember))
       rescue
@@ -207,7 +207,7 @@ describe TravelSponsorship do
         nil
       end
       reimb.reload.state.should == 'canceled'
-      @expense.update_attributes(approved_amount: 70, approved_currency: 'EUR')
+      @expense.update(approved_amount: 70, approved_currency: 'EUR')
       begin
         transition(@request, :approve, users(:tspmember))
       rescue
@@ -218,7 +218,7 @@ describe TravelSponsorship do
 
     it 'should not allow approval with not defined budget at all' do
       @request.event.update_attribute(:budget_id, nil)
-      @expense.update_attributes(approved_amount: 10, approved_currency: 'eur')
+      @expense.update(approved_amount: 10, approved_currency: 'eur')
       begin
         transition(@request, :approve, users(:tspmember))
       rescue
@@ -228,7 +228,7 @@ describe TravelSponsorship do
     end
 
     it 'should not allow approval with not defined budget for the given currency' do
-      @expense.update_attributes(approved_amount: 10, approved_currency: 'USD')
+      @expense.update(approved_amount: 10, approved_currency: 'USD')
       begin
         transition(@request, :approve, users(:tspmember))
       rescue

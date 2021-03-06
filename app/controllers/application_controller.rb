@@ -1,10 +1,9 @@
 class ApplicationController < ActionController::Base
-  force_ssl unless: proc { Rails.env.test? || Rails.env.development? }
-  before_filter :authenticate_and_audit_user, unless: :devise_controller?
+  before_action :authenticate_and_audit_user, unless: :devise_controller?
   load_and_authorize_resource unless: :devise_controller?
-  before_filter :configure_permitted_parameters, if: :devise_controller?
-  before_filter :mailer_set_url_for_test, if: 'devise_controller? && Rails.env.test?'
-  before_filter :set_breadcrumbs
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :mailer_set_url_for_test, if: :devise_controller? && Rails.env.test?
+  before_action :set_breadcrumbs
 
   protect_from_forgery
 

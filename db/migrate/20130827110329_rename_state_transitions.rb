@@ -1,4 +1,4 @@
-class RenameStateTransitions < ActiveRecord::Migration
+class RenameStateTransitions < ActiveRecord::Migration[4.2]
   class DummyStateChange < ActiveRecord::Base
     self.table_name = 'state_changes'
   end
