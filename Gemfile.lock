@@ -227,7 +227,7 @@ GEM
       prawn (>= 0.11.1)
       railties (>= 3.0.0)
     public_suffix (4.0.6)
-    puma (4.3.9)
+    puma (4.3.11)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (1.6.12)
