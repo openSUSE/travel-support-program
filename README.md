@@ -1,6 +1,6 @@
 # Travel Support Program management application
 
-[![Build Status](https://travis-ci.org/openSUSE/travel-support-program.svg?branch=master)](https://travis-ci.org/openSUSE/travel-support-program)
+[![Run Tests](https://github.com/openSUSE/travel-support-program/actions/workflows/rspec.yml/badge.svg)](https://github.com/openSUSE/travel-support-program/actions/workflows/rspec.yml)
 [![Coverage Status](https://coveralls.io/repos/openSUSE/travel-support-program/badge.png?branch=master)](https://coveralls.io/r/openSUSE/travel-support-program?branch=master)
 
 ## About
@@ -24,7 +24,7 @@ name).
 
 ## Requirements
 
-* Ruby >= 2.5
+* Ruby >= 2.7
 * Any Rails supported database system: PosgreSQL, SQLite3, MariaDB, MySQL...
 
 ## Installation
