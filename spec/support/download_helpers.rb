@@ -6,7 +6,7 @@
 module DownloadHelpers
   # Lists all the files within the downloads directory
   def downloads
-    Dir[Rails.root.join("tmp/downloads").join("*")]
+    Dir[Rails.root.join('tmp/downloads/*')]
   end
 
   # Returns the first download within the downloads directory
