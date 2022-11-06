@@ -32,7 +32,7 @@ feature 'Shipment', '' do
     # Try to update
     page.should_not have_content 'Edit'
     visit edit_shipment_path(@shipment)
-    page.status_code.should == 403
+    page.should have_content 'You are not allowed to access this page. If you think that you should, contact your administrator.'
 
     # Log in as material manager
     click_link 'Log out'

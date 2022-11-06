@@ -17,17 +17,21 @@ jobs:
         zypper ar https://download.opensuse.org/repositories/devel:/languages:/ruby/15.4/ ruby
         zypper --gpg-auto-import-keys --non-interactive in --no-recommends \
                ruby2.7 ruby2.7-devel libxml2-devel libxslt-devel nodejs \
-               postgresql-devel sqlite3-devel libmariadb-devel git-core \
-               libQt5WebKit5 libQt5WebKit5-devel libQt5WebKitWidgets5 libQt5WebKitWidgets-devel \
-               xvfb-run which liberation-fonts gcc gcc-c++ make tar gzip patch timezone
+               postgresql-devel sqlite3-devel libmariadb-devel git-core chromium \
+               which liberation-fonts gcc gcc-c++ make tar gzip patch timezone
         zypper clean -a
         gem.ruby2.7 install bundler -v 1.17.3
 
     - uses: actions/checkout@v2
 
+    - name: Install chromedriver
+      run: |
+        wget https://chromedriver.storage.googleapis.com/107.0.5304.62/chromedriver_linux64.zip
+        unzip chromedriver_linux64.zip
+        mv chromedriver /usr/bin/chromedriver
+        chmod +x /usr/bin/chromedriver
+
     - name: Install ruby dependencies
-      env:
-        QMAKE: /usr/bin/qmake-qt5
       run: bundler.ruby2.7 _1.17.3_ install
 
     - name: Set up the environment
@@ -40,7 +44,7 @@ jobs:
       run: bundler.ruby2.7 _1.17.3_ exec rubocop
 
     - name: Run spec
-      run: xvfb-run bundler.ruby2.7 _1.17.3_ exec rake spec
+      run: bundler.ruby2.7 _1.17.3_ exec rake spec
 
     - name: Coveralls
       uses: coverallsapp/github-action@master

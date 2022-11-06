@@ -21,7 +21,6 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara/email/rspec'
-require 'capybara-webkit'
 require 'database_cleaner'
 
 ActiveRecord::Migration.maintain_test_schema!
@@ -35,7 +34,8 @@ RSpec.configure do |config|
   config.include(Shoulda::Matchers::ActiveRecord)
   config.expect_with(:rspec) { |expectations| expectations.syntax = [:should, :expect] }
 
-  Capybara.javascript_driver = :webkit
+  Capybara.default_driver = :selenium_chrome_headless
+  Capybara.javascript_driver = :selenium_chrome_headless
 
   # ## Mock Framework
   #
@@ -66,10 +66,6 @@ RSpec.configure do |config|
   config.order = 'random'
 
   config.before(:each) do
-    DatabaseCleaner.strategy = :transaction
-  end
-
-  config.before(:each, js: true) do
     DatabaseCleaner.strategy = :deletion
   end
 

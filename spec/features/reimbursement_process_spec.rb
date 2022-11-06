@@ -153,9 +153,9 @@ feature 'Reimbursements', '' do
 
     # Print the check request
     click_link 'Check Request'
-    @pdf = pdf_content
-    @pdf.should include('Payee Name')
-    @pdf.should include('Luke Skywalker')
+    pdf = pdf_content
+    pdf.should include('Payee Name')
+    pdf.should include('Luke Skywalker')
 
     # Check the acceptance
     visit request_reimbursement_acceptance_path(@reimbursement.request)
@@ -192,8 +192,8 @@ feature 'Reimbursements', '' do
     click_link 'Log out'
     sign_in_as_user users(:wedge)
     visit request_reimbursement_acceptance_path(@reimbursement.request)
-    page.status_code.should == 403
+    page.should have_content 'You are not allowed to access this page. If you think that you should, contact your administrator.'
     visit check_request_request_reimbursement_path(@reimbursement.request)
-    page.status_code.should == 403
+    page.should have_content ''
   end
 end
