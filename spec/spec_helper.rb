@@ -2,10 +2,8 @@
 
 # First of all, coveralls
 require 'simplecov'
-require 'coveralls'
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
-  [SimpleCov::Formatter::HTMLFormatter, Coveralls::SimpleCov::Formatter]
-)
+require 'simplecov-lcov'
+SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
 SimpleCov.start 'rails' do
   # Not covered because they are overriden in spec/support/carrierwave.rb
   add_filter 'app/uploaders/'

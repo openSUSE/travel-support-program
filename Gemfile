@@ -1,12 +1,15 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.11.1'
+gem 'rails', '4.2.11.3'
 gem 'responders', '~> 2.0'
 
 # Choose your weapon
 gem 'sqlite3', '~> 1.3.13'
 # gem 'pg', '~> 0.21'
 # gem 'mysql2', '~> 0.4.10'
+
+gem 'bigdecimal', '1.3.5'
+gem 'bundler', '< 2.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -61,10 +64,11 @@ gem 'state_machines-activerecord'
 # delayed_job must appear after protected_attributes
 gem 'delayed_job_active_record'
 
-gem 'coveralls', require: false
 gem 'exception_notification', group: :production
 gem 'redcarpet'
 gem 'rspec-rails', group: [:development, :test]
+gem 'simplecov', require: false
+gem 'simplecov-lcov', require: false
 
 # Moved out of the development group to avoid an error in every rake execution
 # caused by lib/tasks/doc.rake (at least until we figure out a cleaner
