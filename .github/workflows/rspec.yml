@@ -12,8 +12,6 @@ jobs:
     container: opensuse/leap:15.4
 
     steps:
-    - uses: actions/checkout@v2
-
     - name: Install system dependencies
       run: |
         zypper ar https://download.opensuse.org/repositories/devel:/languages:/ruby/15.4/ ruby
@@ -24,6 +22,8 @@ jobs:
                xvfb-run which liberation-fonts gcc gcc-c++ make tar gzip patch timezone
         zypper clean -a
         gem.ruby2.7 install bundler -v 1.17.3
+
+    - uses: actions/checkout@v2
 
     - name: Install ruby dependencies
       env:
