@@ -16,7 +16,7 @@ jobs:
       run: |
         zypper ar https://download.opensuse.org/repositories/devel:/languages:/ruby/15.4/ ruby
         zypper --gpg-auto-import-keys --non-interactive in --no-recommends \
-               ruby2.7 ruby2.7-devel libxml2-devel libxslt-devel nodejs \
+               ruby2.7 ruby2.7-devel libxml2-devel libxslt-devel nodejs wget unzip \
                postgresql-devel sqlite3-devel libmariadb-devel git-core chromium \
                which liberation-fonts gcc gcc-c++ make tar gzip patch timezone
         zypper clean -a
