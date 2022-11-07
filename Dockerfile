@@ -1,21 +1,29 @@
-FROM opensuse/leap:15.4
+FROM registry.opensuse.org/opensuse/infrastructure/tsp/containers/base:main
+ARG CONTAINER_USERID
 
-# This includes several packages (like WebKit, xvfb or liberation-fonts)
-# That are only needed to run the automated tests and wouldn't be relevant
-# in a production environment.
-RUN zypper ar https://download.opensuse.org/repositories/devel:/languages:/ruby/15.4/ ruby && \
-  zypper --gpg-auto-import-keys --non-interactive in --no-recommends \
-  ruby2.7 ruby2.7-devel libxml2-devel libxslt-devel \
-  postgresql-devel sqlite3-devel libmariadb-devel \
-  libQt5WebKit5 libQt5WebKit5-devel libQt5WebKitWidgets5 libQt5WebKitWidgets-devel \
-  xvfb-run which liberation-fonts gcc gcc-c++ make tar gzip patch timezone && \
-  zypper clean -a && \
-  gem.ruby2.7 install bundler -v 1.17.3
+# Configure our user
+RUN usermod -u $CONTAINER_USERID tsp
 
-RUN mkdir /app
 WORKDIR /app
-COPY . /app
-ENV QMAKE=/usr/bin/qmake-qt5
-RUN bundler.ruby2.7 _1.17.3_ install
+
+RUN gem.ruby2.7 install bundler -v 1.17.3
+
+# Configure our bundle
+# ENV BUNDLE_FORCE_RUBY_PLATFORM=true
+RUN bundler.ruby2.7 _1.17.3_  config build.ffi --enable-system-libffi; \
+    bundler.ruby2.7 _1.17.3_  config build.nokogiri --use-system-libraries; \
+    bundler.ruby2.7 _1.17.3_  config build.sassc --disable-march-tune-native; \
+    bundler.ruby2.7 _1.17.3_  config build.nio4r --with-cflags='-Wno-return-type'
+
+ADD Gemfile /app/Gemfile
+ADD Gemfile.lock /app/Gemfile.lock
+
+RUN bundler.ruby2.7 _1.17.3_ install --jobs=3 --retry=3
+
+RUN chown -R tsp /app
+
+# Now do the rest as the user with the same ID as the user who
+# builds this container
+USER tsp
 
 CMD ["rails", "server", "-b", "0.0.0.0"]

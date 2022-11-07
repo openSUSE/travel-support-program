@@ -17,7 +17,7 @@ feature 'Email Events', '' do
     sign_in_as_user(users(:luke))
 
     visit event_event_emails_path(events(:party))
-    page.should have_content "Event email Emails for Death Star's destruction celebration"
+    page.should have_content "Emails for Death Star's destruction celebration"
 
     visit event_event_emails_path(events(:hoth_hackaton))
     page.should have_content 'You are not allowed to access this page'
@@ -62,7 +62,7 @@ feature 'Email Events', '' do
     fill_in 'Subject', with: "Death Star's destruction celebration"
     fill_in 'event_email_body', with: "Event Death Star's destruction celebration to be conducted soon. Be ready."
 
-    page.find('.btn-primary').trigger('click')
+    page.find('.btn-primary').click
     page.should have_content 'Email Delivered'
     ActionMailer::Base.deliveries.size.should == @deliveries + 5
   end
@@ -76,7 +76,7 @@ feature 'Email Events', '' do
     page.check('Submitted')
     page.should have_field('To', with: 'wedge.antilles@rebel-alliance.org')
 
-    page.find('.btn-primary').trigger('click')
+    page.find('.btn-primary').click
     page.should have_content "can't be blank"
     ActionMailer::Base.deliveries.size.should == @deliveries
   end

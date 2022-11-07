@@ -86,9 +86,9 @@ end
 group :test do
   gem 'capybara', '~> 2.0'
   gem 'capybara-email'
-  gem 'capybara-webkit'
-  gem 'database_cleaner', '~> 1.3.0'
+  gem 'database_cleaner', '~> 1.8.5'
   gem 'pdf-reader'
+  gem 'selenium-webdriver', '< 4.0'
   gem 'shoulda-matchers'
   #  gem "delorean"
 end

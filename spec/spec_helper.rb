@@ -21,7 +21,6 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara/email/rspec'
-require 'capybara-webkit'
 require 'database_cleaner'
 
 ActiveRecord::Migration.maintain_test_schema!
@@ -35,7 +34,18 @@ RSpec.configure do |config|
   config.include(Shoulda::Matchers::ActiveRecord)
   config.expect_with(:rspec) { |expectations| expectations.syntax = [:should, :expect] }
 
-  Capybara.javascript_driver = :webkit
+  Capybara.register_driver :headless do |app|
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-gpu')
+
+    options.add_preference(:download, default_directory: 'tmp/downloads/', directory_upgrade: true)
+    Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+  end
+
+  Capybara.default_driver = :headless
+  Capybara.javascript_driver = :headless
 
   # ## Mock Framework
   #
@@ -66,10 +76,6 @@ RSpec.configure do |config|
   config.order = 'random'
 
   config.before(:each) do
-    DatabaseCleaner.strategy = :transaction
-  end
-
-  config.before(:each, js: true) do
     DatabaseCleaner.strategy = :deletion
   end
 
@@ -93,4 +99,5 @@ RSpec.configure do |config|
   end
 
   config.include(::CommonHelpers)
+  config.include(::DownloadHelpers)
 end
