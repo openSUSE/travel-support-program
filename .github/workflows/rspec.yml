@@ -11,6 +11,7 @@ jobs:
     strategy:
       matrix:
         type: [coverage, features, helpers, mailer, models, rubocop]
+    runs-on: ubuntu-latest
     container: registry.opensuse.org/opensuse/infrastructure/tsp/containers/base:main
 
     steps:
