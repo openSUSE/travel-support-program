@@ -46,7 +46,7 @@ jobs:
 
     - if: ${{ contains(fromJson('["features", "helpers", "mailer", "models"]'), matrix.type) }}
       name: Run spec
-      run: bundler.ruby2.7 _1.17.3_ exec rake spec spec/${{ matrix.type }}
+      run: bundler.ruby2.7 _1.17.3_ exec rspec spec/${{ matrix.type }}/
 
     - if: ${{ matrix.type == 'coverage' }}
       name: Run spec
