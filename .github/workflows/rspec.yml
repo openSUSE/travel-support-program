@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: registry.opensuse.org/opensuse/infrastructure/tsp/containers/base:master
+    container: registry.opensuse.org/opensuse/infrastructure/tsp/containers/base:main
 
     steps:
     - name: Install bundler
