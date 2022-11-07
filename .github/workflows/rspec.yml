@@ -8,7 +8,9 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        type: [coverage, features, helpers, mailer, models, rubocop]
     container: registry.opensuse.org/opensuse/infrastructure/tsp/containers/base:main
 
     steps:
@@ -37,13 +39,20 @@ jobs:
         cp config/site.example.yml config/site.yml
         bundler.ruby2.7 _1.17.3_ exec rake db:migrate RAILS_ENV=test
 
-    - name: Run rubocop
+    - if: ${{ matrix.type == 'rubocop' }}
+      name: Run rubocop
       run: bundler.ruby2.7 _1.17.3_ exec rubocop
 
-    - name: Run spec
+    - if: ${{ contains(fromJson('["features", "helpers", "mailer", "models"]'), matrix.type) }}
+      name: Run spec
+      run: bundler.ruby2.7 _1.17.3_ exec rake spec spec/${{ matrix.type }}
+
+    - if: ${{ matrix.type == 'coverage' }}
+      name: Run spec
       run: bundler.ruby2.7 _1.17.3_ exec rake spec
 
-    - name: Coveralls
+    - if: ${{ matrix.type == 'coverage' }}
+      name: Coveralls
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
