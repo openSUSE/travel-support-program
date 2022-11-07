@@ -1,21 +1,20 @@
 .col-md-10.event_email_index
   %h3.pull-left Emails for #{@event.name}
   = link_to 'Compose', new_event_event_email_path, class: 'btn btn-primary pull-right'
-.col-md-11
-  %table.table.table-striped
+%table.table.table-striped
+  %tr
+    %th #
+    %th Subject
+    %th Body
+    %th Sent By
+    %th Created At
+  - @event.event_emails.reverse.each_with_index do |e,i|
     %tr
-      %th #
-      %th Subject
-      %th Body
-      %th Sent By
-      %th Created At
-    - @event.event_emails.reverse.each_with_index do |e,i|
-      %tr
-        %td #{i+1}
-        %td
-          = link_to truncate(e.subject, length: 50), event_event_email_path(@event,e)
-        %td 
-          = markdown(truncate(e.body, length: 50))
-        %td 
-          = e.user.email
-        %td #{time_tag(e.created_at)}
+      %td #{i+1}
+      %td
+        = link_to truncate(e.subject, length: 50), event_event_email_path(@event,e)
+      %td 
+        = markdown(truncate(e.body, length: 50))
+      %td 
+        = e.user.email
+      %td #{time_tag(e.created_at)}
