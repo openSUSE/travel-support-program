@@ -25,10 +25,7 @@ jobs:
       with:
         path: |
           /usr/lib64/ruby/gems/
-          /usr/bin/*ruby*
-          /usr/bin/rake*
-          /usr/bin/rails*
-          /usr/bin/rspec*
+          /usr/bin/
         key: ${{ hashFiles('Gemfile.lock') }}
 
     - name: Install ruby dependencies
