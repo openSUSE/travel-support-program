@@ -9,27 +9,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: opensuse/leap:15.4
+    container: registry.opensuse.org/opensuse/infrastructure/tsp/containers/base:master
 
     steps:
-    - name: Install system dependencies
-      run: |
-        zypper ar https://download.opensuse.org/repositories/devel:/languages:/ruby/15.4/ ruby
-        zypper --gpg-auto-import-keys --non-interactive in --no-recommends \
-               ruby2.7 ruby2.7-devel libxml2-devel libxslt-devel nodejs wget unzip \
-               postgresql-devel sqlite3-devel libmariadb-devel git-core chromium \
-               which liberation-fonts gcc gcc-c++ make tar gzip patch timezone
-        zypper clean -a
-        gem.ruby2.7 install bundler -v 1.17.3
+    - name: Install bundler
+      run: gem.ruby2.7 install bundler -v 1.17.3
 
     - uses: actions/checkout@v2
-
-    - name: Install chromedriver
-      run: |
-        wget https://chromedriver.storage.googleapis.com/107.0.5304.62/chromedriver_linux64.zip
-        unzip chromedriver_linux64.zip
-        mv chromedriver /usr/bin/chromedriver
-        chmod +x /usr/bin/chromedriver
 
     - name: Install ruby dependencies
       run: bundler.ruby2.7 _1.17.3_ install
