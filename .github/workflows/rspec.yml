@@ -17,6 +17,12 @@ jobs:
 
     - uses: actions/checkout@v2
 
+    - name: Cache ruby dependencies
+      uses: actions/cache@v3
+      with:
+        path: /usr/lib64/ruby/gems/
+        key: ${{ hashFiles('Gemfile.lock') }}
+
     - name: Install ruby dependencies
       run: bundler.ruby2.7 _1.17.3_ install
 
