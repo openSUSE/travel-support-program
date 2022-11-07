@@ -47,7 +47,7 @@ jobs:
 
     - if: ${{ matrix.type == 'coverage' }}
       name: Run spec
-      run: bundler.ruby2.7 _1.17.3_ exec rake spec
+      run: bundler.ruby2.7 _1.17.3_ exec rspec
 
     - if: ${{ matrix.type == 'coverage' }}
       name: Coveralls
