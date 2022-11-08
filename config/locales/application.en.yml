@@ -74,7 +74,6 @@ en:
   no_reimbursement_yet: "The reimbursement process has not started"
   no_history_yet: "No state changes or comments yet."
   not_accepting_reimbursements: "The event is not open for requesting reimbursement"
-  opensuse_profile_info: 'Information on disabled controls have to be changed in <a href="%{url}">your Connect profile</a>.'
   page_total: "Total in this page"
   pdf_format: "Download printable version"
   private_comment_label: "(Private)"

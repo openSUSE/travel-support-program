@@ -26,12 +26,6 @@
   corresponding option in the main menu or in their own username at the
   top right corner of the page, next to the &#39;log out&#39; link.
 
-- if enabled? 'opensuse_connect'
-  Some of the information in the profile cannot be entered directly in the
-  application. That information is read from
-  = link_to "openSUSE Connect", Rails.configuration.site['opensuse_connect']['base_url']
-  and should be updated in the Connect profile of the user.
-
 - if enabled? 'travel_sponsorships'
   - if enabled? 'shipments'
     %h2 Applying for travel sponsorship or requesting materials

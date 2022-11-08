@@ -3,15 +3,7 @@ class ShipmentsController < InheritedResources::Base
   skip_load_resource only: [:index, :new]
   before_filter :set_states_collection, only: [:index]
 
-  def show
-    # We don't want to break the normal process if something goes wrong
-    begin
-      resource.user.profile.refresh
-    rescue
-      nil
-    end
-    show!
-  end
+  def show; end
 
   def create
     @shipment ||= Shipment.new(params[:shipment])
