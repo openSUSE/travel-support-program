@@ -148,8 +148,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Macro-style method to define the role which is responsible of the next action for a given state.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -396,63 +395,7 @@ explicity defined (not using allow_transition).</p>
   
 
   
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>Macro-style method to define the role which is responsible of the next
-action for a given state. Currently, this definition is only used to
-set default filters on lists.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-  <div class="examples">
-    <p class="tag_title">Examples:</p>
-    
-      
-      <pre class="example code"><code><span class='id identifier rubyid_assign_state'>assign_state</span> <span class='symbol'>:tsp_pending</span><span class='comma'>,</span> <span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='symbol'>:tsp</span></code></pre>
-    
-  </div>
-<p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>state_name</span>
-      
-      
-        <span class='type'>(<tt>#to_sym</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>name of the state</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>opts</span>
-      
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt>{}</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>:to is the only expected (and mandatory) key</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-
-</div><table class="source_code">
+</h3><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
@@ -550,9 +493,9 @@ according to the timeouts and roles specified using notify_to</p>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/concerns/has_state.rb', line 290</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_notify_inactive'>notify_inactive</span>
-  <span class='comment'># Leaf classes send notifications
-</span>  <span class='kw'>if</span> <span class='id identifier rubyid_subclasses'>subclasses</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_notify_inactive'>notify_inactive</span>  <span class='comment'># Leaf classes send notifications
+</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_subclasses'>subclasses</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
     <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>unless</span> <span class='ivar'>@reminder_timeouts</span>
     <span class='id identifier rubyid_machines'>machines</span> <span class='op'>=</span> <span class='id identifier rubyid_joins'>joins</span><span class='lparen'>(</span><span class='symbol'>:user</span><span class='rparen'>)</span>
     <span class='ivar'>@reminder_timeouts</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_state'>state</span><span class='comma'>,</span> <span class='id identifier rubyid_time'>time</span><span class='op'>|</span>
@@ -561,9 +504,9 @@ according to the timeouts and roles specified using notify_to</p>
         <span class='id identifier rubyid_people'>people</span> <span class='op'>=</span> <span class='ivar'>@reminder_roles</span><span class='lbracket'>[</span><span class='id identifier rubyid_state'>state</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_i'>i</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span> <span class='op'>==</span> <span class='symbol'>:requester</span> <span class='op'>?</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>:</span> <span class='id identifier rubyid_i'>i</span> <span class='rbrace'>}</span>
         <span class='const'>HasStateMailer</span><span class='period'>.</span><span class='id identifier rubyid_notify_to'>notify_to</span><span class='lparen'>(</span><span class='id identifier rubyid_people'>people</span><span class='comma'>,</span> <span class='symbol'>:state</span><span class='comma'>,</span> <span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span>
       <span class='kw'>end</span>
-    <span class='kw'>end</span>
-  <span class='comment'># But &#39;abstract&#39; subclasses delegate to subclasses
-</span>  <span class='kw'>else</span>
+    <span class='kw'>end</span>  <span class='comment'># But &#39;abstract&#39; subclasses delegate to subclasses
+</span>
+  <span class='kw'>else</span>
     <span class='id identifier rubyid_subclasses'>subclasses</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:notify_inactive</span><span class='rparen'>)</span>
     <span class='kw'>true</span>
   <span class='kw'>end</span>
@@ -1037,9 +980,9 @@ the given state</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Oct 31 16:40:26 2019 by
+  Generated on Tue Nov  8 18:00:48 2022 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.20 (ruby-2.5.5).
+  0.9.20 (ruby-2.7.6).
 </div>
 
     </div>
