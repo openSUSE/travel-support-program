@@ -97,7 +97,7 @@ feature 'Email Events', '' do
     visit event_event_emails_path(events(:party))
 
     click_link 'Testing mail'
-    page.should have_content 'To: test@example.com Subject: Testing mail Body: This is a test mail'
+    page.should have_content "To:\ntest@example.com\nSubject:\nTesting mail\nBody:\nThis is a test mail"
 
     click_link 'Event email'
     current_path.should be == event_event_emails_path(events(:party))

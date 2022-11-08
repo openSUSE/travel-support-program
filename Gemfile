@@ -10,6 +10,7 @@ gem 'sqlite3', '~> 1.3.13'
 
 gem 'bigdecimal', '1.3.5'
 gem 'bundler', '< 2.0'
+gem 'psych', '< 4.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -37,11 +38,13 @@ gem 'byebug', group: [:development, :test]
 
 # less support
 gem 'less-rails'
+gem 'mini_racer', platforms: :ruby
+# Remove therubyracer as soon as there's no less-rails anymore
 gem 'therubyracer', platforms: :ruby
 gem 'twitter-bootstrap-rails'
 
 gem 'active_hash'
-gem 'axlsx_rails'
+gem 'caxlsx_rails'
 gem 'cancancan', '~> 1.7'
 gem 'carrierwave'
 gem 'clockwork'
@@ -79,14 +82,14 @@ group :development do
   gem 'state_machines-yard'
   gem 'yard-activerecord'
   # for static code analisys
-  gem 'rubocop', '~> 0.49.1', require: false
+  gem 'rubocop', require: false
   gem 'web-console', '~> 2.0'
 end
 
 group :test do
-  gem 'capybara', '~> 2.0'
+  gem 'capybara'
   gem 'capybara-email'
-  gem 'database_cleaner', '~> 1.8.5'
+  gem 'database_cleaner'
   gem 'pdf-reader'
   gem 'selenium-webdriver', '< 4.0'
   gem 'shoulda-matchers'

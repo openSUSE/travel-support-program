@@ -192,8 +192,8 @@ feature 'Reimbursements', '' do
     click_link 'Log out'
     sign_in_as_user users(:wedge)
     visit request_reimbursement_acceptance_path(@reimbursement.request)
-    page.should have_content 'You are not allowed to access this page. If you think that you should, contact your administrator.'
+    page.should have_content "You are not allowed to access this page.\nIf you think that you should, contact your administrator."
     visit check_request_request_reimbursement_path(@reimbursement.request)
-    page.should have_content ''
+    page.should have_no_content
   end
 end
