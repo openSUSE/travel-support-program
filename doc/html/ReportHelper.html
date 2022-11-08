@@ -148,8 +148,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Outputs a dropdown for filtering the expenses report with a given scope.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -607,17 +606,7 @@
   
 
   
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>Outputs a dropdown for filtering the expenses report with a given scope</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
+</h3><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
@@ -1028,7 +1017,7 @@ TravelExpenseReport instance.</p>
   <span class='kw'>if</span> <span class='id identifier rubyid_state'>state</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
     <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_state'>state</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Reimbursement.html" title="Reimbursement (class)">Reimbursement</a></span></span><span class='period'>.</span><span class='id identifier rubyid_human_state_name'><span class='object_link'><a href="Reimbursement.html#human_state_name-class_method" title="Reimbursement.human_state_name (method)">human_state_name</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_state'>state</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_state'>state</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Reimbursement.html" title="Reimbursement (class)">Reimbursement</a></span></span><span class='period'>.</span><span class='id identifier rubyid_human_state_name'>human_state_name</span><span class='lparen'>(</span><span class='id identifier rubyid_state'>state</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='id identifier rubyid_state'>state</span><span class='comma'>,</span> <span class='id identifier rubyid_request_reimbursement_path'>request_reimbursement_path</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='symbol'>:request_id</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -1220,7 +1209,7 @@ TravelExpenseReport instance.</p>
       <pre class="code"><span class="info file"># File 'app/helpers/report_helper.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_value_for_request_state'>value_for_request_state</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
-  <span class='const'><span class='object_link'><a href="TravelSponsorship.html" title="TravelSponsorship (class)">TravelSponsorship</a></span></span><span class='period'>.</span><span class='id identifier rubyid_human_state_name'><span class='object_link'><a href="TravelSponsorship.html#human_state_name-class_method" title="TravelSponsorship.human_state_name (method)">human_state_name</a></span></span> <span class='id identifier rubyid_expense'>expense</span><span class='period'>.</span><span class='id identifier rubyid_value_for'>value_for</span><span class='lparen'>(</span><span class='symbol'>:request_state</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="TravelSponsorship.html" title="TravelSponsorship (class)">TravelSponsorship</a></span></span><span class='period'>.</span><span class='id identifier rubyid_human_state_name'>human_state_name</span> <span class='id identifier rubyid_expense'>expense</span><span class='period'>.</span><span class='id identifier rubyid_value_for'>value_for</span><span class='lparen'>(</span><span class='symbol'>:request_state</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1590,7 +1579,7 @@ instance, in a format useful to the axlsx template.</p>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_xslx_value_for_reimbursement_state'>xslx_value_for_reimbursement_state</span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_state'>state</span> <span class='op'>=</span> <span class='id identifier rubyid_expense'>expense</span><span class='period'>.</span><span class='id identifier rubyid_value_for'>value_for</span><span class='lparen'>(</span><span class='symbol'>:reimbursement_state</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_state'>state</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='const'><span class='object_link'><a href="Reimbursement.html" title="Reimbursement (class)">Reimbursement</a></span></span><span class='period'>.</span><span class='id identifier rubyid_human_state_name'><span class='object_link'><a href="Reimbursement.html#human_state_name-class_method" title="Reimbursement.human_state_name (method)">human_state_name</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_state'>state</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_state'>state</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='const'><span class='object_link'><a href="Reimbursement.html" title="Reimbursement (class)">Reimbursement</a></span></span><span class='period'>.</span><span class='id identifier rubyid_human_state_name'>human_state_name</span><span class='lparen'>(</span><span class='id identifier rubyid_state'>state</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1602,9 +1591,9 @@ instance, in a format useful to the axlsx template.</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Oct 31 16:40:26 2019 by
+  Generated on Tue Nov  8 18:00:48 2022 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.20 (ruby-2.5.5).
+  0.9.20 (ruby-2.7.6).
 </div>
 
     </div>

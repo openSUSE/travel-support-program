@@ -30,7 +30,6 @@ class UserProfilesController < ApplicationController
   def set_user_and_profile
     @user = current_user
     @profile = @user.find_profile
-    @profile.refresh
   end
 
   def users_controller?

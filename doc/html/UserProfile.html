@@ -120,42 +120,6 @@ related to authentication.</p>
   
 
 </div>
-  
-    <h2>
-      Constant Summary
-      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
-    </h2>
-
-    <dl class="constants">
-      
-        <dt id="FROM_OPENSUSE_CONNECT-constant" class="">FROM_OPENSUSE_CONNECT =
-          <div class="docstring">
-  <div class="discussion">
-    <p>Attributed that are fetched from openSUSE Connect</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div>
-        </dt>
-        <dd><pre class="code"><span class='lbrace'>{</span>
-  <span class='label'>country_code:</span> <span class='id identifier rubyid_proc'>proc</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>:</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span><span class='period'>.</span><span class='id identifier rubyid_upcase'>upcase</span> <span class='rbrace'>}</span><span class='comma'>,</span>
-  <span class='label'>full_name:</span> <span class='symbol'>:name</span><span class='comma'>,</span>
-  <span class='label'>location:</span> <span class='symbol'>:location</span><span class='comma'>,</span>
-  <span class='label'>birthday:</span> <span class='id identifier rubyid_proc'>proc</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_birthday'>birthday</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='comma'>,</span>
-  <span class='label'>phone_number:</span> <span class='symbol'>:mobile</span><span class='comma'>,</span>
-  <span class='label'>second_phone_number:</span> <span class='symbol'>:phone</span><span class='comma'>,</span>
-  <span class='label'>website:</span> <span class='symbol'>:website</span><span class='comma'>,</span>
-  <span class='label'>blog:</span> <span class='symbol'>:blog</span><span class='comma'>,</span>
-  <span class='label'>description:</span> <span class='symbol'>:briefdescription</span>
-<span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
-      
-    </dl>
-  
-
 
 
 
@@ -651,29 +615,6 @@ related to authentication.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#have_editable%3F-instance_method" title="#have_editable? (instance method)">#<strong>have_editable?</strong>(attrib)  &#x21d2; Boolean </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Checks if a given attribute is editable.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#missing_fields-instance_method" title="#missing_fields (instance method)">#<strong>missing_fields</strong>  &#x21d2; Hash </a>
     
 
@@ -689,29 +630,6 @@ related to authentication.</p>
 
   
     <span class="summary_desc"><div class='inline'><p>List of fields that are required for processing reimbursements but are not present.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#refresh-instance_method" title="#refresh (instance method)">#<strong>refresh</strong>  &#x21d2; Boolean </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Fetchs fresh information from an external source (only openSUSE Connect at this moment) and updates the database.</p>
 </div></span>
   
 </li>
@@ -1265,10 +1183,10 @@ related to authentication.</p>
       <pre class="lines">
 
 
-22</pre>
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user_profile.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/models/user_profile.rb', line 19</span>
 
 <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:role_id</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span></pre>
     </td>
@@ -1528,16 +1446,16 @@ related to authentication.</p>
       <pre class="lines">
 
 
+23
+24
+25
 26
 27
 28
-29
-30
-31
-32</pre>
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user_profile.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'app/models/user_profile.rb', line 23</span>
 
 <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:with_role</span><span class='comma'>,</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_role'>role</span><span class='op'>|</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_role'>role</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="UserRole.html" title="UserRole (class)">UserRole</a></span></span><span class='rparen'>)</span>
@@ -1558,86 +1476,7 @@ related to authentication.</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="have_editable?-instance_method">
-  
-    #<strong>have_editable?</strong>(attrib)  &#x21d2; <tt>Boolean</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>Checks if a given attribute is editable.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>attrib</span>
-      
-      
-        <span class='type'>(<tt>#to_sym</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>attribute name</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Boolean</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>true unless the attributes is mean to be fetched from an
-external source (openSUSE Connect at this moment)</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-69
-70
-71
-72</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/models/user_profile.rb', line 69</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_have_editable?'>have_editable?</span><span class='lparen'>(</span><span class='id identifier rubyid_attrib'>attrib</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>unless</span> <span class='const'>TravelSupport</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_setting'>setting</span> <span class='symbol'>:opensuse_connect</span><span class='comma'>,</span> <span class='symbol'>:enabled</span>
-  <span class='op'>!</span><span class='const'><span class='object_link'><a href="" title="UserProfile (class)">UserProfile</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="#FROM_OPENSUSE_CONNECT-constant" title="UserProfile::FROM_OPENSUSE_CONNECT (constant)">FROM_OPENSUSE_CONNECT</a></span></span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_attrib'>attrib</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="missing_fields-instance_method">
+  <h3 class="signature first" id="missing_fields-instance_method">
   
     #<strong>missing_fields</strong>  &#x21d2; <tt>Hash</tt> 
   
@@ -1681,85 +1520,19 @@ human-readable names as values</p>
       <pre class="lines">
 
 
-80
-81
-82
-83
-84</pre>
+41
+42
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user_profile.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'app/models/user_profile.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_missing_fields'>missing_fields</span>
-  <span class='id identifier rubyid_fields'>fields</span> <span class='op'>=</span> <span class='const'>TravelSupport</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='symbol'>:relevant_profile_fields</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_fields'>fields</span> <span class='op'>=</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_configuration'>configuration</span><span class='period'>.</span><span class='id identifier rubyid_site'>site</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>relevant_profile_fields</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_fields'>fields</span> <span class='op'>=</span> <span class='id identifier rubyid_fields'>fields</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span> <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='rbrace'>}</span>
   <span class='const'>Hash</span><span class='lbracket'>[</span><span class='id identifier rubyid_fields'>fields</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='id identifier rubyid_f'>f</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_human_attribute_name'>human_attribute_name</span><span class='lparen'>(</span><span class='id identifier rubyid_f'>f</span><span class='rparen'>)</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='rbracket'>]</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="refresh-instance_method">
-  
-    #<strong>refresh</strong>  &#x21d2; <tt>Boolean</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>Fetchs fresh information from an external source (only openSUSE Connect at
-this moment) and updates the database.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Boolean</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>true if the information is correctly updated</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-56
-57
-58
-59
-60
-61
-62</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/models/user_profile.rb', line 56</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_refresh'>refresh</span>
-  <span class='kw'>if</span> <span class='const'>TravelSupport</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_setting'>setting</span> <span class='symbol'>:opensuse_connect</span><span class='comma'>,</span> <span class='symbol'>:enabled</span>
-    <span class='id identifier rubyid_update_attributes'>update_attributes</span><span class='lparen'>(</span><span class='id identifier rubyid_connect_attrib_values'>connect_attrib_values</span><span class='rparen'>)</span>
-  <span class='kw'>else</span>
-    <span class='kw'>true</span>
-  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1815,10 +1588,10 @@ this moment) and updates the database.</p>
       <pre class="lines">
 
 
-20</pre>
+17</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user_profile.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'app/models/user_profile.rb', line 17</span>
 
 <span class='id identifier rubyid_delegate'>delegate</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='label'>to:</span> <span class='symbol'>:role</span><span class='comma'>,</span> <span class='label'>prefix:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>allow_nil:</span> <span class='kw'>true</span></pre>
     </td>
@@ -1841,17 +1614,15 @@ this moment) and updates the database.</p>
       <pre class="lines">
 
 
-34
-35
-36
-37</pre>
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user_profile.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'app/models/user_profile.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_default_attrs'>set_default_attrs</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_role_name'>role_name</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>none</span><span class='tstring_end'>&#39;</span></span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_attributes'>attributes</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_attrib_values'>connect_attrib_values</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1919,9 +1690,9 @@ this moment) and updates the database.</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Oct 31 16:40:29 2019 by
+  Generated on Tue Nov  8 18:00:50 2022 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.20 (ruby-2.5.5).
+  0.9.20 (ruby-2.7.6).
 </div>
 
     </div>

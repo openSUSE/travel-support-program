@@ -17,15 +17,7 @@ class ReimbursementsController < InheritedResources::Base
     end
   end
 
-  def show
-    # We don't want to break the normal process if something goes wrong
-    begin
-      resource.user.profile.refresh
-    rescue
-      nil
-    end
-    show!
-  end
+  def show; end
 
   def check_request
     @reimbursement = Reimbursement.where(request_id: params[:request_id]).includes(user: :profile).first

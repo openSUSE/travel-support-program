@@ -494,9 +494,9 @@
       <span class='id identifier rubyid_can'>can</span> <span class='id identifier rubyid_action'>action</span><span class='comma'>,</span> <span class='id identifier rubyid_machine'>machine</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_m'>m</span><span class='op'>|</span>
         <span class='comment'># For own machines, the :requester permissions are applied
 </span>        <span class='kw'>if</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span>
-          <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>can_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='embexpr_end'>}</span><span class='tstring_content'>?</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>allow_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='embexpr_end'>}</span><span class='tstring_content'>?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:requester</span><span class='rparen'>)</span>
-        <span class='comment'># For machines belonging to other users, use the role
-</span>        <span class='kw'>else</span>
+          <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>can_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='embexpr_end'>}</span><span class='tstring_content'>?</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>allow_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='embexpr_end'>}</span><span class='tstring_content'>?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:requester</span><span class='rparen'>)</span>        <span class='comment'># For machines belonging to other users, use the role
+</span>
+        <span class='kw'>else</span>
           <span class='comment'># :requester is not longer a valid role
 </span>          <span class='kw'>if</span> <span class='id identifier rubyid_role'>role</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>requester</span><span class='tstring_end'>&#39;</span></span>
             <span class='kw'>false</span>
@@ -612,9 +612,9 @@
 </span>  <span class='comment'># TSP members permissions
 </span>  <span class='comment'># -----------------------
 </span>  <span class='comment'>#
-</span>  <span class='kw'>if</span> <span class='id identifier rubyid_role'>role</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tsp</span><span class='tstring_end'>&#39;</span></span>
-    <span class='comment'># User profiles
-</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="UserProfile.html" title="UserProfile (class)">UserProfile</a></span></span>
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_role'>role</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tsp</span><span class='tstring_end'>&#39;</span></span>    <span class='comment'># User profiles
+</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="UserProfile.html" title="UserProfile (class)">UserProfile</a></span></span>
 
     <span class='comment'># Budgets
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:manage</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Budget.html" title="Budget (class)">Budget</a></span></span>
@@ -647,9 +647,9 @@
 </span>  <span class='comment'># TSP assistants permissions
 </span>  <span class='comment'># --------------------------
 </span>  <span class='comment'>#
-</span>  <span class='kw'>if</span> <span class='id identifier rubyid_role'>role</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>assistant</span><span class='tstring_end'>&#39;</span></span>
-    <span class='comment'># User profiles
-</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="UserProfile.html" title="UserProfile (class)">UserProfile</a></span></span>
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_role'>role</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>assistant</span><span class='tstring_end'>&#39;</span></span>    <span class='comment'># User profiles
+</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="UserProfile.html" title="UserProfile (class)">UserProfile</a></span></span>
 
     <span class='comment'># Budgets
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Budget.html" title="Budget (class)">Budget</a></span></span>
@@ -672,9 +672,9 @@
 </span>  <span class='comment'># Administratives permissions
 </span>  <span class='comment'># -----------------------
 </span>  <span class='comment'>#
-</span>  <span class='kw'>if</span> <span class='id identifier rubyid_role'>role</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>administrative</span><span class='tstring_end'>&#39;</span></span>
-    <span class='comment'># User profiles
-</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="UserProfile.html" title="UserProfile (class)">UserProfile</a></span></span>
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_role'>role</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>administrative</span><span class='tstring_end'>&#39;</span></span>    <span class='comment'># User profiles
+</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="UserProfile.html" title="UserProfile (class)">UserProfile</a></span></span>
 
     <span class='comment'># TravelSponsorships
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="TravelSponsorship.html" title="TravelSponsorship (class)">TravelSponsorship</a></span></span>
@@ -690,9 +690,9 @@
 </span>  <span class='comment'># Supervisors permissions
 </span>  <span class='comment'># --------------------------------------
 </span>  <span class='comment'>#
-</span>  <span class='kw'>if</span> <span class='id identifier rubyid_role'>role</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>supervisor</span><span class='tstring_end'>&#39;</span></span>
-    <span class='comment'># User profiles
-</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="UserProfile.html" title="UserProfile (class)">UserProfile</a></span></span>
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_role'>role</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>supervisor</span><span class='tstring_end'>&#39;</span></span>    <span class='comment'># User profiles
+</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="UserProfile.html" title="UserProfile (class)">UserProfile</a></span></span>
 
     <span class='comment'># Budgets
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:manage</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Budget.html" title="Budget (class)">Budget</a></span></span>
@@ -702,22 +702,22 @@
     <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:destroy</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Event.html" title="Event (class)">Event</a></span></span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='symbol'>:can_be_destroyed?</span>
 
     <span class='comment'># TravelSponsorships
-</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="TravelSponsorship.html" title="TravelSponsorship (class)">TravelSponsorship</a></span></span>
-    <span class='comment'># Can create state adjustments
-</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:adjust_state</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="TravelSponsorship.html" title="TravelSponsorship (class)">TravelSponsorship</a></span></span>
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="TravelSponsorship.html" title="TravelSponsorship (class)">TravelSponsorship</a></span></span>    <span class='comment'># Can create state adjustments
+</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:adjust_state</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="TravelSponsorship.html" title="TravelSponsorship (class)">TravelSponsorship</a></span></span>
 
     <span class='comment'># Reimbursements
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Reimbursement.html" title="Reimbursement (class)">Reimbursement</a></span></span>
     <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="ReimbursementAttachment.html" title="ReimbursementAttachment (class)">ReimbursementAttachment</a></span></span>
     <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="BankAccount.html" title="BankAccount (class)">BankAccount</a></span></span>
-    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Payment.html" title="Payment (class)">Payment</a></span></span>
-    <span class='comment'># Can create state adjustments
-</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:adjust_state</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Reimbursement.html" title="Reimbursement (class)">Reimbursement</a></span></span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Payment.html" title="Payment (class)">Payment</a></span></span>    <span class='comment'># Can create state adjustments
+</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:adjust_state</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Reimbursement.html" title="Reimbursement (class)">Reimbursement</a></span></span>
 
     <span class='comment'># Shipments
-</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Shipment.html" title="Shipment (class)">Shipment</a></span></span>
-    <span class='comment'># Or even create state adjustments
-</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:adjust_state</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Shipment.html" title="Shipment (class)">Shipment</a></span></span>
+</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Shipment.html" title="Shipment (class)">Shipment</a></span></span>    <span class='comment'># Or even create state adjustments
+</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:adjust_state</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Shipment.html" title="Shipment (class)">Shipment</a></span></span>
 
     <span class='comment'># Comments
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:read</span><span class='comma'>,</span> <span class='symbol'>:create</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Comment.html" title="Comment (class)">Comment</a></span></span>
@@ -731,9 +731,9 @@
 </span>  <span class='comment'># Material manager permissions
 </span>  <span class='comment'># ----------------------------
 </span>  <span class='comment'>#
-</span>  <span class='kw'>if</span> <span class='id identifier rubyid_role'>role</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>material</span><span class='tstring_end'>&#39;</span></span>
-    <span class='comment'># User profiles
-</span>    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="UserProfile.html" title="UserProfile (class)">UserProfile</a></span></span>
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_role'>role</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>material</span><span class='tstring_end'>&#39;</span></span>    <span class='comment'># User profiles
+</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="UserProfile.html" title="UserProfile (class)">UserProfile</a></span></span>
 
     <span class='comment'># Events
 </span>    <span class='id identifier rubyid_can'>can</span> <span class='lbracket'>[</span><span class='symbol'>:update</span><span class='comma'>,</span> <span class='symbol'>:validate</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Event.html" title="Event (class)">Event</a></span></span>
@@ -773,9 +773,9 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Oct 31 16:40:27 2019 by
+  Generated on Tue Nov  8 18:00:49 2022 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.20 (ruby-2.5.5).
+  0.9.20 (ruby-2.7.6).
 </div>
 
     </div>

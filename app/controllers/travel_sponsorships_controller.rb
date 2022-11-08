@@ -26,14 +26,7 @@ class TravelSponsorshipsController < InheritedResources::Base
   end
 
   def show
-    # We don't want to break the normal process if something goes wrong
-    begin
-      resource.user.profile.refresh
-    rescue
-      nil
-    end
     @request = resource
-    show!
   end
 
   protected
