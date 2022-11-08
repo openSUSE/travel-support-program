@@ -82,7 +82,7 @@ group :development do
   gem 'state_machines-yard'
   gem 'yard-activerecord'
   # for static code analisys
-  gem 'rubocop', require: false
+  gem 'rubocop', '~> 0.49.1', require: false
   gem 'web-console', '~> 2.0'
 end
 
