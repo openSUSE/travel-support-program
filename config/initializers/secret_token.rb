@@ -4,5 +4,5 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-TravelSupport::Application.config.secret_token = TravelSupport::Config.setting(:secret, :token)
-TravelSupport::Application.config.secret_key_base = TravelSupport::Config.setting(:secret, :key_base)
+TravelSupport::Application.config.secret_token = Rails.configuration.site['secret']['token']
+TravelSupport::Application.config.secret_key_base = Rails.configuration.site['secret']['key_base']

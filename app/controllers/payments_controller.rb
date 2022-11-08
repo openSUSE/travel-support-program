@@ -30,7 +30,7 @@ class PaymentsController < InheritedResources::Base
   protected
 
   def load_methods
-    @methods = TravelSupport::Config.setting :payment_methods
+    @methods = Rails.configuration.site['payment_methods']
   end
 
   def set_breadcrumbs

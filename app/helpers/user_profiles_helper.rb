@@ -8,7 +8,7 @@ module UserProfilesHelper
   #
   # @return [String] HTML output
   def profile_info
-    if TravelSupport::Config.setting :opensuse_connect, :enabled
+    if Rails.configuration.site['opensuse_connect']['enabled']
       content_tag(:div,
                   t(:opensuse_profile_info, url: ConnectUser.profile_url_for(current_user.nickname)).html_safe,
                   class: 'alert alert-info')

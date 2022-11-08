@@ -39,12 +39,12 @@
         = simple_format(resource.description)
   .row
     .col-md-6
-      - if enabled? :shipments
+      - if enabled? 'shipments'
         = r.attribute :shipment_type
-      - if enabled? :travel_sponsorships
+      - if enabled? 'travel_sponsorships'
         = r.attribute :visa_letters
     .col-md-6
-      - if enabled? :travel_sponsorships
+      - if enabled? 'travel_sponsorships'
         = r.attribute :request_creation_deadline
         = r.attribute :reimbursement_creation_deadline
   - if user_signed_in? && can?(:validate, resource)

@@ -1,4 +1,4 @@
-common: &common
+shared:
   program_name: "Demo Travel Support Program"
 
   secret:
@@ -67,13 +67,10 @@ common: &common
       - Small booth box
 
 production:
-  <<: *common
 
 development:
-  <<: *common
 
 test:
-  <<: *common
   async_emails: false
 
   budget_limits: true

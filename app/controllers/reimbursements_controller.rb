@@ -35,8 +35,8 @@ class ReimbursementsController < InheritedResources::Base
     authorize! :read, @reimbursement
     authorize! :create, @reimbursement.payments.build
 
-    c_template = TravelSupport::Config.setting(:check_request_template)
-    c_layout = TravelSupport::Config.setting(:check_request_layout)
+    c_template = Rails.configuration.site['check_request_template']
+    c_layout = Rails.configuration.site['check_request_layout']
     if c_template.blank? || c_layout.blank?
       redirect_to request_reimbursement_path(@reimbursement.request)
     else
