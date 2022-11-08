@@ -15,6 +15,8 @@ jobs:
     container: registry.opensuse.org/opensuse/infrastructure/tsp/containers/base:main
 
     steps:
+    - uses: actions/checkout@v2
+
     - name: Cache ruby dependencies
       uses: actions/cache@v3
       with:
@@ -25,8 +27,6 @@ jobs:
 
     - name: Install bundler
       run: gem.ruby2.7 install bundler -v 1.17.3
-
-    - uses: actions/checkout@v2
 
     - name: Install ruby dependencies
       run: bundler.ruby2.7 _1.17.3_ install
