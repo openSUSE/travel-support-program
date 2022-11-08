@@ -26,19 +26,19 @@
   corresponding option in the main menu or in their own username at the
   top right corner of the page, next to the &#39;log out&#39; link.
 
-- if enabled? :opensuse_connect
+- if enabled? 'opensuse_connect'
   Some of the information in the profile cannot be entered directly in the
   application. That information is read from
-  = link_to "openSUSE Connect", TravelSupport::Config.setting(:opensuse_connect, :base_url)
+  = link_to "openSUSE Connect", Rails.configuration.site['opensuse_connect']['base_url']
   and should be updated in the Connect profile of the user.
 
-- if enabled? :travel_sponsorships
-  - if enabled? :shipments
+- if enabled? 'travel_sponsorships'
+  - if enabled? 'shipments'
     %h2 Applying for travel sponsorship or requesting materials
   - else
     %h2 Applying for travel sponsorship
 - else
-  - if enabled? :shipments
+  - if enabled? 'shipments'
     %h2 Requesting materials
 
 %p
@@ -52,9 +52,9 @@
   allowing to create new requests in the system.
 
 - links = []
-- if enabled? :travel_sponsorships
+- if enabled? 'travel_sponsorships'
   - links << link_to("travel support requests", travel_sponsorships_path)
-- if enabled? :shipments
+- if enabled? 'shipments'
   - links << link_to("shipment requests", shipments_path)
 %p
   You can save the request at any moment and edit it later. It will be always
@@ -79,7 +79,7 @@
   As an applicant, your goal should be to reach the final state.
 
 #workflows.panel-group
-  - if enabled? :travel_sponsorships
+  - if enabled? 'travel_sponsorships'
     .panel.panel-default
       .panel-heading
         %a{:href => "#collapseTravel", :data => {:toggle => "collapse", :parent=>"#workflows"}}
@@ -128,7 +128,7 @@
             administrative steps related to the payment.
             = image_tag "Reimbursement_state.png", :alt => "Reimbursement workflow diagram"
 
-  - if enabled?(:shipments)
+  - if enabled? 'shipments'
     .panel.panel-default
       .panel-heading
         %a{:href => "#collapseShipment", :data => {:toggle => "collapse", :parent=>"#workflows"}}

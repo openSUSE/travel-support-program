@@ -239,12 +239,12 @@ module ApplicationHelper
   #            going to be defined. Only relevant if budget_limits are enabled.
   # @return [Array]  Array with the currency codes
   def currencies_for_select(field, event = nil)
-    if TravelSupport::Config.setting(:budget_limits) &&
+    if Rails.configuration.site['budget_limits'] &&
        event && event.budget && event.budget.currency &&
        %w[approved authorized].include?(field.to_s)
       currencies = [event.budget.currency]
     end
-    currencies ||= TravelSupport::Config.setting("currencies_for_#{field}")
+    currencies ||= Rails.configuration.site["currencies_for_#{field}"]
     currencies ||= I18n.translate(:currencies).keys.sort
   end
 
@@ -252,7 +252,7 @@ module ApplicationHelper
   #
   # @return [String] local path of the image
   def pdf_header_image
-    if theme = TravelSupport::Config.setting(:theme)
+    if theme = Rails.configuration.site['theme']
       path = File.join(Rails.root.to_s, 'app', 'themes', theme, 'assets', 'images', 'pdf', 'header.png')
       return path if File.exist?(path)
     end
@@ -308,6 +308,6 @@ module ApplicationHelper
   # @return [Boolean] value of the :enabled key for the provided path in the
   #         configuration file
   def enabled?(*setting_path)
-    TravelSupport::Config.setting(*setting_path, :enabled)
+    Rails.configuration.site.dig(*setting_path)['enabled']
   end
 end

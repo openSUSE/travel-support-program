@@ -98,7 +98,7 @@ class TravelSponsorship < ReimbursableRequest
   # Validates that the approved amount doesn't exceed the total of the budgets
   # associated to the event.
   def dont_exceed_budget
-    if TravelSupport::Config.setting :budget_limits
+    if Rails.configuration.site['budget_limits']
       budget = event.budget
       currency = budget ? budget.currency : nil
 

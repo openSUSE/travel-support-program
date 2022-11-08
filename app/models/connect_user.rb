@@ -10,7 +10,7 @@ class ConnectUser
   # @param [String] login the username of the user in Connect.
   # @return [ConnectUser]
   def initialize(login)
-    api_conf = TravelSupport::Config.setting(:opensuse_connect)
+    api_conf = Rails.configuration.site['opensuse_connect']
     api_key = api_conf['api_key']
     url = api_conf['base_url'] + '/services/api/rest/json'
     method = 'connect.user.attribute.get'
@@ -37,6 +37,6 @@ class ConnectUser
   end
 
   def self.profile_url_for(login)
-    TravelSupport::Config.setting(:opensuse_connect, :base_url) + "/pg/profile/#{login}"
+    Rails.configuration.site['opensuse_connect']['base_url'] + "/pg/profile/#{login}"
   end
 end

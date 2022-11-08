@@ -4,7 +4,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = TravelSupport::Config.setting(:email_from)
+  config.mailer_sender = Rails.configuration.site['email_from']
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -238,9 +238,9 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
 
-  config.secret_key = TravelSupport::Config.setting(:secret, :devise)
+  config.secret_key = Rails.configuration.site['secret']['devise']
 
   # ==> iChain authenticatable configuration
   # config.ichain_test_mode = true
-  config.ichain_base_url = TravelSupport::Config.setting(:authentication, :ichain, :base_url)
+  config.ichain_base_url = Rails.configuration.site['authentication']['ichain']['base_url']
 end

@@ -7,12 +7,12 @@
     = f.input :description, :input_html => {:rows => 3}
     = f.input :url
     - if can? :validate, resource
-      - if enabled? :travel_sponsorships
+      - if enabled? 'travel_sponsorships'
         .col-md-offset-4
           = f.input :visa_letters
         = f.input :request_creation_deadline, :input_html => {class: 'form-control'}, :as => :dpicker, :with_time => true, :format => :long
         = f.input :reimbursement_creation_deadline, :input_html => {class: 'form-control'}, :as => :dpicker, :with_time => true, :format => :long
-      - if enabled? :shipments
+      - if enabled? 'shipments'
         = f.input :shipment_type, :collection => @shipment_types, :include_blank => true
       .col-md-offset-4  
         = f.input :validated

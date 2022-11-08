@@ -52,5 +52,8 @@ module TravelSupport
 
     # Remove warning about new Rails behavior
     config.active_record.raise_in_transactional_callbacks = true
+
+    # The configuration file for the application
+    config.site = config_for(:site)
   end
 end

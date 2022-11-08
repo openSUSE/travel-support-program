@@ -1,6 +1,6 @@
 class ApplicationMailer < ActionMailer::Base
   helper ApplicationHelper
-  default from: proc { TravelSupport::Config.setting(:email_from) }
+  default from: proc { Rails.configuration.site['email_from'] }
 
   # This method assumes that the first parameter of the mailer method is the
   # recipient address (:to)
@@ -27,7 +27,7 @@ class ApplicationMailer < ActionMailer::Base
   end
 
   def self.notify(method, *args)
-    if TravelSupport::Config.setting(:async_emails)
+    if Rails.configuration.site['async_emails']
       delay.send(method, *args)
     else
       send(method, *args).deliver_now

@@ -54,7 +54,7 @@ class UserProfile < ActiveRecord::Base
   #
   # @return [Boolean] true if the information is correctly updated
   def refresh
-    if TravelSupport::Config.setting :opensuse_connect, :enabled
+    if Rails.configuration.site['opensuse_connect']['enabled']
       update_attributes(connect_attrib_values)
     else
       true
@@ -67,7 +67,7 @@ class UserProfile < ActiveRecord::Base
   # @return [Boolean] true unless the attributes is mean to be fetched from an
   #       external source (openSUSE Connect at this moment)
   def have_editable?(attrib)
-    return true unless TravelSupport::Config.setting :opensuse_connect, :enabled
+    return true unless Rails.configuration.site['opensuse_connect']['enabled']
     !UserProfile::FROM_OPENSUSE_CONNECT.keys.include?(attrib.to_sym)
   end
 
@@ -78,7 +78,7 @@ class UserProfile < ActiveRecord::Base
   # @return [Hash] hash with the name of the fields as keys and its
   #             human-readable names as values
   def missing_fields
-    fields = TravelSupport::Config.setting(:relevant_profile_fields)
+    fields = Rails.configuration.site['relevant_profile_fields']
     fields = fields.select { |f| send(f.to_sym).blank? }
     Hash[fields.map { |f| [f, self.class.human_attribute_name(f)] }]
   end
@@ -86,7 +86,7 @@ class UserProfile < ActiveRecord::Base
   protected
 
   def connect_attrib_values
-    return {} unless TravelSupport::Config.setting :opensuse_connect, :enabled
+    return {} unless Rails.configuration.site['opensuse_connect']['enabled']
     new_values = {}
     connect = ConnectUser.new(user.nickname)
     UserProfile::FROM_OPENSUSE_CONNECT.each_pair do |k, v|

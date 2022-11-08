@@ -7,8 +7,8 @@ module Clockwork
     Request.notify_inactive
     Reimbursement.notify_inactive
 
-    end_threshold = TravelSupport::Config.setting(:reimbursement_reminder, :days_after_event)
-    deadline_threshold = TravelSupport::Config.setting(:reimbursement_reminder, :days_before_deadline)
+    end_threshold = Rails.configuration.site['reimbursement_reminder']['days_after_event']
+    deadline_threshold = Rails.configuration.site['reimbursement_reminder']['days_before_deadline']
     unless end_threshold.blank? || deadline_threshold.blank?
       TravelSponsorship.notify_missing_reimbursement end_threshold.to_i.days, deadline_threshold.to_i.days
     end
