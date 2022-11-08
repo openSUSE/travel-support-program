@@ -44,9 +44,9 @@ gem 'therubyracer', platforms: :ruby
 gem 'twitter-bootstrap-rails'
 
 gem 'active_hash'
-gem 'caxlsx_rails'
 gem 'cancancan', '~> 1.7'
 gem 'carrierwave'
+gem 'caxlsx_rails'
 gem 'clockwork'
 gem 'cocoon'
 gem 'daemons'
