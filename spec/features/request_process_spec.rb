@@ -96,7 +96,7 @@ feature 'Requests', '' do
     # Try to update
     page.should_not have_content 'Edit'
     visit edit_travel_sponsorship_path(@request)
-    page.should have_content 'You are not allowed to access this page. If you think that you should, contact your administrator.'
+    page.should have_content "You are not allowed to access this page.\nIf you think that you should, contact your administrator."
 
     # Not possible, so roll back
     visit travel_sponsorship_path(@request)

@@ -15,9 +15,6 @@ jobs:
     container: registry.opensuse.org/opensuse/infrastructure/tsp/containers/base:main
 
     steps:
-    - name: Install bundler
-      run: gem.ruby2.7 install bundler -v 1.17.3
-
     - uses: actions/checkout@v2
 
     - name: Cache ruby dependencies
@@ -28,8 +25,13 @@ jobs:
           /usr/bin/
         key: ${{ hashFiles('Gemfile.lock') }}
 
+    - name: Install bundler
+      run: gem.ruby2.7 install bundler -v 1.17.3
+
     - name: Install ruby dependencies
-      run: bundler.ruby2.7 _1.17.3_ install
+      run: |
+        gem.ruby2.7 install mini_racer -v 0.6.3
+        bundler.ruby2.7 _1.17.3_ install
 
     - name: Set up the environment
       run: |
