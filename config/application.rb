@@ -55,5 +55,8 @@ module TravelSupport
 
     # The configuration file for the application
     config.site = config_for(:site)
+
+    # Assets precompilation for the themes
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
   end
 end
