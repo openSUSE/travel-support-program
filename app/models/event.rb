@@ -6,7 +6,7 @@
 # 'validated'. This attribute is used to control which users can create, update
 # and destroy the event.
 #
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   # Requests for attending the event
   has_many :requests, inverse_of: :event, dependent: :restrict_with_exception
   # Shipment requests for merchandising

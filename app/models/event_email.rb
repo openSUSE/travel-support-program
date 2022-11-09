@@ -1,4 +1,4 @@
-class EventEmail < ActiveRecord::Base
+class EventEmail < ApplicationRecord
   belongs_to :user
   belongs_to :event
 

@@ -4,7 +4,7 @@
 # This model only keeps the information and methods needed for authentication.
 # For user information or role, use UserProfile
 #
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
 
   devise_modules = []

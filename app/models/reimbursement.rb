@@ -1,7 +1,7 @@
 #
 # Reimbursement for a given request
 #
-class Reimbursement < ActiveRecord::Base
+class Reimbursement < ApplicationRecord
   include HasState
   include HasComments
 

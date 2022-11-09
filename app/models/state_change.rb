@@ -10,7 +10,7 @@
 # @see StateTransition
 # @see StateAdjustment
 #
-class StateChange < ActiveRecord::Base
+class StateChange < ApplicationRecord
   before_validation :update_machine_state, on: :create
   before_update :prevent_update
   after_create :notify_state

@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   respond_to :json, :js
   skip_load_and_authorize_resource
-  before_filter :load_command_and_authorize
+  before_action :load_command_and_authorize
 
   def create
     @comment.user = current_user

@@ -6,7 +6,7 @@
 # so total_currency and authorized_currency attributes are updated during the
 # reimbursement process
 #
-class RequestExpense < ActiveRecord::Base
+class RequestExpense < ApplicationRecord
   belongs_to :request, inverse_of: :expenses,
                        class_name: 'ReimbursableRequest',
                        foreign_key: 'request_id'

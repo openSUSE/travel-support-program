@@ -1,7 +1,7 @@
 class ShipmentsController < InheritedResources::Base
   respond_to :html, :js, :json
   skip_load_resource only: [:index, :new]
-  before_filter :set_states_collection, only: [:index]
+  before_action :set_states_collection, only: [:index]
 
   def show; end
 
@@ -23,7 +23,7 @@ class ShipmentsController < InheritedResources::Base
   protected
 
   def collection
-    @q ||= end_of_association_chain.accessible_by(current_ability).search(params[:q])
+    @q ||= end_of_association_chain.accessible_by(current_ability).ransack(params[:q])
     @q.sorts = 'id asc' if @q.sorts.empty?
     @all_shipments ||= @q.result(distinct: true)
     @shipments ||= @all_shipments.page(params[:page]).per(20)

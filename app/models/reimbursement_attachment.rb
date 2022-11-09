@@ -1,7 +1,7 @@
 #
 # Attachment for a given reimbursement
 #
-class ReimbursementAttachment < ActiveRecord::Base
+class ReimbursementAttachment < ApplicationRecord
   # The associated reimbursement
   belongs_to :reimbursement
 

@@ -1,8 +1,8 @@
 class EventsController < InheritedResources::Base
   respond_to :html, :js, :json
-  skip_before_filter :authenticate_and_audit_user, only: [:index, :show]
+  skip_before_action :authenticate_and_audit_user, only: [:index, :show]
   skip_load_and_authorize_resource only: [:index, :show]
-  before_filter :set_types
+  before_action :set_types
 
   def participants
     @breadcrumbs = [
@@ -11,13 +11,13 @@ class EventsController < InheritedResources::Base
       { label: 'participants' }
     ]
     @requests = @event.travel_sponsorships.eager_load(:user).order('lower(users.nickname)').accessible_by(current_ability)
-    @requests.uniq!(&:user_id)
+    @requests.distinct!(&:user_id)
   end
 
   protected
 
   def collection
-    @q ||= end_of_association_chain.search(params[:q])
+    @q ||= end_of_association_chain.ransack(params[:q])
     # Default, only current and future events are displayed
     if params[:q].nil? || params[:q][:end_date_gteq].nil?
       @q.end_date_gteq = Date.today

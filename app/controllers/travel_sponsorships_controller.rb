@@ -3,7 +3,7 @@ class TravelSponsorshipsController < InheritedResources::Base
 
   skip_load_resource only: [:index, :new]
   helper_method :request_states_collection
-  before_filter :load_subjects
+  before_action :load_subjects
 
   def create
     @travel_sponsorship ||= TravelSponsorship.new(params[:request])
@@ -32,7 +32,7 @@ class TravelSponsorshipsController < InheritedResources::Base
   protected
 
   def collection
-    @q ||= end_of_association_chain.accessible_by(current_ability).includes(:expenses).search(params[:q])
+    @q ||= end_of_association_chain.accessible_by(current_ability).includes(:expenses).ransack(params[:q])
     @q.sorts = 'id asc' if @q.sorts.empty?
     @all_requests ||= @q.result(distinct: true)
     @travel_sponsorships ||= @all_requests.page(params[:page]).per(20)

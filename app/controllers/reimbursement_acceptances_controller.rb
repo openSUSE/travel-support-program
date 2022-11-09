@@ -1,7 +1,7 @@
 class ReimbursementAcceptancesController < ApplicationController
   respond_to :html, :js, :json
   skip_load_and_authorize_resource
-  before_filter :load_reimbursement_and_authorize, except: :show
+  before_action :load_reimbursement_and_authorize, except: :show
 
   def create
     if params[:acceptance]

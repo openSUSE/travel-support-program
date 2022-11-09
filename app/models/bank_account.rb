@@ -2,7 +2,7 @@
 # Bank account information for a given reimbursement.
 # Defined as a separate model in the shake of cleanest.
 #
-class BankAccount < ActiveRecord::Base
+class BankAccount < ApplicationRecord
   # The associated reimbursement
   belongs_to :reimbursement, inverse_of: :bank_account
 

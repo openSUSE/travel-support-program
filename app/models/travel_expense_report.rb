@@ -6,10 +6,10 @@
 # model for that purpose.
 # @see RequestExpense
 #
-class TravelExpenseReport < ActiveRecord::Base
+class TravelExpenseReport < ApplicationRecord
   self.table_name = 'request_expenses'
 
-  belongs_to :request, ->(_req) { where 'requests.type' => 'TravelSponsorship' }
+  belongs_to :request, -> { where 'requests.type' => 'TravelSponsorship' }
   delegate :reimbursement, to: :request, prefix: false
   delegate :user, to: :request, prefix: false
   delegate :event, to: :request, prefix: false

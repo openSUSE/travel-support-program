@@ -6,21 +6,20 @@ RUN usermod -u $CONTAINER_USERID tsp
 
 WORKDIR /app
 
-RUN gem.ruby2.7 install bundler -v 1.17.3
 RUN gem.ruby2.7 install mini_racer -v 0.6.3
 RUN gem.ruby2.7 install ffi -v '1.15.5'
 
 # Configure our bundle
 # ENV BUNDLE_FORCE_RUBY_PLATFORM=true
-RUN bundler.ruby2.7 _1.17.3_  config build.ffi --enable-system-libffi; \
-    bundler.ruby2.7 _1.17.3_  config build.nokogiri --use-system-libraries; \
-    bundler.ruby2.7 _1.17.3_  config build.sassc --disable-march-tune-native; \
-    bundler.ruby2.7 _1.17.3_  config build.nio4r --with-cflags='-Wno-return-type'
+RUN bundler.ruby2.7  config build.ffi --enable-system-libffi; \
+    bundler.ruby2.7  config build.nokogiri --use-system-libraries; \
+    bundler.ruby2.7  config build.sassc --disable-march-tune-native; \
+    bundler.ruby2.7  config build.nio4r --with-cflags='-Wno-return-type'
 
 ADD Gemfile /app/Gemfile
 ADD Gemfile.lock /app/Gemfile.lock
 
-RUN bundler.ruby2.7 _1.17.3_ install --jobs=3 --retry=3
+RUN bundler.ruby2.7 install --jobs=3 --retry=3
 
 RUN chown -R tsp /app
 
