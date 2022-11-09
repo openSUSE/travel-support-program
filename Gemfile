@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.11.3'
-gem 'responders', '~> 2.0'
+gem 'responders'
 
 # Choose your weapon
 gem 'sqlite3', '~> 1.3.13'
@@ -11,13 +11,14 @@ gem 'sqlite3', '~> 1.3.13'
 gem 'bigdecimal', '1.3.5'
 gem 'bundler', '< 2.0'
 gem 'psych', '< 4.0'
+gem 'sprockets', '< 4.0'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -44,7 +45,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'twitter-bootstrap-rails'
 
 gem 'active_hash'
-gem 'cancancan', '~> 1.7'
+gem 'cancancan', '~> 1.17'
 gem 'carrierwave'
 gem 'caxlsx_rails'
 gem 'clockwork'
@@ -57,6 +58,8 @@ gem 'espinita'
 gem 'inherited_resources'
 gem 'kaminari'
 gem 'localized_country_select'
+# Newer prawn lost the template support in Document
+# Would be good to replace with something else
 gem 'prawn', '~> 0.13.0'
 gem 'prawn_rails'
 gem 'puma'

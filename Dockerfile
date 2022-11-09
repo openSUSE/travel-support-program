@@ -8,6 +8,7 @@ WORKDIR /app
 
 RUN gem.ruby2.7 install bundler -v 1.17.3
 RUN gem.ruby2.7 install mini_racer -v 0.6.3
+RUN gem.ruby2.7 install ffi -v '1.15.5'
 
 # Configure our bundle
 # ENV BUNDLE_FORCE_RUBY_PLATFORM=true
