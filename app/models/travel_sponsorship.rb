@@ -45,28 +45,28 @@ class TravelSponsorship < ReimbursableRequest
   # @see HasState.assign_state
   # @see HasState.notify_state
   assign_state :incomplete, to: :requester
-  notify_state :incomplete, to: [:requester, :tsp, :assistant],
+  notify_state :incomplete, to: [:requester, :tsp, :assistant, :supervisor],
                             remind_to: :requester,
                             remind_after: 5.days
 
   assign_state :submitted, to: :tsp
-  notify_state :submitted, to: [:requester, :tsp, :assistant],
+  notify_state :submitted, to: [:requester, :tsp, :assistant, :supervisor],
                            remind_after: 10.days
 
   assign_state :approved, to: :requester
-  notify_state :approved, to: [:requester, :tsp, :assistant],
+  notify_state :approved, to: [:requester, :tsp, :assistant, :supervisor],
                           remind_to: :requester,
                           remind_after: 5.days
 
-  notify_state :accepted, to: [:requester, :tsp, :assistant]
+  notify_state :accepted, to: [:requester, :tsp, :assistant, :supervisor]
 
-  notify_state :canceled, to: [:requester, :tsp, :assistant]
+  notify_state :canceled, to: [:requester, :tsp, :assistant, :supervisor]
 
   # @see HasState.allow_transition
   allow_transition :submit, :requester
-  allow_transition :approve, :tsp
+  allow_transition :approve, [:tsp, :supervisor]
   allow_transition :accept, :requester
-  allow_transition :roll_back, [:requester, :tsp]
+  allow_transition :roll_back, [:requester, :tsp, :supervisor]
 
   def allow_cancel?(role_name)
     r = role_name.to_sym

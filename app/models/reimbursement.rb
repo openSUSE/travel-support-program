@@ -85,34 +85,34 @@ class Reimbursement < ActiveRecord::Base
   # @see HasState.assign_state
   # @see HasState.notify_state
   assign_state :incomplete, to: :requester
-  notify_state :incomplete, to: [:requester, :tsp, :assistant],
+  notify_state :incomplete, to: [:requester, :tsp, :assistant, :supervisor],
                             remind_to: :requester,
                             remind_after: 5.days
 
   assign_state :submitted, to: :tsp
-  notify_state :submitted, to: [:requester, :tsp, :assistant],
+  notify_state :submitted, to: [:requester, :tsp, :assistant, :supervisor],
                            remind_after: 10.days
 
   assign_state :approved, to: :administrative
-  notify_state :approved, to: [:administrative, :requester, :tsp, :assistant],
+  notify_state :approved, to: [:administrative, :requester, :tsp, :assistant, :supervisor],
                           remind_to: :administrative,
                           remind_after: 10.days
 
   assign_state :processed
-  notify_state :processed, to: [:administrative, :requester, :tsp, :assistant],
+  notify_state :processed, to: [:administrative, :requester, :tsp, :assistant, :supervisor],
                            remind_to: :administrative,
                            remind_after: 20.days
 
-  notify_state :payed, to: [:administrative, :requester, :tsp, :assistant]
+  notify_state :payed, to: [:administrative, :requester, :tsp, :assistant, :supervisor]
 
-  notify_state :canceled, to: [:administrative, :requester, :tsp, :assistant]
+  notify_state :canceled, to: [:administrative, :requester, :tsp, :assistant, :supervisor]
 
   # @see HasState.allow_transition
   allow_transition :submit, :requester
-  allow_transition :approve, :tsp
+  allow_transition :approve, [:tsp, :supervisor]
   allow_transition :process, :administrative
   allow_transition :confirm, :administrative
-  allow_transition :roll_back, [:requester, :administrative, :tsp]
+  allow_transition :roll_back, [:requester, :administrative, :tsp, :supervisor]
   allow_transition :cancel, [:requester, :tsp, :supervisor]
 
   # @see Request#expenses_sum
