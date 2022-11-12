@@ -15,6 +15,8 @@ gem 'sprockets', '< 4.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
+# Bootstrap ui framework
+gem 'bootstrap-sass'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
 # Use CoffeeScript for .js.coffee assets and views
@@ -28,6 +30,8 @@ gem 'turbolinks'
 gem 'haml-rails'
 # To test email with letter opener set the 'async_emails' option in site.yml to false
 gem 'letter_opener_web'
+# mini_racer for execjs
+gem 'mini_racer', platforms: :ruby
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -36,13 +40,6 @@ end
 
 # Debugger
 gem 'byebug', group: [:development, :test]
-
-# less support
-gem 'less-rails'
-gem 'mini_racer', platforms: :ruby
-# Remove therubyracer as soon as there's no less-rails anymore
-gem 'therubyracer', platforms: :ruby
-gem 'twitter-bootstrap-rails'
 
 gem 'active_hash'
 gem 'cancancan', '~> 1.17'

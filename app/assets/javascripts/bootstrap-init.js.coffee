@@ -1,5 +1,5 @@
 #
-#= require twitter/bootstrap
+#= require bootstrap
 #= require datetimepicker/bootstrap-datetimepicker
 #= require bootstrap-fileupload
 #= require bootstrap-multiselect

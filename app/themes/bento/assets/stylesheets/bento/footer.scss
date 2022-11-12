@@ -4,9 +4,9 @@
   }
   #footer-legal {
     margin-top: 5px;
-    border-top: 1px dotted @gray;
+    border-top: 1px dotted $gray;
     text-align: center;
-    color: @gray;
-    font-size: @font-size-small;
+    color: $gray;
+    font-size: $font-size-small;
   }
 }
