@@ -1,6 +1,10 @@
 if Rails.root.join('.git').exist?
   git = Git.open(Rails.root)
-  version = git.describe
+  begin
+    version = git.describe
+  rescue
+    version = '0.0.0'
+  end
   File.write(Rails.root.join('VERSION'), version)
 end
 
