@@ -2,8 +2,8 @@ blockquote.collapse,
 .history blockquote {
     margin-bottom: 0px;
     p {
-        font-size: @font-size-base;
-        line-height: @line-height-base;
+        font-size: $font-size-base;
+        line-height: $line-height-base;
     }
 }
 
@@ -39,7 +39,7 @@ body {
   height: auto !important;
   height: 100%;
   /* Negative indent footer by it's height */
-  margin: 0 auto -@font-size-base*1.5;
+  margin: 0 auto -$font-size-base*1.5;
 }
 
 .navbar
@@ -114,7 +114,7 @@ body {
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
-@media (min-width: @screen-lg-min) { 
+@media (min-width: $screen-lg-min) { 
   .nav-tsp {
     height:42px;
   }
@@ -133,12 +133,12 @@ body {
 
 #push-footer,
 #footer {
-  height: @font-size-base*1.5;
+  height: $font-size-base*1.5;
 }
 
 #footer {
-  background-color: @navbar-default-bg;
+  background-color: $navbar-default-bg;
   div {
-      font-size: @font-size-small;
+      font-size: $font-size-small;
   }
 }

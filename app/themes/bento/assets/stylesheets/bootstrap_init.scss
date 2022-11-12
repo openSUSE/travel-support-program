@@ -1,14 +1,14 @@
-@import "bootstrap_init";
+@import "bootstrap";
 @import "bootstrap_bento";
 @import "bootstrap_overrides";
 
 // Footer overrides for bento compatibility
 #full-page-wrap {
-  margin: 0 auto -(@font-size-base*1.5+15px);
+  margin: 0 auto -($font-size-base*1.5+15px);
 }
 #push-footer, #footer {
-  height: @font-size-base*1.5+15px;
+  height: $font-size-base*1.5+15px;
 }
 #footer {
-  background-color: @body-bg;
+  background-color: $body-bg;
 }
