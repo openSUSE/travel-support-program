@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.11.3'
+gem 'rails', '>= 5.0.0.rc2', '< 5.0.99'
+gem 'rails-i18n'
 gem 'responders'
 
 # Choose your weapon
@@ -8,8 +9,7 @@ gem 'sqlite3', '~> 1.3.13'
 # gem 'pg', '~> 0.21'
 # gem 'mysql2', '~> 0.4.10'
 
-gem 'bigdecimal', '1.3.5'
-gem 'bundler', '< 2.0'
+# This can only be removed with Rails 7.0
 gem 'psych', '< 4.0'
 
 # Use SCSS for stylesheets
@@ -23,14 +23,13 @@ gem 'coffee-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
 # HAML as default
 gem 'haml-rails'
-# To test email with letter opener set the 'async_emails' option in site.yml to false
-gem 'letter_opener_web'
 # mini_racer for execjs
 gem 'mini_racer', platforms: :ruby
+
+# To test email with letter opener set the 'async_emails' option in site.yml to false
+gem 'letter_opener_web'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -46,14 +45,15 @@ gem 'carrierwave'
 gem 'caxlsx_rails'
 gem 'clockwork'
 gem 'cocoon'
+gem 'country_select'
 gem 'daemons'
 gem 'date_validator'
 gem 'devise'
 gem 'devise_ichain_authenticatable', '>= 0.3.0'
-gem 'espinita'
+gem 'espinita', git: 'https://github.com/michelson/espinita.git',
+                ref: '2dc027edc838ee5de0d68558f1758273ccc01636'
 gem 'inherited_resources'
 gem 'kaminari'
-gem 'localized_country_select'
 # Newer prawn lost the template support in Document
 # Would be good to replace with something else
 gem 'prawn', '~> 0.13.0'
@@ -82,7 +82,6 @@ group :development do
   gem 'yard-activerecord'
   # for static code analisys
   gem 'rubocop', '~> 0.49.1', require: false
-  gem 'web-console', '~> 2.0'
 end
 
 group :test do
@@ -106,6 +105,3 @@ end
 
 # Deploy with Capistrano
 # gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'

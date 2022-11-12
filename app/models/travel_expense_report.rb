@@ -6,10 +6,10 @@
 # model for that purpose.
 # @see RequestExpense
 #
-class TravelExpenseReport < ActiveRecord::Base
+class TravelExpenseReport < ApplicationRecord
   self.table_name = 'request_expenses'
 
-  belongs_to :request, ->(_req) { where 'requests.type' => 'TravelSponsorship' }
+  belongs_to :request, -> { where 'requests.type' => 'TravelSponsorship' }
   delegate :reimbursement, to: :request, prefix: false
   delegate :user, to: :request, prefix: false
   delegate :event, to: :request, prefix: false
@@ -158,7 +158,7 @@ class TravelExpenseReport < ActiveRecord::Base
     # check explicitly for one of the three special cases
     if name.to_sym == :sum_amount
       # to_f.to_s to ensure that it has a decimal part (with any db engine)
-      BigDecimal.new(sum_amount.to_f.to_s || '0.0')
+      BigDecimal(sum_amount.to_f.to_s || '0.0')
     elsif [:event_start_date, :event_end_date].include? name.to_sym
       d = send(name)
       d.blank? ? nil : (d.is_a?(Date) ? d : Date.parse(d))

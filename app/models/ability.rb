@@ -38,7 +38,7 @@ class Ability
 
       # Comments
       conds = { machine_type: machine.base_class.to_s }
-      if machine.superclass != ActiveRecord::Base
+      if machine.superclass != ApplicationRecord
         conds[:machine] = { type: machine.to_s }
       end
 

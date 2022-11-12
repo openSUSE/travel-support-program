@@ -1,6 +1,6 @@
 class UserProfilesController < ApplicationController
   force_ssl unless: proc { Rails.env.test? || Rails.env.development? }
-  before_filter :set_user_and_profile
+  before_action :set_user_and_profile
 
   def update
     attrs = params.require(:user).permit(:country_code, :full_name, :location,

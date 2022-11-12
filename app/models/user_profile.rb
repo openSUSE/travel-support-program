@@ -4,7 +4,7 @@
 # The User model only contains fields and associations that are strictly
 # related to authentication.
 #
-class UserProfile < ActiveRecord::Base
+class UserProfile < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
 
   # The associated user (one to one association)

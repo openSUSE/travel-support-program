@@ -1,10 +1,10 @@
-require File.expand_path('../boot', __FILE__)
+require_relative 'boot'
 
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(:default, Rails.env)
+Bundler.require(*Rails.groups)
 
 module TravelSupport
   class Application < Rails::Application
@@ -49,9 +49,6 @@ module TravelSupport
 
     # Enable the asset pipeline
     config.assets.enabled = true
-
-    # Remove warning about new Rails behavior
-    config.active_record.raise_in_transactional_callbacks = true
 
     # The configuration file for the application
     config.site = config_for(:site)

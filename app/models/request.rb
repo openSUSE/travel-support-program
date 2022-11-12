@@ -1,7 +1,7 @@
 #
 # Base class for all requests, reimbursable or not
 #
-class Request < ActiveRecord::Base
+class Request < ApplicationRecord
   include HasState
   include HasComments
 

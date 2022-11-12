@@ -1,7 +1,7 @@
 #
 # Effective payment of a reimbursement
 #
-class Payment < ActiveRecord::Base
+class Payment < ApplicationRecord
   # The associated reimbursement
   belongs_to :reimbursement, inverse_of: :payments
 

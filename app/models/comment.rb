@@ -4,7 +4,7 @@
 # for discussing the final decision- or public -allowing two way communication
 # with the requester-.
 #
-class Comment < ActiveRecord::Base
+class Comment < ApplicationRecord
   # The associated state machine (request, reimbursement...)
   belongs_to :machine, polymorphic: true, inverse_of: :comments
   # The author of the note

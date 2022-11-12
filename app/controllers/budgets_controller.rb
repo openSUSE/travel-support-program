@@ -5,7 +5,7 @@ class BudgetsController < InheritedResources::Base
   protected
 
   def collection
-    @q ||= end_of_association_chain.accessible_by(current_ability).search(params[:q])
+    @q ||= end_of_association_chain.accessible_by(current_ability).ransack(params[:q])
     @q.sorts = 'name asc' if @q.sorts.empty?
     @budgets ||= @q.result(distinct: true).page(params[:page]).per(20)
   end

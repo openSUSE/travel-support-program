@@ -25,31 +25,28 @@ jobs:
           /usr/bin/
         key: ${{ hashFiles('Gemfile.lock') }}
 
-    - name: Install bundler
-      run: gem.ruby2.7 install bundler -v 1.17.3
-
     - name: Install ruby dependencies
       run: |
         gem.ruby2.7 install mini_racer -v 0.6.3
-        bundler.ruby2.7 _1.17.3_ install
+        bundler.ruby2.7 install
 
     - name: Set up the environment
       run: |
         cp config/database.test.yml config/database.yml
         cp config/site.example.yml config/site.yml
-        bundler.ruby2.7 _1.17.3_ exec rake db:migrate RAILS_ENV=test
+        bundler.ruby2.7 exec rake db:migrate RAILS_ENV=test
 
     - if: ${{ matrix.type == 'rubocop' }}
       name: Run rubocop
-      run: bundler.ruby2.7 _1.17.3_ exec rubocop
+      run: bundler.ruby2.7 exec rubocop
 
     - if: ${{ contains(fromJson('["features", "helpers", "mailer", "models"]'), matrix.type) }}
       name: Run spec
-      run: bundler.ruby2.7 _1.17.3_ exec rspec spec/${{ matrix.type }}/
+      run: bundler.ruby2.7 exec rspec spec/${{ matrix.type }}/
 
     - if: ${{ matrix.type == 'coverage' }}
       name: Run spec
-      run: bundler.ruby2.7 _1.17.3_ exec rspec
+      run: bundler.ruby2.7 exec rspec
 
     - if: ${{ matrix.type == 'coverage' }}
       name: Coveralls

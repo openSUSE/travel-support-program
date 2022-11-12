@@ -1,4 +1,4 @@
-class EventOrganizer < ActiveRecord::Base
+class EventOrganizer < ApplicationRecord
   belongs_to :user
   belongs_to :event
 
