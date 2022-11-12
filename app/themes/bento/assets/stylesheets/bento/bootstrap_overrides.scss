@@ -66,7 +66,7 @@ h2 small { font-size: $font-size-base * 1.20; }
 #main, .well {
   background-color: $well-bg;
   padding: $bentoWellPadding;
-  padding-top: 0px;
+  padding-top: 0!important;
   border: 1px solid $bentoWellBorderColor;
   border-radius:$border-radius-base;
   box-shadow: 0px 1px 3px $bentoShadowColor;
@@ -97,7 +97,7 @@ h2 small { font-size: $font-size-base * 1.20; }
       text-transform: none;
       font-size: $font-size-base;
       font-weight: bold;
-      margin: 1px -14px 5px;
+      margin: 1px -24px 5px;
       border-bottom: 1px solid $bentoWellBorderColor;
     }
   }
@@ -162,7 +162,7 @@ input[type="color"],
 .breadcrumb {
   background:transparent image-url('bento/home_grey.png') no-repeat;
   margin: 0px;
-  padding: 0px 0px 0px 20px;
+  padding: 0px 0px 0px 20px!important;
 
   li {
     color: $gray-darker;
