@@ -11,7 +11,6 @@ gem 'sqlite3', '~> 1.3.13'
 gem 'bigdecimal', '1.3.5'
 gem 'bundler', '< 2.0'
 gem 'psych', '< 4.0'
-gem 'sprockets', '< 4.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
