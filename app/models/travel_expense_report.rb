@@ -158,7 +158,7 @@ class TravelExpenseReport < ApplicationRecord
     # check explicitly for one of the three special cases
     if name.to_sym == :sum_amount
       # to_f.to_s to ensure that it has a decimal part (with any db engine)
-      BigDecimal.new(sum_amount.to_f.to_s || '0.0')
+      BigDecimal(sum_amount.to_f.to_s || '0.0')
     elsif [:event_start_date, :event_end_date].include? name.to_sym
       d = send(name)
       d.blank? ? nil : (d.is_a?(Date) ? d : Date.parse(d))
