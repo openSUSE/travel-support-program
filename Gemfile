@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '>= 5.0.0.rc2', '< 5.0.99'
+gem 'rails', '>= 5.1.0', '< 5.1.99'
 gem 'rails-i18n'
 gem 'responders'
 
