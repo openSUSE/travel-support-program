@@ -1,4 +1,4 @@
-class OnlyOneBudgetPerEvent < ActiveRecord::Migration
+class OnlyOneBudgetPerEvent < ActiveRecord::Migration[4.2]
   def up
     drop_table :budgets_events
     add_column :events, :budget_id, :integer

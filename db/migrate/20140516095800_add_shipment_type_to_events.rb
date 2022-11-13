@@ -1,4 +1,4 @@
-class AddShipmentTypeToEvents < ActiveRecord::Migration
+class AddShipmentTypeToEvents < ActiveRecord::Migration[4.2]
   def change
     add_column :events, :shipment_type, :string
   end

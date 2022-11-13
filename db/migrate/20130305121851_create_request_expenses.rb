@@ -1,4 +1,4 @@
-class CreateRequestExpenses < ActiveRecord::Migration
+class CreateRequestExpenses < ActiveRecord::Migration[4.2]
   def change
     create_table :request_expenses do |t|
       t.references :request, null: false

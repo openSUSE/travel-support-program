@@ -1,4 +1,4 @@
-class AddPrecision < ActiveRecord::Migration
+class AddPrecision < ActiveRecord::Migration[4.2]
   def up
     change_column :budgets, :amount, :decimal, precision: 10, scale: 2
     change_column :payments, :amount, :decimal, precision: 10, scale: 2

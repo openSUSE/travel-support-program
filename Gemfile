@@ -36,6 +36,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'listen'
+
 # Debugger
 gem 'byebug', group: [:development, :test]
 
