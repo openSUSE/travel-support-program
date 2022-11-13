@@ -26,7 +26,7 @@ gem 'jquery-ui-rails'
 # HAML as default
 gem 'haml-rails'
 # mini_racer for execjs
-gem 'mini_racer', platforms: :ruby
+gem 'mini_racer'
 
 # To test email with letter opener set the 'async_emails' option in site.yml to false
 gem 'letter_opener_web'
