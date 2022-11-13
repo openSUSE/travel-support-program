@@ -18,6 +18,7 @@ config/database.yml
 config/site.yml
 config/secrets.yml
 .yardoc/*
+doc/html
 coverage/*
 *.swp
 .ruby-version
