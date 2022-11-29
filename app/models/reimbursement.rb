@@ -239,4 +239,8 @@ class Reimbursement < ApplicationRecord
     end
     false
   end
+
+  def self.ransackable_associations(_)
+    %w[request]
+  end
 end
