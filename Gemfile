@@ -52,6 +52,7 @@ gem 'devise'
 gem 'devise_ichain_authenticatable', '>= 0.3.0'
 gem 'espinita', git: 'https://github.com/michelson/espinita.git',
                 ref: '2dc027edc838ee5de0d68558f1758273ccc01636'
+gem 'git'
 gem 'inherited_resources'
 gem 'kaminari'
 # Newer prawn lost the template support in Document

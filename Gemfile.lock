@@ -141,6 +141,9 @@ GEM
       activesupport (>= 4.0, < 7)
     execjs (2.8.1)
     ffi (1.15.5)
+    git (1.12.0)
+      addressable (~> 2.8)
+      rchardet (~> 1.8)
     globalid (1.0.0)
       activesupport (>= 5.0)
     haml (5.2.2)
@@ -280,6 +283,7 @@ GEM
       activesupport (>= 5.0)
       i18n
       polyamorous (= 2.3.0)
+    rchardet (1.8.0)
     rdoc (6.3.3)
     redcarpet (3.5.1)
     regexp_parser (2.6.0)
@@ -424,6 +428,7 @@ DEPENDENCIES
   devise_ichain_authenticatable (>= 0.3.0)
   espinita!
   exception_notification
+  git
   haml-rails
   inherited_resources
   jquery-rails

@@ -26,3 +26,4 @@ public/upload*
 upload*
 .byebug_history
 docker-compose.yml
+VERSION
