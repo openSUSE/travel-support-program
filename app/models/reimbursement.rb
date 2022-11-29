@@ -203,6 +203,10 @@ class Reimbursement < ApplicationRecord
     full_messages
   end
 
+  def self.ransackable_associations(_)
+    %w[request]
+  end
+
   protected
 
   # Used internally to synchronize request_id and user_id
@@ -238,9 +242,5 @@ class Reimbursement < ApplicationRecord
       end
     end
     false
-  end
-
-  def self.ransackable_associations(_)
-    %w[request]
   end
 end
