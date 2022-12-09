@@ -40,7 +40,7 @@ end
 gem 'byebug', group: [:development, :test]
 
 gem 'active_hash'
-gem 'cancancan', '~> 1.17'
+gem 'cancancan', '~> 3.4'
 gem 'carrierwave'
 gem 'caxlsx_rails'
 gem 'clockwork'
