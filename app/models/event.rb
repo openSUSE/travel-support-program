@@ -18,7 +18,7 @@ class Event < ApplicationRecord
   # Event Organizers for the event
   has_many :event_organizers
   # Budget to use as a limit for approved amounts
-  belongs_to :budget
+  belongs_to :budget, optional: true
 
   validates :name, :start_date, :end_date, :country_code, presence: true
   validates :end_date, date: { after_or_equal_to: :start_date }

@@ -37,8 +37,8 @@ class Reimbursement < ApplicationRecord
 
   validates :request, presence: true
   validates_associated :expenses, :attachments, :links, :bank_account
-  validates :acceptance_file, presence: true, if: 'acceptance_file_required?'
-  validate :user_profile_is_complete, if: 'complete_profile_required?'
+  validates :acceptance_file, presence: true, if: -> { acceptance_file_required? }
+  validate :user_profile_is_complete, if: -> { complete_profile_required? }
 
   mount_uploader :acceptance_file, AttachmentUploader
 
