@@ -57,7 +57,7 @@ gem 'inherited_resources'
 gem 'kaminari'
 # Newer prawn lost the template support in Document
 # Would be good to replace with something else
-gem 'prawn', '~> 0.13.0'
+gem 'prawn', '~> 2.4.0'
 gem 'prawn_rails'
 gem 'puma'
 gem 'ransack'
