@@ -1,4 +1,4 @@
-class DropRequestExpenseSubjects < ActiveRecord::Migration
+class DropRequestExpenseSubjects < ActiveRecord::Migration[4.2]
   def up
     drop_table :request_expense_subjects
   end

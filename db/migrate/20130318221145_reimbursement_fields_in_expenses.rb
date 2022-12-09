@@ -1,4 +1,4 @@
-class ReimbursementFieldsInExpenses < ActiveRecord::Migration
+class ReimbursementFieldsInExpenses < ActiveRecord::Migration[4.2]
   def up
     rename_column :request_expenses, :total_amount, :estimated_amount
     rename_column :request_expenses, :total_currency, :estimated_currency

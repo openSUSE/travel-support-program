@@ -47,12 +47,12 @@ class StateChange < ApplicationRecord
   protected
 
   def prevent_update
-    false
+    throw(:abort)
   end
 
   def update_machine_state
     # Prevent saving if the method have not been redefined in the subclass
-    false
+    throw(:abort)
   end
 
   def notify_state

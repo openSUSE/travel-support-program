@@ -1,4 +1,4 @@
-class CreateReimbursements < ActiveRecord::Migration
+class CreateReimbursements < ActiveRecord::Migration[4.2]
   def change
     create_table :reimbursements do |t|
       t.string   'state'

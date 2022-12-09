@@ -21,6 +21,6 @@ class StateTransition < StateChange
                machine.fire_state_event(state_event.to_sym)
              end
     self.to = machine.state
-    result
+    throw :abort unless result
   end
 end

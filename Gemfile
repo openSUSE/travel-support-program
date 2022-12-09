@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '>= 5.0.0.rc2', '< 5.0.99'
+gem 'rails', '>= 5.1.0', '< 5.1.99'
 gem 'rails-i18n'
 gem 'responders'
 
@@ -35,6 +35,8 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+gem 'listen'
 
 # Debugger
 gem 'byebug', group: [:development, :test]

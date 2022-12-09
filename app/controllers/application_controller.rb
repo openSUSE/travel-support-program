@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_and_audit_user, unless: :devise_controller?
   load_and_authorize_resource unless: :devise_controller?
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :mailer_set_url_for_test, if: 'devise_controller? && Rails.env.test?'
+  before_action :mailer_set_url_for_test, if: -> { devise_controller? && Rails.env.test? }
   before_action :set_breadcrumbs
 
   protect_from_forgery prepend: true

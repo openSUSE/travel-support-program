@@ -7,11 +7,11 @@ class BankAccount < ApplicationRecord
   belongs_to :reimbursement, inverse_of: :bank_account
 
   validates :reimbursement, presence: true
-  validates :holder, presence: true, unless: 'reimbursement.nil? || reimbursement.incomplete? || reimbursement.canceled?'
-  validates :bank_name, presence: true, unless: 'reimbursement.nil? || reimbursement.incomplete? || reimbursement.canceled?'
+  validates :holder, presence: true, unless: -> { reimbursement.nil? || reimbursement.incomplete? || reimbursement.canceled? }
+  validates :bank_name, presence: true, unless: -> { reimbursement.nil? || reimbursement.incomplete? || reimbursement.canceled? }
   validates :format, presence: true, inclusion: { in: %w[iban national] }
-  validates :iban, :bic, presence: true, unless: 'reimbursement.nil? || reimbursement.incomplete? || reimbursement.canceled? || !iban?'
-  validates :national_account_code, :country_code, presence: true, unless: 'reimbursement.nil? || reimbursement.incomplete? || reimbursement.canceled? || iban?'
+  validates :iban, :bic, presence: true, unless: -> { reimbursement.nil? || reimbursement.incomplete? || reimbursement.canceled? || !iban? }
+  validates :national_account_code, :country_code, presence: true, unless: -> { reimbursement.nil? || reimbursement.incomplete? || reimbursement.canceled? || iban? }
 
   after_initialize :set_default_attrs, if: :new_record?
 
