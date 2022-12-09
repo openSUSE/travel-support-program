@@ -90,7 +90,7 @@ group :test do
   gem 'capybara-email'
   gem 'database_cleaner'
   gem 'pdf-reader'
-  gem 'selenium-webdriver', '< 4.0'
+  gem 'selenium-webdriver', '< 5.0'
   gem 'shoulda-matchers'
   #  gem "delorean"
 end
