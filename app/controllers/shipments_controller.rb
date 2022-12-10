@@ -1,6 +1,6 @@
 class ShipmentsController < InheritedResources::Base
   respond_to :html, :js, :json
-  skip_load_resource only: [:index, :new]
+  skip_load_resource only: %i[index new]
   before_action :set_states_collection, only: [:index]
 
   def show; end
@@ -34,8 +34,7 @@ class ShipmentsController < InheritedResources::Base
   end
 
   def permitted_params
-    params.permit(shipment: [:event_id, :description, :contact_phone_number,
-                             postal_address_attributes: [:line1, :line2, :city, :county,
-                                                         :postal_code, :country_code]])
+    postal_address_attributes = %i[line1 line2 city county postal_code country_code]
+    params.permit(shipment: [:event_id, :description, :contact_phone_number, postal_address_attributes: postal_address_attributes])
   end
 end

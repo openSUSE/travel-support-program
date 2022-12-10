@@ -45,7 +45,7 @@ describe HasStateMailer do
   context 'with never submitted travel sponsorship' do
     before(:each) do
       # Delete some irrelevant requests, to keep tests simple
-      [:administrative, :assistant, :tspmember].each do |user|
+      %i[administrative assistant tspmember].each do |user|
         requests(:"#{user}_for_party").destroy
       end
 
@@ -86,7 +86,7 @@ describe HasStateMailer do
   context 'checking inactive requests (superclass) and reimbursements' do
     before(:each) do
       # Delete some irrelevant requests, to keep tests simple
-      [:administrative, :assistant, :tspmember].each do |user|
+      %i[administrative assistant tspmember].each do |user|
         requests(:"#{user}_for_party").destroy
         reimbursements(:"#{user}_for_training_reim").destroy
       end

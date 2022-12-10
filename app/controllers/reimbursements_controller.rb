@@ -1,7 +1,7 @@
 class ReimbursementsController < InheritedResources::Base
   respond_to :html, :js, :json, :pdf
   load_and_authorize_resource :request, except: [:check_request]
-  load_and_authorize_resource :reimbursement, through: :request, singleton: true, except: [:create, :check_request]
+  load_and_authorize_resource :reimbursement, through: :request, singleton: true, except: %i[create check_request]
   skip_load_and_authorize_resource only: :check_request
 
   defaults singleton: true
@@ -46,13 +46,11 @@ class ReimbursementsController < InheritedResources::Base
   end
 
   def permitted_params
+    bank_account_attributes = %i[holder bank_name iban bic national_bank_code format national_account_code country_code bank_postal_address]
     params.permit(reimbursement: [:description,
-                                  { request_attributes: [{ expenses_attributes: [:id, :total_amount,
-                                                                                 :authorized_amount] }] },
-                                  { attachments_attributes: [:id, :title, :file, :file_cache, :_destroy] },
-                                  { links_attributes: [:id, :title, :url, :_destroy] },
-                                  { bank_account_attributes: [:holder, :bank_name, :iban, :bic, :national_bank_code,
-                                                              :format, :national_account_code, :country_code,
-                                                              :bank_postal_address] }])
+                                  { request_attributes: [{ expenses_attributes: %i[id total_amount authorized_amount] }] },
+                                  { attachments_attributes: %i[id title file file_cache _destroy] },
+                                  { links_attributes: %i[id title url _destroy] },
+                                  { bank_account_attributes: bank_account_attributes }])
   end
 end

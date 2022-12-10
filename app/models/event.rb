@@ -88,6 +88,6 @@ class Event < ApplicationRecord
   #
   # @return [Array] a list of the restricted attribute names as symbols
   def self.validation_attributes
-    [:validated, :visa_letters, :request_creation_deadline, :reimbursement_creation_deadline, :shipment_type]
+    %i[validated visa_letters request_creation_deadline reimbursement_creation_deadline shipment_type]
   end
 end

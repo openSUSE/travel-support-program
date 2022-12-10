@@ -1,7 +1,7 @@
 class TravelSponsorshipsController < InheritedResources::Base
   respond_to :html, :js, :json
 
-  skip_load_resource only: [:index, :new]
+  skip_load_resource only: %i[index new]
   helper_method :request_states_collection
   before_action :load_subjects
 
@@ -48,8 +48,7 @@ class TravelSponsorshipsController < InheritedResources::Base
   end
 
   def permitted_params
-    params.permit(travel_sponsorship: [:event_id, :description, :visa_letter,
-                                       { expenses_attributes: [:id, :subject, :description, :estimated_amount,
-                                                               :estimated_currency, :_destroy] }])
+    expenses_attributes = %i[id subject description estimated_amount estimated_currency _destroy]
+    params.permit(travel_sponsorship: [:event_id, :description, :visa_letter, { expenses_attributes: expenses_attributes }])
   end
 end

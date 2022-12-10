@@ -41,18 +41,18 @@ class Ability
       end
 
       if machine.allow_private_comments?(role)
-        can [:read, :create], Comment, conds
+        can %i[read create], Comment, conds
       elsif machine.allow_public_comments?(role)
-        can [:read, :create], Comment, conds.merge(private: false)
+        can %i[read create], Comment, conds.merge(private: false)
       end
 
       requester_conds = conds.deep_dup
       requester_conds[:machine] = {} unless requester_conds[:machine]
       requester_conds[:machine][:user_id] = user.id
       if machine.private_comments_for_requester?
-        can [:read, :create], Comment, requester_conds
+        can %i[read create], Comment, requester_conds
       elsif machine.public_comments_for_requester?
-        can [:read, :create], Comment, requester_conds.merge(private: false)
+        can %i[read create], Comment, requester_conds.merge(private: false)
       end
     end
 
@@ -62,7 +62,7 @@ class Ability
     #
 
     # Events
-    can [:read, :create], Event
+    can %i[read create], Event
     can [:participants], Event do |e|
       user.organizing_events.exists?(e.id)
     end
@@ -105,7 +105,7 @@ class Ability
     can :read, ReimbursementAttachment do |a|
       a.reimbursement.user == user
     end
-    can [:create, :update, :destroy], ReimbursementAttachment do |a|
+    can %i[create update destroy], ReimbursementAttachment do |a|
       a.reimbursement.user == user && a.reimbursement.editable?
     end
 
@@ -113,7 +113,7 @@ class Ability
     can :read, BankAccount do |a|
       a.reimbursement.user == user
     end
-    can [:create, :update], BankAccount do |a|
+    can %i[create update], BankAccount do |a|
       a.reimbursement.user == user && a.reimbursement.editable?
     end
 
@@ -147,7 +147,7 @@ class Ability
       can :manage, Budget
 
       # Events
-      can [:update, :validate, :participants], Event
+      can %i[update validate participants], Event
       can :destroy, Event, &:can_be_destroyed?
 
       # Email Events
@@ -210,7 +210,7 @@ class Ability
       can :read, Reimbursement
       can :read, ReimbursementAttachment
       can :read, BankAccount
-      can [:read, :create, :update, :destroy], Payment
+      can %i[read create update destroy], Payment
     end
 
     #
@@ -225,7 +225,7 @@ class Ability
       can :manage, Budget
 
       # Events
-      can [:update, :validate], Event
+      can %i[update validate], Event
       can :destroy, Event, &:can_be_destroyed?
 
       # TravelSponsorships
@@ -247,7 +247,7 @@ class Ability
       can :adjust_state, Shipment
 
       # Comments
-      can [:read, :create], Comment
+      can %i[read create], Comment
 
       # Expenses Reports
       can :read, TravelExpenseReport
@@ -263,7 +263,7 @@ class Ability
       can :read, UserProfile
 
       # Events
-      can [:update, :validate], Event
+      can %i[update validate], Event
       can :destroy, Event, &:can_be_destroyed?
 
       # Shipments

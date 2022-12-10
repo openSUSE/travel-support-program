@@ -134,7 +134,7 @@ class TravelExpenseReport < ApplicationRecord
   # @param [#to_sym] group The grouping option used when invoking the scope
   # @return [array] The names of the resulting fields (as an array of symbols)
   def self.fields_for(group)
-    @by[group.to_sym].reject { |f| f[:hidden] }.map { |i| i[:field] } + [:sum_amount, :sum_currency]
+    @by[group.to_sym].reject { |f| f[:hidden] }.map { |i| i[:field] } + %i[sum_amount sum_currency]
   end
 
   # Available group options for calling the 'by' scope
@@ -159,7 +159,7 @@ class TravelExpenseReport < ApplicationRecord
     if name.to_sym == :sum_amount
       # to_f.to_s to ensure that it has a decimal part (with any db engine)
       BigDecimal(sum_amount.to_f.to_s || '0.0')
-    elsif [:event_start_date, :event_end_date].include? name.to_sym
+    elsif %i[event_start_date event_end_date].include? name.to_sym
       d = send(name)
       if d.blank?
         nil

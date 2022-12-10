@@ -1,6 +1,6 @@
 class EventOrganizersController < InheritedResources::Base
   belongs_to :event
-  actions :all, except: [:show, :edit, :update]
+  actions :all, except: %i[show edit update]
 
   def create
     @event_organizer.user = User.find_by(email: params[:event_organizer][:user_email])

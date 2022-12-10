@@ -12,7 +12,7 @@ class Shipment < Request
   # @see HasComments.allow_all_comments_to
   allow_all_comments_to :material
   # @see HasComments.allow_public_comments_to
-  allow_public_comments_to [:shipper, :requester]
+  allow_public_comments_to %i[shipper requester]
 
   state_machine :state, initial: :incomplete do |_machine|
     event :submit do
@@ -45,33 +45,33 @@ class Shipment < Request
   # @see HasState.assign_state
   # @see HasState.notify_to
   assign_state :incomplete, to: :requester
-  notify_state :incomplete, to: [:requester, :material],
+  notify_state :incomplete, to: %i[requester material],
                             remind_to: :requester,
                             remind_after: 5.days
 
   assign_state :submitted, to: :material
-  notify_state :submitted, to: [:requester, :material],
+  notify_state :submitted, to: %i[requester material],
                            remind_after: 10.days
 
   assign_state :approved, to: :shipper
-  notify_state :approved, to: [:requester, :material, :shipper],
+  notify_state :approved, to: %i[requester material shipper],
                           remind_after: 5.days
 
   assign_state :sent, to: :requester
-  notify_state :sent, to: [:requester, :material, :shipper],
+  notify_state :sent, to: %i[requester material shipper],
                       remind_after: 15.days
 
-  notify_state :received, to: [:requester, :material, :shipper]
+  notify_state :received, to: %i[requester material shipper]
 
-  notify_state :canceled, to: [:requester, :material, :shipper]
+  notify_state :canceled, to: %i[requester material shipper]
 
   # @see HasState.allow_transition
   allow_transition :submit, :requester
   allow_transition :approve, :material
   allow_transition :dispatch, :shipper
   allow_transition :confirm, :requester
-  allow_transition :roll_back, [:requester, :material]
-  allow_transition :cancel, [:requester, :material, :supervisor]
+  allow_transition :roll_back, %i[requester material]
+  allow_transition :cancel, %i[requester material supervisor]
 
   delegate :shipment_type, to: :event
 
@@ -79,7 +79,7 @@ class Shipment < Request
   #
   # @return [Boolean] true if it have not been sent yet
   def can_cancel?
-    [:incomplete, :submitted, :approved].include? state.to_sym
+    %i[incomplete submitted approved].include? state.to_sym
   end
 
   # Populate some fields with information read from the event and the user

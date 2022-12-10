@@ -12,9 +12,9 @@ class TravelSponsorship < ReimbursableRequest
   }
 
   # @see HasComments.allow_all_comments_to
-  allow_all_comments_to [:tsp, :assistant]
+  allow_all_comments_to %i[tsp assistant]
   # @see HasComments.allow_public_comments_to
-  allow_public_comments_to [:administrative, :requester]
+  allow_public_comments_to %i[administrative requester]
 
   state_machine :state, initial: :incomplete do |_machine|
     event :submit do
@@ -45,32 +45,32 @@ class TravelSponsorship < ReimbursableRequest
   # @see HasState.assign_state
   # @see HasState.notify_state
   assign_state :incomplete, to: :requester
-  notify_state :incomplete, to: [:requester, :tsp, :assistant],
+  notify_state :incomplete, to: %i[requester tsp assistant],
                             remind_to: :requester,
                             remind_after: 5.days
 
   assign_state :submitted, to: :tsp
-  notify_state :submitted, to: [:requester, :tsp, :assistant],
+  notify_state :submitted, to: %i[requester tsp assistant],
                            remind_after: 10.days
 
   assign_state :approved, to: :requester
-  notify_state :approved, to: [:requester, :tsp, :assistant],
+  notify_state :approved, to: %i[requester tsp assistant],
                           remind_to: :requester,
                           remind_after: 5.days
 
-  notify_state :accepted, to: [:requester, :tsp, :assistant]
+  notify_state :accepted, to: %i[requester tsp assistant]
 
-  notify_state :canceled, to: [:requester, :tsp, :assistant]
+  notify_state :canceled, to: %i[requester tsp assistant]
 
   # @see HasState.allow_transition
   allow_transition :submit, :requester
   allow_transition :approve, :tsp
   allow_transition :accept, :requester
-  allow_transition :roll_back, [:requester, :tsp]
+  allow_transition :roll_back, %i[requester tsp]
 
   def allow_cancel?(role_name)
     r = role_name.to_sym
-    [:requester, :supervisor].include?(r) || (r == :tsp && !accepted?)
+    %i[requester supervisor].include?(r) || (r == :tsp && !accepted?)
   end
 
   # Checks whether the request is ready for reimbursement
@@ -135,7 +135,7 @@ class TravelSponsorship < ReimbursableRequest
     end
 
     # Expenses for other requests using the same budget
-    more_expenses = RequestExpense.includes(request: [:event, :reimbursement])
+    more_expenses = RequestExpense.includes(request: %i[event reimbursement])
     more_expenses = more_expenses.where('events.budget_id' => budget.id)
     more_expenses = more_expenses.where('request_expenses.approved_currency' => currency)
     more_expenses = more_expenses.where(['requests.id <> ?', id])

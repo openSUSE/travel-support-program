@@ -39,7 +39,7 @@ end
 gem 'listen'
 
 # Debugger
-gem 'byebug', group: [:development, :test]
+gem 'byebug', group: %i[development test]
 
 gem 'active_hash'
 gem 'cancancan', '~> 1.17'
@@ -71,7 +71,7 @@ gem 'delayed_job_active_record'
 
 gem 'exception_notification', group: :production
 gem 'redcarpet'
-gem 'rspec-rails', group: [:development, :test]
+gem 'rspec-rails', group: %i[development test]
 gem 'simplecov', require: false
 gem 'simplecov-lcov', require: false
 
