@@ -11,7 +11,7 @@ class ReimbursementAttachment < ApplicationRecord
 
   mount_uploader :file, AttachmentUploader
 
-  auditable except: [:file]
+  audited except: [:file]
 
   # Changed is ovewritten to avoid losing the already uploaded file when
   # saving the reimbursement fails in some very specific situations

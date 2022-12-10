@@ -1,12 +1,3 @@
-GIT
-  remote: https://github.com/michelson/espinita.git
-  revision: 2dc027edc838ee5de0d68558f1758273ccc01636
-  ref: 2dc027edc838ee5de0d68558f1758273ccc01636
-  specs:
-    espinita (0.0.9)
-      rails (>= 4.0)
-      request_store
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -55,6 +46,8 @@ GEM
     afm (0.2.2)
     arel (8.0.0)
     ast (2.4.2)
+    audited (5.0.2)
+      activerecord (>= 5.0, < 7.1)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
     bcrypt (3.1.18)
@@ -299,8 +292,6 @@ GEM
     rdoc (6.3.3)
     redcarpet (3.5.1)
     regexp_parser (2.6.1)
-    request_store (1.5.1)
-      rack (>= 1.4)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -421,6 +412,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_hash
+  audited
   bootstrap-sass
   byebug
   cancancan (~> 1.17)
@@ -438,7 +430,6 @@ DEPENDENCIES
   delayed_job_active_record
   devise
   devise_ichain_authenticatable (>= 0.3.0)
-  espinita!
   exception_notification
   git
   haml-rails

@@ -44,6 +44,7 @@ gem 'listen'
 gem 'byebug', group: %i[development test]
 
 gem 'active_hash'
+gem 'audited'
 gem 'cancancan', '~> 1.17'
 gem 'carrierwave'
 gem 'caxlsx_rails'
@@ -54,8 +55,6 @@ gem 'daemons'
 gem 'date_validator'
 gem 'devise'
 gem 'devise_ichain_authenticatable', '>= 0.3.0'
-gem 'espinita', git: 'https://github.com/michelson/espinita.git',
-                ref: '2dc027edc838ee5de0d68558f1758273ccc01636'
 gem 'git'
 gem 'inherited_resources'
 gem 'kaminari'

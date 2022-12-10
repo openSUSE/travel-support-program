@@ -25,7 +25,7 @@ class Event < ApplicationRecord
   validates :name, :start_date, :end_date, :country_code, presence: true
   validates :end_date, date: { after_or_equal_to: :start_date }
 
-  auditable
+  audited
 
   default_scope { order('name asc') }
 
