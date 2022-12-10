@@ -6,10 +6,9 @@ def print_field(pdf, field, page)
     content = check_request_value(@reimbursement, field["name"]) || ""
     upcase = loc["upcase"]
     upcase = page["upcase"] if upcase.nil?
-    content.upcase! if upcase
 
     pdf.bounding_box [loc["left"], loc["top"]], :width => loc["width"] do
-      pdf.text(content,
+      pdf.text(upcase ? content.upcase : content,
                :size => loc["text_size"] || page["text_size"],
                :leading => loc["line_space"] || page["line_space"])
     end

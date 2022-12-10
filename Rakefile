@@ -8,8 +8,8 @@ module TempFixForRakeLastComment
     last_description
   end
 end
-Rake::Application.send :include, TempFixForRakeLastComment
+Rake::Application.include TempFixForRakeLastComment
 
-require File.expand_path('../config/application', __FILE__)
+require File.expand_path('config/application', __dir__)
 
 TravelSupport::Application.load_tasks

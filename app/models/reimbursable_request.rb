@@ -67,7 +67,7 @@ class ReimbursableRequest < Request
   #     ordered by currencies' alphabetic order
   def expenses_sum(attr = :total)
     grouped = expenses.group_by(&:"#{attr}_currency")
-    nonils = grouped.each { |_k, v| v.delete_if { |i| i.send(:"#{attr}_amount").nil? } }.delete_if { |_k, v| v.empty? }
+    nonils = grouped.each_value { |v| v.delete_if { |i| i.send(:"#{attr}_amount").nil? } }.delete_if { |_k, v| v.empty? }
     unordered = nonils.map { |k, v| [k, v.sum(&:"#{attr}_amount")] }
     ActiveSupport::OrderedHash[unordered.sort_by(&:first)]
   end

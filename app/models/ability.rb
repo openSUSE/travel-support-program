@@ -81,10 +81,10 @@ class Ability
 
     # TravelSponsorships
     can :create, TravelSponsorship do |r|
-      r.event && r.event.accepting_requests?
+      r.event&.accepting_requests?
     end
     can :create, RequestExpense do |e|
-      e.request && e.request.editable? && e.request.user == user
+      e.request&.editable? && e.request&.user == user
     end
     can :read, TravelSponsorship, user_id: user.id
     can :update, TravelSponsorship do |r|
@@ -124,7 +124,7 @@ class Ability
 
     # Shipments
     can :create, Shipment do |s|
-      s.event && s.event.accepting_shipments?
+      s.event&.accepting_shipments?
     end
     can :read, Shipment, user_id: user.id
     can :update, Shipment do |s|
