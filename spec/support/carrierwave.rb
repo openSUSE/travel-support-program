@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # put logic in this file or initializer/carrierwave.rb
 if defined?(CarrierWave)
   AttachmentUploader

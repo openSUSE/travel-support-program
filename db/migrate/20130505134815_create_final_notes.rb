@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateFinalNotes < ActiveRecord::Migration[4.2]
   def change
     create_table :final_notes do |t|

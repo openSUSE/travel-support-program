@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventOrganizersController < InheritedResources::Base
   belongs_to :event
   actions :all, except: %i[show edit update]

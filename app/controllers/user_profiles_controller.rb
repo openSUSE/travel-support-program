@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserProfilesController < ApplicationController
   force_ssl unless: proc { Rails.env.test? || Rails.env.development? }
   before_action :set_user_and_profile

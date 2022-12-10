@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Application-wide helpers
 #
@@ -74,7 +76,6 @@ module ApplicationHelper
   # @param [String] label  additional text to prepend to the icon
   # @return [String] HTML output
   def collapse_link(target, label = '')
-    label << ' ' unless label.empty?
     link_to(label.html_safe + content_tag(:i, '', class: 'icon-resize-vertical'),
             "\##{target}", title: t(:collapse), data: { toggle: :collapse })
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'clockwork'
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'config', 'boot'))
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'config', 'environment'))

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventsController < InheritedResources::Base
   respond_to :html, :js, :json
   skip_before_action :authenticate_and_audit_user, only: %i[index show]

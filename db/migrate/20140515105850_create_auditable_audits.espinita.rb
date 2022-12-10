@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from espinita (originally 20131029200927)
 class CreateAuditableAudits < ActiveRecord::Migration[4.2]
   def change

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Request from a user to get help from the TSP for a given event
 #
@@ -117,7 +119,7 @@ class TravelSponsorship < ReimbursableRequest
   protected
 
   def only_one_active_request
-    errors.add(:event_id, :only_one_active) if TravelSponsorship.in_conflict_with(self).count > 0
+    errors.add(:event_id, :only_one_active) if TravelSponsorship.in_conflict_with(self).count.positive?
   end
 
   # Validates that the approved amount doesn't exceed the total of the budgets

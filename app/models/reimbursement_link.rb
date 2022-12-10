@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Link for a given reimbursement
 #

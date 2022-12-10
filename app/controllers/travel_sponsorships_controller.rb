@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TravelSponsorshipsController < InheritedResources::Base
   respond_to :html, :js, :json
 

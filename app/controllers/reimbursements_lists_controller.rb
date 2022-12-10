@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # This controller only exists because inherited_resources cannot manage
 # belongs_to resources associations that are both singleton and optional

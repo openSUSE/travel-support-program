@@ -11,7 +11,7 @@ ModuleLength:
 
 # Apply rule to all cops
 AllCops:
-  TargetRubyVersion: 2.0
+  TargetRubyVersion: 2.3
   Include:
     - '**/Rakefile'
     - '**/config.ru'

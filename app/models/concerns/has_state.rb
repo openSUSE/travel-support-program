@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Concern for state machines adding some convenient methods, notification
 # capabilities and macro-style methods to define permissions

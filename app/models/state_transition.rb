@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Transition of a state machine (a request, a reimbursement...) from one state
 # to another, using the state machine methods. Saving the StateTransition to the

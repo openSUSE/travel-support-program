@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Request from a user to receive a merchandising box for a designated event
 #

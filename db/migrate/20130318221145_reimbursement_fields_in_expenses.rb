@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReimbursementFieldsInExpenses < ActiveRecord::Migration[4.2]
   def up
     rename_column :request_expenses, :total_amount, :estimated_amount

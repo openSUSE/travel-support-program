@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReimbursementAcceptancesController < ApplicationController
   respond_to :html, :js, :json
   skip_load_and_authorize_resource

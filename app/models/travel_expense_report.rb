@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # This model is used to encapsulate the queries involved in the expenses report
 # using the ActiveRecord query interface. It's a read-only model offering a more

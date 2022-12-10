@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Request that needs a reimbursement after reaching the final state
 #

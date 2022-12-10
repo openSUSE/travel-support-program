@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   force_ssl unless: proc { Rails.env.test? || Rails.env.development? }
   before_action :authenticate_and_audit_user, unless: :devise_controller?

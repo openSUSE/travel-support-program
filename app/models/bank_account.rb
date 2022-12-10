@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Bank account information for a given reimbursement.
 # Defined as a separate model in the shake of cleanest.

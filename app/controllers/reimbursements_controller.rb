@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReimbursementsController < InheritedResources::Base
   respond_to :html, :js, :json, :pdf
   load_and_authorize_resource :request, except: [:check_request]

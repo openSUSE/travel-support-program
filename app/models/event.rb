@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Event is, in some way, the root of the model's hierarchy since any
 # Request and any Reimbursement are always associated with an event

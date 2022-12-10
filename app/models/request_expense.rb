@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # This class holds all the information related to every expense in a request.
 #

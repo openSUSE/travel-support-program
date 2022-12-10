@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ShipmentsController < InheritedResources::Base
   respond_to :html, :js, :json
   skip_load_resource only: %i[index new]

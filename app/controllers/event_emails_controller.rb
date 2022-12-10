@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventEmailsController < InheritedResources::Base
   actions :all, except: %i[edit update destroy]
   belongs_to :event

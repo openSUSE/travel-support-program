@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'state_machines/graphviz'
 
 class StateMachine::YARD::Handlers::Base

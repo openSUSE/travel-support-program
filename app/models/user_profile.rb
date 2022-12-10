@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # This model is used to keep most of the information related to the user
 # identity and role, in order to keep the User model as empty as possible.

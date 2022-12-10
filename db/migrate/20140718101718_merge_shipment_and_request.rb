@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MergeShipmentAndRequest < ActiveRecord::Migration[4.2]
   class DummyRequest < ActiveRecord::Base
     self.inheritance_column = :foo

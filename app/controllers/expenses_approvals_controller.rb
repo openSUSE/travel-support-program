@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ExpensesApprovalsController < ApplicationController
   respond_to :html, :json
   skip_load_and_authorize_resource

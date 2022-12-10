@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Comment attached to a state machine
 # Comments can be private (not visible by the requester) -in order to be used

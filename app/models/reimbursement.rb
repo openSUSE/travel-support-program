@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Reimbursement for a given request
 #
