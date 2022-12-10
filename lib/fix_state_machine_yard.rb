@@ -18,20 +18,20 @@ end
 
 class StateMachine::YARD::Handlers::Transition
   def process
-    if [StateMachines::Machine, StateMachines::Event, StateMachines::State].include?(owner.class)
-      options = {}
+    return unless [StateMachines::Machine, StateMachines::Event, StateMachines::State].include?(owner.class)
 
-      # Extract requirements
-      ast = statement.parameters.first
-      ast.children.each do |assoc|
-        # Skip conditionals
-        next if %w[if :if unless :unless].include?(assoc[0].jump(:ident).source)
+    options = {}
 
-        options[extract_requirement(assoc[0])] = extract_requirement(assoc[1])
-      end
+    # Extract requirements
+    ast = statement.parameters.first
+    ast.children.each do |assoc|
+      # Skip conditionals
+      next if %w[if :if unless :unless].include?(assoc[0].jump(:ident).source)
 
-      owner.transition(options)
+      options[extract_requirement(assoc[0])] = extract_requirement(assoc[1])
     end
+
+    owner.transition(options)
   end
 
   alias tsp_extract_requirement extract_requirement

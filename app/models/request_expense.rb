@@ -77,8 +77,8 @@ class RequestExpense < ApplicationRecord
   #
   # @callback
   def set_authorized_amount
-    if !total_amount.blank? && !approved_amount.blank? && authorized_can_be_calculated?
-      self.authorized_amount = [approved_amount, total_amount].min
-    end
+    return unless !total_amount.blank? && !approved_amount.blank? && authorized_can_be_calculated?
+
+    self.authorized_amount = [approved_amount, total_amount].min
   end
 end

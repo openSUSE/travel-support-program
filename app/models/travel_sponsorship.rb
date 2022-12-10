@@ -18,7 +18,7 @@ class TravelSponsorship < ReimbursableRequest
 
   state_machine :state, initial: :incomplete do |_machine|
     event :submit do
-      transition incomplete: :submitted, unless: :has_no_expenses?
+      transition incomplete: :submitted, unless: :no_expenses?
     end
 
     event :approve do
@@ -87,43 +87,6 @@ class TravelSponsorship < ReimbursableRequest
     event.try(:visa_letters) == true
   end
 
-  protected
-
-  def only_one_active_request
-    if TravelSponsorship.in_conflict_with(self).count > 0
-      errors.add(:event_id, :only_one_active)
-    end
-  end
-
-  # Validates that the approved amount doesn't exceed the total of the budgets
-  # associated to the event.
-  def dont_exceed_budget
-    if Rails.configuration.site['budget_limits']
-      budget = event.budget
-      currency = budget ? budget.currency : nil
-
-      # With the current implementation, it should be only one approved currency
-      if currency.nil? || expenses.any? { |e| e.approved_currency != currency }
-        errors.add(:expenses, :no_budget_found)
-        return
-      end
-
-      # Expenses for other requests using the same budget
-      more_expenses = RequestExpense.includes(request: [:event, :reimbursement])
-      more_expenses = more_expenses.where('events.budget_id' => budget.id)
-      more_expenses = more_expenses.where('request_expenses.approved_currency' => currency)
-      more_expenses = more_expenses.where(['requests.id <> ?', id])
-      more_expenses = more_expenses.where(['requests.state in (?)', %w[approved accepted]])
-      # If the request have a canceled reimbursement, it means that the money is in fact available
-      more_expenses = more_expenses.where(['reimbursements.id is null or reimbursements.state <> ?', 'canceled'])
-
-      total = more_expenses.where(['authorized_amount is null']).sum(:approved_amount) +
-              more_expenses.where(['authorized_amount is not null']).sum(:authorized_amount) +
-              expenses.to_a.sum(&:approved_amount)
-      errors.add(:expenses, :budget_exceeded) if total > budget.amount
-    end
-  end
-
   # Sends notifications about requests lacking a reimbursement.
   #
   # Looks for events that finished some days ago or that are about to reach the
@@ -149,5 +112,40 @@ class TravelSponsorship < ReimbursableRequest
         end
       end
     end
+  end
+
+  protected
+
+  def only_one_active_request
+    errors.add(:event_id, :only_one_active) if TravelSponsorship.in_conflict_with(self).count > 0
+  end
+
+  # Validates that the approved amount doesn't exceed the total of the budgets
+  # associated to the event.
+  def dont_exceed_budget
+    return unless Rails.configuration.site['budget_limits']
+
+    budget = event.budget
+    currency = budget ? budget.currency : nil
+
+    # With the current implementation, it should be only one approved currency
+    if currency.nil? || expenses.any? { |e| e.approved_currency != currency }
+      errors.add(:expenses, :no_budget_found)
+      return
+    end
+
+    # Expenses for other requests using the same budget
+    more_expenses = RequestExpense.includes(request: [:event, :reimbursement])
+    more_expenses = more_expenses.where('events.budget_id' => budget.id)
+    more_expenses = more_expenses.where('request_expenses.approved_currency' => currency)
+    more_expenses = more_expenses.where(['requests.id <> ?', id])
+    more_expenses = more_expenses.where(['requests.state in (?)', %w[approved accepted]])
+    # If the request have a canceled reimbursement, it means that the money is in fact available
+    more_expenses = more_expenses.where(['reimbursements.id is null or reimbursements.state <> ?', 'canceled'])
+
+    total = more_expenses.where(['authorized_amount is null']).sum(:approved_amount) +
+            more_expenses.where(['authorized_amount is not null']).sum(:authorized_amount) +
+            expenses.to_a.sum(&:approved_amount)
+    errors.add(:expenses, :budget_exceeded) if total > budget.amount
   end
 end

@@ -6,11 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 1
-Lint/AmbiguousOperator:
-  Exclude:
-    - 'app/models/user.rb'
-
 # Offense count: 3
 Lint/AmbiguousRegexpLiteral:
   Exclude:
@@ -27,21 +22,11 @@ Lint/AssignmentInCondition:
     - 'app/models/reimbursement.rb'
     - 'app/models/user.rb'
 
-# Offense count: 1
-Lint/IneffectiveAccessModifier:
-  Exclude:
-    - 'app/models/travel_sponsorship.rb'
-
 # Offense count: 4
 Lint/ParenthesesAsGroupedExpression:
   Exclude:
     - 'config.ru'
     - 'spec/models/travel_sponsorship_spec.rb'
-
-# Offense count: 1
-Lint/ScriptPermission:
-  Exclude:
-    - 'Rakefile'
 
 # Offense count: 5
 Lint/UselessAssignment:
@@ -79,10 +64,10 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   Max: 278
 
-# Offense count: 3
+# Offense count: 2
 # Configuration parameters: CountComments.
 Metrics/ClassLength:
-  Max: 153
+  Max: 137
 
 # Offense count: 8
 Metrics/CyclomaticComplexity:
@@ -97,12 +82,12 @@ Metrics/LineLength:
 # Offense count: 45
 # Configuration parameters: CountComments.
 Metrics/MethodLength:
-  Max: 150
+  Max: 38
 
-# Offense count: 2
+# Offense count: 1
 # Configuration parameters: CountComments.
 Metrics/ModuleLength:
-  Max: 171
+  Max: 152
 
 # Offense count: 6
 Metrics/PerceivedComplexity:
@@ -116,11 +101,6 @@ Style/ClassAndModuleChildren:
     - 'lib/fix_state_machine_yard.rb'
     - 'test/test_helper.rb'
 
-# Offense count: 2
-Style/ClassVars:
-  Exclude:
-    - 'lib/travel_support/config.rb'
-
 # Offense count: 69
 Style/Documentation:
   Enabled: false
@@ -131,46 +111,3 @@ Style/Documentation:
 Style/FileName:
   Exclude:
     - 'Gemfile'
-
-# Offense count: 8
-# Configuration parameters: MinBodyLength.
-Style/GuardClause:
-  Exclude:
-    - 'app/controllers/reimbursements_controller.rb'
-    - 'app/models/ability.rb'
-    - 'app/models/reimbursement.rb'
-    - 'app/models/request_expense.rb'
-    - 'app/models/shipment.rb'
-    - 'app/models/travel_sponsorship.rb'
-    - 'lib/fix_state_machine_yard.rb'
-
-# Offense count: 1
-Style/IfInsideElse:
-  Exclude:
-    - 'app/models/ability.rb'
-
-# Offense count: 1
-Style/MethodMissing:
-  Exclude:
-    - 'app/models/connect_user.rb'
-
-# Offense count: 1
-Style/MultipleComparison:
-  Exclude:
-    - 'app/helpers/application_helper.rb'
-
-# Offense count: 1
-Style/NestedTernaryOperator:
-  Exclude:
-    - 'app/models/travel_expense_report.rb'
-
-# Offense count: 2
-# Configuration parameters: NamePrefix, NamePrefixBlacklist, NameWhitelist.
-# NamePrefix: is_, has_, have_
-# NamePrefixBlacklist: is_, has_, have_
-# NameWhitelist: is_a?
-Style/PredicateName:
-  Exclude:
-    - 'spec/**/*'
-    - 'app/models/reimbursable_request.rb'
-    - 'app/models/user_profile.rb'

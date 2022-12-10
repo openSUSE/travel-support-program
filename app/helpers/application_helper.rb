@@ -218,7 +218,7 @@ module ApplicationHelper
       next if message.blank?
 
       type = 'success' if type == 'notice'
-      type = 'danger' if type == 'error' || type == 'alert'
+      type = 'danger' if %w[error alert].include?(type)
       next unless %w[danger info success warning].include?(type)
 
       Array(message).each do |msg|

@@ -16,7 +16,7 @@ class User < ApplicationRecord
                        :rememberable, :trackable, :validatable]
   end
 
-  devise *devise_modules
+  devise(*devise_modules)
 
   # Setup accessible (or protected) attributes for your model
   # Associated object with all information not directly related to authentication

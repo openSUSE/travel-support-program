@@ -42,9 +42,7 @@ class ReimbursementsController < InheritedResources::Base
 
   def set_breadcrumbs
     @breadcrumbs = [label: parent, url: parent]
-    unless resource.blank? || resource.new_record?
-      @breadcrumbs << { label: Reimbursement.model_name.human, url: resource_path }
-    end
+    @breadcrumbs << { label: Reimbursement.model_name.human, url: resource_path } unless resource.blank? || resource.new_record?
   end
 
   def permitted_params

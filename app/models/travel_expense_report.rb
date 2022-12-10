@@ -161,7 +161,13 @@ class TravelExpenseReport < ApplicationRecord
       BigDecimal(sum_amount.to_f.to_s || '0.0')
     elsif [:event_start_date, :event_end_date].include? name.to_sym
       d = send(name)
-      d.blank? ? nil : (d.is_a?(Date) ? d : Date.parse(d))
+      if d.blank?
+        nil
+      elsif d.is_a?(Date)
+        d
+      else
+        Date.parse(d)
+      end
     else
       send(name)
     end

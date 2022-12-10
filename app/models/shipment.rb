@@ -90,15 +90,15 @@ class Shipment < Request
   def populate_contact_info(contact = user)
     build_postal_address if postal_address.nil?
     postal_address.country_code ||= event.country_code unless event.nil?
-    if contact
-      profile = contact.profile
-      # Phone number
-      self.contact_phone_number ||= profile.phone_number
-      self.contact_phone_number = profile.second_phone_number if contact_phone_number.blank?
-      # Name
-      postal_address.name ||= profile.full_name
-      postal_address.name = contact.nickname if postal_address.name.blank?
-    end
+    return unless contact
+
+    profile = contact.profile
+    # Phone number
+    self.contact_phone_number ||= profile.phone_number
+    self.contact_phone_number = profile.second_phone_number if contact_phone_number.blank?
+    # Name
+    postal_address.name ||= profile.full_name
+    postal_address.name = contact.nickname if postal_address.name.blank?
   end
 
   protected

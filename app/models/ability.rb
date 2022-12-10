@@ -24,14 +24,12 @@ class Ability
           # For own machines, the :requester permissions are applied
           if m.user == user
             m.send("can_#{action}?") && m.send("allow_#{action}?", :requester)
+          # :requester is not longer a valid role
+          elsif role == 'requester'
+            false
           # For machines belonging to other users, use the role
           else
-            # :requester is not longer a valid role
-            if role == 'requester'
-              false
-            else
-              m.send("can_#{action}?") && m.send("allow_#{action}?", role)
-            end
+            m.send("can_#{action}?") && m.send("allow_#{action}?", role)
           end
         end
       end
@@ -285,10 +283,10 @@ class Ability
 
     # FIXME: workaround
     # CanCanCan cannot merge Active Record scope with other conditions
-    unless report_full_access
-      can :read, TravelExpenseReport, TravelExpenseReport.related_to(user) do |e|
-        e.related_to(user)
-      end
+    return if report_full_access
+
+    can :read, TravelExpenseReport, TravelExpenseReport.related_to(user) do |e|
+      e.related_to(user)
     end
   end
   # rubocop:enable MethodLength,AbcSize

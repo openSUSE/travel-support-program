@@ -221,9 +221,7 @@ class Reimbursement < ApplicationRecord
   # Validates the existance of a complete profile
   def user_profile_is_complete
     fields = user.profile.missing_fields
-    unless fields.empty?
-      errors.add(:user, :incomplete, fields: fields.values.to_sentence)
-    end
+    errors.add(:user, :incomplete, fields: fields.values.to_sentence) unless fields.empty?
   end
 
   # Used internally by accepts_nested_attributes to ensure that only

@@ -26,7 +26,7 @@ class ReimbursableRequest < Request
   # This one line method is required in order to the Graphviz automatic
   # documentation to work, because it doesn't work if a string is used in the
   # :unless parameter of a event definition
-  def has_no_expenses?
+  def no_expenses?
     expenses.empty?
   end
 
