@@ -21,9 +21,7 @@ class EventsController < InheritedResources::Base
   def collection
     @q ||= end_of_association_chain.ransack(params[:q])
     # Default, only current and future events are displayed
-    if params[:q].nil? || params[:q][:end_date_gteq].nil?
-      @q.end_date_gteq = Date.today
-    end
+    @q.end_date_gteq = Date.today if params[:q].nil? || params[:q][:end_date_gteq].nil?
     @q.sorts = 'start_date asc' if @q.sorts.empty?
     @events ||= @q.result(distinct: true).page(params[:page]).per(20)
   end

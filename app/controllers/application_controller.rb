@@ -46,9 +46,7 @@ class ApplicationController < ActionController::Base
     elsif is_a? InheritedResources::Base
       @breadcrumbs = [{ label: resource_class.model_name.human(count: 2),
                         url: collection_path }]
-      if %w[show edit update].include? action_name
-        @breadcrumbs << { label: resource, url: resource_path }
-      end
+      @breadcrumbs << { label: resource, url: resource_path } if %w[show edit update].include? action_name
     else
       @breadcrumbs = [{ label: '' }]
     end

@@ -45,12 +45,8 @@ module ReimbursementsHelper
           end
 
     links = []
-    if can_read_pdf_for?(resource) && resource.editable?
-      links << link_to(t(:pdf_format), request_reimbursement_path(reimbursement.request, format: :pdf))
-    end
-    if can? :submit, reimbursement
-      links << link_to(t(:send_reimbursement_acceptance), new_request_reimbursement_acceptance_path(resource.request), remote: true)
-    end
+    links << link_to(t(:pdf_format), request_reimbursement_path(reimbursement.request, format: :pdf)) if can_read_pdf_for?(resource) && resource.editable?
+    links << link_to(t(:send_reimbursement_acceptance), new_request_reimbursement_acceptance_path(resource.request), remote: true) if can? :submit, reimbursement
 
     info = if can? :submit, reimbursement
              t(:reimbursement_acceptance_intro).html_safe
@@ -61,9 +57,7 @@ module ReimbursementsHelper
                       t(:reimbursement_acceptance_update).html_safe
                     end
            end
-    unless links.empty?
-      info << content_tag(:p, links.join(' | ').html_safe, class: 'text-right')
-    end
+    info << content_tag(:p, links.join(' | ').html_safe, class: 'text-right') unless links.empty?
     out << content_tag(:div, info, class: 'alert alert-info') unless info.empty?
     out
   end
@@ -90,17 +84,13 @@ module ReimbursementsHelper
         p << content_tag(:td, payment.subject)
         p << content_tag(:td, number_to_currency(payment.amount, unit: payment.currency), class: 'text-right')
         links = []
-        if can? :update, payment
-          links << link_to(t('helpers.links.edit'), edit_request_reimbursement_payment_path(req, payment))
-        end
+        links << link_to(t('helpers.links.edit'), edit_request_reimbursement_payment_path(req, payment)) if can? :update, payment
         if can? :destroy, payment
           links << link_to(t('helpers.links.destroy'),
                            request_reimbursement_payment_path(req, payment),
                            data: { confirm: t('helpers.links.confirm') }, method: :delete)
         end
-        if can?(:update, payment) && !payment.file.blank?
-          links << link_to(Payment.human_attribute_name(:file), file_request_reimbursement_payment_path(req, payment))
-        end
+        links << link_to(Payment.human_attribute_name(:file), file_request_reimbursement_payment_path(req, payment)) if can?(:update, payment) && !payment.file.blank?
         p << if links.empty?
                content_tag(:td, '')
              else

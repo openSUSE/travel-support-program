@@ -18,9 +18,7 @@ class ReimbursementAcceptancesController < ApplicationController
         format.json { render json: { file: @reimbursement.file.to_s }, status: :created }
       else
         flash[:error] = I18n.t(:reimbursement_acceptance_failure)
-        unless @reimbursement.errors.empty?
-          flash[:error] << "\n<br/>" + @reimbursement.errors.full_messages.map { |i| i.humanize + '.' }.join(' ')
-        end
+        flash[:error] << "\n<br/>" + @reimbursement.errors.full_messages.map { |i| i.humanize + '.' }.join(' ') unless @reimbursement.errors.empty?
         format.json { render json: @reimbursement.errors, status: :unprocessable_entity }
       end
       location = request_reimbursement_path(@request)

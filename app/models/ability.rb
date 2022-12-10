@@ -38,9 +38,7 @@ class Ability
 
       # Comments
       conds = { machine_type: machine.base_class.to_s }
-      if machine.superclass != ApplicationRecord
-        conds[:machine] = { type: machine.to_s }
-      end
+      conds[:machine] = { type: machine.to_s } if machine.superclass != ApplicationRecord
 
       if machine.allow_private_comments?(role)
         can %i[read create], Comment, conds

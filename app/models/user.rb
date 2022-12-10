@@ -10,9 +10,7 @@ class User < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
 
   devise_modules = []
-  if Rails.configuration.site['authentication']['ichain']['enabled']
-    devise_modules += %i[ichain_authenticatable ichain_registerable]
-  end
+  devise_modules += %i[ichain_authenticatable ichain_registerable] if Rails.configuration.site['authentication']['ichain']['enabled']
   if Rails.configuration.site['authentication']['database']['enabled']
     devise_modules += %i[database_authenticatable registerable recoverable
                          rememberable trackable validatable]

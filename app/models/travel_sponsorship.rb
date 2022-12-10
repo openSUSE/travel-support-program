@@ -109,9 +109,7 @@ class TravelSponsorship < ReimbursableRequest
     )
     candidate_events.includes(:requests).each do |e|
       e.requests.each do |r|
-        if r.lacks_reimbursement?
-          ReimbursableRequestMailer.notify_to([r.user], :missing_reimbursement, r)
-        end
+        ReimbursableRequestMailer.notify_to([r.user], :missing_reimbursement, r) if r.lacks_reimbursement?
       end
     end
   end
