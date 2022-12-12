@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Custom simple_form input type for integration with bootstrap-datetimepicker
 #

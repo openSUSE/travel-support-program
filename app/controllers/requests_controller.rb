@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This controller is only used for redirecting to keep some compatibility with
 # the old names (before renaming Request to TravelSponsorship)
 class RequestsController < ApplicationController

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 # require 'ruby-debug'
 
@@ -6,7 +8,7 @@ describe ReimbursableRequestMailer do
 
   before(:each) do
     # Delete all affected requests but Luke's one, to keep tests simple
-    [:administrative, :assistant, :tspmember].each do |user|
+    %i[administrative assistant tspmember].each do |user|
       requests(:"#{user}_for_yavin").destroy
     end
   end

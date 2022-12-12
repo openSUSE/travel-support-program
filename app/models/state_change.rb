@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # @abstract Change in the state of a state machine (a request, reimbursement,
 # etc.). This class is not intended to be used directly, use one of the

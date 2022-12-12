@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 
 # First of all, coveralls
@@ -32,7 +34,7 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 RSpec.configure do |config|
   config.include(Shoulda::Matchers::ActiveModel)
   config.include(Shoulda::Matchers::ActiveRecord)
-  config.expect_with(:rspec) { |expectations| expectations.syntax = [:should, :expect] }
+  config.expect_with(:rspec) { |expectations| expectations.syntax = %i[should expect] }
 
   Capybara.register_driver :headless do |app|
     options = Selenium::WebDriver::Chrome::Options.new

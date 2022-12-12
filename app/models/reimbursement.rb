@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Reimbursement for a given request
 #
@@ -49,9 +51,9 @@ class Reimbursement < ApplicationRecord
   before_validation :ensure_bank_account
 
   # @see HasComments.allow_all_comments_to
-  allow_all_comments_to [:tsp, :assistant]
+  allow_all_comments_to %i[tsp assistant]
   # @see HasComments.allow_public_comments_to
-  allow_public_comments_to [:administrative, :requester]
+  allow_public_comments_to %i[administrative requester]
 
   #
   state_machine :state, initial: :incomplete do |_machine|
@@ -85,35 +87,35 @@ class Reimbursement < ApplicationRecord
   # @see HasState.assign_state
   # @see HasState.notify_state
   assign_state :incomplete, to: :requester
-  notify_state :incomplete, to: [:requester, :tsp, :assistant],
+  notify_state :incomplete, to: %i[requester tsp assistant],
                             remind_to: :requester,
                             remind_after: 5.days
 
   assign_state :submitted, to: :tsp
-  notify_state :submitted, to: [:requester, :tsp, :assistant],
+  notify_state :submitted, to: %i[requester tsp assistant],
                            remind_after: 10.days
 
   assign_state :approved, to: :administrative
-  notify_state :approved, to: [:administrative, :requester, :tsp, :assistant],
+  notify_state :approved, to: %i[administrative requester tsp assistant],
                           remind_to: :administrative,
                           remind_after: 10.days
 
   assign_state :processed
-  notify_state :processed, to: [:administrative, :requester, :tsp, :assistant],
+  notify_state :processed, to: %i[administrative requester tsp assistant],
                            remind_to: :administrative,
                            remind_after: 20.days
 
-  notify_state :payed, to: [:administrative, :requester, :tsp, :assistant]
+  notify_state :payed, to: %i[administrative requester tsp assistant]
 
-  notify_state :canceled, to: [:administrative, :requester, :tsp, :assistant]
+  notify_state :canceled, to: %i[administrative requester tsp assistant]
 
   # @see HasState.allow_transition
   allow_transition :submit, :requester
   allow_transition :approve, :tsp
   allow_transition :process, :administrative
   allow_transition :confirm, :administrative
-  allow_transition :roll_back, [:requester, :administrative, :tsp]
-  allow_transition :cancel, [:requester, :tsp, :supervisor]
+  allow_transition :roll_back, %i[requester administrative tsp]
+  allow_transition :cancel, %i[requester tsp supervisor]
 
   # @see Request#expenses_sum
   def expenses_sum(*args)
@@ -221,9 +223,7 @@ class Reimbursement < ApplicationRecord
   # Validates the existance of a complete profile
   def user_profile_is_complete
     fields = user.profile.missing_fields
-    unless fields.empty?
-      errors.add(:user, :incomplete, fields: fields.values.to_sentence)
-    end
+    errors.add(:user, :incomplete, fields: fields.values.to_sentence) unless fields.empty?
   end
 
   # Used internally by accepts_nested_attributes to ensure that only
@@ -237,7 +237,7 @@ class Reimbursement < ApplicationRecord
     acceptable_expenses_attrs = %w[id total_amount authorized_amount]
     return true unless (attrs.keys - acceptable_request_attrs).empty?
     if expenses = attrs['expenses_attributes']
-      expenses.values.each do |expense|
+      expenses.each_value do |expense|
         return true unless (expense.keys - acceptable_expenses_attrs).empty?
       end
     end

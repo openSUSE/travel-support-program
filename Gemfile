@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 gem 'rails', '>= 5.1.0', '< 5.1.99'
@@ -39,7 +41,7 @@ end
 gem 'listen'
 
 # Debugger
-gem 'byebug', group: [:development, :test]
+gem 'byebug', group: %i[development test]
 
 gem 'active_hash'
 gem 'cancancan', '~> 1.17'
@@ -71,7 +73,7 @@ gem 'delayed_job_active_record'
 
 gem 'exception_notification', group: :production
 gem 'redcarpet'
-gem 'rspec-rails', group: [:development, :test]
+gem 'rspec-rails', group: %i[development test]
 gem 'simplecov', require: false
 gem 'simplecov-lcov', require: false
 
@@ -84,7 +86,9 @@ group :development do
   gem 'state_machines-yard'
   gem 'yard-activerecord'
   # for static code analisys
-  gem 'rubocop', '~> 0.49.1', require: false
+  gem 'rubocop', '~> 0.52.0', require: false
+  # gem 'rubocop-rails', require: false
+  # gem 'rubocop-rspec', require: false
 end
 
 group :test do

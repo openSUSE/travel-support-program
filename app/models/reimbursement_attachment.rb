@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Attachment for a given reimbursement
 #

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StateTransitionsController < ApplicationController
   respond_to :json, :js
   skip_load_and_authorize_resource

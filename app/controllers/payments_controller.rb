@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PaymentsController < InheritedResources::Base
   respond_to :html, :json
   load_and_authorize_resource :request
@@ -41,7 +43,7 @@ class PaymentsController < InheritedResources::Base
   end
 
   def permitted_params
-    params.permit(payment: [:date, :amount, :currency, :cost_amount, :cost_currency,
-                            :method, :code, :subject, :notes, :file, :file_cache])
+    payment = %i[date amount currency cost_amount cost_currency method code subject notes file file_cache]
+    params.permit(payment: payment)
   end
 end

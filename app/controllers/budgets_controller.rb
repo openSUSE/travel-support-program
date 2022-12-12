@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class BudgetsController < InheritedResources::Base
   respond_to :html, :json
-  skip_load_resource only: [:index, :new]
+  skip_load_resource only: %i[index new]
 
   protected
 

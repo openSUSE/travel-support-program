@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class EventEmailsController < InheritedResources::Base
-  actions :all, except: [:edit, :update, :destroy]
+  actions :all, except: %i[edit update destroy]
   belongs_to :event
   load_and_authorize_resource :event
   load_and_authorize_resource :event_email, through: :event
@@ -21,7 +23,7 @@ class EventEmailsController < InheritedResources::Base
   protected
 
   def permitted_params
-    params.permit(event_email: [:to, :subject, :body])
+    params.permit(event_email: %i[to subject body])
   end
 
   def set_breadcrumbs

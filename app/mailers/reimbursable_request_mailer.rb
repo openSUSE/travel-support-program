@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReimbursableRequestMailer < ApplicationMailer
   def missing_reimbursement(to, request)
     @request = request

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReimbursementAttachmentsController < ApplicationController
   skip_load_and_authorize_resource
 

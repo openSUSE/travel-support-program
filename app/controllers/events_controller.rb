@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class EventsController < InheritedResources::Base
   respond_to :html, :js, :json
-  skip_before_action :authenticate_and_audit_user, only: [:index, :show]
-  skip_load_and_authorize_resource only: [:index, :show]
+  skip_before_action :authenticate_and_audit_user, only: %i[index show]
+  skip_load_and_authorize_resource only: %i[index show]
   before_action :set_types
 
   def participants
@@ -19,9 +21,7 @@ class EventsController < InheritedResources::Base
   def collection
     @q ||= end_of_association_chain.ransack(params[:q])
     # Default, only current and future events are displayed
-    if params[:q].nil? || params[:q][:end_date_gteq].nil?
-      @q.end_date_gteq = Date.today
-    end
+    @q.end_date_gteq = Date.today if params[:q].nil? || params[:q][:end_date_gteq].nil?
     @q.sorts = 'start_date asc' if @q.sorts.empty?
     @events ||= @q.result(distinct: true).page(params[:page]).per(20)
   end
@@ -31,9 +31,9 @@ class EventsController < InheritedResources::Base
   end
 
   def permitted_params
-    attrs = [:name, :description, :start_date, :end_date, :url, :country_code,
-             :validated, :visa_letters, :request_creation_deadline,
-             :reimbursement_creation_deadline, :budget_id, :shipment_type]
+    attrs = %i[name description start_date end_date url country_code
+               validated visa_letters request_creation_deadline
+               reimbursement_creation_deadline budget_id shipment_type]
     if cannot? :validate, Event.new
       Event.validation_attributes.each do |att|
         attrs.delete(att)

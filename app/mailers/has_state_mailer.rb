@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HasStateMailer < ApplicationMailer
   def state(to, state_machine)
     @machine = state_machine

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateReimbursementAttachments < ActiveRecord::Migration[4.2]
   def change
     create_table :reimbursement_attachments do |t|

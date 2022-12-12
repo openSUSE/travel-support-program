@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Devise user.
 #
@@ -8,15 +10,13 @@ class User < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
 
   devise_modules = []
-  if Rails.configuration.site['authentication']['ichain']['enabled']
-    devise_modules += [:ichain_authenticatable, :ichain_registerable]
-  end
+  devise_modules += %i[ichain_authenticatable ichain_registerable] if Rails.configuration.site['authentication']['ichain']['enabled']
   if Rails.configuration.site['authentication']['database']['enabled']
-    devise_modules += [:database_authenticatable, :registerable, :recoverable,
-                       :rememberable, :trackable, :validatable]
+    devise_modules += %i[database_authenticatable registerable recoverable
+                         rememberable trackable validatable]
   end
 
-  devise *devise_modules
+  devise(*devise_modules)
 
   # Setup accessible (or protected) attributes for your model
   # Associated object with all information not directly related to authentication

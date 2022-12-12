@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # A certain amount of money (in a given currency) to spend in a group of events
 #

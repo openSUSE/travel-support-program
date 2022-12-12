@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateAuditsTable < ActiveRecord::Migration[4.2]
   def self.up
     create_table :audits, force: true do |t|
@@ -14,8 +16,8 @@ class CreateAuditsTable < ActiveRecord::Migration[4.2]
       t.column :created_at, :datetime, null: false
     end
 
-    add_index :audits, [:auditable_id, :auditable_type, :version], name: 'auditable_index'
-    add_index :audits, [:user_id, :user_type], name: 'user_index'
+    add_index :audits, %i[auditable_id auditable_type version], name: 'auditable_index'
+    add_index :audits, %i[user_id user_type], name: 'user_index'
     add_index :audits, :created_at
   end
 

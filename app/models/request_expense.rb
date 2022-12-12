@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # This class holds all the information related to every expense in a request.
 #
@@ -15,10 +17,10 @@ class RequestExpense < ApplicationRecord
   delegate :event, to: :request, prefix: false
 
   validates :request, :subject, presence: true
-  validates :estimated_amount, :estimated_currency, presence: true, if: -> { request && request.submitted? }
-  validates :approved_amount, :approved_currency, presence: true, if: -> { request && request.approved? }
-  validates :total_amount, presence: true, if: -> { request && request.reimbursement && request.reimbursement.submitted? }
-  validates :authorized_amount, presence: true, if: -> { request && request.reimbursement && request.reimbursement.submitted? }
+  validates :estimated_amount, :estimated_currency, presence: true, if: -> { request&.submitted? }
+  validates :approved_amount, :approved_currency, presence: true, if: -> { request&.approved? }
+  validates :total_amount, presence: true, if: -> { request&.reimbursement&.submitted? }
+  validates :authorized_amount, presence: true, if: -> { request&.reimbursement&.submitted? }
 
   before_validation :set_authorized_amount
 
@@ -77,8 +79,8 @@ class RequestExpense < ApplicationRecord
   #
   # @callback
   def set_authorized_amount
-    if !total_amount.blank? && !approved_amount.blank? && authorized_can_be_calculated?
-      self.authorized_amount = [approved_amount, total_amount].min
-    end
+    return unless !total_amount.blank? && !approved_amount.blank? && authorized_can_be_calculated?
+
+    self.authorized_amount = [approved_amount, total_amount].min
   end
 end

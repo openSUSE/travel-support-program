@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Manual and arbitrary adjustment in the state of a state machine (a request,
 # reimbursement, etc.) ignoring the transitions definitions in the state

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentMailer < ApplicationMailer
   def creation(to, comment)
     @machine = comment.machine

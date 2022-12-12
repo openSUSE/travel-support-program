@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # CanCan permissions
 #
@@ -24,37 +26,33 @@ class Ability
           # For own machines, the :requester permissions are applied
           if m.user == user
             m.send("can_#{action}?") && m.send("allow_#{action}?", :requester)
+          # :requester is not longer a valid role
+          elsif role == 'requester'
+            false
           # For machines belonging to other users, use the role
           else
-            # :requester is not longer a valid role
-            if role == 'requester'
-              false
-            else
-              m.send("can_#{action}?") && m.send("allow_#{action}?", role)
-            end
+            m.send("can_#{action}?") && m.send("allow_#{action}?", role)
           end
         end
       end
 
       # Comments
       conds = { machine_type: machine.base_class.to_s }
-      if machine.superclass != ApplicationRecord
-        conds[:machine] = { type: machine.to_s }
-      end
+      conds[:machine] = { type: machine.to_s } if machine.superclass != ApplicationRecord
 
       if machine.allow_private_comments?(role)
-        can [:read, :create], Comment, conds
+        can %i[read create], Comment, conds
       elsif machine.allow_public_comments?(role)
-        can [:read, :create], Comment, conds.merge(private: false)
+        can %i[read create], Comment, conds.merge(private: false)
       end
 
       requester_conds = conds.deep_dup
       requester_conds[:machine] = {} unless requester_conds[:machine]
       requester_conds[:machine][:user_id] = user.id
       if machine.private_comments_for_requester?
-        can [:read, :create], Comment, requester_conds
+        can %i[read create], Comment, requester_conds
       elsif machine.public_comments_for_requester?
-        can [:read, :create], Comment, requester_conds.merge(private: false)
+        can %i[read create], Comment, requester_conds.merge(private: false)
       end
     end
 
@@ -64,7 +62,7 @@ class Ability
     #
 
     # Events
-    can [:read, :create], Event
+    can %i[read create], Event
     can [:participants], Event do |e|
       user.organizing_events.exists?(e.id)
     end
@@ -81,10 +79,10 @@ class Ability
 
     # TravelSponsorships
     can :create, TravelSponsorship do |r|
-      r.event && r.event.accepting_requests?
+      r.event&.accepting_requests?
     end
     can :create, RequestExpense do |e|
-      e.request && e.request.editable? && e.request.user == user
+      e.request&.editable? && e.request&.user == user
     end
     can :read, TravelSponsorship, user_id: user.id
     can :update, TravelSponsorship do |r|
@@ -107,7 +105,7 @@ class Ability
     can :read, ReimbursementAttachment do |a|
       a.reimbursement.user == user
     end
-    can [:create, :update, :destroy], ReimbursementAttachment do |a|
+    can %i[create update destroy], ReimbursementAttachment do |a|
       a.reimbursement.user == user && a.reimbursement.editable?
     end
 
@@ -115,7 +113,7 @@ class Ability
     can :read, BankAccount do |a|
       a.reimbursement.user == user
     end
-    can [:create, :update], BankAccount do |a|
+    can %i[create update], BankAccount do |a|
       a.reimbursement.user == user && a.reimbursement.editable?
     end
 
@@ -124,7 +122,7 @@ class Ability
 
     # Shipments
     can :create, Shipment do |s|
-      s.event && s.event.accepting_shipments?
+      s.event&.accepting_shipments?
     end
     can :read, Shipment, user_id: user.id
     can :update, Shipment do |s|
@@ -149,7 +147,7 @@ class Ability
       can :manage, Budget
 
       # Events
-      can [:update, :validate, :participants], Event
+      can %i[update validate participants], Event
       can :destroy, Event, &:can_be_destroyed?
 
       # Email Events
@@ -212,7 +210,7 @@ class Ability
       can :read, Reimbursement
       can :read, ReimbursementAttachment
       can :read, BankAccount
-      can [:read, :create, :update, :destroy], Payment
+      can %i[read create update destroy], Payment
     end
 
     #
@@ -227,7 +225,7 @@ class Ability
       can :manage, Budget
 
       # Events
-      can [:update, :validate], Event
+      can %i[update validate], Event
       can :destroy, Event, &:can_be_destroyed?
 
       # TravelSponsorships
@@ -249,7 +247,7 @@ class Ability
       can :adjust_state, Shipment
 
       # Comments
-      can [:read, :create], Comment
+      can %i[read create], Comment
 
       # Expenses Reports
       can :read, TravelExpenseReport
@@ -265,7 +263,7 @@ class Ability
       can :read, UserProfile
 
       # Events
-      can [:update, :validate], Event
+      can %i[update validate], Event
       can :destroy, Event, &:can_be_destroyed?
 
       # Shipments
@@ -285,10 +283,10 @@ class Ability
 
     # FIXME: workaround
     # CanCanCan cannot merge Active Record scope with other conditions
-    unless report_full_access
-      can :read, TravelExpenseReport, TravelExpenseReport.related_to(user) do |e|
-        e.related_to(user)
-      end
+    return if report_full_access
+
+    can :read, TravelExpenseReport, TravelExpenseReport.related_to(user) do |e|
+      e.related_to(user)
     end
   end
   # rubocop:enable MethodLength,AbcSize

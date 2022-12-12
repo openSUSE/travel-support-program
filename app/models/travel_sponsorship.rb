@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Request from a user to get help from the TSP for a given event
 #
@@ -12,13 +14,13 @@ class TravelSponsorship < ReimbursableRequest
   }
 
   # @see HasComments.allow_all_comments_to
-  allow_all_comments_to [:tsp, :assistant]
+  allow_all_comments_to %i[tsp assistant]
   # @see HasComments.allow_public_comments_to
-  allow_public_comments_to [:administrative, :requester]
+  allow_public_comments_to %i[administrative requester]
 
   state_machine :state, initial: :incomplete do |_machine|
     event :submit do
-      transition incomplete: :submitted, unless: :has_no_expenses?
+      transition incomplete: :submitted, unless: :no_expenses?
     end
 
     event :approve do
@@ -45,32 +47,32 @@ class TravelSponsorship < ReimbursableRequest
   # @see HasState.assign_state
   # @see HasState.notify_state
   assign_state :incomplete, to: :requester
-  notify_state :incomplete, to: [:requester, :tsp, :assistant],
+  notify_state :incomplete, to: %i[requester tsp assistant],
                             remind_to: :requester,
                             remind_after: 5.days
 
   assign_state :submitted, to: :tsp
-  notify_state :submitted, to: [:requester, :tsp, :assistant],
+  notify_state :submitted, to: %i[requester tsp assistant],
                            remind_after: 10.days
 
   assign_state :approved, to: :requester
-  notify_state :approved, to: [:requester, :tsp, :assistant],
+  notify_state :approved, to: %i[requester tsp assistant],
                           remind_to: :requester,
                           remind_after: 5.days
 
-  notify_state :accepted, to: [:requester, :tsp, :assistant]
+  notify_state :accepted, to: %i[requester tsp assistant]
 
-  notify_state :canceled, to: [:requester, :tsp, :assistant]
+  notify_state :canceled, to: %i[requester tsp assistant]
 
   # @see HasState.allow_transition
   allow_transition :submit, :requester
   allow_transition :approve, :tsp
   allow_transition :accept, :requester
-  allow_transition :roll_back, [:requester, :tsp]
+  allow_transition :roll_back, %i[requester tsp]
 
   def allow_cancel?(role_name)
     r = role_name.to_sym
-    [:requester, :supervisor].include?(r) || (r == :tsp && !accepted?)
+    %i[requester supervisor].include?(r) || (r == :tsp && !accepted?)
   end
 
   # Checks whether the request is ready for reimbursement
@@ -85,43 +87,6 @@ class TravelSponsorship < ReimbursableRequest
   # @return [Boolean] true if the requester can ask for visa letter
   def visa_letter_allowed?
     event.try(:visa_letters) == true
-  end
-
-  protected
-
-  def only_one_active_request
-    if TravelSponsorship.in_conflict_with(self).count > 0
-      errors.add(:event_id, :only_one_active)
-    end
-  end
-
-  # Validates that the approved amount doesn't exceed the total of the budgets
-  # associated to the event.
-  def dont_exceed_budget
-    if Rails.configuration.site['budget_limits']
-      budget = event.budget
-      currency = budget ? budget.currency : nil
-
-      # With the current implementation, it should be only one approved currency
-      if currency.nil? || expenses.any? { |e| e.approved_currency != currency }
-        errors.add(:expenses, :no_budget_found)
-        return
-      end
-
-      # Expenses for other requests using the same budget
-      more_expenses = RequestExpense.includes(request: [:event, :reimbursement])
-      more_expenses = more_expenses.where('events.budget_id' => budget.id)
-      more_expenses = more_expenses.where('request_expenses.approved_currency' => currency)
-      more_expenses = more_expenses.where(['requests.id <> ?', id])
-      more_expenses = more_expenses.where(['requests.state in (?)', %w[approved accepted]])
-      # If the request have a canceled reimbursement, it means that the money is in fact available
-      more_expenses = more_expenses.where(['reimbursements.id is null or reimbursements.state <> ?', 'canceled'])
-
-      total = more_expenses.where(['authorized_amount is null']).sum(:approved_amount) +
-              more_expenses.where(['authorized_amount is not null']).sum(:authorized_amount) +
-              expenses.to_a.sum(&:approved_amount)
-      errors.add(:expenses, :budget_exceeded) if total > budget.amount
-    end
   end
 
   # Sends notifications about requests lacking a reimbursement.
@@ -144,10 +109,43 @@ class TravelSponsorship < ReimbursableRequest
     )
     candidate_events.includes(:requests).each do |e|
       e.requests.each do |r|
-        if r.lacks_reimbursement?
-          ReimbursableRequestMailer.notify_to([r.user], :missing_reimbursement, r)
-        end
+        ReimbursableRequestMailer.notify_to([r.user], :missing_reimbursement, r) if r.lacks_reimbursement?
       end
     end
+  end
+
+  protected
+
+  def only_one_active_request
+    errors.add(:event_id, :only_one_active) if TravelSponsorship.in_conflict_with(self).count.positive?
+  end
+
+  # Validates that the approved amount doesn't exceed the total of the budgets
+  # associated to the event.
+  def dont_exceed_budget
+    return unless Rails.configuration.site['budget_limits']
+
+    budget = event.budget
+    currency = budget ? budget.currency : nil
+
+    # With the current implementation, it should be only one approved currency
+    if currency.nil? || expenses.any? { |e| e.approved_currency != currency }
+      errors.add(:expenses, :no_budget_found)
+      return
+    end
+
+    # Expenses for other requests using the same budget
+    more_expenses = RequestExpense.includes(request: %i[event reimbursement])
+    more_expenses = more_expenses.where('events.budget_id' => budget.id)
+    more_expenses = more_expenses.where('request_expenses.approved_currency' => currency)
+    more_expenses = more_expenses.where(['requests.id <> ?', id])
+    more_expenses = more_expenses.where(['requests.state in (?)', %w[approved accepted]])
+    # If the request have a canceled reimbursement, it means that the money is in fact available
+    more_expenses = more_expenses.where(['reimbursements.id is null or reimbursements.state <> ?', 'canceled'])
+
+    total = more_expenses.where(['authorized_amount is null']).sum(:approved_amount) +
+            more_expenses.where(['authorized_amount is not null']).sum(:authorized_amount) +
+            expenses.to_a.sum(&:approved_amount)
+    errors.add(:expenses, :budget_exceeded) if total > budget.amount
   end
 end
