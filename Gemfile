@@ -12,7 +12,7 @@ gem 'sqlite3', '~> 1.5.4'
 # gem 'mysql2', '~> 0.4.10'
 
 # This can only be removed with Rails 7.0
-gem 'psych', '< 4.0'
+gem 'psych', '< 6.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
