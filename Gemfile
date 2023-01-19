@@ -7,7 +7,7 @@ gem 'rails-i18n'
 gem 'responders'
 
 # Choose your weapon
-gem 'sqlite3', '~> 1.5.4'
+gem 'sqlite3', '~> 1.6.0'
 # gem 'pg', '~> 0.21'
 # gem 'mysql2', '~> 0.4.10'
 
