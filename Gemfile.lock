@@ -141,7 +141,7 @@ GEM
       activesupport (>= 4.0, < 7)
     execjs (2.8.1)
     ffi (1.15.5)
-    git (1.13.0)
+    git (1.13.1)
       addressable (~> 2.8)
       rchardet (~> 1.8)
     globalid (1.0.1)
