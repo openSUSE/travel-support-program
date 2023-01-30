@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20221210104059) do
+ActiveRecord::Schema.define(version: 20230130095633) do
 
   create_table "audits", force: :cascade do |t|
     t.integer "auditable_id"
@@ -25,8 +25,9 @@ ActiveRecord::Schema.define(version: 20221210104059) do
     t.string "remote_address"
     t.string "username"
     t.string "request_uuid"
-    t.integer "association_id"
-    t.string "association_type"
+    t.integer "associated_id"
+    t.string "associated_type"
+    t.index ["associated_type", "associated_id"], name: "associated_index"
     t.index ["auditable_type", "auditable_id", "version"], name: "auditable_index"
     t.index ["created_at"], name: "index_audits_on_created_at"
     t.index ["request_uuid"], name: "index_audits_on_request_uuid"
@@ -82,22 +83,6 @@ ActiveRecord::Schema.define(version: 20221210104059) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
-  end
-
-  create_table "espinita_audits", force: :cascade do |t|
-    t.string "auditable_type"
-    t.integer "auditable_id"
-    t.string "user_type"
-    t.integer "user_id"
-    t.text "audited_changes"
-    t.string "comment"
-    t.integer "version"
-    t.string "action"
-    t.string "remote_address"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["auditable_type", "auditable_id"], name: "index_espinita_audits_on_auditable_type_and_auditable_id"
-    t.index ["user_type", "user_id"], name: "index_espinita_audits_on_user_type_and_user_id"
   end
 
   create_table "event_emails", force: :cascade do |t|
