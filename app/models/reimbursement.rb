@@ -44,7 +44,7 @@ class Reimbursement < ApplicationRecord
 
   mount_uploader :acceptance_file, AttachmentUploader
 
-  auditable except: [:acceptance_file]
+  audited except: [:acceptance_file]
 
   # Synchronizes user_id and request_id
   before_validation :set_user_id

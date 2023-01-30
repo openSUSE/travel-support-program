@@ -1,12 +1,3 @@
-GIT
-  remote: https://github.com/michelson/espinita.git
-  revision: 2dc027edc838ee5de0d68558f1758273ccc01636
-  ref: 2dc027edc838ee5de0d68558f1758273ccc01636
-  specs:
-    espinita (0.0.9)
-      rails (>= 4.0)
-      request_store
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -55,6 +46,8 @@ GEM
     afm (0.2.2)
     arel (8.0.0)
     ast (2.4.2)
+    audited (5.0.2)
+      activerecord (>= 5.0, < 7.1)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
     bcrypt (3.1.18)
@@ -116,7 +109,6 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
-    date (3.3.1)
     date_validator (0.12.0)
       activemodel (>= 3)
       activesupport (>= 3)
@@ -203,11 +195,8 @@ GEM
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    mail (2.8.0)
+    mail (2.7.1)
       mini_mime (>= 0.1.1)
-      net-imap
-      net-pop
-      net-smtp
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
@@ -217,15 +206,6 @@ GEM
     mini_racer (0.6.3)
       libv8-node (~> 16.10.0.0)
     minitest (5.17.0)
-    net-imap (0.3.2)
-      date
-      net-protocol
-    net-pop (0.1.2)
-      net-protocol
-    net-protocol (0.2.1)
-      timeout
-    net-smtp (0.3.3)
-      net-protocol
     nio4r (2.5.8)
     nokogiri (1.13.10)
       mini_portile2 (~> 2.8.0)
@@ -299,8 +279,6 @@ GEM
     rdoc (6.3.3)
     redcarpet (3.5.1)
     regexp_parser (2.6.1)
-    request_store (1.5.1)
-      rack (>= 1.4)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -394,7 +372,6 @@ GEM
     thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.11)
-    timeout (0.3.1)
     ttfunk (1.0.3)
     tzinfo (1.2.10)
       thread_safe (~> 0.1)
@@ -421,6 +398,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_hash
+  audited
   bootstrap-sass
   byebug
   cancancan (~> 1.17)
@@ -438,7 +416,6 @@ DEPENDENCIES
   delayed_job_active_record
   devise
   devise_ichain_authenticatable (>= 0.3.0)
-  espinita!
   exception_notification
   git
   haml-rails
@@ -448,6 +425,7 @@ DEPENDENCIES
   kaminari
   letter_opener_web
   listen
+  mail (< 2.8.0)
   mini_racer
   pdf-reader
   prawn (~> 0.13.0)

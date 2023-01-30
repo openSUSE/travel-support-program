@@ -15,5 +15,5 @@ class Budget < ApplicationRecord
 
   validates :name, :amount, :currency, presence: true
 
-  auditable
+  audited
 end

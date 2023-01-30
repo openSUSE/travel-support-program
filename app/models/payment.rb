@@ -11,5 +11,5 @@ class Payment < ApplicationRecord
 
   mount_uploader :file, AttachmentUploader
 
-  auditable except: [:file]
+  audited except: [:file]
 end

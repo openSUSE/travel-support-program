@@ -20,7 +20,7 @@ class UserProfile < ApplicationRecord
 
   validates :role_id, presence: true
 
-  auditable
+  audited
 
   scope :with_role, lambda { |role|
     if role.is_a?(UserRole)

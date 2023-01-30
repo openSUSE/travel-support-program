@@ -24,7 +24,7 @@ class RequestExpense < ApplicationRecord
 
   before_validation :set_authorized_amount
 
-  auditable
+  audited
 
   # Scope needed by Request.expenses_sum
   scope :by_attr_for_requests, lambda { |attr, req_ids|

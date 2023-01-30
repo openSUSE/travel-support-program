@@ -12,5 +12,5 @@ class Request < ApplicationRecord
 
   validates :event, presence: true
 
-  auditable
+  audited
 end

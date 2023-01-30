@@ -9,5 +9,5 @@ class ReimbursementLink < ApplicationRecord
 
   validates :reimbursement, :title, :url, presence: true
 
-  auditable
+  audited
 end
