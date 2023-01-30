@@ -46,7 +46,7 @@ GEM
     afm (0.2.2)
     arel (8.0.0)
     ast (2.4.2)
-    audited (5.0.2)
+    audited (5.2.0)
       activerecord (>= 5.0, < 7.1)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
@@ -96,7 +96,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.10)
+    concurrent-ruby (1.2.0)
     countries (5.2.0)
       unaccent (~> 0.3)
     country_select (8.0.0)
@@ -373,7 +373,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.11)
     ttfunk (1.0.3)
-    tzinfo (1.2.10)
+    tzinfo (1.2.11)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
