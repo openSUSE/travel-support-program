@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '>= 5.1.7', '< 5.1.99'
+gem 'rails', '>= 5.2.0', '< 5.2.99'
 gem 'rails-i18n'
 gem 'responders'
 
@@ -40,6 +40,9 @@ group :doc do
 end
 
 gem 'listen'
+
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', require: false
 
 # Debugger
 gem 'byebug', group: %i[development test]
