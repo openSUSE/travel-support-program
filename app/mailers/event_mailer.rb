@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class EventMailer < ApplicationMailer
-  def event_info(to, email)
+  def event_info(receiver, email)
     @email = email
     mail(from: @email.user.email,
-         to: to,
+         to: receiver,
          subject: @email[:subject])
   end
 end

@@ -17,7 +17,7 @@ class ReimbursementsListsController < InheritedResources::Base
     @q ||= end_of_association_chain.accessible_by(current_ability).includes(request: :expenses).ransack(params[:q])
     @q.sorts = 'id asc' if @q.sorts.empty?
     @all_reimbursements ||= @q.result(distinct: true)
-    @reimbursements ||= @all_reimbursements.page(params[:page]).per(20)
+    @collection ||= @all_reimbursements.page(params[:page]).per(20)
   end
 
   def reimbursement_states_collection

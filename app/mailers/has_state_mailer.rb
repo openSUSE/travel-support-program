@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class HasStateMailer < ApplicationMailer
-  def state(to, state_machine)
+  def state(receiver, state_machine)
     @machine = state_machine
     @state_name = @machine.human_state_name
     @updated_at = @machine.state_updated_at
     @change = @machine.state_changes.newest_first.first
-    mail(to: to,
+    mail(to: receiver,
          subject: t(:mailer_subject_state,
                     machine: @machine.title,
                     user: @machine.user.nickname,

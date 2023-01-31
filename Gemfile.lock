@@ -212,7 +212,7 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.22.1)
-    parser (2.7.2.0)
+    parser (3.2.0.0)
       ast (~> 2.4.1)
     pdf-reader (1.4.1)
       Ascii85 (~> 1.0.0)
@@ -300,9 +300,9 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.12.0)
-    rubocop (0.52.1)
+    rubocop (0.53.0)
       parallel (~> 1.10)
-      parser (>= 2.4.0.2, < 3.0)
+      parser (>= 2.5)
       powerpack (~> 0.1)
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
@@ -438,7 +438,7 @@ DEPENDENCIES
   redcarpet
   responders
   rspec-rails
-  rubocop (~> 0.52.0)
+  rubocop (~> 0.53.0)
   ruby-graphviz
   sass-rails
   sdoc
