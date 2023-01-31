@@ -16,7 +16,7 @@ class TravelExpenseReport < ApplicationRecord
   delegate :user, to: :request, prefix: false
   delegate :event, to: :request, prefix: false
 
-  @by = {
+  BY = {
     event: [
       { field: :event_id, sql: 'event_id', hidden: true },
       { field: :event_name, sql: 'events.name' },
@@ -61,7 +61,7 @@ class TravelExpenseReport < ApplicationRecord
       { field: :event_name, sql: 'events.name' },
       { field: :subject, sql: 'request_expenses.subject' }
     ]
-  }
+  }.freeze
 
   # Main scope for using the whole model. Takes cares of all the grouping,
   # conditions and selections needed for a given amount field and a given
@@ -76,9 +76,9 @@ class TravelExpenseReport < ApplicationRecord
     currency = RequestExpense.currency_field_for(type.to_sym)
     r = joins(request: [{ user: :profile }, :event])
     r = r.joins('LEFT JOIN reimbursements ON reimbursements.request_id = requests.id')
-    r = r.select("sum(#{type}_amount) AS sum_amount, #{currency} AS sum_currency, #{@by[g.to_sym].map { |f| "#{f[:sql]} AS #{f[:field]}" }.join(', ')}")
+    r = r.select("sum(#{type}_amount) AS sum_amount, #{currency} AS sum_currency, #{TravelExpenseReport::BY[g.to_sym].map { |f| "#{f[:sql]} AS #{f[:field]}" }.join(', ')}")
     r = r.where("#{type}_amount IS NOT NULL")
-    r = r.group("#{currency}, #{@by[g.to_sym].map { |f| f[:sql] }.join(', ')}")
+    r = r.group("#{currency}, #{TravelExpenseReport::BY[g.to_sym].map { |f| f[:sql] }.join(', ')}")
   }
 
   # Scope for filtering
@@ -136,14 +136,14 @@ class TravelExpenseReport < ApplicationRecord
   # @param [#to_sym] group The grouping option used when invoking the scope
   # @return [array] The names of the resulting fields (as an array of symbols)
   def self.fields_for(group)
-    @by[group.to_sym].reject { |f| f[:hidden] }.map { |i| i[:field] } + %i[sum_amount sum_currency]
+    TravelExpenseReport::BY[group.to_sym].reject { |f| f[:hidden] }.map { |i| i[:field] } + %i[sum_amount sum_currency]
   end
 
   # Available group options for calling the 'by' scope
   #
   # @return [array] An array with the available grouping criterias (as symbols)
   def self.groups
-    @by.keys
+    TravelExpenseReport::BY.keys
   end
 
   # Casted value of a given attribute.
