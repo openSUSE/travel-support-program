@@ -11,6 +11,6 @@ class EventOrganizer < ApplicationRecord
   validates :user_id, uniqueness: { scope: :event_id, message: 'Already an event organizer for this event' }
 
   def self.autocomplete_users(term)
-    User.order('lower(nickname)').where('nickname like ? or email like ?', "%#{term}%", "%#{term}%").pluck(:nickname, :email)
+    User.order(Arel.sql('lower(nickname)')).where('nickname like ? or email like ?', "%#{term}%", "%#{term}%").pluck(:nickname, :email)
   end
 end
