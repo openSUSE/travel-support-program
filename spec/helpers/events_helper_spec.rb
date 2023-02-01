@@ -4,9 +4,10 @@ require 'spec_helper'
 
 describe EventsHelper, type: :helper do
   fixtures :all
-  before :each do
+  before do
     @event = events(:party)
   end
+
   let(:user) { users(:tspmember) }
   let(:current_ability) { Ability.new(user) }
 
@@ -17,40 +18,49 @@ describe EventsHelper, type: :helper do
          'luke.skywalker@rebel-alliance.org', 'wedge.antilles@rebel-alliance.org']
       )
     end
+
     it 'returns emails of participants with their request in submitted state' do
       expect(users_for_event('submitted')).to eq(['wedge.antilles@rebel-alliance.org'])
     end
+
     it 'returns emails of participants with their request in incomplete state' do
       expect(users_for_event('incomplete')).to eq(
         ['c3po@droids.com', 'evram.lajaie@rebel-alliance.org',
          'gial.ackbar@rebel-alliance.org', 'luke.skywalker@rebel-alliance.org']
       )
     end
+
     it 'returns emails of participants with their request in canceled state' do
       expect(users_for_event('canceled')) .to eq([])
     end
+
     it 'returns emails of participants with their request in approved state' do
       expect(users_for_event('approved')) .to eq([])
     end
+
     it 'returns emails of participants with their request in accepted state' do
       expect(users_for_event('accepted')) .to eq([])
     end
   end
 
   describe '#state_label' do
-    it 'should return primary-label' do
+    it 'returns primary-label' do
       expect(state_label('submitted')). to eq 'label-primary'
     end
-    it 'should return danger-label' do
+
+    it 'returns danger-label' do
       expect(state_label('canceled')). to eq 'label-danger'
     end
-    it 'should return warning-label' do
+
+    it 'returns warning-label' do
       expect(state_label('incomplete')). to eq 'label-warning'
     end
-    it 'should return success-label' do
+
+    it 'returns success-label on accepted' do
       expect(state_label('accepted')). to eq 'label-success'
     end
-    it 'should return success-label' do
+
+    it 'returns success-label on approved' do
       expect(state_label('approved')). to eq 'label-success'
     end
   end

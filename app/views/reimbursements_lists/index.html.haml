@@ -34,7 +34,7 @@
         %td.authorized= expenses_sum(reimb, :authorized)
         %td.state= timestamped_state(reimb)
   %tfoot
-    - if @all_reimbursements.size > @reimbursements.size
+    - if @all_reimbursements.size > @collection.size
       %tr
         %td
         %td
@@ -47,9 +47,9 @@
       %td
       %td
       %th.text-right= t(:full_total)
-      %td= expenses_sum(@reimbursements, :approved)
-      %td= expenses_sum(@reimbursements, :total)
-      %td= expenses_sum(@reimbursements, :authorized)
+      %td= expenses_sum(@collection, :approved)
+      %td= expenses_sum(@collection, :total)
+      %td= expenses_sum(@collection, :authorized)
       %td
 
 = paginate collection

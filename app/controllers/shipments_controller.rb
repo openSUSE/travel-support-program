@@ -28,7 +28,7 @@ class ShipmentsController < InheritedResources::Base
     @q ||= end_of_association_chain.accessible_by(current_ability).ransack(params[:q])
     @q.sorts = 'id asc' if @q.sorts.empty?
     @all_shipments ||= @q.result(distinct: true)
-    @shipments ||= @all_shipments.page(params[:page]).per(20)
+    @collection ||= @all_shipments.page(params[:page]).per(20)
   end
 
   def set_states_collection

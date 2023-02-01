@@ -30,7 +30,7 @@ feature 'Reimbursements', '' do
     end
     click_button 'Update reimbursement'
     page.should have_content 'reimbursement was successfully updated'
-    @reimbursement = Reimbursement.order(:created_at).last
+    reimbursement = Reimbursement.order(:created_at).last
 
     # Failed submission
     click_link 'Action'
@@ -65,7 +65,7 @@ feature 'Reimbursements', '' do
     page.should_not have_content 'Expenses are missing or invalid' # Not longer the problem
 
     # No way. Time to attach
-    visit request_reimbursement_path(@reimbursement.request)
+    visit request_reimbursement_path(reimbursement.request)
     click_link 'Attach signed document'
     page.should have_content 'Print it, sign it, scan the signed version and upload it using the form below'
     attach_file 'acceptance_file', Rails.root.join('spec', 'support', 'files', 'scan001.pdf')
@@ -82,12 +82,12 @@ feature 'Reimbursements', '' do
     page.should_not have_link 'Attach signed document'
 
     # Testing audits, just in case
-    @reimbursement.audits.last.user.should == users(:luke)
-    @reimbursement.expenses.first.audits.last.user.should == users(:luke)
+    reimbursement.audits.last.user.should == users(:luke)
+    reimbursement.expenses.first.audits.last.user.should == users(:luke)
 
     # Log in as tspmember
     click_link 'Log out'
-    find_reimbursement_as(users(:tspmember), @reimbursement)
+    find_reimbursement_as(users(:tspmember), reimbursement)
     page.should_not have_link 'Attach signed document'
 
     # Rolling back
@@ -101,7 +101,7 @@ feature 'Reimbursements', '' do
 
     # Log in as requester
     click_link 'Log out'
-    find_reimbursement_as(users(:luke), @reimbursement)
+    find_reimbursement_as(users(:luke), reimbursement)
     page.should have_link 'Attach signed document'
 
     # Add links and attachments
@@ -136,7 +136,7 @@ feature 'Reimbursements', '' do
 
     # Log in as tspmember
     click_link 'Log out'
-    find_reimbursement_as(users(:tspmember), @reimbursement)
+    find_reimbursement_as(users(:tspmember), reimbursement)
 
     # Approving if all invoices are there
     page.should have_content 'Video recording'
@@ -151,7 +151,7 @@ feature 'Reimbursements', '' do
 
     # Log in as administrative
     click_link 'Log out'
-    find_reimbursement_as(users(:administrative), @reimbursement)
+    find_reimbursement_as(users(:administrative), reimbursement)
 
     # Print the check request
     click_link 'Check Request'
@@ -160,11 +160,11 @@ feature 'Reimbursements', '' do
     pdf.should include('Luke Skywalker')
 
     # Check the acceptance
-    visit request_reimbursement_acceptance_path(@reimbursement.request)
+    visit request_reimbursement_acceptance_path(reimbursement.request)
     pdf_content.should include('Just an example')
 
     # Process the reimbursement
-    visit request_reimbursement_path(@reimbursement.request)
+    visit request_reimbursement_path(reimbursement.request)
     click_link 'Action'
     click_link 'Process'
     fill_in 'notes', with: 'Every is ok. Sending to accounting dept.'
@@ -193,9 +193,9 @@ feature 'Reimbursements', '' do
     # try to access the acceptance or the check request as another user
     click_link 'Log out'
     sign_in_as_user users(:wedge)
-    visit request_reimbursement_acceptance_path(@reimbursement.request)
+    visit request_reimbursement_acceptance_path(reimbursement.request)
     page.should have_content "You are not allowed to access this page.\nIf you think that you should, contact your administrator."
-    visit check_request_request_reimbursement_path(@reimbursement.request)
+    visit check_request_request_reimbursement_path(reimbursement.request)
     page.should have_no_content
   end
 end

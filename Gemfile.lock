@@ -162,6 +162,7 @@ GEM
       has_scope (~> 0.6)
       railties (>= 5.0, < 6.1)
       responders (>= 2, < 4)
+    jaro_winkler (1.5.4)
     jquery-rails (4.5.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -212,7 +213,7 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.22.1)
-    parser (2.7.2.0)
+    parser (3.2.0.0)
       ast (~> 2.4.1)
     pdf-reader (1.4.1)
       Ascii85 (~> 1.0.0)
@@ -222,7 +223,6 @@ GEM
       ttfunk
     polyamorous (2.3.0)
       activerecord (>= 5.0)
-    powerpack (0.1.3)
     prawn (0.13.2)
       pdf-reader (~> 1.2)
       ruby-rc4
@@ -300,13 +300,18 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.12.0)
-    rubocop (0.52.1)
+    rubocop (0.70.0)
+      jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
-      parser (>= 2.4.0.2, < 3.0)
-      powerpack (~> 0.1)
+      parser (>= 2.6)
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
-      unicode-display_width (~> 1.0, >= 1.0.1)
+      unicode-display_width (>= 1.4.0, < 1.7)
+    rubocop-rails (2.0.1)
+      rack (>= 1.1)
+      rubocop (>= 0.70.0)
+    rubocop-rspec (1.41.0)
+      rubocop (>= 0.68.1)
     ruby-graphviz (1.2.5)
       rexml
     ruby-progressbar (1.11.0)
@@ -378,7 +383,7 @@ GEM
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unaccent (0.4.0)
-    unicode-display_width (1.8.0)
+    unicode-display_width (1.6.1)
     warden (1.2.9)
       rack (>= 2.0.9)
     webrick (1.7.0)
@@ -438,7 +443,9 @@ DEPENDENCIES
   redcarpet
   responders
   rspec-rails
-  rubocop (~> 0.52.0)
+  rubocop (~> 0.70.0)
+  rubocop-rails
+  rubocop-rspec
   ruby-graphviz
   sass-rails
   sdoc

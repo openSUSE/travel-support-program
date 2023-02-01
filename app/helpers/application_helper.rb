@@ -31,22 +31,22 @@ module ApplicationHelper
   # Outputs the state of a model instance with the appropiate
   # css class and the associated date
   #
-  # @param [#state] r  the request, reimbursement or any other object with state
+  # @param [#state] object_with_state  the request, reimbursement or any other object with state
   # @return [String] HTML output
-  def timestamped_state(r)
-    msg = content_tag(:span, r.human_state_name, class: r.state)
-    msg += ' ' +  t(:since, date: l(r.state_updated_at, format: :long)) unless r.state_updated_at.blank?
+  def timestamped_state(object_with_state)
+    msg = content_tag(:span, object_with_state.human_state_name, class: object_with_state.state)
+    msg += ' ' +  t(:since, date: l(object_with_state.state_updated_at, format: :long)) unless object_with_state.state_updated_at.blank?
     raw(msg)
   end
 
   # Outputs the state of a model instance with a help tooltip if needed
   #
-  # @param [#state] r  the request, reimbursement or any other object with state
+  # @param [#state] object_with_state  the request, reimbursement or any other object with state
   # @return [String] HTML output
-  def state_info(r)
-    msg = content_tag(:span, r.human_state_name, class: r.state)
-    msg += " (#{r.human_state_description})"
-    if r.state_updated_at.blank?
+  def state_info(object_with_state)
+    msg = content_tag(:span, object_with_state.human_state_name, class: object_with_state.state)
+    msg += " (#{object_with_state.human_state_description})"
+    if object_with_state.state_updated_at.blank?
       msg += ' '
       msg += content_tag(:span, '!', title: t(:state_help), class: 'badge with-tooltip')
     end
@@ -94,19 +94,19 @@ module ApplicationHelper
   # as a list of comma separated number_to_currency (one for
   # every used currency)
   #
-  # @param [Object] r a request, a reimbursement or a collection (reimbursements
-  #                   or request, not mixed)
+  # @param [Object] object a request, a reimbursement or a collection (reimbursements
+  #                        or request, not mixed)
   # @param [Symbol] attr can be :estimated, :approved, :total or :authorized
   # @return [String] HTML output
-  def expenses_sum(r, attr)
-    sum = if r.respond_to?(:size)
-            if first = r.first
-              first.class.expenses_sum(attr, r)
+  def expenses_sum(object, attr)
+    sum = if object.respond_to?(:size)
+            if first = object.first
+              first.class.expenses_sum(attr, object)
             else
               []
             end
           else
-            r.expenses_sum(attr)
+            object.expenses_sum(attr)
           end
     sum.map { |k, v| number_to_currency(v, unit: (k || '?')) }.join(', ')
   end
@@ -137,6 +137,7 @@ module ApplicationHelper
     trans_path = resource_path + '/state_transitions/new.js?state_transition[state_event]='
     links = machine.state_events.map do |event|
       next unless can? event, machine
+
       link_to(t("activerecord.state_machines.events.#{event}").titleize, trans_path + event.to_s, remote: true)
     end.compact
     # Add cancel link
@@ -265,6 +266,7 @@ module ApplicationHelper
   # @return [Boolean] true if signed in by means of iChain
   def user_signed_in_by_ichain?
     return false unless user_signed_in?
+
     current_user.respond_to?(:signed_in_by_ichain?) && current_user.signed_in_by_ichain?
   end
 
@@ -272,7 +274,8 @@ module ApplicationHelper
   #
   # @return [String] unordered list containing the breadcrumbs
   def breadcrumbs
-    return '' unless @breadcrumbs && @breadcrumbs.respond_to?(:map)
+    return '' unless @breadcrumbs&.respond_to?(:map)
+
     crumbs = @breadcrumbs.map do |b|
       # First of all, adjust the label,...
       label = b[:label]

@@ -23,7 +23,7 @@ class EventsController < InheritedResources::Base
     # Default, only current and future events are displayed
     @q.end_date_gteq = Date.today if params[:q].nil? || params[:q][:end_date_gteq].nil?
     @q.sorts = 'start_date asc' if @q.sorts.empty?
-    @events ||= @q.result(distinct: true).page(params[:page]).per(20)
+    @collection ||= @q.result(distinct: true).page(params[:page]).per(20)
   end
 
   def set_types

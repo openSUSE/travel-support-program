@@ -55,7 +55,6 @@ class Reimbursement < ApplicationRecord
   # @see HasComments.allow_public_comments_to
   allow_public_comments_to %i[administrative requester]
 
-  #
   state_machine :state, initial: :incomplete do |_machine|
     event :submit do
       transition incomplete: :submitted
@@ -205,7 +204,7 @@ class Reimbursement < ApplicationRecord
     full_messages
   end
 
-  def self.ransackable_associations(_)
+  def self.ransackable_associations(_auth_object)
     %w[request]
   end
 
@@ -236,6 +235,7 @@ class Reimbursement < ApplicationRecord
     acceptable_request_attrs = %w[id expenses_attributes]
     acceptable_expenses_attrs = %w[id total_amount authorized_amount]
     return true unless (attrs.keys - acceptable_request_attrs).empty?
+
     if expenses = attrs['expenses_attributes']
       expenses.each_value do |expense|
         return true unless (expense.keys - acceptable_expenses_attrs).empty?

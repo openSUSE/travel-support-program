@@ -30,6 +30,6 @@ feature 'State adjustments', '' do
 
     page.should have_content('already the current state')
     # The dialog is open again
-    page.should have_css('.modal', visible: true)
+    page.should have_css('.modal', visible: :visible)
   end
 end
