@@ -113,6 +113,7 @@ module ReimbursementsHelper
   def check_request_link(reimbursement)
     return '' if Rails.configuration.site['check_request_layout'].blank?
     return '' if Rails.configuration.site['check_request_template'].blank?
+
     url = check_request_request_reimbursement_path(reimbursement.request)
     link_to t(:check_request), url, class: 'btn btn-default'
   end

@@ -235,6 +235,7 @@ class Reimbursement < ApplicationRecord
     acceptable_request_attrs = %w[id expenses_attributes]
     acceptable_expenses_attrs = %w[id total_amount authorized_amount]
     return true unless (attrs.keys - acceptable_request_attrs).empty?
+
     if expenses = attrs['expenses_attributes']
       expenses.each_value do |expense|
         return true unless (expense.keys - acceptable_expenses_attrs).empty?

@@ -8,8 +8,8 @@ feature 'Reimbursement authorized amount', '' do
 
   scenario 'Mixing currencies', js: true do
     # Tweak the request a little bit so currencies are combined
-    @request = requests(:luke_for_yavin)
-    @request.expenses.where(subject: 'Lodging').first.update_column(:estimated_currency, 'USD')
+    request = requests(:luke_for_yavin)
+    request.expenses.where(subject: 'Lodging').first.update_column(:estimated_currency, 'USD')
 
     # Let's create the reimbursement...
     sign_in_as_user(users(:luke))

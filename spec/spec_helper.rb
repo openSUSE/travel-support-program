@@ -77,15 +77,12 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 
-  config.before(:each) do
+  config.before do
     DatabaseCleaner.strategy = :deletion
-  end
-
-  config.before(:each) do
     DatabaseCleaner.start
   end
 
-  config.after(:each) do
+  config.after do
     DatabaseCleaner.clean
   end
 

@@ -137,6 +137,7 @@ module ApplicationHelper
     trans_path = resource_path + '/state_transitions/new.js?state_transition[state_event]='
     links = machine.state_events.map do |event|
       next unless can? event, machine
+
       link_to(t("activerecord.state_machines.events.#{event}").titleize, trans_path + event.to_s, remote: true)
     end.compact
     # Add cancel link
@@ -265,6 +266,7 @@ module ApplicationHelper
   # @return [Boolean] true if signed in by means of iChain
   def user_signed_in_by_ichain?
     return false unless user_signed_in?
+
     current_user.respond_to?(:signed_in_by_ichain?) && current_user.signed_in_by_ichain?
   end
 
@@ -273,6 +275,7 @@ module ApplicationHelper
   # @return [String] unordered list containing the breadcrumbs
   def breadcrumbs
     return '' unless @breadcrumbs&.respond_to?(:map)
+
     crumbs = @breadcrumbs.map do |b|
       # First of all, adjust the label,...
       label = b[:label]
