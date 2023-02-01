@@ -97,9 +97,9 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.2.0)
-    countries (5.2.0)
+    countries (5.3.1)
       unaccent (~> 0.3)
-    country_select (8.0.0)
+    country_select (8.0.1)
       countries (~> 5.0)
     crass (1.0.6)
     daemons (1.4.1)
