@@ -230,7 +230,8 @@ GEM
     prawn_rails (0.0.12)
       prawn (>= 0.11.1)
       railties (>= 3.0.0)
-    psych (3.3.4)
+    psych (4.0.6)
+      stringio
     public_suffix (5.0.1)
     puma (6.0.2)
       nio4r (~> 2.0)
@@ -373,6 +374,7 @@ GEM
     state_machines-yard (0.0.1)
       state_machines-graphviz
       yard
+    stringio (3.0.4)
     temple (0.9.1)
     thor (1.2.1)
     thread_safe (0.3.6)
@@ -435,7 +437,7 @@ DEPENDENCIES
   pdf-reader
   prawn (~> 0.13.0)
   prawn_rails
-  psych (< 4.0)
+  psych (< 5.0)
   puma
   rails (>= 5.1.7, < 5.1.99)
   rails-i18n
