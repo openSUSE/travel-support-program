@@ -5,7 +5,7 @@ class ApplicationRecord < ActiveRecord::Base
 
   class << self
     def ransackable_attributes(_auth_object)
-      super & %w[end_date start_date name description event_id state]
+      super & %w[id end_date start_date name description event_id state]
     end
 
     def ransackable_associations(_auth_object)
