@@ -5,7 +5,7 @@
 %nav.navbar.navbar-default.nav-tsp
   .container-fluid
     .navbar-header
-      = link_to t('.new', :default => t("helpers.links.new")), new_resource_path, :class => 'navbar-btn btn btn-primary', :data => { :confirm => t(:new_event_warning) }
+      = link_to t('.new', :default => t("helpers.links.new")), new_event_path, :class => 'navbar-btn btn btn-primary', :data => { :confirm => t(:new_event_warning) }
     .nav.navbar-right
       = search_form_for @q, :builder => SimpleForm::FormBuilder, :class => "navbar-form" do |f|
         - t_start = f.input_field :end_date_gteq, :as => :dpicker, class:'form-control input-sm inpt-w'
@@ -13,7 +13,7 @@
         - t_text = f.text_field :name_or_description_cont, class:'form-control input-sm inpt-w'
         = raw(t(:events_search, :start => t_start, :end => t_end, :text => t_text))
         = f.submit t(:search), :class => "btn btn-default"
-        = link_to t(:reset_search), collection_path(:q => {:end_date_gteq => '0'}), :class => "btn btn-default"
+        = link_to t(:reset_search), events_path(:q => {:end_date_gteq => '0'}), :class => "btn btn-default"
    
 %table.table.table-striped.events
   %thead
@@ -26,9 +26,9 @@
         %th= sort_link(@q, :shipment_type)
       %th= t(:ask_for)
   %tbody
-    - collection.each do |r|
+    - @index.each do |r|
       %tr
-        %td= link_to r.name, resource_path(r)
+        %td= link_to r.name, event_path(r)
         %td= country_label(r.country_code)
         %td= l(r.start_date)
         %td= l(r.end_date)
@@ -40,4 +40,4 @@
           - if r.accepting_shipments?
             = link_to t(:new_shipment), new_shipment_path(:event_id => r), :class => 'btn btn-default btn-xs'
 
-= paginate collection
+= paginate @index

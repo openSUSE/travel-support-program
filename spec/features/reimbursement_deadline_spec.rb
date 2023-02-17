@@ -12,7 +12,7 @@ feature 'Reimbursement deadline', '' do
     click_link 'Edit'
     fill_in 'accepting reimbursements until', with: 12.hours.ago.to_s
     click_button 'Update event'
-    page.should have_content 'event was successfully updated'
+    page.should have_content 'Event was successfully updated'
     logout
 
     sign_in_as_user(users(:luke))

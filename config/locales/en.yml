@@ -234,3 +234,6 @@ en:
   activerecord:
     errors:
       <<: *errors
+  event_create: Event was successfully created
+  event_update: Event was successfully updated
+  event_destroyed: Event was successfully destroyed
