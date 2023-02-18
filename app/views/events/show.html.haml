@@ -5,22 +5,22 @@
       %h1= t('.title', :default => model_class.model_name.human)
     .col-md-6
       %br
-      - if user_signed_in? && can?(:update, resource)
-        = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path(resource), :class => 'btn btn-default'
-      - if user_signed_in? && can?(:destroy, resource)
-        = link_to t('.destroy', :default => t("helpers.links.destroy")), resource_path(resource), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-default'
-      - if resource.accepting_requests?
-        = link_to t(:new_travel), new_travel_sponsorship_path(:event_id => resource), :class => 'btn btn-primary'
-      - if resource.accepting_shipments?
-        = link_to t(:new_shipment), new_shipment_path(:event_id => resource), :class => 'btn btn-primary'
-      - if user_signed_in? && can?(:participants, resource)
+      - if user_signed_in? && can?(:update, @event)
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_event_path(@event), :class => 'btn btn-default'
+      - if user_signed_in? && can?(:destroy, @event)
+        = link_to t('.destroy', :default => t("helpers.links.destroy")), event_path(@event), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-default'
+      - if @event.accepting_requests?
+        = link_to t(:new_travel), new_travel_sponsorship_path(:event_id => @event), :class => 'btn btn-primary'
+      - if @event.accepting_shipments?
+        = link_to t(:new_shipment), new_shipment_path(:event_id => @event), :class => 'btn btn-primary'
+      - if user_signed_in? && can?(:participants, @event)
         = link_to "Participants", participants_event_path, class: "btn btn-success"  
       - if user_signed_in? && can?(:index, EventOrganizer)
         = link_to "Organizers", event_event_organizers_path(@event), class: "btn btn-primary"  
       - if user_signed_in? && can?(:create, @event => EventEmail)
         = link_to "Email", event_event_emails_path(@event), class: "btn btn-info"
 
-= show_for resource do |r|
+= show_for @event do |r|
   .row
     .col-md-12
       = r.attribute :name
@@ -30,13 +30,13 @@
       = r.attribute :end_date
     .col-md-6
       = r.attribute :country do
-        = country_label(resource.country_code)
+        = country_label(@event.country_code)
       = r.attribute :url do
-        = link_to *([resource.url]*2)
+        = link_to *([@event.url]*2)
   .row
     .col-md-12
       = r.attribute :description do
-        = simple_format(resource.description)
+        = simple_format(@event.description)
   .row
     .col-md-6
       - if enabled? 'shipments'
@@ -47,7 +47,7 @@
       - if enabled? 'travel_sponsorships'
         = r.attribute :request_creation_deadline
         = r.attribute :reimbursement_creation_deadline
-  - if user_signed_in? && can?(:validate, resource)
+  - if user_signed_in? && can?(:validate, @event)
     .row
       .col-md-12
         = r.attribute :validated

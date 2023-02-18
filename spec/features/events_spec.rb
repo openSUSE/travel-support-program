@@ -26,7 +26,7 @@ feature 'Events', '' do
     select 'United States', from: 'country'
 
     click_button 'Create event'
-    page.should have_content 'vent was successfully created'
+    page.should have_content 'Event was successfully created'
     page.should_not have_content 'validated'
   end
 
@@ -45,7 +45,7 @@ feature 'Events', '' do
     check 'validated'
 
     click_button 'Create event'
-    page.should have_content 'vent was successfully created'
+    page.should have_content 'Event was successfully created'
     within('.wrapper.event_visa_letters') do
       page.should have_content 'No'
     end
