@@ -238,3 +238,5 @@ en:
   event_update: Event was successfully updated
   event_destroyed: Event was successfully destroyed
   event_email_create: Email Delivered
+  event_organizer_create: Event Organizer Added
+  event_organizer_destroyed: Event Organizer Removed
