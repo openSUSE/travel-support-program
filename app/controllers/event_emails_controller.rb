@@ -64,7 +64,7 @@ class EventEmailsController < ApplicationController
   def set_event_email
     @event_email = EventEmail.find(params[:id])
 
-    redirect_back(fallback_location: event_emails_url) unless @event_email
+    redirect_back(fallback_location: event_event_emails_url) unless @event_email
   end
 
   def notify_receivers
