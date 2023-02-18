@@ -237,3 +237,4 @@ en:
   event_create: Event was successfully created
   event_update: Event was successfully updated
   event_destroyed: Event was successfully destroyed
+  event_email_create: Email Delivered
