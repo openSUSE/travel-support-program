@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class EventEmailsController < ApplicationController
-  load_and_authorize_resource :event
-  load_and_authorize_resource :event_email, through: :event
+  authorize_resource :event
+  authorize_resource :event_email, through: :event
   prepend_before_action :set_event
   before_action :set_event_email, only: %i[show]
   after_action :notify_receivers, only: %i[create]

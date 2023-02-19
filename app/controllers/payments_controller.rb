@@ -1,32 +1,61 @@
 # frozen_string_literal: true
 
-class PaymentsController < InheritedResources::Base
-  respond_to :html, :json
-  load_and_authorize_resource :request
-  load_and_authorize_resource :reimbursement, through: :request, singleton: true
-  load_and_authorize_resource through: :request
+class PaymentsController < ApplicationController
+  authorize_resource :request
+  authorize_resource :reimbursement, through: :request, singleton: true
+  authorize_resource through: :request
   skip_authorize_resource only: :file
+  prepend_before_action :set_request
+  before_action :set_reimbursement
+  before_action :set_payment, only: %i[edit update destroy file]
 
   before_action :load_methods, except: :file
 
-  belongs_to :request
-  belongs_to :reimbursement, singleton: true
-
-  def create
-    create! { parent_url }
+  def new
+    @payment = Payment.new
   end
 
+  def create
+    @payment = Payment.new(payment_params)
+    @payment.reimbursement = @reimbursement
+
+    respond_to do |format|
+      if @payment.save
+        format.html { redirect_to request_reimbursement_url(@request), notice: t(:payment_create) }
+        format.json { render :show, status: :created, location: @reimbursement }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @payment.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def edit; end
+
   def update
-    update! { parent_url }
+    respond_to do |format|
+      if @payment.update(payment_params)
+        format.html { redirect_to request_reimbursement_url(@request), notice: t(:payment_update) }
+        format.json { render :show, status: :updated, location: @payment }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @payment.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
-    destroy! { parent_url }
+    @payment.destroy
+
+    respond_to do |format|
+      format.html { redirect_to request_reimbursement_url(@request), notice: t(:payment_destroyed) }
+      format.json { head :no_content }
+    end
   end
 
   def file
-    authorize! :update, resource
-    send_file resource.file.path
+    authorize! :update, @payment
+    send_file @payment.file.path
   end
 
   protected
@@ -36,14 +65,34 @@ class PaymentsController < InheritedResources::Base
   end
 
   def set_breadcrumbs
-    @breadcrumbs = [label: parent.request, url: parent.request]
+    @breadcrumbs = [label: @request, url: @request]
     @breadcrumbs << { label: Reimbursement.model_name.human,
-                      url: request_reimbursement_path(parent.request) }
+                      url: request_reimbursement_path(request: @request) }
     @breadcrumbs << { label: Payment.model_name.human(count: 2) }
   end
 
-  def permitted_params
+  private
+
+  def set_request
+    @request = Request.find(params[:request_id])
+
+    redirect_back(fallback_location: requests_url) unless @request
+  end
+
+  def set_reimbursement
+    @reimbursement = @request.reimbursement
+
+    redirect_back(fallback_location: reimbursements_url) unless @reimbursement
+  end
+
+  def set_payment
+    @payment = Payment.find(params[:id])
+
+    redirect_back(fallback_location: request_reimbursement_url(@request)) unless @payment
+  end
+
+  def payment_params
     payment = %i[date amount currency cost_amount cost_currency method code subject notes file file_cache]
-    params.permit(payment: payment)
+    params.require(:payment).permit(payment)
   end
 end
