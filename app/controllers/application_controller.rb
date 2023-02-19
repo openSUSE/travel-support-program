@@ -37,12 +37,12 @@ class ApplicationController < ActionController::Base
   # Can be overidden by individuals controllers. Some logic merged here, though,
   # to avoid too much spreading
   def set_breadcrumbs
-    # For user related controllers
-    if users_controller?
-      @breadcrumbs = [{ label: :breadcrumb_user }]
-    else
-      @breadcrumbs = [{ label: '' }]
-    end
+    @breadcrumbs = if users_controller?
+                     # For user related controllers
+                     [{ label: :breadcrumb_user }]
+                   else
+                     [{ label: '' }]
+                   end
   end
 
   def users_controller?
