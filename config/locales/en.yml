@@ -246,3 +246,6 @@ en:
   budget_create: Budget was successfully created
   budget_update: Budget was successfully updated
   budget_destroyed: Budget was successfully destroyed
+  shipment_create: Shipment request was successfully created
+  shipment_update: Shipment request was successfully updated
+  shipment_destroyed: Shipment request was successfully destroyed

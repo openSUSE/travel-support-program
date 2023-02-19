@@ -10,7 +10,7 @@
       - s_opts = {'non-selected-text' => t(:states_any), 'number-displayed' => 2, 'n-selected-text' => t(:states_n) }
       = f.select :state_in, @states_collection, {}, :multiple => true, :data => s_opts
       = f.submit t(:search), :class => "btn btn-default"
-      = link_to t(:reset_search), collection_path, :class => "btn btn-default"
+      = link_to t(:reset_search), shipments_path, :class => "btn btn-default"
 
 %table.table.table-striped.shipments
   %thead
@@ -21,12 +21,12 @@
       %th= model_class.human_attribute_name(:shipment_type)
       %th= sort_link(@q, :state, [:state, "state_updated_at desc"])
   %tbody
-    - collection.each do |resource|
-      %tr{:id => "shipment-#{resource.id}"}
-        %td.id= link_to "#{resource.label}", resource
-        %td.user= resource.user.try(:title)
-        %td.event= resource.event.try(:name)
-        %td.shipment_type= resource.shipment_type
-        %td.state= timestamped_state(resource)
+    - @index.each do |shipment|
+      %tr{:id => "shipment-#{shipment.id}"}
+        %td.id= link_to "#{shipment.label}", shipment
+        %td.user= shipment.user.try(:title)
+        %td.event= shipment.event.try(:name)
+        %td.shipment_type= shipment.shipment_type
+        %td.state= timestamped_state(shipment)
 
-= paginate collection
+= paginate @index

@@ -2,40 +2,40 @@
 = content_for :page_header do
   .row
     .col-md-7
-      %h1= t('.title', :default => model_class.model_name.human) + " #{resource.label}"
+      %h1= t('.title', :default => model_class.model_name.human) + " #{@shipment.label}"
     .col-md-5
       %br
-      = state_change_links(resource)
-      - if can? :edit, resource
-        = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path, :class => 'btn btn-default'
-      - if can? :destroy, resource
-        = link_to t('.destroy', :default => t("helpers.links.destroy")), resource, :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-default'
+      = state_change_links(@shipment)
+      - if can? :edit, @shipment
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_shipment_path, :class => 'btn btn-default'
+      - if can? :destroy, @shipment
+        = link_to t('.destroy', :default => t("helpers.links.destroy")), @shipment, :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-default'
 
-= show_for resource do |r|
+= show_for @shipment do |r|
   .row
     .col-md-6
       = r.attribute :state do
         = state_info(r.object)
-        %div.alert-info= resource.human_state_guide
+        %div.alert-info= @shipment.human_state_guide
       = r.attribute :shipment_type
     .col-md-6
       = r.association :event do
-        = render resource.event
+        = render @shipment.event
       = r.association :user do
-        = render resource.user
+        = render @shipment.user
   .row
     .col-md-12
       = r.attribute :description do
-        = simple_format(resource.description)
+        = simple_format(@shipment.description)
   .row
     .col-md-6
       = r.association :postal_address do
-        = render resource.postal_address
+        = render @shipment.postal_address
     .col-md-6
       = r.attribute :contact_phone_number
 
   = r.attribute :history do
     = render :partial => "history"
-    - if can?(:create, resource.comments.build)
-      = link_to(t(:create_comment), resource_path + "/comments/new.js", :remote => true, :class => 'btn btn-default btn-sm')
+    - if can?(:create, @shipment.comments.build)
+      = link_to(t(:create_comment), shipment_path + "/comments/new.js", :remote => true, :class => 'btn btn-default btn-sm')
 

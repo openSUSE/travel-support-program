@@ -1,0 +1,15 @@
+-# This is failing (too much magic for cancancan), so fallback to a more 'manual' approach
+-# events = @shipment.state_changes.oldest_first + @shipment.comments.accessible_by(current_ability).oldest_first
+- events = @shipment.state_changes.oldest_first
+- events += @shipment.comments.oldest_first.select {|c| can?(:read, c) }
+- events.sort_by! {|e| e.created_at }
+- if events.empty?
+  %p= t(:no_history_yet)
+- else
+  %ul.history
+    - events.each do |e|
+      %li
+        - if e.kind_of? Comment
+          = render e
+        - else
+          = render :partial => "state_changes/state_change", :object => e

@@ -16,7 +16,7 @@ feature 'Shipment', '' do
     fill_in 'shipment_description', with: 'I need it to explain how to use it to the other pilots.'
     fill_in 'shipment_postal_address_attributes_line1', with: 'Send it to the base.'
     click_button 'Create shipment request'
-    page.should have_content 'shipment request was successfully created'
+    page.should have_content 'Shipment request was successfully created'
     page.should have_content "then submit the request using the 'Action' button"
     shipment = Shipment.order(:created_at, :id).last
 
@@ -63,7 +63,7 @@ feature 'Shipment', '' do
     fill_in 'shipment_postal_address_attributes_county', with: 'Hoth'
     fill_in 'shipment_postal_address_attributes_postal_code', with: '1980'
     click_button 'Update shipment request'
-    page.should have_content 'shipment request was successfully updated'
+    page.should have_content 'Shipment request was successfully updated'
     page.should have_content '1980 Ice Mountain'
     page.should have_content '+19 800 521'
     # Default country should be set from the event country
