@@ -252,3 +252,6 @@ en:
   travel_sponsorship_create: Request was successfully created
   travel_sponsorship_update: Request was successfully updated
   travel_sponsorship_destroyed: Request was successfully destroyed
+  reimbursement_create: Reimbursement was successfully created
+  reimbursement_update: Reimbursement was successfully updated
+  reimbursement_destroyed: Reimbursement was successfully destroyed

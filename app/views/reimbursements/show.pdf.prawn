@@ -5,12 +5,12 @@ prawn_document :page_size => "A4", :force_download => true do |pdf|
   expenses_data = [ [RequestExpense.human_attribute_name(:subject),
                     RequestExpense.human_attribute_name(:description),
                     RequestExpense.human_attribute_name(:authorized_amount) ] ]
-  expenses_data += resource.expenses.map do |e|
+  expenses_data += @reimbursement.expenses.map do |e|
     [e.subject, e.description, number_to_currency(e.authorized_amount, :unit => e.authorized_currency)]
   end
-  expenses_data << [ "", Reimbursement.human_attribute_name(:authorized_sum), expenses_sum(resource, :authorized) ]
+  expenses_data << [ "", Reimbursement.human_attribute_name(:authorized_sum), expenses_sum(@reimbursement, :authorized) ]
 
-  user = resource.user
+  user = @reimbursement.user
   profile = user.profile
   # For address table
   address_data = [:postal_address, :zip_code, :location].map do |a|
@@ -25,14 +25,14 @@ prawn_document :page_size => "A4", :force_download => true do |pdf|
   profile_data << [User.human_attribute_name(:email), user.email]
 
   # For event tables
-  event = resource.event
+  event = @reimbursement.event
   event1_data = [ [Event.human_attribute_name(:name), event.name],
                   [Event.human_attribute_name(:country), country_label(event.country_code) ] ]
   event2_data = [ [Event.human_attribute_name(:start_date), I18n.l(event.start_date, :format => :long)],
                   [Event.human_attribute_name(:end_date), I18n.l(event.end_date, :format => :long) ] ]
 
   # Bank information
-  bank = resource.bank_account
+  bank = @reimbursement.bank_account
   unless bank.nil? # Should not happen with sane data, anyway
     bank_attributes = [:holder, :bank_name]
     if bank.iban?
@@ -47,7 +47,7 @@ prawn_document :page_size => "A4", :force_download => true do |pdf|
   end
 
   # Validation warning message
-  error_messages = resource.potential_error_full_messages(except: :acceptance_file)
+  error_messages = @reimbursement.potential_error_full_messages(except: :acceptance_file)
   warning_text = error_messages.map {|m| " - #{m}" }.join("\n")
   unless warning_text.empty?
     warning_text =  I18n.t(:reimbursement_acceptance_warning) + "\n" + warning_text
@@ -64,7 +64,7 @@ prawn_document :page_size => "A4", :force_download => true do |pdf|
   pdf.bounding_box [ pdf.bounds.left, pdf.cursor ], :width => 550, :height => 650 do
     pdf.text Rails.configuration.site['program_name'], :size => 16, :style => :bold
     pdf.move_down(10)
-    pdf.text "#{resource.title} - #{profile.full_name}", :size => 14, :style => :bold
+    pdf.text "#{@reimbursement.title} - #{profile.full_name}", :size => 14, :style => :bold
     # Warning
     pdf.move_down(8)
     unless warning_text.empty?

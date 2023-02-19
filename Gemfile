@@ -57,7 +57,6 @@ gem 'date_validator'
 gem 'devise'
 gem 'devise_ichain_authenticatable', '>= 0.3.0'
 gem 'git'
-gem 'inherited_resources'
 gem 'kaminari'
 # Newer prawn lost the template support in Document
 # Would be good to replace with something else
