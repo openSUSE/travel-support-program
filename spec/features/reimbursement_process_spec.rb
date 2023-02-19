@@ -13,7 +13,7 @@ feature 'Reimbursements', '' do
     click_link 'Ask for reimbursement'
 
     # Request creation
-    page.should have_content 'reimbursement was successfully created'
+    page.should have_content 'Reimbursement was successfully created'
     page.should have_content 'authorized amount for every expense will be automatically calculated'
     # No 'authorized' column is expected in the expenses table
     page.should_not have_xpath("//thead[@id='expenses_head']//tr//th[contains(.,'authorized')]")
@@ -29,7 +29,7 @@ feature 'Reimbursements', '' do
       find('input').set '50'
     end
     click_button 'Update reimbursement'
-    page.should have_content 'reimbursement was successfully updated'
+    page.should have_content 'Reimbursement was successfully updated'
     reimbursement = Reimbursement.order(:created_at).last
 
     # Failed submission
@@ -49,7 +49,7 @@ feature 'Reimbursements', '' do
       find('input').set '100'
     end
     click_button 'Update reimbursement'
-    page.should have_content 'reimbursement was successfully updated'
+    page.should have_content 'Reimbursement was successfully updated'
 
     # The signature notification (and the link) should be there...
     page.should have_content 'An updated signed version of the reimbursement request is required'
@@ -125,7 +125,7 @@ feature 'Reimbursements', '' do
       find('input[name$="[file]"]').set Rails.root.join('spec', 'support', 'files', 'scan001.pdf')
     end
     click_button 'Update reimbursement'
-    page.should have_content 'reimbursement was successfully updated'
+    page.should have_content 'Reimbursement was successfully updated'
 
     # And submit again
     click_link 'Action'

@@ -45,8 +45,8 @@ module ReimbursementsHelper
           end
 
     links = []
-    links << link_to(t(:pdf_format), request_reimbursement_path(reimbursement.request, format: :pdf)) if can_read_pdf_for?(resource) && resource.editable?
-    links << link_to(t(:send_reimbursement_acceptance), new_request_reimbursement_acceptance_path(resource.request), remote: true) if can? :submit, reimbursement
+    links << link_to(t(:pdf_format), request_reimbursement_path(reimbursement.request, format: :pdf)) if can_read_pdf_for?(reimbursement) && reimbursement.editable?
+    links << link_to(t(:send_reimbursement_acceptance), new_request_reimbursement_acceptance_path(reimbursement.request), remote: true) if can? :submit, reimbursement
 
     info = if can? :submit, reimbursement
              t(:reimbursement_acceptance_intro).html_safe
