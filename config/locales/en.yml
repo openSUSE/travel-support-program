@@ -240,3 +240,6 @@ en:
   event_email_create: Email Delivered
   event_organizer_create: Event Organizer Added
   event_organizer_destroyed: Event Organizer Removed
+  payment_create: Payment was successfully created
+  payment_update: Payment was successfully updated
+  payment_destroyed: Payment was successfully destroyed
