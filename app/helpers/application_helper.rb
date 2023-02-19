@@ -134,6 +134,14 @@ module ApplicationHelper
   #                                  object including the HasState mixin)
   # @return [String] a bootstrap-based button dropdown menu
   def state_change_links(machine)
+    resource_path = case machine.class.name
+                    when 'Shipment'
+                      shipment_path(machine)
+                    when 'Reimbursement'
+                      request_reimbursement_path(machine.request)
+                    when 'TravelSponsorship'
+                      travel_sponsorship_path(machine)
+                    end
     trans_path = resource_path + '/state_transitions/new.js?state_transition[state_event]='
     links = machine.state_events.map do |event|
       next unless can? event, machine
