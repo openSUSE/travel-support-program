@@ -243,3 +243,6 @@ en:
   payment_create: Payment was successfully created
   payment_update: Payment was successfully updated
   payment_destroyed: Payment was successfully destroyed
+  budget_create: Budget was successfully created
+  budget_update: Budget was successfully updated
+  budget_destroyed: Budget was successfully destroyed

@@ -1,4 +1,4 @@
-= simple_form_for(resource, html: { class: 'form-horizontal form-inputs col-md-6' }, wrapper: :horizontal_form) do |f|
+= simple_form_for(@budget, html: { class: 'form-horizontal form-inputs col-md-6' }, wrapper: :horizontal_form) do |f|
   = f.input :name
   = f.input :description
   = f.input :amount
@@ -7,4 +7,4 @@
 
   .well
     = f.button :submit, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), collection_path, :class => 'btn btn-default'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), budgets_path, :class => 'btn btn-default'
