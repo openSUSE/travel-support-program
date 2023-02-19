@@ -35,7 +35,7 @@
       = r.attribute :contact_phone_number
 
   = r.attribute :history do
-    = render :partial => "history"
+    = render :partial => "history", locals: { resource: @shipment }
     - if can?(:create, @shipment.comments.build)
       = link_to(t(:create_comment), shipment_path + "/comments/new.js", :remote => true, :class => 'btn btn-default btn-sm')
 

@@ -26,7 +26,7 @@ feature 'Requests', '' do
       # find('input[name$="[estimated_currency]"]').set "EUR"
     end
     click_button 'Create travel support request'
-    page.should have_content 'request was successfully created'
+    page.should have_content 'Request was successfully created'
     page.should have_content "then submit the request using the 'Action' button"
     request = Request.order(:created_at, :id).last
 
@@ -48,7 +48,7 @@ feature 'Requests', '' do
     fill_in 'travel_sponsorship_expenses_attributes_1_estimated_amount', with: '50'
     select 'EUR', from: 'travel_sponsorship_expenses_attributes_1_estimated_currency'
     click_button 'Update travel support request'
-    page.should have_content 'request was successfully updated'
+    page.should have_content 'Request was successfully updated'
 
     # Submit again
     click_link 'Action'
@@ -115,7 +115,7 @@ feature 'Requests', '' do
     page.should have_content 'Edit travel support request'
     fill_in 'travel_sponsorship_expenses_attributes_1_estimated_amount', with: '35'
     click_button 'Update travel support request'
-    page.should have_content 'request was successfully updated'
+    page.should have_content 'Request was successfully updated'
 
     # And submit again
     click_link 'Action'
