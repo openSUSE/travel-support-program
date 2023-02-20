@@ -269,7 +269,7 @@ GEM
       ffi (~> 1.0)
     rchardet (1.8.0)
     rdoc (6.3.3)
-    redcarpet (3.5.1)
+    redcarpet (3.6.0)
     regexp_parser (2.6.1)
     responders (3.0.1)
       actionpack (>= 5.0)
