@@ -55,7 +55,7 @@ gem 'country_select'
 gem 'daemons'
 gem 'date_validator'
 gem 'devise'
-gem 'devise_ichain_authenticatable', '>= 0.3.0'
+gem 'devise_ichain_authenticatable', '>= 0.3.2'
 gem 'git'
 gem 'kaminari'
 # Newer prawn lost the template support in Document
