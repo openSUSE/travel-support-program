@@ -2,8 +2,8 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '>= 5.1.7', '< 5.1.99'
-gem 'rails-i18n'
+gem 'rails', '~> 6.1', '>= 6.1.7.3'
+gem 'rails-i18n', '>= 6.0.0'
 gem 'responders'
 
 # Choose your weapon
@@ -55,7 +55,7 @@ gem 'country_select'
 gem 'daemons'
 gem 'date_validator'
 gem 'devise'
-gem 'devise_ichain_authenticatable', '>= 0.3.0'
+gem 'devise_ichain_authenticatable', '>= 0.3.2'
 gem 'git'
 gem 'kaminari'
 # Newer prawn lost the template support in Document
