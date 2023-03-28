@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '>= 5.1.7', '< 5.1.99'
+gem 'rails', '~> 6.1', '>= 6.1.7.3'
 gem 'rails-i18n'
 gem 'responders'
 
