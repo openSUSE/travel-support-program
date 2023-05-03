@@ -45,7 +45,7 @@ gem 'listen'
 gem 'byebug', group: %i[development test]
 
 gem 'active_hash'
-gem 'audited'
+gem 'audited', '>= 5.3.3'
 gem 'cancancan'
 gem 'carrierwave'
 gem 'caxlsx_rails'

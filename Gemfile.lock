@@ -46,8 +46,9 @@ GEM
     afm (0.2.2)
     arel (8.0.0)
     ast (2.4.2)
-    audited (5.2.0)
+    audited (5.3.3)
       activerecord (>= 5.0, < 7.1)
+      request_store (~> 1.2)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
     bcrypt (3.1.18)
@@ -96,7 +97,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.2.0)
+    concurrent-ruby (1.2.2)
     countries (5.3.1)
       unaccent (~> 0.3)
     country_select (8.0.1)
@@ -149,7 +150,7 @@ GEM
       railties (>= 5.1)
     hashery (2.1.2)
     htmlentities (4.3.4)
-    i18n (1.12.0)
+    i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
       mini_magick (>= 4.9.5, < 5)
@@ -198,7 +199,7 @@ GEM
     mini_portile2 (2.8.1)
     mini_racer (0.6.3)
       libv8-node (~> 16.10.0.0)
-    minitest (5.17.0)
+    minitest (5.18.0)
     nio4r (2.5.8)
     nokogiri (1.13.10)
       mini_portile2 (~> 2.8.0)
@@ -271,6 +272,8 @@ GEM
     rdoc (6.3.3)
     redcarpet (3.6.0)
     regexp_parser (2.6.1)
+    request_store (1.5.1)
+      rack (>= 1.4)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -395,7 +398,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_hash
-  audited
+  audited (>= 5.3.3)
   bootstrap-sass
   byebug
   cancancan
