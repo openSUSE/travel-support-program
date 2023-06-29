@@ -2,9 +2,9 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '>= 5.1.7', '< 5.1.99'
-gem 'rails-i18n'
-gem 'responders'
+gem 'rails', '~> 6.1', '>= 6.1.7.4'
+gem 'rails-i18n', '>= 6.0.0'
+gem 'responders', '>= 3.1.0'
 
 # Choose your weapon
 gem 'sqlite3', '~> 1.6.1'
@@ -22,9 +22,9 @@ gem 'bootstrap-sass'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails'
+gem 'coffee-rails', '>= 5.0.0'
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 4.6.0'
 gem 'jquery-ui-rails'
 # HAML as default
 gem 'haml-rails'
@@ -32,7 +32,7 @@ gem 'haml-rails'
 gem 'mini_racer'
 
 # To test email with letter opener set the 'async_emails' option in site.yml to false
-gem 'letter_opener_web'
+gem 'letter_opener_web', '>= 2.0.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -54,7 +54,7 @@ gem 'cocoon'
 gem 'country_select'
 gem 'daemons'
 gem 'date_validator'
-gem 'devise'
+gem 'devise', '>= 4.9.0'
 gem 'devise_ichain_authenticatable', '>= 0.3.0'
 gem 'git'
 gem 'kaminari'
@@ -63,16 +63,16 @@ gem 'kaminari'
 gem 'prawn', '~> 0.13.0'
 gem 'prawn_rails'
 gem 'puma'
-gem 'ransack'
-gem 'show_for'
-gem 'simple_form'
+gem 'ransack', '>= 2.3.1'
+gem 'show_for', '>= 0.8.0'
+gem 'simple_form', '>= 5.1.0'
 gem 'state_machines-activerecord'
 # delayed_job must appear after protected_attributes
 gem 'delayed_job_active_record'
 
-gem 'exception_notification', group: :production
+gem 'exception_notification', '>= 4.5.0', group: :production
 gem 'redcarpet'
-gem 'rspec-rails', group: %i[development test]
+gem 'rspec-rails', '>= 5.0.0', group: %i[development test]
 gem 'simplecov', require: false
 gem 'simplecov-lcov', require: false
 
