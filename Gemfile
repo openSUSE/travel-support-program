@@ -66,7 +66,7 @@ gem 'puma'
 gem 'ransack'
 gem 'show_for'
 gem 'simple_form'
-gem 'state_machines-activerecord'
+gem 'state_machines-activerecord', '>= 0.9.0'
 # delayed_job must appear after protected_attributes
 gem 'delayed_job_active_record'
 
