@@ -8,7 +8,7 @@ gem 'responders'
 
 # Choose your weapon
 gem 'sqlite3', '~> 1.6.1'
-# gem 'pg', '~> 0.21'
+gem 'pg', '~> 0.21'
 # gem 'mysql2', '~> 0.4.10'
 
 # This can only be removed with Rails 7.0
