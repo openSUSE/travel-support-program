@@ -215,6 +215,7 @@ GEM
       hashery (~> 2.0)
       ruby-rc4
       ttfunk
+    pg (0.21.0)
     polyamorous (2.3.0)
       activerecord (>= 5.0)
     prawn (0.13.2)
@@ -429,6 +430,7 @@ DEPENDENCIES
   mail (< 2.8.0)
   mini_racer
   pdf-reader
+  pg (~> 0.21)
   prawn (~> 0.13.0)
   prawn_rails
   psych (< 4.0)
