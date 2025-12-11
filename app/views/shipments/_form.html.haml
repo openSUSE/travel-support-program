@@ -1,13 +1,13 @@
 %strong.label.label-default= Shipment.human_attribute_name(:event)
 %br
-= render resource.event
-- unless resource.errors[:event_id].empty?
-  %div.alert.alert-danger= resource.errors[:event_id].join("<br>")
+= render @shipment.event
+- unless @shipment.errors[:event_id].empty?
+  %div.alert.alert-danger= @shipment.errors[:event_id].join("<br>")
 
 %strong.label.label-default= Shipment.human_attribute_name(:shipment_type)
 %br
-%strong= resource.shipment_type
-= simple_form_for(resource, html: { class: 'form-horizontal form-inputs' }, wrapper: :horizontal_form) do |f|
+%strong= @shipment.shipment_type
+= simple_form_for(@shipment, html: { class: 'form-horizontal form-inputs' }, wrapper: :horizontal_form) do |f|
   %strong.label.label-default= t(:general_info)
   %br
   = f.hidden_field :event_id
@@ -28,7 +28,7 @@
 
   .well.col-md-12
     = f.button :submit, :class => 'btn btn-primary'
-    - if resource.new_record?
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), resource.event, :class => 'btn btn-default'
+    - if @shipment.new_record?
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), @shipment.event, :class => 'btn btn-default'
     - else
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), resource, :class => 'btn btn-default'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), @shipment, :class => 'btn btn-default'

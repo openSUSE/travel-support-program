@@ -49,9 +49,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # A separate controller is needed because inherited_resources cannot manage
-  # belongs_to resources associations that are both singleton and optional
-  resources :reimbursements, :only => [:index], :controller => :reimbursements_lists
+  resources :reimbursements, :only => [:index], :controller => :reimbursements
 
   resource :user_profile do
     get :password, :on => :member

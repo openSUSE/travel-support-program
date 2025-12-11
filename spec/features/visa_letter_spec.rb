@@ -27,7 +27,7 @@ feature 'Visa letter', '' do
     page.should have_content 'isa letter needed'
     click_button 'Create travel support request'
     # request show
-    page.should have_content 'request was successfully created'
+    page.should have_content 'Request was successfully created'
     page.should have_content 'isa letter needed'
   end
 end

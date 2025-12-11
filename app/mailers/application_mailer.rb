@@ -18,6 +18,7 @@ class ApplicationMailer < ActionMailer::Base
       else
         # :requester is not longer a valid role
         next if target == :requester
+
         User.with_role(target).each do |u|
           unless mailed.include?(email = u.email)
             notify(method, email, *args)

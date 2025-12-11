@@ -66,6 +66,7 @@ module HasState
   # return [Boolean] true if the state is updated
   def cancel
     return false unless can_cancel?
+
     self.state = 'canceled'
     save
   end
@@ -293,9 +294,11 @@ module HasState
       # Leaf classes send notifications
       if subclasses.blank?
         return true unless @reminder_timeouts
+
         machines = joins(:user)
         @reminder_timeouts.each do |state, time|
           next unless time
+
           machines.where(state: state).where(["COALESCE(state_updated_at, #{table_name}.created_at) < ?", time.ago]).each do |m|
             people = @reminder_roles[state].map { |i| i.to_sym == :requester ? m.user : i }
             HasStateMailer.notify_to(people, :state, m)

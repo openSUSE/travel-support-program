@@ -18,7 +18,7 @@ SimpleCov.start 'rails' do
 end
 
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/rails'
@@ -77,15 +77,12 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 
-  config.before(:each) do
+  config.before do
     DatabaseCleaner.strategy = :deletion
-  end
-
-  config.before(:each) do
     DatabaseCleaner.start
   end
 
-  config.after(:each) do
+  config.after do
     DatabaseCleaner.clean
   end
 

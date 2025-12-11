@@ -1,6 +1,6 @@
 %h3 Add an event organizer for #{@event.name}
 .col-md-4
-  = simple_form_for(resource, url: event_event_organizers_path) do |f|
+  = simple_form_for(@event_organizer, url: event_event_organizers_path) do |f|
     = f.error :user_id
     = f.input :user_email,label: false, :input_html => {"data-users" =>  autocomplete_user_event_event_organizers_path, class: 'form-control', placeholder: 'Search by email or nickname'}
     .form-group  

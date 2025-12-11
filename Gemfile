@@ -7,8 +7,8 @@ gem 'rails-i18n'
 gem 'responders'
 
 # Choose your weapon
-gem 'sqlite3', '~> 1.6.0'
-# gem 'pg', '~> 0.21'
+gem 'sqlite3', '~> 1.6.1'
+gem 'pg', '~> 0.21'
 # gem 'mysql2', '~> 0.4.10'
 
 # This can only be removed with Rails 7.0
@@ -49,7 +49,7 @@ gem 'byebug', group: %i[development test]
 
 gem 'active_hash'
 gem 'audited'
-gem 'cancancan', '~> 1.17'
+gem 'cancancan'
 gem 'carrierwave'
 gem 'caxlsx_rails'
 gem 'clockwork'
@@ -60,7 +60,6 @@ gem 'date_validator'
 gem 'devise'
 gem 'devise_ichain_authenticatable', '>= 0.3.0'
 gem 'git'
-gem 'inherited_resources'
 gem 'kaminari'
 # Newer prawn lost the template support in Document
 # Would be good to replace with something else
@@ -89,9 +88,9 @@ group :development do
   gem 'state_machines-yard'
   gem 'yard-activerecord'
   # for static code analisys
-  gem 'rubocop', '~> 0.52.0', require: false
-  # gem 'rubocop-rails', require: false
-  # gem 'rubocop-rspec', require: false
+  gem 'rubocop', '~> 0.70.0', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
 end
 
 group :test do

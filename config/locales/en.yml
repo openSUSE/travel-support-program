@@ -234,3 +234,24 @@ en:
   activerecord:
     errors:
       <<: *errors
+  event_create: Event was successfully created
+  event_update: Event was successfully updated
+  event_destroyed: Event was successfully destroyed
+  event_email_create: Email Delivered
+  event_organizer_create: Event Organizer Added
+  event_organizer_destroyed: Event Organizer Removed
+  payment_create: Payment was successfully created
+  payment_update: Payment was successfully updated
+  payment_destroyed: Payment was successfully destroyed
+  budget_create: Budget was successfully created
+  budget_update: Budget was successfully updated
+  budget_destroyed: Budget was successfully destroyed
+  shipment_create: Shipment request was successfully created
+  shipment_update: Shipment request was successfully updated
+  shipment_destroyed: Shipment request was successfully destroyed
+  travel_sponsorship_create: Request was successfully created
+  travel_sponsorship_update: Request was successfully updated
+  travel_sponsorship_destroyed: Request was successfully destroyed
+  reimbursement_create: Reimbursement was successfully created
+  reimbursement_update: Reimbursement was successfully updated
+  reimbursement_destroyed: Reimbursement was successfully destroyed

@@ -1,9 +1,9 @@
 # Inherit style from another configuration
 inherit_from: .rubocop_todo.yml
 
-# require:
-#  - rubocop-rails
-#  - rubocop-rspec
+require:
+ - rubocop-rails
+ - rubocop-rspec
 
 Metrics/ClassLength:
   Exclude:
@@ -17,9 +17,6 @@ Metrics/ModuleLength:
 AllCops:
   NewCops: enable
   TargetRubyVersion: 2.4
-  Include:
-    - '**/Rakefile'
-    - '**/config.ru'
   Exclude:
     - 'db/schema.rb'
     - 'vendor/bundle/**/*'
