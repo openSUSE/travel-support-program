@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '>= 5.1.7', '< 5.1.99'
+gem 'rails', '>= 5.1.7', '< 8.1.2'
 gem 'rails-i18n'
 gem 'responders'
 
@@ -12,7 +12,7 @@ gem 'pg', '~> 0.21'
 # gem 'mysql2', '~> 0.4.10'
 
 # This can only be removed with Rails 7.0
-gem 'mail', '< 2.8.0'
+gem 'mail', '< 2.10.0'
 gem 'psych', '< 4.0'
 
 # Use SCSS for stylesheets
