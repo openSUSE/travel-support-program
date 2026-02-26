@@ -27,14 +27,14 @@ jobs:
 
     - name: Install ruby dependencies
       run: |
-        gem.ruby2.7 install mini_racer -v 0.6.3
-        bundler.ruby2.7 install
+        gem.ruby3.2 install mini_racer -v 0.6.3
+        bundler.ruby3.2 install
 
     - name: Set up the environment
       run: |
         cp config/database.test.yml config/database.yml
         cp config/site.example.yml config/site.yml
-        bundler.ruby2.7 exec rake db:migrate RAILS_ENV=test
+        bundler.ruby3.2 exec rake db:migrate RAILS_ENV=test
 
     - if: ${{ matrix.type == 'rubocop' }}
       name: Run rubocop
@@ -42,11 +42,11 @@ jobs:
 
     - if: ${{ contains(fromJson('["features", "helpers", "mailer", "models"]'), matrix.type) }}
       name: Run spec
-      run: bundler.ruby2.7 exec rspec spec/${{ matrix.type }}/
+      run: bundler.ruby3.2 exec rspec spec/${{ matrix.type }}/
 
     - if: ${{ matrix.type == 'coverage' }}
       name: Run spec
-      run: bundler.ruby2.7 exec rspec
+      run: bundler.ruby3.2 exec rspec
 
     - if: ${{ matrix.type == 'coverage' }}
       name: Coveralls
