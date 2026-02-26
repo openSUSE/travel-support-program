@@ -2,7 +2,7 @@
 = content_for :page_header do
   .row
     .col-md-7
-      %h1= t('.title', :default => model_class.model_name.human) + " #{resource.label}"
+      %h1= t('.title', :default => model_class.model_name.human) + " #{@travel_sponsorship.label}"
     .col-md-5
       %br
       = state_change_links(@request)
@@ -63,7 +63,7 @@
           %td= number_to_currency(expense.approved_amount, :unit => expense.approved_currency)
 
   = r.attribute :history do
-    = render :partial => "history"
+    = render :partial => "history", locals: { resource: @travel_sponsorship }
     - if can?(:create, @request.comments.build)
-      = link_to(t(:create_comment), resource_path + "/comments/new.js", :remote => true, :class => 'btn btn-default btn-sm')
+      = link_to(t(:create_comment), travel_sponsorship_path(@travel_sponsorship) + "/comments/new.js", :remote => true, :class => 'btn btn-default btn-sm')
 

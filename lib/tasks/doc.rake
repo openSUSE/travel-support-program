@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'fix_state_machine_yard' if Rails.env.development?
 
 namespace :doc do

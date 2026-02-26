@@ -1,4 +1,6 @@
-class RenameFinalNotes < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class RenameFinalNotes < ActiveRecord::Migration[4.2]
   class DummyComment < ActiveRecord::Base
     self.table_name = 'comments'
   end

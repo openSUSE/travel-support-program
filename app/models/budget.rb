@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # A certain amount of money (in a given currency) to spend in a group of events
 #
@@ -7,11 +9,11 @@
 # associated to a group of events. If an event is associated to several budgets
 # with the same currency, the amounts are added.
 #
-class Budget < ActiveRecord::Base
+class Budget < ApplicationRecord
   # Events that are covered by the budget
   has_many :events
 
   validates :name, :amount, :currency, presence: true
 
-  auditable
+  audited
 end

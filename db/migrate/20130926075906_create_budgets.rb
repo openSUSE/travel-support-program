@@ -1,4 +1,6 @@
-class CreateBudgets < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class CreateBudgets < ActiveRecord::Migration[4.2]
   def change
     create_table :budgets do |t|
       t.string :name

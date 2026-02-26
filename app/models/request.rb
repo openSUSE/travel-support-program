@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 #
 # Base class for all requests, reimbursable or not
 #
-class Request < ActiveRecord::Base
+class Request < ApplicationRecord
   include HasState
   include HasComments
 
@@ -10,5 +12,5 @@ class Request < ActiveRecord::Base
 
   validates :event, presence: true
 
-  auditable
+  audited
 end

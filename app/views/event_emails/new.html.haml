@@ -10,7 +10,7 @@
           %input{id: 'state' + state, "type" => 'checkbox', "data-users" => users_for_event(state.downcase) }
           %label{'for' => 'state' + state} #{state}
   %br
-  = simple_form_for(resource, url: event_event_emails_path) do |f|
+  = simple_form_for(@event_email, url: event_event_emails_path) do |f|
     = f.input :to, as: :text,readonly: true,placeholder: 'Select the recipients', input_html: {rows: 1}
     = f.input :subject
     %div

@@ -1,4 +1,6 @@
-class CreateRequestExpenses < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class CreateRequestExpenses < ActiveRecord::Migration[4.2]
   def change
     create_table :request_expenses do |t|
       t.references :request, null: false

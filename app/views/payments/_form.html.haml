@@ -1,17 +1,17 @@
 %strong.label.label-default= Reimbursement.human_attribute_name(:event)
 %br
-= render parent.event
+= render @reimbursement.event
 %br
 %strong.label.label-default= Reimbursement.human_attribute_name(:user)
 %br
-= render parent.user
+= render @reimbursement.user
 %br
 %strong.label.label-default= Payment.human_attribute_name(:reimbursement)
 %br
-= render parent
+= render @reimbursement
 
-- form_path = resource.new_record? ? collection_path : resource_path
-= simple_form_for(resource, :url => form_path, html: { class: 'form-horizontal' }, wrapper: :horizontal_form) do |f|
+- form_path = @payment.new_record? ? request_reimbursement_payments_path : request_reimbursement_payment_path
+= simple_form_for(@payment, :url => form_path, html: { class: 'form-horizontal' }, wrapper: :horizontal_form) do |f|
   %strong.label.label-default= Payment.model_name.human
   %br
   .col-md-6

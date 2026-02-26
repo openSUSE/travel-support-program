@@ -1,4 +1,4 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 #
 # Helpers for testing the application
@@ -54,7 +54,7 @@ module CommonHelpers
     page.should have_content 'request'
     request.expenses.each do |e|
       page.should have_content e.subject
-      page.should have_content e.description
+      page.should have_content e.description unless e.description.nil?
     end
   end
 
@@ -105,7 +105,7 @@ module CommonHelpers
     page.should have_content 'reimbursement'
     reimbursement.expenses.each do |e|
       page.should have_content e.subject
-      page.should have_content e.description
+      page.should have_content e.description unless e.description.nil?
     end
   end
 

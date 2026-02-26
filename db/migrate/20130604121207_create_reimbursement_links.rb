@@ -1,4 +1,6 @@
-class CreateReimbursementLinks < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class CreateReimbursementLinks < ActiveRecord::Migration[4.2]
   def change
     create_table :reimbursement_links do |t|
       t.references :reimbursement

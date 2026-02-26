@@ -13,4 +13,4 @@
 <%= machine_url(@machine) %>
 
 --
-<%= TravelSupport::Config.setting :email_footer %>
+<%= Rails.configuration.site['email_footer'] %>

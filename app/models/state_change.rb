@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # @abstract Change in the state of a state machine (a request, reimbursement,
 # etc.). This class is not intended to be used directly, use one of the
@@ -10,7 +12,7 @@
 # @see StateTransition
 # @see StateAdjustment
 #
-class StateChange < ActiveRecord::Base
+class StateChange < ApplicationRecord
   before_validation :update_machine_state, on: :create
   before_update :prevent_update
   after_create :notify_state
@@ -47,12 +49,12 @@ class StateChange < ActiveRecord::Base
   protected
 
   def prevent_update
-    false
+    throw(:abort)
   end
 
   def update_machine_state
     # Prevent saving if the method have not been redefined in the subclass
-    false
+    throw(:abort)
   end
 
   def notify_state

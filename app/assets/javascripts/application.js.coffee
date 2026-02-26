@@ -13,7 +13,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery-ui
-#= require bootstrap
+#= require bootstrap-init
 #= require cocoon
 #= require additional
 #= require event_emails

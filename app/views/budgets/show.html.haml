@@ -5,12 +5,12 @@
       %h1= t('.title', :default => model_class.model_name.human)
     .col-md-5
       %br
-      - if can?(:update, resource)
-        = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path(resource), :class => 'btn btn-default'
-      - if can?(:destroy, resource)
-        = link_to t('.destroy', :default => t("helpers.links.destroy")), resource_path(resource), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-danger'
+      - if can?(:update, @budget)
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_budget_path(@budget), :class => 'btn btn-default'
+      - if can?(:destroy, @budget)
+        = link_to t('.destroy', :default => t("helpers.links.destroy")), budget_path(@budget), :method => "delete", :data => { :confirm => t("helpers.links.confirm") }, :class => 'btn btn-danger'
 
-= show_for resource do |r|
+= show_for @budget do |r|
   .row
     .col-md-12
       = r.attribute :name
@@ -18,4 +18,4 @@
       = r.attribute :amount do
         = number_to_currency(r.object.amount, :unit => r.object.currency)
       = r.association :events do
-        = resource.events.map(&:name).to_sentence
+        = @budget.events.map(&:name).to_sentence

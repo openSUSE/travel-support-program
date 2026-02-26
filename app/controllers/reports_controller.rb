@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReportsController < ApplicationController
   skip_load_and_authorize_resource
 
@@ -5,9 +7,7 @@ class ReportsController < ApplicationController
     @filter = params[:filter]
     if (@type = params[:by_type]) && (@group = params[:by_group])
       @expenses = TravelExpenseReport.by(@type, @group).accessible_by(current_ability)
-      if @filter
-        @filter.each { |k, v| @expenses = @expenses.send(k, v) unless v.blank? }
-      end
+      @filter&.each { |k, v| @expenses = @expenses.send(k, v) unless v.blank? }
       @expenses = @expenses.order('sum_amount desc')
       respond_to do |format|
         format.html do

@@ -1,23 +1,23 @@
 %strong.label.label-default= TravelSponsorship.human_attribute_name(:event)
 %br
-= render resource.event
-- unless resource.errors[:event_id].empty?
-  %div.alert.alert-danger= resource.errors[:event_id].join("<br>")
+= render @travel_sponsorship.event
+- unless @travel_sponsorship.errors[:event_id].empty?
+  %div.alert.alert-danger= @travel_sponsorship.errors[:event_id].join("<br>")
 %br
 %strong.label.label-default= t(:general_info)
 %br
-= simple_form_for(resource, html: { class: "form-horizontal"}, wrapper: :horizontal_form) do |f|
+= simple_form_for(@travel_sponsorship, html: { class: "form-horizontal"}, wrapper: :horizontal_form) do |f|
   .col-md-4
     = f.hidden_field :event_id
-    = f.input :visa_letter if resource.visa_letter_allowed?
+    = f.input :visa_letter if @travel_sponsorship.visa_letter_allowed?
     = f.input :description, :input_html => {:rows => 3}
   .form-inline.col-md-12
     %strong.label.label-default= TravelSponsorship.human_attribute_name(:expenses)
-    - if !resource.errors[:expenses].empty?
-      .alert.alert-inline.alert-danger= resource.expenses.map {|e| e.errors.full_messages}.uniq.join("; ")
-    - delete_me = resource.expenses.build
+    - if !@travel_sponsorship.errors[:expenses].empty?
+      .alert.alert-inline.alert-danger= @travel_sponsorship.expenses.map {|e| e.errors.full_messages}.uniq.join("; ")
+    - delete_me = @travel_sponsorship.expenses.build
     - can_create_expense = can?(:create, delete_me)
-    - resource.expenses.delete(delete_me)
+    - @travel_sponsorship.expenses.delete(delete_me)
     %table.table.table-condensed
       %thead
         %tr
@@ -35,7 +35,7 @@
 
   .well.col-md-12
     = f.button :submit, :class => 'btn btn-primary'
-    - if resource.new_record?
+    - if @travel_sponsorship.new_record?
       = link_to t('.cancel', :default => t("helpers.links.cancel")), travel_sponsorships_path, :class => 'btn btn-default'
     - else
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), resource, :class => 'btn btn-default'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), @travel_sponsorship, :class => 'btn btn-default'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Application-wide helpers
 #
@@ -29,22 +31,22 @@ module ApplicationHelper
   # Outputs the state of a model instance with the appropiate
   # css class and the associated date
   #
-  # @param [#state] r  the request, reimbursement or any other object with state
+  # @param [#state] object_with_state  the request, reimbursement or any other object with state
   # @return [String] HTML output
-  def timestamped_state(r)
-    msg = content_tag(:span, r.human_state_name, class: r.state)
-    msg += ' ' +  t(:since, date: l(r.state_updated_at, format: :long)) unless r.state_updated_at.blank?
+  def timestamped_state(object_with_state)
+    msg = content_tag(:span, object_with_state.human_state_name, class: object_with_state.state)
+    msg += ' ' +  t(:since, date: l(object_with_state.state_updated_at, format: :long)) unless object_with_state.state_updated_at.blank?
     raw(msg)
   end
 
   # Outputs the state of a model instance with a help tooltip if needed
   #
-  # @param [#state] r  the request, reimbursement or any other object with state
+  # @param [#state] object_with_state  the request, reimbursement or any other object with state
   # @return [String] HTML output
-  def state_info(r)
-    msg = content_tag(:span, r.human_state_name, class: r.state)
-    msg += " (#{r.human_state_description})"
-    if r.state_updated_at.blank?
+  def state_info(object_with_state)
+    msg = content_tag(:span, object_with_state.human_state_name, class: object_with_state.state)
+    msg += " (#{object_with_state.human_state_description})"
+    if object_with_state.state_updated_at.blank?
       msg += ' '
       msg += content_tag(:span, '!', title: t(:state_help), class: 'badge with-tooltip')
     end
@@ -74,7 +76,6 @@ module ApplicationHelper
   # @param [String] label  additional text to prepend to the icon
   # @return [String] HTML output
   def collapse_link(target, label = '')
-    label << ' ' unless label.empty?
     link_to(label.html_safe + content_tag(:i, '', class: 'icon-resize-vertical'),
             "\##{target}", title: t(:collapse), data: { toggle: :collapse })
   end
@@ -93,19 +94,19 @@ module ApplicationHelper
   # as a list of comma separated number_to_currency (one for
   # every used currency)
   #
-  # @param [Object] r a request, a reimbursement or a collection (reimbursements
-  #                   or request, not mixed)
+  # @param [Object] object a request, a reimbursement or a collection (reimbursements
+  #                        or request, not mixed)
   # @param [Symbol] attr can be :estimated, :approved, :total or :authorized
   # @return [String] HTML output
-  def expenses_sum(r, attr)
-    sum = if r.respond_to?(:size)
-            if first = r.first
-              first.class.expenses_sum(attr, r)
+  def expenses_sum(object, attr)
+    sum = if object.respond_to?(:size)
+            if first = object.first
+              first.class.expenses_sum(attr, object)
             else
               []
             end
           else
-            r.expenses_sum(attr)
+            object.expenses_sum(attr)
           end
     sum.map { |k, v| number_to_currency(v, unit: (k || '?')) }.join(', ')
   end
@@ -133,9 +134,18 @@ module ApplicationHelper
   #                                  object including the HasState mixin)
   # @return [String] a bootstrap-based button dropdown menu
   def state_change_links(machine)
+    resource_path = case machine.class.name
+                    when 'Shipment'
+                      shipment_path(machine)
+                    when 'Reimbursement'
+                      request_reimbursement_path(machine.request)
+                    when 'TravelSponsorship'
+                      travel_sponsorship_path(machine)
+                    end
     trans_path = resource_path + '/state_transitions/new.js?state_transition[state_event]='
     links = machine.state_events.map do |event|
       next unless can? event, machine
+
       link_to(t("activerecord.state_machines.events.#{event}").titleize, trans_path + event.to_s, remote: true)
     end.compact
     # Add cancel link
@@ -218,7 +228,7 @@ module ApplicationHelper
       next if message.blank?
 
       type = 'success' if type == 'notice'
-      type = 'danger' if type == 'error' || type == 'alert'
+      type = 'danger' if %w[error alert].include?(type)
       next unless %w[danger info success warning].include?(type)
 
       Array(message).each do |msg|
@@ -239,12 +249,12 @@ module ApplicationHelper
   #            going to be defined. Only relevant if budget_limits are enabled.
   # @return [Array]  Array with the currency codes
   def currencies_for_select(field, event = nil)
-    if TravelSupport::Config.setting(:budget_limits) &&
+    if Rails.configuration.site['budget_limits'] &&
        event && event.budget && event.budget.currency &&
        %w[approved authorized].include?(field.to_s)
       currencies = [event.budget.currency]
     end
-    currencies ||= TravelSupport::Config.setting("currencies_for_#{field}")
+    currencies ||= Rails.configuration.site["currencies_for_#{field}"]
     currencies ||= I18n.translate(:currencies).keys.sort
   end
 
@@ -252,7 +262,7 @@ module ApplicationHelper
   #
   # @return [String] local path of the image
   def pdf_header_image
-    if theme = TravelSupport::Config.setting(:theme)
+    if theme = Rails.configuration.site['theme']
       path = File.join(Rails.root.to_s, 'app', 'themes', theme, 'assets', 'images', 'pdf', 'header.png')
       return path if File.exist?(path)
     end
@@ -264,6 +274,7 @@ module ApplicationHelper
   # @return [Boolean] true if signed in by means of iChain
   def user_signed_in_by_ichain?
     return false unless user_signed_in?
+
     current_user.respond_to?(:signed_in_by_ichain?) && current_user.signed_in_by_ichain?
   end
 
@@ -271,7 +282,8 @@ module ApplicationHelper
   #
   # @return [String] unordered list containing the breadcrumbs
   def breadcrumbs
-    return '' unless @breadcrumbs && @breadcrumbs.respond_to?(:map)
+    return '' unless @breadcrumbs&.respond_to?(:map)
+
     crumbs = @breadcrumbs.map do |b|
       # First of all, adjust the label,...
       label = b[:label]
@@ -308,6 +320,6 @@ module ApplicationHelper
   # @return [Boolean] value of the :enabled key for the provided path in the
   #         configuration file
   def enabled?(*setting_path)
-    TravelSupport::Config.setting(*setting_path, :enabled)
+    Rails.configuration.site.dig(*setting_path)['enabled']
   end
 end

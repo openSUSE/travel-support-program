@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Event is, in some way, the root of the model's hierarchy since any
 # Request and any Reimbursement are always associated with an event
@@ -6,7 +8,7 @@
 # 'validated'. This attribute is used to control which users can create, update
 # and destroy the event.
 #
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   # Requests for attending the event
   has_many :requests, inverse_of: :event, dependent: :restrict_with_exception
   # Shipment requests for merchandising
@@ -18,12 +20,12 @@ class Event < ActiveRecord::Base
   # Event Organizers for the event
   has_many :event_organizers
   # Budget to use as a limit for approved amounts
-  belongs_to :budget
+  belongs_to :budget, optional: true
 
   validates :name, :start_date, :end_date, :country_code, presence: true
   validates :end_date, date: { after_or_equal_to: :start_date }
 
-  auditable
+  audited
 
   default_scope { order('name asc') }
 
@@ -47,7 +49,8 @@ class Event < ActiveRecord::Base
   #
   # @return [Boolean] true if accepting new requests
   def accepting_requests?
-    return false unless TravelSupport::Config.setting(:travel_sponsorships, :enabled)
+    return false unless Rails.configuration.site['travel_sponsorships']['enabled']
+
     if request_creation_deadline
       Time.zone.now < request_creation_deadline
     else
@@ -75,7 +78,8 @@ class Event < ActiveRecord::Base
   #
   # @return [Boolean] true if accepting new shipments
   def accepting_shipments?
-    return false unless TravelSupport::Config.setting(:shipments, :enabled)
+    return false unless Rails.configuration.site['shipments']['enabled']
+
     begin
       (!shipment_type.blank? && Date.today < start_date)
     rescue
@@ -88,6 +92,6 @@ class Event < ActiveRecord::Base
   #
   # @return [Array] a list of the restricted attribute names as symbols
   def self.validation_attributes
-    [:validated, :visa_letters, :request_creation_deadline, :reimbursement_creation_deadline, :shipment_type]
+    %i[validated visa_letters request_creation_deadline reimbursement_creation_deadline shipment_type]
   end
 end

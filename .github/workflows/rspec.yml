@@ -8,31 +8,48 @@ on:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        type: [coverage, features, helpers, mailer, models, rubocop]
     runs-on: ubuntu-latest
     container: registry.opensuse.org/opensuse/infrastructure/tsp/containers/base:main
 
     steps:
-    - name: Install bundler
-      run: gem.ruby2.7 install bundler -v 1.17.3
-
     - uses: actions/checkout@v2
 
+    - name: Cache ruby dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          /usr/lib64/ruby/gems/
+          /usr/bin/
+        key: ${{ hashFiles('Gemfile.lock') }}
+
     - name: Install ruby dependencies
-      run: bundler.ruby2.7 _1.17.3_ install
+      run: |
+        gem.ruby2.7 install mini_racer -v 0.6.3
+        bundler.ruby2.7 install
 
     - name: Set up the environment
       run: |
         cp config/database.test.yml config/database.yml
         cp config/site.example.yml config/site.yml
-        bundler.ruby2.7 _1.17.3_ exec rake db:migrate RAILS_ENV=test
+        bundler.ruby2.7 exec rake db:migrate RAILS_ENV=test
 
-    - name: Run rubocop
-      run: bundler.ruby2.7 _1.17.3_ exec rubocop
+    - if: ${{ matrix.type == 'rubocop' }}
+      name: Run rubocop
+      run: bundler.ruby2.7 exec rubocop
 
-    - name: Run spec
-      run: bundler.ruby2.7 _1.17.3_ exec rake spec
+    - if: ${{ contains(fromJson('["features", "helpers", "mailer", "models"]'), matrix.type) }}
+      name: Run spec
+      run: bundler.ruby2.7 exec rspec spec/${{ matrix.type }}/
 
-    - name: Coveralls
+    - if: ${{ matrix.type == 'coverage' }}
+      name: Run spec
+      run: bundler.ruby2.7 exec rspec
+
+    - if: ${{ matrix.type == 'coverage' }}
+      name: Coveralls
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}

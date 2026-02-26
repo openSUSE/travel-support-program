@@ -1,4 +1,6 @@
-class EventOrganizer < ActiveRecord::Base
+# frozen_string_literal: true
+
+class EventOrganizer < ApplicationRecord
   belongs_to :user
   belongs_to :event
 

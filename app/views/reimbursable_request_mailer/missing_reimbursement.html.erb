@@ -5,4 +5,4 @@
 <p><%= t(:missing_reimbursement_advise) %></p>
 
 <p>--<br>
-<%= TravelSupport::Config.setting :email_footer %></p>
+<%= Rails.configuration.site['email_footer'] %></p>

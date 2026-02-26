@@ -2,12 +2,12 @@
 %li= link_to Event.model_name.human(count: 2).humanize, events_path
 - if user_signed_in?
   %li= link_to t(:profile_link), profile_path
-  - if enabled? :travel_sponsorships
+  - if enabled? 'travel_sponsorships'
     %li= link_to TravelSponsorship.model_name.human(count: 2).humanize, menu_path_to(TravelSponsorship)
     %li= link_to Reimbursement.model_name.human(count: 2).humanize, menu_path_to(Reimbursement)
-  - if enabled? :shipments
+  - if enabled? 'shipments'
     %li= link_to Shipment.model_name.human(count: 2).humanize, menu_path_to(Shipment)
   - if can? :read, Budget
     %li= link_to Budget.model_name.human(count: 2).humanize, budgets_path
-  - if enabled? :travel_sponsorships
+  - if enabled? 'travel_sponsorships'
     %li= link_to TravelExpenseReport.model_name.human.humanize, travel_expenses_report_path

@@ -1,4 +1,5 @@
-TravelSupport::Application.routes.draw do
+Rails.application.routes.draw do
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
 
   devise_for :users,
@@ -48,9 +49,7 @@ TravelSupport::Application.routes.draw do
     end
   end
 
-  # A separate controller is needed because inherited_resources cannot manage
-  # belongs_to resources associations that are both singleton and optional
-  resources :reimbursements, :only => [:index], :controller => :reimbursements_lists
+  resources :reimbursements, :only => [:index], :controller => :reimbursements
 
   resource :user_profile do
     get :password, :on => :member
@@ -70,7 +69,7 @@ TravelSupport::Application.routes.draw do
 
   get 'profile' => 'user_profiles#edit', :as => :profile
   get 'profile/password' => 'user_profiles#password', :as => :profile_password
-  get 'pages/:action', :controller => 'pages'
+  resources :pages, :controller => 'pages'
   get 'reports/travel_expenses' => "reports#travel_expenses", :as => :travel_expenses_report
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):

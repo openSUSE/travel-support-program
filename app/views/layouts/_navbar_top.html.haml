@@ -4,7 +4,7 @@
     %span.icon-bar
     %span.icon-bar
     %span.icon-bar
-  =link_to TravelSupport::Config.setting(:program_name), root_path, :class => "navbar-brand"
+  =link_to Rails.configuration.site['program_name'], root_path, :class => "navbar-brand"
 #bs-example-navbar-collapse-1.collapse.navbar-collapse
   %ul.nav.navbar-nav
     - if user_signed_in?
@@ -14,9 +14,9 @@
       - else
         %li= link_to t(:logout), destroy_user_session_path, :method => :delete
     - else
-      - if enabled?(:authentication, :database)
+      - if enabled?('authentication', 'database')
         %li= link_to t(:login), new_user_session_path
         %li= link_to t(:sign_up), new_registration_path(User)
-      - if enabled?(:authentication, :ichain)
+      - if enabled?('authentication', 'ichain')
         %li= link_to t(:ichain_login), new_user_ichain_session_path
         %li= link_to t(:ichain_sign_up), new_ichain_registration_path(User)

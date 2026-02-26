@@ -1,4 +1,6 @@
-class CreatePostalAddresses < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class CreatePostalAddresses < ActiveRecord::Migration[4.2]
   def up
     create_table :postal_addresses do |t|
       t.string :line1

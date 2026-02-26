@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 # require 'ruby-debug'
 
@@ -14,12 +16,12 @@ feature 'Shipment', '' do
     fill_in 'shipment_description', with: 'I need it to explain how to use it to the other pilots.'
     fill_in 'shipment_postal_address_attributes_line1', with: 'Send it to the base.'
     click_button 'Create shipment request'
-    page.should have_content 'shipment request was successfully created'
+    page.should have_content 'Shipment request was successfully created'
     page.should have_content "then submit the request using the 'Action' button"
-    @shipment = Shipment.order(:created_at, :id).last
+    shipment = Shipment.order(:created_at, :id).last
 
     # Testing audits, just in case
-    @shipment.audits.order('created_at, id').last.user.should == users(:luke)
+    shipment.audits.order('created_at, id').last.user.should == users(:luke)
 
     # Initial request
     click_link 'Action'
@@ -31,12 +33,12 @@ feature 'Shipment', '' do
 
     # Try to update
     page.should_not have_content 'Edit'
-    visit edit_shipment_path(@shipment)
-    page.should have_content 'You are not allowed to access this page. If you think that you should, contact your administrator.'
+    visit edit_shipment_path(shipment)
+    page.should have_content "You are not allowed to access this page.\nIf you think that you should, contact your administrator."
 
     # Log in as material manager
     click_link 'Log out'
-    find_shipment_as(users(:material), @shipment)
+    find_shipment_as(users(:material), shipment)
 
     # Roll back
     click_link 'Action'
@@ -49,10 +51,10 @@ feature 'Shipment', '' do
 
     # Log in as requester
     click_link 'Log out'
-    find_shipment_as(users(:luke), @shipment)
+    find_shipment_as(users(:luke), shipment)
 
     # Update the shipment
-    visit shipment_path(@shipment)
+    visit shipment_path(shipment)
     click_link 'Edit'
     page.should have_content 'Edit shipment request'
     fill_in 'shipment_contact_phone_number', with: '+19 800 521'
@@ -61,7 +63,7 @@ feature 'Shipment', '' do
     fill_in 'shipment_postal_address_attributes_county', with: 'Hoth'
     fill_in 'shipment_postal_address_attributes_postal_code', with: '1980'
     click_button 'Update shipment request'
-    page.should have_content 'shipment request was successfully updated'
+    page.should have_content 'Shipment request was successfully updated'
     page.should have_content '1980 Ice Mountain'
     page.should have_content '+19 800 521'
     # Default country should be set from the event country
@@ -77,7 +79,7 @@ feature 'Shipment', '' do
 
     # Log in as material manager
     click_link 'Log out'
-    find_shipment_as(users(:material), @shipment)
+    find_shipment_as(users(:material), shipment)
 
     # Approval
     click_link 'Action'
@@ -90,7 +92,7 @@ feature 'Shipment', '' do
 
     # Log in as shipper
     click_link 'Log out'
-    find_shipment_as(users(:shipper), @shipment)
+    find_shipment_as(users(:shipper), shipment)
 
     # And send the material
     click_link 'Action'
@@ -104,7 +106,7 @@ feature 'Shipment', '' do
 
     # Log in as requester
     click_link 'Log out'
-    find_shipment_as(users(:luke), @shipment)
+    find_shipment_as(users(:luke), shipment)
 
     # And confirm the reception
     click_link 'Action'

@@ -1,4 +1,6 @@
-class CreateStateTransitions < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class CreateStateTransitions < ActiveRecord::Migration[4.2]
   def change
     create_table :state_transitions do |t|
       t.integer :machine_id,    null: false

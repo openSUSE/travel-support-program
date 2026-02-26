@@ -1,4 +1,6 @@
-class AddFieldsToUserProfiles < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class AddFieldsToUserProfiles < ActiveRecord::Migration[4.2]
   def change
     add_column :user_profiles, :second_phone_number, :string
     add_column :user_profiles, :description, :string

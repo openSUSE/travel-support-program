@@ -10,7 +10,7 @@
       - s_opts = {'non-selected-text' => t(:states_any), 'number-displayed' => 2, 'n-selected-text' => t(:states_n) }
       = f.select :state_in, request_states_collection, {}, :multiple => true, :data => s_opts
       = f.submit t(:search), :class => "btn btn-default"
-      = link_to t(:reset_search), collection_path, :class => "btn btn-default"
+      = link_to t(:reset_search), travel_sponsorships_path, :class => "btn btn-default"
 
 %table.table.table-striped.requests
   %thead
@@ -23,7 +23,7 @@
       %th= sort_link(@q, :state, [:state, "state_updated_at desc"])
       %th= model_class.human_attribute_name(:reimbursement)
   %tbody
-    - collection.each do |request|
+    - @travel_sponsorships.each do |request|
       %tr{:id => "request-#{request.id}"}
         %td.id= link_to "#{request.label}", travel_sponsorship_path(request)
         %td.user= request.user.try(:title)
@@ -51,4 +51,4 @@
       %td
       %td
 
-= paginate collection
+= paginate @travel_sponsorships

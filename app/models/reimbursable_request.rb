@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Request that needs a reimbursement after reaching the final state
 #
@@ -26,7 +28,7 @@ class ReimbursableRequest < Request
   # This one line method is required in order to the Graphviz automatic
   # documentation to work, because it doesn't work if a string is used in the
   # :unless parameter of a event definition
-  def has_no_expenses?
+  def no_expenses?
     expenses.empty?
   end
 
@@ -65,7 +67,7 @@ class ReimbursableRequest < Request
   #     ordered by currencies' alphabetic order
   def expenses_sum(attr = :total)
     grouped = expenses.group_by(&:"#{attr}_currency")
-    nonils = grouped.each { |_k, v| v.delete_if { |i| i.send(:"#{attr}_amount").nil? } }.delete_if { |_k, v| v.empty? }
+    nonils = grouped.each_value { |v| v.delete_if { |i| i.send(:"#{attr}_amount").nil? } }.delete_if { |_k, v| v.empty? }
     unordered = nonils.map { |k, v| [k, v.sum(&:"#{attr}_amount")] }
     ActiveSupport::OrderedHash[unordered.sort_by(&:first)]
   end

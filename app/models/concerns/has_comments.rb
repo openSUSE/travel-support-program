@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Concern adding a 'comments' association and some macro-style methods to define
 # the permissions on public and private comments

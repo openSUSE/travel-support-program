@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 #
 # Effective payment of a reimbursement
 #
-class Payment < ActiveRecord::Base
+class Payment < ApplicationRecord
   # The associated reimbursement
   belongs_to :reimbursement, inverse_of: :payments
 
@@ -9,5 +11,5 @@ class Payment < ActiveRecord::Base
 
   mount_uploader :file, AttachmentUploader
 
-  auditable except: [:file]
+  audited except: [:file]
 end

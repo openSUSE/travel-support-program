@@ -26,11 +26,6 @@ common: &common
     database:
       enabled: true
 
-  opensuse_connect:
-    enabled: false
-    api_key: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    base_url: "https://connect.opensuse.org"
-
   external_links:
     - title: "openSUSE TSP"
       url: "http://opensuse.org/openSUSE:Travel_Support_Program"
@@ -83,9 +78,6 @@ test:
       enabled: false
     database:
       enabled: true
-
-  opensuse_connect:
-    enabled: false
 
   check_request_template: "check_request.example.pdf"
   check_request_layout: "check_request.example.yml"

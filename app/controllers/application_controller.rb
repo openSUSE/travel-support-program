@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   force_ssl unless: proc { Rails.env.test? || Rails.env.development? }
-  before_filter :authenticate_and_audit_user, unless: :devise_controller?
+  before_action :authenticate_and_audit_user, unless: :devise_controller?
   load_and_authorize_resource unless: :devise_controller?
-  before_filter :configure_permitted_parameters, if: :devise_controller?
-  before_filter :mailer_set_url_for_test, if: 'devise_controller? && Rails.env.test?'
-  before_filter :set_breadcrumbs
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :mailer_set_url_for_test, if: -> { devise_controller? && Rails.env.test? }
+  before_action :set_breadcrumbs
 
-  protect_from_forgery
+  protect_from_forgery prepend: true
 
   rescue_from CanCan::AccessDenied do |_exception|
     flash[:alert] = nil
@@ -35,21 +37,12 @@ class ApplicationController < ActionController::Base
   # Can be overidden by individuals controllers. Some logic merged here, though,
   # to avoid too much spreading
   def set_breadcrumbs
-    # For user related controllers
-    if users_controller?
-      @breadcrumbs = [{ label: :breadcrumb_user }]
-    # For inherited_resources controllers (the respond_to alternative looks
-    # cleaner, but it's not working despite the method existing)
-    # elsif respond_to? :association_chain
-    elsif is_a? InheritedResources::Base
-      @breadcrumbs = [{ label: resource_class.model_name.human(count: 2),
-                        url: collection_path }]
-      if %w[show edit update].include? action_name
-        @breadcrumbs << { label: resource, url: resource_path }
-      end
-    else
-      @breadcrumbs = [{ label: '' }]
-    end
+    @breadcrumbs = if users_controller?
+                     # For user related controllers
+                     [{ label: :breadcrumb_user }]
+                   else
+                     [{ label: '' }]
+                   end
   end
 
   def users_controller?

@@ -1,4 +1,6 @@
-class CreateShipments < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class CreateShipments < ActiveRecord::Migration[4.2]
   def change
     create_table :shipments do |t|
       t.string      :state

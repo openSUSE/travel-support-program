@@ -2,45 +2,45 @@
 = content_for :page_header do
   .row
     .col-md-7
-      %h1= t('.title', :default => model_class.model_name.human) + " #{resource.label}"
+      %h1= t('.title', :default => model_class.model_name.human) + " #{@reimbursement.label}"
     .col-md-5
       %br
-      = state_change_links(resource)
-      - if can? :create, resource.payments.build
-        = check_request_link(resource)
-      - if can? :edit, resource
-        = link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path, :class => 'btn btn-default' 
+      = state_change_links(@reimbursement)
+      - if can? :create, @reimbursement.payments.build
+        = check_request_link(@reimbursement)
+      - if can? :edit, @reimbursement
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_request_reimbursement_path(@request), :class => 'btn btn-default' 
 
-= show_for resource do |r|
+= show_for @reimbursement do |r|
   .row
     .col-md-6
       = r.attribute :state do
         = state_info(r.object)
-        %div.alert-info= resource.human_state_guide
+        %div.alert-info= @reimbursement.human_state_guide
       = r.attribute :acceptance_file do
-        = reimbursement_acceptance_file(resource)
+        = reimbursement_acceptance_file(@reimbursement)
     .col-md-6
       = r.association :event do
-        = render resource.event
+        = render @reimbursement.event
       = r.association :user do
-        = render resource.user
+        = render @reimbursement.user
       = r.attribute :request do
-        = render resource.request
+        = render @reimbursement.request
       = r.association :bank_account do
-        - if resource.bank_account.nil?
+        - if @reimbursement.bank_account.nil?
           = t("show_for.blank")
         - else
-        = render resource.bank_account
+        = render @reimbursement.bank_account
   .row
     .col-md-12
       = r.attribute :description do
-        = simple_format(resource.description)
+        = simple_format(@reimbursement.description)
 
       = r.association :links do
-        = reimbursement_links(resource)
+        = reimbursement_links(@reimbursement)
 
       = r.association :attachments do
-        = reimbursement_attachments(resource)
+        = reimbursement_attachments(@reimbursement)
 
   %strong.label.label-default= TravelSponsorship.human_attribute_name(:expenses)
   %table.table.table-condensed
@@ -63,11 +63,11 @@
           %td.authorized= number_to_currency(expense.authorized_amount, :unit => expense.authorized_currency)
 
   = r.association :payments do
-    = reimbursement_payments(resource)
-    - if can? :create, resource.payments.build
-      = link_to t(:new_payment), new_request_reimbursement_payment_path(resource.request), :class => 'btn btn-default btn-sm'
+    = reimbursement_payments(@reimbursement)
+    - if can? :create, @reimbursement.payments.build
+      = link_to t(:new_payment), new_request_reimbursement_payment_path(@request), :class => 'btn btn-default btn-sm'
 
   = r.attribute :history do
-    = render :partial => "history"
-    - if can?(:create, resource.comments.build)
-      = link_to(t(:create_comment), resource_path + "/comments/new.js", :remote => true, :class => 'btn btn-default btn-sm')
+    = render :partial => "history", locals: { resource: @reimbursement }
+    - if can?(:create, @reimbursement.comments.build)
+      = link_to(t(:create_comment), request_reimbursement_path(@request) + "/comments/new.js", :remote => true, :class => 'btn btn-default btn-sm')

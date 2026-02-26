@@ -1,0 +1,55 @@
+- model_class = Reimbursement
+= content_for :page_header do
+  %h1= t('.title', :default => model_class.model_name.human(count: 2))
+
+%nav.navbar.navbar-default.nav-tsp
+  .container-fluid
+    - @index
+    = search_form_for @q, :class => "navbar-form pull-right" do |f|
+      - s_opts = {'non-selected-text' => t(:events_any), 'number-displayed' => 2, 'n-selected-text' => t(:events_n) }
+      = f.collection_select :request_event_id_in, Event.all, :id, :name, {}, :multiple => true, :data => s_opts
+      - s_opts = {'non-selected-text' => t(:states_any), 'number-displayed' => 2, 'n-selected-text' => t(:states_n) }
+      = f.select :state_in, reimbursement_states_collection, {}, :multiple => true, :data => s_opts
+      = f.submit t(:search), :class => "btn btn-default"
+      = link_to t(:reset_search), reimbursements_path, :class => "btn btn-default"
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th= sort_link(@q, :id)
+      %th= model_class.human_attribute_name(:user)
+      %th= model_class.human_attribute_name(:event)
+      %th= model_class.human_attribute_name(:approved_sum)
+      %th= model_class.human_attribute_name(:total_sum)
+      %th= model_class.human_attribute_name(:authorized_sum)
+      %th= sort_link(@q, :state, [:state, "state_updated_at desc"])
+  %tbody
+    - @index.each do |reimb|
+      %tr{:id => "request-#{reimb.id}"}
+        %td.id= link_to "#{reimb.label}", request_reimbursement_path(reimb.request)
+        %td.user= reimb.user.try(:title)
+        %td.event= reimb.event.try(:name)
+        %td.approved= expenses_sum(reimb, :approved)
+        %td.total= expenses_sum(reimb, :total)
+        %td.authorized= expenses_sum(reimb, :authorized)
+        %td.state= timestamped_state(reimb)
+  %tfoot
+    - if @all_reimbursements.size > @index.size
+      %tr
+        %td
+        %td
+        %th.text-right= t(:page_total)
+        %td= expenses_sum(@all_reimbursements, :approved)
+        %td= expenses_sum(@all_reimbursements, :total)
+        %td= expenses_sum(@all_reimbursements, :authorized)
+        %td
+    %tr
+      %td
+      %td
+      %th.text-right= t(:full_total)
+      %td= expenses_sum(@index, :approved)
+      %td= expenses_sum(@index, :total)
+      %td= expenses_sum(@index, :authorized)
+      %td
+
+= paginate @index

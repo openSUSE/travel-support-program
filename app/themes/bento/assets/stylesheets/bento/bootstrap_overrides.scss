@@ -1,0 +1,180 @@
+// Headings
+// --------------------------
+h1 { font-size: $font-size-base * 2; }
+h2 { font-size: $font-size-base * 1.75; }
+h3 { font-size: $font-size-base * 1.50; }
+h4 { font-size: $font-size-base * 1.25; }
+
+h1 small { font-size: $font-size-base * 1.50; }
+h2 small { font-size: $font-size-base * 1.20; }
+
+
+// Page header
+// -------------------------
+
+.page-header {
+    padding-bottom: ($line-height-base / 2) - 1;
+      margin: $line-height-base 0 ($line-height-base * 1.5);
+        border-bottom: 1px solid $gray-lighter;
+}
+
+.navbar *:after, .navbar *:before {
+  content: none;
+}
+
+.navbar.navbar-fluid-top{
+  min-height: 32px;
+  max-height: 100%;
+  border: none!important;
+  border-radius: 0!important;
+  background-color: $gray-dark;
+  @include gradient-vertical($gray-dark, $gray-darkest);
+}
+
+// openSUSE top bar
+// -------------------------
+.navbar-fixed-top, .navbar-static-top, .navbar-fluid-top {
+  margin-bottom: 10px;
+
+  .container-fluid {
+    box-shadow: none;
+
+    li {
+      a {
+        padding-top: 7px;
+        padding-bottom: 7px;
+        text-shadow: none;
+        color: $white;
+        font-weight: bold;
+
+        &:hover {
+          color: $bentoGreen;
+        }
+      }
+    }
+
+    .navbar-brand {
+      padding-bottom: 0px;
+      max-height: 30px;
+      padding-top: 4px;
+    }
+  }
+}
+
+// Boxes
+// --------------------------
+#main, .well {
+  background-color: $well-bg;
+  padding: $bentoWellPadding;
+  padding-top: 0!important;
+  border: 1px solid $bentoWellBorderColor;
+  border-radius:$border-radius-base;
+  box-shadow: 0px 1px 3px $bentoShadowColor;
+  
+  a {
+    color: $blueDark;
+
+    &:hover {
+      color: $bentoGreen;
+    }
+
+    // Avoid overwriting good bootstrap defaults
+    &.btn { color: $gray-dark; }
+    &.btn-primary, &.btn-warning, &.btn-danger, &.btn-success,
+    &.btn-info, &.btn-inverse {
+      color: $white
+    }
+  }
+
+  .nav-list {
+    padding-left: 5px;
+    padding-right: 5px;
+
+    .nav-header {
+      background:$white image-url('bento/gradient-light.png') repeat-x scroll 0 -25px;
+      color: $gray-darker;
+      margin-bottom: 5px;
+      text-transform: none;
+      font-size: $font-size-base;
+      font-weight: bold;
+      margin: 1px -24px 5px;
+      border-bottom: 1px solid $bentoWellBorderColor;
+    }
+  }
+}
+
+.btn-default {
+  text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+  background-color: #f5f5f5;
+  background-image: linear-gradient(to bottom, #fff, #e6e6e6);
+  background-repeat: repeat-x;
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+  border: 1px solid #cccccc;
+  border-bottom-color: #b3b3b3;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);
+  &:hover{
+    color: #555555;
+    text-decoration: none;
+    background-position: 0 -15px;
+    transition: background-position 0.1s linear;
+  }
+}
+
+.btn-primary {
+  background-image: linear-gradient(to bottom, #690, #390);
+}
+
+.simple_form .well .btn{
+  margin-top: 10px;
+}
+
+@media (min-width: $screen-md-min) { 
+  #main {
+    width: 74%;
+  }
+}
+
+// Forms
+// --------------------------------------
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  color: $gray-darker;
+}
+
+// Breadcrumbs
+// ---------------------------
+.breadcrumb {
+  background:transparent image-url('bento/home_grey.png') no-repeat;
+  margin: 0px;
+  padding: 0px 0px 0px 20px!important;
+
+  li {
+    color: $gray-darker;
+
+    text-shadow: none;
+
+    &.active {
+      color: $gray-darker;
+    }
+
+    a {
+      color: $gray-dark;
+    }
+  }
+}

@@ -15,10 +15,10 @@
         = e.attribute :description
     .row
       .col-md-6
-        - if enabled? :shipments
+        - if enabled? 'shipments'
           = e.attribute :shipment_type
       .col-md-6
-        - if enabled? :travel_sponsorships
+        - if enabled? 'travel_sponsorships'
           = e.attribute :visa_letters
     - if user_signed_in? && can?(:validate, event)
       .row

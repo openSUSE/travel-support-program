@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Transition of a state machine (a request, a reimbursement...) from one state
 # to another, using the state machine methods. Saving the StateTransition to the
@@ -21,6 +23,6 @@ class StateTransition < StateChange
                machine.fire_state_event(state_event.to_sym)
              end
     self.to = machine.state
-    result
+    throw :abort unless result
   end
 end

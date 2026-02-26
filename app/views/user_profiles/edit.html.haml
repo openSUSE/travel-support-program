@@ -1,27 +1,26 @@
 = content_for :page_header do
   %h1= current_user.nickname
 = render 'profile_menu'
-= profile_info
 %br
 = simple_form_for @profile, :url => user_profile_path, :as => :user do |f|
   .row
     .col-md-6
       .col-md-4
-        = profile_input f, :full_name
-        = profile_input f, :birthday, :as => :dpicker, :input_html => {class: 'form-control'}
-        = profile_input f, :country_code, :as => :country, :input_html => {:autocomplete => "off"}
-        = profile_input f, :location
-        = profile_input f, :postal_address
-        = profile_input f, :zip_code
-        = profile_input f, :description, :as => :text, :input_html => {:rows => 2}
+        = f.input :full_name
+        = f.input :birthday, :as => :dpicker, :input_html => {class: 'form-control'}
+        = f.input :country_code, :as => :country, :input_html => {:autocomplete => "off"}
+        = f.input :location
+        = f.input :postal_address
+        = f.input :zip_code
+        = f.input :description, :as => :text, :input_html => {:rows => 2}
     .col-md-6
       .col-md-4
-        = profile_input f, :phone_number, :as => :string
-        = profile_input f, :second_phone_number, :as => :string
-        = profile_input f, :passport
-        = profile_input f, :alternate_id_document
-        = profile_input f, :website, :as => :url
-        = profile_input f, :blog, :as => :url
+        = f.input :phone_number, :as => :string
+        = f.input :second_phone_number, :as => :string
+        = f.input :passport
+        = f.input :alternate_id_document
+        = f.input :website, :as => :url
+        = f.input :blog, :as => :url
   .row
     .col-md-12
       .well

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 
 # First of all, coveralls
@@ -16,7 +18,7 @@ SimpleCov.start 'rails' do
 end
 
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/rails'
@@ -32,7 +34,7 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 RSpec.configure do |config|
   config.include(Shoulda::Matchers::ActiveModel)
   config.include(Shoulda::Matchers::ActiveRecord)
-  config.expect_with(:rspec) { |expectations| expectations.syntax = [:should, :expect] }
+  config.expect_with(:rspec) { |expectations| expectations.syntax = %i[should expect] }
 
   Capybara.register_driver :headless do |app|
     options = Selenium::WebDriver::Chrome::Options.new
@@ -75,15 +77,12 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 
-  config.before(:each) do
+  config.before do
     DatabaseCleaner.strategy = :deletion
-  end
-
-  config.before(:each) do
     DatabaseCleaner.start
   end
 
-  config.after(:each) do
+  config.after do
     DatabaseCleaner.clean
   end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # ActiveHash containing the application user's roles
 #

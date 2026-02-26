@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 #
 # Reimbursement for a given request
 #
-class Reimbursement < ActiveRecord::Base
+class Reimbursement < ApplicationRecord
   include HasState
   include HasComments
 
@@ -37,23 +39,22 @@ class Reimbursement < ActiveRecord::Base
 
   validates :request, presence: true
   validates_associated :expenses, :attachments, :links, :bank_account
-  validates :acceptance_file, presence: true, if: 'acceptance_file_required?'
-  validate :user_profile_is_complete, if: 'complete_profile_required?'
+  validates :acceptance_file, presence: true, if: -> { acceptance_file_required? }
+  validate :user_profile_is_complete, if: -> { complete_profile_required? }
 
   mount_uploader :acceptance_file, AttachmentUploader
 
-  auditable except: [:acceptance_file]
+  audited except: [:acceptance_file]
 
   # Synchronizes user_id and request_id
   before_validation :set_user_id
   before_validation :ensure_bank_account
 
   # @see HasComments.allow_all_comments_to
-  allow_all_comments_to [:tsp, :assistant]
+  allow_all_comments_to %i[tsp assistant]
   # @see HasComments.allow_public_comments_to
-  allow_public_comments_to [:administrative, :requester]
+  allow_public_comments_to %i[administrative requester]
 
-  #
   state_machine :state, initial: :incomplete do |_machine|
     event :submit do
       transition incomplete: :submitted
@@ -85,35 +86,35 @@ class Reimbursement < ActiveRecord::Base
   # @see HasState.assign_state
   # @see HasState.notify_state
   assign_state :incomplete, to: :requester
-  notify_state :incomplete, to: [:requester, :tsp, :assistant],
+  notify_state :incomplete, to: %i[requester tsp assistant],
                             remind_to: :requester,
                             remind_after: 5.days
 
   assign_state :submitted, to: :tsp
-  notify_state :submitted, to: [:requester, :tsp, :assistant],
+  notify_state :submitted, to: %i[requester tsp assistant],
                            remind_after: 10.days
 
   assign_state :approved, to: :administrative
-  notify_state :approved, to: [:administrative, :requester, :tsp, :assistant],
+  notify_state :approved, to: %i[administrative requester tsp assistant],
                           remind_to: :administrative,
                           remind_after: 10.days
 
   assign_state :processed
-  notify_state :processed, to: [:administrative, :requester, :tsp, :assistant],
+  notify_state :processed, to: %i[administrative requester tsp assistant],
                            remind_to: :administrative,
                            remind_after: 20.days
 
-  notify_state :payed, to: [:administrative, :requester, :tsp, :assistant]
+  notify_state :payed, to: %i[administrative requester tsp assistant]
 
-  notify_state :canceled, to: [:administrative, :requester, :tsp, :assistant]
+  notify_state :canceled, to: %i[administrative requester tsp assistant]
 
   # @see HasState.allow_transition
   allow_transition :submit, :requester
   allow_transition :approve, :tsp
   allow_transition :process, :administrative
   allow_transition :confirm, :administrative
-  allow_transition :roll_back, [:requester, :administrative, :tsp]
-  allow_transition :cancel, [:requester, :tsp, :supervisor]
+  allow_transition :roll_back, %i[requester administrative tsp]
+  allow_transition :cancel, %i[requester tsp supervisor]
 
   # @see Request#expenses_sum
   def expenses_sum(*args)
@@ -203,6 +204,10 @@ class Reimbursement < ActiveRecord::Base
     full_messages
   end
 
+  def self.ransackable_associations(_auth_object)
+    %w[request]
+  end
+
   protected
 
   # Used internally to synchronize request_id and user_id
@@ -217,9 +222,7 @@ class Reimbursement < ActiveRecord::Base
   # Validates the existance of a complete profile
   def user_profile_is_complete
     fields = user.profile.missing_fields
-    unless fields.empty?
-      errors.add(:user, :incomplete, fields: fields.values.to_sentence)
-    end
+    errors.add(:user, :incomplete, fields: fields.values.to_sentence) unless fields.empty?
   end
 
   # Used internally by accepts_nested_attributes to ensure that only
@@ -232,8 +235,9 @@ class Reimbursement < ActiveRecord::Base
     acceptable_request_attrs = %w[id expenses_attributes]
     acceptable_expenses_attrs = %w[id total_amount authorized_amount]
     return true unless (attrs.keys - acceptable_request_attrs).empty?
+
     if expenses = attrs['expenses_attributes']
-      expenses.values.each do |expense|
+      expenses.each_value do |expense|
         return true unless (expense.keys - acceptable_expenses_attrs).empty?
       end
     end

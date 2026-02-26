@@ -1,4 +1,6 @@
-class RefactorTransitionFields < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class RefactorTransitionFields < ActiveRecord::Migration[4.2]
   def up
     remove_column :reimbursements, :requester_notes
     remove_column :reimbursements, :tsp_notes

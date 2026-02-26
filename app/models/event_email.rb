@@ -1,4 +1,6 @@
-class EventEmail < ActiveRecord::Base
+# frozen_string_literal: true
+
+class EventEmail < ApplicationRecord
   belongs_to :user
   belongs_to :event
 

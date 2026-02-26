@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 #
 # Attachment for a given reimbursement
 #
-class ReimbursementAttachment < ActiveRecord::Base
+class ReimbursementAttachment < ApplicationRecord
   # The associated reimbursement
   belongs_to :reimbursement
 
@@ -9,7 +11,7 @@ class ReimbursementAttachment < ActiveRecord::Base
 
   mount_uploader :file, AttachmentUploader
 
-  auditable except: [:file]
+  audited except: [:file]
 
   # Changed is ovewritten to avoid losing the already uploaded file when
   # saving the reimbursement fails in some very specific situations
