@@ -1,0 +1,2 @@
+name,recipientEmail,paymentReference,receiverType,amountCurrency,amount,sourceCurrency,targetCurrency,type
+"e.g. Batch Payment Recipient","e.g. example@example.ex","e.g. Invoice 101 (optional)","e.g. PERSON","e.g. source","0.00","e.g. GBP","e.g. JPY","EMAIL"
