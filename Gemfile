@@ -79,7 +79,7 @@ gem 'simplecov-lcov', require: false
 # Moved out of the development group to avoid an error in every rake execution
 # caused by lib/tasks/doc.rake (at least until we figure out a cleaner
 # solution)
-gem 'yard', '~> 0.9.0'
+gem 'yard', '~> 0.9.44'
 group :development do
   gem 'ruby-graphviz'
   gem 'state_machines-yard'
