@@ -12,7 +12,7 @@ gem 'pg', '~> 0.21'
 # gem 'mysql2', '~> 0.4.10'
 
 # This can only be removed with Rails 7.0
-gem 'mail', '< 2.8.0'
+gem 'mail', '< 2.10.0'
 gem 'psych', '< 4.0'
 
 # Use SCSS for stylesheets
