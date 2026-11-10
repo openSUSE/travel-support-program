@@ -33,9 +33,7 @@ jobs:
         key: ruby-3.4-opensuse-${{ runner.arch }}-${{ hashFiles('Gemfile.lock') }}
 
     - name: Install ruby dependencies
-      run: |
-        gem.ruby3.4 install bundler --version "$(tail -n 1 Gemfile.lock | tr -d ' ')" --no-document
-        bundler.ruby3.4 install
+      run: bundler.ruby3.4 install
 
     - name: Set up the environment
       run: |

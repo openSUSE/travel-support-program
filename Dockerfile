@@ -12,7 +12,6 @@ ENV BUNDLE_BUILD__SASSC=--disable-march-tune-native
 ADD Gemfile /app/Gemfile
 ADD Gemfile.lock /app/Gemfile.lock
 
-RUN gem.ruby3.4 install bundler --version "$(tail -n 1 Gemfile.lock | tr -d ' ')" --no-document
 RUN bundler.ruby3.4 install --jobs=3 --retry=3
 
 RUN chown -R tsp /app
