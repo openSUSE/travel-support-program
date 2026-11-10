@@ -1,29 +1,24 @@
-FROM node:24-bookworm-slim AS node
-FROM ruby:3.4.10-slim-bookworm
-
+FROM registry.opensuse.org/opensuse/infrastructure/tsp/containers/base:main
 ARG CONTAINER_USERID=1000
-ARG APP_VERSION=0.0.0
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential git libpq-dev libsqlite3-dev default-libmysqlclient-dev \
-    libffi-dev libyaml-dev chromium chromium-driver graphviz \
-    && rm -rf /var/lib/apt/lists/*
-COPY --from=node /usr/local/bin/node /usr/local/bin/node
+# Configure our user
+RUN usermod -u "$CONTAINER_USERID" tsp
 
-RUN groupadd --gid 1000 tsp \
-    && useradd --uid "$CONTAINER_USERID" --gid tsp --create-home tsp \
-    && gem install bundler --version 2.6.9 --no-document
-
-ENV BUNDLE_PATH=/usr/local/bundle \
-    BUNDLE_BUILD__SASSC=--disable-march-tune-native
 WORKDIR /app
-COPY Gemfile Gemfile.lock ./
-RUN bundle install --jobs=3 --retry=3
 
-COPY --chown=tsp:tsp . .
-RUN chown tsp:tsp /app
+# Configure our bundle
+ENV BUNDLE_BUILD__SASSC=--disable-march-tune-native
+
+ADD Gemfile /app/Gemfile
+ADD Gemfile.lock /app/Gemfile.lock
+
+RUN gem.ruby3.4 install bundler --version "$(tail -n 1 Gemfile.lock | tr -d ' ')" --no-document
+RUN bundler.ruby3.4 install --jobs=3 --retry=3
+
+RUN chown -R tsp /app
+
+# Now do the rest as the user with the same ID as the user who
+# builds this container
 USER tsp
-RUN printf '%s\n' "$APP_VERSION" > VERSION
 
-EXPOSE 3000
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
+CMD ["bundler.ruby3.4", "exec", "rails", "server", "-b", "0.0.0.0"]

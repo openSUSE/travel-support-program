@@ -1,48 +1,47 @@
 # Using Docker to Develop TSP
 
-Use the `Dockerfile` and Compose examples in `docker/` to set up a development environment.
+This repository includes a `Dockerfile` and a set of `docker-compose` configuration examples in
+order to simplify the process of setting up a development environment.
 
-1. Copy a Compose example and its database configuration. For PostgreSQL:
+The openSUSE base image must provide the Ruby version required by `Gemfile`,
+Node.js, Graphviz, and matching Chromium/ChromeDriver packages for the tests.
 
-   ```sh
-   cp docker/docker-compose.development.postgresql.yml docker-compose.yml
-   cp docker/database.postgresql.yml config/database.yml
-   cp config/site.example.yml config/site.yml
-   ```
+Given that you have `docker` and `docker-compose` installed, the process should be pretty
+straighforward.
 
-2. Set the application secrets and other settings in `config/site.yml`. Set the
-   container user ID to match your host user so bind-mounted files stay writable:
+1. Select a `docker-compose` configuration file from the `docker/` directory and copy it as
+   `docker-compose.yml`. For instance, to run the application using a PostgreSQL database:
 
-   ```sh
-   export CONTAINER_USERID=$(id -u)
-   docker compose build
-   ```
+        cp docker/docker-compose.development.postgresql.yml docker-compose.yml
 
-3. Start the database and wait until it is ready. Skip this command for SQLite:
+2. Copy `config/site.example.yml` to `config/site.yml` and configure the application secrets.
+3. Copy the database configuration from `docker/` for your database. For instance,
+   to use PostgreSQL:
 
-   ```sh
-   docker compose up --detach db
-   ```
+        cp docker/database.postgresql.yml config/database.yml
 
-4. Create and seed a new development database:
+4. Build the image:
 
-   ```sh
-   docker compose run --rm web bundle exec rake db:setup
-   ```
+        CONTAINER_USERID=$(id -u) docker-compose build
 
-5. Run the complete test suite:
+5. Now you should be able to set up the database:
 
-   ```sh
-   docker compose run --rm -e RAILS_ENV=test web bundle exec rake db:migrate
-   docker compose run --rm -e RAILS_ENV=test web bundle exec rspec
-   ```
+        docker-compose run --rm web bundler.ruby3.4 exec rake db:setup
 
-6. Start the application:
+   When using the mysql container, this fifth step may require that you have
+   started the database container some seconds in advance, since the official
+   mysql and mariadb containers need some time to initialize the system.
 
-   ```sh
-   docker compose up
-   ```
+        docker-compose up --detach db
 
-Rebuild the image after changes to `Gemfile`, `Gemfile.lock`, or `Dockerfile`.
-When upgrading a database image, follow the database vendor’s upgrade procedure
-instead of reusing an incompatible data volume.
+6. (Optional) Run the testsuite to find out whether the application works.
+
+        docker-compose run --rm -e RAILS_ENV=test web bundler.ruby3.4 exec rake db:migrate
+        docker-compose run --rm -e RAILS_ENV=test web bundler.ruby3.4 exec rspec
+
+7. And, now, you can start the application:
+
+        docker-compose up
+
+For now on, you will need to rebuild the image whenever you change the `Gemfile` or `Gemfile.lock`
+files.

@@ -2,91 +2,75 @@ name: Run Tests
 
 on:
   push:
-    branches: [master]
+    branches: [ master ]
   pull_request:
-    branches: [master]
+    branches: [ master ]
 
 permissions:
   contents: read
 
 jobs:
-  test:
+  build:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - database: sqlite
-            url: sqlite3:/dev/shm/tsp-test.sqlite3
-          - database: postgresql
-            url: postgresql://tsp:tsp@postgres/tsp_test
-          - database: mariadb
-            url: mysql2://root:tsp@mariadb/tsp_test
+        type: [coverage, features, helpers, mailer, models, rubocop]
     runs-on: ubuntu-latest
-    container: ruby:3.4.10-slim-bookworm
+    container: registry.opensuse.org/opensuse/infrastructure/tsp/containers/base:main
+
     env:
       RAILS_ENV: test
-      DATABASE_URL: ${{ matrix.url }}
-      # These service databases are disposable and isolated to this test job.
-      DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: 'true'
       BUNDLE_PATH: vendor/bundle
       BUNDLE_BUILD__SASSC: --disable-march-tune-native
-    services:
-      postgres:
-        image: postgres:16-bookworm
-        env:
-          POSTGRES_USER: tsp
-          POSTGRES_PASSWORD: tsp
-          POSTGRES_DB: tsp_test
-        options: >-
-          --health-cmd "pg_isready -U tsp"
-          --health-interval 10s --health-timeout 5s --health-retries 5
-      mariadb:
-        image: mariadb:11.4
-        env:
-          MARIADB_ROOT_PASSWORD: tsp
-          MARIADB_DATABASE: tsp_test
-        options: >-
-          --health-cmd "healthcheck.sh --connect --innodb_initialized"
-          --health-interval 10s --health-timeout 5s --health-retries 5
+
     steps:
-      - name: Install system dependencies
-        run: |
-          apt-get update
-          apt-get install -y --no-install-recommends build-essential git libpq-dev libsqlite3-dev default-libmysqlclient-dev libyaml-dev chromium chromium-driver graphviz
-          gem install bundler --version 2.6.9 --no-document
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-      - name: Cache Ruby dependencies
-        uses: actions/cache@v4
-        with:
-          path: vendor/bundle
-          key: ruby-3.4.10-bookworm-${{ runner.arch }}-${{ hashFiles('Gemfile.lock') }}
-      - name: Install Ruby dependencies
-        run: bundle install --jobs=3 --retry=3
-      - name: Set up the environment
-        run: |
-          cp config/database.test.yml config/database.yml
-          cp config/site.example.yml config/site.yml
-          bundle exec rake db:migrate
-      - name: Run the full test suite
-        run: bundle exec rspec
-      - name: Save coverage report
-        if: matrix.database == 'sqlite'
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage
-          path: coverage/lcov.info
-          if-no-files-found: error
-      - name: Check production assets and eager loading
-        if: matrix.database == 'sqlite'
-        env:
-          RAILS_ENV: production
-        run: bundle exec rake zeitwerk:check assets:precompile
+    - uses: actions/checkout@v5
+
+    - name: Cache ruby dependencies
+      uses: actions/cache@v4
+      with:
+        path: vendor/bundle
+        key: ruby-3.4-opensuse-${{ runner.arch }}-${{ hashFiles('Gemfile.lock') }}
+
+    - name: Install ruby dependencies
+      run: |
+        gem.ruby3.4 install bundler --version "$(tail -n 1 Gemfile.lock | tr -d ' ')" --no-document
+        bundler.ruby3.4 install
+
+    - name: Set up the environment
+      run: |
+        cp config/database.test.yml config/database.yml
+        cp config/site.example.yml config/site.yml
+        bundler.ruby3.4 exec rake db:migrate
+
+    - if: ${{ matrix.type == 'rubocop' }}
+      name: Run rubocop
+      run: bundler.ruby3.4 exec rubocop
+
+    - if: ${{ contains(fromJson('["features", "helpers", "mailer", "models"]'), matrix.type) }}
+      name: Run spec
+      run: bundler.ruby3.4 exec rspec spec/${{ matrix.type }}/
+
+    - if: ${{ matrix.type == 'coverage' }}
+      name: Run spec
+      run: bundler.ruby3.4 exec rspec
+
+    - if: ${{ matrix.type == 'coverage' }}
+      name: Save coverage report
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage
+        path: coverage/lcov.info
+        if-no-files-found: error
+
+    - if: ${{ matrix.type == 'coverage' }}
+      name: Check production assets and eager loading
+      env:
+        RAILS_ENV: production
+      run: bundler.ruby3.4 exec rake zeitwerk:check assets:precompile
 
   coverage:
-    needs: test
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
