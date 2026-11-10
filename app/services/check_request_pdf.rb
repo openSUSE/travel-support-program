@@ -28,7 +28,8 @@ class CheckRequestPdf
     locations = [locations] unless locations.is_a?(Array)
     content = value.call(field.fetch('name')).to_s
     locations.each do |location|
-      upcase = location.fetch('upcase', page['upcase'])
+      upcase = location['upcase']
+      upcase = page['upcase'] if upcase.nil?
       pdf.bounding_box([location.fetch('left'), location.fetch('top')], width: location.fetch('width')) do
         pdf.text(upcase ? content.upcase : content,
                  size: location['text_size'] || page['text_size'] || 12,

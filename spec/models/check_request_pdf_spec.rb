@@ -8,7 +8,7 @@ describe CheckRequestPdf do
   let(:layout) do
     { 'pages' => [
       { 'upcase' => true, 'text_size' => 10, 'fields' => [
-        { 'name' => 'name', 'location' => [location, location.merge('top' => 70)] }
+        { 'name' => 'name', 'location' => [location, location.merge('top' => 70, 'upcase' => nil)] }
       ] },
       { 'upcase' => true, 'fields' => [
         { 'name' => 'address', 'location' => location.merge('upcase' => false, 'line_space' => 4) }
