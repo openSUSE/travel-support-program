@@ -8,6 +8,16 @@ describe TravelSponsorship do
 
   fixtures :all
 
+  it 'saves an association-built transition once with its original state', :aggregate_failures do
+    request = requests(:luke_for_party)
+    transition_record = request.transitions.build(state_event: 'submit', user: users(:luke))
+
+    expect { transition_record.save! }.to change { request.transitions.count }.by(1)
+    expect(request.reload.state).to eq('submitted')
+    expect(transition_record.reload.from).to eq('incomplete')
+    expect(transition_record.to).to eq('submitted')
+  end
+
   describe '#visa_letter_allowed?' do
     it 'is false for default events' do
       requests(:wedge_for_party).should_not be_visa_letter_allowed
@@ -34,11 +44,7 @@ describe TravelSponsorship do
 
     it 'is updated for on state changes' do
       request.expenses.create(subject: 'Lodging', estimated_amount: 10, estimated_currency: 'USD')
-      begin
-        transition(request, :submit, users(:wedge))
-      rescue
-        nil
-      end
+      transition(request, :submit, users(:wedge))
       request.reload.state.should == 'submitted'
       request.reload.state_updated_at.should_not be_nil
     end
@@ -94,7 +100,7 @@ describe TravelSponsorship do
   context 'when initially submitted' do
     let!(:deliveries) { ActionMailer::Base.deliveries.size }
     let(:request) { requests(:luke_for_party) }
-    let(:audits) { request.audits }
+    let!(:audit_count) { request.audits.count }
 
     context 'when expenses are incomplete' do
       before do
@@ -125,7 +131,7 @@ describe TravelSponsorship do
       end
 
       it 'audits the change' do
-        request.audits.size == audits.size + 1
+        request.audits.reload.size.should == audit_count + 1
       end
 
       it 'creates an state transition' do
@@ -155,7 +161,7 @@ describe TravelSponsorship do
       end
 
       it 'allows TSP to approve' do
-        request.expenses.each { |e| e.update_attributes(approved_amount: 40, approved_currency: 'EUR') }
+        request.expenses.each { |e| e.update(approved_amount: 40, approved_currency: 'EUR') }
         transition(request, :approve, users(:tspmember))
         request.reload.state.should == 'approved'
         trans = request.transitions.newest_first.reload.first
@@ -171,17 +177,17 @@ describe TravelSponsorship do
     let(:expense) { request.expenses.create(subject: 'Lodging', estimated_amount: 100, estimated_currency: 'EUR') }
 
     before do
-      request.expenses.first.update_attributes(approved_currency: 'EUR', approved_amount: '70')
+      request.expenses.first.update(approved_currency: 'EUR', approved_amount: '70')
     end
 
     it 'allows approval of a proper amount' do
-      expense.update_attributes(approved_amount: 40, approved_currency: 'EUR')
+      expense.update(approved_amount: 40, approved_currency: 'EUR')
       transition(request, :approve, users(:tspmember))
       request.reload.state.should == 'approved'
     end
 
     it 'does not allow approval of too large amount' do
-      expense.update_attributes(approved_amount: 50, approved_currency: 'eur')
+      expense.update(approved_amount: 50, approved_currency: 'eur')
       begin
         transition(request, :approve, users(:tspmember))
       rescue
@@ -193,36 +199,24 @@ describe TravelSponsorship do
     it 'uses authorized instead of approved amount if available' do
       reimb = reimbursements(:wedge_for_training_reim)
       reimb.expenses.first.update_attribute(:authorized_amount, 20) # 10 EUR less than the approved amount
-      expense.update_attributes(approved_amount: 50, approved_currency: 'EUR')
-      begin
-        transition(request, :approve, users(:tspmember))
-      rescue
-        nil
-      end
+      expense.update(approved_amount: 50, approved_currency: 'EUR')
+      transition(request, :approve, users(:tspmember))
       request.reload.state.should == 'approved'
     end
 
     it 'ignores requests with canceled reimbursement' do
       reimb = reimbursements(:wedge_for_training_reim)
       reimb.expenses.first.update_attribute(:authorized_amount, 30)
-      begin
-        transition(reimb, :cancel, users(:wedge))
-      rescue
-        nil
-      end
+      transition(reimb, :cancel, users(:wedge))
       reimb.reload.state.should == 'canceled'
-      expense.update_attributes(approved_amount: 70, approved_currency: 'EUR')
-      begin
-        transition(request, :approve, users(:tspmember))
-      rescue
-        nil
-      end
+      expense.update(approved_amount: 70, approved_currency: 'EUR')
+      transition(request, :approve, users(:tspmember))
       request.reload.state.should == 'approved'
     end
 
     it 'does not allow approval with not defined budget at all' do
       request.event.update_attribute(:budget_id, nil)
-      expense.update_attributes(approved_amount: 10, approved_currency: 'eur')
+      expense.update(approved_amount: 10, approved_currency: 'eur')
       begin
         transition(request, :approve, users(:tspmember))
       rescue
@@ -232,7 +226,7 @@ describe TravelSponsorship do
     end
 
     it 'does not allow approval with not defined budget for the given currency' do
-      expense.update_attributes(approved_amount: 10, approved_currency: 'USD')
+      expense.update(approved_amount: 10, approved_currency: 'USD')
       begin
         transition(request, :approve, users(:tspmember))
       rescue

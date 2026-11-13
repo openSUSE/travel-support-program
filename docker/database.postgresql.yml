@@ -1,7 +1,7 @@
 # Ensure the PostgreSQL connector gem is defined in your Gemfile
 # gem 'pg'
 
-# Warning: this proposes the usage of the postgres superuser with no password.
+# Warning: this proposes the usage of the postgres superuser with a development password.
 # That's done for simplicity because this docker manifest is only meant for
 # development purposes and, for that, a user with privileges to create and
 # destroy databases is very convenient.
@@ -14,7 +14,7 @@ development:
   pool: 5
   host: db
   username: postgres
-  password:
+  password: tsp
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -26,4 +26,4 @@ test:
   pool: 5
   host: db
   username: postgres
-  password:
+  password: tsp

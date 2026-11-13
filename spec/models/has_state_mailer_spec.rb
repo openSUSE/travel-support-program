@@ -14,7 +14,7 @@ describe HasStateMailer do
     let(:mail) { ActionMailer::Base.deliveries.last }
 
     before do
-      request.expenses.each { |e| e.update_attributes(approved_amount: 40, approved_currency: 'EUR') }
+      request.expenses.each { |e| e.update(approved_amount: 40, approved_currency: 'EUR') }
       transition(request, :approve, users(:tspmember))
     end
 

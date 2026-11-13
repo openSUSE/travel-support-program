@@ -21,31 +21,48 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    env:
+      BUNDLE_BUILD__SASSC: --disable-march-tune-native
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
 
       - name: Setup Pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v5
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential pkg-config libpq-dev libsqlite3-dev default-libmysqlclient-dev libffi-dev libyaml-dev libxml2-dev libxslt1-dev graphviz
 
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.7'
+          ruby-version: '3.4.10'
+          bundler-cache: true
 
-      - name: Install dependencies
-        run: |
-          gem install mini_racer -v 0.6.3
-          bundler install
-          cp config/site.example.yml config/site.yml
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Configure the application
+        run: cp config/site.example.yml config/site.yml
 
       - name: Build documentation
-        run: bundler exec rake doc:html
+        env:
+          RAILS_ENV: development
+        run: |
+          bundle exec rake doc:html 2>&1 | tee /tmp/tsp-documentation.log
+          if grep -q '\[error\]' /tmp/tsp-documentation.log; then exit 1; fi
+          for model in TravelSponsorship Shipment Reimbursement; do
+            test -s "doc/html/${model}_state.png"
+            cmp "doc/html/${model}_state.png" "app/assets/images/${model}_state.png"
+          done
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: './doc/html'
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4

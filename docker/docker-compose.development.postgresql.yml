@@ -1,8 +1,11 @@
-version: '3'
 services:
   web:
     image: tsp:latest
-    build: .
+    build:
+      context: .
+      args:
+        CONTAINER_USERID: ${CONTAINER_USERID:-1000}
+    shm_size: 1gb
     volumes:
       - .:/app
     ports:
@@ -10,5 +13,7 @@ services:
     depends_on:
       - db
   db:
-    image: postgres:9.6
+    image: postgres:16-bookworm
+    environment:
+      POSTGRES_PASSWORD: tsp
     restart: always

@@ -6,7 +6,7 @@
 class Ability
   include CanCan::Ability
 
-  # rubocop:disable MethodLength,AbcSize
+  # rubocop:disable Metrics/MethodLength,Metrics/AbcSize
   def initialize(user)
     # Define abilities for the passed in user here.
     #
@@ -289,5 +289,5 @@ class Ability
       e.related_to(user)
     end
   end
-  # rubocop:enable MethodLength,AbcSize
+  # rubocop:enable Metrics/MethodLength,Metrics/AbcSize
 end

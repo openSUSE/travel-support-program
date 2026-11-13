@@ -110,13 +110,14 @@ describe Reimbursement do
       reimbursement.expenses.reload.map { |i| i.authorized_amount.to_f }.sort.should == [0.0, 0.0, 55.0]
     end
 
-    it 'is not possible to submit without setting the authorized manually' do
-      begin
-        transition(reimbursement, :submit, users(:luke))
-      rescue
-        nil
-      end
-      reimbursement.reload.state.should == 'incomplete'
+    it 'is not possible to submit without setting the authorized manually', :aggregate_failures do
+      audit_count = reimbursement.audits.count
+      transition_count = reimbursement.transitions.count
+      expect { transition(reimbursement, :submit, users(:luke)) }.to raise_error(ActiveRecord::RecordInvalid)
+      expect(reimbursement.reload.state).to eq('incomplete')
+      expect(reimbursement.audits.count).to eq(audit_count)
+      expect(reimbursement.transitions.count).to eq(transition_count)
+      expect(ActionMailer::Base.deliveries.size).to eq(deliveries)
     end
 
     it 'overrides authorized amount for some expenses and respect the manual ones' do

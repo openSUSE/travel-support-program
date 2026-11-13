@@ -11,11 +11,13 @@ module HasState
     # Requester, that is, the user asking for support
     belongs_to :user
     # State changes are logged as StateChange records
-    has_many :state_changes, as: :machine, dependent: :destroy
+    # State changes save the machine themselves. Autosaving or validating an
+    # in-progress change here re-enters its callback before from/to are set.
+    has_many :state_changes, as: :machine, dependent: :destroy, autosave: false, validate: false
     # Transitions are logged as StateTransition records
-    has_many :transitions, as: :machine, class_name: 'StateTransition'
+    has_many :transitions, as: :machine, class_name: 'StateTransition', autosave: false, validate: false
     # Manual adjustments in the state are logged as StateAdjustment records
-    has_many :state_adjustments, as: :machine, class_name: 'StateAdjustment'
+    has_many :state_adjustments, as: :machine, class_name: 'StateAdjustment', autosave: false, validate: false
 
     validates :user, presence: true
 

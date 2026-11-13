@@ -1,7 +1,6 @@
 if Rails.root.join('.git').exist?
-  git = Git.open(Rails.root)
   begin
-    version = git.describe
+    version = Git.open(Rails.root).describe
   rescue
     version = '0.0.0'
   end

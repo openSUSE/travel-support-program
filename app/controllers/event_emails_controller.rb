@@ -31,8 +31,8 @@ class EventEmailsController < ApplicationController
         format.html { redirect_to event_event_emails_url(@event), notice: t(:event_email_create) }
         format.json { render :show, status: :created, location: @event_email }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @event_email.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @event_email.errors, status: :unprocessable_content }
       end
     end
   end

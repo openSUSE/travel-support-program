@@ -20,7 +20,7 @@ class StateTransitionsController < ApplicationController
         # flash messages are kept by default after javascript requests
         flash.discard
         format.js { render action: 'new' }
-        format.json { render json: @state_transition.errors, status: :unprocessable_entity }
+        format.json { render json: @state_transition.errors, status: :unprocessable_content }
       end
     end
   end

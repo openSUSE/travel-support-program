@@ -39,7 +39,7 @@ feature 'Reimbursements', '' do
     click_button 'submit'
     page.should have_content 'Something went wrong. Unable to submit.'
     page.should have_content 'under modification, not submitted'
-    page.should have_content 'expenses are missing or invalid'
+    page.should have_content(/expenses are missing or invalid/i)
 
     # Correct the request
     close_modal_dialog
@@ -196,6 +196,6 @@ feature 'Reimbursements', '' do
     visit request_reimbursement_acceptance_path(reimbursement.request)
     page.should have_content "You are not allowed to access this page.\nIf you think that you should, contact your administrator."
     visit check_request_request_reimbursement_path(reimbursement.request)
-    page.should have_no_content
+    page.should have_content 'You are not allowed to access this page.'
   end
 end

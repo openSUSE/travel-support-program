@@ -1,8 +1,11 @@
-version: '3'
 services:
   web:
     image: tsp:latest
-    build: .
+    build:
+      context: .
+      args:
+        CONTAINER_USERID: ${CONTAINER_USERID:-1000}
+    shm_size: 1gb
     volumes:
       - .:/app
     ports:

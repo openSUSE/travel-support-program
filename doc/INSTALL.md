@@ -4,18 +4,21 @@ All the Information you need to Install TSP. If you face any issues with install
 
 ## Getting Started
 
+Install Ruby and Bundler as specified in `Gemfile` and `Gemfile.lock`, Node.js
+for assets, and the native libraries required by the gems. For a ready-made
+development environment, see [Docker setup](DOCKER.md).
+
 As most regular Ruby on Rails applications:
 
 ```
 $ git clone https://github.com/openSUSE/travel-support-program
 $ cd travel-support-program
-$ vi Gemfile # edit Gemfile to uncomment your favorite database driver
-$ bundle
+$ bundle install
 $ cp config/database.example.yml config/database.yml
 $ cp config/site.example.yml config/site.yml
 $ vi config/site.yml # edit configuration DON'T FORGET to set proper secrets
-$ rake db:create db:migrate db:seed
-$ rails s
+$ bundle exec rake db:create db:migrate db:seed
+$ bundle exec rails s
 ```
 
 You can access the application pointing your browser to <http://localhost:3000/>
@@ -25,6 +28,22 @@ Four initial users should be available with the following emails and passwords:
 * requester@example.com / requester1
 * administrative@example.com / administrative1
 * assistant@example.com / assistant1
+
+## Updating an existing installation
+
+Back up the database and uploaded files. Drain queued email jobs with the old
+worker before stopping the application: serialized jobs may be incompatible
+with the new Rails version. Preserve the existing configuration and secrets.
+
+Install the required runtime, then run:
+
+```sh
+bundle install
+RAILS_ENV=production bundle exec rake db:migrate assets:precompile
+```
+
+Restart the application and workers. Do not seed an existing database. Framework
+upgrades may require users to sign in again.
 
 ## Sending Emails in Travel Support Program
 

@@ -24,8 +24,8 @@ class PaymentsController < ApplicationController
         format.html { redirect_to request_reimbursement_url(@request), notice: t(:payment_create) }
         format.json { render :show, status: :created, location: @reimbursement }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @payment.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @payment.errors, status: :unprocessable_content }
       end
     end
   end
@@ -38,8 +38,8 @@ class PaymentsController < ApplicationController
         format.html { redirect_to request_reimbursement_url(@request), notice: t(:payment_update) }
         format.json { render :show, status: :updated, location: @payment }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @payment.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @payment.errors, status: :unprocessable_content }
       end
     end
   end

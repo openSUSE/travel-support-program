@@ -22,8 +22,8 @@ class EventOrganizersController < ApplicationController
         format.html { redirect_to event_event_organizers_url, notice: t(:event_organizer_create) }
         format.json { render :show, status: :created, location: @event_organizer }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @event_organizer.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @event_organizer.errors, status: :unprocessable_content }
       end
     end
   end

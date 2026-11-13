@@ -6,50 +6,79 @@ on:
   pull_request:
     branches: [ master ]
 
+permissions:
+  contents: read
+
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
         type: [coverage, features, helpers, mailer, models, rubocop]
     runs-on: ubuntu-latest
     container: registry.opensuse.org/opensuse/infrastructure/tsp/containers/base:main
 
+    env:
+      RAILS_ENV: test
+      BUNDLE_PATH: vendor/bundle
+      BUNDLE_BUILD__SASSC: --disable-march-tune-native
+
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v5
 
     - name: Cache ruby dependencies
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: |
-          /usr/lib64/ruby/gems/
-          /usr/bin/
-        key: ${{ hashFiles('Gemfile.lock') }}
+        path: vendor/bundle
+        key: ruby-3.4-opensuse-${{ runner.arch }}-${{ hashFiles('Gemfile.lock') }}
 
     - name: Install ruby dependencies
-      run: |
-        gem.ruby2.7 install mini_racer -v 0.6.3
-        bundler.ruby2.7 install
+      run: bundler.ruby3.4 install
 
     - name: Set up the environment
       run: |
         cp config/database.test.yml config/database.yml
         cp config/site.example.yml config/site.yml
-        bundler.ruby2.7 exec rake db:migrate RAILS_ENV=test
+        bundler.ruby3.4 exec rake db:migrate
 
     - if: ${{ matrix.type == 'rubocop' }}
       name: Run rubocop
-      run: bundler.ruby2.7 exec rubocop
+      run: bundler.ruby3.4 exec rubocop
 
     - if: ${{ contains(fromJson('["features", "helpers", "mailer", "models"]'), matrix.type) }}
       name: Run spec
-      run: bundler.ruby2.7 exec rspec spec/${{ matrix.type }}/
+      run: bundler.ruby3.4 exec rspec spec/${{ matrix.type }}/
 
     - if: ${{ matrix.type == 'coverage' }}
       name: Run spec
-      run: bundler.ruby2.7 exec rspec
+      run: bundler.ruby3.4 exec rspec
 
     - if: ${{ matrix.type == 'coverage' }}
-      name: Coveralls
-      uses: coverallsapp/github-action@master
+      name: Save coverage report
+      uses: actions/upload-artifact@v4
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        name: coverage
+        path: coverage/lcov.info
+        if-no-files-found: error
+
+    - if: ${{ matrix.type == 'coverage' }}
+      name: Check production assets and eager loading
+      env:
+        RAILS_ENV: production
+      run: bundler.ruby3.4 exec rake zeitwerk:check assets:precompile
+
+  coverage:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v4
+        with:
+          name: coverage
+          path: coverage
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          file: coverage/lcov.info
+          format: lcov

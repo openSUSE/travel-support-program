@@ -22,6 +22,8 @@ module CommonHelpers
       fill_in 'password', with: options[:password]
       click_button 'Sign in'
     end
+    # Wait for the login redirect before a scenario starts another navigation.
+    expect(page).to have_link('Log out')
   end
 
   #
@@ -29,6 +31,7 @@ module CommonHelpers
   #
   def logout
     click_link 'Log out'
+    expect(page).to have_link('Log in')
   end
 
   #
@@ -48,7 +51,7 @@ module CommonHelpers
     select(request.event.name, from: 'q_event_id_in')
     click_button 'search'
     # Check the url to ensure that the form have been submitted
-    current_url.should match /event_id_in/
+    expect(page).to have_current_path(/event_id_in/, url: true)
     # If so, the request should be in the first page
     find(:xpath, "//table[contains(@class,'requests')]//tbody/tr/td[1]//a[text()='##{request.id}']").click
     page.should have_content 'request'
@@ -75,7 +78,7 @@ module CommonHelpers
     select(shipment.event.name, from: 'q_event_id_in')
     click_button 'search'
     # Check the url to ensure that the form have been submitted
-    current_url.should match /event_id_in/
+    expect(page).to have_current_path(/event_id_in/, url: true)
     # If so, the shipment should be in the first page
     find(:xpath, "//table[contains(@class,'shipments')]//tbody/tr/td[1]//a[text()='##{shipment.id}']").click
     page.should have_content "shipment request ##{shipment.id}"
@@ -99,7 +102,7 @@ module CommonHelpers
     select(reimbursement.event.name, from: 'q_request_event_id_in')
     click_button 'search'
     # Check the url to ensure that the form have been submitted
-    current_url.should match /request_event_id_in/
+    expect(page).to have_current_path(/request_event_id_in/, url: true)
     # If so, the reimbursement should be in the first page
     find(:xpath, "//table//tbody/tr/td[1]//a[text()='##{reimbursement.request.id}']").click
     page.should have_content 'reimbursement'

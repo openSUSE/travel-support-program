@@ -38,7 +38,8 @@ class Reimbursement < ApplicationRecord
   accepts_nested_attributes_for :bank_account, allow_destroy: false
 
   validates :request, presence: true
-  validates_associated :expenses, :attachments, :links, :bank_account
+  validates_associated :attachments, :links, :bank_account
+  validate :request_expenses_are_valid
   validates :acceptance_file, presence: true, if: -> { acceptance_file_required? }
   validate :user_profile_is_complete, if: -> { complete_profile_required? }
 
@@ -190,8 +191,7 @@ class Reimbursement < ApplicationRecord
 
     # Aggregate all the messages
     send(event)
-    error_msgs = errors.messages
-    error_msgs.delete_if { |key, _v| except.include?(key) }
+    error_msgs = errors.messages.except(*except)
     full_messages = []
     error_msgs.each_pair do |attrib, err|
       err.each { |msg| full_messages << errors.full_message(attrib, msg) }
@@ -209,6 +209,14 @@ class Reimbursement < ApplicationRecord
   end
 
   protected
+
+  def request_expenses_are_valid
+    return unless request
+
+    # The through association can cache a different request whose reimbursement
+    # is still nil or incomplete. Validate against this request's current state.
+    errors.add(:expenses, :invalid) unless request.expenses.map(&:valid?).all?
+  end
 
   # Used internally to synchronize request_id and user_id
   def set_user_id

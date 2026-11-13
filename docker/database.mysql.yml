@@ -1,7 +1,7 @@
 # Ensure the MySQL connector gem is defined in your Gemfile
 # gem 'mysql2'
 
-# Warning: this proposes the usage of the root user with no password.
+# Warning: this proposes the usage of the root user with a development password.
 # That's done for simplicity because this docker manifest is only meant for
 # development purposes and, for that, a user with privileges to create and
 # destroy databases is very convenient.
@@ -12,7 +12,7 @@ development:
   database: tsp_development
   host: db
   username: root
-  password:
+  password: tsp
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -22,4 +22,4 @@ test:
   database: tsp_test
   host: db
   username: root
-  password:
+  password: tsp

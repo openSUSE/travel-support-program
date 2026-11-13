@@ -14,7 +14,7 @@ SimpleCov.start 'rails' do
   formatter SimpleCov::Formatter::LcovFormatter
 
   # Not covered because they are overriden in spec/support/carrierwave.rb
-  add_filter 'app/uploaders/'
+  skip 'app/uploaders/'
 end
 
 ENV['RAILS_ENV'] ||= 'test'
@@ -23,7 +23,7 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara/email/rspec'
-require 'database_cleaner'
+require 'database_cleaner/active_record'
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -37,12 +37,13 @@ RSpec.configure do |config|
   config.expect_with(:rspec) { |expectations| expectations.syntax = %i[should expect] }
 
   Capybara.register_driver :headless do |app|
-    options = Selenium::WebDriver::Chrome::Options.new
+    options = Selenium::WebDriver::Chrome::Options.new(unhandled_prompt_behavior: 'ignore')
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-gpu')
 
-    options.add_preference(:download, default_directory: 'tmp/downloads/', directory_upgrade: true)
+    options.add_preference(:download, default_directory: Rails.root.join('tmp/downloads').to_s, directory_upgrade: true)
+    options.add_preference(:plugins, always_open_pdf_externally: true)
     Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
   end
 
@@ -58,7 +59,7 @@ RSpec.configure do |config|
   # config.mock_with :rr
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.fixture_paths = ["#{::Rails.root}/spec/fixtures"]
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -78,11 +79,13 @@ RSpec.configure do |config|
   config.order = 'random'
 
   config.before do
+    clear_downloads
     DatabaseCleaner.strategy = :deletion
     DatabaseCleaner.start
   end
 
   config.after do
+    clear_downloads
     DatabaseCleaner.clean
   end
 

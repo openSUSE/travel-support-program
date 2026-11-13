@@ -1,25 +1,18 @@
 FROM registry.opensuse.org/opensuse/infrastructure/tsp/containers/base:main
-ARG CONTAINER_USERID
+ARG CONTAINER_USERID=1000
 
 # Configure our user
-RUN usermod -u $CONTAINER_USERID tsp
+RUN usermod -u "$CONTAINER_USERID" tsp
 
 WORKDIR /app
 
-RUN gem.ruby2.7 install mini_racer -v 0.6.3
-RUN gem.ruby2.7 install ffi -v '1.15.5'
-
 # Configure our bundle
-# ENV BUNDLE_FORCE_RUBY_PLATFORM=true
-RUN bundler.ruby2.7  config build.ffi --enable-system-libffi; \
-    bundler.ruby2.7  config build.nokogiri --use-system-libraries; \
-    bundler.ruby2.7  config build.sassc --disable-march-tune-native; \
-    bundler.ruby2.7  config build.nio4r --with-cflags='-Wno-return-type'
+ENV BUNDLE_BUILD__SASSC=--disable-march-tune-native
 
 ADD Gemfile /app/Gemfile
 ADD Gemfile.lock /app/Gemfile.lock
 
-RUN bundler.ruby2.7 install --jobs=3 --retry=3
+RUN bundler.ruby3.4 install --jobs=3 --retry=3
 
 RUN chown -R tsp /app
 
@@ -27,4 +20,4 @@ RUN chown -R tsp /app
 # builds this container
 USER tsp
 
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["bundler.ruby3.4", "exec", "rails", "server", "-b", "0.0.0.0"]

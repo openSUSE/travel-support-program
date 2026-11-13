@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  force_ssl unless: proc { Rails.env.test? || Rails.env.development? }
   before_action :authenticate_and_audit_user, unless: :devise_controller?
   load_and_authorize_resource unless: :devise_controller?
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -12,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |_exception|
     flash[:alert] = nil
-    render file: "#{Rails.root}/public/403.html", status: 403
+    render file: "#{Rails.root}/public/403.html", status: :forbidden, layout: request.format.html?, content_type: 'text/html'
   end
 
   protected

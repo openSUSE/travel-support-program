@@ -8,6 +8,14 @@ feature 'Acceptance info', '' do
 
   let(:reimb) { reimbursements(:wedge_for_training_reim) }
 
+  scenario 'downloads the reimbursement document with its requester and expenses', js: true do
+    find_reimbursement_as(users(:wedge), reimb)
+    visit request_reimbursement_path(reimb.request, format: :pdf)
+
+    expect(pdf_content).to include(reimb.user.profile.full_name, reimb.event.name,
+                                   reimb.expenses.first.subject)
+  end
+
   scenario 'is displayed when acceptance is required', js: true do
     find_reimbursement_as(users(:wedge), reimb)
     page.should have_link 'Attach signed document'

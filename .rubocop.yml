@@ -1,9 +1,15 @@
 # Inherit style from another configuration
 inherit_from: .rubocop_todo.yml
 
-require:
+# Preserve both generated exclusions and the explicit exceptions below.
+inherit_mode:
+  merge:
+    - Exclude
+
+plugins:
  - rubocop-rails
  - rubocop-rspec
+ - rubocop-capybara
 
 Metrics/ClassLength:
   Exclude:
@@ -16,10 +22,14 @@ Metrics/ModuleLength:
 # Apply rule to all cops
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 3.4
   Exclude:
     - 'db/schema.rb'
     - 'vendor/bundle/**/*'
     - 'bundle/**/*'
     - 'config/**/*'
     - 'bin/*'
+
+# Keep explicit hash values when moving from Ruby 2.7 to Ruby 3.1.
+Style/HashSyntax:
+  EnforcedShorthandSyntax: never

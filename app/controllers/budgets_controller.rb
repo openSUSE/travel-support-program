@@ -24,8 +24,8 @@ class BudgetsController < ApplicationController
         format.html { redirect_to budget_url(@budget), notice: t(:budget_create) }
         format.json { render :show, status: :created, location: @budget }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @budget.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @budget.errors, status: :unprocessable_content }
       end
     end
   end
@@ -38,8 +38,8 @@ class BudgetsController < ApplicationController
         format.html { redirect_to budget_url(@budget), notice: t(:budget_update) }
         format.json { render :show, status: :updated, location: @budget }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @budget.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @budget.errors, status: :unprocessable_content }
       end
     end
   end

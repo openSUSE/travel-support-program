@@ -39,8 +39,8 @@ class TravelSponsorshipsController < ApplicationController
         format.html { redirect_to travel_sponsorship_url(@travel_sponsorship), notice: t(:travel_sponsorship_create) }
         format.json { render :show, status: :created, location: @travel_sponsorship }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @travel_sponsorship.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @travel_sponsorship.errors, status: :unprocessable_content }
       end
     end
   end
@@ -53,8 +53,8 @@ class TravelSponsorshipsController < ApplicationController
         format.html { redirect_to travel_sponsorship_url(@travel_sponsorship), notice: t(:travel_sponsorship_update) }
         format.json { render :show, status: :updated, location: @travel_sponsorship }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @travel_sponsorship.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @travel_sponsorship.errors, status: :unprocessable_content }
       end
     end
   end

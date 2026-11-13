@@ -4,7 +4,7 @@ require 'spec_helper'
 require 'cancan/matchers'
 # require 'ruby-debug'
 
-# rubocop:disable BlockLength
+# rubocop:disable Metrics/BlockLength
 describe 'Administrative' do
   fixtures :all
 
@@ -333,4 +333,4 @@ describe 'Administrative' do
     it { is_expected.not_to be_able_to(:adjust_state, requests(:wedge_costumes_for_party)) }
   end
 end
-# rubocop:enable BlockLength
+# rubocop:enable Metrics/BlockLength

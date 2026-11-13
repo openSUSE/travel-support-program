@@ -24,8 +24,9 @@ name).
 
 ## Requirements
 
-* Ruby >= 2.7
-* Any Rails supported database system: PosgreSQL, SQLite3, MariaDB, MySQL...
+* Ruby and Bundler (versions specified in `Gemfile` and `Gemfile.lock`)
+* Node.js for asset compilation
+* PostgreSQL, SQLite3, MariaDB, or MySQL
 
 ## Installation
 Please refer to [INSTALL](doc/INSTALL.md) documentation file

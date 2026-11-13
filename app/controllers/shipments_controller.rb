@@ -32,8 +32,8 @@ class ShipmentsController < ApplicationController
         format.html { redirect_to shipment_url(@shipment), notice: t(:shipment_create) }
         format.json { render :show, status: :created, location: @shipment }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @shipment.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @shipment.errors, status: :unprocessable_content }
       end
     end
   end
@@ -46,8 +46,8 @@ class ShipmentsController < ApplicationController
         format.html { redirect_to shipment_url(@shipment), notice: t(:shipment_update) }
         format.json { render :show, status: :updated, location: @shipment }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @shipment.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @shipment.errors, status: :unprocessable_content }
       end
     end
   end

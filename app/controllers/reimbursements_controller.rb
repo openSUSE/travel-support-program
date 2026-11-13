@@ -32,8 +32,8 @@ class ReimbursementsController < ApplicationController
         format.html { redirect_to edit_request_reimbursement_url(@request), notice: t(:reimbursement_create) }
         format.json { render :show, status: :created, location: @reimbursement }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @reimbursement.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @reimbursement.errors, status: :unprocessable_content }
       end
     end
   end
@@ -46,8 +46,8 @@ class ReimbursementsController < ApplicationController
         format.html { redirect_to request_reimbursement_url(@request), notice: t(:reimbursement_update) }
         format.json { render :show, status: :updated, location: @reimbursement }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @reimbursement.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @reimbursement.errors, status: :unprocessable_content }
       end
     end
   end
@@ -74,9 +74,12 @@ class ReimbursementsController < ApplicationController
     if c_template.blank? || c_layout.blank?
       redirect_to request_reimbursement_path(@reimbursement.request)
     else
-      @template = Rails.root.join('config', c_template)
-      @layout = Rails.root.join('config', c_layout)
-      @fields = YAML.load_file(@layout)
+      template = Rails.root.join('config', c_template)
+      layout = YAML.safe_load_file(Rails.root.join('config', c_layout), aliases: true)
+      pdf = CheckRequestPdf.render(template: template, layout: layout) do |name|
+        helpers.check_request_value(@reimbursement, name)
+      end
+      send_data pdf, type: 'application/pdf', disposition: 'inline', filename: 'check_request.pdf'
     end
   end
 

@@ -1,23 +1,23 @@
 wedge_for_training_reim:
   state: "incomplete"
   user: wedge
-  created_at: <%= 6.days.ago.to_s(:db) %>
+  created_at: <%= 6.days.ago.to_fs(:db) %>
   request: wedge_for_training
 
 administrative_for_training_reim:
   state: "incomplete"
   user: administrative
-  created_at: <%= 6.days.ago.to_s(:db) %>
+  created_at: <%= 6.days.ago.to_fs(:db) %>
   request: administrative_for_training
 
 assistant_for_training_reim:
   state: "incomplete"
   user: assistant
-  created_at: <%= 6.days.ago.to_s(:db) %>
+  created_at: <%= 6.days.ago.to_fs(:db) %>
   request: assistant_for_training
 
 tspmember_for_training_reim:
   state: "incomplete"
   user: tspmember
-  created_at: <%= 6.days.ago.to_s(:db) %>
+  created_at: <%= 6.days.ago.to_fs(:db) %>
   request: tspmember_for_training

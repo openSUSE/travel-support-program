@@ -85,6 +85,19 @@ feature 'Events', '' do
     page.all('.table tr').count.should == 6
   end
 
+  scenario 'lists each participant once when they have multiple requests' do
+    previous_request = requests(:luke_for_party).dup
+    previous_request.state = 'canceled'
+    previous_request.save!
+    sign_in_as_user(users(:tspmember))
+
+    visit participants_event_path(events(:party))
+
+    within('.table') do
+      expect(page).to have_content(users(:luke).nickname, count: 1)
+    end
+  end
+
   scenario 'User logged in is a tsp member' do
     sign_in_as_user(users(:tspmember))
     visit events_path

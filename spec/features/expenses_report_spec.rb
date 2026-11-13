@@ -6,6 +6,20 @@ require 'spec_helper'
 feature 'ExpenseRequest', '' do
   fixtures :all
 
+  scenario 'downloads approved expenses as a spreadsheet', :aggregate_failures do
+    sign_in_as_user(users(:tspmember))
+    visit travel_expenses_report_path
+    select 'approved', from: 'by_type'
+    select 'user', from: 'by_group'
+    click_button 'xlsx'
+
+    Zip::File.open(download_file.path) do |workbook|
+      sheet = Nokogiri::XML(workbook.read('xl/worksheets/sheet1.xml'))
+      expect(sheet.xpath('//*[local-name()="t"]').map(&:text)).to include('tatooine69', 'red_two')
+      expect(sheet.xpath('//*[local-name()="v"]').map { |cell| cell.text.to_f }).to include(110.0, 70.0)
+    end
+  end
+
   scenario 'Approved report' do
     sign_in_as_user(users(:tspmember))
     visit travel_expenses_report_path

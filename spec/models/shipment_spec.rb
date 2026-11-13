@@ -27,11 +27,7 @@ describe Shipment do
     end
 
     it 'is updated on state changes' do
-      begin
-        transition(shipment, :submit, users(:wedge))
-      rescue
-        nil
-      end
+      transition(shipment, :submit, users(:wedge))
       shipment.reload.state.should == 'submitted'
       shipment.reload.state_updated_at.should_not be_nil
     end
@@ -40,7 +36,7 @@ describe Shipment do
   context 'when initially requested' do
     let!(:deliveries) { ActionMailer::Base.deliveries.size }
     let(:shipment) { requests(:luke_costumes_for_party) }
-    let(:audits) { shipment.audits }
+    let!(:audit_count) { shipment.audits.count }
 
     before do
       transition(shipment, :submit, users(:luke))
@@ -55,7 +51,7 @@ describe Shipment do
     end
 
     it 'audits the change' do
-      shipment.audits.size == audits.size + 1
+      shipment.audits.reload.size.should == audit_count + 1
     end
 
     it 'creates an state transition' do
