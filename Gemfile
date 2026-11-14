@@ -10,7 +10,7 @@ gem 'responders'
 
 # Choose your weapon
 gem 'pg', '~> 1.6'
-gem 'sqlite3', '~> 2.1'
+gem 'sqlite3', '~> 2.10'
 gem 'mysql2', '~> 0.5'
 
 # Use SCSS for stylesheets
