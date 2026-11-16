@@ -68,7 +68,7 @@ gem 'delayed_job_active_record'
 
 gem 'exception_notification', group: :production
 gem 'redcarpet'
-gem 'rspec-rails', '~> 8.0', group: %i[development test]
+gem 'rspec-rails', '~> 8.1', group: %i[development test]
 gem 'simplecov', require: false
 gem 'simplecov-lcov', require: false
 
