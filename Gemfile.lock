@@ -232,7 +232,7 @@ GEM
       haml (>= 4.0.6)
       railties (>= 5.1)
     hashery (2.1.2)
-    hexapdf (1.11.0)
+    hexapdf (1.11.2)
       cmdparse (~> 3.0, >= 3.0.3)
       geom2d (~> 0.4, >= 0.4.1)
       openssl (>= 2.2.1)
@@ -589,7 +589,7 @@ DEPENDENCIES
   exception_notification
   git
   haml-rails
-  hexapdf (~> 1.0)
+  hexapdf (~> 1.11)
   jquery-rails
   jquery-ui-rails
   kaminari

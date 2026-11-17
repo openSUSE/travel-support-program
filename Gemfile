@@ -58,7 +58,7 @@ gem 'kaminari'
 gem 'prawn', '~> 2.5'
 gem 'prawn-rails', '~> 1.6'
 # Preserve existing check-request templates while using maintained Prawn.
-gem 'hexapdf', '~> 1.0'
+gem 'hexapdf', '~> 1.11'
 gem 'puma'
 gem 'ransack', '>= 4.3'
 gem 'show_for'
