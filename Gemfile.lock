@@ -330,8 +330,8 @@ GEM
       afm (>= 0.2.1, < 2)
       hashery (~> 2.0)
       ttfunk
-    pg (1.6.3)
-    pg (1.6.3-x86_64-linux)
+    pg (1.7.0)
+    pg (1.7.0-x86_64-linux)
     pp (0.6.4)
       prettyprint
     prawn (2.5.0)
@@ -597,7 +597,7 @@ DEPENDENCIES
   listen
   mysql2 (~> 0.5)
   pdf-reader
-  pg (~> 1.6)
+  pg (~> 1.7)
   prawn (~> 2.5)
   prawn-rails (~> 1.6)
   puma
