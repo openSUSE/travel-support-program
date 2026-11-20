@@ -81,7 +81,7 @@ group :development do
   gem 'state_machines-yard'
   gem 'yard-activerecord'
   # for static code analisys
-  gem 'rubocop', '~> 1.0', require: false
+  gem 'rubocop', '~> 1.92', require: false
   gem 'rubocop-rails', '~> 2.0', require: false
   gem 'rubocop-rspec', '~> 3.0', require: false
   gem 'rubocop-capybara', require: false
