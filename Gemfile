@@ -9,7 +9,7 @@ gem 'rails-i18n', '~> 8.0'
 gem 'responders'
 
 # Choose your weapon
-gem 'pg', '~> 1.6'
+gem 'pg', '~> 1.7'
 gem 'sqlite3', '~> 2.10'
 gem 'mysql2', '~> 0.5'
 
